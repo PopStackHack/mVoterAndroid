@@ -1,0 +1,1 @@
+CREATE VIRTUAL TABLE CandidateFtsTable USING fts4(id, name);

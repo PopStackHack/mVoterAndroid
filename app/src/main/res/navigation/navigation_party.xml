@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_party"
+    app:startDestination="@id/partyListFragment">
+
+  <fragment
+      android:id="@+id/partyListFragment"
+      android:name="com.popstack.mvoter2015.feature.party.listing.PartyListFragment"
+      android:label="PartyListFragment"
+      tools:layout="@layout/fragment_party_list" />
+</navigation>

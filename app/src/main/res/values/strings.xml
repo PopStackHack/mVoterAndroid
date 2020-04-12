@@ -1,0 +1,10 @@
+<resources>
+  <string name="app_name">mVoter</string>
+
+  <string name="navigation_candidate_list">ကိုယ်စားလှယ်များ</string>
+  <string name="navigation_party_list">ပါတီများ</string>
+  <string name="navigation_how_to_vote">မဲပေးနည်း</string>
+  <string name="navigation_tips">သိမှတ်ဖွယ်</string>
+  <string name="navigation_result">မဲရလဒ်</string>
+
+</resources>

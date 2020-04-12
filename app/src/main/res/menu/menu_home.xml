@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <item
+      android:id="@+id/navigation_candidate"
+      android:icon="@drawable/ic_flag_24"
+      android:title="@string/navigation_candidate_list" />
+
+  <item
+      android:id="@+id/navigation_party"
+      android:icon="@drawable/ic_flag_24"
+      android:title="@string/navigation_party_list" />
+
+  <item
+      android:id="@+id/navigation_how_to_vote"
+      android:icon="@drawable/ic_how_to_vote_24"
+      android:title="@string/navigation_how_to_vote" />
+
+  <item
+      android:id="@+id/navigation_info"
+      android:icon="@drawable/ic_flag_24"
+      android:title="@string/navigation_tips" />
+
+  <item
+      android:id="@+id/navigation_vote_result"
+      android:icon="@drawable/ic_star_border_24"
+      android:title="@string/navigation_result" />
+
+</menu>
