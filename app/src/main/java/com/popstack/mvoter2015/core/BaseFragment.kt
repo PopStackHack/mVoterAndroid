@@ -23,8 +23,15 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
     savedInstanceState: Bundle?
   ): View? {
     _binding = bindingInflater(inflater)
+    onBindView()
     return binding.root
   }
+
+  //Function to safely call after on create and before onViewCreated
+  protected open fun onBindView() {
+    //Do Nothing
+  }
+
 
   override fun onDestroyView() {
     _binding = null

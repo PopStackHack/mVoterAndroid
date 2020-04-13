@@ -59,6 +59,9 @@ dependencies {
   implementation(AndroidXActivity.activity_ktx)
   androidxFragment()
   androidXArch()
+  implementation(AndroidXViewPager.view_pager_2)
+  implementation(AndroidXViewPager.view_pager)
+  implementation(AndroidXRecyclerView.recycler_view)
 
   //Material
   implementation(Material.material)

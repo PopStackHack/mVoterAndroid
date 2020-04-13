@@ -9,4 +9,6 @@ dependencies {
 
   implementation(Kotlin.stdblib_jdk)
   api(KotlinCoroutine.core)
+
+  implementation(CommonLibs.javaxInject)
 }

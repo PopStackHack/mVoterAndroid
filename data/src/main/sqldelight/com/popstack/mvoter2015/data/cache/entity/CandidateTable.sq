@@ -1,6 +1,6 @@
-import com.popstack.mvoter2015.domain.candidate.CandidateGender;
-import com.popstack.mvoter2015.domain.candidate.CandidateId;
-import com.popstack.mvoter2015.domain.candidate.CandidateParent;
+import com.popstack.mvoter2015.domain.candidate.model.CandidateGender;
+import com.popstack.mvoter2015.domain.candidate.model.CandidateId;
+import com.popstack.mvoter2015.domain.candidate.model.CandidateParent;
 import com.popstack.mvoter2015.domain.party.PartyId;
 import java.time.LocalDate;
 

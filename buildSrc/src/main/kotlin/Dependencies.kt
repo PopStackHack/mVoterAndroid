@@ -50,7 +50,7 @@ object AndroidXAppCompat {
 }
 
 object AndroidXRecyclerView {
-  private const val version = "1.2.0-alpha01"
+  private const val version = "1.2.0-alpha02"
 
   const val recycler_view = "androidx.recyclerview:recyclerview:$version"
   const val selection = "androidx.recyclerview:recyclerview-selection:$version"
@@ -69,7 +69,7 @@ object AndroidXConstraintLayout {
 object AndroidXViewPager {
   const val view_pager = "androidx.viewpager:viewpager:1.0.0"
 
-  const val view_pager_2 = "androidx.viewpager2:viewpager2:1.0.0"
+  const val view_pager_2 = "androidx.viewpager2:viewpager2:1.1.0-alpha01"
 }
 
 object AndroidXLegacy {
