@@ -103,8 +103,6 @@ object AndroidXSqlite {
   const val sqlite_ktx = "androidx.sqlite:sqlite-ktx:$version"
 }
 
-
-
 object AndroidArchWork {
   private const val version = "2.3.0-rc01"
 
@@ -245,6 +243,12 @@ object Lottie {
   const val android = "com.airbnb.android:lottie:$version"
 }
 
+object Monex {
+  private const val version = "0.2.2"
+
+  const val monex = "com.aungkyawpaing.monex:monex:$version"
+  const val no_op = "com.aungkyawpaing.monex:monex-no-op:$version"
+}
 
 object OkHttp {
   private const val version = "4.3.1"

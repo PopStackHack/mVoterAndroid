@@ -2,6 +2,7 @@ package com.popstack.mvoter2015.feature.home
 
 import android.os.Bundle
 import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvpActivity
 import com.popstack.mvoter2015.databinding.ActivityHomeBinding
@@ -30,6 +31,7 @@ class HomeActivity : MvpActivity<ActivityHomeBinding, HomeView, HomeViewModel>()
         containerId = R.id.navFragment,
         intent = intent
     )
+
   }
 
   override fun onSupportNavigateUp(): Boolean =

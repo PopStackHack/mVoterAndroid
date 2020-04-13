@@ -22,9 +22,14 @@ android {
   }
 
   buildTypes {
+    getByName("debug") {
+      buildConfigField("String", "BASE_URL", "\"base_url_here\"")
+    }
+
     getByName("release") {
       isMinifyEnabled = false
       proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
+      buildConfigField("String", "BASE_URL", "\"base_url_here\"")
     }
   }
 
@@ -64,14 +69,15 @@ dependencies {
   //Networking
   implementation(OkHttp.client)
   implementation(OkHttp.logger)
+  debugImplementation(Monex.monex)
+  releaseImplementation(Monex.no_op)
 
   implementation(Retrofit.core)
   implementation(Retrofit.moshi_converter)
 
   moshi()
 
-//  debugImplementation("com.aungkyawpaing.monex:monex:$monex_version")
-//  releaseImplementation "com.aungkyawpaing.monex:monex-no-op:$monex_version"
+
 
   //Dagger
   daggerJvm()

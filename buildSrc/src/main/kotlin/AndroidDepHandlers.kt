@@ -1,5 +1,6 @@
 import org.gradle.api.artifacts.dsl.DependencyHandler
 
+
 fun DependencyHandler.implementation(depName: String) {
   add("implementation", depName)
 }
