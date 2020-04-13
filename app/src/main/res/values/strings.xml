@@ -14,7 +14,7 @@
   <string name="title_candidates">ကိုယ်စားလှယ်လောင်းများ</string>
 
   <string name="tab_upper_house">အမျိုးသား\nလွှတ်တော်</string>
-  <string name="tab_lower_house">ပြည့်သူလွှတ်တော်\nလွှတ်တော်</string>
+  <string name="tab_lower_house">ပြည့်သူ\nလွှတ်တော်</string>
   <string name="tab_regional_house_state">တိုင်းဒေသကြီး\nလွှတ်တော်</string>
   <string name="tab_regional_house_region">ပြည်နယ်\nလွှတ်တော်</string>
 </resources>
