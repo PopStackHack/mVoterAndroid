@@ -81,6 +81,10 @@ dependencies {
   //Coil
   implementation(Coil.coil)
 
+  //Caigraphy
+  implementation(Caligraphy.viewpump)
+  implementation(Caligraphy.caligraphy)
+
   //Test
   testImplementation("junit:junit:4.12")
   mockito()
