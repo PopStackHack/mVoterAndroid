@@ -251,7 +251,7 @@ object Monex {
 }
 
 object OkHttp {
-  private const val version = "4.3.1"
+  private const val version = "4.5.0"
 
   const val client = "com.squareup.okhttp3:okhttp:$version"
   const val logger = "com.squareup.okhttp3:logging-interceptor:$version"
@@ -259,7 +259,7 @@ object OkHttp {
 }
 
 object Retrofit {
-  private const val version = "2.6.2"
+  private const val version = "2.8.1"
 
   const val core = "com.squareup.retrofit2:retrofit:$version"
   const val moshi_converter = "com.squareup.retrofit2:converter-moshi:$version"

@@ -8,6 +8,7 @@
   <color name="text_secondary">#424242</color>
   <color name="text_disabled">#33000000</color>
   <color name="grey">#9E9E9E</color>
+  <color name="text_on_accent">#FFFFFF</color>
 
   <color name="transparent_black">#CC000000</color>
   <color name="transparent">#00000000</color>
