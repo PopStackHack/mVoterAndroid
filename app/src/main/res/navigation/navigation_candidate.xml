@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/navigation_candidate"
-    app:startDestination="@id/candidateListFragment">
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/navigation_candidate"
+  app:startDestination="@id/candidateListFragment">
 
   <fragment
-      android:id="@+id/candidateListFragment"
-      android:name="com.popstack.mvoter2015.feature.candidate.listing.CandidateListFragment"
-      android:label="CandidateListFragment"
-      tools:layout="@layout/fragment_candidate_list" />
+    android:id="@+id/candidateListFragment"
+    android:name="com.popstack.mvoter2015.feature.candidate.listing.CandidateListFragment"
+    android:label="CandidateListFragment"
+    tools:layout="@layout/fragment_candidate_list">
+
+    <action
+      android:id="@+id/goDetailAction"
+      app:destination="@id/candidateDetailFragment" />
+
+  </fragment>
+
+  <fragment
+    android:id="@+id/candidateDetailFragment"
+    android:name="com.popstack.mvoter2015.feature.candidate.detail.CandidateDetailFragment"
+    android:label="CandidateDetailFragment"
+    tools:layout="@layout/fragment_candidate_detail">
+
+    <argument
+      android:name="candidateId"
+      app:argType="string"
+      app:nullable="false" />
+  </fragment>
 
 </navigation>

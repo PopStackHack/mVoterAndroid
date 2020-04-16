@@ -7,11 +7,16 @@ import coil.transform.CircleCropTransformation
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.recyclerview.ViewBindingViewHolder
 import com.popstack.mvoter2015.databinding.ItemCandidateBinding
+import com.popstack.mvoter2015.domain.candidate.model.CandidateId
 import com.popstack.mvoter2015.feature.candidate.listing.upperhouse.UpperHouseCandidateListRecyclerViewAdapter.UpperHouseCandidateListViewHolder
 import com.popstack.mvoter2015.helper.diff.diffCallBackWith
 import com.popstack.mvoter2015.helper.extensions.inflater
+import com.popstack.mvoter2015.helper.extensions.withSafeAdapterPosition
+import javax.inject.Inject
 
-class UpperHouseCandidateListRecyclerViewAdapter : ListAdapter<UpperHouseCandidateListViewItem, UpperHouseCandidateListViewHolder>(
+class UpperHouseCandidateListRecyclerViewAdapter @Inject constructor(
+  private val itemClickListener: UpperHouseCandidateListItemClickListener
+) : ListAdapter<UpperHouseCandidateListViewItem, UpperHouseCandidateListViewHolder>(
   diffCallBackWith(
     areItemTheSame = { item1, item2 ->
       item1.candidateId == item2.candidateId
@@ -22,12 +27,26 @@ class UpperHouseCandidateListRecyclerViewAdapter : ListAdapter<UpperHouseCandida
   )
 ) {
 
+  interface UpperHouseCandidateListItemClickListener {
+
+    fun onItemClick(candidateId: CandidateId)
+
+  }
+
   override fun onCreateViewHolder(
     parent: ViewGroup,
     viewType: Int
   ): UpperHouseCandidateListViewHolder {
     val binding = ItemCandidateBinding.inflate(parent.inflater(), parent, false)
-    return UpperHouseCandidateListViewHolder(binding)
+    val viewHolder = UpperHouseCandidateListViewHolder(binding)
+    viewHolder.itemView.setOnClickListener { _ ->
+      viewHolder.withSafeAdapterPosition { position ->
+        val itemAtIndex = getItem(position)
+        itemClickListener.onItemClick(itemAtIndex.candidateId)
+      }
+
+    }
+    return viewHolder
   }
 
   override fun onBindViewHolder(

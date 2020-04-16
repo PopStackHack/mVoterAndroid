@@ -218,7 +218,7 @@ object Kakao {
 }
 
 object Kotlin {
-  private const val version = "1.3.61"
+  private const val version = "1.3.72"
 
   const val stdblib_jdk = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$version"
   const val gradle_plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$version"

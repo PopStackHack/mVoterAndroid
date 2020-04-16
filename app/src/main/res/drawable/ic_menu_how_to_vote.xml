@@ -1,0 +1,4 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+  <item android:drawable="@drawable/ic_how_to_vote_filled" android:state_checked="true" />
+  <item android:drawable="@drawable/ic_how_to_vote_outline" android:state_checked="false" />
+</selector>

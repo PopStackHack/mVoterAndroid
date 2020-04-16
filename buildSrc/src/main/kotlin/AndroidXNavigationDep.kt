@@ -9,7 +9,7 @@ fun DependencyHandler.androidxNavigationKtx() {
 
 
 object AndroidXNavigation {
-  private const val version = "2.3.0-alpha04"
+  private const val version = "2.3.0-alpha05"
 
   const val common = "androidx.navigation:navigation-common:$version"
   const val common_ktx = "androidx.navigation:navigation-common-ktx:$version"

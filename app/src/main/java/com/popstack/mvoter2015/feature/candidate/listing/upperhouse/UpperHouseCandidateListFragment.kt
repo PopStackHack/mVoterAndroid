@@ -3,19 +3,23 @@ package com.popstack.mvoter2015.feature.candidate.listing.upperhouse
 import android.view.LayoutInflater
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvpFragment
 import com.popstack.mvoter2015.databinding.FragmentUpperHouseCandidateListBinding
+import com.popstack.mvoter2015.domain.candidate.model.CandidateId
+import com.popstack.mvoter2015.feature.candidate.listing.CandidateListFragmentDirections
 import com.popstack.mvoter2015.feature.candidate.listing.regionalhouse.RegionalHouseCandidateListView
 import com.popstack.mvoter2015.feature.candidate.listing.regionalhouse.RegionalHouseCandidateListViewModel
+import com.popstack.mvoter2015.feature.candidate.listing.upperhouse.UpperHouseCandidateListRecyclerViewAdapter.UpperHouseCandidateListItemClickListener
 import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
 
 class UpperHouseCandidateListFragment :
   MvpFragment<FragmentUpperHouseCandidateListBinding, UpperHouseCandidateListView, UpperHouseCandidateListViewModel>(),
-  UpperHouseCandidateListView {
+  UpperHouseCandidateListView, UpperHouseCandidateListItemClickListener {
 
   override val viewModel: UpperHouseCandidateListViewModel by contractedViewModels()
 
@@ -23,7 +27,7 @@ class UpperHouseCandidateListFragment :
     FragmentUpperHouseCandidateListBinding::inflate
 
   private val candidateListAdapter by lazy {
-    UpperHouseCandidateListRecyclerViewAdapter()
+    UpperHouseCandidateListRecyclerViewAdapter(this)
   }
 
   override fun onBindView() {
@@ -44,6 +48,13 @@ class UpperHouseCandidateListFragment :
       candidateListAdapter.submitList(viewItemList)
     })
 
+  }
+
+  override fun onItemClick(candidateId: CandidateId) {
+    val goDetailDirection = CandidateListFragmentDirections.goDetailAction(
+      candidateId = candidateId.value
+    )
+    findNavController().navigate(goDetailDirection)
   }
 
 }
