@@ -1,3 +1,21 @@
+import java.util.Properties
+
+//Load properties
+private val properties = Properties()
+private val localPropertyFile = project.rootProject.file("local.properties")
+if (localPropertyFile.canRead()) {
+  properties.load(localPropertyFile.inputStream())
+}
+
+val RELEASE_KEYSTORE_PATH = properties.getProperty("RELEASE_KEYSTORE_PATH")
+  .toString()
+val RELEASE_KEYSTORE_PASSWORD = properties.getProperty("RELEASE_KEYSTORE_PASSWORD")
+  .toString()
+val RELEASE_KEY_ALIAS = properties.getProperty("RELEASE_KEY_ALIAS")
+  .toString()
+val RELEASE_KEY_PASSWORD = properties.getProperty("RELEASE_KEY_PASSWORD")
+  .toString()
+
 plugins {
   id("com.android.application")
   kotlin("android")
@@ -17,6 +35,7 @@ android {
     versionCode = BuildConfig.versionCode
     versionName = BuildConfig.versionName
     resConfigs("en", "mm")
+    setProperty("archivesBaseName", "mVoter-$BuildConfig.versionName")
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
@@ -25,9 +44,28 @@ android {
     }
   }
 
+  signingConfigs {
+    register("release") {
+      storeFile = File(rootDir, RELEASE_KEYSTORE_PATH)
+      storePassword = RELEASE_KEYSTORE_PASSWORD
+      keyAlias = RELEASE_KEY_ALIAS
+      keyPassword = RELEASE_KEY_PASSWORD
+    }
+  }
+
   buildTypes {
-    getByName("release") {
+
+    getByName("debug") {
       isMinifyEnabled = false
+      isDebuggable = true
+      versionNameSuffix = "-debug"
+      applicationIdSuffix = ".debug"
+    }
+
+    getByName("release") {
+      isMinifyEnabled = true
+      isDebuggable = false
+      signingConfig = signingConfigs.getByName("release")
       proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
     }
   }

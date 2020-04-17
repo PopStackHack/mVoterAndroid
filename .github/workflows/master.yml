@@ -3,8 +3,9 @@ name: Develop Branch CI/CD
 on:
   push:
     branches:
-      - '*'
-      - '!master'
+      - 'master'
+    tags:
+      - 'v*'
 
 jobs:
   test:
@@ -62,3 +63,51 @@ jobs:
         with:
           name: Test Result
           path: test_results/
+
+  create_apk:
+    needs: test
+    name: Static Code Check & Test
+    runs-on: ubuntu-18.04
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+
+      - shell: bash
+        env:
+          RELEASE_KEYSTORE_BASE64: ${{ secrets.RELEASE_KEYSTORE_BASE64 }}
+          RELEASE_KEYSTORE_PATH: ${{ secrets.RELEASE_KEYSTORE_PATH }}
+          RELEASE_KEYSTORE_PASSWORD: ${{ secrets.RELEASE_KEYSTORE_PASSWORD }}
+          RELEASE_KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
+          RELEASE_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
+
+      - name: Set up environment properties
+        run: |
+        touch local.properties
+        touch $RELEASE_KEYSTORE_PATH
+        echo $RELEASE_KEYSTORE_BASE64 | base64 --decode > $RELEASE_KEYSTORE_PATH
+        echo "\nRELEASE_KEYSTORE_PATH=$RELEASE_KEYSTORE_PATH" >> local.properties
+        echo "\RELEASE_KEYSTORE_PASSWORD=RELEASE_KEYSTORE_PASSWORD" >> local.properties
+        echo "\RELEASE_KEY_ALIAS=RELEASE_KEY_ALIAS" >> local.properties
+        echo "\RELEASE_KEY_PASSWORD=RELEASE_KEY_PASSWORD" >> local.properties
+
+      - name: Build APK
+        run: |
+        ./gradlew clean assemble --no-build-cache
+        ./gradlew clean bundle
+
+      - name : Prepare Artifact
+        run: |
+          mkdir -p outputs/
+          find . -type f -regex ".*\/*\.apk" -exec cp {} outputs/ \;
+          find . -type f -regex ".*\/*\.aab" -exec cp {} outputs/ \;
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v1
+        with:
+          name: Builds
+          path: outputs/
