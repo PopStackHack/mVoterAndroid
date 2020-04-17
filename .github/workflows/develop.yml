@@ -11,7 +11,7 @@ jobs:
     name: Static Code Check & Test
     runs-on: ubuntu-18.04
     env:
-      RELEASE_KEYSTORE_BASE64: keystore/mvoter_release.jks
+      RELEASE_KEYSTORE_BASE64: ${{ secrets.RELEASE_KEYSTORE_BASE64 }}
       RELEASE_KEYSTORE_PATH: ${{ secrets.RELEASE_KEYSTORE_PATH }}
       RELEASE_KEYSTORE_PASSWORD: ${{ secrets.RELEASE_KEYSTORE_PASSWORD }}
       RELEASE_KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
