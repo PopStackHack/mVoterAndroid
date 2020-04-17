@@ -48,8 +48,10 @@ jobs:
       - name: Unit Test
         run: ./gradlew test
 
-      - run: mkdir -p test_results/
-      - run: find . -type f -regex ".*/build/reports/lint-results-.*.html" -exec cp --parents {} test_results/lint/ \;
+      - run: mkdir -p test_results/lint/
+      - run: find . -type f -regex ".*/build/reports/lint-results*.xml" -exec cp --parents {} test_results/lint/ \;
+
+      - run: mkdir -p test_results/junit/
       - run: find . -type f -regex ".*\/build\/test-results\/.*\.xml" -exec cp {} test_results/junit/ \;
 
       - name: Upload Test Result
