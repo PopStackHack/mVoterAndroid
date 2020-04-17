@@ -33,14 +33,13 @@ jobs:
           java-version: 1.8
 
       - name: Set up environment properties
-        run: |
-        touch local.properties
-        touch $RELEASE_KEYSTORE_PATH
-        echo $RELEASE_KEYSTORE_BASE64 | base64 --decode > $RELEASE_KEYSTORE_PATH
-        echo "\nRELEASE_KEYSTORE_PATH=$RELEASE_KEYSTORE_PATH" >> local.properties
-        echo "\RELEASE_KEYSTORE_PASSWORD=RELEASE_KEYSTORE_PASSWORD" >> local.properties
-        echo "\RELEASE_KEY_ALIAS=RELEASE_KEY_ALIAS" >> local.properties
-        echo "\RELEASE_KEY_PASSWORD=RELEASE_KEY_PASSWORD" >> local.properties
+      - run: touch local.properties
+      - run: touch $RELEASE_KEYSTORE_PATH
+      - run: echo $RELEASE_KEYSTORE_BASE64 | base64 --decode > $RELEASE_KEYSTORE_PATH
+      - run: echo "\nRELEASE_KEYSTORE_PATH=$RELEASE_KEYSTORE_PATH" >> local.properties
+      - run: echo "\RELEASE_KEYSTORE_PASSWORD=RELEASE_KEYSTORE_PASSWORD" >> local.properties
+      - run: echo "\RELEASE_KEY_ALIAS=RELEASE_KEY_ALIAS" >> local.properties
+      - run: echo "\RELEASE_KEY_PASSWORD=RELEASE_KEY_PASSWORD" >> local.properties
 
       - name: Lint check
         run: ./gradlew lint
@@ -52,10 +51,9 @@ jobs:
         run: ./gradlew test
 
       - name: Create Test Result
-        run: |
-        mkdir -p test_results/
-        find . -type f -regex ".*/build/reports/lint-results-.*.html" -exec cp --parents {} test_results/lint/ \;
-        find . -type f -regex ".*\/build\/test-results\/.*\.xml" -exec cp {} test_results/junit/ \;
+      - run: mkdir -p test_results/
+      - run: find . -type f -regex ".*/build/reports/lint-results-.*.html" -exec cp --parents {} test_results/lint/ \;
+      - run: find . -type f -regex ".*\/build\/test-results\/.*\.xml" -exec cp {} test_results/junit/ \;
 
       - name: Upload Test Result
         uses: actions/upload-artifact@v1
