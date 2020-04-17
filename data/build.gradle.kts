@@ -1,10 +1,9 @@
-import org.jetbrains.kotlin.konan.util.visibleName
-
 plugins {
   id("com.squareup.sqldelight")
   id("com.android.library")
   kotlin("android")
   kotlin("kapt")
+  id(KtLint.name)
 }
 
 android {
@@ -50,7 +49,6 @@ sqldelight {
   }
 }
 
-
 dependencies {
   implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
   implementation(project(":domain"))
@@ -77,8 +75,6 @@ dependencies {
 
   moshi()
 
-
-
   //Dagger
   daggerJvm()
 
@@ -87,5 +83,8 @@ dependencies {
   mockito()
   mockitoAndroid()
   androidXTest()
+}
 
+ktlint {
+  android.set(true)
 }

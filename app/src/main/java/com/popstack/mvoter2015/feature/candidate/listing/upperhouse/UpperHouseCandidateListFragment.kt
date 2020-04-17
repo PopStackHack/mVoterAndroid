@@ -12,8 +12,6 @@ import com.popstack.mvoter2015.core.mvp.MvpFragment
 import com.popstack.mvoter2015.databinding.FragmentUpperHouseCandidateListBinding
 import com.popstack.mvoter2015.domain.candidate.model.CandidateId
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateListFragmentDirections
-import com.popstack.mvoter2015.feature.candidate.listing.regionalhouse.RegionalHouseCandidateListView
-import com.popstack.mvoter2015.feature.candidate.listing.regionalhouse.RegionalHouseCandidateListViewModel
 import com.popstack.mvoter2015.feature.candidate.listing.upperhouse.UpperHouseCandidateListRecyclerViewAdapter.UpperHouseCandidateListItemClickListener
 import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
 

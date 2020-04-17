@@ -157,7 +157,7 @@ object Chuck {
 }
 
 object Detekt {
-  private const val version = "1.5.1"
+  private const val version = "1.7.4"
 
   const val plugin = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$version"
 
@@ -231,6 +231,13 @@ object KotlinCoroutine {
   const val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version"
   const val adapter = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2"
   const val test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$version"
+}
+
+object KtLint {
+  const val version = "9.2.1"
+  const val name = "org.jlleitschuh.gradle.ktlint"
+
+  const val plugin = "org.jlleitschuh.gradle:ktlint-gradle:$version"
 }
 
 object LeakCanary {

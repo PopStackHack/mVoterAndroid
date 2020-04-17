@@ -57,5 +57,4 @@ internal class NetworkModule {
         .client(okHttpClient)
         .build()
   }
-
 }

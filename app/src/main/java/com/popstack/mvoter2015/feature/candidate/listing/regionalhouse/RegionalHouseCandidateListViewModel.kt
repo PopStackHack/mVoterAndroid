@@ -5,5 +5,5 @@ import javax.inject.Inject
 
 class RegionalHouseCandidateListViewModel @Inject constructor() :
   BaseViewModel<RegionalHouseCandidateListView>() {
-
+  //TODO
 }

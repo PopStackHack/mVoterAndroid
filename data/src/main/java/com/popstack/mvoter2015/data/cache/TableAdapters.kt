@@ -6,7 +6,6 @@ import com.popstack.mvoter2015.data.cache.columnadapter.PartyIdColumnAdapter
 import com.popstack.mvoter2015.data.cache.columnadapter.StringListColumnAdapter
 import com.popstack.mvoter2015.data.cache.entity.CandidateTable
 import com.popstack.mvoter2015.data.cache.entity.PartyTable
-import com.squareup.sqldelight.ColumnAdapter
 import com.squareup.sqldelight.EnumColumnAdapter
 
 object TableAdapters {

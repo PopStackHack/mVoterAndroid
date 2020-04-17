@@ -17,6 +17,4 @@ class GetUserStateRegion @Inject constructor(dispatcherProvider: DispatcherProvi
       type = StateRegionType.STATE
     )
   }
-
-
 }

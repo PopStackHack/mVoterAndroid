@@ -37,5 +37,4 @@ class MVoterApp : Application(), HasAndroidInjector {
   private fun isRoboUnitTest(): Boolean {
     return "robolectric" == Build.FINGERPRINT
   }
-
 }

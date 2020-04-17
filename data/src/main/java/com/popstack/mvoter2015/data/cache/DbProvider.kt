@@ -6,7 +6,10 @@ import com.squareup.sqldelight.db.SqlDriver
 object DbProvider {
 
   fun create(driver: SqlDriver): MVoterDb {
-    return TODO()
+    return MVoterDb(
+      driver = driver,
+      CandidateTableAdapter = TableAdapters.candidateTableAdapter(),
+      PartyTableAdapter = TableAdapters.partyTableAdapter()
+    )
   }
-
 }

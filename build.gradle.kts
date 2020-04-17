@@ -1,8 +1,12 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+plugins {
+  id(KtLint.name) version KtLint.version
+}
 
 buildscript {
 
   repositories {
+    maven("https://plugins.gradle.org/m2/")
     google()
     mavenCentral()
     jcenter()

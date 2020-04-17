@@ -3,8 +3,8 @@ plugins {
   kotlin("android")
   kotlin("kapt")
   id("androidx.navigation.safeargs.kotlin")
+  id(KtLint.name)
 }
-
 
 android {
   compileSdkVersion(BuildConfig.targetSdk)
@@ -91,4 +91,8 @@ dependencies {
   mockitoAndroid()
   androidXTest()
   androidXEspresso()
+}
+
+ktlint {
+  android.set(true)
 }

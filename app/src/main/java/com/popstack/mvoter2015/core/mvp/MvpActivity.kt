@@ -1,6 +1,5 @@
 package com.popstack.mvoter2015.core.mvp
 
-import android.content.Context
 import android.os.Bundle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -33,7 +32,6 @@ abstract class MvpActivity<VB : ViewBinding, V : Viewable, VM : BaseViewModel<V>
     super.onDestroy()
     viewModel.detachView()
   }
-
 
   /**
    * Helper function for easily init of viewModel

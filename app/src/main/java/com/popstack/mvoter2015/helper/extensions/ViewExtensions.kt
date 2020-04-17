@@ -3,7 +3,6 @@ package com.popstack.mvoter2015.helper.extensions
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.popstack.mvoter2015.helper.extensions.inflater
 
 /**
  * Created by Vincent on 2/13/20

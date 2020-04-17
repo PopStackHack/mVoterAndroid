@@ -1,7 +1,6 @@
 package com.popstack.mvoter2015.feature.candidate.listing
 
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
@@ -47,6 +46,3 @@ internal class CandidateListHousePagerAdapter(
   }
 
 }
-
-
-

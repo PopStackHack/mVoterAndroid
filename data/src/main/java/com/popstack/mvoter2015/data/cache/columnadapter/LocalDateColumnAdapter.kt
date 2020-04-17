@@ -13,5 +13,4 @@ object LocalDateColumnAdapter : ColumnAdapter<LocalDate, String> {
   override fun encode(value: LocalDate): String {
     return value.format(DateTimeFormatter.ISO_LOCAL_DATE)
   }
-
 }

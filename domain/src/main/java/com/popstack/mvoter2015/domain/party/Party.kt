@@ -2,7 +2,6 @@ package com.popstack.mvoter2015.domain.party
 
 import java.time.LocalDate
 
-
 data class Party(
   val id: PartyId,
   val englishName: String,

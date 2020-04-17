@@ -18,5 +18,4 @@ object StringListColumnAdapter : ColumnAdapter<List<String>, String> {
     }
     return stringJoiner.toString()
   }
-
 }

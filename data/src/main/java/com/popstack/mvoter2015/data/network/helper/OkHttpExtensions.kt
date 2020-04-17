@@ -16,8 +16,8 @@ fun Response.getBodyOrThrowNetworkException(): ResponseBody {
 
   if (this.isSuccessful.not()) {
     val errorString = this.body!!.byteStream()
-        .bufferedReader()
-        .use { it.readText() }
+      .bufferedReader()
+      .use { it.readText() }
     throw NetworkException(errorString, this.code)
   }
 
@@ -25,4 +25,3 @@ fun Response.getBodyOrThrowNetworkException(): ResponseBody {
 
   return body
 }
-

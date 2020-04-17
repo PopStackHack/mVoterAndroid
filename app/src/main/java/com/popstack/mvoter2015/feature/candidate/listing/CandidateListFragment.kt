@@ -3,15 +3,10 @@ package com.popstack.mvoter2015.feature.candidate.listing
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.tabs.TabLayoutMediator
 import com.popstack.mvoter2015.core.mvp.MvpFragment
 import com.popstack.mvoter2015.databinding.FragmentCandidateListBinding
-import com.popstack.mvoter2015.feature.party.listing.PartyListView
-import com.popstack.mvoter2015.feature.party.listing.PartyListViewModel
-import javax.inject.Inject
 
 internal class CandidateListFragment :
   MvpFragment<FragmentCandidateListBinding, CandidateListView, CandidateListViewModel>(),

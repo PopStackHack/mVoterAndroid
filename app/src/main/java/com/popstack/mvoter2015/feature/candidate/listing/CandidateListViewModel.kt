@@ -4,7 +4,6 @@ import androidx.lifecycle.viewModelScope
 import com.popstack.mvoter2015.core.mvp.BaseViewModel
 import com.popstack.mvoter2015.domain.house.HouseType
 import com.popstack.mvoter2015.domain.location.usecase.GetUserStateRegion
-import com.popstack.mvoter2015.feature.party.listing.PartyListView
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

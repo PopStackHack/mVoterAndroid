@@ -4,8 +4,6 @@ import android.view.LayoutInflater
 import androidx.viewbinding.ViewBinding
 import com.popstack.mvoter2015.core.mvp.MvpFragment
 import com.popstack.mvoter2015.databinding.FragmentHowToVoteBinding
-import com.popstack.mvoter2015.databinding.FragmentPartyListBinding
-import javax.inject.Inject
 
 class HowToVoteFragment : MvpFragment<FragmentHowToVoteBinding, HowToVoteView, HowToVoteViewModel>(),
     HowToVoteView {

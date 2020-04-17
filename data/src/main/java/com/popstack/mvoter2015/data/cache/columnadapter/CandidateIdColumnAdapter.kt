@@ -14,5 +14,4 @@ object CandidateIdColumnAdapter : ColumnAdapter<CandidateId, String> {
   override fun encode(value: CandidateId): String {
     return value.value
   }
-
 }

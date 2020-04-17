@@ -5,4 +5,6 @@ import javax.inject.Inject
 
 class VoteResultViewModel @Inject constructor() : BaseViewModel<VoteResultView>() {
 
+  //TODO
+
 }

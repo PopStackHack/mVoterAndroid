@@ -3,7 +3,6 @@ include(":app")
 include(":domain")
 include(":data")
 
-
 pluginManagement {
   repositories {
     google()

@@ -8,16 +8,16 @@ import androidx.recyclerview.widget.RecyclerView.State
 
 //Copied and modified from https://stackoverflow.com/a/38984354/3125020
 
-class RecyclerViewMarginDecoration
 /**
  * constructor
  * @param margin desirable margin size in px between the views in the recyclerView
  * @param columns number of columns of the RecyclerView
- */(
+ */
+class RecyclerViewMarginDecoration(
   @IntRange(from = 0) private val margin: Int,
   @IntRange(from = 0) private val columns: Int
 ) :
-    RecyclerView.ItemDecoration() {
+  RecyclerView.ItemDecoration() {
 
   override fun getItemOffsets(
     outRect: Rect,
