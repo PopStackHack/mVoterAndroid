@@ -26,7 +26,7 @@ jobs:
       - name: Lint check
         run: ./gradlew lint
       - name: KtLint Check
-        run: ./gradlew KtLint check
+        run: ./gradlew ktlintCheck
 
   unit_test:
     name: Unit test
