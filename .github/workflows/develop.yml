@@ -29,7 +29,6 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
-      - name: Set up environment properties
       - run: touch local.properties
       - run: touch $RELEASE_KEYSTORE_PATH
       - run: echo $RELEASE_KEYSTORE_BASE64 | base64 --decode > $RELEASE_KEYSTORE_PATH
@@ -47,7 +46,6 @@ jobs:
       - name: Unit Test
         run: ./gradlew test
 
-      - name: Create Test Result
       - run: mkdir -p test_results/
       - run: find . -type f -regex ".*/build/reports/lint-results-.*.html" -exec cp --parents {} test_results/lint/ \;
       - run: find . -type f -regex ".*\/build\/test-results\/.*\.xml" -exec cp {} test_results/junit/ \;
