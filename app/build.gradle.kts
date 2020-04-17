@@ -33,7 +33,7 @@ android {
     versionCode = BuildConfig.versionCode
     versionName = BuildConfig.versionName
     resConfigs("en", "mm")
-    setProperty("archivesBaseName", "mVoter-$BuildConfig.versionName")
+    setProperty("archivesBaseName", "mVoter-${BuildConfig.versionName}")
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
