@@ -65,7 +65,7 @@ jobs:
 
   create_apk:
     needs: test
-    name: Static Code Check & Test
+    name: Generate APK
     runs-on: ubuntu-18.04
     env:
       RELEASE_KEYSTORE_BASE64: ${{ secrets.RELEASE_KEYSTORE_BASE64 }}
@@ -90,9 +90,9 @@ jobs:
       - run: echo -e "\nRELEASE_KEY_PASSWORD=$RELEASE_KEY_PASSWORD" >> local.properties
 
       - name: Build APK
-        run: ./gradlew clean assemble --no-build-cache
+        run: ./gradlew assemble
       - name: Build Bundle
-        run: ./gradlew clean bundle
+        run: ./gradlew bundle
 
       - run: mkdir -p outputs/
       - run: find . -type f -regex ".*\/*\.apk" -exec cp {} outputs/ \;
