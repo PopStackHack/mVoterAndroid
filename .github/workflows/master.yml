@@ -81,13 +81,13 @@ jobs:
         with:
           java-version: 1.8
 
-      - run:  touch local.properties
-      - run:  touch $RELEASE_KEYSTORE_PATH
-      - run:  echo $RELEASE_KEYSTORE_BASE64 | base64 --decode > $RELEASE_KEYSTORE_PATH
-      - run:  echo "\nRELEASE_KEYSTORE_PATH=$RELEASE_KEYSTORE_PATH" >> local.properties
-      - run:  echo "\RELEASE_KEYSTORE_PASSWORD=RELEASE_KEYSTORE_PASSWORD" >> local.properties
-      - run:  echo "\RELEASE_KEY_ALIAS=RELEASE_KEY_ALIAS" >> local.properties
-      - run:  echo "\RELEASE_KEY_PASSWORD=RELEASE_KEY_PASSWORD" >> local.properties
+      - run: touch local.properties
+      - run: touch $RELEASE_KEYSTORE_PATH
+      - run: echo $RELEASE_KEYSTORE_BASE64 | base64 --decode > $RELEASE_KEYSTORE_PATH
+      - run: echo -e "\nRELEASE_KEYSTORE_PATH=$RELEASE_KEYSTORE_PATH" >> local.properties
+      - run: echo -e "\nRELEASE_KEYSTORE_PASSWORD=$RELEASE_KEYSTORE_PASSWORD" >> local.properties
+      - run: echo -e "\nRELEASE_KEY_ALIAS=$RELEASE_KEY_ALIAS" >> local.properties
+      - run: echo -e "\nRELEASE_KEY_PASSWORD=$RELEASE_KEY_PASSWORD" >> local.properties
 
       - name: Build APK
         run: ./gradlew clean assemble --no-build-cache
