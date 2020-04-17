@@ -1,0 +1,21 @@
+name: Develop Branch CI/CD
+
+on:
+  push:
+    branches:
+      - '*'
+      - '!master'
+      - '!release*'
+
+jobs:
+  lint_check:
+    name: Lint Check
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v2
+        with:
+          java-version: 1.8
+      - name: Lint check
+        run: ./gradlew lintDebug
