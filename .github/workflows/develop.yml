@@ -37,6 +37,7 @@ jobs:
       - run: echo "\RELEASE_KEYSTORE_PASSWORD=RELEASE_KEYSTORE_PASSWORD" >> local.properties
       - run: echo "\RELEASE_KEY_ALIAS=RELEASE_KEY_ALIAS" >> local.properties
       - run: echo "\RELEASE_KEY_PASSWORD=RELEASE_KEY_PASSWORD" >> local.properties
+      - run: cat local.properties
 
       - name: Lint check
         run: ./gradlew lint
