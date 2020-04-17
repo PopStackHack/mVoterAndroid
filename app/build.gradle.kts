@@ -3,9 +3,7 @@ import java.util.Properties
 //Load properties
 private val properties = Properties()
 private val localPropertyFile = project.rootProject.file("local.properties")
-if (localPropertyFile.canRead()) {
-  properties.load(localPropertyFile.inputStream())
-}
+properties.load(localPropertyFile.inputStream())
 
 val RELEASE_KEYSTORE_PATH = properties.getProperty("RELEASE_KEYSTORE_PATH")
   .toString()
