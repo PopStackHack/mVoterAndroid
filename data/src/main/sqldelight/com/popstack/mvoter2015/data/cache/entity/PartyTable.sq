@@ -1,4 +1,4 @@
-import com.popstack.mvoter2015.domain.party.PartyId;
+import com.popstack.mvoter2015.domain.party.model.PartyId;
 import kotlin.String;
 import java.lang.Integer;
 import java.time.LocalDate;
