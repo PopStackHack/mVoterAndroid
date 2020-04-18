@@ -1,4 +1,4 @@
-package com.popstack.mvoter2015.domain.party
+package com.popstack.mvoter2015.domain.party.model
 
 import java.time.LocalDate
 

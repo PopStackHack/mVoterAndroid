@@ -10,6 +10,8 @@
     android:layout_width="64dp"
     android:layout_height="64dp"
     android:layout_marginStart="16dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="4dp"
     android:src="@drawable/placeholder_oval"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintStart_toStartOf="parent"
@@ -46,45 +48,37 @@
     android:layout_height="12dp"
     android:layout_marginStart="8dp"
     android:src="@drawable/placeholder_rect"
-    app:layout_constraintBottom_toTopOf="@id/barrier"
+    app:layout_constraintBottom_toBottomOf="@id/ivCandidate"
     app:layout_constraintStart_toEndOf="@+id/ivCandidate"
     app:layout_constraintTop_toTopOf="@+id/ivCandidate"
-    app:layout_constraintVertical_bias="0.75" />
+    app:layout_constraintVertical_bias="0.25" />
 
   <TextView
     android:id="@+id/tvCandidateName"
-    android:layout_width="wrap_content"
+    android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginStart="8dp"
     android:textColor="@color/text_primary"
     android:textStyle="bold"
     app:layout_constraintBottom_toBottomOf="@+id/ivCandidatePartyFlag"
+    app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toEndOf="@+id/ivCandidatePartyFlag"
     app:layout_constraintTop_toTopOf="@+id/ivCandidatePartyFlag"
     tools:text="ဒိုဂီ" />
 
-
-  <androidx.constraintlayout.widget.Barrier
-    android:id="@+id/barrier"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    app:barrierDirection="top"
-    app:constraint_referenced_ids="tvCandidatePartyName" />
 
   <TextView
     android:id="@+id/tvCandidatePartyName"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginStart="8dp"
-    android:layout_marginTop="8dp"
     android:maxLines="2"
     android:textColor="@color/text_secondary"
-    app:layout_constraintBottom_toBottomOf="@+id/ivCandidate"
+    app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toEndOf="@+id/ivCandidate"
-    app:layout_constraintTop_toTopOf="@+id/ivCandidate"
-    app:layout_constraintVertical_bias="0.75"
-    tools:text="ဒိုဂီပြည်ထောင်စု ခွေးချစ်သူများ ပါတီအစုအဝေး အသင်းအဖွဲ့ကြီး" />
+    app:layout_constraintTop_toBottomOf="@id/tvCandidateName"
+    app:layout_constraintVertical_bias="0"
+    tools:text="ဒိုဂီပြည်ထောင်စု " />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,6 @@
 package com.popstack.mvoter2015.domain.candidate.model
 
-import com.popstack.mvoter2015.domain.party.PartyId
+import com.popstack.mvoter2015.domain.party.model.PartyId
 import java.time.LocalDate
 
 data class Candidate(

@@ -14,7 +14,7 @@ import com.popstack.mvoter2015.helper.extensions.inflater
 import com.popstack.mvoter2015.helper.extensions.withSafeAdapterPosition
 import javax.inject.Inject
 
-class UpperHouseCandidateListRecyclerViewAdapter @Inject constructor(
+class UpperHouseCandidateListRecyclerViewAdapter constructor(
   private val itemClickListener: UpperHouseCandidateListItemClickListener
 ) : ListAdapter<UpperHouseCandidateListViewItem, UpperHouseCandidateListViewHolder>(
   diffCallBackWith(
