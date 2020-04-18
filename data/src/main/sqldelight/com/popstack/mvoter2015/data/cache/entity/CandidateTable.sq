@@ -1,7 +1,7 @@
 import com.popstack.mvoter2015.domain.candidate.model.CandidateGender;
 import com.popstack.mvoter2015.domain.candidate.model.CandidateId;
 import com.popstack.mvoter2015.domain.candidate.model.CandidateParent;
-import com.popstack.mvoter2015.domain.party.PartyId;
+import com.popstack.mvoter2015.domain.party.model.PartyId;
 import java.time.LocalDate;
 
 CREATE TABLE CandidateTable(
