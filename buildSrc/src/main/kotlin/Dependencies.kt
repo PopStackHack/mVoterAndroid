@@ -149,6 +149,15 @@ object Coil {
   const val coil = "io.coil-kt:coil:0.9.5"
 }
 
+object Conductor {
+  private const val version = "3.0.0-rc5"
+
+  const val core = "com.bluelinelabs:conductor:$version"
+  const val androidx_transition = "com.bluelinelabs:conductor-androidx-transition:$version"
+  const val viewpager = "com.bluelinelabs:conductor-viewpager:$version"
+  const val lifecycle = "com.bluelinelabs:conductor-archlifecycle:$version"
+}
+
 object Chuck {
   private const val version = "1.1.0"
 

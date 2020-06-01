@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.popstack.mvoter2015.di.viewmodel.ViewModelKey
 import com.popstack.mvoter2015.feature.party.detail.PartyDetailFragment
 import com.popstack.mvoter2015.feature.party.detail.PartyDetailViewModel
-import com.popstack.mvoter2015.feature.party.listing.PartyListFragment
+import com.popstack.mvoter2015.feature.party.listing.PartyListController
 import com.popstack.mvoter2015.feature.party.listing.PartyListViewModel
 import dagger.Binds
 import dagger.Module
@@ -15,7 +15,7 @@ import dagger.multibindings.IntoMap
 abstract class PartyFeatureModule {
 
   @ContributesAndroidInjector
-  abstract fun partyListFragment(): PartyListFragment
+  abstract fun partyListFragment(): PartyListController
 
   @Binds
   @IntoMap

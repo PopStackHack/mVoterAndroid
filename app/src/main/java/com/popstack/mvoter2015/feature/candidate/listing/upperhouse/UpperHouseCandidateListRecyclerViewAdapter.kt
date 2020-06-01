@@ -12,7 +12,6 @@ import com.popstack.mvoter2015.feature.candidate.listing.upperhouse.UpperHouseCa
 import com.popstack.mvoter2015.helper.diff.diffCallBackWith
 import com.popstack.mvoter2015.helper.extensions.inflater
 import com.popstack.mvoter2015.helper.extensions.withSafeAdapterPosition
-import javax.inject.Inject
 
 class UpperHouseCandidateListRecyclerViewAdapter constructor(
   private val itemClickListener: UpperHouseCandidateListItemClickListener
@@ -58,12 +57,14 @@ class UpperHouseCandidateListRecyclerViewAdapter constructor(
       ivCandidate.load(itemAtIndex.candidateImage) {
         placeholder(R.drawable.placeholder_oval)
         crossfade(true)
+        error(R.drawable.placeholder_oval)
         transformations(CircleCropTransformation())
       }
 
       ivCandidatePartyFlag.load(itemAtIndex.candidatePartyFlagImage) {
-        placeholder(R.drawable.placeholder_oval)
+        placeholder(R.drawable.placeholder_rect)
         crossfade(true)
+        error(R.drawable.placeholder_rect)
         transformations(CircleCropTransformation())
       }
 

@@ -13,18 +13,18 @@ import dagger.android.ContributesAndroidInjector
 import dagger.multibindings.IntoMap
 
 @Module(
-    includes = [
-      CandidateFeatureModule::class,
-      PartyFeatureModule::class,
-      HowToVoteFeatureModule::class,
-      InfoFeatureModule::class,
-      VoteResultFeatureModule::class
-    ]
+  includes = [
+    CandidateFeatureModule::class,
+    PartyFeatureModule::class,
+    HowToVoteFeatureModule::class,
+    InfoFeatureModule::class,
+    VoteResultFeatureModule::class
+  ]
 )
 abstract class HomeFeatureModule {
 
   @ContributesAndroidInjector
-  abstract fun homeActivity(): HomeActivity
+  abstract fun controller(): HomeController
 
   @Binds
   @IntoMap

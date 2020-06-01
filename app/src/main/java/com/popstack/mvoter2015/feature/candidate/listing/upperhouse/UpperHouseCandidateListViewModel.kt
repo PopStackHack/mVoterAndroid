@@ -2,6 +2,7 @@ package com.popstack.mvoter2015.feature.candidate.listing.upperhouse
 
 import androidx.lifecycle.MutableLiveData
 import com.popstack.mvoter2015.core.mvp.BaseViewModel
+import com.popstack.mvoter2015.domain.candidate.model.CandidateId
 import javax.inject.Inject
 
 class UpperHouseCandidateListViewModel @Inject constructor() :
@@ -12,6 +13,20 @@ class UpperHouseCandidateListViewModel @Inject constructor() :
   override fun attachView(viewable: UpperHouseCandidateListView) {
     super.attachView(viewable)
     view?.subscribeToViewItemLiveData(viewItemLiveData)
+  }
+
+  fun loadData() {
+    viewItemLiveData.postValue(
+      listOf(
+        UpperHouseCandidateListViewItem(
+          candidateId = CandidateId("aa"),
+          name = "Shitsu",
+          candidateImage = "",
+          candidatePartyFlagImage = "",
+          candidatePartyName = "Shiberain"
+        )
+      )
+    )
   }
 
 }

@@ -99,6 +99,11 @@ dependencies {
   implementation(AndroidXViewPager.view_pager)
   implementation(AndroidXRecyclerView.recycler_view)
 
+  implementation(Conductor.core)
+  implementation(Conductor.viewpager)
+  implementation(Conductor.androidx_transition)
+  implementation(Conductor.lifecycle)
+
   //Material
   implementation(Material.material)
 
