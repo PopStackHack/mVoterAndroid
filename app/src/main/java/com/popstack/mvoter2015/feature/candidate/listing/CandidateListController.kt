@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.popstack.mvoter2015.core.mvp.MvpController
 import com.popstack.mvoter2015.databinding.ControllerCandidateListBinding
+import com.popstack.mvoter2015.helper.conductor.requireActivity
 
 internal class CandidateListController :
   MvpController<ControllerCandidateListBinding, CandidateListView, CandidateListViewModel>(),
@@ -14,7 +15,7 @@ internal class CandidateListController :
 
   override val bindingInflater: (LayoutInflater, ViewGroup) -> ControllerCandidateListBinding
     get() = { layoutInflater, viewGroup ->
-      ControllerCandidateListBinding.inflate(layoutInflater, viewGroup, false)
+      ControllerCandidateListBinding.inflate(layoutInflater)
     }
 
   private val pagerAdapter by lazy {
@@ -36,6 +37,11 @@ internal class CandidateListController :
   }
 
   override fun onDestroyView(view: View) {
+    if (requireActivity().isChangingConfigurations) {
+      binding.viewPager.adapter = null
+    }
+
+    binding.tabLayout.setupWithViewPager(null)
     CandidateListPagerParentRouter.destroy()
     super.onDestroyView(view)
   }

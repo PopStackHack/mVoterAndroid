@@ -1,12 +1,15 @@
 package com.popstack.mvoter2015.helper.conductor
 
+import android.os.Bundle
+import android.util.SparseArray
+import android.view.MenuItem
 import android.view.ViewGroup
-import androidx.core.view.forEach
 import com.bluelinelabs.conductor.Controller
 import com.bluelinelabs.conductor.Router
 import com.bluelinelabs.conductor.RouterTransaction
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.popstack.mvoter2015.helper.extensions.filter
+import com.popstack.mvoter2015.helper.extensions.indexOf
 
 /**
  * Modified from https://gist.github.com/fonix232/14294caea86c4161478f5263a41fc50b
@@ -23,10 +26,13 @@ class BottomNavigationRouterMediator(
   val host: Controller,
   val container: ViewGroup,
   val bottomNavigationView: BottomNavigationView,
-  val menuIdAndTransactionMap: Map<Int, RouterTransaction>
+  val menuIdAndTransactionMap: Map<Int, () -> RouterTransaction>
 ) {
 
-  private val itemIdAndChildRouterMap: Map<Int, Router>
+  private val savedPages: SparseArray<Bundle> = SparseArray()
+  private var lastSelectedId: Int? = null
+
+  private var currentPrimaryRouter: Router? = null
 
   init {
     require(
@@ -35,31 +41,60 @@ class BottomNavigationRouterMediator(
           it.itemId
         )
       }) { "All menu items must have a matching page setup!" }
-
-    val tempMap = mutableMapOf<Int, Router>()
-    bottomNavigationView.menu.forEach { menuItem ->
-      tempMap[menuItem.itemId] = host.getChildRouter(container, menuItem.itemId.toString())
-    }
-
-    itemIdAndChildRouterMap = tempMap
   }
 
   private val navigationItemSelectedListener =
-    BottomNavigationView.OnNavigationItemSelectedListener { item ->
+    BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
 
-      val transaction = menuIdAndTransactionMap.getValue(item.itemId)
+      if (menuItem.itemId != lastSelectedId) {
 
-      itemIdAndChildRouterMap.getValue(item.itemId)
-        .setRoot(transaction)
+        val position = bottomNavigationView.menu.indexOf(menuItem)
+        destroyPrevious(position)
 
-      return@OnNavigationItemSelectedListener true
+        host.getChildRouter(container, getRouterName(menuItem))
+          .apply {
+            if (!hasRootController()) {
+              val savedState = savedPages.get(position)
+              if (savedState != null) {
+                restoreInstanceState(savedState)
+                savedPages.remove(position)
+              }
+              rebindIfNeeded()
+              val transaction = menuIdAndTransactionMap.getValue(menuItem.itemId)
+              setRoot(transaction.invoke())
+
+              if (this != currentPrimaryRouter) {
+                currentPrimaryRouter = this
+              }
+
+            }
+
+          }
+
+        lastSelectedId = menuItem.itemId
+        return@OnNavigationItemSelectedListener true
+      }
+
+      return@OnNavigationItemSelectedListener false
     }
+
+  private fun destroyPrevious(position: Int) {
+    currentPrimaryRouter?.let { router ->
+      val savedStated = Bundle()
+      router.saveInstanceState(savedStated)
+      savedPages.put(position, savedStated)
+
+      host.removeChildRouter(router)
+      currentPrimaryRouter = null
+    }
+  }
 
   fun setup() {
     bottomNavigationView.setOnNavigationItemSelectedListener(navigationItemSelectedListener)
   }
 
-  val childRouters
-    get() = itemIdAndChildRouterMap.values
+  private fun getRouterName(menuItem: MenuItem): String {
+    return menuItem.itemId.toString()
+  }
 
 }

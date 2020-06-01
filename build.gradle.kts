@@ -16,7 +16,6 @@ buildscript {
     classpath(CommonLibs.android_gradle_plugin)
     classpath(Kotlin.gradle_plugin)
     classpath(SqlDelight.gradle_plugin)
-    classpath(AndroidXNavigation.safe_args_plugin)
     classpath(Wormhole.gradle_plugin)
   }
 }

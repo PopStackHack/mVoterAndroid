@@ -24,7 +24,7 @@ import dagger.multibindings.IntoMap
 abstract class HomeFeatureModule {
 
   @ContributesAndroidInjector
-  abstract fun controller(): HomeController
+  abstract fun homeController(): HomeController
 
   @Binds
   @IntoMap

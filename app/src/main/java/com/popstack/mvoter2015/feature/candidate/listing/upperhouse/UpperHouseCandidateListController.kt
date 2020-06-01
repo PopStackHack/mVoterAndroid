@@ -27,7 +27,7 @@ class UpperHouseCandidateListController :
 
   override val bindingInflater: (LayoutInflater, ViewGroup) -> ControllerUpperHouseCandidateListBinding
     get() = { layoutInflater, viewGroup ->
-      ControllerUpperHouseCandidateListBinding.inflate(layoutInflater, viewGroup, false)
+      ControllerUpperHouseCandidateListBinding.inflate(layoutInflater)
     }
 
   private val candidateListAdapter by lazy {

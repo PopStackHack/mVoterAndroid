@@ -18,7 +18,6 @@ plugins {
   id("com.android.application")
   kotlin("android")
   kotlin("kapt")
-  id("androidx.navigation.safeargs.kotlin")
   id(KtLint.name)
 }
 
@@ -112,9 +111,6 @@ dependencies {
 
   //Dagger
   daggerAndroid()
-
-  //Navigation
-  androidxNavigationKtx()
 
   //ThreeTenBp
   implementation(CommonLibs.timber)

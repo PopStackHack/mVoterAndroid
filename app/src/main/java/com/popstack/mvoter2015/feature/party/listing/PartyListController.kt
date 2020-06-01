@@ -6,10 +6,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bluelinelabs.conductor.RouterTransaction
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvpController
 import com.popstack.mvoter2015.databinding.ControllerPartyListBinding
 import com.popstack.mvoter2015.domain.party.model.PartyId
+import com.popstack.mvoter2015.feature.party.detail.PartyDetailController
 import com.popstack.mvoter2015.feature.party.listing.PartyListViewItemRecyclerViewAdapter.PartyListItemClickListener
 import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
 
@@ -40,9 +42,8 @@ class PartyListController : MvpController<ControllerPartyListBinding, PartyListV
   }
 
   override fun onItemClick(partyId: PartyId) {
-//    val goToDetailDirection =
-//      PartyListFragmentDirections.goToPartyDetail(partyId.value)
-//    findNavController().navigate(goToDetailDirection)
+    val partyDetailController = PartyDetailController.newInstance(partyId)
+    router.pushController(RouterTransaction.with(partyDetailController))
   }
 
   override fun subscribeToViewItemLiveData(viewItemLiveData: LiveData<List<PartyListViewItem>>) {

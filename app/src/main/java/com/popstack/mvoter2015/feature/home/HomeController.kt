@@ -33,11 +33,11 @@ class HomeController : MvpController<ControllerHomeBinding, HomeView, HomeViewMo
       binding.container,
       binding.bottomNavigationView,
       mapOf(
-        R.id.navigation_candidate to RouterTransaction.with(CandidateListController()),
-        R.id.navigation_party to RouterTransaction.with(PartyListController()),
-        R.id.navigation_how_to_vote to RouterTransaction.with(HowToVoteController()),
-        R.id.navigation_info to RouterTransaction.with(InfoController()),
-        R.id.navigation_vote_result to RouterTransaction.with(VoteResultController())
+        R.id.navigation_candidate to { RouterTransaction.with(CandidateListController()) },
+        R.id.navigation_party to { RouterTransaction.with(PartyListController()) },
+        R.id.navigation_how_to_vote to { RouterTransaction.with(HowToVoteController()) },
+        R.id.navigation_info to { RouterTransaction.with(InfoController()) },
+        R.id.navigation_vote_result to { RouterTransaction.with(VoteResultController()) }
       )
     )
   }
@@ -45,7 +45,7 @@ class HomeController : MvpController<ControllerHomeBinding, HomeView, HomeViewMo
   override fun onBindView() {
     bottomNavigationRouterMediator.setup()
 
-    bottomNavigationRouterMediator.childRouters.forEach { childRouter ->
+    childRouters.forEach { childRouter ->
       childRouter.addChangeListener(injectionControllerChangeListener)
     }
 
@@ -53,7 +53,7 @@ class HomeController : MvpController<ControllerHomeBinding, HomeView, HomeViewMo
   }
 
   override fun onDestroy() {
-    bottomNavigationRouterMediator.childRouters.forEach { childRouter ->
+    childRouters.forEach { childRouter ->
       childRouter.removeChangeListener(injectionControllerChangeListener)
     }
     super.onDestroy()

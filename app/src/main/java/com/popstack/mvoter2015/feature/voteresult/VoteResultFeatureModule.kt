@@ -11,7 +11,7 @@ import dagger.multibindings.IntoMap
 abstract class VoteResultFeatureModule {
 
   @ContributesAndroidInjector
-  abstract fun voteResultFragment(): VoteResultController
+  abstract fun voteResultController(): VoteResultController
 
   @Binds
   @IntoMap

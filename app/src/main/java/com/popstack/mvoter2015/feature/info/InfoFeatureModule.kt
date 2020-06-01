@@ -11,7 +11,7 @@ import dagger.multibindings.IntoMap
 abstract class InfoFeatureModule {
 
   @ContributesAndroidInjector
-  abstract fun infoFragment(): InfoController
+  abstract fun infoController(): InfoController
 
   @Binds
   @IntoMap
