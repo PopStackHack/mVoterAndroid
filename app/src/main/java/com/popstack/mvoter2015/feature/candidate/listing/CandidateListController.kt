@@ -42,8 +42,12 @@ internal class CandidateListController :
     }
 
     binding.tabLayout.setupWithViewPager(null)
-    CandidateListPagerParentRouter.destroy()
     super.onDestroyView(view)
+  }
+
+  override fun onDestroy() {
+    CandidateListPagerParentRouter.destroy()
+    super.onDestroy()
   }
 
 }

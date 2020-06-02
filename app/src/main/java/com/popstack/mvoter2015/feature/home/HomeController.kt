@@ -43,7 +43,7 @@ class HomeController : MvpController<ControllerHomeBinding, HomeView, HomeViewMo
   }
 
   override fun onBindView() {
-    bottomNavigationRouterMediator.setup()
+    bottomNavigationRouterMediator.attach()
 
     childRouters.forEach { childRouter ->
       childRouter.addChangeListener(injectionControllerChangeListener)

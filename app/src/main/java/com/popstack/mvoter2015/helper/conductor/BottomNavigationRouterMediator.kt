@@ -30,9 +30,10 @@ class BottomNavigationRouterMediator(
 ) {
 
   private val savedPages: SparseArray<Bundle> = SparseArray()
-  private var lastSelectedId: Int? = null
+//  private var lastSelectedId: Int? = null
 
   private var currentPrimaryRouter: Router? = null
+  private var lastSelectedIndex = -1
 
   init {
     require(
@@ -46,55 +47,58 @@ class BottomNavigationRouterMediator(
   private val navigationItemSelectedListener =
     BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
 
-      if (menuItem.itemId != lastSelectedId) {
+      val position = bottomNavigationView.menu.indexOf(menuItem)
+      val router = host.getChildRouter(container, getRouterName(menuItem, position))
 
-        val position = bottomNavigationView.menu.indexOf(menuItem)
-        destroyPrevious(position)
+      if (router != currentPrimaryRouter) {
 
-        host.getChildRouter(container, getRouterName(menuItem))
-          .apply {
-            if (!hasRootController()) {
-              val savedState = savedPages.get(position)
-              if (savedState != null) {
-                restoreInstanceState(savedState)
-                savedPages.remove(position)
-              }
-              rebindIfNeeded()
-              val transaction = menuIdAndTransactionMap.getValue(menuItem.itemId)
-              setRoot(transaction.invoke())
+        //First destroy the previous router instance
+        destroyPrevious()
 
-              if (this != currentPrimaryRouter) {
-                currentPrimaryRouter = this
-              }
-
-            }
-
+        if (!router.hasRootController()) {
+          //Check if there's already an saved state
+          val savedState = savedPages.get(position)
+          if (savedState != null) {
+            //Previous state exists, restore
+            router.restoreInstanceState(savedState)
+            savedPages.remove(position)
+          } else {
+            //Previous state does not exist, we create a new one
+            val transaction = menuIdAndTransactionMap.getValue(menuItem.itemId)
+            router.setRoot(transaction.invoke())
           }
+          router.rebindIfNeeded()
+        }
 
-        lastSelectedId = menuItem.itemId
+        lastSelectedIndex = position
+        currentPrimaryRouter = router
+
         return@OnNavigationItemSelectedListener true
       }
 
       return@OnNavigationItemSelectedListener false
     }
 
-  private fun destroyPrevious(position: Int) {
+  private fun destroyPrevious() {
     currentPrimaryRouter?.let { router ->
       val savedStated = Bundle()
       router.saveInstanceState(savedStated)
-      savedPages.put(position, savedStated)
+      savedPages.put(lastSelectedIndex, savedStated)
 
       host.removeChildRouter(router)
       currentPrimaryRouter = null
     }
   }
 
-  fun setup() {
+  fun attach() {
     bottomNavigationView.setOnNavigationItemSelectedListener(navigationItemSelectedListener)
   }
 
-  private fun getRouterName(menuItem: MenuItem): String {
-    return menuItem.itemId.toString()
+  private fun getRouterName(
+    menuItem: MenuItem,
+    position: Int
+  ): String {
+    return "${menuItem.itemId}_$position"
   }
 
 }
