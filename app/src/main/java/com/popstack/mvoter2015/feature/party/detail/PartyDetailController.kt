@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import com.popstack.mvoter2015.core.mvp.MvpController
 import com.popstack.mvoter2015.databinding.ControllerPartyDetailBinding
+import com.popstack.mvoter2015.databinding.ControllerPartyListBinding
 import com.popstack.mvoter2015.domain.party.model.PartyId
 
 class PartyDetailController(
@@ -30,10 +31,8 @@ class PartyDetailController(
 
   override val viewModel: PartyDetailViewModel by contractedViewModels()
 
-  override val bindingInflater: (LayoutInflater, ViewGroup) -> ControllerPartyDetailBinding
-    get() = { layoutInflater, viewGroup ->
-      ControllerPartyDetailBinding.inflate(layoutInflater, viewGroup, false)
-    }
+  override val bindingInflater: (LayoutInflater) -> ControllerPartyDetailBinding =
+    ControllerPartyDetailBinding::inflate
 
   override fun onBindView() {
     super.onBindView()

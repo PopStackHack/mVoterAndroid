@@ -14,10 +14,8 @@ class RegionalHouseCandidateListController :
 
   override val viewModel: RegionalHouseCandidateListViewModel by contractedViewModels()
 
-  override val bindingInflater: (LayoutInflater, ViewGroup) -> ControllerRegionalCandidateListBinding
-    get() = { layoutInflater, viewGroup ->
-      ControllerRegionalCandidateListBinding.inflate(layoutInflater, viewGroup, false)
-    }
+  override val bindingInflater: (LayoutInflater) -> ControllerRegionalCandidateListBinding =
+    ControllerRegionalCandidateListBinding::inflate
 
   override fun onCreateView(
     inflater: LayoutInflater,

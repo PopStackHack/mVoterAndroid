@@ -2,7 +2,6 @@ package com.popstack.mvoter2015.feature.candidate.listing
 
 import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import com.popstack.mvoter2015.core.mvp.MvpController
 import com.popstack.mvoter2015.databinding.ControllerCandidateListBinding
 import com.popstack.mvoter2015.helper.conductor.requireActivity
@@ -13,14 +12,12 @@ internal class CandidateListController :
 
   override val viewModel: CandidateListViewModel by contractedViewModels()
 
-  override val bindingInflater: (LayoutInflater, ViewGroup) -> ControllerCandidateListBinding
-    get() = { layoutInflater, viewGroup ->
-      ControllerCandidateListBinding.inflate(layoutInflater)
-    }
-
   private val pagerAdapter by lazy {
     CandidateListHousePagerAdapter(this)
   }
+
+  override val bindingInflater: (LayoutInflater) -> ControllerCandidateListBinding =
+    ControllerCandidateListBinding::inflate
 
   override fun onBindView() {
     super.onBindView()

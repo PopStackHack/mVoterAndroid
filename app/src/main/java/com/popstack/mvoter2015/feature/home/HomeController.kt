@@ -6,6 +6,7 @@ import com.bluelinelabs.conductor.RouterTransaction
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvpController
 import com.popstack.mvoter2015.databinding.ControllerHomeBinding
+import com.popstack.mvoter2015.databinding.ControllerHowToVoteBinding
 import com.popstack.mvoter2015.di.conductor.InjectionControllerChangeListener
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateListController
 import com.popstack.mvoter2015.feature.howtovote.HowToVoteController
@@ -18,10 +19,8 @@ class HomeController : MvpController<ControllerHomeBinding, HomeView, HomeViewMo
 
   override val viewModel: HomeViewModel by contractedViewModels()
 
-  override val bindingInflater: (LayoutInflater, ViewGroup) -> ControllerHomeBinding
-    get() = { layoutInflater, viewGroup ->
-      ControllerHomeBinding.inflate(layoutInflater, viewGroup, false)
-    }
+  override val bindingInflater: (LayoutInflater) -> ControllerHomeBinding =
+    ControllerHomeBinding::inflate
 
   protected val injectionControllerChangeListener by lazy {
     InjectionControllerChangeListener()

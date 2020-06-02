@@ -17,14 +17,14 @@ abstract class BaseController<VB : ViewBinding> constructor(
   protected val binding
     get() = _binding!! as VB
 
-  protected abstract val bindingInflater: (LayoutInflater, ViewGroup) -> VB
+  protected abstract val bindingInflater: (LayoutInflater) -> VB
 
   override fun onCreateView(
     inflater: LayoutInflater,
     container: ViewGroup,
     savedViewState: Bundle?
   ): View {
-    _binding = bindingInflater(inflater, container)
+    _binding = bindingInflater(inflater)
     onBindView()
     return binding.root
   }

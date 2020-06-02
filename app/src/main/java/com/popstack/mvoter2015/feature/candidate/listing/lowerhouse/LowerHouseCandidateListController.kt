@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.popstack.mvoter2015.core.mvp.MvpController
 import com.popstack.mvoter2015.databinding.ControllerLowerHouseCandidateListBinding
+import com.popstack.mvoter2015.databinding.ControllerRegionalCandidateListBinding
 import com.popstack.mvoter2015.di.conductor.ConductorInjection
 
 class LowerHouseCandidateListController :
@@ -14,10 +15,8 @@ class LowerHouseCandidateListController :
 
   override val viewModel: LowerHouseCandidateListViewModel by contractedViewModels()
 
-  override val bindingInflater: (LayoutInflater, ViewGroup) -> ControllerLowerHouseCandidateListBinding
-    get() = { layoutInflater, viewGroup ->
-      ControllerLowerHouseCandidateListBinding.inflate(layoutInflater, viewGroup, false)
-    }
+  override val bindingInflater: (LayoutInflater) -> ControllerLowerHouseCandidateListBinding =
+    ControllerLowerHouseCandidateListBinding::inflate
 
   override fun onCreateView(
     inflater: LayoutInflater,

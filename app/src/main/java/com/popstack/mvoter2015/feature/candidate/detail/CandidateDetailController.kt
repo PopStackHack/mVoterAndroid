@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import com.popstack.mvoter2015.core.mvp.MvpController
 import com.popstack.mvoter2015.databinding.ControllerCandidateDetailBinding
+import com.popstack.mvoter2015.databinding.ControllerCandidateListBinding
 import com.popstack.mvoter2015.di.conductor.ConductorInjection
 import com.popstack.mvoter2015.domain.candidate.model.CandidateId
 
@@ -35,10 +36,8 @@ class CandidateDetailController(
 
   override val viewModel: CandidateDetailViewModel by contractedViewModels()
 
-  override val bindingInflater: (LayoutInflater, ViewGroup) -> ControllerCandidateDetailBinding
-    get() = { layoutInflater, viewGroup ->
-      ControllerCandidateDetailBinding.inflate(layoutInflater, viewGroup, false)
-    }
+  override val bindingInflater: (LayoutInflater) -> ControllerCandidateDetailBinding =
+    ControllerCandidateDetailBinding::inflate
 
   override fun getCandidateId(): CandidateId = CandidateId(args.getString(ARG_CANDIDATE_ID)!!)
 

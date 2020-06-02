@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bluelinelabs.conductor.RouterTransaction
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvpController
+import com.popstack.mvoter2015.databinding.ControllerInfoBinding
 import com.popstack.mvoter2015.databinding.ControllerPartyListBinding
 import com.popstack.mvoter2015.domain.party.model.PartyId
 import com.popstack.mvoter2015.feature.party.detail.PartyDetailController
@@ -20,10 +21,8 @@ class PartyListController : MvpController<ControllerPartyListBinding, PartyListV
 
   override val viewModel: PartyListViewModel by contractedViewModels()
 
-  override val bindingInflater: (LayoutInflater, ViewGroup) -> ControllerPartyListBinding
-    get() = { layoutInflater, viewGroup ->
-      ControllerPartyListBinding.inflate(layoutInflater, viewGroup, false)
-    }
+  override val bindingInflater: (LayoutInflater) -> ControllerPartyListBinding =
+    ControllerPartyListBinding::inflate
 
   private val partyListAdapter by lazy {
     PartyListViewItemRecyclerViewAdapter(this)
