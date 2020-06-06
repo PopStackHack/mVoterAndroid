@@ -2,11 +2,9 @@ package com.popstack.mvoter2015.feature.party.detail
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import com.popstack.mvoter2015.core.mvp.MvpController
 import com.popstack.mvoter2015.databinding.ControllerPartyDetailBinding
-import com.popstack.mvoter2015.databinding.ControllerPartyListBinding
 import com.popstack.mvoter2015.domain.party.model.PartyId
 
 class PartyDetailController(

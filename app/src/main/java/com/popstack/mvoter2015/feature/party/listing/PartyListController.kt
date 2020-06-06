@@ -1,7 +1,6 @@
 package com.popstack.mvoter2015.feature.party.listing
 
 import android.view.LayoutInflater
-import android.view.ViewGroup
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -9,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bluelinelabs.conductor.RouterTransaction
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvpController
-import com.popstack.mvoter2015.databinding.ControllerInfoBinding
 import com.popstack.mvoter2015.databinding.ControllerPartyListBinding
 import com.popstack.mvoter2015.domain.party.model.PartyId
 import com.popstack.mvoter2015.feature.party.detail.PartyDetailController

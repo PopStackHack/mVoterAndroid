@@ -1,12 +1,10 @@
 package com.popstack.mvoter2015.feature.home
 
 import android.view.LayoutInflater
-import android.view.ViewGroup
 import com.bluelinelabs.conductor.RouterTransaction
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvpController
 import com.popstack.mvoter2015.databinding.ControllerHomeBinding
-import com.popstack.mvoter2015.databinding.ControllerHowToVoteBinding
 import com.popstack.mvoter2015.di.conductor.InjectionControllerChangeListener
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateListController
 import com.popstack.mvoter2015.feature.howtovote.HowToVoteController

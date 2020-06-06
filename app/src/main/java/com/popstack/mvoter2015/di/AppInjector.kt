@@ -15,29 +15,38 @@ object AppInjector {
   fun initAutoInjection(application: Application) {
 
     application.registerActivityLifecycleCallbacks(object : Application.ActivityLifecycleCallbacks {
-      override fun onActivityPaused(p0: Activity?) {
+      override fun onActivityPaused(activity: Activity) {
         //Do Nothing
       }
 
-      override fun onActivityResumed(p0: Activity?) { //Do Nothing
-      }
-
-      override fun onActivityStarted(p0: Activity?) { //Do Nothing
-      }
-
-      override fun onActivityDestroyed(p0: Activity?) { //Do Nothing
-      }
-
-      override fun onActivitySaveInstanceState(p0: Activity?, p1: Bundle?) {
+      override fun onActivityStarted(activity: Activity) {
         //Do Nothing
       }
 
-      override fun onActivityStopped(p0: Activity?) {
+      override fun onActivityDestroyed(activity: Activity) {
         //Do Nothing
       }
 
-      override fun onActivityCreated(activity: Activity, p1: Bundle?) {
+      override fun onActivitySaveInstanceState(
+        activity: Activity,
+        outState: Bundle
+      ) {
+        //Do Nothing
+      }
+
+      override fun onActivityStopped(activity: Activity) {
+        //Do Nothing
+      }
+
+      override fun onActivityCreated(
+        activity: Activity,
+        savedInstanceState: Bundle?
+      ) {
         handleActivity(activity)
+      }
+
+      override fun onActivityResumed(activity: Activity) {
+        //Do Nothing
       }
 
     })

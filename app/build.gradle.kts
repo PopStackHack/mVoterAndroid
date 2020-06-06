@@ -22,8 +22,7 @@ plugins {
 }
 
 android {
-  compileSdkVersion(BuildConfig.targetSdk)
-  buildToolsVersion = "29.0.3"
+  compileSdkVersion(BuildConfig.compileSdk)
 
   defaultConfig {
     applicationId = "com.popstack.mvoter2015"

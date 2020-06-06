@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.popstack.mvoter2015.core.mvp.MvpController
 import com.popstack.mvoter2015.databinding.ControllerLowerHouseCandidateListBinding
-import com.popstack.mvoter2015.databinding.ControllerRegionalCandidateListBinding
 import com.popstack.mvoter2015.di.conductor.ConductorInjection
 
 class LowerHouseCandidateListController :

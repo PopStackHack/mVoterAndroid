@@ -1,85 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
-  xmlns:tools="http://schemas.android.com/tools"
-  android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:background="?attr/selectableItemBackground"
-  android:layout_height="wrap_content">
+    >
 
   <ImageView
-    android:id="@+id/ivCandidate"
-    android:layout_width="64dp"
-    android:layout_height="64dp"
-    android:layout_marginStart="16dp"
-    android:layout_marginTop="4dp"
-    android:layout_marginBottom="4dp"
-    android:src="@drawable/placeholder_oval"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+      android:id="@+id/ivCandidate"
+      android:layout_width="64dp"
+      android:layout_height="64dp"
+      android:layout_marginBottom="4dp"
+      android:layout_marginStart="16dp"
+      android:layout_marginTop="4dp"
+      android:importantForAccessibility="no"
+      android:src="@drawable/placeholder_oval"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      />
+
+  <ImageView
+      android:id="@+id/ivCandidatePartyFlag"
+      android:layout_width="24dp"
+      android:layout_height="12dp"
+      android:importantForAccessibility="no"
+      android:layout_marginStart="8dp"
+      android:src="@drawable/placeholder_rect"
+      app:layout_constraintBottom_toBottomOf="@id/ivCandidate"
+      app:layout_constraintStart_toEndOf="@+id/ivCandidate"
+      app:layout_constraintTop_toTopOf="@+id/ivCandidate"
+      app:layout_constraintVertical_bias="0.25"
+      />
+
+  <TextView
+      android:id="@+id/tvCandidateName"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="8dp"
+      android:textColor="@color/text_primary"
+      android:textStyle="bold"
+      app:layout_constraintBottom_toBottomOf="@+id/ivCandidatePartyFlag"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/ivCandidatePartyFlag"
+      app:layout_constraintTop_toTopOf="@+id/ivCandidatePartyFlag"
+      tools:text="ဒိုဂီ"
+      />
+
+  <TextView
+      android:id="@+id/tvCandidatePartyName"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="8dp"
+      android:maxLines="2"
+      android:textColor="@color/text_secondary"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/ivCandidate"
+      app:layout_constraintTop_toBottomOf="@id/tvCandidateName"
+      app:layout_constraintVertical_bias="0"
+      tools:text="ဒိုဂီပြည်ထောင်စု "
+      />
+
 
   <androidx.cardview.widget.CardView
-    android:id="@+id/cardViewWinIndicator"
-    android:layout_width="36dp"
-    android:layout_height="18dp"
-    android:visibility="visible"
-    app:cardBackgroundColor="@color/accent"
-    app:cardCornerRadius="12dp"
-    app:layout_constraintBottom_toBottomOf="@+id/ivCandidate"
-    app:layout_constraintEnd_toEndOf="@+id/ivCandidate"
-    app:layout_constraintStart_toStartOf="@+id/ivCandidate">
+      android:id="@+id/cardViewWinIndicator"
+      android:layout_width="36dp"
+      android:layout_height="18dp"
+      android:visibility="visible"
+      app:layout_constraintBottom_toBottomOf="@+id/ivCandidate"
+      app:layout_constraintEnd_toEndOf="@+id/ivCandidate"
+      app:layout_constraintStart_toStartOf="@+id/ivCandidate"
+      app:cardBackgroundColor="@color/accent"
+      android:contentDescription="@string/winner"
+      app:cardCornerRadius="12dp"
+      >
 
     <TextView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_gravity="center"
-      android:drawableStart="@drawable/ic_star_12"
-      android:gravity="center_vertical"
-      android:maxLines="1"
-      android:textColor="@color/text_on_accent"
-      android:textSize="6sp"
-      app:drawableTint="@color/text_on_accent"
-      tools:text="အနိုင်ရ" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:drawableStart="@drawable/ic_star_12"
+        android:gravity="center_vertical"
+        android:importantForAccessibility="no"
+        android:maxLines="1"
+        android:textColor="@color/text_on_accent"
+        android:textSize="6sp"
+        app:drawableTint="@color/text_on_accent"
+        tools:text="အနိုင်ရ"
+        />
 
   </androidx.cardview.widget.CardView>
-
-  <ImageView
-    android:id="@+id/ivCandidatePartyFlag"
-    android:layout_width="24dp"
-    android:layout_height="12dp"
-    android:layout_marginStart="8dp"
-    android:src="@drawable/placeholder_rect"
-    app:layout_constraintBottom_toBottomOf="@id/ivCandidate"
-    app:layout_constraintStart_toEndOf="@+id/ivCandidate"
-    app:layout_constraintTop_toTopOf="@+id/ivCandidate"
-    app:layout_constraintVertical_bias="0.25" />
-
-  <TextView
-    android:id="@+id/tvCandidateName"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="8dp"
-    android:textColor="@color/text_primary"
-    android:textStyle="bold"
-    app:layout_constraintBottom_toBottomOf="@+id/ivCandidatePartyFlag"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toEndOf="@+id/ivCandidatePartyFlag"
-    app:layout_constraintTop_toTopOf="@+id/ivCandidatePartyFlag"
-    tools:text="ဒိုဂီ" />
-
-
-  <TextView
-    android:id="@+id/tvCandidatePartyName"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="8dp"
-    android:maxLines="2"
-    android:textColor="@color/text_secondary"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toEndOf="@+id/ivCandidate"
-    app:layout_constraintTop_toBottomOf="@id/tvCandidateName"
-    app:layout_constraintVertical_bias="0"
-    tools:text="ဒိုဂီပြည်ထောင်စု " />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

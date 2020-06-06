@@ -1,0 +1,10 @@
+<resources>
+  <string name="candidate" translatable="false">Candidate</string>
+  <string name="party" translatable="false">Party</string>
+  <string name="how_to_vote" translatable="false">How to Vote</string>
+  <string name="tips" translatable="false">Tips</string>
+  <string name="voting_result" translatable="false">Voting Result</string>
+
+  <string name="winner" translatable="false">Winner</string>
+
+</resources>

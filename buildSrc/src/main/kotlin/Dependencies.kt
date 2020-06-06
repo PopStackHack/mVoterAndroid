@@ -1,7 +1,7 @@
 object BuildConfig {
-  const val compileSdk = 29
+  const val compileSdk = "android-R"
   const val minSdk = 21
-  const val targetSdk = 29
+  const val targetSdk = "R"
 
   private const val versionMajor = 4
   private const val versionMinor = 0
