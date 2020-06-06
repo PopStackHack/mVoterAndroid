@@ -9,7 +9,7 @@ on:
 jobs:
   test:
     name: Static Code Check & Test
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     env:
       RELEASE_KEYSTORE_BASE64: ${{ secrets.RELEASE_KEYSTORE_BASE64 }}
       RELEASE_KEYSTORE_PATH: ${{ secrets.RELEASE_KEYSTORE_PATH }}
