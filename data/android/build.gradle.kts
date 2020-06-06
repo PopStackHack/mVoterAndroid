@@ -1,5 +1,4 @@
 plugins {
-  id("com.squareup.sqldelight")
   id("com.android.library")
   kotlin("android")
   kotlin("kapt")
@@ -22,13 +21,12 @@ android {
 
   buildTypes {
     getByName("debug") {
-      buildConfigField("String", "BASE_URL", "\"base_url_here\"")
+      isMinifyEnabled = false
     }
 
     getByName("release") {
       isMinifyEnabled = false
       proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
-      buildConfigField("String", "BASE_URL", "\"base_url_here\"")
     }
   }
 
@@ -43,37 +41,17 @@ android {
   }
 }
 
-sqldelight {
-  database("MVoterDb") {
-    packageName = "com.popstack.mvoter2015.data"
-  }
-}
-
 dependencies {
   implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
   implementation(project(":domain"))
+  api(project(":data:common"))
+  api(project(":data:cache"))
+  api(project(":data:network"))
 
   coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.0.5")
 
   implementation(Kotlin.stdblib_jdk)
   implementation(AndroidXCore.core_ktx)
-
-  //Database
-  implementation(AndroidXSqlite.sqlite_ktx)
-  implementation(SqlDelight.android_driver)
-
-  implementation(AndroidXPreference.preference_ktx)
-
-  //Networking
-  implementation(OkHttp.client)
-  implementation(OkHttp.logger)
-  debugImplementation(Monex.monex)
-  releaseImplementation(Monex.no_op)
-
-  implementation(Retrofit.core)
-  implementation(Retrofit.moshi_converter)
-
-  moshi()
 
   //Dagger
   daggerJvm()

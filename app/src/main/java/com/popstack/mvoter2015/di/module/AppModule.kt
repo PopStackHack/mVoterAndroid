@@ -5,6 +5,7 @@ import android.content.Context
 import coil.ImageLoader
 import coil.ImageLoaderBuilder
 import com.popstack.mvoter2015.R
+import com.popstack.mvoter2015.data.android.DataModule
 import com.popstack.mvoter2015.di.conductor.ConductorInjectionModule
 import com.popstack.mvoter2015.di.viewmodel.ViewModelFactoryModule
 import com.popstack.mvoter2015.domain.DispatcherProvider
@@ -21,7 +22,8 @@ import javax.inject.Singleton
   includes = [
     HomeFeatureModule::class,
     ViewModelFactoryModule::class,
-    ConductorInjectionModule::class
+    ConductorInjectionModule::class,
+    DataModule::class
   ]
 )
 abstract class AppModule {
@@ -39,7 +41,8 @@ abstract class AppModule {
       return application.applicationContext
     }
 
-    @Provides @Singleton
+    @Provides
+    @Singleton
     fun imageLoader(context: Context): ImageLoader {
       return ImageLoaderBuilder(context)
         .placeholder(R.drawable.placeholder_rect)

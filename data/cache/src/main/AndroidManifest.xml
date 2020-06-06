@@ -1,2 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.popstack.mvoter2015.data" />
+    package="com.popstack.mvoter2015.data.cache">
+
+    /
+</manifest>

@@ -82,7 +82,7 @@ dependencies {
 
   implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
   implementation(project(":domain"))
-  implementation(project(":data"))
+  implementation(project(":data:android"))
 
   implementation(Kotlin.stdblib_jdk)
   implementation(KotlinCoroutine.android)
@@ -123,6 +123,7 @@ dependencies {
 
   //Test
   testImplementation("junit:junit:4.12")
+  testImplementation(project(":coroutinetestrule"))
   mockito()
   mockitoAndroid()
   androidXTest()
