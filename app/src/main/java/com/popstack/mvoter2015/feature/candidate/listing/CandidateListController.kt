@@ -2,9 +2,11 @@ package com.popstack.mvoter2015.feature.candidate.listing
 
 import android.view.LayoutInflater
 import android.view.View
+import androidx.lifecycle.Observer
 import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerCandidateListBinding
 import com.popstack.mvoter2015.helper.conductor.requireActivity
+import com.popstack.mvoter2015.helper.nonNull
 
 internal class CandidateListController :
   MvvmController<ControllerCandidateListBinding>() {
@@ -25,12 +27,15 @@ internal class CandidateListController :
     binding.tabLayout.setupWithViewPager(binding.viewPager)
 
     CandidateListPagerParentRouter.setParentRouter(router)
+
+    viewModel.houseViewItemListLiveData.nonNull()
+      .observe(lifecycleOwner, Observer(::observeHouseViewItem))
     viewModel.loadHouses()
   }
-//
-//  override fun setUpHouse(viewItems: List<CandidateListHouseViewItem>) {
-//    pagerAdapter.setItems(viewItems)
-//  }
+
+  private fun observeHouseViewItem(houseViewItemList: List<CandidateListHouseViewItem>) {
+    pagerAdapter.setItems(houseViewItemList)
+  }
 
   override fun onDestroyView(view: View) {
     if (requireActivity().isChangingConfigurations) {

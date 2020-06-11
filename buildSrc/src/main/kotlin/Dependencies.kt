@@ -291,6 +291,7 @@ object SqlDelight {
 
   const val gradle_plugin = "com.squareup.sqldelight:gradle-plugin:$version"
   const val android_driver = "com.squareup.sqldelight:android-driver:$version"
+  const val coroutine_extension = "com.squareup.sqldelight:coroutines-extensions:$version"
   const val runtime = "com.squareup.sqldelight:runtime-common::$version"
   const val jvm_driver = "com.squareup.sqldelight:sqlite-driver:$version"
 }
