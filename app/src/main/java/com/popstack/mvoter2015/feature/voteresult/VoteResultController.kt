@@ -1,13 +1,12 @@
 package com.popstack.mvoter2015.feature.voteresult
 
 import android.view.LayoutInflater
-import com.popstack.mvoter2015.core.mvp.MvpController
+import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerVoteResultBinding
 
-class VoteResultController : MvpController<ControllerVoteResultBinding, VoteResultView, VoteResultViewModel>(),
-  VoteResultView {
+class VoteResultController : MvvmController<ControllerVoteResultBinding>() {
 
-  override val viewModel: VoteResultViewModel by contractedViewModels()
+  private val viewModel: VoteResultViewModel by viewModels()
 
   override val bindingInflater: (LayoutInflater) -> ControllerVoteResultBinding =
     ControllerVoteResultBinding::inflate

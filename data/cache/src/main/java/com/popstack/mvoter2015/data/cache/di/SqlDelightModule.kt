@@ -1,14 +1,19 @@
-package com.popstack.mvoter2015.data.cache
+package com.popstack.mvoter2015.data.cache.di
 
 import android.content.Context
+import com.popstack.mvoter2015.data.cache.DbProvider
+import com.popstack.mvoter2015.data.cache.MVoterDb
 import com.squareup.sqldelight.android.AndroidSqliteDriver
 import com.squareup.sqldelight.db.SqlDriver
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
 import javax.inject.Singleton
 
+@InstallIn(ApplicationComponent::class)
 @Module
-class CacheModule {
+class SqlDelightModule {
 
   companion object {
 

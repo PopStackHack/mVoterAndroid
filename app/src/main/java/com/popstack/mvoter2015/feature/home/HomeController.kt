@@ -3,9 +3,8 @@ package com.popstack.mvoter2015.feature.home
 import android.view.LayoutInflater
 import com.bluelinelabs.conductor.RouterTransaction
 import com.popstack.mvoter2015.R
-import com.popstack.mvoter2015.core.mvp.MvpController
+import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerHomeBinding
-import com.popstack.mvoter2015.di.conductor.InjectionControllerChangeListener
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateListController
 import com.popstack.mvoter2015.feature.howtovote.HowToVoteController
 import com.popstack.mvoter2015.feature.info.InfoController
@@ -13,16 +12,12 @@ import com.popstack.mvoter2015.feature.party.listing.PartyListController
 import com.popstack.mvoter2015.feature.voteresult.VoteResultController
 import com.popstack.mvoter2015.helper.conductor.BottomNavigationRouterMediator
 
-class HomeController : MvpController<ControllerHomeBinding, HomeView, HomeViewModel>(), HomeView {
+class HomeController : MvvmController<ControllerHomeBinding>() {
 
-  override val viewModel: HomeViewModel by contractedViewModels()
+  private val viewModel: HomeViewModel by viewModels()
 
   override val bindingInflater: (LayoutInflater) -> ControllerHomeBinding =
     ControllerHomeBinding::inflate
-
-  protected val injectionControllerChangeListener by lazy {
-    InjectionControllerChangeListener()
-  }
 
   private val bottomNavigationRouterMediator by lazy {
     BottomNavigationRouterMediator(
@@ -41,19 +36,7 @@ class HomeController : MvpController<ControllerHomeBinding, HomeView, HomeViewMo
 
   override fun onBindView() {
     bottomNavigationRouterMediator.attach()
-
-    childRouters.forEach { childRouter ->
-      childRouter.addChangeListener(injectionControllerChangeListener)
-    }
-
     binding.bottomNavigationView.selectedItemId = R.id.navigation_candidate
-  }
-
-  override fun onDestroy() {
-    childRouters.forEach { childRouter ->
-      childRouter.removeChangeListener(injectionControllerChangeListener)
-    }
-    super.onDestroy()
   }
 
 }

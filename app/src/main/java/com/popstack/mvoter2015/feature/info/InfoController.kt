@@ -1,12 +1,12 @@
 package com.popstack.mvoter2015.feature.info
 
 import android.view.LayoutInflater
-import com.popstack.mvoter2015.core.mvp.MvpController
+import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerInfoBinding
 
-class InfoController : MvpController<ControllerInfoBinding, InfoView, InfoViewModel>(), InfoView {
+class InfoController : MvvmController<ControllerInfoBinding>() {
 
-  override val viewModel: InfoViewModel by contractedViewModels()
+  private val viewModel: InfoViewModel by viewModels()
 
   override val bindingInflater: (LayoutInflater) -> ControllerInfoBinding =
     ControllerInfoBinding::inflate

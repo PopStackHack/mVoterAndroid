@@ -6,12 +6,12 @@ import com.bluelinelabs.conductor.Conductor
 import com.bluelinelabs.conductor.Router
 import com.bluelinelabs.conductor.RouterTransaction
 import com.popstack.mvoter2015.databinding.ActivityHostBinding
-import com.popstack.mvoter2015.di.Injectable
-import com.popstack.mvoter2015.di.conductor.InjectionControllerChangeListener
 import com.popstack.mvoter2015.feature.home.HomeController
+import dagger.hilt.android.AndroidEntryPoint
 
 //A simple activity that host Conductor's FrameLayout
-class HostActivity : AppCompatActivity(), Injectable, HasRouter {
+@AndroidEntryPoint
+class HostActivity : AppCompatActivity(), HasRouter {
 
   private val binding by lazy {
     ActivityHostBinding.inflate(layoutInflater)
@@ -19,16 +19,11 @@ class HostActivity : AppCompatActivity(), Injectable, HasRouter {
 
   private lateinit var router: Router
 
-  private val injectionControllerChangeListener by lazy {
-    InjectionControllerChangeListener()
-  }
-
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(binding.root)
 
     router = Conductor.attachRouter(this, binding.container, savedInstanceState)
-    router.addChangeListener(injectionControllerChangeListener)
 
     if (!router.hasRootController()) {
       //Set your first routing here
@@ -38,7 +33,6 @@ class HostActivity : AppCompatActivity(), Injectable, HasRouter {
   }
 
   override fun onDestroy() {
-    router.removeChangeListener(injectionControllerChangeListener)
     super.onDestroy()
   }
 

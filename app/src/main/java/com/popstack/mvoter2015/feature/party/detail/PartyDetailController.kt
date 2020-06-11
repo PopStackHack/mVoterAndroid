@@ -3,13 +3,13 @@ package com.popstack.mvoter2015.feature.party.detail
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.core.os.bundleOf
-import com.popstack.mvoter2015.core.mvp.MvpController
+import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerPartyDetailBinding
 import com.popstack.mvoter2015.domain.party.model.PartyId
 
 class PartyDetailController(
   private val bundle: Bundle
-) : MvpController<ControllerPartyDetailBinding, PartyDetailView, PartyDetailViewModel>(bundle) {
+) : MvvmController<ControllerPartyDetailBinding>(bundle) {
 
   /***
    * Since we dont have factory yet
@@ -27,7 +27,7 @@ class PartyDetailController(
     }
   }
 
-  override val viewModel: PartyDetailViewModel by contractedViewModels()
+  private val viewModel: PartyDetailViewModel by viewModels()
 
   override val bindingInflater: (LayoutInflater) -> ControllerPartyDetailBinding =
     ControllerPartyDetailBinding::inflate

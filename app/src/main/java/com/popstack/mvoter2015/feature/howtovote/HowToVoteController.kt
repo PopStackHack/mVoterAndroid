@@ -1,13 +1,12 @@
 package com.popstack.mvoter2015.feature.howtovote
 
 import android.view.LayoutInflater
-import com.popstack.mvoter2015.core.mvp.MvpController
+import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerHowToVoteBinding
 
-class HowToVoteController : MvpController<ControllerHowToVoteBinding, HowToVoteView, HowToVoteViewModel>(),
-    HowToVoteView {
+class HowToVoteController : MvvmController<ControllerHowToVoteBinding>() {
 
-  override val viewModel: HowToVoteViewModel by contractedViewModels()
+  private val viewModel: HowToVoteViewModel by viewModels()
 
   override val bindingInflater: (LayoutInflater) -> ControllerHowToVoteBinding =
     ControllerHowToVoteBinding::inflate

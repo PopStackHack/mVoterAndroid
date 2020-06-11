@@ -10,6 +10,7 @@ buildscript {
     google()
     mavenCentral()
     jcenter()
+    maven("https://oss.sonatype.org/content/repositories/snapshots/")
   }
 
   dependencies {
@@ -17,6 +18,7 @@ buildscript {
     classpath(Kotlin.gradle_plugin)
     classpath(SqlDelight.gradle_plugin)
     classpath(Wormhole.gradle_plugin)
+    classpath(DaggerHiltAndroid.gradle_plugin)
   }
 }
 
@@ -25,6 +27,7 @@ allprojects {
     google()
     mavenCentral()
     maven(url = "https://dl.bintray.com/vincent-paing/maven")
+    maven("https://oss.sonatype.org/content/repositories/snapshots/")
     jcenter()
   }
 }

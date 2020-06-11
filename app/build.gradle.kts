@@ -18,6 +18,7 @@ plugins {
   id("com.android.application")
   kotlin("android")
   kotlin("kapt")
+  id("dagger.hilt.android.plugin")
   id(KtLint.name)
 }
 
@@ -109,7 +110,8 @@ dependencies {
   implementation(AndroidXConstraintLayout.constraint_layout)
 
   //Dagger
-  daggerAndroid()
+  daggerJvm()
+  daggerHilt()
 
   //ThreeTenBp
   implementation(CommonLibs.timber)

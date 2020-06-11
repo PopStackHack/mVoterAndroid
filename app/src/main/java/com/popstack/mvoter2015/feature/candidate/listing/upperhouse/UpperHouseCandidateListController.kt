@@ -4,15 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bluelinelabs.conductor.RouterTransaction
 import com.popstack.mvoter2015.R
-import com.popstack.mvoter2015.core.mvp.MvpController
+import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerUpperHouseCandidateListBinding
-import com.popstack.mvoter2015.di.conductor.ConductorInjection
 import com.popstack.mvoter2015.domain.candidate.model.CandidateId
 import com.popstack.mvoter2015.feature.candidate.detail.CandidateDetailController
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateListPagerParentRouter
@@ -20,10 +17,10 @@ import com.popstack.mvoter2015.feature.candidate.listing.upperhouse.UpperHouseCa
 import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
 
 class UpperHouseCandidateListController :
-  MvpController<ControllerUpperHouseCandidateListBinding, UpperHouseCandidateListView, UpperHouseCandidateListViewModel>(),
-  UpperHouseCandidateListView, UpperHouseCandidateListItemClickListener {
+  MvvmController<ControllerUpperHouseCandidateListBinding>(),
+  UpperHouseCandidateListItemClickListener {
 
-  override val viewModel: UpperHouseCandidateListViewModel by contractedViewModels()
+  private val viewModel: UpperHouseCandidateListViewModel by viewModels()
 
   override val bindingInflater: (LayoutInflater) -> ControllerUpperHouseCandidateListBinding =
     ControllerUpperHouseCandidateListBinding::inflate
@@ -37,7 +34,6 @@ class UpperHouseCandidateListController :
     container: ViewGroup,
     savedViewState: Bundle?
   ): View {
-    ConductorInjection.inject(this)
     return super.onCreateView(inflater, container, savedViewState)
   }
 
@@ -56,12 +52,12 @@ class UpperHouseCandidateListController :
 
   }
 
-  override fun subscribeToViewItemLiveData(viewItemLiveData: LiveData<List<UpperHouseCandidateListViewItem>>) {
-    viewItemLiveData.observe(lifecycleOwner, Observer { viewItemList ->
-      candidateListAdapter.submitList(viewItemList)
-    })
-
-  }
+//  override fun subscribeToViewItemLiveData(viewItemLiveData: LiveData<List<UpperHouseCandidateListViewItem>>) {
+//    viewItemLiveData.observe(lifecycleOwner, Observer { viewItemList ->
+//      candidateListAdapter.submitList(viewItemList)
+//    })
+//
+//  }
 
   override fun onItemClick(candidateId: CandidateId) {
     val candidateDetailController = CandidateDetailController.newInstance(candidateId)

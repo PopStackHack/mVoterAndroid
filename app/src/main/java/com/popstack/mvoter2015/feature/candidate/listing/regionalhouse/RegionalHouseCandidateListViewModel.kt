@@ -1,9 +1,9 @@
 package com.popstack.mvoter2015.feature.candidate.listing.regionalhouse
 
-import com.popstack.mvoter2015.core.mvp.BaseViewModel
-import javax.inject.Inject
+import androidx.hilt.lifecycle.ViewModelInject
+import androidx.lifecycle.ViewModel
 
-class RegionalHouseCandidateListViewModel @Inject constructor() :
-  BaseViewModel<RegionalHouseCandidateListView>() {
+class RegionalHouseCandidateListViewModel @ViewModelInject constructor() :
+  ViewModel() {
   //TODO
 }

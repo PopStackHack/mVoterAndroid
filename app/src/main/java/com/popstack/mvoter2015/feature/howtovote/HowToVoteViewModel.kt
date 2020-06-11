@@ -1,8 +1,8 @@
 package com.popstack.mvoter2015.feature.howtovote
 
-import com.popstack.mvoter2015.core.mvp.BaseViewModel
-import javax.inject.Inject
+import androidx.hilt.lifecycle.ViewModelInject
+import androidx.lifecycle.ViewModel
 
-class HowToVoteViewModel @Inject constructor() : BaseViewModel<HowToVoteView>() {
+class HowToVoteViewModel @ViewModelInject constructor() : ViewModel() {
   //TODO
 }

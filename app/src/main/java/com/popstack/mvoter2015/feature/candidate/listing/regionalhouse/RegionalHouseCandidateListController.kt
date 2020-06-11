@@ -4,15 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.popstack.mvoter2015.core.mvp.MvpController
+import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerRegionalCandidateListBinding
-import com.popstack.mvoter2015.di.conductor.ConductorInjection
 
 class RegionalHouseCandidateListController :
-  MvpController<ControllerRegionalCandidateListBinding, RegionalHouseCandidateListView, RegionalHouseCandidateListViewModel>(),
-  RegionalHouseCandidateListView {
+  MvvmController<ControllerRegionalCandidateListBinding>() {
 
-  override val viewModel: RegionalHouseCandidateListViewModel by contractedViewModels()
+  private val viewModel: RegionalHouseCandidateListViewModel by viewModels()
 
   override val bindingInflater: (LayoutInflater) -> ControllerRegionalCandidateListBinding =
     ControllerRegionalCandidateListBinding::inflate
@@ -22,7 +20,6 @@ class RegionalHouseCandidateListController :
     container: ViewGroup,
     savedViewState: Bundle?
   ): View {
-    ConductorInjection.inject(this)
     return super.onCreateView(inflater, container, savedViewState)
   }
 }

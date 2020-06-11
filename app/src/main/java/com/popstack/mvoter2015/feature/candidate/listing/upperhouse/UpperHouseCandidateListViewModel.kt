@@ -1,19 +1,14 @@
 package com.popstack.mvoter2015.feature.candidate.listing.upperhouse
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
-import com.popstack.mvoter2015.core.mvp.BaseViewModel
+import androidx.lifecycle.ViewModel
 import com.popstack.mvoter2015.domain.candidate.model.CandidateId
-import javax.inject.Inject
 
-class UpperHouseCandidateListViewModel @Inject constructor() :
-  BaseViewModel<UpperHouseCandidateListView>() {
+class UpperHouseCandidateListViewModel @ViewModelInject constructor() :
+  ViewModel() {
 
   private val viewItemLiveData = MutableLiveData<List<UpperHouseCandidateListViewItem>>()
-
-  override fun attachView(viewable: UpperHouseCandidateListView) {
-    super.attachView(viewable)
-    view?.subscribeToViewItemLiveData(viewItemLiveData)
-  }
 
   fun loadData() {
     viewItemLiveData.postValue(

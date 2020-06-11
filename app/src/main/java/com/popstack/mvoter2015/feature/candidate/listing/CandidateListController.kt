@@ -2,15 +2,14 @@ package com.popstack.mvoter2015.feature.candidate.listing
 
 import android.view.LayoutInflater
 import android.view.View
-import com.popstack.mvoter2015.core.mvp.MvpController
+import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerCandidateListBinding
 import com.popstack.mvoter2015.helper.conductor.requireActivity
 
 internal class CandidateListController :
-  MvpController<ControllerCandidateListBinding, CandidateListView, CandidateListViewModel>(),
-  CandidateListView {
+  MvvmController<ControllerCandidateListBinding>() {
 
-  override val viewModel: CandidateListViewModel by contractedViewModels()
+  private val viewModel: CandidateListViewModel by viewModels()
 
   private val pagerAdapter by lazy {
     CandidateListHousePagerAdapter(this)
@@ -28,10 +27,10 @@ internal class CandidateListController :
     CandidateListPagerParentRouter.setParentRouter(router)
     viewModel.loadHouses()
   }
-
-  override fun setUpHouse(viewItems: List<CandidateListHouseViewItem>) {
-    pagerAdapter.setItems(viewItems)
-  }
+//
+//  override fun setUpHouse(viewItems: List<CandidateListHouseViewItem>) {
+//    pagerAdapter.setItems(viewItems)
+//  }
 
   override fun onDestroyView(view: View) {
     if (requireActivity().isChangingConfigurations) {
