@@ -97,6 +97,8 @@ dependencies {
   implementation(AndroidXViewPager.view_pager_2)
   implementation(AndroidXViewPager.view_pager)
   implementation(AndroidXRecyclerView.recycler_view)
+  implementation(AndroidXPaging.common)
+  implementation(AndroidXPaging.runtime)
 
   implementation(Conductor.core)
   implementation(Conductor.viewpager)

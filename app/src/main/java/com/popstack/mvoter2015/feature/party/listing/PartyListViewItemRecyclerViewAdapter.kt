@@ -1,7 +1,7 @@
 package com.popstack.mvoter2015.feature.party.listing
 
 import android.view.ViewGroup
-import androidx.recyclerview.widget.ListAdapter
+import androidx.paging.PagingDataAdapter
 import coil.api.load
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.recyclerview.ViewBindingViewHolder
@@ -14,7 +14,7 @@ import com.popstack.mvoter2015.helper.extensions.withSafeAdapterPosition
 
 internal class PartyListViewItemRecyclerViewAdapter constructor(
   private val itemClickListener: PartyListItemClickListener
-) : ListAdapter<PartyListViewItem, PartyListViewItemViewHolder>(
+) : PagingDataAdapter<PartyListViewItem, PartyListViewItemViewHolder>(
   diffCallBackWith(
     areItemTheSame = { item1, item2 ->
       item1.partyId == item2.partyId
@@ -40,8 +40,9 @@ internal class PartyListViewItemRecyclerViewAdapter constructor(
     viewHolder.apply {
       itemView.setOnClickListener {
         withSafeAdapterPosition { position ->
-          val itemAtIndex = getItem(position)
-          itemClickListener.onItemClick(itemAtIndex.partyId)
+          getItem(position)?.let { itemAtIndex ->
+            itemClickListener.onItemClick(itemAtIndex?.partyId)
+          }
         }
       }
     }
@@ -52,16 +53,16 @@ internal class PartyListViewItemRecyclerViewAdapter constructor(
     holder: PartyListViewItemViewHolder,
     position: Int
   ) {
-    val itemAtIndex = getItem(position)
-    holder.binding.apply {
-      ivPartyFlag.load(itemAtIndex.flagImageUrl) {
-        placeholder(R.drawable.placeholder_rect)
-        crossfade(true)
+    getItem(position)?.let { itemAtIndex ->
+      holder.binding.apply {
+        ivPartyFlag.load(itemAtIndex.flagImageUrl) {
+          placeholder(R.drawable.placeholder_rect)
+          crossfade(true)
+        }
+
+        tvPartyName.text = itemAtIndex.name
+        tvPartyRegion.text = itemAtIndex.region
       }
-
-      tvPartyName.text = itemAtIndex.name
-      tvPartyRegion.text = itemAtIndex.region
-
     }
   }
 

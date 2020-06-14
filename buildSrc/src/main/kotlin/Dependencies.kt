@@ -119,6 +119,15 @@ object AndroidXCore {
   const val core_ktx = "androidx.core:core-ktx:$version"
 }
 
+object AndroidXPaging {
+  private const val version = "3.0.0-alpha01"
+
+  const val common = "androidx.paging:paging-common:$version"
+  const val common_ktx = "androidx.core:paging-common-ktx:$version"
+  const val runtime = "androidx.paging:paging-runtime:$version"
+  const val runtime_ktx = "androidx.core:paging-runtime_ktx-ktx:$version"
+}
+
 object AndroidXLocalBroadcastManager {
 
   const val local_broadcast_manager =
@@ -137,7 +146,7 @@ object AssistedInject {
 }
 
 object Material {
-  const val material = "com.google.android.material:material:1.2.0-alpha02"
+  const val material = "com.google.android.material:material:1.3.0-alpha01"
 }
 
 object Caligraphy {
@@ -260,7 +269,7 @@ object Lottie {
 }
 
 object Monex {
-  private const val version = "0.2.2"
+  private const val version = "0.4.0"
 
   const val monex = "com.aungkyawpaing.monex:monex:$version"
   const val no_op = "com.aungkyawpaing.monex:monex-no-op:$version"

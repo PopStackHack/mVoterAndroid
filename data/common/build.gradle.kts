@@ -1,6 +1,7 @@
 plugins {
   id("java-library")
   id("kotlin")
+  id("kotlin-kapt")
   id(KtLint.name)
 }
 
@@ -11,6 +12,7 @@ dependencies {
   testImplementation(CommonLibs.junit)
   testImplementation(project(":coroutinetestrule"))
   mockito()
+  daggerJvm()
 
   implementation(Kotlin.stdblib_jdk)
   api(KotlinCoroutine.core)

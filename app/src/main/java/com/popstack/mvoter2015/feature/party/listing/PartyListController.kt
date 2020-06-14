@@ -1,6 +1,7 @@
 package com.popstack.mvoter2015.feature.party.listing
 
 import android.view.LayoutInflater
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bluelinelabs.conductor.RouterTransaction
@@ -11,8 +12,11 @@ import com.popstack.mvoter2015.domain.party.model.PartyId
 import com.popstack.mvoter2015.feature.party.detail.PartyDetailController
 import com.popstack.mvoter2015.feature.party.listing.PartyListViewItemRecyclerViewAdapter.PartyListItemClickListener
 import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
-class PartyListController : MvvmController<ControllerPartyListBinding>(), PartyListItemClickListener {
+class PartyListController : MvvmController<ControllerPartyListBinding>(),
+  PartyListItemClickListener {
 
   private val viewModel: PartyListViewModel by viewModels()
 
@@ -32,6 +36,12 @@ class PartyListController : MvvmController<ControllerPartyListBinding>(), PartyL
       val dimen =
         context.resources.getDimensionPixelSize(R.dimen.recycler_view_item_margin)
       addItemDecoration(RecyclerViewMarginDecoration(dimen, 0))
+    }
+
+    lifecycleScope.launch {
+      viewModel.partyPagingFlow.collectLatest {
+        partyListAdapter.submitData(it)
+      }
     }
   }
 

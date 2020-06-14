@@ -6,18 +6,16 @@ data class Party(
   val id: PartyId,
   val englishName: String,
   val burmeseName: String,
-  val abbreviation: String,
+  val abbreviation: String?,
   val flagUrl: String,
   val sealUrl: String,
   val region: String,
   val chairmanList: List<String>,
   val leaderList: List<String>,
-  val memberCount: Int,
-  val headquarterLocation: String,
-  val policy: String,
+  val memberCount: Int?,
+  val headquarterLocation: String?,
+  val policy: String?,
   val registrationApplicationDate: LocalDate?,
-  val establishmentApprovalDate: LocalDate?,
-  val registrationApprovalDate: LocalDate
+  val registrationApprovalDate: LocalDate?,
+  val establishmentApprovalDate: LocalDate?
 )
-
-//  val approvedPartyMember: String,.

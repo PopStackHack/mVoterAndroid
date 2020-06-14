@@ -4,21 +4,30 @@ import java.lang.Integer;
 import java.time.LocalDate;
 import kotlin.collections.List;
 
-
 CREATE TABLE PartyTable(
   id TEXT AS PartyId PRIMARY KEY NOT NULL,
   englishName TEXT NOT NULL,
   burmeseName TEXT NOT NULL,
-  abbreviation TEXT NOT NULL,
+  abbreviation TEXT,
   flagUrl TEXT NOT NULL,
   sealUrl TEXT NOT NULL,
   region TEXT NOT NULL,
   chairmans TEXT AS List<String> NOT NULL,
   leaders TEXT AS List<String> NOT NULL,
-  memberCount INTEGER AS Integer NOT NULL,
-  headquarterLocation TEXT NOT NULL,
-  policy TEXT NOT NULL,
+  memberCount INTEGER AS Integer,
+  headquarterLocation TEXT,
+  policy TEXT,
   registrationApplicationDate TEXT AS LocalDate,
-  establishmentApprovalDate TEXT AS LocalDate,
-  registrationApprovalDate TEXT AS LocalDate
+  registrationApprovalDate TEXT AS LocalDate,
+  establishmentApprovalDate TEXT AS LocalDate
 );
+
+insertOrReplace:
+INSERT OR REPLACE INTO PartyTable VALUES(
+:id, :englishName, :burmeseName, :abbreviation, :flagUrl, :sealUrl, :region, :chairmans,
+:leaders, :memberCount, :headquarterLocation, :policy, :registrationApplicationDate,
+:registrationApprovalDate, :establishmentApprovalDate
+);
+
+getWithPage:
+SELECT * FROM PartyTable LIMIT :limit OFFSET :offset;

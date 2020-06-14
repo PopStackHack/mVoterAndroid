@@ -1,5 +1,6 @@
 package com.popstack.mvoter2015.data.network.di
 
+import android.content.Context
 import com.popstack.mvoter2015.data.network.BuildConfig
 import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient
@@ -24,5 +25,9 @@ internal object RetrofitProvider {
         .build()
     }
     return retrofit!!
+  }
+
+  fun retrofit(context: Context): Retrofit {
+    return retrofit(OkHttpProvider.okHttpClient(context))
   }
 }
