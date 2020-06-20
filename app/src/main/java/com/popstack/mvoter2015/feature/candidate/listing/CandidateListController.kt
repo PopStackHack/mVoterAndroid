@@ -6,7 +6,7 @@ import androidx.lifecycle.Observer
 import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerCandidateListBinding
 import com.popstack.mvoter2015.helper.conductor.requireActivity
-import com.popstack.mvoter2015.helper.nonNull
+import com.popstack.mvoter2015.helper.livedata.nonNull
 
 internal class CandidateListController :
   MvvmController<ControllerCandidateListBinding>() {

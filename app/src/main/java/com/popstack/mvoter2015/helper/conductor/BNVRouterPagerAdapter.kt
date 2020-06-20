@@ -15,7 +15,7 @@ import com.bluelinelabs.conductor.Controller
 import com.bluelinelabs.conductor.Router
 import com.bluelinelabs.conductor.RouterTransaction
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.popstack.mvoter2015.helper.NonScrollableViewPager
+import com.popstack.mvoter2015.helper.viewpager.NonScrollableViewPager
 import com.popstack.mvoter2015.helper.extensions.filter
 import com.popstack.mvoter2015.helper.extensions.indexOf
 

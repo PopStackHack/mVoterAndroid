@@ -1,4 +1,4 @@
-package com.popstack.mvoter2015.helper
+package com.popstack.mvoter2015.helper.livedata
 
 import androidx.annotation.MainThread
 import androidx.lifecycle.LifecycleOwner

@@ -10,7 +10,7 @@ import androidx.paging.cachedIn
 import com.popstack.mvoter2015.domain.faq.model.FaqCategoryId
 import com.popstack.mvoter2015.domain.faq.model.FaqId
 import com.popstack.mvoter2015.domain.faq.usecase.GetFaq
-import com.popstack.mvoter2015.helper.SingleLiveEvent
+import com.popstack.mvoter2015.helper.livedata.SingleLiveEvent
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
@@ -52,7 +52,8 @@ class InfoViewModel @ViewModelInject constructor(
     data class ShareFaq(val shareUrl: String) : SingleCommand()
   }
 
-  val singleCommandLiveData = SingleLiveEvent<SingleCommand>()
+  val singleCommandLiveData =
+    SingleLiveEvent<SingleCommand>()
 
   fun handleSelectFaqCategory(faqCategoryId: FaqCategoryId) {
     faqPagingSource.setCategoryId(faqCategoryId)

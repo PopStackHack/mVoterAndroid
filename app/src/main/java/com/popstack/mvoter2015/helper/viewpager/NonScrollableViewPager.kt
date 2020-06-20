@@ -1,4 +1,4 @@
-package com.popstack.mvoter2015.helper
+package com.popstack.mvoter2015.helper.viewpager
 
 import android.content.Context
 import android.database.DataSetObserver
@@ -375,7 +375,10 @@ class NonScrollableViewPager : ViewGroup {
   }
 
   override fun generateLayoutParams(attrs: AttributeSet): ViewGroup.LayoutParams {
-    return LayoutParams(context, attrs)
+    return LayoutParams(
+      context,
+      attrs
+    )
   }
 
   fun infoForChild(child: View?): ItemInfo? {
@@ -400,7 +403,8 @@ class NonScrollableViewPager : ViewGroup {
   }
 
   fun addNewItem(position: Int): ItemInfo {
-    val ii = ItemInfo()
+    val ii =
+      ItemInfo()
     ii.position = position
     ii.`object` = mAdapter!!.instantiateItem(this, position)
     return ii
@@ -503,7 +507,10 @@ class NonScrollableViewPager : ViewGroup {
 
   public override fun onSaveInstanceState(): Parcelable? {
     val superState = super.onSaveInstanceState()
-    val ss = SavedState(superState!!)
+    val ss =
+      SavedState(
+        superState!!
+      )
     ss.position = mCurItem
     if (mAdapter != null) {
       ss.adapterState = mAdapter!!.saveState()
@@ -568,11 +575,17 @@ class NonScrollableViewPager : ViewGroup {
             `in`: Parcel,
             loader: ClassLoader
           ): SavedState {
-            return SavedState(`in`, loader)
+            return SavedState(
+              `in`,
+              loader
+            )
           }
 
           override fun createFromParcel(`in`: Parcel): SavedState {
-            return SavedState(`in`, null)
+            return SavedState(
+              `in`,
+              null
+            )
           }
 
           override fun newArray(size: Int): Array<SavedState?> {

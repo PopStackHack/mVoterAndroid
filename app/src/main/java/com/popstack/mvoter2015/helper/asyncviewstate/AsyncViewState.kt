@@ -1,4 +1,4 @@
-package com.popstack.mvoter2015.helper
+package com.popstack.mvoter2015.helper.asyncviewstate
 
 sealed class AsyncViewState<out T> {
 
@@ -7,5 +7,7 @@ sealed class AsyncViewState<out T> {
   class Loading<out T> : AsyncViewState<T>()
 
   data class Success<out T>(val value: T) : AsyncViewState<T>()
+
+  data class Error<out T>(val exception: Throwable, val errorMessage: String) : AsyncViewState<T>()
 
 }

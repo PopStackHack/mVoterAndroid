@@ -1,4 +1,4 @@
-package com.popstack.mvoter2015.helper
+package com.popstack.mvoter2015.helper.livedata
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
@@ -12,7 +12,8 @@ import androidx.lifecycle.Observer
 class NonNullMediatorLiveData<T> : MediatorLiveData<T>()
 
 fun <T> LiveData<T>.nonNull(): NonNullMediatorLiveData<T> {
-  val mediator: NonNullMediatorLiveData<T> = NonNullMediatorLiveData()
+  val mediator: NonNullMediatorLiveData<T> =
+    NonNullMediatorLiveData()
   mediator.addSource(this, Observer { it?.let { mediator.value = it } })
   return mediator
 }
