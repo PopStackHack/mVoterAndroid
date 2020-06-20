@@ -31,11 +31,18 @@ abstract class MvvmController<VB : ViewBinding>(args: Bundle? = null) :
     return lifecycleOwner.lifecycle
   }
 
-  protected inline fun <reified VM : ViewModel> viewModels(): Lazy<VM> =
-    ViewModelLazy(VM::class)
+  protected inline fun <reified VM : ViewModel> viewModels(
+    factory: ViewModelProvider.Factory? = null
+  ): Lazy<VM> =
+    if (factory == null) {
+      ViewModelLazy(VM::class)
+    } else {
+      ViewModelLazy(VM::class, factory)
+    }
 
   inner class ViewModelLazy<VM : ViewModel>(
-    private val viewModelClass: KClass<VM>
+    private val viewModelClass: KClass<VM>,
+    private val factory: ViewModelProvider.Factory? = null
   ) : Lazy<VM> {
     private var cached: VM? = null
 
@@ -46,7 +53,7 @@ abstract class MvvmController<VB : ViewBinding>(args: Bundle? = null) :
           viewModel =
             ViewModelProvider(
               requireActivityAsAppCompatActivity().viewModelStore,
-              requireActivityAsAppCompatActivity().defaultViewModelProviderFactory
+              factory ?: requireActivityAsAppCompatActivity().defaultViewModelProviderFactory
             ).get(viewModelClass.java)
           cached = viewModel
         }
@@ -55,5 +62,4 @@ abstract class MvvmController<VB : ViewBinding>(args: Bundle? = null) :
 
     override fun isInitialized() = cached != null
   }
-
 }

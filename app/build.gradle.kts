@@ -39,6 +39,12 @@ android {
     buildFeatures {
       viewBinding = true
     }
+
+    kapt {
+      arguments {
+        arg("dagger.hilt.disableModulesHaveInstallInCheck", "true")
+      }
+    }
   }
 
   signingConfigs {
@@ -114,6 +120,7 @@ dependencies {
   //Dagger
   daggerJvm()
   daggerHilt()
+  daggerAssistedInject()
 
   //ThreeTenBp
   implementation(CommonLibs.timber)

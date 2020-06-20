@@ -26,6 +26,10 @@ fun DependencyHandler.daggerHilt() {
 //  kaptAndroidTest(DaggerHiltAndroid.android_testing)
 }
 
+fun DependencyHandler.daggerAssistedInject() {
+  implementation(AssistedInjectDagger.annotations)
+  kapt(AssistedInjectDagger.processor)
+}
 
 object Dagger {
   private const val version = "2.28"
@@ -52,4 +56,11 @@ object DaggerHiltAndroid {
   const val android_testing = "com.google.dagger:hilt-android-testing:$version"
   const val android_compiler = "com.google.dagger:hilt-android-compiler:$version"
   const val gradle_plugin = "com.google.dagger:hilt-android-gradle-plugin:$version"
+}
+
+object AssistedInjectDagger {
+  private const val version = "0.5.2"
+
+  const val annotations = "com.squareup.inject:assisted-inject-annotations-dagger2:$version"
+  const val processor = "com.squareup.inject:assisted-inject-processor-dagger2:$version"
 }
