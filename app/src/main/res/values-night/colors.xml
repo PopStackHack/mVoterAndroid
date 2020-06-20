@@ -3,6 +3,7 @@
   <color name="primary">#434343</color>
   <color name="primary_dark">#434343</color>
   <color name="accent">#2071DA</color>
+  <color name="reverse_primary">#FFFFFF</color>
 
   <color name="text_primary">#FFFFFF</color>
   <color name="text_secondary">#EBEBEB</color>

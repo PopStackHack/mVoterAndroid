@@ -12,7 +12,7 @@
     android:padding="8dp">
 
     <TextView
-      android:id="@+id/tvQuestion"
+      android:id="@+id/tvFaqQuestion"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:textColor="@color/accent"

@@ -123,9 +123,7 @@ object AndroidXPaging {
   private const val version = "3.0.0-alpha01"
 
   const val common = "androidx.paging:paging-common:$version"
-  const val common_ktx = "androidx.core:paging-common-ktx:$version"
   const val runtime = "androidx.paging:paging-runtime:$version"
-  const val runtime_ktx = "androidx.core:paging-runtime_ktx-ktx:$version"
 }
 
 object AndroidXLocalBroadcastManager {

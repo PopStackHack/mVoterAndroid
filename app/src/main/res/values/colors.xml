@@ -3,7 +3,9 @@
   <color name="primary">#FFFFFF</color>
   <color name="primary_dark">#FFFFFF</color>
   <color name="accent">#2071DA</color>
+  <color name="reverse_primary">#000000</color>
 
+  <color name="text_error">#CC1C1C</color>
   <color name="text_primary">#212121</color>
   <color name="text_secondary">#424242</color>
   <color name="text_disabled">#33000000</color>

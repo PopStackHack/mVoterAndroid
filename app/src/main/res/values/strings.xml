@@ -17,5 +17,7 @@
   <string name="tab_lower_house">ပြည့်သူ\nလွှတ်တော်</string>
   <string name="tab_regional_house_state">တိုင်းဒေသကြီး\nလွှတ်တော်</string>
   <string name="tab_regional_house_region">ပြည်နယ်\nလွှတ်တော်</string>
-    <string name="date_of_birth">မွေးသက္ကရာဇ်</string>
+  <string name="date_of_birth">မွေးသက္ကရာဇ်</string>
+
+  <string name="retry">ထပ်စမ်းကြည့်မယ်</string>
 </resources>

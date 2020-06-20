@@ -19,10 +19,17 @@ class PartyPagingSource @Inject constructor(
           itemPerPage = params.loadSize
         )
       )
+
+      val nextKey: Int? = if (partyList.isEmpty()) {
+        null
+      } else {
+        pageNumber + 1
+      }
+
       return LoadResult.Page(
         data = partyList,
         prevKey = null, // Only paging forward.
-        nextKey = pageNumber + 1
+        nextKey = nextKey
       )
     } catch (e: Exception) {
       // Handle errors in this block and return LoadResult.Error if it is an

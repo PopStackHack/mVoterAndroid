@@ -38,7 +38,7 @@
     app:layout_constraintStart_toEndOf="@+id/ivPartyFlag"
     app:layout_constraintTop_toTopOf="@+id/ivPartyFlag"
     app:layout_constraintVertical_bias="0.10"
-    tools:text="ဒိုဂီ" />
+    tools:text="@sample/party.csv/PartyName" />
 
 
   <TextView
@@ -53,6 +53,6 @@
     app:layout_constraintStart_toEndOf="@+id/ivPartyFlag"
     app:layout_constraintTop_toBottomOf="@id/tvPartyName"
     app:layout_constraintVertical_bias="0.25"
-    tools:text="ဒိုဂီပြည်ထောင်စု " />
+    tools:text="@sample/party.csv/Region" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,10 +1,14 @@
 package com.popstack.mvoter2015.data.cache
 
 import com.popstack.mvoter2015.data.cache.columnadapter.CandidateIdColumnAdapter
+import com.popstack.mvoter2015.data.cache.columnadapter.FaqCategoryIdColumnAdapter
+import com.popstack.mvoter2015.data.cache.columnadapter.FaqIdColumnAdapter
 import com.popstack.mvoter2015.data.cache.columnadapter.LocalDateColumnAdapter
 import com.popstack.mvoter2015.data.cache.columnadapter.PartyIdColumnAdapter
 import com.popstack.mvoter2015.data.cache.columnadapter.StringListColumnAdapter
 import com.popstack.mvoter2015.data.cache.entity.CandidateTable
+import com.popstack.mvoter2015.data.cache.entity.FaqCategoryTable
+import com.popstack.mvoter2015.data.cache.entity.FaqTable
 import com.popstack.mvoter2015.data.cache.entity.PartyTable
 import com.squareup.sqldelight.EnumColumnAdapter
 
@@ -28,6 +32,18 @@ object TableAdapters {
       establishmentApprovalDateAdapter = LocalDateColumnAdapter,
       registrationApprovalDateAdapter = LocalDateColumnAdapter
     )
+  }
 
+  fun faqTableAdapter(): FaqTable.Adapter {
+    return FaqTable.Adapter(
+      idAdapter = FaqIdColumnAdapter,
+      categoryAdapter = FaqCategoryIdColumnAdapter
+    )
+  }
+
+  fun faqCategoryTableAdapter(): FaqCategoryTable.Adapter {
+    return FaqCategoryTable.Adapter(
+      idAdapter = FaqCategoryIdColumnAdapter
+    )
   }
 }

@@ -1,0 +1,24 @@
+import com.popstack.mvoter2015.domain.faq.model.FaqCategoryId;
+import com.popstack.mvoter2015.domain.faq.model.FaqId;
+
+CREATE TABLE FaqTable(
+    id TEXT AS FaqId PRIMARY KEY NOT NULL,
+    question TEXT NOT NULL,
+    answer TEXT NOT NULL,
+    lawSource TEXT,
+    articleSource TEXT,
+    category TEXT AS FaqCategoryId NOT NULL,
+    shareableUrl TEXT NOT NULL,
+    FOREIGN KEY(category) REFERENCES FaqCategoryTable(id) ON DELETE CASCADE
+);
+
+insertOrReplace:
+INSERT OR REPLACE INTO FaqTable VALUES (
+    :id, :question, :answer, :lawSource, :articleSource, :category, :shareableUrl
+);
+
+selectAll:
+SELECT * FROM FaqTable LIMIT :limit OFFSET :offset;
+
+selectById:
+SELECT * FROM FaqTable WHERE id = :id;
