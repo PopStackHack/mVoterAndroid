@@ -40,7 +40,7 @@ class PartyListController : MvvmController<ControllerPartyListBinding>(),
 
     lifecycleScope.launch {
       viewModel.partyPagingFlow.collectLatest {
-        partyListAdapter.submitData(it)
+        partyListAdapter.submitData(lifecycle, it)
       }
     }
   }

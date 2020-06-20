@@ -50,7 +50,7 @@ class InfoController : MvvmController<ControllerInfoBinding>() {
 
     lifecycleScope.launch {
       viewModel.faqPagingFlow.collectLatest {
-        infoPagingAdapter.submitData(it)
+        infoPagingAdapter.submitData(lifecycle, it)
       }
     }
 

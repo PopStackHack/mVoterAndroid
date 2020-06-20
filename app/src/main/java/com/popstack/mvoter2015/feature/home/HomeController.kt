@@ -1,7 +1,9 @@
 package com.popstack.mvoter2015.feature.home
 
+import android.os.Bundle
 import android.view.LayoutInflater
-import com.bluelinelabs.conductor.RouterTransaction
+import android.view.View
+import android.view.ViewGroup
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerHomeBinding
@@ -10,7 +12,7 @@ import com.popstack.mvoter2015.feature.howtovote.HowToVoteController
 import com.popstack.mvoter2015.feature.info.InfoController
 import com.popstack.mvoter2015.feature.party.listing.PartyListController
 import com.popstack.mvoter2015.feature.voteresult.VoteResultController
-import com.popstack.mvoter2015.helper.conductor.BottomNavigationRouterMediator
+import com.popstack.mvoter2015.helper.conductor.BNVRouterPagerAdapter
 
 class HomeController : MvvmController<ControllerHomeBinding>() {
 
@@ -19,24 +21,41 @@ class HomeController : MvvmController<ControllerHomeBinding>() {
   override val bindingInflater: (LayoutInflater) -> ControllerHomeBinding =
     ControllerHomeBinding::inflate
 
-  private val bottomNavigationRouterMediator by lazy {
-    BottomNavigationRouterMediator(
-      this,
-      binding.container,
-      binding.bottomNavigationView,
-      mapOf(
-        R.id.navigation_candidate to { RouterTransaction.with(CandidateListController()) },
-        R.id.navigation_party to { RouterTransaction.with(PartyListController()) },
-        R.id.navigation_how_to_vote to { RouterTransaction.with(HowToVoteController()) },
-        R.id.navigation_info to { RouterTransaction.with(InfoController()) },
-        R.id.navigation_vote_result to { RouterTransaction.with(VoteResultController()) }
-      )
-    )
+  override fun onCreateView(
+    inflater: LayoutInflater,
+    container: ViewGroup,
+    savedViewState: Bundle?
+  ): View {
+    val view = super.onCreateView(inflater, container, savedViewState)
+
+    if (savedViewState == null) {
+      binding.bottomNavigationView.selectedItemId = R.id.navigation_candidate
+    }
+    return view
   }
 
   override fun onBindView() {
-    bottomNavigationRouterMediator.attach()
-    binding.bottomNavigationView.selectedItemId = R.id.navigation_candidate
+    binding.homeViewPager.adapter =
+      BNVRouterPagerAdapter(
+        this,
+        binding.bottomNavigationView,
+        binding.homeViewPager,
+        mapOf(
+          R.id.navigation_candidate to { CandidateListController() },
+          R.id.navigation_party to { PartyListController() },
+          R.id.navigation_how_to_vote to { HowToVoteController() },
+          R.id.navigation_info to { InfoController() },
+          R.id.navigation_vote_result to { VoteResultController() }
+        )
+      )
+  }
+
+  override fun onDestroy() {
+    super.onDestroy()
+  }
+
+  override fun onDestroyView(view: View) {
+    super.onDestroyView(view)
   }
 
 }
