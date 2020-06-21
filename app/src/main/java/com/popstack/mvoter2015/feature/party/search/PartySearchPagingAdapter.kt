@@ -1,4 +1,4 @@
-package com.popstack.mvoter2015.feature.party.listing
+package com.popstack.mvoter2015.feature.party.search
 
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
@@ -7,30 +7,30 @@ import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.recyclerview.ViewBindingViewHolder
 import com.popstack.mvoter2015.databinding.ItemPartyBinding
 import com.popstack.mvoter2015.domain.party.model.PartyId
-import com.popstack.mvoter2015.feature.party.listing.PartyListViewItemRecyclerViewAdapter.PartyListViewItemViewHolder
 import com.popstack.mvoter2015.helper.diff.diffCallBackWith
 import com.popstack.mvoter2015.helper.extensions.inflater
 import com.popstack.mvoter2015.helper.extensions.withSafeAdapterPosition
 
-internal class PartyListViewItemRecyclerViewAdapter constructor(
+internal class PartySearchPagingAdapter constructor(
   private val itemClick: (PartyId) -> Unit
-) : PagingDataAdapter<PartyListViewItem, PartyListViewItemViewHolder>(
-  diffCallBackWith(
-    areItemTheSame = { item1, item2 ->
-      item1.partyId == item2.partyId
-    },
-    areContentsTheSame = { item1, item2 ->
-      item1 == item2
-    }
-  )
-) {
+) :
+  PagingDataAdapter<PartySearchResultViewItem, PartySearchPagingAdapter.PartySearchResultViewItemViewHolder>(
+    diffCallBackWith(
+      areItemTheSame = { item1, item2 ->
+        item1.partyId == item2.partyId
+      },
+      areContentsTheSame = { item1, item2 ->
+        item1 == item2
+      }
+    )
+  ) {
 
   override fun onCreateViewHolder(
     parent: ViewGroup,
     viewType: Int
-  ): PartyListViewItemViewHolder {
+  ): PartySearchResultViewItemViewHolder {
     val binding = ItemPartyBinding.inflate(parent.inflater(), parent, false)
-    val viewHolder = PartyListViewItemViewHolder(binding)
+    val viewHolder = PartySearchResultViewItemViewHolder(binding)
     viewHolder.apply {
       itemView.setOnClickListener {
         withSafeAdapterPosition { position ->
@@ -44,7 +44,7 @@ internal class PartyListViewItemRecyclerViewAdapter constructor(
   }
 
   override fun onBindViewHolder(
-    holder: PartyListViewItemViewHolder,
+    holder: PartySearchResultViewItemViewHolder,
     position: Int
   ) {
     getItem(position)?.let { itemAtIndex ->
@@ -60,7 +60,7 @@ internal class PartyListViewItemRecyclerViewAdapter constructor(
     }
   }
 
-  class PartyListViewItemViewHolder(
+  class PartySearchResultViewItemViewHolder(
     binding: ItemPartyBinding
   ) : ViewBindingViewHolder<ItemPartyBinding>(binding)
 }

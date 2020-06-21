@@ -1,6 +1,7 @@
 package com.popstack.mvoter2015.feature.party.listing
 
 import android.view.LayoutInflater
+import android.view.MenuItem
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
@@ -11,28 +12,29 @@ import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerPartyListBinding
 import com.popstack.mvoter2015.domain.party.model.PartyId
+import com.popstack.mvoter2015.feature.HasRouter
 import com.popstack.mvoter2015.feature.party.detail.PartyDetailController
-import com.popstack.mvoter2015.feature.party.listing.PartyListViewItemRecyclerViewAdapter.PartyListItemClickListener
+import com.popstack.mvoter2015.feature.party.search.PartySearchController
 import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
+import com.popstack.mvoter2015.helper.conductor.requireActivity
+import com.popstack.mvoter2015.helper.conductor.requireActivityAsAppCompatActivity
 import com.popstack.mvoter2015.paging.CommonLoadStateAdapter
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-class PartyListController : MvvmController<ControllerPartyListBinding>(),
-  PartyListItemClickListener {
+class PartyListController : MvvmController<ControllerPartyListBinding>() {
 
   private val viewModel: PartyListViewModel by viewModels()
 
   override val bindingInflater: (LayoutInflater) -> ControllerPartyListBinding =
     ControllerPartyListBinding::inflate
 
-  private val partyPagingAdapter by lazy {
-    PartyListViewItemRecyclerViewAdapter(this)
-  }
+  private val partyPagingAdapter = PartyListViewItemRecyclerViewAdapter(this::onItemClick)
 
   override fun onBindView() {
     super.onBindView()
-
+    requireActivityAsAppCompatActivity().setSupportActionBar(binding.toolBar)
+    setHasOptionsMenu(R.menu.menu_party, this::handleMenuItemClick)
     binding.rvParty.apply {
       adapter = partyPagingAdapter.withLoadStateHeaderAndFooter(
         header = CommonLoadStateAdapter(partyPagingAdapter::retry),
@@ -67,7 +69,20 @@ class PartyListController : MvvmController<ControllerPartyListBinding>(),
     }
   }
 
-  override fun onItemClick(partyId: PartyId) {
+  private fun handleMenuItemClick(menuItem: MenuItem): Boolean {
+    return when (menuItem.itemId) {
+      R.id.action_search -> {
+        if (requireActivity() is HasRouter) {
+          (requireActivity() as HasRouter).router()
+            .pushController(RouterTransaction.with(PartySearchController()))
+        }
+        true
+      }
+      else -> false
+    }
+  }
+
+  private fun onItemClick(partyId: PartyId) {
     val partyDetailController = PartyDetailController.newInstance(partyId)
     router.pushController(RouterTransaction.with(partyDetailController))
   }
