@@ -7,7 +7,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.popstack.mvoter2015.domain.faq.model.FaqCategoryId
+import com.popstack.mvoter2015.domain.faq.model.FaqCategory
 import com.popstack.mvoter2015.domain.faq.model.FaqId
 import com.popstack.mvoter2015.domain.faq.usecase.GetFaq
 import com.popstack.mvoter2015.helper.livedata.SingleLiveEvent
@@ -23,7 +23,7 @@ class InfoViewModel @ViewModelInject constructor(
     private const val PAGE_SIZE = 20
   }
 
-  private var selectedFaqCategoryId: FaqCategoryId? = null
+  private var selectedFaqCategoryId: FaqCategory = FaqCategory.GENERAL
 
   val faqPagingFlow = Pager(
     PagingConfig(
@@ -40,7 +40,7 @@ class InfoViewModel @ViewModelInject constructor(
       )
     }
 
-    if (selectedFaqCategoryId == FaqCategoryId("1")) {
+    if (selectedFaqCategoryId == FaqCategory.GENERAL) {
       viewItemPagingData.insertHeaderItem(InfoViewItem.BallotExample)
         .insertHeaderItem(InfoViewItem.PollingStationProhibition)
     } else {
@@ -55,8 +55,9 @@ class InfoViewModel @ViewModelInject constructor(
   val singleCommandLiveData =
     SingleLiveEvent<SingleCommand>()
 
-  fun handleSelectFaqCategory(faqCategoryId: FaqCategoryId) {
-    faqPagingSource.setCategoryId(faqCategoryId)
+  fun handleSelectFaqCategory(faqCategory: FaqCategory) {
+    selectedFaqCategoryId = faqCategory
+    faqPagingSource.setCategory(faqCategory)
   }
 
   fun handleShareClick(faqId: FaqId) {

@@ -5,7 +5,6 @@ import com.popstack.mvoter2015.data.cache.entity.FaqTable
 import com.popstack.mvoter2015.data.common.faq.FaqCacheSource
 import com.popstack.mvoter2015.domain.faq.model.Faq
 import com.popstack.mvoter2015.domain.faq.model.FaqCategory
-import com.popstack.mvoter2015.domain.faq.model.FaqCategoryId
 import javax.inject.Inject
 
 class FaqCacheSourceImpl @Inject constructor(
@@ -15,10 +14,6 @@ class FaqCacheSourceImpl @Inject constructor(
   override fun putFaqList(faqList: List<Faq>) {
     db.transaction {
       faqList.forEach { faq ->
-        db.faqCategoryTableQueries.insertOrReplace(
-          id = faq.category.categoryId,
-          name = faq.category.name
-        )
 
         db.faqTableQueries.insertOrReplace(
           id = faq.faqId,
@@ -26,14 +21,14 @@ class FaqCacheSourceImpl @Inject constructor(
           answer = faq.answer,
           lawSource = faq.lawSource,
           articleSource = faq.articleSource,
-          category = faq.category.categoryId,
+          category = faq.category,
           shareableUrl = faq.shareableUrl
         )
       }
     }
   }
 
-  override fun getFaqList(page: Int, itemsPerPage: Int, categoryId: FaqCategoryId): List<Faq> {
+  override fun getFaqList(page: Int, itemsPerPage: Int, category: FaqCategory): List<Faq> {
     val limit = itemsPerPage
     val offset = (page - 1) * limit
     return db.faqTableQueries.selectAll(
@@ -47,16 +42,13 @@ class FaqCacheSourceImpl @Inject constructor(
 }
 
 fun FaqTable.mapToEntity(db: MVoterDb): Faq {
-  val faqCategory = db.faqCategoryTableQueries.selectAll { id, name ->
-    FaqCategory(id, name)
-  }.executeAsOne()
   return Faq(
     faqId = id,
     question = question,
     answer = answer,
     lawSource = lawSource,
     articleSource = articleSource,
-    category = faqCategory,
+    category = category,
     shareableUrl = shareableUrl
   )
 }

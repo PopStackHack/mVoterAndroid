@@ -8,9 +8,7 @@ import com.popstack.mvoter2015.databinding.ControllerPartyDetailBinding
 import com.popstack.mvoter2015.domain.party.model.PartyId
 import javax.inject.Inject
 
-class PartyDetailController(
-  private val bundle: Bundle
-) : MvvmController<ControllerPartyDetailBinding>(bundle) {
+class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDetailBinding>(bundle) {
 
   /***
    * Since we dont have factory yet

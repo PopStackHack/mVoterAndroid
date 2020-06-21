@@ -1,6 +1,8 @@
 package com.popstack.mvoter2015.data.network.di
 
+import com.popstack.mvoter2015.data.common.faq.FaqNetworkSource
 import com.popstack.mvoter2015.data.common.party.PartyNetworkSource
+import com.popstack.mvoter2015.data.network.source.FaqNetworkSourceImpl
 import com.popstack.mvoter2015.data.network.source.PartyNetworkSourceImpl
 import dagger.Binds
 import dagger.Module
@@ -13,4 +15,7 @@ abstract class NetworkModule {
 
   @Binds
   abstract fun partyNetworkSource(partyNetworkSource: PartyNetworkSourceImpl): PartyNetworkSource
+
+  @Binds
+  abstract fun faqNetworkSource(faqNetworkSource: FaqNetworkSourceImpl): FaqNetworkSource
 }

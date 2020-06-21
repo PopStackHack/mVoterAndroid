@@ -1,3 +1,4 @@
+include(":simplespinneradapter")
 include(":coroutinetestrule")
 include(":data:android")
 include(":data:network")

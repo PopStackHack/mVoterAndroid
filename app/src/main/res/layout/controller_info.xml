@@ -14,8 +14,7 @@
     <Spinner
       android:id="@+id/spinnerCategory"
       android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:popupBackground="@drawable/background_faq_category_spinner" />
+      android:layout_height="wrap_content" />
 
   </com.google.android.material.appbar.MaterialToolbar>
 
@@ -34,6 +33,46 @@
       tools:itemCount="10"
       tools:listitem="@layout/item_faq" />
 
+
+    <ProgressBar
+      android:id="@+id/progressBar"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:visibility="gone"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:visibility="visible" />
+
+    <TextView
+      android:id="@+id/tvErrorMessage"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="16dp"
+      android:layout_marginEnd="16dp"
+      android:textColor="@color/text_error"
+      android:visibility="gone"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:visibility="visible" />
+
+    <com.google.android.material.button.MaterialButton
+      android:id="@+id/btnRetry"
+      style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="8dp"
+      android:text="@string/retry"
+      android:textColor="@color/accent"
+      android:visibility="gone"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/tvErrorMessage"
+      app:strokeColor="@color/accent"
+      tools:visibility="visible" />
 
   </androidx.constraintlayout.widget.ConstraintLayout>
 

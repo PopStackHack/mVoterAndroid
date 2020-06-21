@@ -9,7 +9,7 @@ class GetFaqCategories @Inject constructor(dispatcherProvider: DispatcherProvide
   CoroutineUseCase<Unit, List<FaqCategory>>(dispatcherProvider) {
 
   override fun provide(input: Unit): List<FaqCategory> {
-    TODO("Not yet implemented")
+    return FaqCategory.values().toList()
   }
 
 }

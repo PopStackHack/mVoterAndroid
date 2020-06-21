@@ -1,4 +1,4 @@
-import com.popstack.mvoter2015.domain.faq.model.FaqCategoryId;
+import com.popstack.mvoter2015.domain.faq.model.FaqCategory;
 import com.popstack.mvoter2015.domain.faq.model.FaqId;
 
 CREATE TABLE FaqTable(
@@ -7,9 +7,8 @@ CREATE TABLE FaqTable(
     answer TEXT NOT NULL,
     lawSource TEXT,
     articleSource TEXT,
-    category TEXT AS FaqCategoryId NOT NULL,
-    shareableUrl TEXT NOT NULL,
-    FOREIGN KEY(category) REFERENCES FaqCategoryTable(id) ON DELETE CASCADE
+    category TEXT AS FaqCategory NOT NULL,
+    shareableUrl TEXT NOT NULL
 );
 
 insertOrReplace:
