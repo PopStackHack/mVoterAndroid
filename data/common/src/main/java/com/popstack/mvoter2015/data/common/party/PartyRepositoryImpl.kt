@@ -21,11 +21,11 @@ class PartyRepositoryImpl @Inject constructor(
         //Seems data is empty, can't recover, throw error
         throw exception
       }
-      return partyListFromCache.map(PartyEntity::mapToDomainModel)
+      return partyListFromCache
     }
 
     //We use database as single source of truth
-    return partyCacheSource.getPartyList(page, itemPerPage).map(PartyEntity::mapToDomainModel)
+    return partyCacheSource.getPartyList(page, itemPerPage)
   }
 
 }
