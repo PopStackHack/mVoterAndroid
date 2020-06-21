@@ -1,4 +1,4 @@
-package com.popstack.mvoter2015.feature.info
+package com.popstack.mvoter2015.feature.faq
 
 import android.text.TextUtils
 import android.view.View
@@ -18,10 +18,10 @@ class InfoRecyclerViewAdapter(
   private val ballotExampleClick: () -> Unit,
   private val share: (FaqId, @ParameterName("position") Int) -> Unit
 ) :
-  PagingDataAdapter<InfoViewItem, InfoRecyclerViewAdapter.InfoViewHolder>(
+  PagingDataAdapter<FaqViewItem, InfoRecyclerViewAdapter.InfoViewHolder>(
     diffCallBackWith(
       areItemTheSame = { item1, item2 ->
-        if (item1 is InfoViewItem.FaqViewItem && item2 is InfoViewItem.FaqViewItem) {
+        if (item1 is FaqViewItem.QuestionAndAnswer && item2 is FaqViewItem.QuestionAndAnswer) {
           return@diffCallBackWith item1.faqId == item2.faqId
         }
         item1 == item2
@@ -47,9 +47,9 @@ class InfoRecyclerViewAdapter(
   override fun getItemViewType(position: Int): Int {
     getItem(position)?.let { itemAtIndex ->
       return when (itemAtIndex) {
-        InfoViewItem.BallotExample -> VIEW_TYPE_BALLOT_EXAMPLE
-        InfoViewItem.PollingStationProhibition -> VIEW_TYPE_PROHIBITION
-        is InfoViewItem.FaqViewItem -> VIEW_TYPE_FAQ
+        FaqViewItem.BallotExample -> VIEW_TYPE_BALLOT_EXAMPLE
+        FaqViewItem.PollingStationProhibition -> VIEW_TYPE_PROHIBITION
+        is FaqViewItem.QuestionAndAnswer -> VIEW_TYPE_FAQ
       }
     }
     return super.getItemViewType(position)
@@ -75,7 +75,7 @@ class InfoRecyclerViewAdapter(
         return InfoViewHolder.FaqViewHolder(binding).also { holder ->
           holder.itemView.setOnClickListener {
             holder.withSafeAdapterPosition { position ->
-              val faqId = (getItem(position) as InfoViewItem.FaqViewItem).faqId
+              val faqId = (getItem(position) as FaqViewItem.QuestionAndAnswer).faqId
               if (expandedFaqSet.contains(faqId)) {
                 expandedFaqSet.remove(faqId)
               } else {
@@ -87,7 +87,7 @@ class InfoRecyclerViewAdapter(
 
           holder.binding.ivShare.setOnClickListener {
             holder.withSafeAdapterPosition { position ->
-              val itemAtIndex = getItem(position) as InfoViewItem.FaqViewItem
+              val itemAtIndex = getItem(position) as FaqViewItem.QuestionAndAnswer
               share(itemAtIndex.faqId, position)
             }
           }
@@ -102,7 +102,7 @@ class InfoRecyclerViewAdapter(
 
     if (holder is InfoViewHolder.FaqViewHolder) {
       getItem(position)?.let { itemAtIndex ->
-        val faqViewItem = itemAtIndex as InfoViewItem.FaqViewItem
+        val faqViewItem = itemAtIndex as FaqViewItem.QuestionAndAnswer
         holder.binding.apply {
           tvQuestion.text = faqViewItem.question
           tvAnswer.text = faqViewItem.answer

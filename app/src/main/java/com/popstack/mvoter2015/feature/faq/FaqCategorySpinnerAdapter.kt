@@ -1,4 +1,4 @@
-package com.popstack.mvoter2015.feature.info
+package com.popstack.mvoter2015.feature.faq
 
 import android.content.Context
 import com.aungkyawpaing.simplespinneradapter.SimpleSpinnerAdapter

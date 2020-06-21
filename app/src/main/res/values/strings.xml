@@ -7,9 +7,15 @@
   <string name="navigation_tips">သိမှတ်ဖွယ်</string>
   <string name="navigation_result">မဲရလဒ်</string>
 
+  <string name="error_generic">တစ်ခုခုချို့ယွင်းသွားပါသည်။ ခေတ္တစောင့်ပြီး ပြန်စမ်းပေးပါ။</string>
+  <string name="error_no_internet">အင်တာနက်ကွန်ယက်ရှာမတွေ့ပါ။​ အင်တာနက်ဖွင့်ပြီး ပြန်စမ်းပေးပါ</string>
+  <string name="error_socket_timeout">အင်တာနက်ချိတ်ဆက်မှု မအောင်မြင်ပါ။</string>
+  <string name="error_server_500">ဆာဗာ ချို့ယွင်းနေသည်၊ ခေတ္တစောင့်ပြီး ပြန်စမ်းပေးပါ။</string>
+  <string name="error_server_404">ဒေတာ ရှာမတွေ့ပါ။</string>
+  <string name="error_http">ဆာဗာ ချို့ယွင်းနေသည်၊ ခေတ္တစောင့်ပြီး ပြန်စမ်းပေးပါ။</string>
+
   <string name="menu_title_change_location">Change location</string>
   <string name="menu_title_search">Search</string>
-
 
   <string name="title_candidates">ကိုယ်စားလှယ်လောင်းများ</string>
 

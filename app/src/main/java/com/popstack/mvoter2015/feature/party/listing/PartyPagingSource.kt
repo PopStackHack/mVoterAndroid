@@ -3,6 +3,7 @@ package com.popstack.mvoter2015.feature.party.listing
 import androidx.paging.PagingSource
 import com.popstack.mvoter2015.domain.party.model.Party
 import com.popstack.mvoter2015.domain.party.usecase.GetPartyList
+import timber.log.Timber
 import javax.inject.Inject
 
 class PartyPagingSource @Inject constructor(
@@ -32,6 +33,7 @@ class PartyPagingSource @Inject constructor(
         nextKey = nextKey
       )
     } catch (e: Exception) {
+      Timber.e(e)
       // Handle errors in this block and return LoadResult.Error if it is an
       // expected error (such as a network failure).
       return LoadResult.Error(e)

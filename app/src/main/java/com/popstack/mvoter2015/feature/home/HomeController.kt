@@ -9,7 +9,7 @@ import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerHomeBinding
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateListController
 import com.popstack.mvoter2015.feature.howtovote.HowToVoteController
-import com.popstack.mvoter2015.feature.info.InfoController
+import com.popstack.mvoter2015.feature.faq.FaqController
 import com.popstack.mvoter2015.feature.party.listing.PartyListController
 import com.popstack.mvoter2015.feature.voteresult.VoteResultController
 import com.popstack.mvoter2015.helper.conductor.BNVRouterPagerAdapter
@@ -44,7 +44,7 @@ class HomeController : MvvmController<ControllerHomeBinding>() {
           R.id.navigation_candidate to { CandidateListController() },
           R.id.navigation_party to { PartyListController() },
           R.id.navigation_how_to_vote to { HowToVoteController() },
-          R.id.navigation_info to { InfoController() },
+          R.id.navigation_info to { FaqController() },
           R.id.navigation_vote_result to { VoteResultController() }
         )
       )

@@ -2,7 +2,6 @@ package com.popstack.mvoter2015.data.network.api
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
-import java.time.LocalDate
 
 @JsonClass(generateAdapter = true)
 data class PartyApiModel(
@@ -19,8 +18,8 @@ data class PartyApiModel(
   @Json(name = "headquarter_location") val headQuarterLocation: String?,
   @Json(name = "contact_number") val contact: String?,
   @Json(name = "policy") val policy: String?,
-  @Json(name = "registration_application_date") val registrationApplicationDate: LocalDate?,
-  @Json(name = "registration_approved_date") val registrationApprovalDate: LocalDate,
-  @Json(name = "establishment_approval_date") val establishmentApprovalDate: LocalDate?,
-  @Json(name = "establishment_date") val establishmentDate: LocalDate?
+  @Json(name = "registration_application_date") val registrationApplicationDate: String?,
+  @Json(name = "registration_approved_date") val registrationApprovalDate: String,
+  @Json(name = "establishment_approval_date") val establishmentApprovalDate: String?,
+  @Json(name = "establishment_date") val establishmentDate: String?
 )

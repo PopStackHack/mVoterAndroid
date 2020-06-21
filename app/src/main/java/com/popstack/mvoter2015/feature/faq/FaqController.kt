@@ -1,4 +1,4 @@
-package com.popstack.mvoter2015.feature.info
+package com.popstack.mvoter2015.feature.faq
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -18,9 +18,9 @@ import com.popstack.mvoter2015.paging.CommonLoadStateAdapter
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-class InfoController : MvvmController<ControllerInfoBinding>() {
+class FaqController : MvvmController<ControllerInfoBinding>() {
 
-  private val viewModel: InfoViewModel by viewModels()
+  private val viewModel: FaqViewModel by viewModels()
 
   override val bindingInflater: (LayoutInflater) -> ControllerInfoBinding =
     ControllerInfoBinding::inflate
@@ -61,6 +61,10 @@ class InfoController : MvvmController<ControllerInfoBinding>() {
 
     }
 
+    binding.btnRetry.setOnClickListener {
+      infoPagingAdapter.retry()
+    }
+
     binding.rvFaq.apply {
       adapter = infoPagingAdapter.withLoadStateHeaderAndFooter(
         header = CommonLoadStateAdapter(infoPagingAdapter::retry),
@@ -85,19 +89,14 @@ class InfoController : MvvmController<ControllerInfoBinding>() {
     }
 
     lifecycleScope.launch {
-
       viewModel.faqPagingFlow.collectLatest {
         infoPagingAdapter.submitData(lifecycle, it)
-      }
-
-      binding.btnRetry.setOnClickListener {
-        infoPagingAdapter.retry()
       }
     }
 
     viewModel.singleCommandLiveData.observe(lifecycleOwner, Observer { singleCommand ->
       when (singleCommand) {
-        is InfoViewModel.SingleCommand.ShareFaq -> {
+        is FaqViewModel.SingleCommand.ShareFaq -> {
           val shareIntent = Intent().apply {
             action = Intent.ACTION_SEND
             putExtra(Intent.EXTRA_TEXT, singleCommand.shareUrl)

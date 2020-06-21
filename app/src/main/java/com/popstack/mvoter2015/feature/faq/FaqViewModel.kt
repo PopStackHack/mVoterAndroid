@@ -1,4 +1,4 @@
-package com.popstack.mvoter2015.feature.info
+package com.popstack.mvoter2015.feature.faq
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
@@ -14,7 +14,7 @@ import com.popstack.mvoter2015.helper.livedata.SingleLiveEvent
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
-class InfoViewModel @ViewModelInject constructor(
+class FaqViewModel @ViewModelInject constructor(
   private val faqPagingSource: FaqPagingSource,
   private val getFaq: GetFaq
 ) : ViewModel() {
@@ -32,8 +32,8 @@ class InfoViewModel @ViewModelInject constructor(
   ) {
     faqPagingSource
   }.flow.map { pagingData ->
-    val viewItemPagingData: PagingData<InfoViewItem> = pagingData.map { faq ->
-      InfoViewItem.FaqViewItem(
+    val viewItemPagingData: PagingData<FaqViewItem> = pagingData.map { faq ->
+      FaqViewItem.QuestionAndAnswer(
         faqId = faq.faqId,
         question = faq.question,
         answer = faq.answer
@@ -41,8 +41,8 @@ class InfoViewModel @ViewModelInject constructor(
     }
 
     if (selectedFaqCategoryId == FaqCategory.GENERAL) {
-      viewItemPagingData.insertHeaderItem(InfoViewItem.BallotExample)
-        .insertHeaderItem(InfoViewItem.PollingStationProhibition)
+      viewItemPagingData.insertHeaderItem(FaqViewItem.BallotExample)
+        .insertHeaderItem(FaqViewItem.PollingStationProhibition)
     } else {
       viewItemPagingData
     }
