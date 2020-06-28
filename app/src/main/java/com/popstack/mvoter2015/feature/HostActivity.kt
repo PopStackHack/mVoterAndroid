@@ -6,7 +6,7 @@ import com.bluelinelabs.conductor.Conductor
 import com.bluelinelabs.conductor.Router
 import com.bluelinelabs.conductor.RouterTransaction
 import com.popstack.mvoter2015.databinding.ActivityHostBinding
-import com.popstack.mvoter2015.feature.home.HomeController
+import com.popstack.mvoter2015.feature.splash.SplashController
 import dagger.hilt.android.AndroidEntryPoint
 
 //A simple activity that host Conductor's FrameLayout
@@ -27,8 +27,7 @@ class HostActivity : AppCompatActivity(), HasRouter {
 
     if (!router.hasRootController()) {
       //Set your first routing here
-      val homeController = HomeController()
-      router.pushController(RouterTransaction.with(homeController))
+      router.pushController(RouterTransaction.with(SplashController()))
     }
   }
 

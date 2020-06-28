@@ -46,7 +46,7 @@ object AndroidXAnnotations {
 }
 
 object AndroidXAppCompat {
-  const val app_compat = "androidx.appcompat:appcompat:1.2.0-alpha03"
+  const val app_compat = "androidx.appcompat:appcompat:1.3.0-alpha01"
 }
 
 object AndroidXRecyclerView {
@@ -113,7 +113,7 @@ object AndroidArchWork {
 }
 
 object AndroidXCore {
-  private const val version = "1.2.0-beta02"
+  private const val version = "1.5.0-alpha01"
 
   const val core = "androidx.core:core:$version"
   const val core_ktx = "androidx.core:core-ktx:$version"

@@ -54,6 +54,8 @@ dependencies {
   implementation(Kotlin.stdblib_jdk)
   implementation(AndroidXCore.core_ktx)
 
+  implementation("com.google.android.gms:play-services-location:17.0.0")
+
   //Dagger
   daggerJvm()
   daggerHilt()

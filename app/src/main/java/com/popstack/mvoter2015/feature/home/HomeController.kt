@@ -8,8 +8,8 @@ import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerHomeBinding
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateListController
-import com.popstack.mvoter2015.feature.howtovote.HowToVoteController
 import com.popstack.mvoter2015.feature.faq.FaqController
+import com.popstack.mvoter2015.feature.howtovote.HowToVoteController
 import com.popstack.mvoter2015.feature.party.listing.PartyListController
 import com.popstack.mvoter2015.feature.voteresult.VoteResultController
 import com.popstack.mvoter2015.helper.conductor.BNVRouterPagerAdapter
@@ -48,14 +48,6 @@ class HomeController : MvvmController<ControllerHomeBinding>() {
           R.id.navigation_vote_result to { VoteResultController() }
         )
       )
-  }
-
-  override fun onDestroy() {
-    super.onDestroy()
-  }
-
-  override fun onDestroyView(view: View) {
-    super.onDestroyView(view)
   }
 
 }
