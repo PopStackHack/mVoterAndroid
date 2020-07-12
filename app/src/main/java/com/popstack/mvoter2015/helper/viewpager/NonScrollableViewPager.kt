@@ -569,7 +569,7 @@ class NonScrollableViewPager : ViewGroup {
     }
 
     companion object {
-      val CREATOR: Parcelable.Creator<SavedState> =
+      @JvmField val CREATOR: Parcelable.Creator<SavedState> =
         object : ClassLoaderCreator<SavedState> {
           override fun createFromParcel(
             `in`: Parcel,
