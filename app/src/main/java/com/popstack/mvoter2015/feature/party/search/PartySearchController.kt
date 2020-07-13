@@ -17,7 +17,6 @@ import com.popstack.mvoter2015.feature.party.detail.PartyDetailController
 import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
 import com.popstack.mvoter2015.helper.conductor.requireActivityAsAppCompatActivity
 import com.popstack.mvoter2015.helper.extensions.showKeyboard
-import com.popstack.mvoter2015.helper.livedata.nonNull
 import com.popstack.mvoter2015.paging.CommonLoadStateAdapter
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
@@ -77,7 +76,7 @@ class PartySearchController : MvvmController<ControllerPartySearchBinding>() {
       }
     }
 
-    viewModel.queryEmptyLiveData.nonNull().observe(this, Observer(this::observeEmptyQuery))
+    viewModel.queryEmptyLiveData.observe(this, Observer(this::observeEmptyQuery))
     viewModel.pagingAdapterRefreshSingleLiveEvent.observe(
       this,
       Observer { searchPagingAdapter.refresh() })

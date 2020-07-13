@@ -22,7 +22,7 @@ fun DependencyHandler.daggerHilt() {
   kapt(DaggerHilt.compiler)
   kapt(DaggerHiltAndroid.android_compiler)
 
-  androidTestImplementation(DaggerHiltAndroid.android_testing)
+//  androidTestImplementation(DaggerHiltAndroid.android_testing)
 //  kaptAndroidTest(DaggerHiltAndroid.android_testing)
 }
 

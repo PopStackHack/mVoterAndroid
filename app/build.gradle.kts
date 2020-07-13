@@ -85,7 +85,7 @@ android {
 }
 
 dependencies {
-  coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.0.5")
+  coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.0.9")
 
   implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
   implementation(project(":domain"))
@@ -98,14 +98,15 @@ dependencies {
   //AndroidX
   implementation(AndroidXAppCompat.app_compat)
   implementation(AndroidXCore.core_ktx)
-  implementation(AndroidXActivity.activity_ktx)
-  androidxFragment()
   androidXArch()
+  androidxActivity()
+  androidxFragment()
   implementation(AndroidXViewPager.view_pager_2)
   implementation(AndroidXViewPager.view_pager)
   implementation(AndroidXRecyclerView.recycler_view)
   implementation(AndroidXPaging.common)
   implementation(AndroidXPaging.runtime)
+  implementation(AndroidXPreference.preference_ktx)
 
   implementation(Conductor.core)
   implementation(Conductor.viewpager)
@@ -129,12 +130,10 @@ dependencies {
   //Coil
   implementation(Coil.coil)
 
-  //Caigraphy
-  implementation(Caligraphy.viewpump)
-  implementation(Caligraphy.caligraphy)
+  //GMS Location
 
   //Test
-  testImplementation("junit:junit:4.12")
+  testImplementation("junit:junit:4.13")
   testImplementation(project(":coroutinetestrule"))
   mockito()
   mockitoAndroid()
