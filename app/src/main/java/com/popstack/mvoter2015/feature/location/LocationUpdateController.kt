@@ -1,6 +1,7 @@
 package com.popstack.mvoter2015.feature.location
 
 import android.Manifest
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
@@ -38,8 +39,8 @@ class LocationUpdateController : MvvmController<ControllerLocationBinding>() {
     private const val ANIMATION_DURATION_IN_MILLISECONDS = 1000L
   }
 
-  override fun onBindView() {
-    super.onBindView()
+  override fun onBindView(savedViewState: Bundle?) {
+    super.onBindView(savedViewState)
 
     setSupportActionBar(binding.toolBar)
 

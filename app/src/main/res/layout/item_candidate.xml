@@ -73,7 +73,7 @@
       app:layout_constraintEnd_toEndOf="@+id/ivCandidate"
       app:layout_constraintStart_toStartOf="@+id/ivCandidate"
       app:cardBackgroundColor="@color/accent"
-      android:contentDescription="@string/winner"
+      android:contentDescription="@string/cd_winner"
       app:cardCornerRadius="12dp"
       >
 

@@ -1,6 +1,7 @@
 package com.popstack.mvoter2015.feature.faq
 
 import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.AdapterView
@@ -12,7 +13,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerInfoBinding
+import com.popstack.mvoter2015.feature.HasRouter
 import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
+import com.popstack.mvoter2015.helper.conductor.requireActivity
 import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.paging.CommonLoadStateAdapter
 import kotlinx.coroutines.flow.collectLatest
@@ -37,11 +40,13 @@ class FaqController : MvvmController<ControllerInfoBinding>() {
   private val faqCategorySpinnerAdapter = FaqCategorySpinnerAdapter()
 
   private fun navigateToBallotExample() {
-    TODO("Not yet implemented")
+    if (requireActivity() is HasRouter) {
+      (requireActivity() as HasRouter).router()
+    }
   }
 
-  override fun onBindView() {
-    super.onBindView()
+  override fun onBindView(savedViewState: Bundle?) {
+    super.onBindView(savedViewState)
 
     binding.spinnerCategory.adapter = faqCategorySpinnerAdapter
     binding.spinnerCategory.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {

@@ -1,5 +1,6 @@
 package com.popstack.mvoter2015.feature.party.search
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
@@ -31,8 +32,8 @@ class PartySearchController : MvvmController<ControllerPartySearchBinding>() {
 
   private val searchPagingAdapter = PartySearchPagingAdapter(this::onItemClick)
 
-  override fun onBindView() {
-    super.onBindView()
+  override fun onBindView(savedViewState: Bundle?) {
+    super.onBindView(savedViewState)
     requireActivityAsAppCompatActivity().setSupportActionBar(binding.toolBar)
     requireActivityAsAppCompatActivity().supportActionBar?.setDisplayHomeAsUpEnabled(true)
 

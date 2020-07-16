@@ -1,6 +1,7 @@
 package com.popstack.mvoter2015.data.common.faq
 
 import com.popstack.mvoter2015.domain.faq.FaqRepository
+import com.popstack.mvoter2015.domain.faq.model.BallotExample
 import com.popstack.mvoter2015.domain.faq.model.Faq
 import com.popstack.mvoter2015.domain.faq.model.FaqCategory
 import javax.inject.Inject
@@ -26,6 +27,23 @@ class FaqRepositoryImpl @Inject constructor(
 
     //We use database as single source of truth
     return faqCacheSource.getFaqList(page, itemPerPage, category)
+  }
+
+  override fun getBallotExample(): List<BallotExample> {
+    try {
+      val ballotListFromNetwork = faqNetworkSource.getBallotExampleList()
+      faqCacheSource.putBallotExampleList(ballotListFromNetwork)
+    } catch (exception: Exception) {
+      val ballotListFromCache = faqCacheSource.getBallotExampleList()
+
+      if (ballotListFromCache.isEmpty()) {
+        throw exception
+      }
+
+      return ballotListFromCache
+    }
+
+    return faqCacheSource.getBallotExampleList()
   }
 
 }

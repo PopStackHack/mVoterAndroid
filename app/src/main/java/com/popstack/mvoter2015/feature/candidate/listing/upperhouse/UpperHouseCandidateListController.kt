@@ -37,8 +37,8 @@ class UpperHouseCandidateListController :
     return super.onCreateView(inflater, container, savedViewState)
   }
 
-  override fun onBindView() {
-    super.onBindView()
+  override fun onBindView(savedViewState: Bundle?) {
+    super.onBindView(savedViewState)
 
     binding.rvUpperHouseCandidate.apply {
       adapter = candidateListAdapter

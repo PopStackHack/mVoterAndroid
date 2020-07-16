@@ -1,5 +1,6 @@
 package com.popstack.mvoter2015.feature.candidate.listing
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import androidx.lifecycle.Observer
@@ -26,8 +27,8 @@ internal class CandidateListController :
   override val bindingInflater: (LayoutInflater) -> ControllerCandidateListBinding =
     ControllerCandidateListBinding::inflate
 
-  override fun onBindView() {
-    super.onBindView()
+  override fun onBindView(savedViewState: Bundle?) {
+    super.onBindView(savedViewState)
 
     setSupportActionBar(binding.toolBar)
     supportActionBar()?.title = requireContext().getString(R.string.title_candidates)

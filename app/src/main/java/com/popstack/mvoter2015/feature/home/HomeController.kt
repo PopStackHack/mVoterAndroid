@@ -34,7 +34,7 @@ class HomeController : MvvmController<ControllerHomeBinding>() {
     return view
   }
 
-  override fun onBindView() {
+  override fun onBindView(savedViewState: Bundle?) {
     binding.homeViewPager.adapter =
       BNVRouterPagerAdapter(
         this,

@@ -1,5 +1,6 @@
 package com.popstack.mvoter2015.feature.party.listing
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
 import androidx.core.view.isVisible
@@ -31,8 +32,8 @@ class PartyListController : MvvmController<ControllerPartyListBinding>() {
 
   private val partyPagingAdapter = PartyListViewItemRecyclerViewAdapter(this::onItemClick)
 
-  override fun onBindView() {
-    super.onBindView()
+  override fun onBindView(savedViewState: Bundle?) {
+    super.onBindView(savedViewState)
     requireActivityAsAppCompatActivity().setSupportActionBar(binding.toolBar)
     setHasOptionsMenu(R.menu.menu_party, this::handleMenuItemClick)
     binding.rvParty.apply {

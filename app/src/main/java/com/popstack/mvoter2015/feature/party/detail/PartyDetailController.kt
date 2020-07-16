@@ -42,7 +42,7 @@ class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDeta
   override val bindingInflater: (LayoutInflater) -> ControllerPartyDetailBinding =
     ControllerPartyDetailBinding::inflate
 
-  override fun onBindView() {
-    super.onBindView()
+  override fun onBindView(savedViewState: Bundle?) {
+    super.onBindView(savedViewState)
   }
 }

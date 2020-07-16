@@ -1,5 +1,6 @@
 package com.popstack.mvoter2015.feature.news
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.content.ContextCompat
@@ -32,8 +33,8 @@ class NewsController : MvvmController<ControllerNewsBinding>() {
     NewsRecyclerViewAdapter(this::onNewsItemClick)
   }
 
-  override fun onBindView() {
-    super.onBindView()
+  override fun onBindView(savedViewState: Bundle?) {
+    super.onBindView(savedViewState)
     setSupportActionBar(binding.toolBar)
     supportActionBar()?.title = requireContext().getString(R.string.navigation_news)
 

@@ -7,8 +7,7 @@ import timber.log.Timber
 import java.util.concurrent.atomic.AtomicBoolean
 
 /**
- * A lifecycle-aware observable that sends Error state only once but revert back to normal LiveData
- * for Loading and Success. This is to prevent Error from being shown again to user on config changes
+ * A lifecycle-aware observable that wraps [AsyncViewState]
  */
 class AsyncViewStateLiveData<T> : LiveData<AsyncViewState<T>>() {
   private val pendingError =
@@ -20,29 +19,7 @@ class AsyncViewStateLiveData<T> : LiveData<AsyncViewState<T>>() {
         "Multiple observers registered but only one will be notified of changes."
       )
     }
-    super.observe(owner, Observer<AsyncViewState<T>> { data ->
-      if (data is AsyncViewState.Error) {
-        if (pendingError.compareAndSet(true, false)) {
-          observer.onChanged(data)
-        }
-      } else {
-        observer.onChanged(data)
-      }
-    })
-  }
-
-  override fun setValue(value: AsyncViewState<T>?) {
-    if (value is AsyncViewState.Error) {
-      pendingError.set(true)
-    }
-    super.setValue(value)
-  }
-
-  override fun postValue(value: AsyncViewState<T>?) {
-    if (value is AsyncViewState.Error) {
-      pendingError.set(true)
-    }
-    super.postValue(value)
+    super.observe(owner, observer)
   }
 
   fun postLoading() {

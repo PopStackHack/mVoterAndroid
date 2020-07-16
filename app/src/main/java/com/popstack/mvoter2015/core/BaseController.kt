@@ -29,12 +29,12 @@ abstract class BaseController<VB : ViewBinding> constructor(
     savedViewState: Bundle?
   ): View {
     _binding = bindingInflater(inflater)
-    onBindView()
+    onBindView(savedViewState)
     return binding.root
   }
 
   //Function to safely call after on create and before onViewCreated
-  protected open fun onBindView() {
+  protected open fun onBindView(savedViewState: Bundle?) {
     //Do Nothing
   }
 
