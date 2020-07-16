@@ -27,9 +27,9 @@
       app:contentDescription="@string/tips" />
 
   <item
-      android:id="@+id/navigation_vote_result"
-      android:icon="@drawable/ic_menu_vote_result"
-      android:title="@string/navigation_result"
-      app:contentDescription="@string/voting_result" />
+      android:id="@+id/navigation_news"
+      android:icon="@drawable/ic_newspaper"
+      android:title="@string/navigation_news"
+      app:contentDescription="@string/news" />
 
 </menu>

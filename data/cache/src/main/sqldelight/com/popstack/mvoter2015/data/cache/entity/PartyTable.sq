@@ -17,9 +17,9 @@ CREATE TABLE PartyTable(
   memberCount INTEGER AS Integer,
   headquarterLocation TEXT,
   policy TEXT,
-  registrationApplicationDate TEXT AS LocalDate,
-  registrationApprovalDate TEXT AS LocalDate,
-  establishmentApprovalDate TEXT AS LocalDate
+  registrationApplicationDate INTEGER AS LocalDate,
+  registrationApprovalDate INTEGER AS LocalDate,
+  establishmentApprovalDate INTEGER AS LocalDate
 );
 
 insertOrReplace:

@@ -9,7 +9,8 @@ object DbProvider {
       driver = driver,
       CandidateTableAdapter = TableAdapters.candidateTableAdapter(),
       PartyTableAdapter = TableAdapters.partyTableAdapter(),
-      FaqTableAdapter = TableAdapters.faqTableAdapter()
+      FaqTableAdapter = TableAdapters.faqTableAdapter(),
+      NewsTableAdapter = TableAdapters.newsTableAdapter()
     )
   }
 }

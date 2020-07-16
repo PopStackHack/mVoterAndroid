@@ -6,6 +6,7 @@
   <string name="navigation_how_to_vote">မဲပေးနည်း</string>
   <string name="navigation_tips">သိမှတ်ဖွယ်</string>
   <string name="navigation_result">မဲရလဒ်</string>
+  <string name="navigation_news">သတင်း</string>
 
   <string name="error_generic">တစ်ခုခုချို့ယွင်းသွားပါသည်။ ခေတ္တစောင့်ပြီး ပြန်စမ်းပေးပါ။</string>
   <string name="error_no_internet">အင်တာနက်ကွန်ယက်ရှာမတွေ့ပါ။​ အင်တာနက်ဖွင့်ပြီး ပြန်စမ်းပေးပါ</string>

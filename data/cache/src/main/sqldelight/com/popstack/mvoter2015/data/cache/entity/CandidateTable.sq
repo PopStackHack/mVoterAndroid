@@ -14,7 +14,7 @@ CREATE TABLE CandidateTable(
   education TEXT NOT NULL,
   legislature TEXT NOT NULL,
   relgion TEXT NOT NULL,
-  birthDate TEXT AS LocalDate NOT NULL,
+  birthDate INTEGER AS LocalDate NOT NULL,
   wardVillage TEXT NOT NULL,
   ethnicity TEXT NOT NULL,
   electionYear TEXT NOT NULL,
