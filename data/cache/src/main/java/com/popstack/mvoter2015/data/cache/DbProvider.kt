@@ -10,7 +10,8 @@ object DbProvider {
       CandidateTableAdapter = TableAdapters.candidateTableAdapter(),
       PartyTableAdapter = TableAdapters.partyTableAdapter(),
       FaqTableAdapter = TableAdapters.faqTableAdapter(),
-      NewsTableAdapter = TableAdapters.newsTableAdapter()
+      NewsTableAdapter = TableAdapters.newsTableAdapter(),
+      BallotExampleTableAdapter = TableAdapters.ballotExampleTableAdapter()
     )
   }
 }
