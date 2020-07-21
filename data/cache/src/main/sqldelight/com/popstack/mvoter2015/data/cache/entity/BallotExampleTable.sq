@@ -1,0 +1,20 @@
+import com.popstack.mvoter2015.domain.faq.model.BallotExampleId;
+import java.lang.Boolean;
+
+CREATE TABLE BallotExampleTable(
+    id TEXT AS BallotExampleId PRIMARY KEY NOT NULL,
+    image TEXT NOT NULL,
+    isValid INTEGER AS Boolean NOT NULL,
+    reason TEXT NOT NULL
+);
+
+insertOrReplace:
+INSERT OR REPLACE INTO BallotExampleTable VALUES (
+    :id, :image, :isValid, :reason
+);
+
+selectAll:
+SELECT * FROM BallotExampleTable;
+
+selectById:
+SELECT * FROM BallotExampleTable WHERE id = :id;
