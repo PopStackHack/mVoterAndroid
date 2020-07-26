@@ -53,7 +53,6 @@ class FaqCacheSourceImpl @Inject constructor(
     }
   }
 
-
   override fun getBallotExampleList(): List<BallotExample> {
     return db.ballotExampleTableQueries.selectAll().executeAsList().map { table ->
       BallotExample(

@@ -44,5 +44,6 @@ class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDeta
 
   override fun onBindView(savedViewState: Bundle?) {
     super.onBindView(savedViewState)
+
   }
 }

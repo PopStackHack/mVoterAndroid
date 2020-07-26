@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content">
+
+  <androidx.constraintlayout.widget.Guideline
+    android:id="@+id/guideline25PercentVertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:layout_constraintGuide_percent="0.25" />
+
+  <TextView
+    android:id="@+id/tvDate"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:gravity="end"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toStartOf="@id/ivDot"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:text="Feb 4\n2019" />
+
+  <View
+    android:id="@+id/ivDot"
+    android:layout_width="16dp"
+    android:layout_height="16dp"
+    android:background="@drawable/timeline_dot"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="@id/guideline25PercentVertical"
+    app:layout_constraintStart_toStartOf="@id/guideline25PercentVertical"
+    app:layout_constraintTop_toTopOf="parent" />
+
+  <View
+    android:id="@+id/lineBottom"
+    android:layout_width="1dp"
+    android:layout_height="0dp"
+    android:background="@color/accent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="@id/guideline25PercentVertical"
+    app:layout_constraintStart_toStartOf="@id/guideline25PercentVertical"
+    app:layout_constraintTop_toBottomOf="@id/ivDot" />
+
+  <View
+    android:id="@+id/lineTop"
+    android:layout_width="1dp"
+    android:layout_height="0dp"
+    android:background="@color/accent"
+    app:layout_constraintBottom_toTopOf="@id/ivDot"
+    app:layout_constraintEnd_toEndOf="@id/guideline25PercentVertical"
+    app:layout_constraintStart_toStartOf="@id/guideline25PercentVertical"
+    app:layout_constraintTop_toTopOf="parent" />
+
+  <TextView
+    android:id="@+id/tvEvent"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toEndOf="@id/ivDot"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:text="စတင် တည်ထောင်သည်" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

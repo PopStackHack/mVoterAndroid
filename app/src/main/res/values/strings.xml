@@ -27,4 +27,10 @@
   <string name="date_of_birth">မွေးသက္ကရာဇ်</string>
 
   <string name="retry">ထပ်စမ်းကြည့်မယ်</string>
+  <string name="policy">ပါတီ မူဝါဒ</string>
+  <string name="party_flag">ပါတီအလံ</string>
+  <string name="party_number">ပါတီအမှတ်စဉ်</string>
+  <string name="leader">ခေါင်းဆောင်များ</string>
+  <string name="chairman">အမှုဆောင်များ</string>
+  <string name="member_count">အဖွဲ့ဝင်ဦးရေ</string>
 </resources>

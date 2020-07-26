@@ -5,5 +5,273 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent">
 
+  <com.google.android.material.appbar.MaterialToolbar
+    android:id="@+id/toolBar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:backgroundTint="@color/transparent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+  <ImageView
+    android:id="@+id/ivPartySeal"
+    android:layout_width="128dp"
+    android:layout_height="128dp"
+    android:layout_marginTop="16dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+  <TextView
+    android:id="@+id/tvPartyName"
+    style="@style/HeadingText"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:gravity="center"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/ivPartySeal"
+    tools:text="@sample/party.csv/PartyName" />
+
+  <TextView
+    android:id="@+id/tvPartyNameEnglish"
+    style="@style/SubHeadingText"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginEnd="16dp"
+    android:gravity="center"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/tvPartyName"
+    tools:text="@sample/party.csv/PartyName" />
+
+  <TextView
+    android:id="@+id/tvPartyRegion"
+    style="@style/TitleText"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginEnd="16dp"
+    android:gravity="center"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/tvPartyNameEnglish"
+    tools:text="@sample/party.csv/PartyName" />
+
+  <com.google.android.material.button.MaterialButton
+    android:id="@+id/buttonPolicy"
+    android:layout_width="wrap_content"
+    android:layout_height="48dp"
+    android:text="@string/policy"
+    android:textColor="@color/text_on_accent"
+    app:backgroundTint="@color/accent"
+    app:cornerRadius="24dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/tvPartyRegion" />
+
+  <TextView
+    android:id="@+id/tvPartyFlag"
+    style="@style/BodyTitleText"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="16dp"
+    android:gravity="center"
+    android:text="@string/party_flag"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/buttonPolicy" />
+
+  <TextView
+    android:id="@+id/tvPartyNumberTitle"
+    style="@style/BodyTitleText"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="16dp"
+    android:gravity="center"
+    android:text="@string/party_number"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.0"
+    app:layout_constraintStart_toEndOf="@id/tvPartyFlag"
+    app:layout_constraintTop_toBottomOf="@id/buttonPolicy" />
+
+  <androidx.constraintlayout.widget.Barrier
+    android:id="@+id/barrierOne"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:barrierDirection="bottom"
+    app:constraint_referenced_ids="tvPartyNumberTitle,tvPartyFlag" />
+
+  <TextView
+    android:id="@+id/ivPartyFlag"
+    style="@style/BodyTitleText"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:gravity="center"
+    app:layout_constraintDimensionRatio="h,2:1"
+    app:layout_constraintEnd_toEndOf="@id/tvPartyFlag"
+    app:layout_constraintStart_toStartOf="@id/tvPartyFlag"
+    app:layout_constraintTop_toBottomOf="@id/barrierOne"
+    tools:src="@sample/party.csv/PartyFlag" />
+
+  <TextView
+    android:id="@+id/tvPartyNumber"
+    style="@style/BodyText"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="16dp"
+    android:gravity="center"
+    android:text="@string/party_number"
+    app:layout_constraintEnd_toEndOf="@id/tvPartyNumberTitle"
+    app:layout_constraintStart_toStartOf="@id/tvPartyNumberTitle"
+    app:layout_constraintTop_toBottomOf="@id/barrierOne"
+    tools:text="@sample/party.csv/ApprovedPartyNumber" />
+
+  <androidx.constraintlayout.widget.Barrier
+    android:id="@+id/barrierTwo"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:barrierDirection="bottom"
+    app:constraint_referenced_ids="ivPartyFlag,tvPartyNumber" />
+
+  <TextView
+    android:id="@+id/tvLeaderTitle"
+    style="@style/BodyTitleText"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="16dp"
+    android:text="@string/leader"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/barrierTwo" />
+
+  <TextView
+    android:id="@+id/tvLeader"
+    style="@style/BodyText"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/tvLeaderTitle"
+    tools:text="@sample/party.csv/Leadership" />
+
+  <TextView
+    android:id="@+id/tvChairmanTitle"
+    style="@style/BodyTitleText"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="16dp"
+    android:text="@string/chairman"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/tvLeader" />
+
+  <TextView
+    android:id="@+id/tvChairman"
+    style="@style/BodyText"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/tvChairmanTitle"
+    tools:text="@sample/party.csv/Chairman" />
+
+  <TextView
+    android:id="@+id/tvMemberCountTitle"
+    style="@style/BodyTitleText"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="16dp"
+    android:text="@string/member_count"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/tvChairman" />
+
+  <TextView
+    android:id="@+id/tvMemberCount"
+    style="@style/BodyText"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/tvMemberCountTitle"
+    tools:text="@sample/party.csv/MemberCount" />
+
+  <TextView
+    android:id="@+id/tvHeadquarterLocationTitle"
+    style="@style/BodyTitleText"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="16dp"
+    android:text="@string/member_count"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/tvMemberCount" />
+
+  <TextView
+    android:id="@+id/tvHeadquarterLocation"
+    style="@style/BodyText"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/tvHeadquarterLocationTitle"
+    tools:text="@sample/party.csv/Headquarters" />
+
+  <com.google.android.material.card.MaterialCardView
+    android:id="@+id/cardViewTimeline"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="16dp"
+    app:cardBackgroundColor="@color/light_blue"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/tvHeadquarterLocation">
+
+    <FrameLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="8dp">
+
+      <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvTimeline"
+        android:layout_width="match_parent"
+        tools:itemCount="3"
+        tools:listitem="@layout/item_party_timeline"
+        android:layout_height="wrap_content" />
+
+    </FrameLayout>
+
+  </com.google.android.material.card.MaterialCardView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,7 +16,7 @@ object BuildConfig {
 }
 
 object CommonLibs {
-  const val android_gradle_plugin = "com.android.tools.build:gradle:4.0.0"
+  const val android_gradle_plugin = "com.android.tools.build:gradle:4.0.1"
 
   const val dexter = "com.karumi:dexter:5.0.0"
 
