@@ -6,15 +6,14 @@ import java.time.LocalDate
 data class PartyDetailViewItem(
   val partyId: PartyId,
   val name: String,
-  val nameEnglish: String,
-  val nameAbbreviation: String,
+  val nameEnglish: String?,
+  val nameAbbreviation: String?,
   val region: String,
   val policy: String?,
   val flagImage: String,
   val sealImage: String,
   val partyNumber: String,
-  val leaders: String,
-  val chairmen: String,
+  val leadersAndChairmen: String,
   val memberCount: String,
   val headQuarterLocation: String,
   val contact: String,
@@ -23,5 +22,12 @@ data class PartyDetailViewItem(
 
 data class PartyTimelineViewItem(
   val date: LocalDate,
-  val event: String
+  val event: TimelineEvent
 )
+
+enum class TimelineEvent {
+  ESTABLISHMENT_APPLICATION,
+  ESTABLISHMENT_APPROVAL,
+  REGISTRATION_APPLICATION,
+  REGISTRATION_APPROVAL
+}

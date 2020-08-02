@@ -13,20 +13,22 @@ class PartyCacheSourceImpl @Inject constructor(
   override fun putParty(party: Party) {
     db.partyTableQueries.insertOrReplace(
       id = party.id,
-      englishName = party.englishName,
-      burmeseName = party.burmeseName,
+      number = party.number,
+      burmeseName = party.nameBurmese,
+      englishName = party.nameEnglish,
       abbreviation = party.abbreviation,
-      flagUrl = party.flagUrl,
-      sealUrl = party.sealUrl,
+      flagUrl = party.flagImage,
+      sealUrl = party.sealImage,
       region = party.region,
-      chairmans = party.chairmanList,
-      leaders = party.leaderList,
+      leadersAndChairmen = party.leadersAndChairmenList,
+      contacts = party.contacts,
       memberCount = party.memberCount,
       headquarterLocation = party.headquarterLocation,
       policy = party.policy,
+      establishmentApplicationDate = party.establishmentApplicationDate,
+      establishmentApprovalDate = party.establishmentApprovalDate,
       registrationApplicationDate = party.registrationApplicationDate,
-      registrationApprovalDate = party.registrationApprovalDate,
-      establishmentApprovalDate = party.establishmentApprovalDate
+      registrationApprovalDate = party.registrationApprovalDate
     )
   }
 
@@ -52,19 +54,21 @@ class PartyCacheSourceImpl @Inject constructor(
 fun PartyTable.mapToEntity(): Party {
   return Party(
     id = id,
-    englishName = englishName,
-    burmeseName = burmeseName,
+    number = number,
+    nameBurmese = burmeseName,
+    nameEnglish = englishName,
     abbreviation = abbreviation,
-    flagUrl = flagUrl,
-    sealUrl = sealUrl,
+    flagImage = flagImage,
+    sealImage = sealImage,
     region = region,
-    chairmanList = chairmans,
-    leaderList = leaders,
+    leadersAndChairmenList = leadersAndChairmen,
+    contacts = contacts,
     memberCount = memberCount,
     headquarterLocation = headquarterLocation,
     policy = policy,
+    establishmentApplicationDate = establishmentApplicationDate,
+    establishmentApprovalDate = establishmentApprovalDate,
     registrationApplicationDate = registrationApplicationDate,
-    registrationApprovalDate = registrationApprovalDate,
-    establishmentApprovalDate = establishmentApprovalDate
+    registrationApprovalDate = registrationApprovalDate
   )
 }

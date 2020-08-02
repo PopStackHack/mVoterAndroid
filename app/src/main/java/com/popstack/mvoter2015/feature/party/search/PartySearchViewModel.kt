@@ -33,8 +33,8 @@ class PartySearchViewModel @ViewModelInject constructor(
     pagingData.map { party ->
       PartySearchResultViewItem(
         partyId = party.id,
-        flagImageUrl = party.flagUrl,
-        name = party.burmeseName,
+        flagImageUrl = party.flagImage,
+        name = party.nameBurmese,
         region = party.region
       )
     }

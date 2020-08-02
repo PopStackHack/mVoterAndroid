@@ -6,27 +6,30 @@ import kotlin.collections.List;
 
 CREATE TABLE PartyTable(
   id TEXT AS PartyId PRIMARY KEY NOT NULL,
-  englishName TEXT NOT NULL,
+  number INTEGER AS Integer NOT NULL,
   burmeseName TEXT NOT NULL,
+  englishName TEXT,
   abbreviation TEXT,
-  flagUrl TEXT NOT NULL,
-  sealUrl TEXT NOT NULL,
+  flagImage TEXT NOT NULL,
+  sealImage TEXT NOT NULL,
   region TEXT NOT NULL,
-  chairmans TEXT AS List<String> NOT NULL,
-  leaders TEXT AS List<String> NOT NULL,
+  leadersAndChairmen TEXT AS List<String> NOT NULL,
   memberCount INTEGER AS Integer,
-  headquarterLocation TEXT,
-  policy TEXT,
+  contacts TEXT AS List<String> NOT NULL,
+  headquarterLocation TEXT NOT NULL,
+  policy TEXT NOT NULL,
+  establishmentApplicationDate INTEGER AS LocalDate,
+  establishmentApprovalDate INTEGER AS LocalDate,
   registrationApplicationDate INTEGER AS LocalDate,
-  registrationApprovalDate INTEGER AS LocalDate,
-  establishmentApprovalDate INTEGER AS LocalDate
+  registrationApprovalDate INTEGER AS LocalDate
 );
 
 insertOrReplace:
 INSERT OR REPLACE INTO PartyTable VALUES(
-:id, :englishName, :burmeseName, :abbreviation, :flagUrl, :sealUrl, :region, :chairmans,
-:leaders, :memberCount, :headquarterLocation, :policy, :registrationApplicationDate,
-:registrationApprovalDate, :establishmentApprovalDate
+:id, :number, :burmeseName, :englishName, :abbreviation, :flagUrl, :sealUrl, :region,
+:leadersAndChairmen,:memberCount, :contacts, :headquarterLocation, :policy,
+:establishmentApplicationDate, :establishmentApprovalDate,
+:registrationApplicationDate, :registrationApprovalDate
 );
 
 getWithPage:

@@ -91,8 +91,16 @@ class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDeta
           crossfade(true)
         }
         binding.tvPartyName.text = viewItem.name
-        binding.tvPartyNameEnglish.text = viewItem.nameEnglish
-        binding.tvPartyNameAbbreviation.text = viewItem.nameAbbreviation
+
+        binding.tvPartyNameEnglish.isVisible = viewItem.nameEnglish != null
+        viewItem.nameEnglish?.let {
+          binding.tvPartyNameEnglish.text = it
+        }
+
+        binding.tvPartyNameAbbreviation.isVisible = viewItem.nameAbbreviation != null
+        viewItem.nameAbbreviation?.let {
+          binding.tvPartyNameAbbreviation.text = it
+        }
 
         binding.buttonPolicy.isEnabled = viewItem.policy != null
         if (viewItem.policy != null) {
@@ -107,8 +115,7 @@ class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDeta
           crossfade(true)
         }
 
-        binding.tvLeader.text = viewItem.leaders
-        binding.tvChairman.text = viewItem.chairmen
+        binding.tvLeader.text = viewItem.leadersAndChairmen
         binding.tvMemberCount.text = viewItem.memberCount
         binding.tvHeadquarterLocation.text = viewItem.headQuarterLocation
         binding.tvContact.text = viewItem.contact

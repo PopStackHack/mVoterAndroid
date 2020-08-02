@@ -5,7 +5,6 @@ import com.popstack.mvoter2015.data.network.api.MvoterApi
 import com.popstack.mvoter2015.data.network.helper.executeOrThrow
 import com.popstack.mvoter2015.domain.party.model.Party
 import com.popstack.mvoter2015.domain.party.model.PartyId
-import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.Locale
 import javax.inject.Inject
@@ -20,24 +19,23 @@ class PartyNetworkSourceImpl @Inject constructor(
     return mvoterApi.partyList(page).executeOrThrow().map { apiModel ->
       with(apiModel) {
         Party(
-          id = PartyId(id),
-          englishName = englishName,
-          burmeseName = burmeseName,
+          id = PartyId(registeredNumber.toString()),
+          nameBurmese = burmeseName,
+          nameEnglish = englishName,
           abbreviation = abbreviation,
-          flagUrl = flagImageUrl,
-          sealUrl = sealImageUrl,
+          flagImage = flagImageUrl,
+          sealImage = sealImageUrl,
           region = region,
-          chairmanList = chairmans,
-          leaderList = leaders,
+          leadersAndChairmenList = leadersAndChairmen,
           memberCount = memberCount,
+          number = registeredNumber,
           headquarterLocation = headQuarterLocation,
           policy = policy,
-          registrationApplicationDate = LocalDate.parse(
-            registrationApplicationDate,
-            dateTimeFormatter
-          ),
-          registrationApprovalDate = LocalDate.parse(registrationApprovalDate, dateTimeFormatter),
-          establishmentApprovalDate = LocalDate.parse(establishmentApprovalDate, dateTimeFormatter)
+          contacts = contact,
+          establishmentApplicationDate = establishmentApplicationDate,
+          establishmentApprovalDate = establishmentApprovalDate,
+          registrationApplicationDate = registrationApplicationDate,
+          registrationApprovalDate = registrationApprovalDate
         )
       }
     }

@@ -34,7 +34,12 @@ class PartyTimelineRecyclerViewAdapter :
       lineBottom.isVisible = position != itemCount - 1 //Don't show on last index
       tvDate.text =
         itemAtIndex.date.format(DateTimeFormatter.ofPattern("dd MMM '\n'yyyy", Locale.ENGLISH))
-      tvEvent.text = itemAtIndex.event
+      tvEvent.text = when (itemAtIndex.event) {
+        TimelineEvent.ESTABLISHMENT_APPLICATION -> TODO()
+        TimelineEvent.ESTABLISHMENT_APPROVAL -> TODO()
+        TimelineEvent.REGISTRATION_APPLICATION -> TODO()
+        TimelineEvent.REGISTRATION_APPROVAL -> TODO()
+      }
     }
   }
 }
