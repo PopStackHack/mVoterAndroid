@@ -9,7 +9,7 @@ data class PartyDetailViewItem(
   val nameEnglish: String?,
   val nameAbbreviation: String?,
   val region: String,
-  val policy: String?,
+  val policy: String,
   val flagImage: String,
   val sealImage: String,
   val partyNumber: String,

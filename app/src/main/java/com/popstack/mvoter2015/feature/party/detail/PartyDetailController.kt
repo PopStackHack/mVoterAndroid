@@ -102,11 +102,8 @@ class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDeta
           binding.tvPartyNameAbbreviation.text = it
         }
 
-        binding.buttonPolicy.isEnabled = viewItem.policy != null
-        if (viewItem.policy != null) {
-          binding.buttonPolicy.setOnClickListener {
-            Intents.viewUrl(viewItem.policy)
-          }
+        binding.buttonPolicy.setOnClickListener {
+          Intents.viewUrl(viewItem.policy)
         }
 
         binding.ivPartyFlag.load(viewItem.flagImage) {
