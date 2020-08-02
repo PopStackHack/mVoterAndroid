@@ -3,9 +3,19 @@ package com.popstack.mvoter2015.feature.party.detail
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import coil.api.load
+import coil.size.Scale
+import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerPartyDetailBinding
 import com.popstack.mvoter2015.domain.party.model.PartyId
+import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewState
+import com.popstack.mvoter2015.helper.conductor.requireActivityAsAppCompatActivity
+import com.popstack.mvoter2015.helper.conductor.requireContext
+import com.popstack.mvoter2015.helper.intent.Intents
 import javax.inject.Inject
 
 class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDetailBinding>(bundle) {
@@ -39,11 +49,77 @@ class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDeta
     )
   )
 
+  private val timelineAdapter by lazy {
+    PartyTimelineRecyclerViewAdapter()
+  }
+
   override val bindingInflater: (LayoutInflater) -> ControllerPartyDetailBinding =
     ControllerPartyDetailBinding::inflate
 
   override fun onBindView(savedViewState: Bundle?) {
     super.onBindView(savedViewState)
 
+    binding.rvTimeline.apply {
+      adapter = timelineAdapter
+      layoutManager = LinearLayoutManager(requireContext())
+    }
+    requireActivityAsAppCompatActivity().setSupportActionBar(binding.toolBar)
+    requireActivityAsAppCompatActivity().supportActionBar?.title = ""
+
+    viewModel.viewItemLiveData.observe(this, Observer(::observeViewItem))
+    binding.btnRetry.setOnClickListener {
+      viewModel.loadData()
+    }
+
+    if (savedViewState == null) {
+      viewModel.loadData()
+    }
+  }
+
+  private fun observeViewItem(viewState: AsyncViewState<PartyDetailViewItem>) {
+    binding.progressBar.isVisible = viewState is AsyncViewState.Loading
+    binding.layoutContent.isVisible = viewState is AsyncViewState.Success
+    binding.tvErrorMessage.isVisible = viewState is AsyncViewState.Error
+    binding.btnRetry.isVisible = viewState is AsyncViewState.Error
+
+    when (viewState) {
+      is AsyncViewState.Success -> {
+        val viewItem = viewState.value
+        binding.ivPartySeal.load(viewItem.sealImage) {
+          scale(Scale.FIT)
+          placeholder(R.drawable.placeholder_rect)
+          crossfade(true)
+        }
+        binding.tvPartyName.text = viewItem.name
+        binding.tvPartyNameEnglish.text = viewItem.nameEnglish
+        binding.tvPartyNameAbbreviation.text = viewItem.nameAbbreviation
+
+        binding.buttonPolicy.isEnabled = viewItem.policy != null
+        if (viewItem.policy != null) {
+          binding.buttonPolicy.setOnClickListener {
+            Intents.viewUrl(viewItem.policy)
+          }
+        }
+
+        binding.ivPartyFlag.load(viewItem.flagImage) {
+          scale(Scale.FIT)
+          placeholder(R.drawable.placeholder_rect)
+          crossfade(true)
+        }
+
+        binding.tvLeader.text = viewItem.leaders
+        binding.tvChairman.text = viewItem.chairmen
+        binding.tvMemberCount.text = viewItem.memberCount
+        binding.tvHeadquarterLocation.text = viewItem.headQuarterLocation
+        binding.tvContact.text = viewItem.contact
+        binding.cardViewTimeline.isVisible = viewItem.timeline.isNotEmpty()
+        timelineAdapter.submitList(viewItem.timeline)
+
+      }
+      is AsyncViewState.Error -> {
+        val error = viewState.errorMessage
+        binding.tvErrorMessage.text = error
+      }
+    }
   }
 }
