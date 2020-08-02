@@ -7,6 +7,7 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.MergeAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bluelinelabs.conductor.RouterTransaction
 import com.popstack.mvoter2015.R
@@ -37,9 +38,11 @@ class PartyListController : MvvmController<ControllerPartyListBinding>() {
     requireActivityAsAppCompatActivity().setSupportActionBar(binding.toolBar)
     setHasOptionsMenu(R.menu.menu_party, this::handleMenuItemClick)
     binding.rvParty.apply {
-      adapter = partyPagingAdapter.withLoadStateHeaderAndFooter(
-        header = CommonLoadStateAdapter(partyPagingAdapter::retry),
-        footer = CommonLoadStateAdapter(partyPagingAdapter::retry)
+      adapter = MergeAdapter(
+        PartyListHeaderRecycleViewAdapter(),
+        partyPagingAdapter.withLoadStateFooter(
+          footer = CommonLoadStateAdapter(partyPagingAdapter::retry)
+        )
       )
       layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
       val dimen =

@@ -10,7 +10,6 @@ class PartyRepositoryImpl @Inject constructor(
 ) : PartyRepository {
 
   override fun getPartyList(page: Int, itemPerPage: Int): List<Party> {
-
     try {
       val partyListFromNetwork = partyNetworkSource.getPartyList(page, itemPerPage)
       partyCacheSource.putParty(partyListFromNetwork)
