@@ -1,50 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
-  xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="wrap_content">
 
-  <LinearLayout
-    android:layout_width="match_parent"
+  <ImageView
+    android:id="@+id/ivNoSelfie"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:src="@drawable/no_selfie"
+    app:layout_constraintDimensionRatio="1:1"
+    app:layout_constraintEnd_toStartOf="@+id/ivNoPhoto"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintHorizontal_chainStyle="spread"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+  <TextView
+    android:id="@+id/tvNoSelfie"
+    style="@style/BodyTitleText"
+    android:layout_width="0dp"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="8dp">
+    android:layout_marginTop="8dp"
+    android:gravity="center"
+    android:text="@string/no_selfie"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="@id/ivNoSelfie"
+    app:layout_constraintStart_toStartOf="@id/ivNoSelfie"
+    app:layout_constraintTop_toBottomOf="@id/ivNoSelfie" />
 
-    <TextView
-      android:id="@+id/tvFaqQuestion"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:textColor="@color/accent"
-      tools:text="@sample/faq.csv/question" />
+  <ImageView
+    android:id="@+id/ivNoPhoto"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:src="@drawable/no_photo"
+    app:layout_constraintDimensionRatio="1:1"
+    app:layout_constraintEnd_toStartOf="@+id/ivNoVideo"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintStart_toEndOf="@+id/ivNoSelfie"
+    app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-      android:id="@+id/tvAnswer"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="8dp"
-      android:textColor="@color/text_primary"
-      tools:text="@sample/faq.csv/answer" />
+  <TextView
+    android:id="@+id/tvNoPhoto"
+    style="@style/BodyTitleText"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:gravity="center"
+    android:text="@string/no_photo"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="@id/ivNoPhoto"
+    app:layout_constraintStart_toStartOf="@id/ivNoPhoto"
+    app:layout_constraintTop_toBottomOf="@id/ivNoPhoto" />
 
-    <TextView
-      android:id="@+id/tvSource"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="8dp"
-      android:textColor="@color/text_primary"
-      android:visibility="gone"
-      tools:text="@sample/faq.csv/law_or_source" />
+  <ImageView
+    android:id="@+id/ivNoVideo"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:src="@drawable/no_video"
+    app:layout_constraintDimensionRatio="1:1"
+    app:layout_constraintEnd_toStartOf="@+id/ivNoRecording"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintStart_toEndOf="@+id/ivNoPhoto"
+    app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-      android:id="@+id/ivShare"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_gravity="end"
-      android:layout_marginTop="8dp"
-      android:background="?attr/selectableItemBackgroundBorderless"
-      android:src="@drawable/ic_share_24"
-      app:tint="@color/accent" />
+  <TextView
+    android:id="@+id/tvNoVideo"
+    style="@style/BodyTitleText"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:gravity="center"
+    android:text="@string/no_video"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="@id/ivNoVideo"
+    app:layout_constraintStart_toStartOf="@id/ivNoVideo"
+    app:layout_constraintTop_toBottomOf="@id/ivNoVideo" />
 
-  </LinearLayout>
+  <ImageView
+    android:id="@+id/ivNoRecording"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:src="@drawable/no_recording"
+    app:layout_constraintDimensionRatio="1:1"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintStart_toEndOf="@+id/ivNoVideo"
+    app:layout_constraintTop_toTopOf="parent" />
 
-</com.google.android.material.card.MaterialCardView>
+  <TextView
+    android:id="@+id/tvNoRecording"
+    style="@style/BodyTitleText"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:gravity="center"
+    android:text="@string/no_video"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="@id/ivNoRecording"
+    app:layout_constraintStart_toStartOf="@id/ivNoRecording"
+    app:layout_constraintTop_toBottomOf="@id/ivNoRecording" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

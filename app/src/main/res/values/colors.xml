@@ -18,4 +18,6 @@
 
   <color name="transparent_black">#CC000000</color>
   <color name="transparent">#00000000</color>
+
+  <color name="transparent_layer">#CC000000</color>
 </resources>

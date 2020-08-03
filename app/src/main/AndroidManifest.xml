@@ -21,6 +21,10 @@
       </intent-filter>
     </activity>
 
+    <activity
+      android:name=".feature.faq.FaqCategorySelectActivity"
+      android:theme="@style/AppTheme.Transparent" />
+
   </application>
 
 </manifest>

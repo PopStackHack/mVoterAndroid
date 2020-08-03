@@ -22,7 +22,7 @@ class SplashController : Controller() {
     if (firstTimeConfig.isFirstTime()) {
       router.pushController(RouterTransaction.with(LocationUpdateController()))
     } else {
-      router.pushController(RouterTransaction.with(HomeController()))
+      router.pushController(RouterTransaction.with(HomeController()).tag(HomeController.TAG))
     }
     return View(requireContext())
   }

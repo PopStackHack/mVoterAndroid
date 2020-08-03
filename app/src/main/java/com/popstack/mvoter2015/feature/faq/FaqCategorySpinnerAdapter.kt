@@ -1,6 +1,8 @@
 package com.popstack.mvoter2015.feature.faq
 
 import android.content.Context
+import android.view.View
+import android.view.ViewGroup
 import com.aungkyawpaing.simplespinneradapter.SimpleSpinnerAdapter
 import com.popstack.mvoter2015.domain.faq.model.FaqCategory
 
@@ -17,6 +19,10 @@ class FaqCategorySpinnerAdapter : SimpleSpinnerAdapter<FaqCategory>(
         "အသိပညာ"
       }
     }
+  }
+
+  override fun getCustomView(position: Int, convertView: View?, parent: ViewGroup): View {
+    return super.getCustomView(position, convertView, parent)
   }
 
   override fun getItemId(position: Int): Long {

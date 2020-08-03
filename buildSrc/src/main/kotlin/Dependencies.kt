@@ -61,7 +61,7 @@ object AndroidXCardView {
 }
 
 object AndroidXConstraintLayout {
-  private const val version = "2.0.0-beta4"
+  private const val version = "2.0.0-rc1"
 
   const val constraint_layout = "androidx.constraintlayout:constraintlayout:$version"
 }

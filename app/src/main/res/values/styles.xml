@@ -9,6 +9,14 @@
     <item name="fontFamily">@font/pyidaungsu</item>
   </style>
 
+  <style name="AppTheme.Transparent" parent="AppTheme">
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowBackground">@android:color/transparent</item>
+    <item name="android:colorBackgroundCacheHint">@null</item>
+    <item name="android:windowIsTranslucent">true</item>
+    <item name="android:windowAnimationStyle">@android:style/Animation</item>
+  </style>
+
   <style name="HeadingText">
     <item name="android:textColor">@color/text_primary</item>
     <item name="android:textSize">18sp</item>

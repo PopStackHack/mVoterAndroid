@@ -16,6 +16,10 @@ import com.popstack.mvoter2015.helper.conductor.BNVRouterPagerAdapter
 
 class HomeController : MvvmController<ControllerHomeBinding>() {
 
+  companion object {
+    const val TAG = "HomeController"
+  }
+
   private val viewModel: HomeViewModel by viewModels()
 
   override val bindingInflater: (LayoutInflater) -> ControllerHomeBinding =

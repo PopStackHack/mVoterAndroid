@@ -8,4 +8,6 @@
   <color name="text_primary">#FFFFFF</color>
   <color name="text_secondary">#EBEBEB</color>
   <color name="text_disabled">#33000000</color>
+
+  <color name="transparent_layer">#80FFFFFF</color>
 </resources>

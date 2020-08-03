@@ -36,4 +36,15 @@
   <string name="headquarter">ပါတီရုံးချုပ်</string>
   <string name="contact">ဆက်သွယ်ရန်</string>
   <string name="header_total_party_count">(၂၀၂၀) ခုနှစ် အထွေထွေရွေးကောက်ပွဲတွင် ဝင်ရောက်ယှဉ်ပြိုင်မည့် နိုင်ငံရေးပါတီ (၉၆) ခု</string>
+
+  <string name="title_info">သိမှတ်ဖွယ်ရာများ</string>
+  <string name="ballot_examples">ပယ်မယ်၊ ခိုင်လုံမဲ နမူနာများ</string>
+
+  <string name="no_selfie">Selfie\nမရိုက်ရ</string>
+  <string name="no_photo">ဓာတ်ပုံ\nမရိုက်ရ</string>
+  <string name="no_video">ဗီဒီယို\nမရိုက်ရ</string>
+  <string name="no_record">အသံ\nမသွင်းရ</string>
+
+  <string name="faq_category_general">အထွေထွေ</string>
+
 </resources>

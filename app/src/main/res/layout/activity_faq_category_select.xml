@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/motionLayout"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical">
+
+  <FrameLayout
+    android:id="@+id/viewTransparentLayer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent_layer"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+  <com.google.android.material.card.MaterialCardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="top"
+    android:layout_marginTop="-16dp"
+    app:cardCornerRadius="16dp">
+
+    <com.google.android.material.appbar.AppBarLayout
+      android:id="@+id/appBarLayout"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="16dp"
+      android:orientation="vertical"
+      app:elevation="8dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:titleTextAppearance="@style/HeadingText" />
+
+      <TextView
+        android:id="@+id/tvSelectedCategory"
+        style="@style/SubHeadingText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableEnd="@drawable/ic_arrow_drop_down_24"
+        android:padding="16dp"
+        android:text="@string/faq_category_general"
+        android:textColor="@color/accent"
+        app:drawableTint="@color/accent" />
+
+      <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvFaqCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:itemCount="4"
+        tools:listitem="@layout/item_faq_category" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+  </com.google.android.material.card.MaterialCardView>
+
+
+</FrameLayout>

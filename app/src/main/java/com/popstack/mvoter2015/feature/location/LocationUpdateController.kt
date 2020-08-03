@@ -64,7 +64,7 @@ class LocationUpdateController : MvvmController<ControllerLocationBinding>() {
 
     binding.buttonDone.setOnClickListener {
       firstTimeConfig.setFirstTimeStatus(false)
-      router.setRoot(RouterTransaction.with(HomeController()))
+      router.setRoot(RouterTransaction.with(HomeController()).tag(HomeController.TAG))
     }
 
     viewModel.viewEventLiveData.observe(this, Observer(::observeViewEvent))

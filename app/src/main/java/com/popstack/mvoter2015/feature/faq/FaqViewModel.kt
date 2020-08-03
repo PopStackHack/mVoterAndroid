@@ -1,6 +1,7 @@
 package com.popstack.mvoter2015.feature.faq
 
 import androidx.hilt.lifecycle.ViewModelInject
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
@@ -23,7 +24,9 @@ class FaqViewModel @ViewModelInject constructor(
     private const val PAGE_SIZE = 20
   }
 
-  private var selectedFaqCategoryId: FaqCategory = FaqCategory.GENERAL
+  private var selectedFaqCategory: FaqCategory = FaqCategory.GENERAL
+
+  val faqCategoryLiveData = MutableLiveData<FaqCategory>()
 
   val faqPagingFlow = Pager(
     PagingConfig(
@@ -40,30 +43,36 @@ class FaqViewModel @ViewModelInject constructor(
       )
     }
 
-    if (selectedFaqCategoryId == FaqCategory.GENERAL) {
-      viewItemPagingData.insertHeaderItem(FaqViewItem.BallotExample)
+    if (selectedFaqCategory == FaqCategory.GENERAL) {
+      viewItemPagingData
         .insertHeaderItem(FaqViewItem.PollingStationProhibition)
+        .insertHeaderItem(FaqViewItem.BallotExample)
     } else {
       viewItemPagingData
     }
   }.cachedIn(viewModelScope)
 
-  sealed class SingleCommand {
-    data class ShareFaq(val shareUrl: String) : SingleCommand()
+  sealed class SingleEvent {
+    data class ShareFaq(val shareUrl: String) : SingleEvent()
   }
 
-  val singleCommandLiveData =
-    SingleLiveEvent<SingleCommand>()
+  val viewEventLiveData =
+    SingleLiveEvent<SingleEvent>()
 
   fun handleSelectFaqCategory(faqCategory: FaqCategory) {
-    selectedFaqCategoryId = faqCategory
+    selectedFaqCategory = faqCategory
+    faqCategoryLiveData.postValue(selectedFaqCategory)
     faqPagingSource.setCategory(faqCategory)
+  }
+
+  fun selectedFaqCategory(): FaqCategory {
+    return selectedFaqCategory
   }
 
   fun handleShareClick(faqId: FaqId) {
     viewModelScope.launch {
       val faq = getFaq.execute(GetFaq.Params(faqId))
-      singleCommandLiveData.postValue(SingleCommand.ShareFaq(shareUrl = faq.shareableUrl))
+      viewEventLiveData.postValue(SingleEvent.ShareFaq(shareUrl = faq.shareableUrl))
     }
   }
 }
