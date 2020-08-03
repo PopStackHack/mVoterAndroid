@@ -6,15 +6,93 @@
   android:layout_height="match_parent"
   android:background="?attr/selectableItemBackground">
 
+  <androidx.constraintlayout.widget.Guideline
+    android:id="@+id/guideline50PercentVertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:layout_constraintGuide_percent="0.5" />
+
+
+  <ImageView
+    android:id="@+id/ivRejectBallot"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:src="@drawable/ic_close_circle_24"
+    android:tint="@color/text_error"
+    app:layout_constraintEnd_toEndOf="@+id/tvRejectBallot"
+    app:layout_constraintStart_toStartOf="@+id/tvRejectBallot"
+    app:layout_constraintTop_toTopOf="parent" />
+
+  <TextView
+    android:id="@+id/tvRejectBallot"
+    style="@style/TitleText"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="16dp"
+    android:text="@string/rejected_ballot"
+    app:layout_constraintEnd_toStartOf="@id/guideline50PercentVertical"
+    app:layout_constraintTop_toBottomOf="@id/ivRejectBallot" />
+
+  <View
+    android:id="@+id/viewRejectIndicator"
+    android:layout_width="8dp"
+    android:layout_height="8dp"
+    android:layout_marginTop="8dp"
+    android:background="@drawable/accent_oval"
+    app:layout_constraintEnd_toEndOf="@+id/tvRejectBallot"
+    app:layout_constraintStart_toStartOf="@+id/tvRejectBallot"
+    app:layout_constraintTop_toBottomOf="@id/tvRejectBallot" />
+
+  <ImageView
+    android:id="@+id/ivAcceptBallot"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:src="@drawable/ic_check_circle_24"
+    android:tint="@color/green"
+    app:layout_constraintEnd_toEndOf="@+id/tvAcceptBallot"
+    app:layout_constraintStart_toStartOf="@+id/tvAcceptBallot"
+    app:layout_constraintTop_toTopOf="parent" />
+
+  <TextView
+    android:id="@+id/tvAcceptBallot"
+    style="@style/TitleText"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:text="@string/accepted_ballot"
+    app:layout_constraintStart_toEndOf="@id/guideline50PercentVertical"
+    app:layout_constraintTop_toBottomOf="@id/ivAcceptBallot" />
+
+  <View
+    android:id="@+id/viewAcceptIndicator"
+    android:layout_width="8dp"
+    android:layout_height="8dp"
+    android:layout_marginTop="8dp"
+    android:background="@drawable/accent_oval"
+    app:layout_constraintEnd_toEndOf="@+id/tvAcceptBallot"
+    app:layout_constraintStart_toStartOf="@+id/tvAcceptBallot"
+    app:layout_constraintTop_toBottomOf="@id/tvAcceptBallot" />
+
+  <androidx.constraintlayout.widget.Barrier
+    android:id="@+id/barrierOne"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:barrierDirection="bottom"
+    app:constraint_referenced_ids="viewAcceptIndicator,viewRejectIndicator" />
+
   <ImageView
     android:id="@+id/ivBallot"
-    android:layout_width="match_parent"
+    android:layout_width="0dp"
     android:layout_height="0dp"
     android:layout_margin="16dp"
+    app:layout_constraintDimensionRatio="w,1:2"
     app:layout_constraintBottom_toTopOf="@id/guideline75PercentHorizontal"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+    app:layout_constraintTop_toBottomOf="@id/barrierOne" />
 
   <androidx.constraintlayout.widget.Guideline
     android:id="@+id/guideline75PercentHorizontal"
@@ -23,42 +101,17 @@
     android:orientation="horizontal"
     app:layout_constraintGuide_percent="0.75" />
 
-
-  <com.google.android.material.card.MaterialCardView
+  <TextView
+    android:id="@+id/tvReason"
+    style="@style/BodyText"
     android:layout_width="match_parent"
     android:layout_height="0dp"
-    android:layout_margin="16dp"
+    android:padding="16dp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintEnd_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/guideline75PercentHorizontal">
+    app:layout_constraintTop_toBottomOf="@id/guideline75PercentHorizontal"
+    tools:text="Because you did wrong" />
 
-    <LinearLayout
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:orientation="vertical"
-      android:padding="8dp">
-
-      <TextView
-        android:id="@+id/tvValid"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textAllCaps="true"
-        android:textSize="16sp"
-        tools:text="InValid"
-        tools:textColor="@color/text_error" />
-
-      <TextView
-        android:id="@+id/tvReason"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textColor="@color/text_primary"
-        android:textSize="14sp"
-        tools:text="Because you did wrong" />
-
-    </LinearLayout>
-
-  </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

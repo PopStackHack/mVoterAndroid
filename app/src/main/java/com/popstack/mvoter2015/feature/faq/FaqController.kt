@@ -8,11 +8,13 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bluelinelabs.conductor.RouterTransaction
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerInfoBinding
 import com.popstack.mvoter2015.domain.faq.model.FaqCategory
 import com.popstack.mvoter2015.feature.HasRouter
+import com.popstack.mvoter2015.feature.faq.ballot.BallotExampleController
 import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
 import com.popstack.mvoter2015.helper.conductor.requireActivity
 import com.popstack.mvoter2015.helper.conductor.requireActivityAsAppCompatActivity
@@ -42,6 +44,7 @@ class FaqController : MvvmController<ControllerInfoBinding>() {
   private fun navigateToBallotExample() {
     if (requireActivity() is HasRouter) {
       (requireActivity() as HasRouter).router()
+        .pushController(RouterTransaction.with(BallotExampleController()))
     }
   }
 
