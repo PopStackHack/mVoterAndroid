@@ -4,6 +4,7 @@
   <color name="primary_dark">#FFFFFF</color>
   <color name="accent">#2071DA</color>
   <color name="accent_light">#D2E3F8</color>
+  <color name="accent_20">#332071DA</color>
   <color name="reverse_primary">#000000</color>
 
   <color name="text_error">#CC1C1C</color>
@@ -14,6 +15,7 @@
   <color name="text_on_accent_light">#212121</color>
 
   <color name="grey">#9E9E9E</color>
+  <color name="darker_grey">#3B3B3B</color>
   <color name="light_blue">#D0E2F7</color>
   <color name="green">#64E116</color>
 

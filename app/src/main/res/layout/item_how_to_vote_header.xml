@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:layout_marginStart="20dp"
+  android:layout_marginTop="8dp"
+  android:layout_marginEnd="20dp"
+  android:background="@drawable/bg_how_to_vote_header"
+  android:paddingTop="12dp"
+  android:paddingBottom="12dp">
+
+  <TextView
+    android:id="@+id/tvTitle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/how_to_vote_header_title"
+    android:textColor="@android:color/black"
+    android:textSize="16sp"
+    android:textStyle="bold"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+  <TextView
+    android:id="@+id/tvElectionDate"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:text="@string/election_date_nov_8"
+    android:textColor="@color/accent"
+    android:textSize="24sp"
+    android:textStyle="bold"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+  <TextView
+    android:id="@+id/tvElectionDay"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/election_day"
+    android:textColor="@color/darker_grey"
+    android:textSize="16sp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/tvElectionDate" />
+
+  <TextView
+    android:id="@+id/tvPollingStationOpeningTimeTitle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="12dp"
+    android:layout_marginEnd="8dp"
+    android:drawableStart="@drawable/ic_clock_6am_18"
+    android:drawablePadding="8dp"
+    android:paddingTop="2dp"
+    android:text="@string/polling_station_opening_time"
+    android:textColor="@android:color/black"
+    android:textSize="12sp"
+    android:textStyle="bold"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintEnd_toStartOf="@+id/tvPollingStationClosingTimeTitle"
+    app:layout_constraintStart_toStartOf="@+id/tvTitle"
+    app:layout_constraintTop_toBottomOf="@+id/tvElectionDay" />
+
+  <TextView
+    android:id="@+id/tvPollingStationClosingTimeTitle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:drawableStart="@drawable/ic_clock_4pm_18"
+    android:drawablePadding="8dp"
+    android:gravity="center"
+    android:paddingTop="2dp"
+    android:text="@string/polling_station_closing_time"
+    android:textColor="@android:color/black"
+    android:textSize="12sp"
+    android:textStyle="bold"
+    app:layout_constraintEnd_toEndOf="@+id/tvTitle"
+    app:layout_constraintStart_toEndOf="@+id/tvPollingStationOpeningTimeTitle"
+    app:layout_constraintTop_toTopOf="@+id/tvPollingStationOpeningTimeTitle" />
+
+  <TextView
+    android:id="@+id/tvPollingStationOpeningTime"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="2dp"
+    android:text="@string/morning_6am"
+    android:textColor="@android:color/black"
+    android:textSize="16sp"
+    app:layout_constraintEnd_toEndOf="@+id/tvPollingStationOpeningTimeTitle"
+    app:layout_constraintStart_toStartOf="@+id/tvPollingStationOpeningTimeTitle"
+    app:layout_constraintTop_toBottomOf="@+id/tvPollingStationOpeningTimeTitle" />
+
+  <TextView
+    android:id="@+id/tvPollingStationClosingTime"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:text="@string/evening_4pm"
+    android:textColor="@android:color/black"
+    android:textSize="16sp"
+    app:layout_constraintEnd_toEndOf="@+id/tvPollingStationClosingTimeTitle"
+    app:layout_constraintStart_toStartOf="@+id/tvPollingStationClosingTimeTitle"
+    app:layout_constraintTop_toBottomOf="@+id/tvPollingStationClosingTimeTitle" />
+</androidx.constraintlayout.widget.ConstraintLayout>
