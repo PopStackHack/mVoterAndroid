@@ -39,10 +39,9 @@
     <item name="android:textSize">14sp</item>
   </style>
 
-  <style name="BodyTitleText">
+  <style name="SecondaryText">
     <item name="android:textColor">@color/text_secondary</item>
   </style>
-
 
   <style name="BodyText">
     <item name="android:textColor">@color/text_primary</item>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:paddingStart="16dp"
+  android:paddingEnd="16dp">
+
+  <androidx.constraintlayout.widget.Guideline
+    android:id="@+id/guideline80PercentVertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:layout_constraintGuide_percent="0.80" />
+
+
+  <ImageView
+    android:id="@+id/ivPreview"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:src="@drawable/uec_logo"
+    android:scaleType="centerCrop"
+    app:layout_constraintDimensionRatio="1:1"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toEndOf="@id/guideline80PercentVertical"
+    app:layout_constraintTop_toTopOf="parent" />
+
+  <TextView
+    android:id="@+id/tvTitle"
+    style="@style/TitleText"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="8dp"
+    android:ellipsize="end"
+    android:maxLines="2"
+    app:layout_constraintEnd_toStartOf="@id/guideline80PercentVertical"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:text="@sample/party.csv/PartyName" />
+
+  <TextView
+    android:id="@+id/tvSummary"
+    style="@style/BodyText"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="4dp"
+    android:layout_marginEnd="8dp"
+    android:ellipsize="end"
+    android:maxLines="3"
+    app:layout_constraintEnd_toStartOf="@id/guideline80PercentVertical"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/tvTitle"
+    tools:text="@sample/party.csv/PartyName" />
+
+  <TextView
+    android:id="@+id/tvPublishedDate"
+    style="@style/SecondaryText"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="4dp"
+    android:layout_marginEnd="8dp"
+    android:gravity="center_vertical"
+    android:textColor="@color/text_secondary"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toStartOf="@id/guideline80PercentVertical"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/tvSummary"
+    tools:text="08 July 2020" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

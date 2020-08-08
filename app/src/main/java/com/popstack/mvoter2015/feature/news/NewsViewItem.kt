@@ -6,7 +6,7 @@ data class NewsViewItem(
   val id: NewsId,
   val title: String,
   val summary: String,
-  val imageUrl: String,
+  val imageUrl: String?,
   val publishedDate: String,
   val url: String
 )

@@ -108,7 +108,7 @@
 
       <ImageView
         android:id="@+id/ivPartyFlag"
-        style="@style/BodyTitleText"
+        style="@style/SecondaryText"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
@@ -121,7 +121,7 @@
 
       <TextView
         android:id="@+id/tvPartyNumberTitle"
-        style="@style/BodyTitleText"
+        style="@style/SecondaryText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -165,7 +165,7 @@
 
       <TextView
         android:id="@+id/tvLeaderTitle"
-        style="@style/BodyTitleText"
+        style="@style/SecondaryText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -190,7 +190,7 @@
 
       <TextView
         android:id="@+id/tvChairmanTitle"
-        style="@style/BodyTitleText"
+        style="@style/SecondaryText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -215,7 +215,7 @@
 
       <TextView
         android:id="@+id/tvMemberCountTitle"
-        style="@style/BodyTitleText"
+        style="@style/SecondaryText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -240,7 +240,7 @@
 
       <TextView
         android:id="@+id/tvHeadquarterLocationTitle"
-        style="@style/BodyTitleText"
+        style="@style/SecondaryText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -265,7 +265,7 @@
 
       <TextView
         android:id="@+id/tvContactTitle"
-        style="@style/BodyTitleText"
+        style="@style/SecondaryText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"

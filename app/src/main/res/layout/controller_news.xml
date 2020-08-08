@@ -26,7 +26,7 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@id/toolBar"
-    tools:listitem="@layout/item_news" />
+    tools:listitem="@layout/item_news_with_preview" />
 
   <ProgressBar
     android:id="@+id/progressBar"

@@ -30,7 +30,7 @@
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     android:gravity="center"
-    style="@style/BodyTitleText"
+    style="@style/SecondaryText"
     android:text="@string/ballot_examples"
     app:layout_constraintStart_toEndOf="@id/guideline25PercentVertical"
     app:layout_constraintTop_toTopOf="parent" />

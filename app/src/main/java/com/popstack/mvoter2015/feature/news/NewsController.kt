@@ -39,8 +39,7 @@ class NewsController : MvvmController<ControllerNewsBinding>() {
     supportActionBar()?.title = requireContext().getString(R.string.navigation_news)
 
     binding.rvNews.apply {
-      adapter = newsPagingAdapter.withLoadStateHeaderAndFooter(
-        header = CommonLoadStateAdapter(newsPagingAdapter::retry),
+      adapter = newsPagingAdapter.withLoadStateFooter(
         footer = CommonLoadStateAdapter(newsPagingAdapter::retry)
       )
       layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
