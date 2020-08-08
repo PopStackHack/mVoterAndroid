@@ -12,10 +12,10 @@
 
   <TextView
     android:id="@+id/tvTitle"
+    style="@style/HeadingText"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="@string/how_to_vote_header_title"
-    android:textColor="@android:color/black"
     android:textSize="16sp"
     android:textStyle="bold"
     app:layout_constraintEnd_toEndOf="parent"
@@ -37,10 +37,10 @@
 
   <TextView
     android:id="@+id/tvElectionDay"
+    style="@style/SubtitleText"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="@string/election_day"
-    android:textColor="@color/darker_grey"
     android:textSize="16sp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
@@ -48,6 +48,7 @@
 
   <TextView
     android:id="@+id/tvPollingStationOpeningTimeTitle"
+    style="@style/BodyText"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="12dp"
@@ -56,7 +57,6 @@
     android:drawablePadding="8dp"
     android:paddingTop="2dp"
     android:text="@string/polling_station_opening_time"
-    android:textColor="@android:color/black"
     android:textSize="12sp"
     android:textStyle="bold"
     app:layout_constraintEnd_toEndOf="parent"
@@ -66,6 +66,7 @@
 
   <TextView
     android:id="@+id/tvPollingStationClosingTimeTitle"
+    style="@style/BodyText"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginStart="8dp"
@@ -74,7 +75,6 @@
     android:gravity="center"
     android:paddingTop="2dp"
     android:text="@string/polling_station_closing_time"
-    android:textColor="@android:color/black"
     android:textSize="12sp"
     android:textStyle="bold"
     app:layout_constraintEnd_toEndOf="@+id/tvTitle"
@@ -83,11 +83,11 @@
 
   <TextView
     android:id="@+id/tvPollingStationOpeningTime"
+    style="@style/BodyText"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="2dp"
     android:text="@string/morning_6am"
-    android:textColor="@android:color/black"
     android:textSize="16sp"
     app:layout_constraintEnd_toEndOf="@+id/tvPollingStationOpeningTimeTitle"
     app:layout_constraintStart_toStartOf="@+id/tvPollingStationOpeningTimeTitle"
@@ -95,11 +95,11 @@
 
   <TextView
     android:id="@+id/tvPollingStationClosingTime"
+    style="@style/BodyText"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:gravity="center"
     android:text="@string/evening_4pm"
-    android:textColor="@android:color/black"
     android:textSize="16sp"
     app:layout_constraintEnd_toEndOf="@+id/tvPollingStationClosingTimeTitle"
     app:layout_constraintStart_toStartOf="@+id/tvPollingStationClosingTimeTitle"
