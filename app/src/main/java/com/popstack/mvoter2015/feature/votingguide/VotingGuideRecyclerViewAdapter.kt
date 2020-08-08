@@ -14,7 +14,6 @@ import com.popstack.mvoter2015.helper.extensions.inflater
 class VotingGuideRecyclerViewAdapter(private val viewItems: List<VotingGuideViewItem>) :
   RecyclerView.Adapter<VotingGuideViewHolder>() {
 
-
   companion object {
     const val VIEW_TYPE_HEADER = 1
     const val VIEW_TYPE_SECTION_TITLE = 2
