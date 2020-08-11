@@ -51,6 +51,7 @@ dependencies {
 
   coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.0.5")
 
+  implementation(AndroidXPaging.common)
   implementation(Kotlin.stdblib_jdk)
   implementation(AndroidXCore.core_ktx)
 
