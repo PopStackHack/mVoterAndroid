@@ -16,7 +16,7 @@
     android:id="@+id/ivDot"
     android:layout_width="12dp"
     android:layout_height="12dp"
-    android:layout_marginTop="8dp"
+    android:layout_marginTop="6dp"
     android:background="@drawable/timeline_dot"
     app:layout_constraintEnd_toEndOf="@id/guidelineStart24"
     app:layout_constraintStart_toStartOf="@id/guidelineStart24"
@@ -45,7 +45,7 @@
 
   <TextView
     android:id="@+id/tvStep"
-    style="@style/SubHeadingText"
+    style="@style/TextLarge"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginStart="22dp"

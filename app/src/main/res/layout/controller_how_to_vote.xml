@@ -16,13 +16,12 @@
       android:layout_height="?attr/actionBarSize">
 
       <TextView
-        style="@style/HeadingText"
+        style="@style/TextTitle2.CallOut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="22dp"
         android:layout_marginTop="12dp"
-        android:text="@string/navigation_how_to_vote"
-        android:textSize="22sp" />
+        android:text="@string/navigation_how_to_vote" />
     </androidx.appcompat.widget.Toolbar>
 
   </com.google.android.material.appbar.AppBarLayout>

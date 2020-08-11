@@ -12,43 +12,38 @@
 
   <TextView
     android:id="@+id/tvTitle"
-    style="@style/HeadingText"
+    style="@style/TextLarge.CallOut"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="@string/how_to_vote_header_title"
-    android:textSize="16sp"
-    android:textStyle="bold"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent" />
 
   <TextView
     android:id="@+id/tvElectionDate"
+    style="@style/TextTitle1.Mariner.CallOut"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="10dp"
     android:text="@string/election_date_nov_8"
-    android:textColor="@color/accent"
-    android:textSize="24sp"
-    android:textStyle="bold"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
   <TextView
     android:id="@+id/tvElectionDay"
-    style="@style/SubtitleText"
+    style="@style/TextLarge"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="@string/election_day"
-    android:textSize="16sp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/tvElectionDate" />
 
   <TextView
     android:id="@+id/tvPollingStationOpeningTimeTitle"
-    style="@style/BodyText"
+    style="@style/TextSmall.CallOut"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="12dp"
@@ -57,8 +52,6 @@
     android:drawablePadding="8dp"
     android:paddingTop="2dp"
     android:text="@string/polling_station_opening_time"
-    android:textSize="12sp"
-    android:textStyle="bold"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintEnd_toStartOf="@+id/tvPollingStationClosingTimeTitle"
     app:layout_constraintStart_toStartOf="@+id/tvTitle"
@@ -66,7 +59,7 @@
 
   <TextView
     android:id="@+id/tvPollingStationClosingTimeTitle"
-    style="@style/BodyText"
+    style="@style/TextSmall.CallOut"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginStart="8dp"
@@ -75,32 +68,28 @@
     android:gravity="center"
     android:paddingTop="2dp"
     android:text="@string/polling_station_closing_time"
-    android:textSize="12sp"
-    android:textStyle="bold"
     app:layout_constraintEnd_toEndOf="@+id/tvTitle"
     app:layout_constraintStart_toEndOf="@+id/tvPollingStationOpeningTimeTitle"
     app:layout_constraintTop_toTopOf="@+id/tvPollingStationOpeningTimeTitle" />
 
   <TextView
     android:id="@+id/tvPollingStationOpeningTime"
-    style="@style/BodyText"
+    style="@style/TextLarge"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="2dp"
     android:text="@string/morning_6am"
-    android:textSize="16sp"
     app:layout_constraintEnd_toEndOf="@+id/tvPollingStationOpeningTimeTitle"
     app:layout_constraintStart_toStartOf="@+id/tvPollingStationOpeningTimeTitle"
     app:layout_constraintTop_toBottomOf="@+id/tvPollingStationOpeningTimeTitle" />
 
   <TextView
     android:id="@+id/tvPollingStationClosingTime"
-    style="@style/BodyText"
+    style="@style/TextLarge"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:gravity="center"
     android:text="@string/evening_4pm"
-    android:textSize="16sp"
     app:layout_constraintEnd_toEndOf="@+id/tvPollingStationClosingTimeTitle"
     app:layout_constraintStart_toStartOf="@+id/tvPollingStationClosingTimeTitle"
     app:layout_constraintTop_toBottomOf="@+id/tvPollingStationClosingTimeTitle" />
