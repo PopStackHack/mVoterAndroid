@@ -30,6 +30,7 @@
       android:padding="16dp"
       android:text="@string/faq_category_general"
       android:textColor="@color/accent"
+      android:background="?attr/selectableItemBackground"
       app:drawableTint="@color/accent" />
 
   </com.google.android.material.appbar.AppBarLayout>

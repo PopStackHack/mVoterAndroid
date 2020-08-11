@@ -31,6 +31,7 @@
       android:layout_marginTop="16dp"
       android:orientation="vertical"
       app:elevation="8dp"
+      android:animateLayoutChanges="true"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent">
@@ -56,6 +57,7 @@
         android:id="@+id/rvFaqCategory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         tools:itemCount="4"
         tools:listitem="@layout/item_faq_category" />
 

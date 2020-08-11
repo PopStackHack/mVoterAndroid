@@ -12,7 +12,7 @@ class FaqNetworkSourceImpl @Inject constructor(
 ) : FaqNetworkSource {
 
   override fun getFaqList(page: Int, itemsPerPage: Int, category: FaqCategory): List<Faq> {
-    TODO("Not yet implemented")
+    return emptyList()
   }
 
   override fun getBallotExampleList(): List<BallotExample> {

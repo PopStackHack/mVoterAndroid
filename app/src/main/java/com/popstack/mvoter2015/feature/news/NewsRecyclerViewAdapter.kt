@@ -44,7 +44,6 @@ class NewsRecyclerViewAdapter(
     return VIEW_TYPE_WITH_PREVIEW
   }
 
-
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
     when (viewType) {
       VIEW_TYPE_NO_PREVIEW -> {
