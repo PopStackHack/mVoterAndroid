@@ -37,6 +37,13 @@ class PartyListController : MvvmController<ControllerPartyListBinding>() {
     super.onBindView(savedViewState)
     requireActivityAsAppCompatActivity().setSupportActionBar(binding.toolBar)
     setHasOptionsMenu(R.menu.menu_party, this::handleMenuItemClick)
+    binding.rvDummy.apply {
+      adapter = PartyPlaceHolderRecyclerViewAdapter()
+      layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+      val dimen = context.resources.getDimensionPixelSize(R.dimen.recycler_view_item_margin)
+      addItemDecoration(RecyclerViewMarginDecoration(dimen, 0))
+    }
+
     binding.rvParty.apply {
       adapter = MergeAdapter(
         PartyListHeaderRecycleViewAdapter(),
@@ -57,7 +64,7 @@ class PartyListController : MvvmController<ControllerPartyListBinding>() {
     partyPagingAdapter.addLoadStateListener { loadStates ->
       val refreshLoadState = loadStates.refresh
       binding.rvParty.isVisible = refreshLoadState is LoadState.NotLoading
-      binding.progressBar.isVisible = refreshLoadState is LoadState.Loading
+      binding.rvDummy.isVisible = refreshLoadState is LoadState.Loading
       binding.tvErrorMessage.isVisible = refreshLoadState is LoadState.Error
       binding.btnRetry.isVisible = refreshLoadState is LoadState.Error
 

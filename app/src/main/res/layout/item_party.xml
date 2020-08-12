@@ -37,7 +37,7 @@
     app:layout_constraintEnd_toStartOf="@+id/ivGoDetailIndicator"
     app:layout_constraintStart_toEndOf="@+id/ivPartyFlag"
     app:layout_constraintTop_toTopOf="@+id/ivPartyFlag"
-    app:layout_constraintVertical_bias="0.10"
+    app:layout_constraintVertical_bias="0.0"
     tools:text="@sample/party.csv/PartyName" />
 
 
@@ -52,7 +52,6 @@
     app:layout_constraintEnd_toStartOf="@id/ivGoDetailIndicator"
     app:layout_constraintStart_toEndOf="@+id/ivPartyFlag"
     app:layout_constraintTop_toBottomOf="@id/tvPartyName"
-    app:layout_constraintVertical_bias="0.25"
     tools:text="@sample/party.csv/Region" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
