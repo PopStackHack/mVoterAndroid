@@ -16,7 +16,7 @@
       android:layout_height="?attr/actionBarSize">
 
       <TextView
-        style="@style/TextTitle2.CallOut"
+        style="@style/TextTitle2.Bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="22dp"

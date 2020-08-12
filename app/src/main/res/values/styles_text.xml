@@ -10,23 +10,23 @@
     <item name="android:textSize">16sp</item>
   </style>
 
-  <style name="TextLarge.CallOut">
+  <style name="TextLarge.Bold">
     <item name="android:textStyle">bold</item>
   </style>
 
-  <style name="TextLarge.Mariner">
+  <style name="TextLarge.Accent">
     <item name="android:textColor">@color/accent</item>
   </style>
 
-  <style name="TextLarge.Mariner.CallOut">
+  <style name="TextLarge.Accent.Bold">
     <item name="android:textStyle">bold</item>
   </style>
 
-  <style name="TextLarge.Tundora">
+  <style name="TextLarge.Secondary">
     <item name="android:textColor">@color/text_secondary</item>
   </style>
 
-  <style name="TextLarge.Tundora.CallOut">
+  <style name="TextLarge.Secondary.Bold">
     <item name="android:textStyle">bold</item>
   </style>
   <!-- End of Text Large -->
@@ -36,23 +36,23 @@
     <item name="android:textSize">14sp</item>
   </style>
 
-  <style name="TextMedium.CallOut">
+  <style name="TextMedium.Bold">
     <item name="android:textStyle">bold</item>
   </style>
 
-  <style name="TextMedium.Mariner">
+  <style name="TextMedium.Accent">
     <item name="android:textColor">@color/accent</item>
   </style>
 
-  <style name="TextMedium.Mariner.CallOut">
+  <style name="TextMedium.Accent.Bold">
     <item name="android:textStyle">bold</item>
   </style>
 
-  <style name="TextMedium.Tundora">
+  <style name="TextMedium.Secondary">
     <item name="android:textColor">@color/text_secondary</item>
   </style>
 
-  <style name="TextMedium.Tundora.CallOut">
+  <style name="TextMedium.Secondary.Bold">
     <item name="android:textStyle">bold</item>
   </style>
   <!-- End of Text Medium -->
@@ -62,23 +62,23 @@
     <item name="android:textSize">12sp</item>
   </style>
 
-  <style name="TextSmall.CallOut">
+  <style name="TextSmall.Bold">
     <item name="android:textStyle">bold</item>
   </style>
 
-  <style name="TextSmall.Mariner">
+  <style name="TextSmall.Accent">
     <item name="android:textColor">@color/accent</item>
   </style>
 
-  <style name="TextSmall.Mariner.CallOut">
+  <style name="TextSmall.Accent.Bold">
     <item name="android:textStyle">bold</item>
   </style>
 
-  <style name="TextSmall.Tundora">
+  <style name="TextSmall.Secondary">
     <item name="android:textColor">@color/text_secondary</item>
   </style>
 
-  <style name="TextSmall.Tundora.CallOut">
+  <style name="TextSmall.Secondary.Bold">
     <item name="android:textStyle">bold</item>
   </style>
   <!-- End of Text Small -->
@@ -88,23 +88,23 @@
     <item name="android:textSize">10sp</item>
   </style>
 
-  <style name="TextTiny.CallOut">
+  <style name="TextTiny.Bold">
     <item name="android:textStyle">bold</item>
   </style>
 
-  <style name="TextTiny.Mariner">
+  <style name="TextTiny.Accent">
     <item name="android:textColor">@color/accent</item>
   </style>
 
-  <style name="TextTiny.Mariner.CallOut">
+  <style name="TextTiny.Accent.Bold">
     <item name="android:textStyle">bold</item>
   </style>
 
-  <style name="TextTiny.Tundora">
+  <style name="TextTiny.Secondary">
     <item name="android:textColor">@color/text_secondary</item>
   </style>
 
-  <style name="TextTiny.Tundora.CallOut">
+  <style name="TextTiny.Secondary.Bold">
     <item name="android:textStyle">bold</item>
   </style>
   <!-- End of Text Tiny -->
@@ -114,23 +114,23 @@
     <item name="android:textSize">24sp</item>
   </style>
 
-  <style name="TextTitle1.CallOut">
+  <style name="TextTitle1.Bold">
     <item name="android:textStyle">bold</item>
   </style>
 
-  <style name="TextTitle1.Mariner">
+  <style name="TextTitle1.Accent">
     <item name="android:textColor">@color/accent</item>
   </style>
 
-  <style name="TextTitle1.Mariner.CallOut">
+  <style name="TextTitle1.Accent.Bold">
     <item name="android:textStyle">bold</item>
   </style>
 
-  <style name="TextTitle1.Tundora">
+  <style name="TextTitle1.Secondary">
     <item name="android:textColor">@color/text_secondary</item>
   </style>
 
-  <style name="TextTitle1.Tundora.CallOut">
+  <style name="TextTitle1.Secondary.Bold">
     <item name="android:textStyle">bold</item>
   </style>
   <!-- End of Title 1 -->
@@ -140,23 +140,23 @@
     <item name="android:textSize">22sp</item>
   </style>
 
-  <style name="TextTitle2.CallOut">
+  <style name="TextTitle2.Bold">
     <item name="android:textStyle">bold</item>
   </style>
 
-  <style name="TextTitle2.Mariner">
+  <style name="TextTitle2.Accent">
     <item name="android:textColor">@color/accent</item>
   </style>
 
-  <style name="TextTitle2.Mariner.CallOut">
+  <style name="TextTitle2.Accent.Bold">
     <item name="android:textStyle">bold</item>
   </style>
 
-  <style name="TextTitle2.Tundora">
+  <style name="TextTitle2.Secondary">
     <item name="android:textColor">@color/text_secondary</item>
   </style>
 
-  <style name="TextTitle2.Tundora.CallOut">
+  <style name="TextTitle2.Secondary.Bold">
     <item name="android:textStyle">bold</item>
   </style>
   <!-- End of Title 2 -->
@@ -166,23 +166,23 @@
     <item name="android:textSize">20sp</item>
   </style>
 
-  <style name="TextTitle3.CallOut">
+  <style name="TextTitle3.Bold">
     <item name="android:textStyle">bold</item>
   </style>
 
-  <style name="TextTitle3.Mariner">
+  <style name="TextTitle3.Accent">
     <item name="android:textColor">@color/accent</item>
   </style>
 
-  <style name="TextTitle3.Mariner.CallOut">
+  <style name="TextTitle3.Accent.Bold">
     <item name="android:textStyle">bold</item>
   </style>
 
-  <style name="TextTitle3.Tundora">
+  <style name="TextTitle3.Secondary">
     <item name="android:textColor">@color/text_secondary</item>
   </style>
 
-  <style name="TextTitle3.Tundora.CallOut">
+  <style name="TextTitle3.Secondary.Bold">
     <item name="android:textStyle">bold</item>
   </style>
   <!-- End of Title 3 -->

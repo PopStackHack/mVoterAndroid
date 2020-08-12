@@ -12,7 +12,7 @@
 
   <TextView
     android:id="@+id/tvTitle"
-    style="@style/TextLarge.CallOut"
+    style="@style/TextLarge.Bold"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="@string/how_to_vote_header_title"
@@ -22,7 +22,7 @@
 
   <TextView
     android:id="@+id/tvElectionDate"
-    style="@style/TextTitle1.Mariner.CallOut"
+    style="@style/TextTitle1.Accent.Bold"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="10dp"
@@ -43,7 +43,7 @@
 
   <TextView
     android:id="@+id/tvPollingStationOpeningTimeTitle"
-    style="@style/TextSmall.CallOut"
+    style="@style/TextSmall.Bold"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="12dp"
@@ -59,7 +59,7 @@
 
   <TextView
     android:id="@+id/tvPollingStationClosingTimeTitle"
-    style="@style/TextSmall.CallOut"
+    style="@style/TextSmall.Bold"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginStart="8dp"
