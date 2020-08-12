@@ -59,6 +59,16 @@ class PartyCacheSourceImpl @Inject constructor(
     ).map(PartyTable::mapToEntity).asPagingSourceFactory().invoke()
   }
 
+  override fun searchPartyPaging(itemPerPage: Int, query: String): PagingSource<Int, Party> {
+    return QueryDataSourceFactory(
+      queryProvider = { limit, offset ->
+        db.partyTableQueries.searchWithPage(query, limit, offset)
+      },
+      countQuery = db.partyTableQueries.searchTotalCount(query),
+      transacter = db.partyTableQueries
+    ).map(PartyTable::mapToEntity).asPagingSourceFactory().invoke()
+  }
+
 }
 
 fun PartyTable.mapToEntity(): Party {

@@ -15,7 +15,7 @@ class PartyNetworkSourceImpl @Inject constructor(
 
   private val dateTimeFormatter = DateTimeFormatter.ofPattern("dd-mm-yyyy", Locale.ENGLISH)
 
-  override fun getPartyList(page: Int, itemPerPage: Int): List<Party> {
+  override fun getPartyList(page: Int, itemPerPage: Int, query: String?): List<Party> {
     return mvoterApi.partyList(page).executeOrThrow().map { apiModel ->
       with(apiModel) {
         Party(

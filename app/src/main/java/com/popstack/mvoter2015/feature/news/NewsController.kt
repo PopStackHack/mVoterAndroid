@@ -68,8 +68,8 @@ class NewsController : MvvmController<ControllerNewsBinding>(), HasTag {
     }
 
     lifecycleScope.launch {
-      viewModel.newsPagingFlow.collectLatest {
-        newsPagingAdapter.submitData(lifecycle, it)
+      viewModel.newsPagingFlow.collectLatest { pagingData ->
+        newsPagingAdapter.submitData(lifecycle, pagingData)
       }
     }
   }

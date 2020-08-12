@@ -3,19 +3,17 @@ package com.popstack.mvoter2015.feature.party.search
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
+import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.popstack.mvoter2015.domain.party.usecase.SearchParty
+import androidx.paging.map
+import com.popstack.mvoter2015.data.android.party.PartyPagerFactory
+import com.popstack.mvoter2015.domain.party.model.Party
 import com.popstack.mvoter2015.helper.livedata.SingleLiveEvent
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.launch
 
 class PartySearchViewModel @ViewModelInject constructor(
-  private val searchParty: SearchParty,
-  private val partySearchPagingSource: PartySearchPagingSource
+  private val partyPagerFactory: PartyPagerFactory
 ) : ViewModel() {
 
   companion object {
@@ -23,47 +21,36 @@ class PartySearchViewModel @ViewModelInject constructor(
     private const val DEBOUNCE_TIME_IN_MILLISECONDS = 500L
   }
 
-  val searchResultPagingFlow = Pager(
-    PagingConfig(
-      pageSize = PartySearchViewModel.PAGE_SIZE
-    )
-  ) {
-    partySearchPagingSource
-  }.flow.map { pagingData ->
-    pagingData.map { party ->
-      PartySearchResultViewItem(
-        partyId = party.id,
-        flagImageUrl = party.flagImage,
-        name = party.nameBurmese,
-        region = party.region
-      )
-    }
-  }.cachedIn(viewModelScope)
-
   val queryEmptyLiveData = SingleLiveEvent<Boolean>()
 
-  val pagingAdapterRefreshSingleLiveEvent = SingleLiveEvent<Unit>()
-
-  var queryTextChangeJob: Job? = null
+  private var currentQueryValue: String? = null
 
   init {
     queryEmptyLiveData.postValue(true)
   }
 
-  fun handleSearchQueryTextChange(query: String) {
-    queryTextChangeJob?.cancel()
-    queryTextChangeJob = viewModelScope.launch {
-      delay(DEBOUNCE_TIME_IN_MILLISECONDS)
-      performSearch(query)
-    }
-  }
+  private var currentSearchResult: Flow<PagingData<PartySearchResultViewItem>>? = null
 
-  private fun performSearch(query: String) {
-    queryEmptyLiveData.postValue(query.isEmpty())
-    if (query.isNotEmpty()) {
-      partySearchPagingSource.query = query
-      pagingAdapterRefreshSingleLiveEvent.postValue(Unit)
+  fun search(query: String): Flow<PagingData<PartySearchResultViewItem>> {
+    val lastResult = currentSearchResult
+    if (query == currentQueryValue && lastResult != null) {
+      return lastResult
     }
+    val newResult: Flow<PagingData<PartySearchResultViewItem>> = partyPagerFactory.partyPager(PAGE_SIZE, query)
+      .flow
+      .map<PagingData<Party>, PagingData<PartySearchResultViewItem>> { pagingData ->
+        pagingData.map<Party, PartySearchResultViewItem> { party ->
+          PartySearchResultViewItem(
+            partyId = party.id,
+            flagImageUrl = party.flagImage,
+            name = party.nameBurmese,
+            region = party.region
+          )
+        }
+      }
+      .cachedIn(viewModelScope)
+    currentSearchResult = newResult
+    return newResult
   }
 
 }

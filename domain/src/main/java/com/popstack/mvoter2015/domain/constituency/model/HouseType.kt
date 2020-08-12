@@ -1,4 +1,4 @@
-package com.popstack.mvoter2015.domain.house
+package com.popstack.mvoter2015.domain.constituency.model
 
 enum class HouseType {
   UPPER_HOUSE,

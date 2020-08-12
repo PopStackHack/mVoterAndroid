@@ -2,7 +2,7 @@ package com.popstack.mvoter2015.feature.candidate.listing
 
 import android.content.Context
 import com.popstack.mvoter2015.R
-import com.popstack.mvoter2015.domain.house.HouseType
+import com.popstack.mvoter2015.domain.constituency.model.HouseType
 import com.popstack.mvoter2015.domain.location.model.StateRegionType
 import javax.inject.Inject
 

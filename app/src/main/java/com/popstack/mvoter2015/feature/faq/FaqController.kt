@@ -23,6 +23,7 @@ import com.popstack.mvoter2015.helper.conductor.setSupportActionBar
 import com.popstack.mvoter2015.helper.conductor.supportActionBar
 import com.popstack.mvoter2015.paging.CommonLoadStateAdapter
 import com.popstack.mvoter2015.sentry.HasTag
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -58,14 +59,17 @@ class FaqController : MvvmController<ControllerInfoBinding>(), HasTag {
     supportActionBar()?.title = requireContext().getString(R.string.title_info)
 
     binding.tvSelectedCategory.setOnClickListener {
-      requireActivityAsAppCompatActivity().registerForActivityResult(
+      val selectFaqCategoryContract = requireActivityAsAppCompatActivity().registerForActivityResult(
         FaqCategorySelectActivity.SelectFaqCategoryContract()
       ) { selectedCategory ->
         if (selectedCategory != null) {
-          viewModel.handleSelectFaqCategory(selectedCategory)
-          faqPagingAdapter.refresh()
+          selectFaqCategory(selectedCategory)
         }
-      }.launch(viewModel.selectedFaqCategory())
+      }
+      viewModel.selectedFaqCategory()?.let {
+        selectFaqCategoryContract.launch(it)
+      }
+
     }
 
     binding.btnRetry.setOnClickListener {
@@ -103,12 +107,6 @@ class FaqController : MvvmController<ControllerInfoBinding>(), HasTag {
       }
     }
 
-    lifecycleScope.launch {
-      viewModel.faqPagingFlow.collectLatest {
-        faqPagingAdapter.submitData(lifecycle, it)
-      }
-    }
-
     viewModel.faqCategoryLiveData.observe(lifecycleOwner, Observer { faqCategory ->
       binding.tvSelectedCategory.text = faqCategory.displayString(requireContext())
     })
@@ -128,8 +126,19 @@ class FaqController : MvvmController<ControllerInfoBinding>(), HasTag {
     })
 
     if (savedViewState == null) {
-      viewModel.handleSelectFaqCategory(FaqCategory.GENERAL)
+      selectFaqCategory(FaqCategory.GENERAL)
       faqPagingAdapter.refresh()
+    }
+  }
+
+  private var selectFaqJob: Job? = null
+
+  private fun selectFaqCategory(faqCategory: FaqCategory) {
+    selectFaqJob?.cancel()
+    selectFaqJob = lifecycleScope.launch {
+      viewModel.selectFaqCategory(faqCategory).collectLatest { pagingData ->
+        faqPagingAdapter.submitData(pagingData)
+      }
     }
   }
 

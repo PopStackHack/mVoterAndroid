@@ -4,5 +4,5 @@ import com.popstack.mvoter2015.domain.party.model.Party
 
 interface PartyNetworkSource {
 
-  fun getPartyList(page: Int, itemPerPage: Int): List<Party>
+  fun getPartyList(page: Int, itemPerPage: Int, query: String? = null): List<Party>
 }

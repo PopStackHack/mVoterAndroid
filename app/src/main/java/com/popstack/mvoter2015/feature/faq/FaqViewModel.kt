@@ -4,19 +4,21 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
+import androidx.paging.map
+import com.popstack.mvoter2015.data.android.faq.FaqPagerFactory
+import com.popstack.mvoter2015.domain.faq.model.Faq
 import com.popstack.mvoter2015.domain.faq.model.FaqCategory
 import com.popstack.mvoter2015.domain.faq.model.FaqId
 import com.popstack.mvoter2015.domain.faq.usecase.GetFaq
 import com.popstack.mvoter2015.helper.livedata.SingleLiveEvent
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
 class FaqViewModel @ViewModelInject constructor(
-  private val faqPagingSource: FaqPagingSource,
+  private val faqPagerFactory: FaqPagerFactory,
   private val getFaq: GetFaq
 ) : ViewModel() {
 
@@ -24,33 +26,9 @@ class FaqViewModel @ViewModelInject constructor(
     private const val PAGE_SIZE = 20
   }
 
-  private var selectedFaqCategory: FaqCategory = FaqCategory.GENERAL
+  private var selectedFaqCategory: FaqCategory? = null
 
   val faqCategoryLiveData = MutableLiveData<FaqCategory>()
-
-  val faqPagingFlow = Pager(
-    PagingConfig(
-      pageSize = PAGE_SIZE
-    )
-  ) {
-    faqPagingSource
-  }.flow.map { pagingData ->
-    val viewItemPagingData: PagingData<FaqViewItem> = pagingData.map { faq ->
-      FaqViewItem.QuestionAndAnswer(
-        faqId = faq.faqId,
-        question = faq.question,
-        answer = faq.answer
-      )
-    }
-
-    if (selectedFaqCategory == FaqCategory.GENERAL) {
-      viewItemPagingData
-        .insertHeaderItem(FaqViewItem.PollingStationProhibition)
-        .insertHeaderItem(FaqViewItem.BallotExample)
-    } else {
-      viewItemPagingData
-    }
-  }.cachedIn(viewModelScope)
 
   sealed class SingleEvent {
     data class ShareFaq(val shareUrl: String) : SingleEvent()
@@ -59,13 +37,41 @@ class FaqViewModel @ViewModelInject constructor(
   val viewEventLiveData =
     SingleLiveEvent<SingleEvent>()
 
-  fun handleSelectFaqCategory(faqCategory: FaqCategory) {
+  var currentResult: Flow<PagingData<FaqViewItem>>? = null
+
+  fun selectFaqCategory(faqCategory: FaqCategory): Flow<PagingData<FaqViewItem>> {
+    val lastResult = currentResult
+    if (faqCategory == selectedFaqCategory && lastResult != null) {
+      return lastResult
+    }
     selectedFaqCategory = faqCategory
     faqCategoryLiveData.postValue(selectedFaqCategory)
-    faqPagingSource.setCategory(faqCategory)
+
+    val newResult = faqPagerFactory.faqPager(PAGE_SIZE, category = faqCategory)
+      .flow
+      .map<PagingData<Faq>, PagingData<FaqViewItem>> { pagingData ->
+        val viewItemPagingData = pagingData.map<Faq, FaqViewItem> { faq ->
+          FaqViewItem.QuestionAndAnswer(
+            faqId = faq.id,
+            question = faq.question,
+            answer = faq.answer
+          )
+        }
+
+        if (selectedFaqCategory == FaqCategory.GENERAL) {
+          viewItemPagingData
+            .insertHeaderItem(FaqViewItem.PollingStationProhibition)
+            .insertHeaderItem(FaqViewItem.BallotExample)
+        } else {
+          viewItemPagingData
+        }
+      }
+      .cachedIn(viewModelScope)
+    currentResult = newResult
+    return newResult
   }
 
-  fun selectedFaqCategory(): FaqCategory {
+  fun selectedFaqCategory(): FaqCategory? {
     return selectedFaqCategory
   }
 

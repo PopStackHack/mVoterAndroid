@@ -1,4 +1,4 @@
-package com.popstack.mvoter2015.data.android.party
+package com.popstack.mvoter2015.data.android.faq
 
 import android.content.Context
 import androidx.paging.ExperimentalPagingApi
@@ -9,19 +9,21 @@ import androidx.paging.LoadType.REFRESH
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import com.popstack.mvoter2015.data.android.paging.RemoteKeyDbProvider
-import com.popstack.mvoter2015.data.cache.entity.PartyRemoteKeyTable
-import com.popstack.mvoter2015.data.common.party.PartyCacheSource
-import com.popstack.mvoter2015.data.common.party.PartyNetworkSource
+import com.popstack.mvoter2015.data.cache.entity.FaqRemoteKeyTable
+import com.popstack.mvoter2015.data.common.faq.FaqCacheSource
+import com.popstack.mvoter2015.data.common.faq.FaqNetworkSource
 import com.popstack.mvoter2015.data.network.exception.NetworkException
-import com.popstack.mvoter2015.domain.party.model.Party
+import com.popstack.mvoter2015.domain.faq.model.Faq
+import com.popstack.mvoter2015.domain.faq.model.FaqCategory
 
 @OptIn(ExperimentalPagingApi::class)
-class PartyRemoteMediator constructor(
+class FaqRemoteMediator constructor(
   private val context: Context,
-  private val partyNetworkSource: PartyNetworkSource,
-  private val partyCacheSource: PartyCacheSource,
+  private val faqNetworkSource: FaqNetworkSource,
+  private val faqCacheSource: FaqCacheSource,
+  private val category: FaqCategory? = null,
   private val query: String? = null
-) : RemoteMediator<Int, Party>() {
+) : RemoteMediator<Int, Faq>() {
 
   companion object {
     private const val START_PAGE_KEY = 1
@@ -31,7 +33,7 @@ class PartyRemoteMediator constructor(
 
   override suspend fun load(
     loadType: LoadType,
-    state: PagingState<Int, Party>
+    state: PagingState<Int, Faq>
   ): MediatorResult {
     val page: Int = when (loadType) {
       REFRESH -> {
@@ -55,28 +57,26 @@ class PartyRemoteMediator constructor(
       }
     }
     try {
-      val partyListFromNetwork = partyNetworkSource.getPartyList(page, state.config.pageSize, query)
+      val faqListFromNetwork = faqNetworkSource.getFaqList(page, state.config.pageSize, category = category, query = query)
 
-      val endOfPaginationReached = partyListFromNetwork.isEmpty()
+      val endOfPaginationReached = faqListFromNetwork.isEmpty()
 
       val prevKey = if (page == START_PAGE_KEY) null else page - 1
       val nextKey = if (endOfPaginationReached) null else page + 1
 
       remoteKeyDb.transaction {
         if (loadType == LoadType.REFRESH) {
-          remoteKeyDb.partyRemoteKeyTableQueries.deleteAll()
-          //TODO: Should delete everything from party table as well?
-          //partyCacheSource.wipe()
+          remoteKeyDb.faqRemoteKeyTableQueries.deleteAll()
         }
 
-        partyListFromNetwork.forEach { party ->
-          remoteKeyDb.partyRemoteKeyTableQueries.insertOrReplace(
-            partyId = party.id,
+        faqListFromNetwork.forEach { faq ->
+          remoteKeyDb.faqRemoteKeyTableQueries.insertOrReplace(
+            faqId = faq.id,
             previousKey = prevKey?.toLong(),
             nextKey = nextKey?.toLong()
           )
         }
-        partyCacheSource.putParty(partyListFromNetwork)
+        faqCacheSource.putFaqList(faqListFromNetwork)
       }
 
       return MediatorResult.Success(endOfPaginationReached = endOfPaginationReached)
@@ -85,35 +85,35 @@ class PartyRemoteMediator constructor(
     }
   }
 
-  private suspend fun getRemoteKeyForLastItem(state: PagingState<Int, Party>): PartyRemoteKeyTable? {
+  private suspend fun getRemoteKeyForLastItem(state: PagingState<Int, Faq>): FaqRemoteKeyTable? {
     return state.pages.lastOrNull() { it.data.isNotEmpty() }?.data?.lastOrNull()
-      ?.let { party ->
+      ?.let { faq ->
         // Get the remote keys of the last item retrieved
-        remoteKeyDb.partyRemoteKeyTableQueries.selectById(party.id)
+        remoteKeyDb.faqRemoteKeyTableQueries.selectById(faq.id)
           .executeAsOne()
       }
   }
 
-  private suspend fun getRemoteKeyForFirstItem(state: PagingState<Int, Party>): PartyRemoteKeyTable? {
+  private suspend fun getRemoteKeyForFirstItem(state: PagingState<Int, Faq>): FaqRemoteKeyTable? {
     // Get the first page that was retrieved, that contained items.
     // From that first page, get the first item
     return state.pages.firstOrNull { it.data.isNotEmpty() }?.data?.firstOrNull()
-      ?.let { party ->
+      ?.let { faq ->
         // Get the remote keys of the first items retrieved
-        remoteKeyDb.partyRemoteKeyTableQueries.selectById(party.id)
+        remoteKeyDb.faqRemoteKeyTableQueries.selectById(faq.id)
           .executeAsOne()
       }
   }
 
   private suspend fun getRemoteKeyClosestToCurrentPosition(
-    state: PagingState<Int, Party>
-  ): PartyRemoteKeyTable? {
+    state: PagingState<Int, Faq>
+  ): FaqRemoteKeyTable? {
     // The paging library is trying to load data after the anchor position
     // Get the item closest to the anchor position
     return state.anchorPosition?.let { position ->
       state.closestItemToPosition(position)
-        ?.let { party ->
-          remoteKeyDb.partyRemoteKeyTableQueries.selectById(party.id)
+        ?.let { faq ->
+          remoteKeyDb.faqRemoteKeyTableQueries.selectById(faq.id)
             .executeAsOne()
         }
     }

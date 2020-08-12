@@ -35,5 +35,18 @@ INSERT OR REPLACE INTO PartyTable VALUES(
 getWithPage:
 SELECT * FROM PartyTable ORDER BY id ASC LIMIT :limit OFFSET :offset;
 
+searchWithPage:
+SELECT * FROM PartyTable
+WHERE burmeseName LIKE :query
+OR englishName LIKE :query
+OR abbreviation LIKE :query
+ORDER BY id ASC LIMIT :limit OFFSET :offset;
+
+searchTotalCount:
+SELECT count(*) FROM PartyTable
+WHERE burmeseName LIKE :query
+OR englishName LIKE :query
+OR abbreviation LIKE :query;
+
 count:
 SELECT count(*) FROM PartyTable;

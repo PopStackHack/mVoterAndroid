@@ -4,10 +4,11 @@ import com.bluelinelabs.conductor.Controller
 import com.bluelinelabs.conductor.Router
 import com.bluelinelabs.conductor.RouterTransaction
 import com.bluelinelabs.conductor.viewpager.RouterPagerAdapter
-import com.popstack.mvoter2015.domain.house.HouseType
+import com.popstack.mvoter2015.domain.constituency.model.HouseType
 import com.popstack.mvoter2015.feature.candidate.listing.lowerhouse.LowerHouseCandidateListController
 import com.popstack.mvoter2015.feature.candidate.listing.regionalhouse.RegionalHouseCandidateListController
 import com.popstack.mvoter2015.feature.candidate.listing.upperhouse.UpperHouseCandidateListController
+import com.popstack.mvoter2015.sentry.BreadcrumbControllerChangeHandler
 
 internal class CandidateListHousePagerAdapter(host: Controller) :
   RouterPagerAdapter(host) {
@@ -27,6 +28,7 @@ internal class CandidateListHousePagerAdapter(host: Controller) :
     router: Router,
     position: Int
   ) {
+    router.addChangeListener(BreadcrumbControllerChangeHandler)
     if (!router.hasRootController()) {
       val routerTransaction = when (itemList[position].houseType) {
         HouseType.UPPER_HOUSE -> {

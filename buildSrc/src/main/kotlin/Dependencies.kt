@@ -50,7 +50,7 @@ object AndroidXAppCompat {
 }
 
 object AndroidXRecyclerView {
-  private const val version = "1.2.0-alpha02"
+  private const val version = "1.2.0-alpha05"
 
   const val recycler_view = "androidx.recyclerview:recyclerview:$version"
   const val selection = "androidx.recyclerview:recyclerview-selection:$version"
@@ -120,7 +120,7 @@ object AndroidXCore {
 }
 
 object AndroidXPaging {
-  private const val version = "3.0.0-alpha01"
+  private const val version = "3.0.0-alpha03"
 
   const val common = "androidx.paging:paging-common:$version"
   const val runtime = "androidx.paging:paging-runtime:$version"

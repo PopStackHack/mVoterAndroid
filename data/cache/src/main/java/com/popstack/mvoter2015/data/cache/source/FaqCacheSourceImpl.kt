@@ -1,7 +1,9 @@
 package com.popstack.mvoter2015.data.cache.source
 
+import androidx.paging.PagingSource
 import com.popstack.mvoter2015.data.cache.MVoterDb
 import com.popstack.mvoter2015.data.cache.entity.FaqTable
+import com.popstack.mvoter2015.data.cache.extension.QueryDataSourceFactory
 import com.popstack.mvoter2015.data.common.faq.FaqCacheSource
 import com.popstack.mvoter2015.domain.faq.model.BallotExample
 import com.popstack.mvoter2015.domain.faq.model.Faq
@@ -17,7 +19,7 @@ class FaqCacheSourceImpl @Inject constructor(
       faqList.forEach { faq ->
 
         db.faqTableQueries.insertOrReplace(
-          id = faq.faqId,
+          id = faq.id,
           question = faq.question,
           answer = faq.answer,
           lawSource = faq.lawSource,
@@ -53,6 +55,34 @@ class FaqCacheSourceImpl @Inject constructor(
     }
   }
 
+  override fun searchPaging(itemPerPage: Int, query: String): PagingSource<Int, Faq> {
+    return QueryDataSourceFactory(
+      queryProvider = { limit, offset ->
+        db.faqTableQueries.selectAllWithQuery(query, limit, offset)
+      },
+      countQuery = db.faqTableQueries.countAllWithQuery(query),
+      transacter = db.faqTableQueries
+    ).map(FaqTable::mapToEntity).asPagingSourceFactory().invoke()
+  }
+
+  override fun getAllPaging(itemPerPage: Int, category: FaqCategory?): PagingSource<Int, Faq> {
+    return if (category == null) {
+      QueryDataSourceFactory(
+        queryProvider = db.faqTableQueries::selectAll,
+        countQuery = db.faqTableQueries.countAll(),
+        transacter = db.faqTableQueries
+      )
+    } else {
+      QueryDataSourceFactory(
+        queryProvider = { limit, offset ->
+          db.faqTableQueries.selectAllWithCategory(category, limit, offset)
+        },
+        countQuery = db.faqTableQueries.countAllWithCategory(category),
+        transacter = db.faqTableQueries
+      )
+    }.map(FaqTable::mapToEntity).asPagingSourceFactory().invoke()
+  }
+
   override fun getBallotExampleList(): List<BallotExample> {
     return db.ballotExampleTableQueries.selectAll().executeAsList().map { table ->
       BallotExample(
@@ -68,7 +98,7 @@ class FaqCacheSourceImpl @Inject constructor(
 
 fun FaqTable.mapToEntity(): Faq {
   return Faq(
-    faqId = id,
+    id = id,
     question = question,
     answer = answer,
     lawSource = lawSource,

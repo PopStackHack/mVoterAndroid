@@ -16,8 +16,32 @@ INSERT OR REPLACE INTO FaqTable VALUES (
     :id, :question, :answer, :lawSource, :articleSource, :category, :shareableUrl
 );
 
+selectAllWithQuery:
+SELECT * FROM FaqTable
+WHERE question LIKE :query
+OR answer LIKE :query
+OR lawSource LIKE :query
+OR articleSource LIKE :query
+LIMIT :limit OFFSET :offset;
+
+countAllWithQuery:
+SELECT count(*) FROM FaqTable
+WHERE question LIKE :query
+OR answer LIKE :query
+OR lawSource LIKE :query
+OR articleSource LIKE :query;
+
+selectAllWithCategory:
+SELECT * FROM FaqTable WHERE category = :category LIMIT :limit OFFSET :offset;
+
+countAllWithCategory:
+SELECT count(*) FROM FaqTable WHERE category = :category ;
+
 selectAll:
 SELECT * FROM FaqTable LIMIT :limit OFFSET :offset;
+
+countAll:
+SELECT count(*) FROM FaqTable;
 
 selectById:
 SELECT * FROM FaqTable WHERE id = :id;

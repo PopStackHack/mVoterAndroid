@@ -3,7 +3,7 @@ package com.popstack.mvoter2015.feature.candidate.listing
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.popstack.mvoter2015.domain.house.HouseType
+import com.popstack.mvoter2015.domain.constituency.model.HouseType
 import com.popstack.mvoter2015.domain.location.usecase.GetUserStateRegion
 import com.popstack.mvoter2015.helper.livedata.SingleLiveEvent
 import kotlinx.coroutines.launch

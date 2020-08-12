@@ -11,7 +11,7 @@ class FaqNetworkSourceImpl @Inject constructor(
   private val mvoterApi: MvoterApi
 ) : FaqNetworkSource {
 
-  override fun getFaqList(page: Int, itemsPerPage: Int, category: FaqCategory): List<Faq> {
+  override fun getFaqList(page: Int, itemsPerPage: Int, category: FaqCategory?, query: String?): List<Faq> {
     return emptyList()
   }
 

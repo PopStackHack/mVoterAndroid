@@ -12,4 +12,6 @@ interface PartyCacheSource {
   fun getPartyList(page: Int, itemPerPage: Int): List<Party>
 
   fun getPartyPaging(itemPerPage: Int): PagingSource<Int, Party>
+
+  fun searchPartyPaging(itemPerPage: Int, query: String): PagingSource<Int, Party>
 }

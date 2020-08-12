@@ -6,6 +6,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -20,6 +21,7 @@ import com.popstack.mvoter2015.helper.conductor.requireActivityAsAppCompatActivi
 import com.popstack.mvoter2015.helper.extensions.showKeyboard
 import com.popstack.mvoter2015.paging.CommonLoadStateAdapter
 import com.popstack.mvoter2015.sentry.HasTag
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -35,6 +37,9 @@ class PartySearchController : MvvmController<ControllerPartySearchBinding>(), Ha
 
   private val searchPagingAdapter = PartySearchPagingAdapter(this::onItemClick)
 
+  private var searchJob: Job? = null
+
+  @OptIn(ExperimentalPagingApi::class)
   override fun onBindView(savedViewState: Bundle?) {
     super.onBindView(savedViewState)
     requireActivityAsAppCompatActivity().setSupportActionBar(binding.toolBar)
@@ -42,13 +47,12 @@ class PartySearchController : MvvmController<ControllerPartySearchBinding>(), Ha
 
     binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
       override fun onQueryTextSubmit(query: String?): Boolean {
-        viewModel.handleSearchQueryTextChange(query ?: "")
+        search(query ?: "")
         return true
       }
 
       override fun onQueryTextChange(newText: String?): Boolean {
-        viewModel.handleSearchQueryTextChange(newText ?: "")
-        return true
+        return false
       }
 
     })
@@ -80,19 +84,27 @@ class PartySearchController : MvvmController<ControllerPartySearchBinding>(), Ha
       }
     }
 
-    viewModel.queryEmptyLiveData.observe(this, Observer(this::observeEmptyQuery))
-    viewModel.pagingAdapterRefreshSingleLiveEvent.observe(
-      this,
-      Observer { searchPagingAdapter.refresh() })
-
     lifecycleScope.launch {
-      viewModel.searchResultPagingFlow.collectLatest {
-        searchPagingAdapter.submitData(lifecycle, it)
+      searchPagingAdapter.dataRefreshFlow.collectLatest {
+
       }
     }
+
+    viewModel.queryEmptyLiveData.observe(this, Observer(this::observeEmptyQuery))
+
     lifecycleScope.launch {
       delay(500)
       binding.searchView.showKeyboard()
+    }
+  }
+
+  private fun search(query: String) {
+    // Make sure we cancel the previous job before creating a new one
+    searchJob?.cancel()
+    searchJob = lifecycleScope.launch {
+      viewModel.search(query).collectLatest { pagingData ->
+        searchPagingAdapter.submitData(pagingData)
+      }
     }
   }
 

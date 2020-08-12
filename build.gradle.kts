@@ -33,6 +33,12 @@ allprojects {
   }
 }
 
+configurations.all {
+  resolutionStrategy {
+    force(AndroidXRecyclerView.recycler_view)
+  }
+}
+
 tasks.register("clean", Delete::class) {
   delete(rootProject.buildDir)
 }
