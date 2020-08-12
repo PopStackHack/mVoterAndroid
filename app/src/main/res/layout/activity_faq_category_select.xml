@@ -40,11 +40,11 @@
         android:id="@+id/toolBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:titleTextAppearance="@style/HeadingText" />
+        app:titleTextAppearance="@style/TextTitle3.Bold" />
 
       <TextView
         android:id="@+id/tvSelectedCategory"
-        style="@style/SubHeadingText"
+        style="@style/TextExtraLarge.Accent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:drawableEnd="@drawable/ic_arrow_drop_down_24"

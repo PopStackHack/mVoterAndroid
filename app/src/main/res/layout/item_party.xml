@@ -29,11 +29,10 @@
 
   <TextView
     android:id="@+id/tvPartyName"
+    style="@style/TextLarge.Bold"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginStart="8dp"
-    android:textColor="@color/text_primary"
-    android:textStyle="bold"
     app:layout_constraintBottom_toBottomOf="@+id/ivPartyFlag"
     app:layout_constraintEnd_toStartOf="@+id/ivGoDetailIndicator"
     app:layout_constraintStart_toEndOf="@+id/ivPartyFlag"
@@ -44,11 +43,11 @@
 
   <TextView
     android:id="@+id/tvPartyRegion"
+    style="@style/TextMedium.Secondary"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginStart="8dp"
     android:maxLines="2"
-    android:textColor="@color/text_secondary"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toStartOf="@id/ivGoDetailIndicator"
     app:layout_constraintStart_toEndOf="@+id/ivPartyFlag"

@@ -20,7 +20,7 @@
 
   <TextView
     android:id="@+id/tvNoSelfie"
-    style="@style/SecondaryText"
+    style="@style/TextMedium"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginTop="8dp"
@@ -46,7 +46,7 @@
 
   <TextView
     android:id="@+id/tvNoPhoto"
-    style="@style/SecondaryText"
+    style="@style/TextMedium"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginTop="8dp"
@@ -72,7 +72,7 @@
 
   <TextView
     android:id="@+id/tvNoVideo"
-    style="@style/SecondaryText"
+    style="@style/TextMedium"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginTop="8dp"
@@ -98,7 +98,7 @@
 
   <TextView
     android:id="@+id/tvNoRecording"
-    style="@style/SecondaryText"
+    style="@style/TextMedium"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginTop="8dp"

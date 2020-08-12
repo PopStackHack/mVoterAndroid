@@ -28,7 +28,7 @@
 
   <TextView
     android:id="@+id/tvTitle"
-    style="@style/TitleText"
+    style="@style/TextLarge.Bold"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginEnd="8dp"
@@ -41,7 +41,7 @@
 
   <TextView
     android:id="@+id/tvSummary"
-    style="@style/BodyText"
+    style="@style/TextMedium.Secondary"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginTop="4dp"
@@ -55,7 +55,7 @@
 
   <TextView
     android:id="@+id/tvPublishedDate"
-    style="@style/SecondaryText"
+    style="@style/TextMedium.Bold"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginTop="4dp"

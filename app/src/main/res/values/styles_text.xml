@@ -5,6 +5,33 @@
     <item name="android:textColor">@color/text_primary</item>
   </style>
 
+  <!-- Text Extra Large -->
+  <style name="TextExtraLarge" parent="BaseTextAppearance">
+    <item name="android:textSize">18sp</item>
+  </style>
+
+  <style name="TextExtraLarge.Bold">
+    <item name="android:textStyle">bold</item>
+  </style>
+
+  <style name="TextExtraLarge.Accent">
+    <item name="android:textColor">@color/accent</item>
+  </style>
+
+  <style name="TextExtraLarge.Accent.Bold">
+    <item name="android:textStyle">bold</item>
+  </style>
+
+  <style name="TextExtraLarge.Secondary">
+    <item name="android:textColor">@color/text_secondary</item>
+  </style>
+
+  <style name="TextExtraLarge.Secondary.Bold">
+    <item name="android:textStyle">bold</item>
+  </style>
+  <!-- End of Text Large -->
+
+
   <!-- Text Large -->
   <style name="TextLarge" parent="BaseTextAppearance">
     <item name="android:textSize">16sp</item>

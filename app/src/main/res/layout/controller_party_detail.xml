@@ -41,7 +41,7 @@
 
       <TextView
         android:id="@+id/tvPartyName"
-        style="@style/HeadingText"
+        style="@style/TextTitle3.Bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -54,7 +54,7 @@
 
       <TextView
         android:id="@+id/tvPartyNameEnglish"
-        style="@style/SubHeadingText"
+        style="@style/TextTitle3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -68,7 +68,7 @@
 
       <TextView
         android:id="@+id/tvPartyNameAbbreviation"
-        style="@style/HeadingText"
+        style="@style/TextTitle1.Bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -82,7 +82,7 @@
 
       <TextView
         android:id="@+id/tvPartyRegion"
-        style="@style/TitleText"
+        style="@style/TextLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -108,7 +108,6 @@
 
       <ImageView
         android:id="@+id/ivPartyFlag"
-        style="@style/SecondaryText"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
@@ -121,7 +120,7 @@
 
       <TextView
         android:id="@+id/tvPartyNumberTitle"
-        style="@style/SecondaryText"
+        style="@style/TextMedium.Secondary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -143,7 +142,7 @@
 
       <TextView
         android:id="@+id/tvPartyNumber"
-        style="@style/BodyText"
+        style="@style/TextLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -165,7 +164,7 @@
 
       <TextView
         android:id="@+id/tvLeaderTitle"
-        style="@style/SecondaryText"
+        style="@style/TextMedium.Secondary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -178,7 +177,7 @@
 
       <TextView
         android:id="@+id/tvLeader"
-        style="@style/BodyText"
+        style="@style/TextLarge"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -190,7 +189,7 @@
 
       <TextView
         android:id="@+id/tvChairmanTitle"
-        style="@style/SecondaryText"
+        style="@style/TextMedium.Secondary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -203,7 +202,7 @@
 
       <TextView
         android:id="@+id/tvChairman"
-        style="@style/BodyText"
+        style="@style/TextLarge"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -215,7 +214,7 @@
 
       <TextView
         android:id="@+id/tvMemberCountTitle"
-        style="@style/SecondaryText"
+        style="@style/TextMedium.Secondary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -228,7 +227,7 @@
 
       <TextView
         android:id="@+id/tvMemberCount"
-        style="@style/BodyText"
+        style="@style/TextLarge"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -240,7 +239,7 @@
 
       <TextView
         android:id="@+id/tvHeadquarterLocationTitle"
-        style="@style/SecondaryText"
+        style="@style/TextMedium.Secondary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -253,7 +252,7 @@
 
       <TextView
         android:id="@+id/tvHeadquarterLocation"
-        style="@style/BodyText"
+        style="@style/TextLarge"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -265,7 +264,7 @@
 
       <TextView
         android:id="@+id/tvContactTitle"
-        style="@style/SecondaryText"
+        style="@style/TextMedium.Secondary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -278,7 +277,7 @@
 
       <TextView
         android:id="@+id/tvContact"
-        style="@style/BodyText"
+        style="@style/TextLarge"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -296,7 +295,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        app:cardBackgroundColor="@color/light_blue"
+        app:cardBackgroundColor="@color/accent_20"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

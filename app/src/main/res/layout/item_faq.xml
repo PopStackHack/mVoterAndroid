@@ -11,7 +11,7 @@
 
   <TextView
     android:id="@+id/tvQuestion"
-    style="@style/BodyText"
+    style="@style/TextLarge.Accent"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:textColor="@color/accent"
@@ -20,7 +20,7 @@
 
   <TextView
     android:id="@+id/tvAnswer"
-    style="@style/BodyText"
+    style="@style/TextLarge"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="8dp"
