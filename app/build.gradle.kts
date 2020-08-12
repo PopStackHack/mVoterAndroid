@@ -85,7 +85,7 @@ android {
 }
 
 dependencies {
-  coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.0.9")
+  coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.0.10")
 
   implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
   implementation(project(":domain"))

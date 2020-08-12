@@ -14,6 +14,9 @@ dependencies {
   mockito()
   daggerJvm()
 
+  //For paging
+  api(AndroidXPaging.common)
+
   implementation(Kotlin.stdblib_jdk)
   api(KotlinCoroutine.core)
 

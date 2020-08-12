@@ -1,7 +1,9 @@
 package com.popstack.mvoter2015.data.cache.source
 
+import androidx.paging.PagingSource
 import com.popstack.mvoter2015.data.cache.MVoterDb
 import com.popstack.mvoter2015.data.cache.entity.PartyTable
+import com.popstack.mvoter2015.data.cache.extension.QueryDataSourceFactory
 import com.popstack.mvoter2015.data.common.party.PartyCacheSource
 import com.popstack.mvoter2015.domain.party.model.Party
 import javax.inject.Inject
@@ -47,6 +49,14 @@ class PartyCacheSourceImpl @Inject constructor(
       limit = limit.toLong(),
       offset = offset.toLong()
     ).executeAsList().map(PartyTable::mapToEntity)
+  }
+
+  override fun getPartyPaging(itemPerPage: Int): PagingSource<Int, Party> {
+    return QueryDataSourceFactory(
+      queryProvider = db.partyTableQueries::getWithPage,
+      countQuery = db.partyTableQueries.count(),
+      transacter = db.partyTableQueries
+    ).map(PartyTable::mapToEntity).asPagingSourceFactory().invoke()
   }
 
 }

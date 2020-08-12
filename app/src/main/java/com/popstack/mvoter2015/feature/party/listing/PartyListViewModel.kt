@@ -3,20 +3,19 @@ package com.popstack.mvoter2015.feature.party.listing
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
+import com.popstack.mvoter2015.data.android.party.PartyPagerFactory
 import kotlinx.coroutines.flow.map
 
 class PartyListViewModel @ViewModelInject constructor(
-  private val partyPagingSource: PartyPagingSource
+  private val partyPagerFactory: PartyPagerFactory
 ) : ViewModel() {
 
-  val partyPagingFlow = Pager(
-    PagingConfig(pageSize = 10)
-  ) {
-    partyPagingSource
-  }.flow.map { pagingData ->
+  companion object {
+    private const val ITEM_PER_PAGE = 20
+  }
+
+  val partyPagingFlow = partyPagerFactory.partyPager(ITEM_PER_PAGE).flow.map { pagingData ->
     pagingData.map { party ->
       PartyListViewItem(
         partyId = party.id,
@@ -25,6 +24,7 @@ class PartyListViewModel @ViewModelInject constructor(
         region = party.region
       )
     }
-  }.cachedIn(viewModelScope)
+  }
+    .cachedIn(viewModelScope)
 
 }

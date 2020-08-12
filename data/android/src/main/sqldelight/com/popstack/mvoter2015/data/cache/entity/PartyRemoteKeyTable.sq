@@ -1,0 +1,20 @@
+import com.popstack.mvoter2015.domain.faq.model.BallotExampleId;
+import com.popstack.mvoter2015.domain.party.model.PartyId;
+import java.lang.Boolean;
+
+CREATE TABLE PartyRemoteKeyTable(
+    partyId TEXT AS PartyId PRIMARY KEY NOT NULL,
+    previousKey INTEGER,
+    nextKey INTEGER
+);
+
+insertOrReplace:
+INSERT OR REPLACE INTO PartyRemoteKeyTable VALUES (
+    :partyId, :previousKey, :nextKey
+);
+
+selectById:
+SELECT * FROM PartyRemoteKeyTable WHERE partyId = :id;
+
+deleteAll:
+DELETE FROM PartyRemoteKeyTable;

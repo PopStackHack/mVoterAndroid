@@ -11,17 +11,19 @@
 
   <TextView
     android:id="@+id/tvQuestion"
+    style="@style/BodyText"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:textColor="@color/accent"
+    android:textStyle="bold"
     tools:text="@sample/faq.csv/question" />
 
   <TextView
     android:id="@+id/tvAnswer"
+    style="@style/BodyText"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="8dp"
-    android:textColor="@color/text_primary"
     tools:text="@sample/faq.csv/answer" />
 
   <TextView

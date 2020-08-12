@@ -54,7 +54,7 @@ dependencies {
   implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
   implementation(project(":data:common"))
 
-  coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.0.5")
+  coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.0.10")
 
   implementation(Kotlin.stdblib_jdk)
   implementation(AndroidXCore.core_ktx)
@@ -63,14 +63,18 @@ dependencies {
   implementation(AndroidXSqlite.sqlite_ktx)
   implementation(SqlDelight.android_driver)
 
+  //Pref
   implementation(AndroidXPreference.preference_ktx)
+
+  //Paging
+  implementation(AndroidXPaging.common)
 
   //Dagger
   daggerJvm()
   daggerHilt()
 
   //Testing
-  testImplementation("junit:junit:4.12")
+  testImplementation("junit:junit:4.13")
   mockito()
   mockitoAndroid()
   androidXTest()
