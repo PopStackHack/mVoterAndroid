@@ -3,6 +3,7 @@
 
   <style name="BaseTextAppearance" parent="TextAppearance.AppCompat">
     <item name="android:textColor">@color/text_primary</item>
+    <item name="fontFamily">@font/pyidaungsu</item>
   </style>
 
   <!-- Text Extra Large -->

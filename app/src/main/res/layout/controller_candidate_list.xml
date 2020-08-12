@@ -21,6 +21,7 @@
       app:layout_scrollFlags="scroll|enterAlways"
       app:menu="@menu/menu_candidate"
       app:title="@string/title_candidates"
+      app:titleTextAppearance="@style/TextTitle3.Bold"
       app:titleTextColor="@color/text_primary" />
 
     <com.google.android.material.tabs.TabLayout
@@ -35,7 +36,7 @@
       app:tabIndicatorHeight="4dp"
       app:tabMode="fixed"
       app:tabSelectedTextColor="@color/accent"
-      app:tabTextAppearance="@style/AppTheme" />
+      app:tabTextAppearance="@style/TextTitle3.Bold" />
 
   </com.google.android.material.appbar.AppBarLayout>
 
