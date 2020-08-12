@@ -18,6 +18,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.popstack.mvoter2015.helper.viewpager.NonScrollableViewPager
 import com.popstack.mvoter2015.helper.extensions.filter
 import com.popstack.mvoter2015.helper.extensions.indexOf
+import com.popstack.mvoter2015.sentry.BreadcrumbControllerChangeHandler
 
 class BNVRouterPagerAdapter(
   val host: Controller,
@@ -74,6 +75,7 @@ class BNVRouterPagerAdapter(
 
   override fun instantiateItem(container: ViewGroup, position: Int): Any {
     return host.getChildRouter(container, makeRouterName(container.id, getItemId(position))).apply {
+      this.addChangeListener(BreadcrumbControllerChangeHandler)
       if (!hasRootController()) {
         val savedState = savedPages.get(position)
         if (savedState != null) {
@@ -103,6 +105,7 @@ class BNVRouterPagerAdapter(
 
     ensurePagesSaved()
 
+    router.removeChangeListener(BreadcrumbControllerChangeHandler)
     host.removeChildRouter(router)
     visibleRouters.remove(position)
   }

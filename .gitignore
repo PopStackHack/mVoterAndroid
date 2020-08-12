@@ -347,4 +347,7 @@ hs_err_pid*
 
 !/gradle/wrapper/gradle-wrapper.jar
 
+# Sentry
+sentry.properties
+
 # End of https://www.gitignore.io/api/linux,macos,android,windows,intellij,androidstudio

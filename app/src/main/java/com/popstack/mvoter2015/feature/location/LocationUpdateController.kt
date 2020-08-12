@@ -18,10 +18,13 @@ import com.popstack.mvoter2015.helper.conductor.requireActivityAsAppCompatActivi
 import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.helper.conductor.setSupportActionBar
 import com.popstack.mvoter2015.helper.conductor.supportActionBar
+import com.popstack.mvoter2015.sentry.HasTag
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class LocationUpdateController : MvvmController<ControllerLocationBinding>() {
+class LocationUpdateController : MvvmController<ControllerLocationBinding>(), HasTag {
+
+  override val tag: String = "LocationUpdateController"
 
   private val viewModel: LocationUpdateViewModel by viewModels()
 

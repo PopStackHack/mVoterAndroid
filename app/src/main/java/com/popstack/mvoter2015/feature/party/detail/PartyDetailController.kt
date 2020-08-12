@@ -16,9 +16,12 @@ import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewState
 import com.popstack.mvoter2015.helper.conductor.requireActivityAsAppCompatActivity
 import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.helper.intent.Intents
+import com.popstack.mvoter2015.sentry.HasTag
 import javax.inject.Inject
 
-class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDetailBinding>(bundle) {
+class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDetailBinding>(bundle), HasTag {
+
+  override val tag: String = "PartyDetailController"
 
   /***
    * Since we dont have factory yet

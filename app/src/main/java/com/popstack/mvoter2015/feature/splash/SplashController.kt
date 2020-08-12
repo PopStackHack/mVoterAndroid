@@ -10,8 +10,11 @@ import com.popstack.mvoter2015.config.AppFirstTimeConfig
 import com.popstack.mvoter2015.feature.home.HomeController
 import com.popstack.mvoter2015.feature.location.LocationUpdateController
 import com.popstack.mvoter2015.helper.conductor.requireContext
+import com.popstack.mvoter2015.sentry.HasTag
 
-class SplashController : Controller() {
+class SplashController : Controller(), HasTag {
+
+  override val tag: String = "SplashController"
 
   override fun onCreateView(
     inflater: LayoutInflater,

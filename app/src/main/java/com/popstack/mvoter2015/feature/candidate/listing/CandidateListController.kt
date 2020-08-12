@@ -14,9 +14,12 @@ import com.popstack.mvoter2015.helper.conductor.requireActivity
 import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.helper.conductor.setSupportActionBar
 import com.popstack.mvoter2015.helper.conductor.supportActionBar
+import com.popstack.mvoter2015.sentry.HasTag
 
 internal class CandidateListController :
-  MvvmController<ControllerCandidateListBinding>() {
+  MvvmController<ControllerCandidateListBinding>(), HasTag {
+
+  override val tag: String = "CandidateListController"
 
   private val viewModel: CandidateListViewModel by viewModels()
 

@@ -19,10 +19,13 @@ import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.helper.conductor.setSupportActionBar
 import com.popstack.mvoter2015.helper.conductor.supportActionBar
 import com.popstack.mvoter2015.paging.CommonLoadStateAdapter
+import com.popstack.mvoter2015.sentry.HasTag
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-class NewsController : MvvmController<ControllerNewsBinding>() {
+class NewsController : MvvmController<ControllerNewsBinding>(), HasTag {
+
+  override val tag: String = "NewsController"
 
   override val bindingInflater: (LayoutInflater) -> ControllerNewsBinding =
     ControllerNewsBinding::inflate

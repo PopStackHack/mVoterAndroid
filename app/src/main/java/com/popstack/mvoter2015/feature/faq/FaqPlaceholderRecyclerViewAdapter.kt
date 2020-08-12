@@ -3,7 +3,6 @@ package com.popstack.mvoter2015.feature.faq
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.popstack.mvoter2015.databinding.ItemFaqPlaceholderBinding
-import com.popstack.mvoter2015.databinding.ItemPartyPlaceholderBinding
 import com.popstack.mvoter2015.helper.extensions.inflater
 
 class FaqPlaceholderRecyclerViewAdapter constructor(

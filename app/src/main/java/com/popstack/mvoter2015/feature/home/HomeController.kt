@@ -13,8 +13,11 @@ import com.popstack.mvoter2015.feature.votingguide.VotingGuideController
 import com.popstack.mvoter2015.feature.news.NewsController
 import com.popstack.mvoter2015.feature.party.listing.PartyListController
 import com.popstack.mvoter2015.helper.conductor.BNVRouterPagerAdapter
+import com.popstack.mvoter2015.sentry.HasTag
 
-class HomeController : MvvmController<ControllerHomeBinding>() {
+class HomeController : MvvmController<ControllerHomeBinding>(), HasTag {
+
+  override val tag: String = TAG
 
   companion object {
     const val TAG = "HomeController"

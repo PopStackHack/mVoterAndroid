@@ -7,8 +7,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerHowToVoteBinding
+import com.popstack.mvoter2015.sentry.HasTag
 
-class VotingGuideController : MvvmController<ControllerHowToVoteBinding>() {
+class VotingGuideController : MvvmController<ControllerHowToVoteBinding>(), HasTag {
+
+  override val tag: String = "VotingGuideController"
 
   private val viewModel: VotingGuideModel by viewModels()
 

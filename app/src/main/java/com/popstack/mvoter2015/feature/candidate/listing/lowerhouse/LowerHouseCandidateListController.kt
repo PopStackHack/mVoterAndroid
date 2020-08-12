@@ -6,9 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerLowerHouseCandidateListBinding
+import com.popstack.mvoter2015.sentry.HasTag
 
 class LowerHouseCandidateListController :
-  MvvmController<ControllerLowerHouseCandidateListBinding>() {
+  MvvmController<ControllerLowerHouseCandidateListBinding>(), HasTag {
+
+  override val tag: String = "LowerHouseCandidateListController"
 
   private val viewModel: LowerHouseCandidateListViewModel by viewModels()
 

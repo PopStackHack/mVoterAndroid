@@ -21,10 +21,13 @@ import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
 import com.popstack.mvoter2015.helper.conductor.requireActivity
 import com.popstack.mvoter2015.helper.conductor.requireActivityAsAppCompatActivity
 import com.popstack.mvoter2015.paging.CommonLoadStateAdapter
+import com.popstack.mvoter2015.sentry.HasTag
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-class PartyListController : MvvmController<ControllerPartyListBinding>() {
+class PartyListController : MvvmController<ControllerPartyListBinding>(), HasTag {
+
+  override val tag: String = "PartyListController"
 
   private val viewModel: PartyListViewModel by viewModels()
 

@@ -19,11 +19,14 @@ import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
 import com.popstack.mvoter2015.helper.conductor.requireActivityAsAppCompatActivity
 import com.popstack.mvoter2015.helper.extensions.showKeyboard
 import com.popstack.mvoter2015.paging.CommonLoadStateAdapter
+import com.popstack.mvoter2015.sentry.HasTag
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-class PartySearchController : MvvmController<ControllerPartySearchBinding>() {
+class PartySearchController : MvvmController<ControllerPartySearchBinding>(), HasTag {
+
+  override val tag: String = "PartySearchController"
 
   private val viewModel: PartySearchViewModel by viewModels()
 

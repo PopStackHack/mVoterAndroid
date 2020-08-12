@@ -16,8 +16,11 @@ import com.popstack.mvoter2015.helper.conductor.setSupportActionBar
 import com.popstack.mvoter2015.helper.conductor.supportActionBar
 import com.popstack.mvoter2015.helper.extensions.addOnTabSelectedListener
 import com.popstack.mvoter2015.helper.extensions.forEachTab
+import com.popstack.mvoter2015.sentry.HasTag
 
-class BallotExampleController : MvvmController<ControllerBallotExampleBinding>() {
+class BallotExampleController : MvvmController<ControllerBallotExampleBinding>(), HasTag {
+
+  override val tag: String = "BallotExampleController"
 
   override val bindingInflater: (LayoutInflater) -> ControllerBallotExampleBinding =
     ControllerBallotExampleBinding::inflate

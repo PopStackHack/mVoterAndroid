@@ -25,6 +25,14 @@
       android:name=".feature.faq.FaqCategorySelectActivity"
       android:theme="@style/AppTheme.Transparent" />
 
+    <meta-data
+      android:name="io.sentry.dsn"
+      android:value="@string/sentry_dsn" />
+
+    <meta-data
+      android:name="io.sentry.auto-init"
+      android:value="false" />
+
   </application>
 
 </manifest>

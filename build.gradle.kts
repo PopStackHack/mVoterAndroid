@@ -5,7 +5,6 @@ plugins {
 
 buildscript {
 
-  val kotlin_version by extra("1.3.72")
   repositories {
     maven("https://plugins.gradle.org/m2/")
     google()
@@ -20,7 +19,7 @@ buildscript {
     classpath(SqlDelight.gradle_plugin)
     classpath(Wormhole.gradle_plugin)
     classpath(DaggerHiltAndroid.gradle_plugin)
-    "classpath"("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
+    classpath(Sentry.android_gradle_plugin)
   }
 }
 

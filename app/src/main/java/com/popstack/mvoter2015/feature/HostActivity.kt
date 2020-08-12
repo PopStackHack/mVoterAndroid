@@ -7,6 +7,7 @@ import com.bluelinelabs.conductor.Router
 import com.bluelinelabs.conductor.RouterTransaction
 import com.popstack.mvoter2015.databinding.ActivityHostBinding
 import com.popstack.mvoter2015.feature.splash.SplashController
+import com.popstack.mvoter2015.sentry.BreadcrumbControllerChangeHandler
 import dagger.hilt.android.AndroidEntryPoint
 
 //A simple activity that host Conductor's FrameLayout
@@ -24,6 +25,7 @@ class HostActivity : AppCompatActivity(), HasRouter {
     setContentView(binding.root)
 
     router = Conductor.attachRouter(this, binding.container, savedInstanceState)
+    router.addChangeListener(BreadcrumbControllerChangeHandler)
 
     if (!router.hasRootController()) {
       //Set your first routing here
@@ -33,6 +35,7 @@ class HostActivity : AppCompatActivity(), HasRouter {
 
   override fun onDestroy() {
     super.onDestroy()
+    router.removeChangeListener(BreadcrumbControllerChangeHandler)
   }
 
   override fun onBackPressed() {
