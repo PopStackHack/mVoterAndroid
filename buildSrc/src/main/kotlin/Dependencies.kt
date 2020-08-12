@@ -144,7 +144,7 @@ object AssistedInject {
 }
 
 object Material {
-  const val material = "com.google.android.material:material:1.3.0-alpha01"
+  const val material = "com.google.android.material:material:1.3.0-alpha02"
 }
 
 object Caligraphy {

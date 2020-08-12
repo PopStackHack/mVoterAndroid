@@ -13,74 +13,6 @@
     android:orientation="vertical"
     app:layout_constraintGuide_percent="0.5" />
 
-  <ImageView
-    android:id="@+id/ivRejectBallot"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="16dp"
-    android:src="@drawable/ic_close_circle_24"
-    android:tint="@color/text_error"
-    app:layout_constraintEnd_toEndOf="@+id/tvRejectBallot"
-    app:layout_constraintStart_toStartOf="@+id/tvRejectBallot"
-    app:layout_constraintTop_toTopOf="parent" />
-
-  <TextView
-    android:id="@+id/tvRejectBallot"
-    style="@style/TextLarge"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginEnd="16dp"
-    android:text="@string/rejected_ballot"
-    app:layout_constraintEnd_toStartOf="@id/guideline50PercentVertical"
-    app:layout_constraintTop_toBottomOf="@id/ivRejectBallot" />
-
-  <View
-    android:id="@+id/viewRejectIndicator"
-    android:layout_width="8dp"
-    android:layout_height="8dp"
-    android:layout_marginTop="8dp"
-    android:background="@drawable/accent_oval"
-    app:layout_constraintEnd_toEndOf="@+id/tvRejectBallot"
-    app:layout_constraintStart_toStartOf="@+id/tvRejectBallot"
-    app:layout_constraintTop_toBottomOf="@id/tvRejectBallot" />
-
-  <ImageView
-    android:id="@+id/ivAcceptBallot"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="16dp"
-    android:src="@drawable/ic_check_circle_24"
-    android:tint="@color/green"
-    app:layout_constraintEnd_toEndOf="@+id/tvAcceptBallot"
-    app:layout_constraintStart_toStartOf="@+id/tvAcceptBallot"
-    app:layout_constraintTop_toTopOf="parent" />
-
-  <TextView
-    android:id="@+id/tvAcceptBallot"
-    style="@style/TextLarge"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="16dp"
-    android:text="@string/accepted_ballot"
-    app:layout_constraintStart_toEndOf="@id/guideline50PercentVertical"
-    app:layout_constraintTop_toBottomOf="@id/ivAcceptBallot" />
-
-  <View
-    android:id="@+id/viewAcceptIndicator"
-    android:layout_width="8dp"
-    android:layout_height="8dp"
-    android:layout_marginTop="8dp"
-    android:background="@drawable/accent_oval"
-    app:layout_constraintEnd_toEndOf="@+id/tvAcceptBallot"
-    app:layout_constraintStart_toStartOf="@+id/tvAcceptBallot"
-    app:layout_constraintTop_toBottomOf="@id/tvAcceptBallot" />
-
-  <androidx.constraintlayout.widget.Barrier
-    android:id="@+id/barrierOne"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    app:barrierDirection="bottom"
-    app:constraint_referenced_ids="viewAcceptIndicator,viewRejectIndicator" />
 
   <ImageView
     android:id="@+id/ivBallot"
@@ -91,7 +23,7 @@
     app:layout_constraintBottom_toTopOf="@id/guideline75PercentHorizontal"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/barrierOne" />
+    app:layout_constraintTop_toTopOf="parent" />
 
   <androidx.constraintlayout.widget.Guideline
     android:id="@+id/guideline75PercentHorizontal"

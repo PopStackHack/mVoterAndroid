@@ -46,8 +46,8 @@
   <string name="no_record">အသံ\nမသွင်းရ</string>
 
   <string name="faq_category_general">အထွေထွေ</string>
-  <string name="rejected_ballot">ပယ်မဲ</string>
-  <string name="accepted_ballot">ခိုင်လုံမဲ</string>
+  <string name="invalid_ballot">ပယ်မဲ</string>
+  <string name="valid_ballot">ခိုင်လုံမဲ</string>
 
   <!-- How to Vote -->
   <string name="how_to_vote_header_title">(၂၀၂၀) ခုနှစ် အထွေထွေ ရွေးကောက်ပွဲနေ့</string>
