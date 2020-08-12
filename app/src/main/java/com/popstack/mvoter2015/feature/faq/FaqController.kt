@@ -32,8 +32,8 @@ class FaqController : MvvmController<ControllerInfoBinding>() {
   override val bindingInflater: (LayoutInflater) -> ControllerInfoBinding =
     ControllerInfoBinding::inflate
 
-  private val infoPagingAdapter by lazy {
-    InfoRecyclerViewAdapter(
+  private val faqPagingAdapter by lazy {
+    FaqPagingAdapter(
       ballotExampleClick = { navigateToBallotExample() },
       share = { faqId, _ ->
         viewModel.handleShareClick(faqId)
@@ -60,19 +60,27 @@ class FaqController : MvvmController<ControllerInfoBinding>() {
       ) { selectedCategory ->
         if (selectedCategory != null) {
           viewModel.handleSelectFaqCategory(selectedCategory)
-          infoPagingAdapter.refresh()
+          faqPagingAdapter.refresh()
         }
       }.launch(viewModel.selectedFaqCategory())
     }
 
     binding.btnRetry.setOnClickListener {
-      infoPagingAdapter.retry()
+      faqPagingAdapter.retry()
+    }
+
+    binding.rvFaqPlaceholder.apply {
+      adapter = FaqPlaceholderRecyclerViewAdapter()
+      layoutManager = LinearLayoutManager(requireContext())
+      val dimen =
+        requireContext().resources.getDimensionPixelSize(R.dimen.recycler_view_item_margin)
+      addItemDecoration(RecyclerViewMarginDecoration(dimen, 1))
     }
 
     binding.rvFaq.apply {
-      adapter = infoPagingAdapter.withLoadStateHeaderAndFooter(
-        header = CommonLoadStateAdapter(infoPagingAdapter::retry),
-        footer = CommonLoadStateAdapter(infoPagingAdapter::retry)
+      adapter = faqPagingAdapter.withLoadStateHeaderAndFooter(
+        header = CommonLoadStateAdapter(faqPagingAdapter::retry),
+        footer = CommonLoadStateAdapter(faqPagingAdapter::retry)
       )
       layoutManager = LinearLayoutManager(requireContext())
       val dimen =
@@ -80,10 +88,10 @@ class FaqController : MvvmController<ControllerInfoBinding>() {
       addItemDecoration(RecyclerViewMarginDecoration(dimen, 1))
     }
 
-    infoPagingAdapter.addLoadStateListener { loadStates ->
+    faqPagingAdapter.addLoadStateListener { loadStates ->
       val refreshLoadState = loadStates.refresh
       binding.rvFaq.isVisible = refreshLoadState is LoadState.NotLoading
-      binding.progressBar.isVisible = refreshLoadState is LoadState.Loading
+      binding.rvFaqPlaceholder.isVisible = refreshLoadState is LoadState.Loading
       binding.tvErrorMessage.isVisible = refreshLoadState is LoadState.Error
       binding.btnRetry.isVisible = refreshLoadState is LoadState.Error
 
@@ -94,7 +102,7 @@ class FaqController : MvvmController<ControllerInfoBinding>() {
 
     lifecycleScope.launch {
       viewModel.faqPagingFlow.collectLatest {
-        infoPagingAdapter.submitData(lifecycle, it)
+        faqPagingAdapter.submitData(lifecycle, it)
       }
     }
 
@@ -118,7 +126,7 @@ class FaqController : MvvmController<ControllerInfoBinding>() {
 
     if (savedViewState == null) {
       viewModel.handleSelectFaqCategory(FaqCategory.GENERAL)
-      infoPagingAdapter.refresh()
+      faqPagingAdapter.refresh()
     }
   }
 

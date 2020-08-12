@@ -14,11 +14,11 @@ import com.popstack.mvoter2015.helper.diff.diffCallBackWith
 import com.popstack.mvoter2015.helper.extensions.inflater
 import com.popstack.mvoter2015.helper.extensions.withSafeAdapterPosition
 
-class InfoRecyclerViewAdapter(
+class FaqPagingAdapter(
   private val ballotExampleClick: () -> Unit,
   private val share: (FaqId, @ParameterName("position") Int) -> Unit
 ) :
-  PagingDataAdapter<FaqViewItem, InfoRecyclerViewAdapter.InfoViewHolder>(
+  PagingDataAdapter<FaqViewItem, FaqPagingAdapter.InfoViewHolder>(
     diffCallBackWith(
       areItemTheSame = { item1, item2 ->
         if (item1 is FaqViewItem.QuestionAndAnswer && item2 is FaqViewItem.QuestionAndAnswer) {
