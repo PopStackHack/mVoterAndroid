@@ -3,8 +3,10 @@ package com.popstack.mvoter2015.data.android.paging
 import android.content.Context
 import com.popstack.mvoter2015.data.android.MVoterRemoteKeyDb
 import com.popstack.mvoter2015.data.cache.entity.FaqRemoteKeyTable
+import com.popstack.mvoter2015.data.cache.entity.NewsRemoteKeyTable
 import com.popstack.mvoter2015.data.cache.entity.PartyRemoteKeyTable
 import com.popstack.mvoter2015.domain.faq.model.FaqId
+import com.popstack.mvoter2015.domain.news.model.NewsId
 import com.popstack.mvoter2015.domain.party.model.PartyId
 import com.squareup.sqldelight.ColumnAdapter
 import com.squareup.sqldelight.android.AndroidSqliteDriver
@@ -35,6 +37,17 @@ object RemoteKeyDbProvider {
             }
 
             override fun encode(value: FaqId): String {
+              return value.value
+            }
+          }
+        ),
+        NewsRemoteKeyTableAdapter = NewsRemoteKeyTable.Adapter(
+          newsIdAdapter = object : ColumnAdapter<NewsId, String> {
+            override fun decode(databaseValue: String): NewsId {
+              return NewsId(databaseValue)
+            }
+
+            override fun encode(value: NewsId): String {
               return value.value
             }
           }

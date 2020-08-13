@@ -17,3 +17,6 @@ INSERT OR REPLACE INTO NewsTable VALUES(
 
 getWithPage:
 SELECT * FROM NewsTable ORDER BY NewsTable.publishedDate DESC LIMIT :limit OFFSET :offset;
+
+countAll:
+SELECT count(*) FROM NewsTable;

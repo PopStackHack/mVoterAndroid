@@ -1,0 +1,19 @@
+import com.popstack.mvoter2015.domain.news.model.NewsId;
+import java.lang.Boolean;
+
+CREATE TABLE NewsRemoteKeyTable(
+    newsId TEXT AS NewsId PRIMARY KEY NOT NULL,
+    previousKey INTEGER,
+    nextKey INTEGER
+);
+
+insertOrReplace:
+INSERT OR REPLACE INTO NewsRemoteKeyTable VALUES (
+    :newsId, :previousKey, :nextKey
+);
+
+selectById:
+SELECT * FROM NewsRemoteKeyTable WHERE newsId = :id;
+
+deleteAll:
+DELETE FROM NewsRemoteKeyTable;
