@@ -8,8 +8,9 @@ import javax.inject.Inject
 class NewsNetworkSourceImpl @Inject constructor(
   private val api: MvoterApi
 ) : NewsNetworkSource {
+
   override fun getNewsList(page: Int, itemPerPage: Int): List<News> {
-    TODO("Not yet implemented")
+    return emptyList()
   }
 
 }

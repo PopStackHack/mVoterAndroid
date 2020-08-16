@@ -3,6 +3,7 @@ package com.popstack.mvoter2015.feature.faq
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
@@ -11,10 +12,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bluelinelabs.conductor.RouterTransaction
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvvmController
-import com.popstack.mvoter2015.databinding.ControllerInfoBinding
+import com.popstack.mvoter2015.databinding.ControllerFaqBinding
 import com.popstack.mvoter2015.domain.faq.model.FaqCategory
 import com.popstack.mvoter2015.feature.HasRouter
 import com.popstack.mvoter2015.feature.faq.ballot.BallotExampleController
+import com.popstack.mvoter2015.feature.faq.search.FaqSearchController
 import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
 import com.popstack.mvoter2015.helper.conductor.requireActivity
 import com.popstack.mvoter2015.helper.conductor.requireActivityAsAppCompatActivity
@@ -27,14 +29,14 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-class FaqController : MvvmController<ControllerInfoBinding>(), HasTag {
+class FaqController : MvvmController<ControllerFaqBinding>(), HasTag {
 
   override val tag: String = "FaqController"
 
   private val viewModel: FaqViewModel by viewModels()
 
-  override val bindingInflater: (LayoutInflater) -> ControllerInfoBinding =
-    ControllerInfoBinding::inflate
+  override val bindingInflater: (LayoutInflater) -> ControllerFaqBinding =
+    ControllerFaqBinding::inflate
 
   private val faqPagingAdapter by lazy {
     FaqPagingAdapter(
@@ -58,6 +60,7 @@ class FaqController : MvvmController<ControllerInfoBinding>(), HasTag {
     setSupportActionBar(binding.toolBar)
     supportActionBar()?.title = requireContext().getString(R.string.title_info)
 
+    setHasOptionsMenu(R.menu.menu_faq, this@FaqController::handleMenuItemClick)
     binding.tvSelectedCategory.setOnClickListener {
       val selectFaqCategoryContract = requireActivityAsAppCompatActivity().registerForActivityResult(
         FaqCategorySelectActivity.SelectFaqCategoryContract()
@@ -139,6 +142,19 @@ class FaqController : MvvmController<ControllerInfoBinding>(), HasTag {
       viewModel.selectFaqCategory(faqCategory).collectLatest { pagingData ->
         faqPagingAdapter.submitData(pagingData)
       }
+    }
+  }
+
+  private fun handleMenuItemClick(menuItem: MenuItem): Boolean {
+    return when (menuItem.itemId) {
+      R.id.action_search -> {
+        if (requireActivity() is HasRouter) {
+          (requireActivity() as HasRouter).router()
+            .pushController(RouterTransaction.with(FaqSearchController()))
+        }
+        true
+      }
+      else -> false
     }
   }
 

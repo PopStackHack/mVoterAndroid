@@ -37,8 +37,11 @@
   <string name="contact">ဆက်သွယ်ရန်</string>
   <string name="header_total_party_count">(၂၀၂၀) ခုနှစ် အထွေထွေရွေးကောက်ပွဲတွင် ဝင်ရောက်ယှဉ်ပြိုင်မည့် နိုင်ငံရေးပါတီ (၉၆) ခု</string>
 
+  <!--  Party-->
+  <string name="empty_list_search_party">နာမည်တွင် \"{query}\" ပါသော ပါတီများကို ပါတီစာရင်းတွင် ရှာမတွေ့ပါ</string>
+
+  <!--  FAQ-->
   <string name="title_info">သိမှတ်ဖွယ်ရာများ</string>
-  <string name="ballot_examples">ပယ်မယ်၊ ခိုင်လုံမဲ နမူနာများ</string>
 
   <string name="no_selfie">Selfie\nမရိုက်ရ</string>
   <string name="no_photo">ဓာတ်ပုံ\nမရိုက်ရ</string>
@@ -46,6 +49,11 @@
   <string name="no_record">အသံ\nမသွင်းရ</string>
 
   <string name="faq_category_general">အထွေထွေ</string>
+
+  <string name="empty_query_faq">မိမိရှာလိုသော အမမေးအဖြေကို အပေါ်တွင်ရိုက်ထည့်ပါ။</string>
+  <string name="empty_list_search_faq">\"%1$s\" နှင့်ပတ်သက်သော အမေးအဖြေကို ရှာမတွေ့ပါ။</string>
+
+  <string name="ballot_examples">ပယ်မယ်၊ ခိုင်လုံမဲ နမူနာများ</string>
   <string name="invalid_ballot">ပယ်မဲ</string>
   <string name="valid_ballot">ခိုင်လုံမဲ</string>
 

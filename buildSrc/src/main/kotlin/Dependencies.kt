@@ -18,8 +18,6 @@ object BuildConfig {
 object CommonLibs {
   const val android_gradle_plugin = "com.android.tools.build:gradle:4.0.1"
 
-  const val dexter = "com.karumi:dexter:5.0.0"
-
   const val phrase = "com.squareup.phrase:phrase:1.1.0"
   const val sonar = "com.facebook.sonar:sonar:0.0.1"
   const val timber = "com.jakewharton.timber:timber:4.7.1"
