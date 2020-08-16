@@ -350,4 +350,7 @@ hs_err_pid*
 # Sentry
 sentry.properties
 
+# Google Service
+app/google-services.json
+
 # End of https://www.gitignore.io/api/linux,macos,android,windows,intellij,androidstudio

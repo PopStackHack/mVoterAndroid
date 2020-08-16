@@ -18,7 +18,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.popstack.mvoter2015.helper.viewpager.NonScrollableViewPager
 import com.popstack.mvoter2015.helper.extensions.filter
 import com.popstack.mvoter2015.helper.extensions.indexOf
-import com.popstack.mvoter2015.sentry.BreadcrumbControllerChangeHandler
+import com.popstack.mvoter2015.logging.BreadcrumbControllerChangeHandler
 
 class BNVRouterPagerAdapter(
   val host: Controller,

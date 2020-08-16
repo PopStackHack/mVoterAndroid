@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerRegionalCandidateListBinding
-import com.popstack.mvoter2015.sentry.HasTag
+import com.popstack.mvoter2015.logging.HasTag
 
 class RegionalHouseCandidateListController :
   MvvmController<ControllerRegionalCandidateListBinding>(), HasTag {

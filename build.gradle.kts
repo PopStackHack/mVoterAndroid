@@ -19,7 +19,8 @@ buildscript {
     classpath(SqlDelight.gradle_plugin)
     classpath(Wormhole.gradle_plugin)
     classpath(DaggerHiltAndroid.gradle_plugin)
-    classpath(Sentry.android_gradle_plugin)
+    classpath(GoogleService.gms_plugin)
+    classpath(Firebase.crashlytics_plugin)
   }
 }
 

@@ -18,7 +18,7 @@ import com.popstack.mvoter2015.helper.conductor.requireActivityAsAppCompatActivi
 import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.helper.conductor.setSupportActionBar
 import com.popstack.mvoter2015.helper.conductor.supportActionBar
-import com.popstack.mvoter2015.sentry.HasTag
+import com.popstack.mvoter2015.logging.HasTag
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 

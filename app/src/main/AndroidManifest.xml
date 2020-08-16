@@ -26,12 +26,13 @@
       android:theme="@style/AppTheme.Transparent" />
 
     <meta-data
-      android:name="io.sentry.dsn"
-      android:value="@string/sentry_dsn" />
+      android:name="firebase_crashlytics_collection_enabled"
+      android:value="false" />
 
     <meta-data
-      android:name="io.sentry.auto-init"
+      android:name="firebase_analytics_collection_enabled"
       android:value="false" />
+
 
   </application>
 

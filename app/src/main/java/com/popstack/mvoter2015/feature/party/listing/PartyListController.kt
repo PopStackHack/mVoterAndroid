@@ -21,7 +21,7 @@ import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
 import com.popstack.mvoter2015.helper.conductor.requireActivity
 import com.popstack.mvoter2015.helper.conductor.requireActivityAsAppCompatActivity
 import com.popstack.mvoter2015.paging.CommonLoadStateAdapter
-import com.popstack.mvoter2015.sentry.HasTag
+import com.popstack.mvoter2015.logging.HasTag
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 

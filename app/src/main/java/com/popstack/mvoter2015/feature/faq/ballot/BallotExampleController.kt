@@ -16,7 +16,7 @@ import com.popstack.mvoter2015.helper.conductor.setSupportActionBar
 import com.popstack.mvoter2015.helper.conductor.supportActionBar
 import com.popstack.mvoter2015.helper.extensions.addOnTabSelectedListener
 import com.popstack.mvoter2015.helper.extensions.forEachTab
-import com.popstack.mvoter2015.sentry.HasTag
+import com.popstack.mvoter2015.logging.HasTag
 
 class BallotExampleController : MvvmController<ControllerBallotExampleBinding>(), HasTag {
 

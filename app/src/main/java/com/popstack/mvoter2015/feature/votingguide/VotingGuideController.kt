@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerHowToVoteBinding
-import com.popstack.mvoter2015.sentry.HasTag
+import com.popstack.mvoter2015.logging.HasTag
 
 class VotingGuideController : MvvmController<ControllerHowToVoteBinding>(), HasTag {
 

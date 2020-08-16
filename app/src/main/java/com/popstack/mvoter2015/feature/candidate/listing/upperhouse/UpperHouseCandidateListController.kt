@@ -15,7 +15,7 @@ import com.popstack.mvoter2015.feature.candidate.detail.CandidateDetailControlle
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateListPagerParentRouter
 import com.popstack.mvoter2015.feature.candidate.listing.upperhouse.UpperHouseCandidateListRecyclerViewAdapter.UpperHouseCandidateListItemClickListener
 import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
-import com.popstack.mvoter2015.sentry.HasTag
+import com.popstack.mvoter2015.logging.HasTag
 
 class UpperHouseCandidateListController :
   MvvmController<ControllerUpperHouseCandidateListBinding>(), HasTag,

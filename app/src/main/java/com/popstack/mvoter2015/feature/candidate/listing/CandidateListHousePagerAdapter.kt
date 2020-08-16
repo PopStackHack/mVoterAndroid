@@ -8,7 +8,7 @@ import com.popstack.mvoter2015.domain.constituency.model.HouseType
 import com.popstack.mvoter2015.feature.candidate.listing.lowerhouse.LowerHouseCandidateListController
 import com.popstack.mvoter2015.feature.candidate.listing.regionalhouse.RegionalHouseCandidateListController
 import com.popstack.mvoter2015.feature.candidate.listing.upperhouse.UpperHouseCandidateListController
-import com.popstack.mvoter2015.sentry.BreadcrumbControllerChangeHandler
+import com.popstack.mvoter2015.logging.BreadcrumbControllerChangeHandler
 
 internal class CandidateListHousePagerAdapter(host: Controller) :
   RouterPagerAdapter(host) {

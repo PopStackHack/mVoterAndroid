@@ -16,6 +16,7 @@ jobs:
       RELEASE_KEYSTORE_PASSWORD: ${{ secrets.RELEASE_KEYSTORE_PASSWORD }}
       RELEASE_KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
       RELEASE_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
+      GOOGLE_SERVICE_JSON_BASE64: ${{ secrets.GOOGLE_SERVICE_JSON_BASE64 }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/cache@v1
@@ -37,7 +38,8 @@ jobs:
       - run: echo -e "\nRELEASE_KEYSTORE_PASSWORD=$RELEASE_KEYSTORE_PASSWORD" >> local.properties
       - run: echo -e "\nRELEASE_KEY_ALIAS=$RELEASE_KEY_ALIAS" >> local.properties
       - run: echo -e "\nRELEASE_KEY_PASSWORD=$RELEASE_KEY_PASSWORD" >> local.properties
-      - run: cat local.properties
+
+      - run: echo $GOOGLE_SERVICE_JSON_BASE64 | base64 --decode > app/build/google-services.json
 
       - name: Lint check
         run: ./gradlew lint

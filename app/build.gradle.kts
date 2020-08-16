@@ -14,15 +14,14 @@ val RELEASE_KEY_ALIAS = properties.getProperty("RELEASE_KEY_ALIAS")
 val RELEASE_KEY_PASSWORD = properties.getProperty("RELEASE_KEY_PASSWORD")
   .toString()
 
-val SETNRY_DSN = properties.getProperty("SENTRY_DSN").toString()
-
 plugins {
   id("com.android.application")
   kotlin("android")
   kotlin("kapt")
   id("dagger.hilt.android.plugin")
-  id("io.sentry.android.gradle")
   id(KtLint.name)
+  id("com.google.gms.google-services")
+  id("com.google.firebase.crashlytics")
 }
 
 android {
@@ -43,7 +42,7 @@ android {
       viewBinding = true
     }
 
-    resValue("string", "sentry_dsn", SETNRY_DSN)
+//    resValue("string", "sentry_dsn", SETNRY_DSN)
 
     kapt {
       arguments {
@@ -136,8 +135,9 @@ dependencies {
   //Coil
   implementation(Coil.coil)
 
-  //Sentry
-  implementation(Sentry.android)
+  //Firebase
+  implementation(Firebase.analytics)
+  implementation(Firebase.crashlytics)
 
   //Test
   testImplementation("junit:junit:4.13")

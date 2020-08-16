@@ -7,7 +7,7 @@ import com.bluelinelabs.conductor.Router
 import com.bluelinelabs.conductor.RouterTransaction
 import com.popstack.mvoter2015.databinding.ActivityHostBinding
 import com.popstack.mvoter2015.feature.splash.SplashController
-import com.popstack.mvoter2015.sentry.BreadcrumbControllerChangeHandler
+import com.popstack.mvoter2015.logging.BreadcrumbControllerChangeHandler
 import dagger.hilt.android.AndroidEntryPoint
 
 //A simple activity that host Conductor's FrameLayout

@@ -3,7 +3,7 @@ package com.popstack.mvoter2015.feature.voteresult
 import android.view.LayoutInflater
 import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerVoteResultBinding
-import com.popstack.mvoter2015.sentry.HasTag
+import com.popstack.mvoter2015.logging.HasTag
 
 class VoteResultController : MvvmController<ControllerVoteResultBinding>(), HasTag {
 

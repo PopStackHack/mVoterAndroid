@@ -184,16 +184,12 @@ object EverNoteJob {
 }
 
 object Firebase {
-  private const val version = "17.2.0"
+  const val messaging = "com.google.firebase:firebase-messaging:20.2.4"
+  const val analytics = "com.google.firebase:firebase-analytics:17.2.2"
 
-  const val auth = "com.google.firebase:firebase-auth:$version"
-  const val core = "com.google.firebase:firebase-core:$version"
-  const val db = "com.google.firebase:firebase-database:$version"
-  const val messaging = "com.google.firebase:firebase-messaging:17.3.4"
-  const val crashlytics = "com.crashlytics.sdk.android:crashlytics:2.10.1"
+  const val crashlytics = "com.google.firebase:firebase-crashlytics:17.2.1"
+  const val crashlytics_plugin = "com.google.firebase:firebase-crashlytics-gradle:2.2.0"
   const val fabric_plugin = "io.fabric.tools:gradle:1.31.2"
-  const val firebase_crashlytics_plugin =
-    "com.google.firebase:firebase-crashlytics-gradle:2.0.0-beta01"
 }
 
 object Flipper {
@@ -217,10 +213,10 @@ object Glide {
 
 object GoogleService {
 
+  const val gms_plugin = "com.google.gms:google-services:4.3.3"
   const val auth = "com.google.android.gms:play-services-auth:16.0.1"
   const val ads = "com.google.android.gms:play-services-ads:17.1.2"
   const val consent = "com.google.android.ads.consent:consent-library:1.0.6"
-  const val gms = "com.google.gms:google-services:4.3.3"
   const val map = "com.google.android.gms:play-services-maps:16.1.0"
   const val location = "com.google.android.gms:play-services-location:16.0.0"
 }
@@ -306,16 +302,6 @@ object Stetho {
 
   const val core = "com.facebook.stetho:stetho:$version"
   const val okhttp3 = "com.facebook.stetho:stetho-okhttp3:$version"
-}
-
-object Sentry {
-  private const val version = "2.0.2"
-
-  const val android_gradle_plugin = "io.sentry:sentry-android-gradle-plugin:1.7.31"
-  const val android = "io.sentry:sentry-android:$version"
-  const val android_core = "io.sentry:sentry-android-core:$version"
-  const val android_ndk = "io.sentry:sentry-android-ndk:$version"
-  const val core = "io.sentry:sentry-core:$version"
 }
 
 object Shimmer {

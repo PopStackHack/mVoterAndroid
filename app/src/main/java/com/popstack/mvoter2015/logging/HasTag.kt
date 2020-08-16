@@ -1,4 +1,4 @@
-package com.popstack.mvoter2015.sentry
+package com.popstack.mvoter2015.logging
 
 interface HasTag {
 

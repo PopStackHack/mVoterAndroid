@@ -10,7 +10,7 @@ import com.popstack.mvoter2015.config.AppFirstTimeConfig
 import com.popstack.mvoter2015.feature.home.HomeController
 import com.popstack.mvoter2015.feature.location.LocationUpdateController
 import com.popstack.mvoter2015.helper.conductor.requireContext
-import com.popstack.mvoter2015.sentry.HasTag
+import com.popstack.mvoter2015.logging.HasTag
 
 class SplashController : Controller(), HasTag {
 
