@@ -8,7 +8,6 @@ import androidx.paging.cachedIn
 import androidx.paging.map
 import com.popstack.mvoter2015.data.android.party.PartyPagerFactory
 import com.popstack.mvoter2015.domain.party.model.Party
-import com.popstack.mvoter2015.helper.livedata.SingleLiveEvent
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -21,13 +20,8 @@ class PartySearchViewModel @ViewModelInject constructor(
     private const val DEBOUNCE_TIME_IN_MILLISECONDS = 500L
   }
 
-  val queryEmptyLiveData = SingleLiveEvent<Boolean>()
-
-  private var currentQueryValue: String? = null
-
-  init {
-    queryEmptyLiveData.postValue(true)
-  }
+  var currentQueryValue: String? = null
+    private set
 
   private var currentSearchResult: Flow<PagingData<PartySearchResultViewItem>>? = null
 

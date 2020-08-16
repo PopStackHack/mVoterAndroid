@@ -23,6 +23,7 @@ import com.popstack.mvoter2015.helper.conductor.requireActivityAsAppCompatActivi
 import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.helper.conductor.setSupportActionBar
 import com.popstack.mvoter2015.helper.conductor.supportActionBar
+import com.popstack.mvoter2015.helper.setVisibleWithDelay
 import com.popstack.mvoter2015.paging.CommonLoadStateAdapter
 import com.popstack.mvoter2015.logging.HasTag
 import kotlinx.coroutines.Job
@@ -101,7 +102,7 @@ class FaqController : MvvmController<ControllerFaqBinding>(), HasTag {
     faqPagingAdapter.addLoadStateListener { loadStates ->
       val refreshLoadState = loadStates.refresh
       binding.rvFaq.isVisible = refreshLoadState is LoadState.NotLoading
-      binding.rvFaqPlaceholder.isVisible = refreshLoadState is LoadState.Loading
+      binding.rvFaqPlaceholder.setVisibleWithDelay(refreshLoadState is LoadState.Loading)
       binding.tvErrorMessage.isVisible = refreshLoadState is LoadState.Error
       binding.btnRetry.isVisible = refreshLoadState is LoadState.Error
 

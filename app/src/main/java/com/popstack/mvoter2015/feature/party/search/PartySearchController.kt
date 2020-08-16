@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
-import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadState
@@ -18,11 +17,13 @@ import com.popstack.mvoter2015.domain.party.model.PartyId
 import com.popstack.mvoter2015.feature.party.detail.PartyDetailController
 import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
 import com.popstack.mvoter2015.helper.conductor.requireActivityAsAppCompatActivity
+import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.helper.extensions.showKeyboard
-import com.popstack.mvoter2015.paging.CommonLoadStateAdapter
 import com.popstack.mvoter2015.logging.HasTag
+import com.popstack.mvoter2015.paging.CommonLoadStateAdapter
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -37,6 +38,8 @@ class PartySearchController : MvvmController<ControllerPartySearchBinding>(), Ha
 
   private val searchPagingAdapter = PartySearchPagingAdapter(this::onItemClick)
 
+  private val placeholderAdapter = PartySearchPlaceholderRecyclerViewAdapter()
+
   private var searchJob: Job? = null
 
   @OptIn(ExperimentalPagingApi::class)
@@ -47,15 +50,25 @@ class PartySearchController : MvvmController<ControllerPartySearchBinding>(), Ha
 
     binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
       override fun onQueryTextSubmit(query: String?): Boolean {
-        search(query ?: "")
+        if (query != null && query.isNotEmpty()) {
+          search(query)
+        }
         return true
       }
 
       override fun onQueryTextChange(newText: String?): Boolean {
-        return false
+        return true
       }
 
     })
+
+    binding.rvPlaceholder.apply {
+      adapter = placeholderAdapter
+      layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+      val dimen =
+        context.resources.getDimensionPixelSize(R.dimen.recycler_view_item_margin)
+      addItemDecoration(RecyclerViewMarginDecoration(dimen, 1))
+    }
 
     binding.rvParty.apply {
       adapter = searchPagingAdapter.withLoadStateHeaderAndFooter(
@@ -78,6 +91,9 @@ class PartySearchController : MvvmController<ControllerPartySearchBinding>(), Ha
       binding.progressBar.isVisible = refreshLoadState is LoadState.Loading
       binding.tvErrorMessage.isVisible = refreshLoadState is LoadState.Error
       binding.btnRetry.isVisible = refreshLoadState is LoadState.Error
+      if (viewModel.currentQueryValue != null) {
+        binding.tvInstruction.isVisible = false
+      }
 
       if (refreshLoadState is LoadState.Error) {
         binding.tvErrorMessage.text = refreshLoadState.error.message
@@ -85,16 +101,16 @@ class PartySearchController : MvvmController<ControllerPartySearchBinding>(), Ha
     }
 
     lifecycleScope.launch {
-      searchPagingAdapter.dataRefreshFlow.collectLatest {
-
-      }
-    }
-
-    viewModel.queryEmptyLiveData.observe(this, Observer(this::observeEmptyQuery))
-
-    lifecycleScope.launch {
       delay(500)
       binding.searchView.showKeyboard()
+    }
+
+    lifecycleScope.launch {
+      searchPagingAdapter.dataRefreshFlow.collect { isEmpty ->
+        binding.tvEmpty.isVisible = isEmpty
+        binding.tvEmpty.text = requireContext().getString(R.string.empty_list_search_party, viewModel.currentQueryValue
+          ?: "")
+      }
     }
   }
 
@@ -106,12 +122,6 @@ class PartySearchController : MvvmController<ControllerPartySearchBinding>(), Ha
         searchPagingAdapter.submitData(pagingData)
       }
     }
-  }
-
-  private fun observeEmptyQuery(isEmpty: Boolean) {
-    binding.btnRetry.isVisible = false
-    binding.tvErrorMessage.isVisible = isEmpty
-    binding.tvErrorMessage.text = "မိမိရှာလိုသော ပါတီနာမည်ကို အပေါ်တွင်ရိုက်ထည့်ပါ"
   }
 
   private fun onItemClick(partyId: PartyId) {

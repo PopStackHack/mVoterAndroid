@@ -1,6 +1,9 @@
 <resources>
   <string name="app_name">mVoter</string>
 
+  <!--  General Usages-->
+  <string name="retry">ထပ်စမ်းကြည့်မယ်</string>
+
   <string name="navigation_candidate_list">ကိုယ်စားလှယ်များ</string>
   <string name="navigation_party_list">ပါတီများ</string>
   <string name="navigation_how_to_vote">မဲပေးနည်း</string>
@@ -26,7 +29,9 @@
   <string name="tab_regional_house_region">ပြည်နယ်\nလွှတ်တော်</string>
   <string name="date_of_birth">မွေးသက္ကရာဇ်</string>
 
-  <string name="retry">ထပ်စမ်းကြည့်မယ်</string>
+  <!--  Party-->
+  <string name="header_total_party_count">(၂၀၂၀) ခုနှစ် အထွေထွေရွေးကောက်ပွဲတွင် ဝင်ရောက်ယှဉ်ပြိုင်မည့် နိုင်ငံရေးပါတီ (၉၆) ခု</string>
+
   <string name="policy">ပါတီ မူဝါဒ</string>
   <string name="party_flag">ပါတီအလံ</string>
   <string name="party_number">ပါတီအမှတ်စဉ်</string>
@@ -35,10 +40,10 @@
   <string name="member_count">အဖွဲ့ဝင်ဦးရေ</string>
   <string name="headquarter">ပါတီရုံးချုပ်</string>
   <string name="contact">ဆက်သွယ်ရန်</string>
-  <string name="header_total_party_count">(၂၀၂၀) ခုနှစ် အထွေထွေရွေးကောက်ပွဲတွင် ဝင်ရောက်ယှဉ်ပြိုင်မည့် နိုင်ငံရေးပါတီ (၉၆) ခု</string>
 
-  <!--  Party-->
-  <string name="empty_list_search_party">နာမည်တွင် \"{query}\" ပါသော ပါတီများကို ပါတီစာရင်းတွင် ရှာမတွေ့ပါ</string>
+  <string name="hint_search_party">ရှာလိုသော ပါတီနာမည်ကို ရိုက်ထည့်ပါ</string>
+  <string name="empty_query_party">မိမိရှာလိုသော ပါတီနာမည်ကို အပေါ်တွင်ရိုက်ထည့်ပါ။</string>
+  <string name="empty_list_search_party">နာမည်တွင် \"%1$s\" ပါသော ပါတီများကို ပါတီစာရင်းတွင် ရှာမတွေ့ပါ</string>
 
   <!--  FAQ-->
   <string name="title_info">သိမှတ်ဖွယ်ရာများ</string>
@@ -50,7 +55,8 @@
 
   <string name="faq_category_general">အထွေထွေ</string>
 
-  <string name="empty_query_faq">မိမိရှာလိုသော အမမေးအဖြေကို အပေါ်တွင်ရိုက်ထည့်ပါ။</string>
+  <string name="hint_search_faq">ရှာလိုသော အမေးအဖြေကို ရိုက်ထည့်ပါ</string>
+  <string name="empty_query_faq">မိမိရှာလိုသော အမေးအဖြေကို အပေါ်တွင်ရိုက်ထည့်ပါ။</string>
   <string name="empty_list_search_faq">\"%1$s\" နှင့်ပတ်သက်သော အမေးအဖြေကို ရှာမတွေ့ပါ။</string>
 
   <string name="ballot_examples">ပယ်မယ်၊ ခိုင်လုံမဲ နမူနာများ</string>
