@@ -40,7 +40,7 @@ jobs:
       - run: echo -e "\nRELEASE_KEY_PASSWORD=$RELEASE_KEY_PASSWORD" >> local.properties
 
       - run: touch app/google-services.json
-      - run: echo $GOOGLE_SERVICE_JSON_BASE64 | base64 -di > app/google-services.json
+      - run: echo $GOOGLE_SERVICE_JSON_BASE64 | base64 -di > app/goog-services.json
 
       - name: Lint check
         run: ./gradlew lint

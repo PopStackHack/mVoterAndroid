@@ -185,11 +185,10 @@ object EverNoteJob {
 
 object Firebase {
   const val messaging = "com.google.firebase:firebase-messaging:20.2.4"
-  const val analytics = "com.google.firebase:firebase-analytics:17.2.2"
+  const val analytics = "com.google.firebase:firebase-analytics-ktx:17.5.0"
 
-  const val crashlytics = "com.google.firebase:firebase-crashlytics:17.2.1"
+  const val crashlytics = "com.google.firebase:firebase-crashlytics-ktx:17.2.1"
   const val crashlytics_plugin = "com.google.firebase:firebase-crashlytics-gradle:2.2.0"
-  const val fabric_plugin = "io.fabric.tools:gradle:1.31.2"
 }
 
 object Flipper {
