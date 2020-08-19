@@ -15,6 +15,7 @@ import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerFaqBinding
 import com.popstack.mvoter2015.domain.faq.model.FaqCategory
 import com.popstack.mvoter2015.feature.HasRouter
+import com.popstack.mvoter2015.feature.about.AboutController
 import com.popstack.mvoter2015.feature.faq.ballot.BallotExampleController
 import com.popstack.mvoter2015.feature.faq.search.FaqSearchController
 import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
@@ -24,8 +25,8 @@ import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.helper.conductor.setSupportActionBar
 import com.popstack.mvoter2015.helper.conductor.supportActionBar
 import com.popstack.mvoter2015.helper.setVisibleWithDelay
-import com.popstack.mvoter2015.paging.CommonLoadStateAdapter
 import com.popstack.mvoter2015.logging.HasTag
+import com.popstack.mvoter2015.paging.CommonLoadStateAdapter
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -152,6 +153,13 @@ class FaqController : MvvmController<ControllerFaqBinding>(), HasTag {
         if (requireActivity() is HasRouter) {
           (requireActivity() as HasRouter).router()
             .pushController(RouterTransaction.with(FaqSearchController()))
+        }
+        true
+      }
+      R.id.action_about -> {
+        if (requireActivity() is HasRouter) {
+          (requireActivity() as HasRouter).router()
+            .pushController(RouterTransaction.with(AboutController()))
         }
         true
       }

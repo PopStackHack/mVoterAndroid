@@ -8,4 +8,9 @@
     android:title="@string/menu_title_search"
     app:showAsAction="ifRoom" />
 
+  <item
+    android:id="@+id/action_about"
+    android:title="@string/menu_title_about"
+    app:showAsAction="never" />
+
 </menu>
