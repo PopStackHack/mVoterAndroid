@@ -4,6 +4,7 @@ import androidx.paging.PagingSource
 import com.popstack.mvoter2015.data.cache.MVoterDb
 import com.popstack.mvoter2015.data.cache.entity.FaqTable
 import com.popstack.mvoter2015.data.cache.extension.QueryDataSourceFactory
+import com.popstack.mvoter2015.data.cache.map.mapToFaq
 import com.popstack.mvoter2015.data.common.faq.FaqCacheSource
 import com.popstack.mvoter2015.domain.faq.model.BallotExample
 import com.popstack.mvoter2015.domain.faq.model.Faq
@@ -37,9 +38,7 @@ class FaqCacheSourceImpl @Inject constructor(
     return db.faqTableQueries.selectAll(
       limit = limit.toLong(),
       offset = offset.toLong()
-    ).executeAsList().map {
-      it.mapToEntity()
-    }
+    ).executeAsList().map(FaqTable::mapToFaq)
   }
 
   override fun putBallotExampleList(ballotExampleList: List<BallotExample>) {
@@ -62,7 +61,7 @@ class FaqCacheSourceImpl @Inject constructor(
       },
       countQuery = db.faqTableQueries.countAllWithQuery(query),
       transacter = db.faqTableQueries
-    ).map(FaqTable::mapToEntity).asPagingSourceFactory().invoke()
+    ).map(FaqTable::mapToFaq).asPagingSourceFactory().invoke()
   }
 
   override fun getAllPaging(itemPerPage: Int, category: FaqCategory?): PagingSource<Int, Faq> {
@@ -80,7 +79,7 @@ class FaqCacheSourceImpl @Inject constructor(
         countQuery = db.faqTableQueries.countAllWithCategory(category),
         transacter = db.faqTableQueries
       )
-    }.map(FaqTable::mapToEntity).asPagingSourceFactory().invoke()
+    }.map(FaqTable::mapToFaq).asPagingSourceFactory().invoke()
   }
 
   override fun getBallotExampleList(): List<BallotExample> {
@@ -94,16 +93,4 @@ class FaqCacheSourceImpl @Inject constructor(
     }
   }
 
-}
-
-fun FaqTable.mapToEntity(): Faq {
-  return Faq(
-    id = id,
-    question = question,
-    answer = answer,
-    lawSource = lawSource,
-    articleSource = articleSource,
-    category = category,
-    shareableUrl = shareableUrl
-  )
 }
