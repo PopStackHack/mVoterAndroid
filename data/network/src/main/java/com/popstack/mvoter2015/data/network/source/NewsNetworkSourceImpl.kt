@@ -9,8 +9,8 @@ class NewsNetworkSourceImpl @Inject constructor(
   private val api: MvoterApi
 ) : NewsNetworkSource {
 
-  override fun getNewsList(page: Int, itemPerPage: Int): List<News> {
-    return emptyList()
+  override fun getNewsList(page: Int, itemPerPage: Int, query: String?): List<News> {
+    TODO("Not yet implemented")
   }
 
 }

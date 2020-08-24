@@ -65,6 +65,11 @@
   <string name="invalid_ballot">ပယ်မဲ</string>
   <string name="valid_ballot">ခိုင်လုံမဲ</string>
 
+  <!--  News-->
+  <string name="hint_search_news">ရှာလိုသော သတင်းကို ရိုက်ထည့်ပါ</string>
+  <string name="empty_query_news">မိမိရှာလိုသော သတင်းအကြောင်းအရာကို အပေါ်တွင်ရိုက်ထည့်ပါ။</string>
+  <string name="empty_list_search_news">\"%1$s\" နှင့်သက်ဆိုင်သော သတင်းကို ရှာမတွေ့ပါ</string>
+
   <!-- How to Vote -->
   <string name="how_to_vote_header_title">(၂၀၂၀) ခုနှစ် အထွေထွေ ရွေးကောက်ပွဲနေ့</string>
   <string name="election_date_nov_8">နိုဝင်ဘာလ (၈) ရက်</string>

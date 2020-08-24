@@ -12,4 +12,6 @@ interface NewsCacheSource {
   fun getNewsList(page: Int, itemPerPage: Int): List<News>
 
   fun getAllPaging(itemPerPage: Int): PagingSource<Int, News>
+
+  fun getSearchPaging(itemPerPage: Int, query: String): PagingSource<Int, News>
 }

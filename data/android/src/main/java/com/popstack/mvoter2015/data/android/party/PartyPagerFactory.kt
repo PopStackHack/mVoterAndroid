@@ -16,17 +16,25 @@ class PartyPagerFactory @OptIn(ExperimentalPagingApi::class)
   private val partyCacheSource: PartyCacheSource
 ) {
 
-  fun partyPager(itemPerPage: Int, query: String? = null): Pager<Int, Party> {
+  fun createPager(itemPerPage: Int, query: String? = null): Pager<Int, Party> {
     return Pager(
       config = PagingConfig(
         pageSize = itemPerPage
       ),
-      remoteMediator = PartyRemoteMediator(
-        context = context,
-        partyCacheSource = partyCacheSource,
-        partyNetworkSource = partyNetworkSource,
-        query = query
-      ),
+      remoteMediator = if (query != null) {
+        PartySearchRemoteMediator(
+          context = context,
+          partyCacheSource = partyCacheSource,
+          partyNetworkSource = partyNetworkSource,
+          query = query
+        )
+      } else {
+        PartyRemoteMediator(
+          context = context,
+          partyCacheSource = partyCacheSource,
+          partyNetworkSource = partyNetworkSource
+        )
+      },
       pagingSourceFactory = {
         if (query != null) {
           partyCacheSource.searchPartyPaging(itemPerPage, query)

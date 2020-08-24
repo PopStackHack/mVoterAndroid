@@ -19,7 +19,7 @@ class PartyListViewModel @ViewModelInject constructor(
   }
 
   val partyPagingFlow: Flow<PagingData<PartyListViewItem>> =
-    partyPagerFactory.partyPager(ITEM_PER_PAGE).flow.map { pagingData ->
+    partyPagerFactory.createPager(ITEM_PER_PAGE).flow.map { pagingData ->
       pagingData.map { party ->
         PartyListViewItem(
           partyId = party.id,

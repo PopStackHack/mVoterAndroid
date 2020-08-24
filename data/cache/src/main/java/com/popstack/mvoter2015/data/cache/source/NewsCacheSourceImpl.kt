@@ -42,4 +42,8 @@ class NewsCacheSourceImpl @Inject constructor(
       transacter = db.newsTableQueries
     ).map(NewsTable::mapToNews).asPagingSourceFactory().invoke()
   }
+
+  override fun getSearchPaging(itemPerPage: Int, query: String): PagingSource<Int, News> {
+    TODO("Not yet implemented")
+  }
 }

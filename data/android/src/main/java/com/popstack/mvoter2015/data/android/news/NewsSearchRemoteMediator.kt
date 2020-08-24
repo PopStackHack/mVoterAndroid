@@ -6,17 +6,18 @@ import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import com.popstack.mvoter2015.data.android.paging.RemoteKeyDbProvider
-import com.popstack.mvoter2015.data.cache.entity.NewsSearchRemoteKeyTable
+import com.popstack.mvoter2015.data.cache.entity.NewsRemoteKeyTable
 import com.popstack.mvoter2015.data.common.news.NewsCacheSource
 import com.popstack.mvoter2015.data.common.news.NewsNetworkSource
 import com.popstack.mvoter2015.data.network.exception.NetworkException
 import com.popstack.mvoter2015.domain.news.model.News
 
 @OptIn(ExperimentalPagingApi::class)
-class NewsRemoteMediator constructor(
+class NewsSearchRemoteMediator constructor(
   context: Context,
   private val newsCacheSource: NewsCacheSource,
-  private val newsNetworkSource: NewsNetworkSource
+  private val newsNetworkSource: NewsNetworkSource,
+  private val query: String
 ) : RemoteMediator<Int, News>() {
 
   companion object {
@@ -55,7 +56,7 @@ class NewsRemoteMediator constructor(
       }
     }
     try {
-      val newsListFromNetwork = newsNetworkSource.getNewsList(page, state.config.pageSize)
+      val newsListFromNetwork = newsNetworkSource.getNewsList(page, state.config.pageSize, query)
 
       val endOfPaginationReached = newsListFromNetwork.isEmpty()
 
@@ -64,13 +65,13 @@ class NewsRemoteMediator constructor(
 
       remoteKeyDb.transaction {
         if (loadType == LoadType.REFRESH) {
-          remoteKeyDb.newsSearchRemoteKeyTableQueries.deleteAll()
+          remoteKeyDb.newsRemoteKeyTableQueries.deleteAll()
           //TODO: Should delete everything from news table as well?
           //newsCacheSource.wipe()
         }
 
         newsListFromNetwork.forEach { news ->
-          remoteKeyDb.newsSearchRemoteKeyTableQueries.insertOrReplace(
+          remoteKeyDb.newsRemoteKeyTableQueries.insertOrReplace(
             newsId = news.id,
             previousKey = prevKey?.toLong(),
             nextKey = nextKey?.toLong()
@@ -85,35 +86,35 @@ class NewsRemoteMediator constructor(
     }
   }
 
-  private suspend fun getRemoteKeyForLastItem(state: PagingState<Int, News>): NewsSearchRemoteKeyTable? {
+  private suspend fun getRemoteKeyForLastItem(state: PagingState<Int, News>): NewsRemoteKeyTable? {
     return state.pages.lastOrNull() { it.data.isNotEmpty() }?.data?.lastOrNull()
       ?.let { news ->
         // Get the remote keys of the last item retrieved
-        remoteKeyDb.newsSearchRemoteKeyTableQueries.selectById(news.id)
+        remoteKeyDb.newsRemoteKeyTableQueries.selectById(news.id)
           .executeAsOne()
       }
   }
 
-  private suspend fun getRemoteKeyForFirstItem(state: PagingState<Int, News>): NewsSearchRemoteKeyTable? {
+  private suspend fun getRemoteKeyForFirstItem(state: PagingState<Int, News>): NewsRemoteKeyTable? {
     // Get the first page that was retrieved, that contained items.
     // From that first page, get the first item
     return state.pages.firstOrNull { it.data.isNotEmpty() }?.data?.firstOrNull()
       ?.let { news ->
         // Get the remote keys of the first items retrieved
-        remoteKeyDb.newsSearchRemoteKeyTableQueries.selectById(news.id)
+        remoteKeyDb.newsRemoteKeyTableQueries.selectById(news.id)
           .executeAsOne()
       }
   }
 
   private suspend fun getRemoteKeyClosestToCurrentPosition(
     state: PagingState<Int, News>
-  ): NewsSearchRemoteKeyTable? {
+  ): NewsRemoteKeyTable? {
     // The paging library is trying to load data after the anchor position
     // Get the item closest to the anchor position
     return state.anchorPosition?.let { position ->
       state.closestItemToPosition(position)
         ?.let { news ->
-          remoteKeyDb.newsSearchRemoteKeyTableQueries.selectById(news.id)
+          remoteKeyDb.newsRemoteKeyTableQueries.selectById(news.id)
             .executeAsOne()
         }
     }

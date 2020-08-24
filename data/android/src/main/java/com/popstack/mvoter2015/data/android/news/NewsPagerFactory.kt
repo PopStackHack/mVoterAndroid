@@ -14,18 +14,31 @@ class NewsPagerFactory @Inject constructor(
   private val newsNetworkSource: NewsNetworkSource
 ) {
 
-  fun pager(itemPerPage: Int): Pager<Int, News> {
+  fun createPager(itemPerPage: Int, query: String? = null): Pager<Int, News> {
     return Pager(
       config = PagingConfig(
         pageSize = itemPerPage
       ),
-      remoteMediator = NewsRemoteMediator(
-        context = context,
-        newsCacheSource = newsCacheSource,
-        newsNetworkSource = newsNetworkSource
-      ),
+      remoteMediator = if (query == null) {
+        NewsRemoteMediator(
+          context = context,
+          newsCacheSource = newsCacheSource,
+          newsNetworkSource = newsNetworkSource
+        )
+      } else {
+        NewsSearchRemoteMediator(
+          context = context,
+          newsCacheSource = newsCacheSource,
+          newsNetworkSource = newsNetworkSource,
+          query = query
+        )
+      },
       pagingSourceFactory = {
-        newsCacheSource.getAllPaging(itemPerPage)
+        if (query == null) {
+          newsCacheSource.getAllPaging(itemPerPage)
+        } else {
+          newsCacheSource.getSearchPaging(itemPerPage, query)
+        }
       }
     )
   }

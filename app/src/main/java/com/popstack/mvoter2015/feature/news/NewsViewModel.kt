@@ -15,18 +15,19 @@ class NewsViewModel @ViewModelInject constructor(
   private val newsPagerFactory: NewsPagerFactory
 ) : ViewModel() {
 
-  val newsPagingFlow: Flow<PagingData<NewsViewItem>> = newsPagerFactory.pager(20)
-    .flow.map { pagingData ->
-      pagingData.map<News, NewsViewItem> { news ->
-        NewsViewItem(
-          id = news.id,
-          title = news.title,
-          summary = news.summary,
-          imageUrl = news.imageUrl,
-          publishedDate = news.publishedDate.toString(),
-          url = news.url
-        )
-      }
-    }.cachedIn(viewModelScope)
-
+  fun getNewsPagingFlow(): Flow<PagingData<NewsViewItem>> {
+    return newsPagerFactory.createPager(20)
+      .flow.map { pagingData ->
+        pagingData.map<News, NewsViewItem> { news ->
+          NewsViewItem(
+            id = news.id,
+            title = news.title,
+            summary = news.summary,
+            imageUrl = news.imageUrl,
+            publishedDate = news.publishedDate.toString(),
+            url = news.url
+          )
+        }
+      }.cachedIn(viewModelScope)
+  }
 }
