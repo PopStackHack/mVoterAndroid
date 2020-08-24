@@ -4,7 +4,9 @@ import android.content.Context
 import com.popstack.mvoter2015.data.android.MVoterRemoteKeyDb
 import com.popstack.mvoter2015.data.cache.entity.FaqRemoteKeyTable
 import com.popstack.mvoter2015.data.cache.entity.NewsRemoteKeyTable
+import com.popstack.mvoter2015.data.cache.entity.NewsSearchRemoteKeyTable
 import com.popstack.mvoter2015.data.cache.entity.PartyRemoteKeyTable
+import com.popstack.mvoter2015.data.cache.entity.PartySearchRemoteKeyTable
 import com.popstack.mvoter2015.domain.faq.model.FaqId
 import com.popstack.mvoter2015.domain.news.model.NewsId
 import com.popstack.mvoter2015.domain.party.model.PartyId
@@ -30,6 +32,17 @@ object RemoteKeyDbProvider {
             }
           }
         ),
+        PartySearchRemoteKeyTableAdapter = PartySearchRemoteKeyTable.Adapter(
+          partyIdAdapter = object : ColumnAdapter<PartyId, String> {
+            override fun decode(databaseValue: String): PartyId {
+              return PartyId(databaseValue)
+            }
+
+            override fun encode(value: PartyId): String {
+              return value.value
+            }
+          }
+        ),
         FaqRemoteKeyTableAdapter = FaqRemoteKeyTable.Adapter(
           faqIdAdapter = object : ColumnAdapter<FaqId, String> {
             override fun decode(databaseValue: String): FaqId {
@@ -42,6 +55,17 @@ object RemoteKeyDbProvider {
           }
         ),
         NewsRemoteKeyTableAdapter = NewsRemoteKeyTable.Adapter(
+          newsIdAdapter = object : ColumnAdapter<NewsId, String> {
+            override fun decode(databaseValue: String): NewsId {
+              return NewsId(databaseValue)
+            }
+
+            override fun encode(value: NewsId): String {
+              return value.value
+            }
+          }
+        ),
+        NewsSearchRemoteKeyTableAdapter = NewsSearchRemoteKeyTable.Adapter(
           newsIdAdapter = object : ColumnAdapter<NewsId, String> {
             override fun decode(databaseValue: String): NewsId {
               return NewsId(databaseValue)
