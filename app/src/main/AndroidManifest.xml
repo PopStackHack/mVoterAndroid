@@ -19,6 +19,44 @@
 
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
+
+      <!--      Candidate Deep Link-->
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <!-- Accepts URIs that begin with "https://web.mvoterapp.com/candidate” -->
+        <data
+          android:host="web.mvoterapp.com"
+          android:pathPrefix="/candidate"
+          android:scheme="https" />
+
+        <data
+          android:host="candidate"
+          android:scheme="mvoterapp" />
+
+      </intent-filter>
+
+      <!--      Party Deep Link-->
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <!-- Accepts URIs that begin with "https://web.mvoterapp.com/candidate” -->
+        <data
+          android:host="web.mvoterapp.com"
+          android:pathPrefix="/party"
+          android:scheme="https" />
+
+        <data
+          android:host="party"
+          android:scheme="mvoterapp" />
+
+      </intent-filter>
+
+
     </activity>
 
     <activity

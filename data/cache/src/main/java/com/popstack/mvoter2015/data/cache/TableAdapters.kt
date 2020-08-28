@@ -8,9 +8,11 @@ import com.popstack.mvoter2015.data.cache.columnadapter.NewsIdColumnAdapter
 import com.popstack.mvoter2015.data.cache.columnadapter.PartyIdColumnAdapter
 import com.popstack.mvoter2015.data.cache.columnadapter.StringListColumnAdapter
 import com.popstack.mvoter2015.data.cache.entity.BallotExampleTable
+import com.popstack.mvoter2015.data.cache.entity.CandidateFtsTable
 import com.popstack.mvoter2015.data.cache.entity.CandidateTable
 import com.popstack.mvoter2015.data.cache.entity.FaqTable
 import com.popstack.mvoter2015.data.cache.entity.NewsTable
+import com.popstack.mvoter2015.data.cache.entity.PartyFtsTable
 import com.popstack.mvoter2015.data.cache.entity.PartyTable
 import com.squareup.sqldelight.EnumColumnAdapter
 
@@ -25,6 +27,12 @@ object TableAdapters {
     )
   }
 
+  fun candidateFtsTableAdapter(): CandidateFtsTable.Adapter {
+    return CandidateFtsTable.Adapter(
+      idAdapter = CandidateIdColumnAdapter
+    )
+  }
+
   fun partyTableAdapter(): PartyTable.Adapter {
     return PartyTable.Adapter(
       idAdapter = PartyIdColumnAdapter,
@@ -34,6 +42,12 @@ object TableAdapters {
       establishmentApprovalDateAdapter = LocalDateColumnAdapter,
       registrationApplicationDateAdapter = LocalDateColumnAdapter,
       registrationApprovalDateAdapter = LocalDateColumnAdapter
+    )
+  }
+
+  fun partyFtsTableAdapter(): PartyFtsTable.Adapter {
+    return PartyFtsTable.Adapter(
+      idAdapter = PartyIdColumnAdapter
     )
   }
 

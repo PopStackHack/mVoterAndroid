@@ -101,10 +101,4 @@ class PartyListController : MvvmController<ControllerPartyListBinding>(), HasTag
     router.pushController(RouterTransaction.with(partyDetailController))
   }
 
-//  override fun subscribeToViewItemLiveData(viewItemLiveData: LiveData<List<PartyListViewItem>>) {
-//    viewItemLiveData.observe(lifecycleOwner, Observer { partyListViewItemList ->
-//      partyListAdapter.submitList(partyListViewItemList)
-//    })
-//  }
-
 }

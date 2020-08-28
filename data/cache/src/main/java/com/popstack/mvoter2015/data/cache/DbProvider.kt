@@ -8,7 +8,9 @@ object DbProvider {
     return MVoterDb(
       driver = driver,
       CandidateTableAdapter = TableAdapters.candidateTableAdapter(),
+      CandidateFtsTableAdapter = TableAdapters.candidateFtsTableAdapter(),
       PartyTableAdapter = TableAdapters.partyTableAdapter(),
+      PartyFtsTableAdapter = TableAdapters.partyFtsTableAdapter(),
       FaqTableAdapter = TableAdapters.faqTableAdapter(),
       NewsTableAdapter = TableAdapters.newsTableAdapter(),
       BallotExampleTableAdapter = TableAdapters.ballotExampleTableAdapter()
