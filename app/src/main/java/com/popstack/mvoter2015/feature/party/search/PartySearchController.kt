@@ -2,7 +2,6 @@ package com.popstack.mvoter2015.feature.party.search
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.ExperimentalPagingApi
@@ -16,9 +15,11 @@ import com.popstack.mvoter2015.databinding.ControllerPartySearchBinding
 import com.popstack.mvoter2015.domain.party.model.PartyId
 import com.popstack.mvoter2015.feature.party.detail.PartyDetailController
 import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
+import com.popstack.mvoter2015.helper.ViewVisibilityDebounceHandler
 import com.popstack.mvoter2015.helper.conductor.requireActivityAsAppCompatActivity
 import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.helper.extensions.showKeyboard
+import com.popstack.mvoter2015.helper.search.DebounceSearchQueryListener
 import com.popstack.mvoter2015.logging.HasTag
 import com.popstack.mvoter2015.paging.CommonLoadStateAdapter
 import kotlinx.coroutines.Job
@@ -46,19 +47,10 @@ class PartySearchController : MvvmController<ControllerPartySearchBinding>(), Ha
     requireActivityAsAppCompatActivity().setSupportActionBar(binding.toolBar)
     requireActivityAsAppCompatActivity().supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-    binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-      override fun onQueryTextSubmit(query: String?): Boolean {
-        if (query != null && query.isNotEmpty()) {
-          search(query)
-        }
-        return true
-      }
-
-      override fun onQueryTextChange(newText: String?): Boolean {
-        return true
-      }
-
-    })
+    binding.searchView.setOnQueryTextListener(
+      DebounceSearchQueryListener(onQuery = { query ->
+        search(query)
+      }, scope = lifecycleScope))
 
     binding.rvPlaceholder.apply {
       adapter = placeholderAdapter
@@ -83,10 +75,12 @@ class PartySearchController : MvvmController<ControllerPartySearchBinding>(), Ha
       searchPagingAdapter.retry()
     }
 
+    val placeHolderVisibilityHandler = ViewVisibilityDebounceHandler(binding.rvPlaceholder)
+
     searchPagingAdapter.addLoadStateListener { loadStates ->
       val refreshLoadState = loadStates.refresh
       binding.rvParty.isVisible = refreshLoadState is LoadState.NotLoading
-      binding.rvPlaceholder.isVisible = refreshLoadState is LoadState.Loading
+      placeHolderVisibilityHandler.setVisible(refreshLoadState is LoadState.Loading)
       binding.tvErrorMessage.isVisible = refreshLoadState is LoadState.Error
       binding.btnRetry.isVisible = refreshLoadState is LoadState.Error
       if (viewModel.currentQueryValue != null) {
@@ -112,7 +106,7 @@ class PartySearchController : MvvmController<ControllerPartySearchBinding>(), Ha
     }
   }
 
-  private fun search(query: String) {
+  private fun search(query: String?) {
     // Make sure we cancel the previous job before creating a new one
     searchJob?.cancel()
     searchJob = lifecycleScope.launch {

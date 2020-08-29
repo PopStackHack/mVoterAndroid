@@ -25,13 +25,14 @@ class PartySearchViewModel @ViewModelInject constructor(
 
   private var currentSearchResult: Flow<PagingData<PartySearchResultViewItem>>? = null
 
-  fun search(query: String): Flow<PagingData<PartySearchResultViewItem>> {
+  fun search(query: String?): Flow<PagingData<PartySearchResultViewItem>> {
     val lastResult = currentSearchResult
     if (query == currentQueryValue && lastResult != null) {
       return lastResult
     }
     currentQueryValue = query
-    val newResult: Flow<PagingData<PartySearchResultViewItem>> = partyPagerFactory.createPager(PAGE_SIZE, query)
+    val newResult: Flow<PagingData<PartySearchResultViewItem>> = partyPagerFactory.createPager(PAGE_SIZE, query
+      ?: "")
       .flow
       .map<PagingData<Party>, PagingData<PartySearchResultViewItem>> { pagingData ->
         pagingData.map<Party, PartySearchResultViewItem> { party ->

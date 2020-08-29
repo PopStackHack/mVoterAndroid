@@ -27,7 +27,7 @@ class ViewVisibilityDebounceHandler(
     const val DEFAULT_DEBOUNCE_TIME_MILI = 500L
   }
 
-  private var lastVisibilityValue = view.visibility
+  private var lastVisibilityValue = view.visibility == View.VISIBLE
 
   private var job: Job? = null
 
@@ -35,7 +35,10 @@ class ViewVisibilityDebounceHandler(
     job?.cancel()
     job = view.findViewTreeLifecycleOwner()?.lifecycleScope?.launch {
       delay(delayTimeInMili)
-      view.isVisible = isVisible
+      if (lastVisibilityValue != isVisible) {
+        view.isVisible = isVisible
+      }
+      lastVisibilityValue = view.isVisible
     }
 
   }
