@@ -36,7 +36,6 @@ class PartyDetailViewModel @ViewModelInject constructor(
 
         val timelineList = mutableListOf<PartyTimelineViewItem>()
 
-
         party.establishmentApplicationDate?.let { establishmentApplicationDate ->
           timelineList.add(
             PartyTimelineViewItem(

@@ -1,6 +1,5 @@
 package com.popstack.mvoter2015.domain.utils
 
-
 object BurmeseNumberUtils {
 
   /**
