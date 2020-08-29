@@ -74,6 +74,9 @@
   <string name="empty_query_faq">မိမိရှာလိုသော အမေးအဖြေကို အပေါ်တွင်ရိုက်ထည့်ပါ။</string>
   <string name="empty_list_search_faq">\"%1$s\" နှင့်ပတ်သက်သော အမေးအဖြေကို ရှာမတွေ့ပါ။</string>
 
+  <string name="ballot_category_normal">မဲနမူနာများ</string>
+  <string name="ballot_category_advanced">ကြိုတင်မဲနမူနာများ</string>
+
   <string name="ballot_examples">ပယ်မယ်၊ ခိုင်လုံမဲ နမူနာများ</string>
   <string name="invalid_ballot">ပယ်မဲ</string>
   <string name="valid_ballot">ခိုင်လုံမဲ</string>

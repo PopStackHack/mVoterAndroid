@@ -12,6 +12,7 @@ import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.BaseActivity
 import com.popstack.mvoter2015.databinding.ActivityFaqCategorySelectBinding
 import com.popstack.mvoter2015.domain.faq.model.FaqCategory
+import com.popstack.mvoter2015.feature.faq.ballot.displayString
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 

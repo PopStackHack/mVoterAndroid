@@ -29,7 +29,7 @@ class GlobalExceptionHandler @Inject constructor(
       is SocketTimeoutException -> context.getString(R.string.error_socket_timeout)
       is ConnectException -> context.getString(R.string.error_no_internet)
       is NetworkException -> parseNetworkError(throwable)
-      else -> context.getString(R.string.error_generic)
+      else -> throw throwable
     }
   }
 

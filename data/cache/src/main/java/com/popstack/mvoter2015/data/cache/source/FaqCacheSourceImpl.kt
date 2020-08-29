@@ -7,6 +7,7 @@ import com.popstack.mvoter2015.data.cache.extension.QueryDataSourceFactory
 import com.popstack.mvoter2015.data.cache.map.mapToFaq
 import com.popstack.mvoter2015.data.common.faq.FaqCacheSource
 import com.popstack.mvoter2015.domain.faq.model.BallotExample
+import com.popstack.mvoter2015.domain.faq.model.BallotExampleCategory
 import com.popstack.mvoter2015.domain.faq.model.Faq
 import com.popstack.mvoter2015.domain.faq.model.FaqCategory
 import javax.inject.Inject
@@ -41,19 +42,6 @@ class FaqCacheSourceImpl @Inject constructor(
     ).executeAsList().map(FaqTable::mapToFaq)
   }
 
-  override fun putBallotExampleList(ballotExampleList: List<BallotExample>) {
-    db.transaction {
-      ballotExampleList.forEach { ballotExample ->
-        db.ballotExampleTableQueries.insertOrReplace(
-          id = ballotExample.id,
-          image = ballotExample.image,
-          isValid = ballotExample.isValid,
-          reason = ballotExample.reason
-        )
-      }
-    }
-  }
-
   override fun searchPaging(itemPerPage: Int, query: String): PagingSource<Int, Faq> {
     return QueryDataSourceFactory(
       queryProvider = { limit, offset ->
@@ -82,13 +70,28 @@ class FaqCacheSourceImpl @Inject constructor(
     }.map(FaqTable::mapToFaq).asPagingSourceFactory().invoke()
   }
 
-  override fun getBallotExampleList(): List<BallotExample> {
-    return db.ballotExampleTableQueries.selectAll().executeAsList().map { table ->
+  override fun putBallotExampleList(ballotExampleList: List<BallotExample>) {
+    db.transaction {
+      ballotExampleList.forEach { ballotExample ->
+        db.ballotExampleTableQueries.insertOrReplace(
+          id = ballotExample.id,
+          image = ballotExample.image,
+          isValid = ballotExample.isValid,
+          reason = ballotExample.reason,
+          category = ballotExample.category
+        )
+      }
+    }
+  }
+
+  override fun getBallotExampleList(ballotExampleCategory: BallotExampleCategory): List<BallotExample> {
+    return db.ballotExampleTableQueries.selectAllWithCategory(ballotExampleCategory).executeAsList().map { table ->
       BallotExample(
         id = table.id,
         image = table.image,
         isValid = table.isValid,
-        reason = table.reason
+        reason = table.reason,
+        category = table.category
       )
     }
   }

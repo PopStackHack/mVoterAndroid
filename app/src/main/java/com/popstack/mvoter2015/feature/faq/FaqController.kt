@@ -17,6 +17,7 @@ import com.popstack.mvoter2015.domain.faq.model.FaqCategory
 import com.popstack.mvoter2015.feature.HasRouter
 import com.popstack.mvoter2015.feature.about.AboutController
 import com.popstack.mvoter2015.feature.faq.ballot.BallotExampleController
+import com.popstack.mvoter2015.feature.faq.ballot.displayString
 import com.popstack.mvoter2015.feature.faq.search.FaqSearchController
 import com.popstack.mvoter2015.feature.share.ShareUrlFactory
 import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
@@ -77,7 +78,6 @@ class FaqController : MvvmController<ControllerFaqBinding>(), HasTag {
       viewModel.selectedFaqCategory()?.let {
         selectFaqCategoryContract.launch(it)
       }
-
     }
 
     binding.btnRetry.setOnClickListener {
@@ -121,10 +121,9 @@ class FaqController : MvvmController<ControllerFaqBinding>(), HasTag {
       binding.tvSelectedCategory.text = faqCategory.displayString(requireContext())
     })
 
-    if (savedViewState == null) {
-      selectFaqCategory(FaqCategory.VOTER_LIST)
-      faqPagingAdapter.refresh()
-    }
+    selectFaqCategory(viewModel.selectedFaqCategory() ?: FaqCategory.VOTER_LIST)
+    faqPagingAdapter.refresh()
+
   }
 
   private var selectFaqJob: Job? = null

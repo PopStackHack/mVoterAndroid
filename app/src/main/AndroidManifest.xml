@@ -64,6 +64,10 @@
       android:name=".feature.faq.FaqCategorySelectActivity"
       android:theme="@style/AppTheme.Transparent" />
 
+    <activity
+      android:name=".feature.faq.ballot.BallotExampleSelectActivity"
+      android:theme="@style/AppTheme.Transparent" />
+
     <meta-data
       android:name="firebase_crashlytics_collection_enabled"
       android:value="false" />
