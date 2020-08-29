@@ -1,7 +1,9 @@
 package com.popstack.mvoter2015.feature.party.detail
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
@@ -15,6 +17,7 @@ import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerPartyDetailBinding
 import com.popstack.mvoter2015.domain.party.model.PartyId
 import com.popstack.mvoter2015.domain.utils.convertToBurmeseNumber
+import com.popstack.mvoter2015.feature.share.ShareUrlFactory
 import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewState
 import com.popstack.mvoter2015.helper.conductor.requireActivityAsAppCompatActivity
 import com.popstack.mvoter2015.helper.conductor.requireContext
@@ -41,6 +44,10 @@ class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDeta
     }
   }
 
+  private val partyId by lazy {
+    PartyId(args.getString(ARG_PARTY_ID)!!)
+  }
+
   private val viewModel: PartyDetailViewModel by viewModels()
 
   private val timelineAdapter by lazy {
@@ -51,8 +58,20 @@ class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDeta
     ControllerPartyDetailBinding::inflate
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup, savedViewState: Bundle?): View {
-    viewModel.setPartyId(PartyId(args.getString(ARG_PARTY_ID)!!))
+    viewModel.setPartyId(partyId)
+    setHasOptionsMenu(R.menu.menu_party_detail, this::handleMenuItemClick)
     return super.onCreateView(inflater, container, savedViewState)
+  }
+
+  private fun handleMenuItemClick(menuItem: MenuItem): Boolean {
+    when (menuItem.itemId) {
+      R.id.action_share -> {
+        val sharePartyIntent = Intents.shareUrl(ShareUrlFactory().party(partyId))
+        startActivity(Intent.createChooser(sharePartyIntent, "Share Party"))
+        return true
+      }
+    }
+    return false
   }
 
   override fun onBindView(savedViewState: Bundle?) {
@@ -116,6 +135,7 @@ class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDeta
 
         binding.tvPartyNumber.text = viewItem.partyNumber.convertToBurmeseNumber()
 
+        binding.tvPartyRegion.text = viewItem.region
         binding.tvLeader.text = viewItem.leadersAndChairmen
         binding.tvMemberCount.text = viewItem.memberCount
         binding.tvHeadquarterLocation.text = viewItem.headQuarterLocation
