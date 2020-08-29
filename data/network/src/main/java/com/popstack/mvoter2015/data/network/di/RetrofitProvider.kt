@@ -2,6 +2,7 @@ package com.popstack.mvoter2015.data.network.di
 
 import android.content.Context
 import com.popstack.mvoter2015.data.network.BuildConfig
+import com.popstack.mvoter2015.data.network.jsonadapter.FaqCategoryJsonAdapter
 import com.popstack.mvoter2015.data.network.jsonadapter.LocalDateJsonAdapter
 import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient
@@ -18,6 +19,7 @@ internal object RetrofitProvider {
 
       val moshi = Moshi.Builder()
         .add(LocalDateJsonAdapter())
+        .add(FaqCategoryJsonAdapter())
         .build()
 
       retrofit = Retrofit.Builder()

@@ -1,5 +1,6 @@
 package com.popstack.mvoter2015.feature.share
 
+import com.popstack.mvoter2015.domain.faq.model.FaqId
 import com.popstack.mvoter2015.domain.party.model.PartyId
 
 class ShareUrlFactory {
@@ -10,6 +11,10 @@ class ShareUrlFactory {
 
   fun party(partyId: PartyId): String {
     return "$BASE_WEB_APP_URL/parties/${partyId.value}"
+  }
+
+  fun faq(faqId: FaqId): String {
+    return "$BASE_WEB_APP_URL/faqs/${faqId.value}"
   }
 
 }

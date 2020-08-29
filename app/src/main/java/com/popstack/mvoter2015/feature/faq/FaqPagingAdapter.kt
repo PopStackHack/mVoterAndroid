@@ -3,6 +3,7 @@ package com.popstack.mvoter2015.feature.faq
 import android.text.TextUtils
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.text.HtmlCompat
 import androidx.core.view.isVisible
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -105,7 +106,10 @@ class FaqPagingAdapter(
         val faqViewItem = itemAtIndex as FaqViewItem.QuestionAndAnswer
         holder.binding.apply {
           tvQuestion.text = faqViewItem.question
-          tvAnswer.text = faqViewItem.answer
+          tvAnswer.text = HtmlCompat.fromHtml(faqViewItem.answer, HtmlCompat.FROM_HTML_MODE_COMPACT).trim()
+
+          tvSource.isVisible = faqViewItem.source != null
+          tvSource.text = faqViewItem.source ?: ""
 
           if (expandedFaqSet.contains(faqViewItem.faqId)) {
             tvAnswer.maxLines = Int.MAX_VALUE

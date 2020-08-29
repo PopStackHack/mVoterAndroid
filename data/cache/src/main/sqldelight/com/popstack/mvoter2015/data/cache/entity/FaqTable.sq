@@ -7,13 +7,12 @@ CREATE TABLE FaqTable(
     answer TEXT NOT NULL,
     lawSource TEXT,
     articleSource TEXT,
-    category TEXT AS FaqCategory NOT NULL,
-    shareableUrl TEXT NOT NULL
+    category TEXT AS FaqCategory NOT NULL
 );
 
 insertOrReplace:
 INSERT OR REPLACE INTO FaqTable VALUES (
-    :id, :question, :answer, :lawSource, :articleSource, :category, :shareableUrl
+    :id, :question, :answer, :lawSource, :articleSource, :category
 );
 
 selectAllWithQuery:
@@ -34,11 +33,11 @@ OR articleSource LIKE :query;
 selectAllWithCategory:
 SELECT * FROM FaqTable WHERE category = :category LIMIT :limit OFFSET :offset;
 
-countAllWithCategory:
-SELECT count(*) FROM FaqTable WHERE category = :category ;
-
 selectAll:
 SELECT * FROM FaqTable LIMIT :limit OFFSET :offset;
+
+countAllWithCategory:
+SELECT count(*) FROM FaqTable WHERE category = :category ;
 
 countAll:
 SELECT count(*) FROM FaqTable;

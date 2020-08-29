@@ -65,7 +65,10 @@
   <string name="no_video">ဗီဒီယို\nမရိုက်ရ</string>
   <string name="no_record">အသံ\nမသွင်းရ</string>
 
-  <string name="faq_category_general">အထွေထွေ</string>
+  <string name="faq_category_voter_list">မဲဆန္ဒရှင်စာရှင်း</string>
+  <string name="faq_category_diplomatic">သံတမံရေးရာ</string>
+  <string name="faq_category_international_observer">စောင့်ကြည့်လေ့လာခြင်း</string>
+  <string name="faq_category_candidate">ကိုယ်စားလှယ်လောင်း</string>
 
   <string name="hint_search_faq">ရှာလိုသော အမေးအဖြေကို ရိုက်ထည့်ပါ</string>
   <string name="empty_query_faq">မိမိရှာလိုသော အမေးအဖြေကို အပေါ်တွင်ရိုက်ထည့်ပါ။</string>

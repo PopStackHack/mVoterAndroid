@@ -10,16 +10,11 @@ import androidx.paging.map
 import com.popstack.mvoter2015.data.android.faq.FaqPagerFactory
 import com.popstack.mvoter2015.domain.faq.model.Faq
 import com.popstack.mvoter2015.domain.faq.model.FaqCategory
-import com.popstack.mvoter2015.domain.faq.model.FaqId
-import com.popstack.mvoter2015.domain.faq.usecase.GetFaq
-import com.popstack.mvoter2015.helper.livedata.SingleLiveEvent
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.launch
 
 class FaqViewModel @ViewModelInject constructor(
-  private val faqPagerFactory: FaqPagerFactory,
-  private val getFaq: GetFaq
+  private val faqPagerFactory: FaqPagerFactory
 ) : ViewModel() {
 
   companion object {
@@ -29,13 +24,6 @@ class FaqViewModel @ViewModelInject constructor(
   private var selectedFaqCategory: FaqCategory? = null
 
   val faqCategoryLiveData = MutableLiveData<FaqCategory>()
-
-  sealed class SingleEvent {
-    data class ShareFaq(val shareUrl: String) : SingleEvent()
-  }
-
-  val viewEventLiveData =
-    SingleLiveEvent<SingleEvent>()
 
   var currentResult: Flow<PagingData<FaqViewItem>>? = null
 
@@ -54,11 +42,12 @@ class FaqViewModel @ViewModelInject constructor(
           FaqViewItem.QuestionAndAnswer(
             faqId = faq.id,
             question = faq.question,
-            answer = faq.answer
+            answer = faq.answer,
+            source = faq.articleSource
           )
         }
 
-        if (selectedFaqCategory == FaqCategory.GENERAL) {
+        if (selectedFaqCategory == FaqCategory.VOTER_LIST) {
           viewItemPagingData
             .insertHeaderItem(FaqViewItem.PollingStationProhibition)
             .insertHeaderItem(FaqViewItem.BallotExample)
@@ -73,12 +62,5 @@ class FaqViewModel @ViewModelInject constructor(
 
   fun selectedFaqCategory(): FaqCategory? {
     return selectedFaqCategory
-  }
-
-  fun handleShareClick(faqId: FaqId) {
-    viewModelScope.launch {
-      val faq = getFaq.execute(GetFaq.Params(faqId))
-      viewEventLiveData.postValue(SingleEvent.ShareFaq(shareUrl = faq.shareableUrl))
-    }
   }
 }

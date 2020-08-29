@@ -18,4 +18,11 @@ interface MvoterApi {
     @Path("party_id") partyId: String
   ): Call<PartyApiModel>
 
+  @GET("faqs")
+  fun faqList(
+    @Query("page") page: Int,
+    @Query("category") category: String?,
+    @Query("query") query: String?
+  ): Call<GetFaqListResponse>
+
 }

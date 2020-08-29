@@ -25,8 +25,7 @@ class FaqCacheSourceImpl @Inject constructor(
           answer = faq.answer,
           lawSource = faq.lawSource,
           articleSource = faq.articleSource,
-          category = faq.category,
-          shareableUrl = faq.shareableUrl
+          category = faq.category
         )
       }
     }
@@ -35,9 +34,10 @@ class FaqCacheSourceImpl @Inject constructor(
   override fun getFaqList(page: Int, itemsPerPage: Int, category: FaqCategory): List<Faq> {
     val limit = itemsPerPage
     val offset = (page - 1) * limit
-    return db.faqTableQueries.selectAll(
+    return db.faqTableQueries.selectAllWithCategory(
       limit = limit.toLong(),
-      offset = offset.toLong()
+      offset = offset.toLong(),
+      category = category
     ).executeAsList().map(FaqTable::mapToFaq)
   }
 
