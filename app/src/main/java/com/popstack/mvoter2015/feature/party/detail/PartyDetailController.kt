@@ -88,6 +88,7 @@ class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDeta
         binding.ivPartySeal.load(viewItem.sealImage) {
           scale(Scale.FIT)
           placeholder(R.drawable.placeholder_rect)
+          error(R.drawable.placeholder_rect)
           crossfade(true)
         }
         binding.tvPartyName.text = viewItem.name
@@ -109,6 +110,7 @@ class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDeta
         binding.ivPartyFlag.load(viewItem.flagImage) {
           scale(Scale.FIT)
           placeholder(R.drawable.placeholder_rect)
+          error(R.drawable.placeholder_rect)
           crossfade(true)
         }
 
@@ -119,6 +121,8 @@ class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDeta
         binding.tvHeadquarterLocation.text = viewItem.headQuarterLocation
         binding.tvContact.text = viewItem.contact
         binding.cardViewTimeline.isVisible = viewItem.timeline.isNotEmpty()
+
+        binding.tvPoteMa25.isVisible = viewItem.isPoteMa25
         timelineAdapter.submitList(viewItem.timeline)
       }
       is AsyncViewState.Error -> {

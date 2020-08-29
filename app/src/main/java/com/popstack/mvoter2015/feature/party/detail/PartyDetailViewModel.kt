@@ -36,6 +36,7 @@ class PartyDetailViewModel @ViewModelInject constructor(
 
         val timelineList = mutableListOf<PartyTimelineViewItem>()
 
+
         party.establishmentApplicationDate?.let { establishmentApplicationDate ->
           timelineList.add(
             PartyTimelineViewItem(
@@ -87,6 +88,7 @@ class PartyDetailViewModel @ViewModelInject constructor(
             memberCount = memberCount?.toString() ?: "-",
             headQuarterLocation = headquarterLocation,
             contact = contacts.format("၊"),
+            isPoteMa25 = establishmentApplicationDate == null || establishmentApprovalDate == null,
             timeline = timelineList.sortedBy { it.date }
           )
         }

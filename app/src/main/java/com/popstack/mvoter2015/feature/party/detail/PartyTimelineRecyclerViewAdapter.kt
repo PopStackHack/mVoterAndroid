@@ -8,8 +8,6 @@ import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.databinding.ItemPartyTimelineBinding
 import com.popstack.mvoter2015.helper.diff.diffCallBackWith
 import com.popstack.mvoter2015.helper.extensions.inflater
-import java.time.format.DateTimeFormatter
-import java.util.Locale
 
 class PartyTimelineRecyclerViewAdapter :
   ListAdapter<PartyTimelineViewItem, PartyTimelineRecyclerViewAdapter.PartyTimelineViewHolder>(
@@ -33,8 +31,7 @@ class PartyTimelineRecyclerViewAdapter :
     holder.binding.apply {
       lineTop.isVisible = position != 0 //Don't show on first index
       lineBottom.isVisible = position != itemCount - 1 //Don't show on last index
-      tvDate.text =
-        itemAtIndex.date.format(DateTimeFormatter.ofPattern("dd MMM '\n'yyyy", Locale.ENGLISH))
+      tvDate.text = itemAtIndex.presentableDate()
       tvEvent.text = when (itemAtIndex.event) {
         TimelineEvent.ESTABLISHMENT_APPLICATION -> {
           holder.itemView.context.getString(R.string.party_establishment_application)

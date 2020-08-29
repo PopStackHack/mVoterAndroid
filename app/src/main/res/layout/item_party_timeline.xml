@@ -14,7 +14,7 @@
 
   <TextView
     android:id="@+id/tvDate"
-    style="@style/TextLarge.Bold"
+    style="@style/TextMedium.Bold"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginStart="16dp"

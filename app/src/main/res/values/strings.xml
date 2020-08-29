@@ -52,6 +52,7 @@
   <!--  TimelineEvent.REGISTRATION_APPROVAL -> TODO()-->
   <string name="party_establishment_application">ပါတီတည်ထောင်ခွင့်လျှောက်ထားသည်</string>
   <string name="party_establishment_approval">ပါတီတည်ထောင်ခွင့် ရရှိသည်</string>
+  <string name="party_pote_ma_25">နိုင်ငံရေးပါတီအဖြစ် ပုဒ်မ(၂၅)အရ လျှောက်ထားခဲ့သည်</string>
   <string name="party_registration_application">ပါတီအဖြစ် မှတ်ပုံတင်ခွင့် လျှောက်ထားသည်</string>
   <string name="party_registration_approval">ပါတီအဖြစ်မှတ်ပုံတင်ခွင့်ရရှိသည်</string>
 
