@@ -43,11 +43,3 @@ class ViewVisibilityDebounceHandler(
 
   }
 }
-
-fun View.setVisibleWithDelay(
-  newIsVisible: Boolean,
-  delayTimeInMili: Long = ViewVisibilityDebounceHandler.DEFAULT_DEBOUNCE_TIME_MILI
-) {
-  val handler = ViewVisibilityDebounceHandler(this, delayTimeInMili)
-  handler.setVisible(newIsVisible)
-}

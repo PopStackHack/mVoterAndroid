@@ -6,6 +6,5 @@ data class Faq(
   val answer: String,
   val lawSource: String?,
   val articleSource: String?,
-  val category: FaqCategory,
-  val shareableUrl: String
+  val category: FaqCategory
 )

@@ -14,8 +14,7 @@ internal fun FaqTable.mapToFaq(): Faq {
     answer = answer,
     lawSource = lawSource,
     articleSource = articleSource,
-    category = category,
-    shareableUrl = shareableUrl
+    category = category
   )
 }
 

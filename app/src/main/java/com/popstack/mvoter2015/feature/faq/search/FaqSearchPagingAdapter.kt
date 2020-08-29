@@ -2,6 +2,7 @@ package com.popstack.mvoter2015.feature.faq.search
 
 import android.text.TextUtils
 import android.view.ViewGroup
+import androidx.core.text.HtmlCompat
 import androidx.core.view.isVisible
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -62,7 +63,10 @@ class FaqSearchPagingAdapter(
     getItem(position)?.let { itemAtIndex ->
       holder.binding.apply {
         tvQuestion.text = itemAtIndex.question
-        tvAnswer.text = itemAtIndex.answer
+        tvAnswer.text = HtmlCompat.fromHtml(itemAtIndex.answer, HtmlCompat.FROM_HTML_MODE_COMPACT).trim()
+
+        tvSource.isVisible = itemAtIndex.source != null
+        tvSource.text = itemAtIndex.source ?: ""
 
         if (expandedFaqSet.contains(itemAtIndex.faqId)) {
           tvAnswer.maxLines = Int.MAX_VALUE

@@ -29,7 +29,7 @@
       android:background="?attr/selectableItemBackground"
       android:drawableEnd="@drawable/ic_arrow_drop_down_24"
       android:padding="16dp"
-      android:text="@string/faq_category_general"
+      android:text="@string/faq_category_voter_list"
       app:drawableTint="@color/accent" />
 
   </com.google.android.material.appbar.AppBarLayout>
@@ -39,12 +39,12 @@
     android:layout_width="match_parent"
     android:layout_height="0dp"
     android:layout_marginTop="112dp"
+    android:visibility="gone"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     tools:itemCount="10"
-    android:visibility="gone"
     tools:listitem="@layout/item_faq_placeholder" />
 
   <androidx.recyclerview.widget.RecyclerView

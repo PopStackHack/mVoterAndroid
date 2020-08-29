@@ -1,6 +1,5 @@
 package com.popstack.mvoter2015.data.android.faq
 
-import android.content.Context
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
@@ -12,7 +11,6 @@ import javax.inject.Inject
 
 class FaqPagerFactory @OptIn(ExperimentalPagingApi::class)
 @Inject constructor(
-  private val context: Context,
   private val faqNetworkSource: FaqNetworkSource,
   private val faqCacheSource: FaqCacheSource
 ) {
@@ -22,18 +20,18 @@ class FaqPagerFactory @OptIn(ExperimentalPagingApi::class)
       config = PagingConfig(
         pageSize = itemPerPage
       ),
-      remoteMediator = FaqRemoteMediator(
-        context = context,
-        faqCacheSource = faqCacheSource,
-        faqNetworkSource = faqNetworkSource,
-        category = category,
-        query = query
-      ),
       pagingSourceFactory = {
         if (query != null) {
-          faqCacheSource.searchPaging(itemPerPage, query)
+          FaqSearchPagingSource(
+            faqNetworkSource,
+            query
+          )
         } else {
-          faqCacheSource.getAllPaging(itemPerPage, category)
+          FaqPagingSource(
+            faqCacheSource,
+            faqNetworkSource,
+            category!!
+          )
         }
       }
     )

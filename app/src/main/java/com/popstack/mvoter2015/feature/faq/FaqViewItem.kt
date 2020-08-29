@@ -11,6 +11,7 @@ sealed class FaqViewItem {
   data class QuestionAndAnswer(
     val faqId: FaqId,
     val question: String,
-    val answer: String
+    val answer: String,
+    val source: String?
   ) : FaqViewItem()
 }

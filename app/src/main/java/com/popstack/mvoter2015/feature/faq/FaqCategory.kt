@@ -6,7 +6,9 @@ import com.popstack.mvoter2015.domain.faq.model.FaqCategory
 
 internal fun FaqCategory.displayString(context: Context): CharSequence {
   return when (this) {
-    FaqCategory.GENERAL -> context.getString(R.string.faq_category_general)
-    FaqCategory.KNOWLEDGE -> "မဲအကြောင်း"
+    FaqCategory.VOTER_LIST -> context.getString(R.string.faq_category_voter_list)
+    FaqCategory.DIPLOMATIC -> context.getString(R.string.faq_category_diplomatic)
+    FaqCategory.INTERNATIONAL_OBSERVER -> context.getString(R.string.faq_category_international_observer)
+    FaqCategory.CANDIDATE -> context.getString(R.string.faq_category_candidate)
   }
 }

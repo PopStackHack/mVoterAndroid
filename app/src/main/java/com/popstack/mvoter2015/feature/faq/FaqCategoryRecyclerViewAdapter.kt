@@ -17,8 +17,10 @@ class FaqCategoryRecyclerViewAdapter(
   private var selectedCategory: FaqCategory? = null
 
   private val categoryList = listOf(
-    FaqCategory.GENERAL,
-    FaqCategory.KNOWLEDGE
+    FaqCategory.VOTER_LIST,
+    FaqCategory.DIPLOMATIC,
+    FaqCategory.INTERNATIONAL_OBSERVER,
+    FaqCategory.CANDIDATE
   )
 
   class FaqCategoryViewHolder(val binding: ItemFaqCategoryBinding) :

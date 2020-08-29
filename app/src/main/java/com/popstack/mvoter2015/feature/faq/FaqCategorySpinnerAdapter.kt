@@ -11,14 +11,7 @@ class FaqCategorySpinnerAdapter : SimpleSpinnerAdapter<FaqCategory>(
 ) {
 
   override fun getDisplayString(position: Int, context: Context): String {
-    return when (getItem(position)) {
-      FaqCategory.GENERAL -> {
-        "အထွေထွေ"
-      }
-      FaqCategory.KNOWLEDGE -> {
-        "အသိပညာ"
-      }
-    }
+    return getItem(position).displayString(context).toString()
   }
 
   override fun getCustomView(position: Int, convertView: View?, parent: ViewGroup): View {
