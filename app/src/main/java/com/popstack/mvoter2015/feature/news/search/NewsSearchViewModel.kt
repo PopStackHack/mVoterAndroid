@@ -8,6 +8,7 @@ import androidx.paging.cachedIn
 import androidx.paging.map
 import com.popstack.mvoter2015.data.android.news.NewsPagerFactory
 import com.popstack.mvoter2015.domain.news.model.News
+import com.popstack.mvoter2015.feature.news.NewsDateTimeFormatter
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -17,19 +18,21 @@ class NewsSearchViewModel @ViewModelInject constructor(
 
   companion object {
     private const val PAGE_SIZE = 20
-    private const val DEBOUNCE_TIME_IN_MILLISECONDS = 500L
   }
+
+  private val dateTimeFormatter = NewsDateTimeFormatter()
 
   var currentQueryValue: String? = null
     private set
 
   private var currentSearchResult: Flow<PagingData<NewsSearchViewItem>>? = null
 
-  fun search(query: String): Flow<PagingData<NewsSearchViewItem>> {
+  fun search(query: String?): Flow<PagingData<NewsSearchViewItem>> {
     val lastResult = currentSearchResult
     if (query == currentQueryValue && lastResult != null) {
       return lastResult
     }
+    currentQueryValue = query
     val newResult: Flow<PagingData<NewsSearchViewItem>> = newsPagerFactory.createPager(PAGE_SIZE, query)
       .flow
       .map<PagingData<News>, PagingData<NewsSearchViewItem>> { pagingData ->
@@ -39,7 +42,7 @@ class NewsSearchViewModel @ViewModelInject constructor(
             title = news.title,
             summary = news.summary,
             imageUrl = news.imageUrl,
-            publishedDate = news.publishedDate.toString(),
+            publishedDate = dateTimeFormatter.format(news.publishedDate),
             url = news.url
           )
         }
