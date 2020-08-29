@@ -18,6 +18,7 @@ class NewsCacheSourceImpl @Inject constructor(
       news.id,
       news.title,
       news.summary,
+      news.body,
       news.imageUrl,
       news.publishedDate,
       news.url

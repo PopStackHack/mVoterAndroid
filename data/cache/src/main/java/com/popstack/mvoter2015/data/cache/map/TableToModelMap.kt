@@ -23,6 +23,7 @@ internal fun NewsTable.mapToNews(): News {
     id = id,
     title = title,
     summary = summary,
+    body = body,
     imageUrl = imageUrl,
     publishedDate = publishedDate,
     url = url

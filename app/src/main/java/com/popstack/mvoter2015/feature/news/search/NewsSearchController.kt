@@ -2,7 +2,6 @@ package com.popstack.mvoter2015.feature.news.search
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import androidx.appcompat.widget.SearchView
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
@@ -17,13 +16,14 @@ import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerNewsSearchBinding
 import com.popstack.mvoter2015.domain.news.model.NewsId
 import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
+import com.popstack.mvoter2015.helper.ViewVisibilityDebounceHandler
+import com.popstack.mvoter2015.helper.conductor.requireActivity
 import com.popstack.mvoter2015.helper.conductor.requireActivityAsAppCompatActivity
 import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.helper.extensions.showKeyboard
+import com.popstack.mvoter2015.helper.search.DebounceSearchQueryListener
 import com.popstack.mvoter2015.paging.CommonLoadStateAdapter
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -43,19 +43,10 @@ class NewsSearchController : MvvmController<ControllerNewsSearchBinding>() {
     requireActivityAsAppCompatActivity().setSupportActionBar(binding.toolBar)
     requireActivityAsAppCompatActivity().supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-    binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-      override fun onQueryTextSubmit(query: String?): Boolean {
-        if (query != null && query.isNotEmpty()) {
-          search(query)
-        }
-        return true
-      }
-
-      override fun onQueryTextChange(newText: String?): Boolean {
-        return true
-      }
-
-    })
+    binding.searchView.setOnQueryTextListener(
+      DebounceSearchQueryListener(onQuery = { query ->
+        search(query)
+      }, scope = lifecycleScope))
 
 //    binding.rvPlaceholder.apply {
 //      adapter = placeholderAdapter
@@ -80,14 +71,25 @@ class NewsSearchController : MvvmController<ControllerNewsSearchBinding>() {
       searchPagingAdapter.retry()
     }
 
+    val placeHolderVisibilityHandler = ViewVisibilityDebounceHandler(binding.rvPlaceholder)
+
     searchPagingAdapter.addLoadStateListener { loadStates ->
       val refreshLoadState = loadStates.refresh
       binding.rvNews.isVisible = refreshLoadState is LoadState.NotLoading
-      binding.rvPlaceholder.isVisible = refreshLoadState is LoadState.Loading
+      placeHolderVisibilityHandler.setVisible(refreshLoadState is LoadState.Loading)
       binding.tvErrorMessage.isVisible = refreshLoadState is LoadState.Error
       binding.btnRetry.isVisible = refreshLoadState is LoadState.Error
       if (viewModel.currentQueryValue != null) {
         binding.tvInstruction.isVisible = false
+      }
+
+      if (viewModel.currentQueryValue != null && refreshLoadState is LoadState.NotLoading && searchPagingAdapter.itemCount == 0) {
+        binding.tvInstruction.isVisible = false
+        binding.tvEmpty.isVisible = true
+        binding.tvEmpty.text = requireContext().getString(R.string.empty_list_search_news, viewModel.currentQueryValue
+          ?: "")
+      } else {
+        binding.tvEmpty.isVisible = false
       }
 
       if (refreshLoadState is LoadState.Error) {
@@ -95,21 +97,12 @@ class NewsSearchController : MvvmController<ControllerNewsSearchBinding>() {
       }
     }
 
-    lifecycleScope.launch {
-      delay(500)
+    binding.searchView.post {
       binding.searchView.showKeyboard()
-    }
-
-    lifecycleScope.launch {
-      searchPagingAdapter.dataRefreshFlow.collect { isEmpty ->
-        binding.tvEmpty.isVisible = isEmpty
-        binding.tvEmpty.text = requireContext().getString(R.string.empty_list_search_news, viewModel.currentQueryValue
-          ?: "")
-      }
     }
   }
 
-  private fun search(query: String) {
+  private fun search(query: String?) {
     // Make sure we cancel the previous job before creating a new one
     searchJob?.cancel()
     searchJob = lifecycleScope.launch {
@@ -123,7 +116,7 @@ class NewsSearchController : MvvmController<ControllerNewsSearchBinding>() {
     CustomTabsIntent.Builder()
       .setToolbarColor(ContextCompat.getColor(requireContext(), R.color.accent))
       .build()
-      .launchUrl(requireContext(), url.toUri())
+      .launchUrl(requireActivity(), url.toUri())
   }
 
 }
