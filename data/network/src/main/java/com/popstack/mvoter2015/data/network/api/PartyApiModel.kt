@@ -1,11 +1,47 @@
 package com.popstack.mvoter2015.data.network.api
 
+import com.popstack.mvoter2015.domain.party.model.Party
+import com.popstack.mvoter2015.domain.party.model.PartyId
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import java.time.LocalDate
 
 @JsonClass(generateAdapter = true)
+data class GetPartyListResponse(
+  @Json(name = "data") val data: List<PartyApiModel>
+)
+
+@JsonClass(generateAdapter = true)
 data class PartyApiModel(
+  @Json(name = "partyId") val partyId: String,
+  @Json(name = "attributes") val attributes: PartyApiAttributes
+) {
+
+  fun mapToParty(): Party {
+    return Party(
+      id = PartyId(partyId),
+      nameBurmese = attributes.burmeseName,
+      nameEnglish = attributes.englishName,
+      abbreviation = attributes.abbreviation,
+      flagImage = attributes.flagImageUrl,
+      sealImage = attributes.sealImageUrl,
+      region = attributes.region,
+      leadersAndChairmenList = attributes.leadersAndChairmen,
+      memberCount = attributes.memberCount,
+      registeredNumber = attributes.registeredNumber,
+      headquarterLocation = attributes.headQuarterLocation,
+      policy = attributes.policy,
+      contacts = attributes.contact,
+      establishmentApplicationDate = attributes.establishmentApplicationDate,
+      establishmentApprovalDate = attributes.establishmentApprovalDate,
+      registrationApplicationDate = attributes.registrationApplicationDate,
+      registrationApprovalDate = attributes.registrationApprovalDate
+    )
+  }
+}
+
+@JsonClass(generateAdapter = true)
+data class PartyApiAttributes(
   @Json(name = "registered_number") val registeredNumber: Int,
   @Json(name = "name_burmese") val burmeseName: String,
   @Json(name = "name_english") val englishName: String?,

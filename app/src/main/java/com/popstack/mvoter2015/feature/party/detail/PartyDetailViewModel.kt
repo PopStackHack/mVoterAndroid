@@ -100,7 +100,7 @@ class PartyDetailViewModel @AssistedInject constructor(
             policy = policy,
             flagImage = flagImage,
             sealImage = sealImage,
-            partyNumber = number.toString(),
+            partyNumber = registeredNumber.toString(),
             leadersAndChairmen = leadersAndChairmenList.format("၊"),
             memberCount = memberCount?.toString() ?: "-",
             headQuarterLocation = headquarterLocation,

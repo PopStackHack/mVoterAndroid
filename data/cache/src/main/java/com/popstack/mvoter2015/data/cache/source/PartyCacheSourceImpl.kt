@@ -16,7 +16,7 @@ class PartyCacheSourceImpl @Inject constructor(
   override fun putParty(party: Party) {
     db.partyTableQueries.insertOrReplace(
       id = party.id,
-      number = party.number,
+      number = party.registeredNumber,
       burmeseName = party.nameBurmese,
       englishName = party.nameEnglish,
       abbreviation = party.abbreviation,
