@@ -1,10 +1,12 @@
 package com.popstack.mvoter2015.data.network.api
 
+import com.popstack.mvoter2015.data.network.jsonadapter.LocalDateJsonAdapter
 import com.popstack.mvoter2015.domain.party.model.Party
 import com.popstack.mvoter2015.domain.party.model.PartyId
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import java.time.LocalDate
+import java.time.format.DateTimeParseException
 
 @JsonClass(generateAdapter = true)
 data class GetPartyListResponse(
@@ -32,8 +34,20 @@ data class PartyApiModel(
       headquarterLocation = attributes.headQuarterLocation,
       policy = attributes.policy,
       contacts = attributes.contact,
-      establishmentApplicationDate = attributes.establishmentApplicationDate,
-      establishmentApprovalDate = attributes.establishmentApprovalDate,
+      establishmentApplicationDate = try {
+        if (attributes.establishmentApplicationDate != null)
+          LocalDateJsonAdapter().fromJson(attributes.establishmentApplicationDate)
+        else null
+      } catch (exception: DateTimeParseException) {
+        null
+      },
+      establishmentApprovalDate = try {
+        if (attributes.establishmentApprovalDate != null)
+          LocalDateJsonAdapter().fromJson(attributes.establishmentApprovalDate)
+        else null
+      } catch (exception: DateTimeParseException) {
+        null
+      },
       registrationApplicationDate = attributes.registrationApplicationDate,
       registrationApprovalDate = attributes.registrationApprovalDate
     )
@@ -54,8 +68,8 @@ data class PartyApiAttributes(
   @Json(name = "headquarter_address") val headQuarterLocation: String,
   @Json(name = "contacts") val contact: List<String>,
   @Json(name = "policy") val policy: String,
-  @Json(name = "establishment_application_date") val establishmentApplicationDate: LocalDate?,
-  @Json(name = "establishment_approval_date") val establishmentApprovalDate: LocalDate?,
+  @Json(name = "establishment_application_date") val establishmentApplicationDate: String?,
+  @Json(name = "establishment_approval_date") val establishmentApprovalDate: String?,
   @Json(name = "registration_application_date") val registrationApplicationDate: LocalDate,
   @Json(name = "registration_approved_date") val registrationApprovalDate: LocalDate
 )
