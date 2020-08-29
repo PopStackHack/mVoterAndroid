@@ -15,7 +15,7 @@ data class GetPartyListResponse(
 
 @JsonClass(generateAdapter = true)
 data class PartyApiModel(
-  @Json(name = "partyId") val partyId: String,
+  @Json(name = "id") val partyId: String,
   @Json(name = "attributes") val attributes: PartyApiAttributes
 ) {
 

@@ -21,26 +21,11 @@ class PartyPagerFactory @OptIn(ExperimentalPagingApi::class)
       config = PagingConfig(
         pageSize = itemPerPage
       ),
-      remoteMediator = if (query != null) {
-        PartySearchRemoteMediator(
-          context = context,
-          partyCacheSource = partyCacheSource,
-          partyNetworkSource = partyNetworkSource,
-          query = query
-        )
-      } else {
-        PartyRemoteMediator(
-          context = context,
-          partyCacheSource = partyCacheSource,
-          partyNetworkSource = partyNetworkSource
-        )
-      },
       pagingSourceFactory = {
-        if (query != null) {
-          partyCacheSource.searchPartyPaging(itemPerPage, query)
-        } else {
-          partyCacheSource.getPartyPaging(itemPerPage)
-        }
+        PartyPagingSource(
+          partyCacheSource,
+          partyNetworkSource
+        )
       }
     )
   }
