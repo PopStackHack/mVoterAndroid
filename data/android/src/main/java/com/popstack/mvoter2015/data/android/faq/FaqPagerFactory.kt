@@ -22,7 +22,10 @@ class FaqPagerFactory @OptIn(ExperimentalPagingApi::class)
       ),
       pagingSourceFactory = {
         if (query != null) {
-          faqCacheSource.searchPaging(itemPerPage, query)
+          FaqSearchPagingSource(
+            faqNetworkSource,
+            query
+          )
         } else {
           FaqPagingSource(
             faqCacheSource,

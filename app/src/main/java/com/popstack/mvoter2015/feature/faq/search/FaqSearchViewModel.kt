@@ -8,8 +8,6 @@ import androidx.paging.cachedIn
 import androidx.paging.map
 import com.popstack.mvoter2015.data.android.faq.FaqPagerFactory
 import com.popstack.mvoter2015.domain.faq.model.Faq
-import com.popstack.mvoter2015.domain.faq.model.FaqId
-import com.popstack.mvoter2015.helper.livedata.SingleLiveEvent
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -24,28 +22,23 @@ class FaqSearchViewModel @ViewModelInject constructor(
   var currentQueryValue: String? = null
     private set
 
-  val viewEventLiveData =
-    SingleLiveEvent<SingleEvent>()
-
-  sealed class SingleEvent {
-    data class ShareFaq(val shareUrl: String) : SingleEvent()
-  }
-
   private var currentSearchResult: Flow<PagingData<FaqSearchViewItem>>? = null
 
-  fun search(query: String): Flow<PagingData<FaqSearchViewItem>> {
+  fun search(query: String?): Flow<PagingData<FaqSearchViewItem>> {
     val lastResult = currentSearchResult
     if (query == currentQueryValue && lastResult != null) {
       return lastResult
     }
     currentQueryValue = query
-    val newResult: Flow<PagingData<FaqSearchViewItem>> = faqPagerFactory.faqPager(PAGE_SIZE, query = query, category = null)
+    val newResult: Flow<PagingData<FaqSearchViewItem>> = faqPagerFactory.faqPager(PAGE_SIZE, query = query
+      ?: "", category = null)
       .flow.map { pagingData ->
         pagingData.map<Faq, FaqSearchViewItem> { faq ->
           FaqSearchViewItem(
             faqId = faq.id,
             question = faq.question,
-            answer = faq.answer
+            answer = faq.answer,
+            source = faq.articleSource
           )
         }
       }
@@ -53,9 +46,4 @@ class FaqSearchViewModel @ViewModelInject constructor(
     currentSearchResult = newResult
     return newResult
   }
-
-  fun handleShareClick(faqId: FaqId) {
-
-  }
-
 }
