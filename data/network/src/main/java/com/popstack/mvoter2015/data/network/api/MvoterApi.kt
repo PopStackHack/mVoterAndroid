@@ -7,12 +7,12 @@ import retrofit2.http.Query
 
 interface MvoterApi {
 
-  @GET("party")
+  @GET("parties")
   fun partyList(
     @Query("page") page: Int
-  ): Call<List<PartyApiModel>>
+  ): Call<GetPartyListResponse>
 
-  @GET("party/{party_id}")
+  @GET("parties/{party_id}")
   fun party(
     @Path("party_id") partyId: String
   ): Call<PartyApiModel>

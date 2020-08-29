@@ -1,6 +1,7 @@
 package com.popstack.mvoter2015.data.common.party
 
 import com.popstack.mvoter2015.domain.party.model.Party
+import com.popstack.mvoter2015.domain.party.model.PartyId
 import com.popstack.mvoter2015.domain.party.usecase.PartyRepository
 import javax.inject.Inject
 
@@ -25,6 +26,18 @@ class PartyRepositoryImpl @Inject constructor(
 
     //We use database as single source of truth
     return partyCacheSource.getPartyList(page, itemPerPage)
+  }
+
+  override suspend fun getParty(partyId: PartyId): Party {
+    try {
+      val partyFromNetwork = partyNetworkSource.getParty(partyId)
+      partyCacheSource.putParty(partyFromNetwork)
+      return partyCacheSource.getParty(partyId)!!
+    } catch (exception: Exception) {
+      //Network error, see if can recover from cache
+      return partyCacheSource.getParty(partyId) ?: throw exception
+    }
+
   }
 
 }

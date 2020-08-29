@@ -12,7 +12,7 @@ class GetBallotExampleList @Inject constructor(
 ) :
   CoroutineUseCase<Unit, List<BallotExample>>(dispatcherProvider) {
 
-  override fun provide(input: Unit): List<BallotExample> {
+  override suspend fun provide(input: Unit): List<BallotExample> {
     return faqRepository.getBallotExample()
   }
 

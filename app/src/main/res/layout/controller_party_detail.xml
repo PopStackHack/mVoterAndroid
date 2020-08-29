@@ -5,16 +5,6 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent">
 
-  <com.google.android.material.appbar.MaterialToolbar
-    android:id="@+id/toolBar"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:backgroundTint="@color/transparent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:title="" />
-
   <androidx.core.widget.NestedScrollView
     android:id="@+id/layoutContent"
     android:layout_width="match_parent"
@@ -45,6 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
@@ -145,15 +136,13 @@
         style="@style/TextLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
         android:gravity="center"
-        android:text="@string/party_number"
         app:layout_constraintEnd_toEndOf="@id/tvPartyNumberTitle"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/tvPartyNumberTitle"
         app:layout_constraintTop_toBottomOf="@id/barrierOne"
-        tools:text="@sample/party.csv/ApprovedPartyNumber" />
+        tools:text="၉၂" />
 
       <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrierTwo"
@@ -170,7 +159,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:text="@string/leader"
+        android:text="@string/leader_and_chairmen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/barrierTwo" />
@@ -188,42 +177,17 @@
         tools:text="@sample/party.csv/Leadership" />
 
       <TextView
-        android:id="@+id/tvChairmanTitle"
-        style="@style/TextMedium.Secondary"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:text="@string/chairman"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvLeader" />
-
-      <TextView
-        android:id="@+id/tvChairman"
-        style="@style/TextLarge"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvChairmanTitle"
-        tools:text="@sample/party.csv/Chairman" />
-
-      <TextView
         android:id="@+id/tvMemberCountTitle"
         style="@style/TextMedium.Secondary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:text="@string/member_count"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvChairman" />
+        app:layout_constraintTop_toBottomOf="@id/tvLeader" />
 
       <TextView
         android:id="@+id/tvMemberCount"
@@ -243,7 +207,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:text="@string/headquarter"
         app:layout_constraintEnd_toEndOf="parent"
@@ -268,7 +232,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:text="@string/contact"
         app:layout_constraintEnd_toEndOf="parent"
@@ -292,19 +256,34 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         app:cardBackgroundColor="@color/accent_20"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvContact">
+        app:layout_constraintTop_toBottomOf="@id/tvContact"
+        app:strokeColor="@color/accent_20"
+        app:strokeWidth="0dp">
 
-        <FrameLayout
+        <LinearLayout
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
+          android:orientation="vertical"
           android:padding="8dp">
+
+          <TextView
+            android:id="@+id/tvPoteMa25"
+            style="@style/TextLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:gravity="center_horizontal"
+            android:text="@string/party_pote_ma_25"
+            android:visibility="gone" />
 
           <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvTimeline"
@@ -314,7 +293,7 @@
             tools:itemCount="3"
             tools:listitem="@layout/item_party_timeline" />
 
-        </FrameLayout>
+        </LinearLayout>
 
       </com.google.android.material.card.MaterialCardView>
 
@@ -361,5 +340,14 @@
     app:strokeColor="@color/accent"
     tools:visibility="gone" />
 
+  <com.google.android.material.appbar.MaterialToolbar
+    android:id="@+id/toolBar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:backgroundTint="@color/transparent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:title="" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

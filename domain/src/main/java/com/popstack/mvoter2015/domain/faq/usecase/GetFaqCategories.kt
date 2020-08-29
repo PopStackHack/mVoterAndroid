@@ -8,7 +8,7 @@ import javax.inject.Inject
 class GetFaqCategories @Inject constructor(dispatcherProvider: DispatcherProvider) :
   CoroutineUseCase<Unit, List<FaqCategory>>(dispatcherProvider) {
 
-  override fun provide(input: Unit): List<FaqCategory> {
+  override suspend fun provide(input: Unit): List<FaqCategory> {
     return FaqCategory.values().toList()
   }
 

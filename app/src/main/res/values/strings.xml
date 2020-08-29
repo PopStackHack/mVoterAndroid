@@ -22,6 +22,7 @@
   <string name="menu_title_change_location">Change location</string>
   <string name="menu_title_search">Search</string>
   <string name="menu_title_about">About</string>
+  <string name="menu_title_share">Share</string>
 
   <string name="title_candidates">ကိုယ်စားလှယ်လောင်းများ</string>
 
@@ -37,8 +38,7 @@
   <string name="policy">ပါတီ မူဝါဒ</string>
   <string name="party_flag">ပါတီအလံ</string>
   <string name="party_number">ပါတီအမှတ်စဉ်</string>
-  <string name="leader">ခေါင်းဆောင်များ</string>
-  <string name="chairman">အမှုဆောင်များ</string>
+  <string name="leader_and_chairmen">ခေါင်းဆောင်နှင့် အမှုဆောင်များ</string>
   <string name="member_count">အဖွဲ့ဝင်ဦးရေ</string>
   <string name="headquarter">ပါတီရုံးချုပ်</string>
   <string name="contact">ဆက်သွယ်ရန်</string>
@@ -46,6 +46,16 @@
   <string name="hint_search_party">ရှာလိုသော ပါတီနာမည်ကို ရိုက်ထည့်ပါ</string>
   <string name="empty_query_party">မိမိရှာလိုသော ပါတီနာမည်ကို အပေါ်တွင်ရိုက်ထည့်ပါ။</string>
   <string name="empty_list_search_party">နာမည်တွင် \"%1$s\" ပါသော ပါတီများကို ပါတီစာရင်းတွင် ရှာမတွေ့ပါ</string>
+
+  <!--  TimelineEvent.ESTABLISHMENT_APPLICATION -> TODO()-->
+  <!--  TimelineEvent.ESTABLISHMENT_APPROVAL -> TODO()-->
+  <!--  TimelineEvent.REGISTRATION_APPLICATION -> TODO()-->
+  <!--  TimelineEvent.REGISTRATION_APPROVAL -> TODO()-->
+  <string name="party_establishment_application">ပါတီတည်ထောင်ခွင့်လျှောက်ထားသည်</string>
+  <string name="party_establishment_approval">ပါတီတည်ထောင်ခွင့် ရရှိသည်</string>
+  <string name="party_pote_ma_25">နိုင်ငံရေးပါတီအဖြစ် ပုဒ်မ(၂၅)အရ လျှောက်ထားခဲ့သည်</string>
+  <string name="party_registration_application">ပါတီအဖြစ် မှတ်ပုံတင်ခွင့် လျှောက်ထားသည်</string>
+  <string name="party_registration_approval">ပါတီအဖြစ်မှတ်ပုံတင်ခွင့်ရရှိသည်</string>
 
   <!--  FAQ-->
   <string name="title_info">သိမှတ်ဖွယ်ရာများ</string>

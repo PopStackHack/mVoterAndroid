@@ -1,11 +1,61 @@
 package com.popstack.mvoter2015.data.network.api
 
+import com.popstack.mvoter2015.data.network.jsonadapter.LocalDateJsonAdapter
+import com.popstack.mvoter2015.domain.party.model.Party
+import com.popstack.mvoter2015.domain.party.model.PartyId
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import java.time.LocalDate
+import java.time.format.DateTimeParseException
+
+@JsonClass(generateAdapter = true)
+data class GetPartyListResponse(
+  @Json(name = "data") val data: List<PartyApiModel>
+)
 
 @JsonClass(generateAdapter = true)
 data class PartyApiModel(
+  @Json(name = "id") val partyId: String,
+  @Json(name = "attributes") val attributes: PartyApiAttributes
+) {
+
+  fun mapToParty(): Party {
+    return Party(
+      id = PartyId(partyId),
+      nameBurmese = attributes.burmeseName,
+      nameEnglish = attributes.englishName,
+      abbreviation = attributes.abbreviation,
+      flagImage = attributes.flagImageUrl,
+      sealImage = attributes.sealImageUrl,
+      region = attributes.region,
+      leadersAndChairmenList = attributes.leadersAndChairmen,
+      memberCount = attributes.memberCount,
+      registeredNumber = attributes.registeredNumber,
+      headquarterLocation = attributes.headQuarterLocation,
+      policy = attributes.policy,
+      contacts = attributes.contact,
+      establishmentApplicationDate = try {
+        if (attributes.establishmentApplicationDate != null)
+          LocalDateJsonAdapter().fromJson(attributes.establishmentApplicationDate)
+        else null
+      } catch (exception: DateTimeParseException) {
+        null
+      },
+      establishmentApprovalDate = try {
+        if (attributes.establishmentApprovalDate != null)
+          LocalDateJsonAdapter().fromJson(attributes.establishmentApprovalDate)
+        else null
+      } catch (exception: DateTimeParseException) {
+        null
+      },
+      registrationApplicationDate = attributes.registrationApplicationDate,
+      registrationApprovalDate = attributes.registrationApprovalDate
+    )
+  }
+}
+
+@JsonClass(generateAdapter = true)
+data class PartyApiAttributes(
   @Json(name = "registered_number") val registeredNumber: Int,
   @Json(name = "name_burmese") val burmeseName: String,
   @Json(name = "name_english") val englishName: String?,
@@ -18,8 +68,8 @@ data class PartyApiModel(
   @Json(name = "headquarter_address") val headQuarterLocation: String,
   @Json(name = "contacts") val contact: List<String>,
   @Json(name = "policy") val policy: String,
-  @Json(name = "establishment_application_date") val establishmentApplicationDate: LocalDate?,
-  @Json(name = "establishment_approval_date") val establishmentApprovalDate: LocalDate?,
+  @Json(name = "establishment_application_date") val establishmentApplicationDate: String?,
+  @Json(name = "establishment_approval_date") val establishmentApprovalDate: String?,
   @Json(name = "registration_application_date") val registrationApplicationDate: LocalDate,
   @Json(name = "registration_approved_date") val registrationApprovalDate: LocalDate
 )

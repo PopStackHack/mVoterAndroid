@@ -21,7 +21,7 @@ class GetFaqList @Inject constructor(
     val category: FaqCategory
   )
 
-  override fun provide(input: Params): List<Faq> {
+  override suspend fun provide(input: Params): List<Faq> {
     return faqRepository.getFaq(
       input.page,
       input.itemPerPage,

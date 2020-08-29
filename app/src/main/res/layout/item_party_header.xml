@@ -35,7 +35,7 @@
       android:layout_height="wrap_content"
       android:layout_marginStart="16dp"
       android:text="@string/header_total_party_count"
-      android:textColor="@color/text_on_accent_light"
+      android:textColor="@color/text_primary"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toEndOf="@+id/ivFlagIcon"

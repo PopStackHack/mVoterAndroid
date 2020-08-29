@@ -4,7 +4,7 @@ import java.time.LocalDate
 
 data class Party(
   val id: PartyId,
-  val number: Int,
+  val registeredNumber: Int,
   val nameBurmese: String,
   val nameEnglish: String?,
   val abbreviation: String?,

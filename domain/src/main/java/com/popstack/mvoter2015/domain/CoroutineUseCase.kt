@@ -12,5 +12,5 @@ abstract class CoroutineUseCase<Input, Output> constructor(
     }
   }
 
-  protected abstract fun provide(input: Input): Output
+  protected abstract suspend fun provide(input: Input): Output
 }

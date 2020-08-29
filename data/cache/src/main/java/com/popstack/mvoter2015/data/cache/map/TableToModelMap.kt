@@ -33,7 +33,7 @@ internal fun NewsTable.mapToNews(): News {
 internal fun PartyTable.mapToParty(): Party {
   return Party(
     id = id,
-    number = number,
+    registeredNumber = number,
     nameBurmese = burmeseName,
     nameEnglish = englishName,
     abbreviation = abbreviation,

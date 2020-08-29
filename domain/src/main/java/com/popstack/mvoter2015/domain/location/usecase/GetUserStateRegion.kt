@@ -10,7 +10,7 @@ import javax.inject.Inject
 class GetUserStateRegion @Inject constructor(dispatcherProvider: DispatcherProvider) :
   CoroutineUseCase<Unit, StateRegion>(dispatcherProvider) {
 
-  override fun provide(input: Unit): StateRegion {
+  override suspend fun provide(input: Unit): StateRegion {
     return StateRegion(
       pCode = StateRegionPCode("wtf"),
       name = "Hello",

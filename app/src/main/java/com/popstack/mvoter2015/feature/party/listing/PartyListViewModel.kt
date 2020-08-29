@@ -15,7 +15,7 @@ class PartyListViewModel @ViewModelInject constructor(
 ) : ViewModel() {
 
   companion object {
-    private const val ITEM_PER_PAGE = 20
+    private const val ITEM_PER_PAGE = 10
   }
 
   val partyPagingFlow: Flow<PagingData<PartyListViewItem>> =

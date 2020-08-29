@@ -17,7 +17,7 @@ class GetFaq @Inject constructor(
     val faqId: FaqId
   )
 
-  override fun provide(input: Params): Faq {
+  override suspend fun provide(input: Params): Faq {
     TODO()
   }
 }

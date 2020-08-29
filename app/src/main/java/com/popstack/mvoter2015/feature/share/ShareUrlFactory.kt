@@ -1,0 +1,15 @@
+package com.popstack.mvoter2015.feature.share
+
+import com.popstack.mvoter2015.domain.party.model.PartyId
+
+class ShareUrlFactory {
+
+  companion object {
+    private const val BASE_WEB_APP_URL = "https://web.mvoterapp.com"
+  }
+
+  fun party(partyId: PartyId): String {
+    return "$BASE_WEB_APP_URL/parties/${partyId.value}"
+  }
+
+}
