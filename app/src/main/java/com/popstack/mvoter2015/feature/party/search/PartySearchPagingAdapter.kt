@@ -51,6 +51,7 @@ internal class PartySearchPagingAdapter constructor(
       holder.binding.apply {
         ivPartyFlag.load(itemAtIndex.flagImageUrl) {
           placeholder(R.drawable.placeholder_rect)
+          error(R.drawable.placeholder_rect)
           crossfade(true)
         }
 

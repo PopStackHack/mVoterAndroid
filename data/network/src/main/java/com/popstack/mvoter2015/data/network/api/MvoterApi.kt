@@ -9,7 +9,8 @@ interface MvoterApi {
 
   @GET("parties")
   fun partyList(
-    @Query("page") page: Int
+    @Query("page") page: Int,
+    @Query("query") query: String?
   ): Call<GetPartyListResponse>
 
   @GET("parties/{party_id}")

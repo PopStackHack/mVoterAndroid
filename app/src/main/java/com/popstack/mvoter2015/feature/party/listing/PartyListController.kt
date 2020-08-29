@@ -18,10 +18,11 @@ import com.popstack.mvoter2015.feature.HasRouter
 import com.popstack.mvoter2015.feature.party.detail.PartyDetailController
 import com.popstack.mvoter2015.feature.party.search.PartySearchController
 import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
+import com.popstack.mvoter2015.helper.ViewVisibilityDebounceHandler
 import com.popstack.mvoter2015.helper.conductor.requireActivity
 import com.popstack.mvoter2015.helper.conductor.requireActivityAsAppCompatActivity
-import com.popstack.mvoter2015.paging.CommonLoadStateAdapter
 import com.popstack.mvoter2015.logging.HasTag
+import com.popstack.mvoter2015.paging.CommonLoadStateAdapter
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -40,7 +41,7 @@ class PartyListController : MvvmController<ControllerPartyListBinding>(), HasTag
     super.onBindView(savedViewState)
     requireActivityAsAppCompatActivity().setSupportActionBar(binding.toolBar)
     setHasOptionsMenu(R.menu.menu_party, this::handleMenuItemClick)
-    binding.rvDummy.apply {
+    binding.rvPlaceholder.apply {
       adapter = PartyPlaceHolderRecyclerViewAdapter()
       layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
       val dimen = context.resources.getDimensionPixelSize(R.dimen.recycler_view_item_margin)
@@ -64,10 +65,12 @@ class PartyListController : MvvmController<ControllerPartyListBinding>(), HasTag
       partyPagingAdapter.retry()
     }
 
+    val placeHolderVisibilityHandler = ViewVisibilityDebounceHandler(binding.rvPlaceholder)
+
     partyPagingAdapter.addLoadStateListener { loadStates ->
       val refreshLoadState = loadStates.refresh
       binding.rvParty.isVisible = refreshLoadState is LoadState.NotLoading
-      binding.rvDummy.isVisible = refreshLoadState is LoadState.Loading
+      placeHolderVisibilityHandler.setVisible(refreshLoadState is LoadState.Loading)
       binding.tvErrorMessage.isVisible = refreshLoadState is LoadState.Error
       binding.btnRetry.isVisible = refreshLoadState is LoadState.Error
 
