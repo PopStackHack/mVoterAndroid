@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
   id("com.android.library")
   kotlin("android")
@@ -5,6 +7,12 @@ plugins {
   id("dagger.hilt.android.plugin")
   id(KtLint.name)
 }
+
+private val properties = Properties()
+private val localPropertyFile = project.rootProject.file("local.properties")
+properties.load(localPropertyFile.inputStream())
+val APP_SECRET = properties.getProperty("API_SECRET")
+  .toString()
 
 android {
   compileSdkVersion(BuildConfig.compileSdk)
@@ -18,17 +26,20 @@ android {
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     consumerProguardFiles("consumer-rules.pro")
+
   }
 
   buildTypes {
     getByName("debug") {
-      isMinifyEnabled = true
-      buildConfigField("String", "BASE_URL", "\"https://base_url_here\"")
+      isMinifyEnabled = false
+      buildConfigField("String", "APP_SECRET", "\"$APP_SECRET\"")
+      buildConfigField("String", "BASE_URL", "\"http://134.209.106.125/api/v1/\"")
     }
 
     getByName("release") {
-      isMinifyEnabled = false
+      isMinifyEnabled = true
       proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
+      buildConfigField("String", "APP_SECRET", "\"$APP_SECRET\"")
       buildConfigField("String", "BASE_URL", "\"https://base_url_here\"")
     }
   }

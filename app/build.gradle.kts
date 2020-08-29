@@ -42,8 +42,6 @@ android {
       viewBinding = true
     }
 
-//    resValue("string", "sentry_dsn", SETNRY_DSN)
-
     kapt {
       arguments {
         arg("dagger.hilt.disableModulesHaveInstallInCheck", "true")

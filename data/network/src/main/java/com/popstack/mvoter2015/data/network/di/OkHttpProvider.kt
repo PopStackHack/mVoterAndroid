@@ -3,6 +3,8 @@ package com.popstack.mvoter2015.data.network.di
 import android.content.Context
 import com.aungkyawpaing.monex.MonexInterceptor
 import com.popstack.mvoter2015.data.network.BuildConfig
+import com.popstack.mvoter2015.data.network.auth.AuthTokenInterceptor
+import com.popstack.mvoter2015.data.network.auth.AuthTokenStoreImpl
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 
@@ -24,7 +26,10 @@ internal object OkHttpProvider {
         okHttpClientBuilder.addNetworkInterceptor(monexInterceptor)
       }
 
+      val authTokenStore = AuthTokenStoreImpl(context)
+
       okHttpClient = okHttpClientBuilder
+        .addInterceptor(AuthTokenInterceptor(authTokenStore))
         .build()
     }
 
