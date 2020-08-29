@@ -4,6 +4,7 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.databinding.ItemPartyTimelineBinding
 import com.popstack.mvoter2015.helper.diff.diffCallBackWith
 import com.popstack.mvoter2015.helper.extensions.inflater
@@ -35,10 +36,18 @@ class PartyTimelineRecyclerViewAdapter :
       tvDate.text =
         itemAtIndex.date.format(DateTimeFormatter.ofPattern("dd MMM '\n'yyyy", Locale.ENGLISH))
       tvEvent.text = when (itemAtIndex.event) {
-        TimelineEvent.ESTABLISHMENT_APPLICATION -> TODO()
-        TimelineEvent.ESTABLISHMENT_APPROVAL -> TODO()
-        TimelineEvent.REGISTRATION_APPLICATION -> TODO()
-        TimelineEvent.REGISTRATION_APPROVAL -> TODO()
+        TimelineEvent.ESTABLISHMENT_APPLICATION -> {
+          holder.itemView.context.getString(R.string.party_establishment_application)
+        }
+        TimelineEvent.ESTABLISHMENT_APPROVAL -> {
+          holder.itemView.context.getString(R.string.party_establishment_approval)
+        }
+        TimelineEvent.REGISTRATION_APPLICATION -> {
+          holder.itemView.context.getString(R.string.party_registration_application)
+        }
+        TimelineEvent.REGISTRATION_APPROVAL -> {
+          holder.itemView.context.getString(R.string.party_registration_approval)
+        }
       }
     }
   }

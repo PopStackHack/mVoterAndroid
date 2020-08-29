@@ -8,7 +8,7 @@ import javax.inject.Inject
 class GetUserWard @Inject constructor(dispatcherProvider: DispatcherProvider) :
   CoroutineUseCase<Unit, Ward>(dispatcherProvider) {
 
-  override fun provide(input: Unit): Ward {
+  override suspend fun provide(input: Unit): Ward {
     TODO("Not yet implemented")
   }
 }

@@ -5,6 +5,7 @@ import com.popstack.mvoter2015.data.network.api.MvoterApi
 import com.popstack.mvoter2015.data.network.api.PartyApiModel
 import com.popstack.mvoter2015.data.network.helper.executeOrThrow
 import com.popstack.mvoter2015.domain.party.model.Party
+import com.popstack.mvoter2015.domain.party.model.PartyId
 import javax.inject.Inject
 
 class PartyNetworkSourceImpl @Inject constructor(
@@ -13,6 +14,10 @@ class PartyNetworkSourceImpl @Inject constructor(
 
   override fun getPartyList(page: Int, itemPerPage: Int, query: String?): List<Party> {
     return mvoterApi.partyList(page).executeOrThrow().data.map(PartyApiModel::mapToParty)
+  }
+
+  override fun getParty(input: PartyId): Party {
+    return mvoterApi.party(input.value).executeOrThrow().mapToParty()
   }
 
 }

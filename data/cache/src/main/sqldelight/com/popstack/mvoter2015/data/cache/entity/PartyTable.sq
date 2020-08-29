@@ -35,6 +35,9 @@ INSERT OR REPLACE INTO PartyTable VALUES(
 getWithPage:
 SELECT * FROM PartyTable ORDER BY id ASC LIMIT :limit OFFSET :offset;
 
+getById:
+SELECT * FROM PartyTable WHERE id = :id;
+
 searchWithPage:
 SELECT * FROM PartyTable
 WHERE burmeseName LIKE :query

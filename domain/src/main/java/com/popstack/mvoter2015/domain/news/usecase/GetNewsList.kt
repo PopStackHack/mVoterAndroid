@@ -17,7 +17,7 @@ class GetNewsList @Inject constructor(
     val itemPerPage: Int
   )
 
-  override fun provide(input: Params): List<News> {
+  override suspend fun provide(input: Params): List<News> {
     return emptyList()
 //    return partyRepository.getPartyList(input.page, input.itemPerPage)
   }

@@ -7,6 +7,7 @@ import com.popstack.mvoter2015.data.cache.extension.QueryDataSourceFactory
 import com.popstack.mvoter2015.data.cache.map.mapToParty
 import com.popstack.mvoter2015.data.common.party.PartyCacheSource
 import com.popstack.mvoter2015.domain.party.model.Party
+import com.popstack.mvoter2015.domain.party.model.PartyId
 import javax.inject.Inject
 
 class PartyCacheSourceImpl @Inject constructor(
@@ -68,6 +69,10 @@ class PartyCacheSourceImpl @Inject constructor(
       countQuery = db.partyTableQueries.searchTotalCount(query),
       transacter = db.partyTableQueries
     ).map(PartyTable::mapToParty).asPagingSourceFactory().invoke()
+  }
+
+  override fun getParty(partyId: PartyId): Party? {
+    return db.partyTableQueries.getById(partyId).executeAsOneOrNull()?.mapToParty()
   }
 
 }

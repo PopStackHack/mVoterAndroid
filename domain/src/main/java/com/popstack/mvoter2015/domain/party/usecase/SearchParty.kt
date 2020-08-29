@@ -19,7 +19,7 @@ class SearchParty @Inject constructor(
     val itemPerPage: Int
   )
 
-  override fun provide(input: Params): List<Party> {
+  override suspend fun provide(input: Params): List<Party> {
     return partyRepository.getPartyList(input.page, input.itemPerPage)
   }
 }

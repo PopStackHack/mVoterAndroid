@@ -2,6 +2,7 @@ package com.popstack.mvoter2015.data.common.party
 
 import androidx.paging.PagingSource
 import com.popstack.mvoter2015.domain.party.model.Party
+import com.popstack.mvoter2015.domain.party.model.PartyId
 
 interface PartyCacheSource {
 
@@ -14,4 +15,6 @@ interface PartyCacheSource {
   fun getPartyPaging(itemPerPage: Int): PagingSource<Int, Party>
 
   fun searchPartyPaging(itemPerPage: Int, query: String): PagingSource<Int, Party>
+
+  fun getParty(partyId: PartyId): Party?
 }
