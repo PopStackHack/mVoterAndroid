@@ -22,8 +22,6 @@ import com.popstack.mvoter2015.helper.extensions.showKeyboard
 import com.popstack.mvoter2015.logging.HasTag
 import com.popstack.mvoter2015.paging.CommonLoadStateAdapter
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -88,11 +86,20 @@ class PartySearchController : MvvmController<ControllerPartySearchBinding>(), Ha
     searchPagingAdapter.addLoadStateListener { loadStates ->
       val refreshLoadState = loadStates.refresh
       binding.rvParty.isVisible = refreshLoadState is LoadState.NotLoading
-      binding.progressBar.isVisible = refreshLoadState is LoadState.Loading
+      binding.rvPlaceholder.isVisible = refreshLoadState is LoadState.Loading
       binding.tvErrorMessage.isVisible = refreshLoadState is LoadState.Error
       binding.btnRetry.isVisible = refreshLoadState is LoadState.Error
       if (viewModel.currentQueryValue != null) {
         binding.tvInstruction.isVisible = false
+      }
+
+      if (viewModel.currentQueryValue != null && refreshLoadState is LoadState.NotLoading && searchPagingAdapter.itemCount == 0) {
+        binding.tvInstruction.isVisible = false
+        binding.tvEmpty.isVisible = true
+        binding.tvEmpty.text = requireContext().getString(R.string.empty_list_search_party, viewModel.currentQueryValue
+          ?: "")
+      } else {
+        binding.tvEmpty.isVisible = false
       }
 
       if (refreshLoadState is LoadState.Error) {
@@ -100,17 +107,8 @@ class PartySearchController : MvvmController<ControllerPartySearchBinding>(), Ha
       }
     }
 
-    lifecycleScope.launch {
-      delay(500)
+    binding.searchView.post {
       binding.searchView.showKeyboard()
-    }
-
-    lifecycleScope.launch {
-      searchPagingAdapter.dataRefreshFlow.collect { isEmpty ->
-        binding.tvEmpty.isVisible = isEmpty
-        binding.tvEmpty.text = requireContext().getString(R.string.empty_list_search_party, viewModel.currentQueryValue
-          ?: "")
-      }
     }
   }
 

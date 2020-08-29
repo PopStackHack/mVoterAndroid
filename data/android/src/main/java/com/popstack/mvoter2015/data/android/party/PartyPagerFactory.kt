@@ -1,6 +1,5 @@
 package com.popstack.mvoter2015.data.android.party
 
-import android.content.Context
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
@@ -11,7 +10,6 @@ import javax.inject.Inject
 
 class PartyPagerFactory @OptIn(ExperimentalPagingApi::class)
 @Inject constructor(
-  private val context: Context,
   private val partyNetworkSource: PartyNetworkSource,
   private val partyCacheSource: PartyCacheSource
 ) {
@@ -22,10 +20,17 @@ class PartyPagerFactory @OptIn(ExperimentalPagingApi::class)
         pageSize = itemPerPage
       ),
       pagingSourceFactory = {
-        PartyPagingSource(
-          partyCacheSource,
-          partyNetworkSource
-        )
+        if (query == null) {
+          PartyPagingSource(
+            partyCacheSource,
+            partyNetworkSource
+          )
+        } else {
+          PartySearchPagingSource(
+            partyNetworkSource,
+            query
+          )
+        }
       }
     )
   }

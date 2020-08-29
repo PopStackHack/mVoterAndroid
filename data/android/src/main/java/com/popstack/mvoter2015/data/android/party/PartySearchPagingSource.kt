@@ -1,16 +1,15 @@
 package com.popstack.mvoter2015.data.android.party
 
 import androidx.paging.PagingSource
-import com.popstack.mvoter2015.data.common.party.PartyCacheSource
 import com.popstack.mvoter2015.data.common.party.PartyNetworkSource
 import com.popstack.mvoter2015.domain.party.model.Party
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import timber.log.Timber
 
-class PartyPagingSource constructor(
-  private val partyCacheSource: PartyCacheSource,
-  private val partyNetworkSource: PartyNetworkSource
+class PartySearchPagingSource constructor(
+  private val partyNetworkSource: PartyNetworkSource,
+  private val query: String
 ) : PagingSource<Int, Party>() {
 
   companion object {
@@ -24,19 +23,11 @@ class PartyPagingSource constructor(
       val itemPerPage = params.pageSize
 
       val partyList = withContext(Dispatchers.IO) {
-        try {
-          val partyListFromNetwork = partyNetworkSource.getPartyList(page, itemPerPage)
-          partyCacheSource.putParty(partyListFromNetwork)
-          partyCacheSource.getPartyList(page, itemPerPage)
-        } catch (exception: Exception) {
-          //Network error, see if can recover from cache
-          val partyListFromCache = partyCacheSource.getPartyList(page, itemPerPage)
-          if (partyListFromCache.isEmpty()) {
-            //Seems data is empty, can't recover, throw error
-            throw exception
-          }
-          partyListFromCache
-        }
+        partyNetworkSource.getPartyList(
+          page = page,
+          itemPerPage = itemPerPage,
+          query = query
+        )
       }
 
       val nextKey: Int? = if (partyList.isEmpty()) {
