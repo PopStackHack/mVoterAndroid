@@ -85,7 +85,7 @@ class NewsController : MvvmController<ControllerNewsBinding>(), HasTag {
     CustomTabsIntent.Builder()
       .setToolbarColor(ContextCompat.getColor(requireContext(), R.color.accent))
       .build()
-      .launchUrl(requireContext(), url.toUri())
+      .launchUrl(requireActivity(), url.toUri())
   }
 
   private fun handleMenuItemClick(menuItem: MenuItem): Boolean {

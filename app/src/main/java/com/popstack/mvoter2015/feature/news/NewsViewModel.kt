@@ -15,8 +15,14 @@ class NewsViewModel @ViewModelInject constructor(
   private val newsPagerFactory: NewsPagerFactory
 ) : ViewModel() {
 
+  companion object {
+    private const val ITEM_PER_PAGE = 10
+  }
+
+  private val dateTimeFormatter = NewsDateTimeFormatter()
+
   fun getNewsPagingFlow(): Flow<PagingData<NewsViewItem>> {
-    return newsPagerFactory.createPager(20)
+    return newsPagerFactory.createPager(ITEM_PER_PAGE)
       .flow.map { pagingData ->
         pagingData.map<News, NewsViewItem> { news ->
           NewsViewItem(
@@ -24,7 +30,7 @@ class NewsViewModel @ViewModelInject constructor(
             title = news.title,
             summary = news.summary,
             imageUrl = news.imageUrl,
-            publishedDate = news.publishedDate.toString(),
+            publishedDate = dateTimeFormatter.format(news.publishedDate),
             url = news.url
           )
         }

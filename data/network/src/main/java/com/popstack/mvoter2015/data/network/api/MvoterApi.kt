@@ -25,4 +25,11 @@ interface MvoterApi {
     @Query("query") query: String?
   ): Call<GetFaqListResponse>
 
+  @GET("news")
+  fun newsList(
+    @Query("page") page: Int,
+    @Query("items_per_page") itemPerPage: Int,
+    @Query("query") query: String?
+  ): Call<GetNewsListResponse>
+
 }

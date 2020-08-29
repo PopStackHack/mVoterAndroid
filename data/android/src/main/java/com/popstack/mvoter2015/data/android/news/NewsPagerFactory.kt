@@ -19,23 +19,9 @@ class NewsPagerFactory @Inject constructor(
       config = PagingConfig(
         pageSize = itemPerPage
       ),
-      remoteMediator = if (query == null) {
-        NewsRemoteMediator(
-          context = context,
-          newsCacheSource = newsCacheSource,
-          newsNetworkSource = newsNetworkSource
-        )
-      } else {
-        NewsSearchRemoteMediator(
-          context = context,
-          newsCacheSource = newsCacheSource,
-          newsNetworkSource = newsNetworkSource,
-          query = query
-        )
-      },
       pagingSourceFactory = {
         if (query == null) {
-          newsCacheSource.getAllPaging(itemPerPage)
+          NewsPagingSource(newsCacheSource, newsNetworkSource)
         } else {
           newsCacheSource.getSearchPaging(itemPerPage, query)
         }
