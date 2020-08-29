@@ -18,7 +18,7 @@ internal class AuthTokenInterceptor constructor(
     if (authToken != null) {
 
       val newRequest = chain.request().newBuilder()
-        .addHeader("Authorization", "Bearer $authToken")
+        .addHeader("api-key", "$authToken")
         .build()
 
       return chain.proceed(newRequest)
