@@ -45,17 +45,27 @@
 
         <category android:name="android.intent.category.DEFAULT" />
         <category android:name="android.intent.category.BROWSABLE" />
-        <!-- Accepts URIs that begin with "https://web.mvoterapp.com/candidate” -->
+        <!-- Accepts URIs that begin with "https://web.mvoterapp.com/parties/” -->
         <data
           android:host="web.mvoterapp.com"
-          android:pathPrefix="/party"
+          android:pathPrefix="/parties"
           android:scheme="https" />
 
+      </intent-filter>
+
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <!-- Accepts URIs that begin with "mvoterapp://parties” -->
         <data
-          android:host="party"
+          android:host="parties"
           android:scheme="mvoterapp" />
 
       </intent-filter>
+
+
 
 
     </activity>

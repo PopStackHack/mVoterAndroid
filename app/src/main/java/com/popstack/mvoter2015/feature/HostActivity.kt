@@ -1,14 +1,18 @@
 package com.popstack.mvoter2015.feature
 
+import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.bluelinelabs.conductor.Conductor
 import com.bluelinelabs.conductor.Router
 import com.bluelinelabs.conductor.RouterTransaction
 import com.popstack.mvoter2015.databinding.ActivityHostBinding
+import com.popstack.mvoter2015.domain.party.model.PartyId
+import com.popstack.mvoter2015.feature.party.detail.PartyDetailController
 import com.popstack.mvoter2015.feature.splash.SplashController
 import com.popstack.mvoter2015.logging.BreadcrumbControllerChangeHandler
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 //A simple activity that host Conductor's FrameLayout
 @AndroidEntryPoint
@@ -27,10 +31,43 @@ class HostActivity : AppCompatActivity(), HasRouter {
     router = Conductor.attachRouter(this, binding.container, savedInstanceState)
     router.addChangeListener(BreadcrumbControllerChangeHandler)
 
-    if (!router.hasRootController()) {
+    var handledDeepLink = false
+    intent.data?.let { deepLinkUri ->
+      Timber.d("Coming from deeplink url: ${deepLinkUri.host}${deepLinkUri.path}")
+      handledDeepLink = handleDeepLink(deepLinkUri)
+    }
+
+    if (!router.hasRootController() && handledDeepLink.not()) {
       //Set your first routing here
       router.pushController(RouterTransaction.with(SplashController()))
     }
+  }
+
+  private fun handleDeepLink(deepLinkUri: Uri): Boolean {
+    val host = deepLinkUri.host ?: ""
+    val path = deepLinkUri.path ?: ""
+
+    Timber.i("deep link recieved. host is $host, path is $path")
+
+    //Handle parties deep link
+    if (host == "parties" || (path == "parties" && host == "web.mvoterapp.com")) {
+      val partyId = PartyId(deepLinkUri.lastPathSegment ?: return false)
+      val partyDetailController = PartyDetailController.newInstance(partyId)
+
+      if (router.hasRootController()) {
+        router.pushController(RouterTransaction.with(partyDetailController))
+      } else {
+        router.setBackstack(
+          listOf(
+            RouterTransaction.with(SplashController()),
+            RouterTransaction.with(partyDetailController)
+          ), null)
+      }
+
+      return true
+    }
+
+    return false
   }
 
   override fun onDestroy() {

@@ -16,7 +16,7 @@ interface MvoterApi {
   @GET("parties/{party_id}")
   fun party(
     @Path("party_id") partyId: String
-  ): Call<PartyApiModel>
+  ): Call<GetPartyDetailResponse>
 
   @GET("faqs")
   fun faqList(

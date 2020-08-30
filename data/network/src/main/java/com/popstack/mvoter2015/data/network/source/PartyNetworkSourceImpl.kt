@@ -17,7 +17,7 @@ class PartyNetworkSourceImpl @Inject constructor(
   }
 
   override fun getParty(input: PartyId): Party {
-    return mvoterApi.party(input.value).executeOrThrow().mapToParty()
+    return mvoterApi.party(input.value).executeOrThrow().data.mapToParty()
   }
 
 }

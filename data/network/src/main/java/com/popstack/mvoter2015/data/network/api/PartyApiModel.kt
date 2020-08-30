@@ -14,6 +14,11 @@ data class GetPartyListResponse(
 )
 
 @JsonClass(generateAdapter = true)
+data class GetPartyDetailResponse(
+  @Json(name = "data") val data: PartyApiModel
+)
+
+@JsonClass(generateAdapter = true)
 data class PartyApiModel(
   @Json(name = "id") val partyId: String,
   @Json(name = "attributes") val attributes: PartyApiAttributes
