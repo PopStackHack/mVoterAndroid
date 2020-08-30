@@ -1,36 +1,34 @@
-package com.popstack.mvoter2015.feature.faq
+package com.popstack.mvoter2015.feature.faq.ballot
 
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.popstack.mvoter2015.R
-import com.popstack.mvoter2015.databinding.ItemFaqCategoryBinding
-import com.popstack.mvoter2015.domain.faq.model.FaqCategory
-import com.popstack.mvoter2015.feature.faq.ballot.displayString
+import com.popstack.mvoter2015.databinding.ItemBallotCategoryBinding
+import com.popstack.mvoter2015.domain.faq.model.BallotExampleCategory
+import com.popstack.mvoter2015.feature.faq.displayString
 import com.popstack.mvoter2015.helper.extensions.inflater
 import com.popstack.mvoter2015.helper.extensions.withSafeAdapterPosition
 
-class FaqCategoryRecyclerViewAdapter(
-  val onClickCategory: (FaqCategory) -> Unit
-) : RecyclerView.Adapter<FaqCategoryRecyclerViewAdapter.FaqCategoryViewHolder>() {
+class BallotCategoryRecyclerViewAdapter(
+  val onClickCategory: (BallotExampleCategory) -> Unit
+) : RecyclerView.Adapter<BallotCategoryRecyclerViewAdapter.BallotCategoryViewHolder>() {
 
-  private var selectedCategory: FaqCategory? = null
+  private var selectedCategory: BallotExampleCategory? = null
 
   private val categoryList = listOf(
-    FaqCategory.VOTER_LIST,
-    FaqCategory.DIPLOMATIC,
-    FaqCategory.INTERNATIONAL_OBSERVER,
-    FaqCategory.CANDIDATE
+    BallotExampleCategory.NORMAL,
+    BallotExampleCategory.ADVANCED
   )
 
-  class FaqCategoryViewHolder(val binding: ItemFaqCategoryBinding) :
+  class BallotCategoryViewHolder(val binding: ItemBallotCategoryBinding) :
     RecyclerView.ViewHolder(binding.root)
 
-  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FaqCategoryViewHolder {
+  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BallotCategoryViewHolder {
 
-    return FaqCategoryViewHolder(
-      ItemFaqCategoryBinding.inflate(
+    return BallotCategoryViewHolder(
+      ItemBallotCategoryBinding.inflate(
         parent.inflater(),
         parent,
         false
@@ -44,8 +42,8 @@ class FaqCategoryRecyclerViewAdapter(
     }
   }
 
-  fun setSelectedCategory(faqCategory: FaqCategory) {
-    selectedCategory = faqCategory
+  fun setSelectedCategory(ballotExampleCategory: BallotExampleCategory) {
+    selectedCategory = ballotExampleCategory
     notifyDataSetChanged()
   }
 
@@ -53,7 +51,7 @@ class FaqCategoryRecyclerViewAdapter(
     return categoryList.size
   }
 
-  override fun onBindViewHolder(holder: FaqCategoryViewHolder, position: Int) {
+  override fun onBindViewHolder(holder: BallotCategoryViewHolder, position: Int) {
     val category = categoryList[position]
     holder.binding.apply {
 

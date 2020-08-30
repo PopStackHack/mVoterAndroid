@@ -2,6 +2,7 @@ package com.popstack.mvoter2015.data.common.faq
 
 import com.popstack.mvoter2015.domain.faq.FaqRepository
 import com.popstack.mvoter2015.domain.faq.model.BallotExample
+import com.popstack.mvoter2015.domain.faq.model.BallotExampleCategory
 import com.popstack.mvoter2015.domain.faq.model.Faq
 import com.popstack.mvoter2015.domain.faq.model.FaqCategory
 import javax.inject.Inject
@@ -29,12 +30,12 @@ class FaqRepositoryImpl @Inject constructor(
     return faqCacheSource.getFaqList(page, itemPerPage, category)
   }
 
-  override fun getBallotExample(): List<BallotExample> {
+  override fun getBallotExample(category: BallotExampleCategory): List<BallotExample> {
     try {
-      val ballotListFromNetwork = faqNetworkSource.getBallotExampleList()
+      val ballotListFromNetwork = faqNetworkSource.getBallotExampleList(category)
       faqCacheSource.putBallotExampleList(ballotListFromNetwork)
     } catch (exception: Exception) {
-      val ballotListFromCache = faqCacheSource.getBallotExampleList()
+      val ballotListFromCache = faqCacheSource.getBallotExampleList(category)
 
       if (ballotListFromCache.isEmpty()) {
         throw exception
@@ -43,7 +44,7 @@ class FaqRepositoryImpl @Inject constructor(
       return ballotListFromCache
     }
 
-    return faqCacheSource.getBallotExampleList()
+    return faqCacheSource.getBallotExampleList(category)
   }
 
 }

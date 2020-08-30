@@ -18,7 +18,7 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toEndOf="@id/viewSelectedIndicator"
     app:layout_constraintTop_toTopOf="parent"
-    tools:text="@string/faq_category_voter_list" />
+    tools:text="@string/ballot_category_normal" />
 
   <View
     android:id="@+id/viewSelectedIndicator"

@@ -6,6 +6,7 @@ import com.popstack.mvoter2015.data.network.api.MvoterApi
 import com.popstack.mvoter2015.data.network.helper.executeOrThrow
 import com.popstack.mvoter2015.data.network.jsonadapter.FaqCategoryJsonAdapter
 import com.popstack.mvoter2015.domain.faq.model.BallotExample
+import com.popstack.mvoter2015.domain.faq.model.BallotExampleCategory
 import com.popstack.mvoter2015.domain.faq.model.Faq
 import com.popstack.mvoter2015.domain.faq.model.FaqCategory
 import javax.inject.Inject
@@ -24,8 +25,8 @@ class FaqNetworkSourceImpl @Inject constructor(
     ).executeOrThrow().data.map(FaqApiModel::mapToFaq)
   }
 
-  override fun getBallotExampleList(): List<BallotExample> {
-    TODO("Not yet implemented")
+  override fun getBallotExampleList(category: BallotExampleCategory): List<BallotExample> {
+    return emptyList()
   }
 
 }

@@ -46,7 +46,8 @@ object TableAdapters {
 
   fun ballotExampleTableAdapter(): BallotExampleTable.Adapter {
     return BallotExampleTable.Adapter(
-      idAdapter = BallotExampleIdColumnAdapter
+      idAdapter = BallotExampleIdColumnAdapter,
+      categoryAdapter = EnumColumnAdapter()
     )
   }
 

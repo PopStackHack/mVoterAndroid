@@ -1,4 +1,4 @@
-package com.popstack.mvoter2015.feature.faq
+package com.popstack.mvoter2015.feature.faq.ballot
 
 import android.content.Context
 import com.popstack.mvoter2015.R

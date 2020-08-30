@@ -1,3 +1,4 @@
+import com.popstack.mvoter2015.domain.faq.model.BallotExampleCategory;
 import com.popstack.mvoter2015.domain.faq.model.BallotExampleId;
 import java.lang.Boolean;
 
@@ -5,16 +6,17 @@ CREATE TABLE BallotExampleTable(
     id TEXT AS BallotExampleId PRIMARY KEY NOT NULL,
     image TEXT NOT NULL,
     isValid INTEGER AS Boolean NOT NULL,
-    reason TEXT NOT NULL
+    reason TEXT NOT NULL,
+    category TEXT AS BallotExampleCategory NOT NULL
 );
 
 insertOrReplace:
-INSERT OR REPLACE INTO BallotExampleTable VALUES (
-    :id, :image, :isValid, :reason
+INSERT OR REPLACE INTO BallotExampleTable VALUES(
+    :id, :image, :isValid, :reason, :category
 );
 
-selectAll:
-SELECT * FROM BallotExampleTable;
+selectAllWithCategory:
+SELECT * FROM BallotExampleTable WHERE category = :category;
 
 selectById:
 SELECT * FROM BallotExampleTable WHERE id = :id;
