@@ -54,9 +54,11 @@ class HostActivity : AppCompatActivity(), HasRouter {
       val partyId = PartyId(deepLinkUri.lastPathSegment ?: return false)
       val partyDetailController = PartyDetailController.newInstance(partyId)
 
+      //Existing stack so we just push on top
       if (router.hasRootController()) {
         router.pushController(RouterTransaction.with(partyDetailController))
       } else {
+        //No existing stack, we recreate the stack
         router.setBackstack(
           listOf(
             RouterTransaction.with(SplashController()),
