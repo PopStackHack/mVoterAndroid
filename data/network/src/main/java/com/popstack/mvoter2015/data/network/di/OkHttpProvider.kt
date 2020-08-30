@@ -5,6 +5,7 @@ import com.aungkyawpaing.monex.MonexInterceptor
 import com.popstack.mvoter2015.data.network.BuildConfig
 import com.popstack.mvoter2015.data.network.auth.AuthTokenInterceptor
 import com.popstack.mvoter2015.data.network.auth.AuthTokenStoreImpl
+import com.popstack.mvoter2015.data.network.auth.RefreshAuthenticator
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 
@@ -30,6 +31,7 @@ internal object OkHttpProvider {
 
       okHttpClient = okHttpClientBuilder
         .addInterceptor(AuthTokenInterceptor(authTokenStore))
+        .authenticator(RefreshAuthenticator(authTokenStore))
         .build()
     }
 
