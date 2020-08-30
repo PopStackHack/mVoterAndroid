@@ -3,11 +3,13 @@ package com.popstack.mvoter2015.feature.party.detail
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.aungkyawpaing.mmphonenumber.extract.MyanmarPhoneNumberExtractor
 import com.popstack.mvoter2015.domain.party.model.PartyId
 import com.popstack.mvoter2015.domain.party.usecase.GetParty
 import com.popstack.mvoter2015.exception.GlobalExceptionHandler
 import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewStateLiveData
 import com.popstack.mvoter2015.helper.format
+import com.popstack.mvoter2015.helper.livedata.SingleLiveEvent
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
@@ -23,6 +25,8 @@ class PartyDetailViewModel @ViewModelInject constructor(
   fun setPartyId(partyId: PartyId) {
     this._partyId = partyId
   }
+
+  val showContactDialogEvent = SingleLiveEvent<List<PartyContactViewItem>>()
 
   val viewItemLiveData = AsyncViewStateLiveData<PartyDetailViewItem>()
 
@@ -86,7 +90,7 @@ class PartyDetailViewModel @ViewModelInject constructor(
             leadersAndChairmen = leadersAndChairmenList.format("၊"),
             memberCount = memberCount?.toString() ?: "-",
             headQuarterLocation = headquarterLocation,
-            contact = contacts.format("၊"),
+            contactList = contacts,
             isPoteMa25 = establishmentApplicationDate == null || establishmentApprovalDate == null,
             timeline = timelineList.sortedBy { it.date }
           )
@@ -100,5 +104,18 @@ class PartyDetailViewModel @ViewModelInject constructor(
       }
 
     }
+  }
+
+  private val extractor = MyanmarPhoneNumberExtractor()
+
+  fun handleContactClick(contactList: List<String>) {
+    val contactViewItems = contactList.map {
+      PartyContactViewItem(
+        text = it,
+        number = extractor.extract(it).getOrNull(0) ?: return@map null
+      )
+    }.filterNotNull()
+
+    showContactDialogEvent.postValue(contactViewItems)
   }
 }

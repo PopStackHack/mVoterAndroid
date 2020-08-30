@@ -1,17 +1,20 @@
 package com.popstack.mvoter2015.feature.party.detail
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import coil.api.load
 import coil.size.Scale
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerPartyDetailBinding
@@ -20,9 +23,11 @@ import com.popstack.mvoter2015.domain.utils.convertToBurmeseNumber
 import com.popstack.mvoter2015.feature.share.ShareUrlFactory
 import com.popstack.mvoter2015.helper.ViewVisibilityDebounceHandler
 import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewState
+import com.popstack.mvoter2015.helper.conductor.requireActivity
 import com.popstack.mvoter2015.helper.conductor.requireActivityAsAppCompatActivity
 import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.helper.conductor.supportActionBar
+import com.popstack.mvoter2015.helper.format
 import com.popstack.mvoter2015.helper.intent.Intents
 import com.popstack.mvoter2015.logging.HasTag
 
@@ -87,10 +92,12 @@ class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDeta
     requireActivityAsAppCompatActivity().supportActionBar?.title = ""
     supportActionBar()?.setDisplayHomeAsUpEnabled(true)
 
-    viewModel.viewItemLiveData.observe(this, Observer(::observeViewItem))
     binding.btnRetry.setOnClickListener {
       viewModel.loadData()
     }
+
+    viewModel.viewItemLiveData.observe(this, Observer(::observeViewItem))
+    viewModel.showContactDialogEvent.observe(this, Observer(::showContactDialog))
 
     if (savedViewState == null) {
       viewModel.loadData()
@@ -145,7 +152,14 @@ class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDeta
         binding.tvLeader.text = viewItem.leadersAndChairmen
         binding.tvMemberCount.text = viewItem.memberCount
         binding.tvHeadquarterLocation.text = viewItem.headQuarterLocation
-        binding.tvContact.text = viewItem.contact
+
+        binding.tvContactTitle.isVisible = viewItem.contactList.isNotEmpty()
+        binding.tvContact.isVisible = viewItem.contactList.isNotEmpty()
+        binding.tvContact.text = viewItem.contactList.format("၊")
+        binding.tvContact.setOnClickListener {
+          viewModel.handleContactClick(viewItem.contactList)
+        }
+
         binding.cardViewTimeline.isVisible = viewItem.timeline.isNotEmpty()
 
         binding.tvPoteMa25.isVisible = viewItem.isPoteMa25
@@ -156,5 +170,25 @@ class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDeta
         binding.tvErrorMessage.text = error
       }
     }
+  }
+
+  private fun showContactDialog(contactViewItemList: List<PartyContactViewItem>) {
+    MaterialAlertDialogBuilder(requireActivity())
+      .setItems(contactViewItemList.map { it.text }.toTypedArray()) { dialog, which ->
+        contactViewItemList.getOrNull(which)?.let { itemAtIndex ->
+          startActivity(Intents.dialIntent(itemAtIndex.number))
+        }
+      }
+      .setNegativeButton(R.string.cancel) { dialog, _ ->
+        dialog?.cancel()
+      }
+      .create()
+      .also { dialog ->
+        dialog.setOnShowListener {
+          val negativeButton = dialog.getButton(DialogInterface.BUTTON_NEGATIVE)
+          negativeButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_error))
+        }
+      }
+      .show()
   }
 }

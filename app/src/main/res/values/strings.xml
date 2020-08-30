@@ -4,6 +4,7 @@
 
   <!--  General Usages-->
   <string name="retry">ထပ်စမ်းကြည့်မယ်</string>
+  <string name="cancel">မလုပ်တော့ပါ</string>
 
   <string name="navigation_candidate_list">ကိုယ်စားလှယ်များ</string>
   <string name="navigation_party_list">ပါတီများ</string>

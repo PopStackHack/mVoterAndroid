@@ -19,7 +19,7 @@ data class PartyDetailViewItem(
   val leadersAndChairmen: String,
   val memberCount: String,
   val headQuarterLocation: String,
-  val contact: String,
+  val contactList: List<String>,
   val isPoteMa25: Boolean,
   val timeline: List<PartyTimelineViewItem>
 )

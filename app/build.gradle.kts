@@ -137,8 +137,11 @@ dependencies {
   implementation(Firebase.analytics)
   implementation(Firebase.crashlytics)
 
+  //Phone Number
+  implementation("com.aungkyawpaing.mmphonenumber:mmphonenumber:1.1.0")
+
   //Test
-  testImplementation("junit:junit:4.13")
+  testImplementation(CommonLibs.junit)
   testImplementation(project(":coroutinetestrule"))
   mockito()
   mockitoAndroid()
