@@ -21,6 +21,12 @@ class BallotExampleViewModel @ViewModelInject constructor(
 
   val ballotViewItemLiveData = AsyncViewStateLiveData<List<BallotExampleViewItem>>()
 
+  var invalidBallotStartPosition = 0
+    private set
+
+  var validBallotStartPosition = 0
+    private set
+
   fun selectBallotExampleCategory(ballotExampleCategory: BallotExampleCategory) {
     viewModelScope.launch {
 
@@ -39,7 +45,12 @@ class BallotExampleViewModel @ViewModelInject constructor(
             isValid = it.isValid,
             reason = it.reason
           )
+        }.sortedBy {
+          it.isValid.not()
         }
+
+        invalidBallotStartPosition = viewItem.indexOfFirst { it.isValid.not() }
+        validBallotStartPosition = viewItem.indexOfFirst { it.isValid }
 
         ballotViewItemLiveData.postSuccess(viewItem)
       } catch (exception: Exception) {
