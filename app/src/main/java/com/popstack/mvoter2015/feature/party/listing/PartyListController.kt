@@ -101,7 +101,9 @@ class PartyListController : MvvmController<ControllerPartyListBinding>(), HasTag
 
   private fun onItemClick(partyId: PartyId) {
     val partyDetailController = PartyDetailController.newInstance(partyId)
-    router.pushController(RouterTransaction.with(partyDetailController))
+    if (requireActivity() is HasRouter) {
+      (requireActivity() as HasRouter).router().pushController(RouterTransaction.with(partyDetailController))
+    }
   }
 
 }

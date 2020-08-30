@@ -23,9 +23,9 @@ class SplashController : Controller(), HasTag {
   ): View {
     val firstTimeConfig = AppFirstTimeConfig(requireContext())
     if (firstTimeConfig.isFirstTime()) {
-      router.pushController(RouterTransaction.with(LocationUpdateController()))
+      router.setRoot(RouterTransaction.with(LocationUpdateController()))
     } else {
-      router.pushController(RouterTransaction.with(HomeController()).tag(HomeController.TAG))
+      router.setRoot(RouterTransaction.with(HomeController()).tag(HomeController.TAG))
     }
     return View(requireContext())
   }

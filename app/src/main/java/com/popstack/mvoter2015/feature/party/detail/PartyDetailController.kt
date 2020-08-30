@@ -18,9 +18,11 @@ import com.popstack.mvoter2015.databinding.ControllerPartyDetailBinding
 import com.popstack.mvoter2015.domain.party.model.PartyId
 import com.popstack.mvoter2015.domain.utils.convertToBurmeseNumber
 import com.popstack.mvoter2015.feature.share.ShareUrlFactory
+import com.popstack.mvoter2015.helper.ViewVisibilityDebounceHandler
 import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewState
 import com.popstack.mvoter2015.helper.conductor.requireActivityAsAppCompatActivity
 import com.popstack.mvoter2015.helper.conductor.requireContext
+import com.popstack.mvoter2015.helper.conductor.supportActionBar
 import com.popstack.mvoter2015.helper.intent.Intents
 import com.popstack.mvoter2015.logging.HasTag
 
@@ -83,7 +85,7 @@ class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDeta
     }
     requireActivityAsAppCompatActivity().setSupportActionBar(binding.toolBar)
     requireActivityAsAppCompatActivity().supportActionBar?.title = ""
-    binding.toolBar.setNavigationIcon(R.drawable.ic_nav_on_primary_bg)
+    supportActionBar()?.setDisplayHomeAsUpEnabled(true)
 
     viewModel.viewItemLiveData.observe(this, Observer(::observeViewItem))
     binding.btnRetry.setOnClickListener {
@@ -95,8 +97,12 @@ class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDeta
     }
   }
 
+  private val progresBarVisibilityHandler by lazy {
+    ViewVisibilityDebounceHandler(binding.progressBar)
+  }
+
   private fun observeViewItem(viewState: AsyncViewState<PartyDetailViewItem>) {
-    binding.progressBar.isVisible = viewState is AsyncViewState.Loading
+    progresBarVisibilityHandler.setVisible(viewState is AsyncViewState.Loading)
     binding.layoutContent.isVisible = viewState is AsyncViewState.Success
     binding.tvErrorMessage.isVisible = viewState is AsyncViewState.Error
     binding.btnRetry.isVisible = viewState is AsyncViewState.Error
