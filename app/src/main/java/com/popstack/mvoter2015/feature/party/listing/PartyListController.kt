@@ -14,6 +14,7 @@ import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerPartyListBinding
 import com.popstack.mvoter2015.domain.party.model.PartyId
+import com.popstack.mvoter2015.exception.GlobalExceptionHandler
 import com.popstack.mvoter2015.feature.HasRouter
 import com.popstack.mvoter2015.feature.party.detail.PartyDetailController
 import com.popstack.mvoter2015.feature.party.search.PartySearchController
@@ -21,6 +22,7 @@ import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
 import com.popstack.mvoter2015.helper.ViewVisibilityDebounceHandler
 import com.popstack.mvoter2015.helper.conductor.requireActivity
 import com.popstack.mvoter2015.helper.conductor.requireActivityAsAppCompatActivity
+import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.logging.HasTag
 import com.popstack.mvoter2015.paging.CommonLoadStateAdapter
 import kotlinx.coroutines.flow.collectLatest
@@ -36,6 +38,10 @@ class PartyListController : MvvmController<ControllerPartyListBinding>(), HasTag
     ControllerPartyListBinding::inflate
 
   private val partyPagingAdapter = PartyListViewItemRecyclerViewAdapter(this::onItemClick)
+
+  private val globalExceptionHandler by lazy {
+    GlobalExceptionHandler(requireContext())
+  }
 
   override fun onBindView(savedViewState: Bundle?) {
     super.onBindView(savedViewState)
@@ -75,7 +81,7 @@ class PartyListController : MvvmController<ControllerPartyListBinding>(), HasTag
       binding.btnRetry.isVisible = refreshLoadState is LoadState.Error
 
       if (refreshLoadState is LoadState.Error) {
-        binding.tvErrorMessage.text = refreshLoadState.error.message
+        binding.tvErrorMessage.text = globalExceptionHandler.getMessageForUser(refreshLoadState.error)
       }
     }
 

@@ -14,6 +14,7 @@ import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerFaqBinding
 import com.popstack.mvoter2015.domain.faq.model.FaqCategory
+import com.popstack.mvoter2015.exception.GlobalExceptionHandler
 import com.popstack.mvoter2015.feature.HasRouter
 import com.popstack.mvoter2015.feature.about.AboutController
 import com.popstack.mvoter2015.feature.faq.ballot.BallotExampleController
@@ -58,6 +59,10 @@ class FaqController : MvvmController<ControllerFaqBinding>(), HasTag {
       (requireActivity() as HasRouter).router()
         .pushController(RouterTransaction.with(BallotExampleController()))
     }
+  }
+
+  private val globalExceptionHandler by lazy {
+    GlobalExceptionHandler(requireContext())
   }
 
   override fun onBindView(savedViewState: Bundle?) {
@@ -113,7 +118,7 @@ class FaqController : MvvmController<ControllerFaqBinding>(), HasTag {
       binding.btnRetry.isVisible = refreshLoadState is LoadState.Error
 
       if (refreshLoadState is LoadState.Error) {
-        binding.tvErrorMessage.text = refreshLoadState.error.message
+        binding.tvErrorMessage.text = globalExceptionHandler.getMessageForUser(refreshLoadState.error)
       }
     }
 

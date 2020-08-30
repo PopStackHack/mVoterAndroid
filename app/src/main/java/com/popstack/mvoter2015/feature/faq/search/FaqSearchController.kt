@@ -13,6 +13,7 @@ import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerFaqSearchBinding
 import com.popstack.mvoter2015.domain.faq.model.FaqId
+import com.popstack.mvoter2015.exception.GlobalExceptionHandler
 import com.popstack.mvoter2015.feature.share.ShareUrlFactory
 import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
 import com.popstack.mvoter2015.helper.ViewVisibilityDebounceHandler
@@ -35,6 +36,10 @@ class FaqSearchController : MvvmController<ControllerFaqSearchBinding>() {
   private val searchPagingAdapter = FaqSearchPagingAdapter(this@FaqSearchController::share)
 
   private val placeHolderAdapter = FaqSearchPlaceholderRecyclerViewAdapter()
+
+  private val globalExceptionHandler by lazy {
+    GlobalExceptionHandler(requireContext())
+  }
 
   @OptIn(ExperimentalPagingApi::class)
   override fun onBindView(savedViewState: Bundle?) {
@@ -92,7 +97,7 @@ class FaqSearchController : MvvmController<ControllerFaqSearchBinding>() {
       }
 
       if (refreshLoadState is LoadState.Error) {
-        binding.tvErrorMessage.text = refreshLoadState.error.message
+        binding.tvErrorMessage.text = globalExceptionHandler.getMessageForUser(refreshLoadState.error)
       }
     }
 

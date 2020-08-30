@@ -15,6 +15,7 @@ import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerNewsSearchBinding
 import com.popstack.mvoter2015.domain.news.model.NewsId
+import com.popstack.mvoter2015.exception.GlobalExceptionHandler
 import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
 import com.popstack.mvoter2015.helper.ViewVisibilityDebounceHandler
 import com.popstack.mvoter2015.helper.conductor.requireActivity
@@ -36,6 +37,10 @@ class NewsSearchController : MvvmController<ControllerNewsSearchBinding>() {
   private var searchJob: Job? = null
 
   private val viewModel: NewsSearchViewModel by viewModels()
+
+  private val globalExceptionHandler by lazy {
+    GlobalExceptionHandler(requireContext())
+  }
 
   @OptIn(ExperimentalPagingApi::class)
   override fun onBindView(savedViewState: Bundle?) {
@@ -93,7 +98,7 @@ class NewsSearchController : MvvmController<ControllerNewsSearchBinding>() {
       }
 
       if (refreshLoadState is LoadState.Error) {
-        binding.tvErrorMessage.text = refreshLoadState.error.message
+        binding.tvErrorMessage.text = globalExceptionHandler.getMessageForUser(refreshLoadState.error)
       }
     }
 

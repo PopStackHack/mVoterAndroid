@@ -16,6 +16,7 @@ import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerNewsBinding
 import com.popstack.mvoter2015.domain.news.model.NewsId
+import com.popstack.mvoter2015.exception.GlobalExceptionHandler
 import com.popstack.mvoter2015.feature.HasRouter
 import com.popstack.mvoter2015.feature.news.search.NewsSearchController
 import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
@@ -39,6 +40,10 @@ class NewsController : MvvmController<ControllerNewsBinding>(), HasTag {
 
   private val newsPagingAdapter by lazy {
     NewsRecyclerViewAdapter(this::onNewsItemClick)
+  }
+
+  private val globalExceptionHandler by lazy {
+    GlobalExceptionHandler(requireContext())
   }
 
   override fun onBindView(savedViewState: Bundle?) {
@@ -70,7 +75,7 @@ class NewsController : MvvmController<ControllerNewsBinding>(), HasTag {
       binding.btnRetry.isVisible = refreshLoadState is LoadState.Error
 
       if (refreshLoadState is LoadState.Error) {
-        binding.tvErrorMessage.text = refreshLoadState.error.message
+        binding.tvErrorMessage.text = globalExceptionHandler.getMessageForUser(refreshLoadState.error)
       }
     }
 

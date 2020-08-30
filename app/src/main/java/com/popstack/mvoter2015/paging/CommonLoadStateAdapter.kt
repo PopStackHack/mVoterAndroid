@@ -6,6 +6,7 @@ import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.popstack.mvoter2015.databinding.FooterPagerLoadStateBinding
+import com.popstack.mvoter2015.exception.GlobalExceptionHandler
 import com.popstack.mvoter2015.helper.extensions.inflater
 
 /**
@@ -31,7 +32,7 @@ class CommonLoadStateAdapter(
 
     holder.binding.apply {
       if (loadState is LoadState.Error) {
-        tvErrorMessage.text = loadState.error.localizedMessage
+        tvErrorMessage.text = GlobalExceptionHandler(holder.itemView.context).getMessageForUser(loadState.error)
       }
 
       progressBar.isVisible = loadState is LoadState.Loading

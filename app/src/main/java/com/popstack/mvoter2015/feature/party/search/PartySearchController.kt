@@ -13,6 +13,7 @@ import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerPartySearchBinding
 import com.popstack.mvoter2015.domain.party.model.PartyId
+import com.popstack.mvoter2015.exception.GlobalExceptionHandler
 import com.popstack.mvoter2015.feature.party.detail.PartyDetailController
 import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
 import com.popstack.mvoter2015.helper.ViewVisibilityDebounceHandler
@@ -40,6 +41,10 @@ class PartySearchController : MvvmController<ControllerPartySearchBinding>(), Ha
   private val placeholderAdapter = PartySearchPlaceholderRecyclerViewAdapter()
 
   private var searchJob: Job? = null
+
+  private val globalExceptionHandler by lazy {
+    GlobalExceptionHandler(requireContext())
+  }
 
   @OptIn(ExperimentalPagingApi::class)
   override fun onBindView(savedViewState: Bundle?) {
@@ -97,7 +102,7 @@ class PartySearchController : MvvmController<ControllerPartySearchBinding>(), Ha
       }
 
       if (refreshLoadState is LoadState.Error) {
-        binding.tvErrorMessage.text = refreshLoadState.error.message
+        binding.tvErrorMessage.text = globalExceptionHandler.getMessageForUser(refreshLoadState.error)
       }
     }
 
