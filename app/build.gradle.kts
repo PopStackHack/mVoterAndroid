@@ -69,6 +69,8 @@ android {
 
     getByName("release") {
       isMinifyEnabled = true
+      isShrinkResources = true
+      isZipAlignEnabled = true
       isDebuggable = false
       signingConfig = signingConfigs.getByName("release")
       proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
