@@ -32,4 +32,23 @@ interface MvoterApi {
     @Query("query") query: String?
   ): Call<GetNewsListResponse>
 
+  @GET("locality/state_regions")
+  fun getStateRegionList(): Call<GetStateRegionListResponse>
+
+  @GET("locality/townships")
+  fun getTownshipsForStateRegion(
+    @Query("state_region") stateRegion: String
+  ): Call<GetTownshipListResponse>
+
+  @GET("locality/wards")
+  fun getWardsForTownship(
+    @Query("township") township: String
+  ): Call<GetWardListResponse>
+
+  @GET("locality/details")
+  fun getWardDetails(
+    @Query("township") township: String,
+    @Query("ward") ward: String
+  ): Call<WardApiModel>
+
 }

@@ -12,9 +12,8 @@ class GetUserStateRegion @Inject constructor(dispatcherProvider: DispatcherProvi
 
   override suspend fun provide(input: Unit): StateRegion {
     return StateRegion(
-      pCode = StateRegionPCode("wtf"),
       name = "Hello",
-      type = StateRegionType.STATE
+      type = StateRegionType.REGION
     )
   }
 }

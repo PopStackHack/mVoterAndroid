@@ -16,7 +16,7 @@ class GetTownshipsForStateRegion @Inject constructor(
     val stateRegionIdentifier: String
   )
 
-  override fun provide(input: Params): List<Township> {
+  override suspend fun provide(input: Params): List<Township> {
     return locationRepository.getTownshipsListForStateRegion(input.stateRegionIdentifier)
   }
 }
