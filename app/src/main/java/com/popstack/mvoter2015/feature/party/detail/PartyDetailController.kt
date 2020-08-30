@@ -129,7 +129,7 @@ class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDeta
         }
 
         binding.buttonPolicy.setOnClickListener {
-          Intents.viewUrl(viewItem.policy)
+          startActivity(Intents.viewUrl(viewItem.policy))
         }
 
         binding.ivPartyFlag.load(viewItem.flagImage) {
