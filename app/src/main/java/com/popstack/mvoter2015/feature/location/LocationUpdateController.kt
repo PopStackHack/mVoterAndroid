@@ -1,11 +1,9 @@
 package com.popstack.mvoter2015.feature.location
 
-import android.Manifest
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
@@ -13,8 +11,9 @@ import com.bluelinelabs.conductor.RouterTransaction
 import com.popstack.mvoter2015.config.AppFirstTimeConfig
 import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerLocationBinding
+import com.popstack.mvoter2015.feature.HasRouter
 import com.popstack.mvoter2015.feature.home.HomeController
-import com.popstack.mvoter2015.helper.conductor.requireActivityAsAppCompatActivity
+import com.popstack.mvoter2015.helper.conductor.requireActivity
 import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.helper.conductor.setSupportActionBar
 import com.popstack.mvoter2015.helper.conductor.supportActionBar
@@ -22,7 +21,7 @@ import com.popstack.mvoter2015.logging.HasTag
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class LocationUpdateController : MvvmController<ControllerLocationBinding>(), HasTag {
+class LocationUpdateController : MvvmController<ControllerLocationBinding>(), HasTag, OnTownshipChosenListener, OnWardChosenListener {
 
   override val tag: String = "LocationUpdateController"
 
@@ -58,16 +57,37 @@ class LocationUpdateController : MvvmController<ControllerLocationBinding>(), Ha
 
     lifecycleScope.launch {
       delay(DELAY_PERMISSION_REQUEST_IN_MILLISECONDS)
-      requireActivityAsAppCompatActivity().registerForActivityResult(ActivityResultContracts.RequestPermission()) { isAllowed ->
-        if (isAllowed) {
-          viewModel.requestLocation()
-        }
-      }.launch(Manifest.permission.ACCESS_FINE_LOCATION)
+      // TODO : Integrate when the API is ready
+//      requireActivityAsAppCompatActivity().registerForActivityResult(ActivityResultContracts.RequestPermission()) { isAllowed ->
+//        if (isAllowed) {
+//          viewModel.requestLocation()
+//        }
+//      }.launch(Manifest.permission.ACCESS_FINE_LOCATION)
     }
 
     binding.buttonDone.setOnClickListener {
       firstTimeConfig.setFirstTimeStatus(false)
       router.setRoot(RouterTransaction.with(HomeController()).tag(HomeController.TAG))
+    }
+
+    binding.buttonRegion.setOnClickListener {
+      if (requireActivity() is HasRouter) {
+        val townshipController = TownshipChooserController()
+        townshipController.targetController = this
+        (requireActivity() as HasRouter).router()
+          .pushController(RouterTransaction.with(townshipController))
+      }
+    }
+
+    binding.buttonWard.setOnClickListener {
+      if (requireActivity() is HasRouter) {
+        viewModel.data.chosenTownship?.let {
+          val wardChooserController = WardChooserController.newInstance(viewModel.data.chosenStateRegion!!, it)
+          wardChooserController.targetController = this
+          (requireActivity() as HasRouter).router()
+            .pushController(RouterTransaction.with(wardChooserController))
+        }
+      }
     }
 
     viewModel.viewEventLiveData.observe(this, Observer(::observeViewEvent))
@@ -83,7 +103,30 @@ class LocationUpdateController : MvvmController<ControllerLocationBinding>(), Ha
         fadeInFadeOutAnimation.repeatMode = Animation.REVERSE
         binding.tvRequestLocation.animation = fadeInFadeOutAnimation
       }
+      LocationUpdateViewModel.ViewEvent.EnableDoneButton -> {
+        binding.buttonDone.isEnabled = true
+      }
     }
   }
 
+  override fun onTownshipChosen(stateRegion: String, township: String) {
+    binding.buttonRegion.text = township
+    binding.buttonWard.isEnabled = true
+    viewModel.onTownshipChosen(stateRegion, township)
+  }
+
+  override fun onWardChosen(ward: String) {
+    viewModel.onWardChosen(ward)
+    binding.buttonRegion.text = viewModel.data.chosenTownship
+    binding.buttonWard.text = viewModel.data.chosenWard
+  }
+
+}
+
+interface OnTownshipChosenListener {
+  fun onTownshipChosen(stateRegion: String, township: String)
+}
+
+interface OnWardChosenListener {
+  fun onWardChosen(ward: String)
 }

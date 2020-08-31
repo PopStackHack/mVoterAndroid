@@ -18,9 +18,9 @@ class LocationNetworkSourceImpl @Inject constructor(
   override fun getTownshipsListForStateRegion(stateRegionIdentifier: String): List<Township> =
     mvoterApi.getTownshipsForStateRegion(stateRegionIdentifier).executeOrThrow().data.map { Township(TownshipPCode(""), it) }
 
-  override fun getWardsForTownship(townshipIdentifier: String): List<String> =
-    mvoterApi.getWardsForTownship(townshipIdentifier).executeOrThrow().data
+  override fun getWardsForTownship(stateRegion: String, township: String): List<String> =
+    mvoterApi.getWardsForTownship(stateRegion, township).executeOrThrow().data
 
-  override fun getWardDetails(townshipIdentifier: String, wardName: String): Ward =
-    mvoterApi.getWardDetails(townshipIdentifier, wardName).executeOrThrow().data.toWard()
+  override fun getWardDetails(stateRegion: String, township: String, wardName: String): Ward =
+    mvoterApi.getWardDetails(stateRegion, township, wardName).executeOrThrow().data.wardAttributes.toWard()
 }

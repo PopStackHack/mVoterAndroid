@@ -6,7 +6,8 @@ import com.popstack.mvoter2015.domain.location.model.Ward
 import javax.inject.Inject
 
 class LocationRepositoryImpl @Inject constructor(
-  private val locationNetworkSource: LocationNetworkSource
+  private val locationNetworkSource: LocationNetworkSource,
+  private val locationCacheSource: LocationCacheSource
 ) : LocationRepository {
   override fun getStateRegionList(): List<String> =
     locationNetworkSource.getStateRegionList()
@@ -14,9 +15,17 @@ class LocationRepositoryImpl @Inject constructor(
   override fun getTownshipsListForStateRegion(stateRegionIdentifier: String): List<Township> =
     locationNetworkSource.getTownshipsListForStateRegion(stateRegionIdentifier)
 
-  override fun getWardsForTownship(townshipIdentifier: String): List<String> =
-    locationNetworkSource.getWardsForTownship(townshipIdentifier)
+  override fun getWardsForTownship(stateRegion: String, township: String): List<String> =
+    locationNetworkSource.getWardsForTownship(stateRegion, township)
 
-  override fun getWardDetails(townshipIdentifier: String, wardName: String): Ward =
-    locationNetworkSource.getWardDetails(townshipIdentifier = townshipIdentifier, wardName = wardName)
+  override fun getWardDetails(stateRegion: String, townshipIdentifier: String, wardName: String): Ward =
+    locationNetworkSource.getWardDetails(stateRegion = stateRegion, township = townshipIdentifier, wardName = wardName)
+
+  override fun saveUserWard(ward: Ward) {
+    locationCacheSource.saveUserWard(ward)
+  }
+
+  override fun getUserWard(): Ward? {
+    return locationCacheSource.getUserWard()
+  }
 }

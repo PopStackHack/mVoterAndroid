@@ -14,8 +14,12 @@ data class GetWardListResponse(
 
 @JsonClass(generateAdapter = true)
 data class WardApiModel(
-  @Json(name = "attributes") val data: Attributes
+  @Json(name = "data") val data: WardAttributes
 ) {
+  @JsonClass(generateAdapter = true)
+  data class WardAttributes(
+    @Json(name = "attributes") val wardAttributes: Attributes
+  )
   @JsonClass(generateAdapter = true)
   data class Attributes(
     @Json(name = "id") val id: Long,
