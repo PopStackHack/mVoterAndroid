@@ -2,4 +2,12 @@
 <resources>
 
   <dimen name="recycler_view_item_margin">8dp</dimen>
+
+  <!-- Candidate details -->
+
+  <!-- Spacing between each section -->
+  <dimen name="candidate_details_horizontal_section_spacing">16dp</dimen>
+  <dimen name="candidate_details_vertical_section_spacing">20dp</dimen>
+
+  <!-- End of candidate details -->
 </resources>

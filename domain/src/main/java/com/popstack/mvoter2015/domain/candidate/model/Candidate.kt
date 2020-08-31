@@ -1,6 +1,7 @@
 package com.popstack.mvoter2015.domain.candidate.model
 
-import com.popstack.mvoter2015.domain.party.model.PartyId
+import com.popstack.mvoter2015.domain.constituency.model.Constituency
+import com.popstack.mvoter2015.domain.party.model.Party
 import java.time.LocalDate
 
 data class Candidate(
@@ -9,17 +10,13 @@ data class Candidate(
   val gender: CandidateGender,
   val occupation: String,
   val photoUrl: String,
-  val votes: Int,
   val education: String,
-  val legislature: String,
   val religion: String,
+  val age: Int?,
   val birthDate: LocalDate,
-  val wardVillage: String,
+  val constituency: Constituency,
   val ethnicity: String,
   val father: CandidateParent?,
   val mother: CandidateParent?,
-  val partyId: PartyId
+  val party: Party
 )
-//@Nullable public String mpid;
-//public String independent_logo;
-//public Constituency constituency;

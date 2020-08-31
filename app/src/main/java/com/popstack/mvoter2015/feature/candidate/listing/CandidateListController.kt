@@ -49,6 +49,7 @@ class CandidateListController :
       false
     }
 
+    binding.viewPager.offscreenPageLimit = 3
     binding.viewPager.adapter = pagerAdapter
     binding.tabLayout.setupWithViewPager(binding.viewPager)
 

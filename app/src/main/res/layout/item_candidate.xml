@@ -1,96 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:background="?attr/selectableItemBackground"
+  android:paddingTop="8dp"
+  android:paddingBottom="8dp">
+
+  <ImageView
+    android:id="@+id/ivCandidate"
+    android:layout_width="86dp"
+    android:layout_height="86dp"
+    android:layout_marginStart="16dp"
+    android:importantForAccessibility="no"
+    tools:src="@tools:sample/avatars"
+    android:src="@drawable/placeholder_oval"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+  <ImageView
+    android:id="@+id/ivCandidatePartyFlag"
+    android:layout_width="26dp"
+    android:layout_height="16dp"
+    android:layout_marginStart="16dp"
+    android:importantForAccessibility="no"
+    android:src="@drawable/placeholder_rect"
+    app:layout_constraintBottom_toBottomOf="@+id/tvCandidateName"
+    app:layout_constraintStart_toEndOf="@+id/ivCandidate"
+    app:layout_constraintTop_toTopOf="@+id/tvCandidateName" />
+
+  <TextView
+    android:id="@+id/tvCandidateName"
+    style="@style/TextLarge.Bold"
+    android:layout_width="0dp"
     android:layout_height="wrap_content"
-    android:background="?attr/selectableItemBackground"
-    >
-
-  <ImageView
-      android:id="@+id/ivCandidate"
-      android:layout_width="64dp"
-      android:layout_height="64dp"
-      android:layout_marginBottom="4dp"
-      android:layout_marginStart="16dp"
-      android:layout_marginTop="4dp"
-      android:importantForAccessibility="no"
-      android:src="@drawable/placeholder_oval"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      />
-
-  <ImageView
-      android:id="@+id/ivCandidatePartyFlag"
-      android:layout_width="24dp"
-      android:layout_height="12dp"
-      android:importantForAccessibility="no"
-      android:layout_marginStart="8dp"
-      android:src="@drawable/placeholder_rect"
-      app:layout_constraintBottom_toBottomOf="@id/ivCandidate"
-      app:layout_constraintStart_toEndOf="@+id/ivCandidate"
-      app:layout_constraintTop_toTopOf="@+id/ivCandidate"
-      app:layout_constraintVertical_bias="0.25"
-      />
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    app:layout_constraintBottom_toTopOf="@+id/tvCandidatePartyName"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintStart_toEndOf="@+id/ivCandidatePartyFlag"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_chainStyle="packed"
+    tools:text="@sample/candidates.csv/full_name" />
 
   <TextView
-      android:id="@+id/tvCandidateName"
-      android:layout_width="0dp"
-      android:layout_height="wrap_content"
-      android:layout_marginStart="8dp"
-      android:textColor="@color/text_primary"
-      android:textStyle="bold"
-      app:layout_constraintBottom_toBottomOf="@+id/ivCandidatePartyFlag"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toEndOf="@+id/ivCandidatePartyFlag"
-      app:layout_constraintTop_toTopOf="@+id/ivCandidatePartyFlag"
-      tools:text="ဒိုဂီ"
-      />
+    android:id="@+id/tvCandidatePartyName"
+    style="@style/TextMedium.Secondary"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="4dp"
+    android:maxLines="2"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="@+id/tvCandidateName"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintStart_toStartOf="@+id/ivCandidatePartyFlag"
+    app:layout_constraintTop_toBottomOf="@+id/tvCandidateName"
+    tools:text="@sample/candidates.csv/party" />
 
   <TextView
-      android:id="@+id/tvCandidatePartyName"
-      android:layout_width="0dp"
-      android:layout_height="wrap_content"
-      android:layout_marginStart="8dp"
-      android:maxLines="2"
-      android:textColor="@color/text_secondary"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toEndOf="@+id/ivCandidate"
-      app:layout_constraintTop_toBottomOf="@id/tvCandidateName"
-      app:layout_constraintVertical_bias="0"
-      tools:text="ဒိုဂီပြည်ထောင်စု "
-      />
-
-
-  <androidx.cardview.widget.CardView
-      android:id="@+id/cardViewWinIndicator"
-      android:layout_width="36dp"
-      android:layout_height="18dp"
-      android:visibility="visible"
-      app:layout_constraintBottom_toBottomOf="@+id/ivCandidate"
-      app:layout_constraintEnd_toEndOf="@+id/ivCandidate"
-      app:layout_constraintStart_toStartOf="@+id/ivCandidate"
-      app:cardBackgroundColor="@color/accent"
-      android:contentDescription="@string/cd_winner"
-      app:cardCornerRadius="12dp"
-      >
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:drawableStart="@drawable/ic_star_12"
-        android:gravity="center_vertical"
-        android:importantForAccessibility="no"
-        android:maxLines="1"
-        android:textColor="@color/text_on_accent"
-        android:textSize="6sp"
-        app:drawableTint="@color/text_on_accent"
-        tools:text="အနိုင်ရ"
-        />
-
-  </androidx.cardview.widget.CardView>
+    style="@style/TextTiny.Bold"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_chip_accent"
+    android:visibility="gone"
+    android:drawableStart="@drawable/ic_star_12"
+    android:importantForAccessibility="no"
+    android:paddingStart="4dp"
+    android:paddingTop="3dp"
+    android:paddingEnd="6dp"
+    android:paddingBottom="3dp"
+    android:textColor="@color/text_on_accent"
+    android:textSize="8sp"
+    app:drawableTint="@color/text_on_accent"
+    app:layout_constraintBottom_toBottomOf="@+id/ivCandidate"
+    app:layout_constraintEnd_toEndOf="@+id/ivCandidate"
+    app:layout_constraintStart_toStartOf="@+id/ivCandidate"
+    app:layout_constraintTop_toBottomOf="@+id/ivCandidate"
+    tools:ignore="SmallSp"
+    tools:text="အနိုင်ရ" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

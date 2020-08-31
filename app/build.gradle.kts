@@ -137,6 +137,9 @@ dependencies {
   implementation(Firebase.analytics)
   implementation(Firebase.crashlytics)
 
+  //Circular ImageView
+  implementation(CommonLibs.circle_image_view)
+
   //Phone Number
   implementation("com.aungkyawpaing.mmphonenumber:mmphonenumber:1.1.0")
 

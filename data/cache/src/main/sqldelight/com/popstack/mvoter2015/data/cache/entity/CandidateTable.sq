@@ -2,6 +2,8 @@ import com.popstack.mvoter2015.domain.candidate.model.CandidateGender;
 import com.popstack.mvoter2015.domain.candidate.model.CandidateId;
 import com.popstack.mvoter2015.domain.candidate.model.CandidateParent;
 import com.popstack.mvoter2015.domain.party.model.PartyId;
+import com.popstack.mvoter2015.domain.constituency.model.ConstituencyId;
+import com.popstack.mvoter2015.domain.constituency.model.HouseType;
 import java.time.LocalDate;
 
 CREATE TABLE CandidateTable(
@@ -10,17 +12,37 @@ CREATE TABLE CandidateTable(
   gender TEXT AS CandidateGender NOT NULL,
   occupation TEXT NOT NULL,
   photoUrl TEXT NOT NULL,
-  votes INTEGER NOT NULL,
   education TEXT NOT NULL,
-  legislature TEXT NOT NULL,
-  relgion TEXT NOT NULL,
+  religion TEXT NOT NULL,
+  age INTEGER,
   birthDate INTEGER AS LocalDate NOT NULL,
-  wardVillage TEXT NOT NULL,
   ethnicity TEXT NOT NULL,
-  electionYear TEXT NOT NULL,
-  father_name TEXT,
-  father_religion TEXT,
-  mother_name TEXT,
-  mother_religion TEXT,
-  party TEXT AS PartyId NOT NULL
+  fatherName TEXT,
+  fatherReligion TEXT,
+  motherName TEXT,
+  motherReligion TEXT,
+  partyId TEXT AS PartyId NOT NULL,
+  constituencyId TEXT AS ConstituencyId NOT NULL,
+  constituencyName TEXT NOT NULL
+);
+
+insertOrReplace:
+INSERT OR REPLACE INTO CandidateTable VALUES(
+    :id,
+    :name,
+    :gender,
+    :occupation,
+    :photoUrl,
+    :education,
+    :religion,
+    :age,
+    :birthDate,
+    :ethnicity,
+    :fatherName,
+    :fatherReligion,
+    :motherName,
+    :motherReligion,
+    :partyId,
+    :constituencyId,
+    :constituencyName
 );

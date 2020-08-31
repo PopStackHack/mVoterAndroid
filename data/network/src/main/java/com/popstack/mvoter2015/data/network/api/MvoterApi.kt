@@ -53,4 +53,20 @@ interface MvoterApi {
     @Query("ward") ward: String
   ): Call<WardApiModel>
 
+  @GET("candidates")
+  fun candidateList(
+    @Query("constituency_id") constituencyId: String
+  ): Call<CandidateListApiResponse>
+
+  @GET("candidate/{candidate_id}")
+  fun candidate(
+    @Path("candidate_id") candidateId: String
+  ): Call<CandidateApiModel>
+
+  @GET("candidate")
+  fun searchCandidates(
+    @Query("query") query: String,
+    @Query("page") page: Int
+  ): Call<List<CandidateApiModel>>
+
 }

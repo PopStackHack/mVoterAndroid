@@ -1,0 +1,36 @@
+CREATE VIEW CandidateWithPartyView AS
+SELECT
+    CandidateTable.*,
+    PartyTable.id AS partyId,
+    PartyTable.number AS partyNumber,
+    PartyTable.burmeseName AS partyBurmeseName,
+    PartyTable.englishName AS partyEnglishName,
+    PartyTable.abbreviation AS partyAbbreviation,
+    PartyTable.flagImage AS partyFlagImage,
+    PartyTable.sealImage AS partySealImage,
+    PartyTable.region AS partyRegion,
+    PartyTable.leadersAndChairmen AS partyLeadersAndChairmen,
+    PartyTable.memberCount AS partyMemberCount,
+    PartyTable.contacts AS partyContacts,
+    PartyTable.headquarterLocation AS partyHeadquarterLocation,
+    PartyTable.policy AS partyPolicy,
+    PartyTable.establishmentApplicationDate AS partyEstablishmentApplicationDate,
+    PartyTable.establishmentApprovalDate AS partyEstablishmentApprovalDate,
+    PartyTable.registrationApplicationDate AS partyRegistrationApplicationDate,
+    PartyTable.registrationApprovalDate AS partyRegistrationApprovalDate,
+    PartyTable.isEstablishedDueToArticle25 AS partyIsEstablishedDueToArticle25
+FROM CandidateTable
+JOIN PartyTable ON CandidateTable.partyId = PartyTable.id
+GROUP BY CandidateTable.id;
+
+getCandidateList:
+SELECT
+    *
+FROM CandidateWithPartyView
+WHERE constituencyId = :constituencyId;
+
+getCandidateById:
+SELECT
+    *
+FROM CandidateWithPartyView
+WHERE id = :candidateId;
