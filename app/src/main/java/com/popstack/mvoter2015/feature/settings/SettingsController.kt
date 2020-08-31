@@ -3,6 +3,7 @@ package com.popstack.mvoter2015.feature.settings
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatDelegate
+import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.BaseController
 import com.popstack.mvoter2015.databinding.ControllerSettingsBinding
 import com.popstack.mvoter2015.helper.conductor.requireContext
@@ -34,6 +35,7 @@ class SettingsController : BaseController<ControllerSettingsBinding>() {
     super.onBindView(savedViewState)
 
     setSupportActionBar(binding.toolBar)
+    supportActionBar()?.title = requireContext().getString(R.string.navigation_title_settings)
     supportActionBar()?.setDisplayHomeAsUpEnabled(true)
 
     binding.spinnerTheme.adapter = appThemeSpinnerAdapter
