@@ -3,16 +3,20 @@ package com.popstack.mvoter2015.feature
 import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.bluelinelabs.conductor.Conductor
 import com.bluelinelabs.conductor.Router
 import com.bluelinelabs.conductor.RouterTransaction
 import com.popstack.mvoter2015.databinding.ActivityHostBinding
 import com.popstack.mvoter2015.domain.party.model.PartyId
 import com.popstack.mvoter2015.feature.party.detail.PartyDetailController
+import com.popstack.mvoter2015.feature.settings.AppSettings
+import com.popstack.mvoter2015.feature.settings.AppTheme
 import com.popstack.mvoter2015.feature.splash.SplashController
 import com.popstack.mvoter2015.logging.BreadcrumbControllerChangeHandler
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
+import javax.inject.Inject
 
 //A simple activity that host Conductor's FrameLayout
 @AndroidEntryPoint
@@ -21,6 +25,9 @@ class HostActivity : AppCompatActivity(), HasRouter {
   private val binding by lazy {
     ActivityHostBinding.inflate(layoutInflater)
   }
+
+  @Inject
+  lateinit var appSettings: AppSettings
 
   private lateinit var router: Router
 
@@ -40,6 +47,18 @@ class HostActivity : AppCompatActivity(), HasRouter {
     if (!router.hasRootController() && handledDeepLink.not()) {
       //Set your first routing here
       router.pushController(RouterTransaction.with(SplashController()))
+    }
+
+    when (appSettings.getTheme()) {
+      AppTheme.SYSTEM_DEFAULT -> {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+      }
+      AppTheme.LIGHT -> {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+      }
+      AppTheme.DARK -> {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+      }
     }
   }
 
