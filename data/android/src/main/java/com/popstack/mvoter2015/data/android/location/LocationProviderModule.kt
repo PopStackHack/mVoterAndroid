@@ -5,10 +5,7 @@ import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
 import dagger.Module
 import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ActivityRetainedComponent
 
-@InstallIn(ActivityRetainedComponent::class)
 @Module
 abstract class LocationProviderModule {
 

@@ -26,6 +26,7 @@ import com.popstack.mvoter2015.logging.HasTag
 import com.popstack.mvoter2015.paging.CommonLoadStateAdapter
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 class NewsController : MvvmController<ControllerNewsBinding>(), HasTag {
 
@@ -43,6 +44,9 @@ class NewsController : MvvmController<ControllerNewsBinding>(), HasTag {
   private val globalExceptionHandler by lazy {
     GlobalExceptionHandler(requireContext())
   }
+
+  @Inject
+  lateinit var openBrowserDelegate: OpenBrowserDelegate
 
   override fun onBindView(savedViewState: Bundle?) {
     super.onBindView(savedViewState)
@@ -85,7 +89,7 @@ class NewsController : MvvmController<ControllerNewsBinding>(), HasTag {
   }
 
   private fun onNewsItemClick(id: NewsId, url: String) {
-    OpenBrowserDelegate(requireContext()).browserHandler().launchNewsInBrowser(requireActivity(), url)
+    openBrowserDelegate.browserHandler().launchNewsInBrowser(requireActivity(), url)
   }
 
   private fun handleMenuItemClick(menuItem: MenuItem): Boolean {

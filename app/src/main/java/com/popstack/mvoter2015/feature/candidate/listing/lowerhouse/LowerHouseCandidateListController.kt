@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerLowerHouseCandidateListBinding
+import com.popstack.mvoter2015.di.conductor.ConductorInjection
 import com.popstack.mvoter2015.logging.HasTag
 
 class LowerHouseCandidateListController :
@@ -23,6 +24,7 @@ class LowerHouseCandidateListController :
     container: ViewGroup,
     savedViewState: Bundle?
   ): View {
+    ConductorInjection.inject(this)
     return super.onCreateView(inflater, container, savedViewState)
   }
 

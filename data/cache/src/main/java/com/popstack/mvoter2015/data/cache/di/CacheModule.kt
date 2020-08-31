@@ -10,11 +10,8 @@ import com.popstack.mvoter2015.data.common.news.NewsCacheSource
 import com.popstack.mvoter2015.data.common.party.PartyCacheSource
 import dagger.Binds
 import dagger.Module
-import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ActivityRetainedComponent
 
-@InstallIn(ActivityRetainedComponent::class)
-@Module
+@Module(includes = [SqlDelightModule::class])
 abstract class CacheModule {
 
   @Binds

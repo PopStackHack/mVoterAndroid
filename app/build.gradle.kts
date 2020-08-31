@@ -18,7 +18,6 @@ plugins {
   id("com.android.application")
   kotlin("android")
   kotlin("kapt")
-  id("dagger.hilt.android.plugin")
   id(KtLint.name)
   id("com.google.gms.google-services")
   id("com.google.firebase.crashlytics")
@@ -126,8 +125,7 @@ dependencies {
 
   //Dagger
   daggerJvm()
-  daggerHilt()
-  daggerAssistedInject()
+  daggerAndroid()
 
   //ThreeTenBp
   implementation(CommonLibs.timber)

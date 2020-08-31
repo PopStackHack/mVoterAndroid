@@ -1,19 +1,17 @@
 package com.popstack.mvoter2015.feature.location
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.popstack.mvoter2015.domain.location.model.Township
 import com.popstack.mvoter2015.domain.location.usecase.GetStateRegionList
 import com.popstack.mvoter2015.domain.location.usecase.GetTownshipsForStateRegion
 import com.popstack.mvoter2015.exception.GlobalExceptionHandler
-import com.popstack.mvoter2015.feature.party.detail.PartyContactViewItem
 import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewStateLiveData
 import com.popstack.mvoter2015.helper.livedata.SingleLiveEvent
 import kotlinx.coroutines.launch
-import timber.log.Timber
+import javax.inject.Inject
 
-class TownshipChooserViewModel @ViewModelInject constructor(
+class TownshipChooserViewModel @Inject constructor(
   private val getStateRegionList: GetStateRegionList,
   private val getTownshipList: GetTownshipsForStateRegion,
   private val globalExceptionHandler: GlobalExceptionHandler

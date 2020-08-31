@@ -1,9 +1,9 @@
 package com.popstack.mvoter2015.feature.votingguide
 
-import androidx.hilt.lifecycle.ViewModelInject
+import javax.inject.Inject
 import androidx.lifecycle.ViewModel
 
-class VotingGuideModel @ViewModelInject constructor() : ViewModel() {
+class VotingGuideModel @Inject constructor() : ViewModel() {
 
   fun constructViewItems(
     sectionTitles: List<String>,

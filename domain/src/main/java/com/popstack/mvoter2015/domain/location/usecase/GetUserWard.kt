@@ -8,8 +8,8 @@ import javax.inject.Inject
 
 class GetUserWard @Inject constructor(
   private val locationRepository: LocationRepository,
-  dispatcherProvider: DispatcherProvider) :
-  CoroutineUseCase<Unit, Ward?>(dispatcherProvider) {
+  dispatcherProvider: DispatcherProvider
+) : CoroutineUseCase<Unit, Ward?>(dispatcherProvider) {
 
   override suspend fun provide(input: Unit): Ward? {
     return locationRepository.getUserWard()

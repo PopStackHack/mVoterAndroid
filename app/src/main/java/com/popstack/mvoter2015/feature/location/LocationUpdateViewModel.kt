@@ -1,19 +1,18 @@
 package com.popstack.mvoter2015.feature.location
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.popstack.mvoter2015.data.android.location.LocationProvider
 import com.popstack.mvoter2015.domain.location.model.Ward
-import com.popstack.mvoter2015.domain.location.usecase.GetUserWard
 import com.popstack.mvoter2015.domain.location.usecase.GetWardDetails
 import com.popstack.mvoter2015.domain.location.usecase.SaveUserWard
 import com.popstack.mvoter2015.helper.livedata.SingleLiveEvent
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import javax.inject.Inject
 
-class LocationUpdateViewModel @ViewModelInject constructor(
+class LocationUpdateViewModel @Inject constructor(
   private val locationProvider: LocationProvider,
   private val getWardDetails: GetWardDetails,
   private val saveUserWard: SaveUserWard
@@ -21,8 +20,8 @@ class LocationUpdateViewModel @ViewModelInject constructor(
 
   sealed class ViewEvent {
     object ShowLocationRequesting : ViewEvent()
-    object EnableDoneButton: ViewEvent()
-    object NavigateToHomePage: ViewEvent()
+    object EnableDoneButton : ViewEvent()
+    object NavigateToHomePage : ViewEvent()
   }
 
   inner class Data {

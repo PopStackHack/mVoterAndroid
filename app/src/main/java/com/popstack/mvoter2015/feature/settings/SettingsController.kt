@@ -6,20 +6,20 @@ import androidx.appcompat.app.AppCompatDelegate
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.BaseController
 import com.popstack.mvoter2015.databinding.ControllerSettingsBinding
+import com.popstack.mvoter2015.di.Injectable
 import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.helper.conductor.setSupportActionBar
 import com.popstack.mvoter2015.helper.conductor.supportActionBar
 import com.popstack.mvoter2015.helper.extensions.safeSelection
 import com.popstack.mvoter2015.helper.extensions.setOnItemSelectedListener
-import dagger.hilt.EntryPoints
+import javax.inject.Inject
 
-class SettingsController : BaseController<ControllerSettingsBinding>() {
+class SettingsController : BaseController<ControllerSettingsBinding>(), Injectable {
 
   override val bindingInflater: (LayoutInflater) -> ControllerSettingsBinding = ControllerSettingsBinding::inflate
 
-  private val appSettings by lazy {
-    EntryPoints.get(requireContext(), AppSettingsEntryPoint::class.java).appSettings()
-  }
+  @Inject
+  lateinit var appSettings: AppSettings
 
   companion object {
     private const val POSITION_THEME_SYSTEM_DEFAULT = 0

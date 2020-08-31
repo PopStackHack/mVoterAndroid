@@ -4,7 +4,9 @@ import android.content.Context
 import androidx.core.content.edit
 import androidx.preference.PreferenceManager
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class AppSettings @Inject constructor(context: Context) {
 
   companion object {

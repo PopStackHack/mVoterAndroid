@@ -8,7 +8,7 @@ import com.popstack.mvoter2015.helper.diff.diffCallBackWith
 import com.popstack.mvoter2015.helper.extensions.inflater
 
 internal class TownshipRecyclerViewAdapter constructor(
-  private val onTownshipClick: (String) -> Unit,
+  private val onTownshipClick: (String) -> Unit
 ) : ListAdapter<TownshipViewItem, TownshipRecyclerViewAdapter.TownshipViewItemViewHolder>(
   diffCallBackWith(
     areItemTheSame = { item1, item2 ->

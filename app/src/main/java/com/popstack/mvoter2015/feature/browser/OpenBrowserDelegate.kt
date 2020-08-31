@@ -1,13 +1,14 @@
 package com.popstack.mvoter2015.feature.browser
 
-import android.content.Context
-import com.popstack.mvoter2015.feature.settings.AppSettingsEntryPoint
-import dagger.hilt.EntryPoints
+import com.popstack.mvoter2015.feature.settings.AppSettings
+import javax.inject.Inject
 
-class OpenBrowserDelegate(private val context: Context) {
+class OpenBrowserDelegate @Inject constructor(
+  private val appSettings: AppSettings
+) {
 
   fun browserHandler(): OpenBrowserHandler {
-    return if (EntryPoints.get(context, AppSettingsEntryPoint::class.java).appSettings().getUseExternalBrowser()) {
+    return if (appSettings.getUseExternalBrowser()) {
       ExternalBrowserHandler()
     } else {
       InAppBrowserHandler()

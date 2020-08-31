@@ -25,6 +25,7 @@ import com.popstack.mvoter2015.paging.CommonLoadStateAdapter
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 class NewsSearchController : MvvmController<ControllerNewsSearchBinding>() {
 
@@ -39,6 +40,9 @@ class NewsSearchController : MvvmController<ControllerNewsSearchBinding>() {
   private val globalExceptionHandler by lazy {
     GlobalExceptionHandler(requireContext())
   }
+
+  @Inject
+  lateinit var browserDelegate: OpenBrowserDelegate
 
   @OptIn(ExperimentalPagingApi::class)
   override fun onBindView(savedViewState: Bundle?) {
@@ -116,7 +120,7 @@ class NewsSearchController : MvvmController<ControllerNewsSearchBinding>() {
   }
 
   private fun onNewsItemClick(id: NewsId, url: String) {
-    OpenBrowserDelegate(requireContext()).browserHandler().launchNewsInBrowser(requireActivity(), url)
+    browserDelegate.browserHandler().launchNewsInBrowser(requireActivity(), url)
   }
 
 }

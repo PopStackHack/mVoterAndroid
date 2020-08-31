@@ -1,6 +1,6 @@
 package com.popstack.mvoter2015.feature.news.search
 
-import androidx.hilt.lifecycle.ViewModelInject
+import javax.inject.Inject
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
@@ -12,7 +12,7 @@ import com.popstack.mvoter2015.feature.news.NewsDateTimeFormatter
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-class NewsSearchViewModel @ViewModelInject constructor(
+class NewsSearchViewModel @Inject constructor(
   private val newsPagerFactory: NewsPagerFactory
 ) : ViewModel() {
 

@@ -16,7 +16,7 @@ import com.popstack.mvoter2015.helper.conductor.setSupportActionBar
 import com.popstack.mvoter2015.helper.conductor.supportActionBar
 import com.popstack.mvoter2015.logging.HasTag
 
-internal class CandidateListController :
+class CandidateListController :
   MvvmController<ControllerCandidateListBinding>(), HasTag {
 
   override val tag: String = "CandidateListController"

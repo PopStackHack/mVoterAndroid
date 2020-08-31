@@ -1,9 +1,9 @@
 package com.popstack.mvoter2015.feature.candidate.detail
 
-import androidx.hilt.lifecycle.ViewModelInject
+import javax.inject.Inject
 import androidx.lifecycle.ViewModel
 
-class CandidateDetailViewModel @ViewModelInject constructor() : ViewModel() {
+class CandidateDetailViewModel @Inject constructor() : ViewModel() {
 
   fun loadData() {
     //Do Nothing

@@ -51,7 +51,6 @@ class WardChooserController(bundle: Bundle) : MvvmController<ControllerWardChoos
       viewModel.onWardClicked
     )
 
-
     binding.rvWard.apply {
       adapter = wardRecyclerViewAdapter
       layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)

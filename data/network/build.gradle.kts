@@ -4,7 +4,6 @@ plugins {
   id("com.android.library")
   kotlin("android")
   kotlin("kapt")
-  id("dagger.hilt.android.plugin")
   id(KtLint.name)
 }
 
@@ -79,7 +78,7 @@ dependencies {
 
   //Dagger
   daggerJvm()
-  daggerHilt()
+  daggerAndroid()
 
   //Testing
   testImplementation(CommonLibs.junit)

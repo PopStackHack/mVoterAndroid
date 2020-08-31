@@ -1,6 +1,6 @@
 package com.popstack.mvoter2015.feature.faq
 
-import androidx.hilt.lifecycle.ViewModelInject
+import javax.inject.Inject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -13,7 +13,7 @@ import com.popstack.mvoter2015.domain.faq.model.FaqCategory
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-class FaqViewModel @ViewModelInject constructor(
+class FaqViewModel @Inject constructor(
   private val faqPagerFactory: FaqPagerFactory
 ) : ViewModel() {
 

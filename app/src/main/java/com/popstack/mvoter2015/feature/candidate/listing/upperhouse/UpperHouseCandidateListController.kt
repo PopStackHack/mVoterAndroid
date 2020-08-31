@@ -10,6 +10,7 @@ import com.bluelinelabs.conductor.RouterTransaction
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerUpperHouseCandidateListBinding
+import com.popstack.mvoter2015.di.conductor.ConductorInjection
 import com.popstack.mvoter2015.domain.candidate.model.CandidateId
 import com.popstack.mvoter2015.feature.candidate.detail.CandidateDetailController
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateListPagerParentRouter
@@ -37,6 +38,7 @@ class UpperHouseCandidateListController :
     container: ViewGroup,
     savedViewState: Bundle?
   ): View {
+    ConductorInjection.inject(this)
     return super.onCreateView(inflater, container, savedViewState)
   }
 

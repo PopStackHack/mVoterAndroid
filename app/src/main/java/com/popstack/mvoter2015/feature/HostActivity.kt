@@ -8,23 +8,29 @@ import com.bluelinelabs.conductor.Conductor
 import com.bluelinelabs.conductor.Router
 import com.bluelinelabs.conductor.RouterTransaction
 import com.popstack.mvoter2015.databinding.ActivityHostBinding
+import com.popstack.mvoter2015.di.Injectable
+import com.popstack.mvoter2015.di.conductor.ControllerInjectorChangeHandler
 import com.popstack.mvoter2015.domain.party.model.PartyId
 import com.popstack.mvoter2015.feature.party.detail.PartyDetailController
 import com.popstack.mvoter2015.feature.settings.AppSettings
 import com.popstack.mvoter2015.feature.settings.AppTheme
 import com.popstack.mvoter2015.feature.splash.SplashController
 import com.popstack.mvoter2015.logging.BreadcrumbControllerChangeHandler
-import dagger.hilt.android.AndroidEntryPoint
+import dagger.android.AndroidInjector
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.HasAndroidInjector
 import timber.log.Timber
 import javax.inject.Inject
 
 //A simple activity that host Conductor's FrameLayout
-@AndroidEntryPoint
-class HostActivity : AppCompatActivity(), HasRouter {
+class HostActivity : AppCompatActivity(), HasRouter, Injectable, HasAndroidInjector {
 
   private val binding by lazy {
     ActivityHostBinding.inflate(layoutInflater)
   }
+
+  @Inject
+  lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Any>
 
   @Inject
   lateinit var appSettings: AppSettings
@@ -37,6 +43,7 @@ class HostActivity : AppCompatActivity(), HasRouter {
 
     router = Conductor.attachRouter(this, binding.container, savedInstanceState)
     router.addChangeListener(BreadcrumbControllerChangeHandler)
+    router.addChangeListener(ControllerInjectorChangeHandler)
 
     var handledDeepLink = false
     intent.data?.let { deepLinkUri ->
@@ -94,6 +101,7 @@ class HostActivity : AppCompatActivity(), HasRouter {
   override fun onDestroy() {
     super.onDestroy()
     router.removeChangeListener(BreadcrumbControllerChangeHandler)
+    router.removeChangeListener(ControllerInjectorChangeHandler)
   }
 
   override fun onBackPressed() {
@@ -111,6 +119,10 @@ class HostActivity : AppCompatActivity(), HasRouter {
 
   override fun router(): Router {
     return router
+  }
+
+  override fun androidInjector(): AndroidInjector<Any> {
+    return dispatchingAndroidInjector
   }
 
 }

@@ -8,7 +8,7 @@ import com.popstack.mvoter2015.helper.diff.diffCallBackWith
 import com.popstack.mvoter2015.helper.extensions.inflater
 
 internal class WardRecyclerViewAdapter constructor(
-  private val onWardClick: (String) -> Unit,
+  private val onWardClick: (String) -> Unit
 ) : ListAdapter<String, WardRecyclerViewAdapter.WardViewItemViewHolder>(
   diffCallBackWith(
     areItemTheSame = { item1, item2 ->

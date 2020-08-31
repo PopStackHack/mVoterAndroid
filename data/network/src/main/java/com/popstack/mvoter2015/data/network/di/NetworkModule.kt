@@ -10,11 +10,8 @@ import com.popstack.mvoter2015.data.network.source.NewsNetworkSourceImpl
 import com.popstack.mvoter2015.data.network.source.PartyNetworkSourceImpl
 import dagger.Binds
 import dagger.Module
-import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ActivityRetainedComponent
 
-@Module
-@InstallIn(ActivityRetainedComponent::class)
+@Module(includes = [ServiceModule::class])
 abstract class NetworkModule {
 
   @Binds

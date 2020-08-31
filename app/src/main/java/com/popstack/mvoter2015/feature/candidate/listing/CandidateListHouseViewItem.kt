@@ -6,12 +6,12 @@ import com.popstack.mvoter2015.domain.constituency.model.HouseType
 import com.popstack.mvoter2015.domain.location.model.StateRegionType
 import javax.inject.Inject
 
-internal data class CandidateListHouseViewItem(
+data class CandidateListHouseViewItem(
   val houseType: HouseType,
   val name: String
 )
 
-internal class CandidateListHouseViewItemMapper @Inject constructor(
+class CandidateListHouseViewItemMapper @Inject constructor(
   private val context: Context
 ) {
 

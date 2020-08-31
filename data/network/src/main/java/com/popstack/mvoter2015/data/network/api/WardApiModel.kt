@@ -1,7 +1,6 @@
 package com.popstack.mvoter2015.data.network.api
 
 import com.popstack.mvoter2015.domain.constituency.model.Constituency
-import com.popstack.mvoter2015.domain.location.model.TownshipPCode
 import com.popstack.mvoter2015.domain.location.model.Ward
 import com.popstack.mvoter2015.domain.location.model.WardId
 import com.squareup.moshi.Json
@@ -20,6 +19,7 @@ data class WardApiModel(
   data class WardAttributes(
     @Json(name = "attributes") val wardAttributes: Attributes
   )
+
   @JsonClass(generateAdapter = true)
   data class Attributes(
     @Json(name = "id") val id: Long,
@@ -40,11 +40,10 @@ data class WardApiModel(
         id = upperHouseConstituency.id.toString(),
         name = upperHouseConstituency.name
       ),
-      stateRegionConstituency =  Constituency(
+      stateRegionConstituency = Constituency(
         id = stateRegionConstituency.id.toString(),
         name = stateRegionConstituency.name
       )
     )
   }
 }
-

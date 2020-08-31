@@ -1,8 +1,8 @@
 package com.popstack.mvoter2015.feature.candidate.listing.lowerhouse
 
-import androidx.hilt.lifecycle.ViewModelInject
+import javax.inject.Inject
 import androidx.lifecycle.ViewModel
 
-class LowerHouseCandidateListViewModel @ViewModelInject constructor() : ViewModel() {
+class LowerHouseCandidateListViewModel @Inject constructor() : ViewModel() {
   //TODO
 }

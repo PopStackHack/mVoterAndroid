@@ -1,6 +1,6 @@
 package com.popstack.mvoter2015.feature.party.listing
 
-import androidx.hilt.lifecycle.ViewModelInject
+import javax.inject.Inject
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
@@ -10,7 +10,7 @@ import com.popstack.mvoter2015.data.android.party.PartyPagerFactory
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-class PartyListViewModel @ViewModelInject constructor(
+class PartyListViewModel @Inject constructor(
   private val partyPagerFactory: PartyPagerFactory
 ) : ViewModel() {
 

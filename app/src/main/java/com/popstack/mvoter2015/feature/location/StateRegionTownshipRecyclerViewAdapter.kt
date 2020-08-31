@@ -1,6 +1,5 @@
 package com.popstack.mvoter2015.feature.location
 
-import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -10,7 +9,6 @@ import com.popstack.mvoter2015.core.recyclerview.ViewBindingViewHolder
 import com.popstack.mvoter2015.databinding.ItemStateRegionTownshipBinding
 import com.popstack.mvoter2015.helper.diff.diffCallBackWith
 import com.popstack.mvoter2015.helper.extensions.inflater
-import timber.log.Timber
 
 internal class StateRegionTownshipRecyclerViewAdapter constructor(
   private val onStateRegionClick: (String) -> Unit,
@@ -74,7 +72,7 @@ internal class StateRegionTownshipRecyclerViewAdapter constructor(
 
       binding.tvStateRegion.text = stateRegionTownshipViewItem.name
 
-      with (stateRegionTownshipViewItem) {
+      with(stateRegionTownshipViewItem) {
         binding.groupDropDown.isVisible = isSelected
 
         if (isSelected) {
