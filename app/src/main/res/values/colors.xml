@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <color name="primary">#FFFFFF</color>
+  <color name="primary_20">#33FFFFFF</color>
   <color name="primary_dark">#FFFFFF</color>
   <color name="accent">#2071DA</color>
   <color name="accent_20">#332071DA</color>
@@ -21,4 +22,6 @@
   <color name="transparent">#00000000</color>
 
   <color name="transparent_layer">#CC000000</color>
+
+  <color name="status_bar_color">#000000</color>
 </resources>
