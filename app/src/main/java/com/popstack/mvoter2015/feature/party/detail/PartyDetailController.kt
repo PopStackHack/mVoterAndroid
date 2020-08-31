@@ -13,7 +13,6 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import coil.api.load
-import coil.size.Scale
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvvmController
@@ -118,7 +117,6 @@ class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDeta
       is AsyncViewState.Success -> {
         val viewItem = viewState.value
         binding.ivPartySeal.load(viewItem.sealImage) {
-          scale(Scale.FIT)
           placeholder(R.drawable.placeholder_rect)
           error(R.drawable.placeholder_rect)
           crossfade(true)
@@ -140,7 +138,6 @@ class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDeta
         }
 
         binding.ivPartyFlag.load(viewItem.flagImage) {
-          scale(Scale.FIT)
           placeholder(R.drawable.placeholder_rect)
           error(R.drawable.placeholder_rect)
           crossfade(true)

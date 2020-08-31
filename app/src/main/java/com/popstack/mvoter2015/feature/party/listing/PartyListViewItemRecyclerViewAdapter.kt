@@ -49,7 +49,7 @@ internal class PartyListViewItemRecyclerViewAdapter constructor(
   ) {
     getItem(position)?.let { itemAtIndex ->
       holder.binding.apply {
-        ivPartyFlag.load(itemAtIndex.flagImageUrl) {
+        ivPartyFlag.load(itemAtIndex.sealImage) {
           placeholder(R.drawable.placeholder_rect)
           error(R.drawable.placeholder_rect)
           crossfade(true)

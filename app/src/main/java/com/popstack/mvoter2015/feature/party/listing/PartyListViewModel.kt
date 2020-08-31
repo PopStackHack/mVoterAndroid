@@ -23,7 +23,7 @@ class PartyListViewModel @ViewModelInject constructor(
       pagingData.map { party ->
         PartyListViewItem(
           partyId = party.id,
-          flagImageUrl = party.flagImage,
+          sealImage = party.sealImage,
           name = party.nameBurmese,
           region = party.region
         )
