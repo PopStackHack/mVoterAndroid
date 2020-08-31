@@ -28,8 +28,8 @@ object TableAdapters {
   fun partyTableAdapter(): PartyTable.Adapter {
     return PartyTable.Adapter(
       idAdapter = PartyIdColumnAdapter,
-      leadersAndChairmenAdapter = StringListColumnAdapter,
-      contactsAdapter = StringListColumnAdapter,
+      leadersAndChairmenAdapter = StringListColumnAdapter(),
+      contactsAdapter = StringListColumnAdapter(),
       establishmentApplicationDateAdapter = LocalDateColumnAdapter,
       establishmentApprovalDateAdapter = LocalDateColumnAdapter,
       registrationApplicationDateAdapter = LocalDateColumnAdapter,

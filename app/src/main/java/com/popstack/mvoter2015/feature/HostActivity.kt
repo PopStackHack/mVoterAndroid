@@ -50,7 +50,7 @@ class HostActivity : AppCompatActivity(), HasRouter {
     Timber.i("deep link recieved. host is $host, path is $path")
 
     //Handle parties deep link
-    if (host == "parties" || (path == "parties" && host == "web.mvoterapp.com")) {
+    if (host == "parties" || (path.matches(Regex("/parties/\\d+")) && host == "web.mvoterapp.com")) {
       val partyId = PartyId(deepLinkUri.lastPathSegment ?: return false)
       val partyDetailController = PartyDetailController.newInstance(partyId)
 

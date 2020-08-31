@@ -9,6 +9,7 @@ import com.popstack.mvoter2015.databinding.ControllerAboutBinding
 import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.helper.conductor.setSupportActionBar
 import com.popstack.mvoter2015.helper.conductor.supportActionBar
+import com.popstack.mvoter2015.helper.intent.Intents
 
 class AboutController : BaseController<ControllerAboutBinding>() {
 
@@ -61,7 +62,7 @@ class AboutController : BaseController<ControllerAboutBinding>() {
 
   private fun openAppWebsite() {
     runCatching {
-      startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://mvoterapp.com/")))
+      startActivity(Intents.viewUrl("https://mvoterapp.com/"))
     }
   }
 

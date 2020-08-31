@@ -24,7 +24,7 @@ data class NewsApiModel(
       id = NewsId(newsId),
       title = attributes.title,
       summary = attributes.summary,
-      body = attributes.summary, //TODO: Change to body after API is done
+      body = attributes.body,
       publishedDate = LocalDate.parse(attributes.publishedDate, DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH)),
       imageUrl = attributes.previewImage,
       url = attributes.url
@@ -36,6 +36,7 @@ data class NewsApiModel(
 data class NewsApiAttributes(
   @Json(name = "title") val title: String,
   @Json(name = "summary") val summary: String,
+  @Json(name = "body") val body: String?,
   @Json(name = "published_date") val publishedDate: String,
   @Json(name = "preview_image") val previewImage: String?,
   @Json(name = "url") val url: String

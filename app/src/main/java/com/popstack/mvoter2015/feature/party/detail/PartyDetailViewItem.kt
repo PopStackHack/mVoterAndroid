@@ -16,7 +16,7 @@ data class PartyDetailViewItem(
   val flagImage: String,
   val sealImage: String,
   val partyNumber: String,
-  val leadersAndChairmen: String,
+  val leadersAndChairmen: List<String>,
   val memberCount: String,
   val headQuarterLocation: String,
   val contactList: List<String>,

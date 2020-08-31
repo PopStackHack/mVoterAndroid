@@ -87,7 +87,7 @@ class PartyDetailViewModel @ViewModelInject constructor(
             flagImage = flagImage,
             sealImage = sealImage,
             partyNumber = registeredNumber.toString(),
-            leadersAndChairmen = leadersAndChairmenList.format("၊"),
+            leadersAndChairmen = leadersAndChairmenList,
             memberCount = memberCount?.toString() ?: "-",
             headQuarterLocation = headquarterLocation,
             contactList = contacts,

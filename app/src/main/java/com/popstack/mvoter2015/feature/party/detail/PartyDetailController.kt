@@ -1,5 +1,6 @@
 package com.popstack.mvoter2015.feature.party.detail
 
+import android.content.ActivityNotFoundException
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
@@ -26,9 +27,11 @@ import com.popstack.mvoter2015.helper.conductor.requireActivity
 import com.popstack.mvoter2015.helper.conductor.requireActivityAsAppCompatActivity
 import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.helper.conductor.supportActionBar
+import com.popstack.mvoter2015.helper.extensions.showShortToast
 import com.popstack.mvoter2015.helper.format
 import com.popstack.mvoter2015.helper.intent.Intents
 import com.popstack.mvoter2015.logging.HasTag
+
 
 class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDetailBinding>(bundle), HasTag {
 
@@ -146,7 +149,12 @@ class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDeta
         binding.tvPartyNumber.text = viewItem.partyNumber.convertToBurmeseNumber()
 
         binding.tvPartyRegion.text = viewItem.region
-        binding.tvLeader.text = viewItem.leadersAndChairmen
+
+        binding.tvLeaderTitle.isVisible = viewItem.leadersAndChairmen.isNotEmpty()
+        binding.tvLeader.isVisible = viewItem.leadersAndChairmen.isNotEmpty()
+
+        binding.tvLeader.text = viewItem.leadersAndChairmen.format("၊")
+
         binding.tvMemberCount.text = viewItem.memberCount
         binding.tvHeadquarterLocation.text = viewItem.headQuarterLocation
 
@@ -173,7 +181,12 @@ class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDeta
     MaterialAlertDialogBuilder(requireActivity())
       .setItems(contactViewItemList.map { it.text }.toTypedArray()) { dialog, which ->
         contactViewItemList.getOrNull(which)?.let { itemAtIndex ->
-          startActivity(Intents.dialIntent(itemAtIndex.number))
+          try {
+            startActivity(Intents.dialIntent(itemAtIndex.number))
+          } catch (exception: ActivityNotFoundException) {
+            dialog.dismiss()
+            requireContext().showShortToast("Could not find dialer app")
+          }
         }
       }
       .setNegativeButton(R.string.cancel) { dialog, _ ->
