@@ -20,6 +20,7 @@ import com.popstack.mvoter2015.feature.about.AboutController
 import com.popstack.mvoter2015.feature.faq.ballot.BallotExampleController
 import com.popstack.mvoter2015.feature.faq.ballot.displayString
 import com.popstack.mvoter2015.feature.faq.search.FaqSearchController
+import com.popstack.mvoter2015.feature.settings.SettingsController
 import com.popstack.mvoter2015.feature.share.ShareUrlFactory
 import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
 import com.popstack.mvoter2015.helper.ViewVisibilityDebounceHandler
@@ -155,6 +156,13 @@ class FaqController : MvvmController<ControllerFaqBinding>(), HasTag {
         if (requireActivity() is HasRouter) {
           (requireActivity() as HasRouter).router()
             .pushController(RouterTransaction.with(AboutController()))
+        }
+        true
+      }
+      R.id.action_settings -> {
+        if (requireActivity() is HasRouter) {
+          (requireActivity() as HasRouter).router()
+            .pushController(RouterTransaction.with(SettingsController()))
         }
         true
       }

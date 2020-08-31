@@ -2,9 +2,6 @@ package com.popstack.mvoter2015.feature.news.search
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import androidx.browser.customtabs.CustomTabsIntent
-import androidx.core.content.ContextCompat
-import androidx.core.net.toUri
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.ExperimentalPagingApi
@@ -16,6 +13,7 @@ import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerNewsSearchBinding
 import com.popstack.mvoter2015.domain.news.model.NewsId
 import com.popstack.mvoter2015.exception.GlobalExceptionHandler
+import com.popstack.mvoter2015.feature.browser.OpenBrowserDelegate
 import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
 import com.popstack.mvoter2015.helper.ViewVisibilityDebounceHandler
 import com.popstack.mvoter2015.helper.conductor.requireActivity
@@ -118,10 +116,7 @@ class NewsSearchController : MvvmController<ControllerNewsSearchBinding>() {
   }
 
   private fun onNewsItemClick(id: NewsId, url: String) {
-    CustomTabsIntent.Builder()
-      .setToolbarColor(ContextCompat.getColor(requireContext(), R.color.accent))
-      .build()
-      .launchUrl(requireActivity(), url.toUri())
+    OpenBrowserDelegate(requireContext()).browserHandler().launchNewsInBrowser(requireActivity(), url)
   }
 
 }
