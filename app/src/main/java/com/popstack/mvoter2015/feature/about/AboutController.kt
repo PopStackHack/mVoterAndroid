@@ -4,6 +4,9 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
+import com.bluelinelabs.conductor.RouterTransaction
+import com.popstack.mvoter2015.BuildConfig
+import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.BaseController
 import com.popstack.mvoter2015.databinding.ControllerAboutBinding
 import com.popstack.mvoter2015.helper.conductor.requireContext
@@ -32,7 +35,7 @@ class AboutController : BaseController<ControllerAboutBinding>() {
     }
 
     binding.viewLicense.setOnClickListener {
-      //TODO:
+      router.pushController(RouterTransaction.with(LicenseController()))
     }
 
     binding.ivContactFacebook.setOnClickListener {
@@ -46,6 +49,8 @@ class AboutController : BaseController<ControllerAboutBinding>() {
     binding.ivContactWebsite.setOnClickListener {
       openAppWebsite()
     }
+
+    binding.tvVersion.text = requireContext().getString(R.string.version, BuildConfig.VERSION_NAME)
   }
 
   /**

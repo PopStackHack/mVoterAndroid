@@ -132,6 +132,7 @@
   <string name="licnese">licenses</string>
   <string name="version">Version %1$s</string>
   <string name="copyright">©2015–2020 Team PopStack. All rights reserved.</string>
+  <string name="navigation_title_license">Open Source Licenses</string>
 
   <!-- Chooser -->
   <string name="choose_township">မြို့နယ် ရွေးပါ</string>
