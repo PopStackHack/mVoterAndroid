@@ -35,9 +35,10 @@ internal class CandidateListHousePagerAdapter(host: Controller) :
     router.addChangeListener(ControllerInjectorChangeHandler)
     if (!router.hasRootController()) {
       val controller = when (position) {
+        0 -> UpperHouseCandidateListController.newInstance(ConstituencyId(itemList[position].constituencyId), itemList[position].houseType)
         1 -> LowerHouseCandidateListController.newInstance(ConstituencyId(itemList[position].constituencyId), itemList[position].houseType)
-        2 -> UpperHouseCandidateListController.newInstance(ConstituencyId(itemList[position].constituencyId), itemList[position].houseType)
-        else -> RegionalHouseCandidateListController.newInstance(ConstituencyId(itemList[position].constituencyId), itemList[position].houseType)
+        2 -> RegionalHouseCandidateListController.newInstance(ConstituencyId(itemList[position].constituencyId), itemList[position].houseType)
+        else -> return
       }
       val routerTransaction = RouterTransaction.with(controller)
       router.setRoot(routerTransaction)
