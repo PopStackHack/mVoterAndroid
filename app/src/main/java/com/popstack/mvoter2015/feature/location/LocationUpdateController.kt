@@ -8,6 +8,7 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import com.bluelinelabs.conductor.RouterTransaction
+import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.config.AppFirstTimeConfig
 import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerLocationBinding
@@ -44,10 +45,10 @@ class LocationUpdateController : MvvmController<ControllerLocationBinding>(), Ha
   override fun onBindView(savedViewState: Bundle?) {
     super.onBindView(savedViewState)
 
-    setSupportActionBar(binding.toolBar)
-
-    binding.checkBoxConsent.isVisible = firstTimeConfig.isFirstTime()
-    if (firstTimeConfig.isFirstTime()) {
+    val isFirstTime = firstTimeConfig.isFirstTime()
+    binding.checkBoxConsent.isVisible = false
+    binding.ivClose.isVisible = !isFirstTime
+    if (isFirstTime) {
       binding.checkBoxConsent.setOnCheckedChangeListener { _, isChecked ->
         viewModel.handleConsentCheckChange(isChecked)
       }
@@ -66,8 +67,7 @@ class LocationUpdateController : MvvmController<ControllerLocationBinding>(), Ha
     }
 
     binding.buttonDone.setOnClickListener {
-      firstTimeConfig.setFirstTimeStatus(false)
-      router.setRoot(RouterTransaction.with(HomeController()).tag(HomeController.TAG))
+      viewModel.onDoneClicked()
     }
 
     binding.buttonRegion.setOnClickListener {
@@ -90,7 +90,29 @@ class LocationUpdateController : MvvmController<ControllerLocationBinding>(), Ha
       }
     }
 
+    binding.ivClose.setOnClickListener {
+      if (requireActivity() is HasRouter) {
+        (requireActivity() as HasRouter).router()
+          .popCurrentController()
+      }
+    }
+
+    setupButtons()
+
     viewModel.viewEventLiveData.observe(this, Observer(::observeViewEvent))
+  }
+
+  private fun setupButtons() {
+    viewModel.data.chosenTownship?.let {
+      binding.buttonRegion.text = it
+      binding.buttonWard.isEnabled = true
+    }
+    viewModel.data.chosenWard?.let {
+      binding.buttonWard.text = viewModel.data.chosenWard
+    } ?: run {
+      binding.buttonWard.setText(R.string.location_chooser_ward)
+    }
+    binding.buttonDone.isEnabled = viewModel.data.wardDetails != null
   }
 
   private fun observeViewEvent(viewEvent: LocationUpdateViewModel.ViewEvent) {
@@ -106,19 +128,22 @@ class LocationUpdateController : MvvmController<ControllerLocationBinding>(), Ha
       LocationUpdateViewModel.ViewEvent.EnableDoneButton -> {
         binding.buttonDone.isEnabled = true
       }
+      LocationUpdateViewModel.ViewEvent.NavigateToHomePage -> {
+        firstTimeConfig.setFirstTimeStatus(false)
+        router.setRoot(RouterTransaction.with(HomeController()).tag(HomeController.TAG))
+      }
     }
   }
 
   override fun onTownshipChosen(stateRegion: String, township: String) {
-    binding.buttonRegion.text = township
-    binding.buttonWard.isEnabled = true
     viewModel.onTownshipChosen(stateRegion, township)
+    setupButtons()
   }
 
   override fun onWardChosen(ward: String) {
+    binding.buttonDone.isEnabled = false
     viewModel.onWardChosen(ward)
-    binding.buttonRegion.text = viewModel.data.chosenTownship
-    binding.buttonWard.text = viewModel.data.chosenWard
+    setupButtons()
   }
 
 }

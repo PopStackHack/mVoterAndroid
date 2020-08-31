@@ -135,7 +135,11 @@
   <string name="navigation_title_license">Open Source Licenses</string>
 
   <!-- Chooser -->
-  <string name="choose_township">မြို့နယ် ရွေးပါ</string>
+  <string name="location_chooser_title">မိမိ မဲပေးရွေးချယ်ရမည့်\nလွှတ်တော်ကိုယ်စားလှယ်လောင်းများကို သိရှိရန်\nနေထိုင်ရာအရပ်ကို ရွေးပါ</string>
+  <string name="location_chooser_township">မြို့နယ်</string>
+  <string name="location_chooser_ward">ရပ်ကွက်/ကျေးရွာအုပ်စု</string>
+  <string name="location_chooser_choose_township">မြို့နယ် ရွေးပါ</string>
+  <string name="location_chooser_choose_ward">ရပ်ကွက်/ကျေးရွာအုပ်စု ရွေးပါ</string>
 
   <!--  Settings-->
   <string-array name="settings_themes">

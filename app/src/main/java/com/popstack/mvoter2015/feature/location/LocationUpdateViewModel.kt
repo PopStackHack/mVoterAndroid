@@ -4,6 +4,7 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.popstack.mvoter2015.data.android.location.LocationProvider
+import com.popstack.mvoter2015.domain.location.model.Ward
 import com.popstack.mvoter2015.domain.location.usecase.GetUserWard
 import com.popstack.mvoter2015.domain.location.usecase.GetWardDetails
 import com.popstack.mvoter2015.domain.location.usecase.SaveUserWard
@@ -21,12 +22,14 @@ class LocationUpdateViewModel @ViewModelInject constructor(
   sealed class ViewEvent {
     object ShowLocationRequesting : ViewEvent()
     object EnableDoneButton: ViewEvent()
+    object NavigateToHomePage: ViewEvent()
   }
 
   inner class Data {
     var chosenTownship: String? = null
     var chosenStateRegion: String? = null
     var chosenWard: String? = null
+    var wardDetails: Ward? = null
   }
 
   val data = Data()
@@ -44,19 +47,33 @@ class LocationUpdateViewModel @ViewModelInject constructor(
   fun onTownshipChosen(chosenStateRegion: String, chosenTownship: String) {
     data.chosenStateRegion = chosenStateRegion
     data.chosenTownship = chosenTownship
+    data.chosenWard = null
+    data.wardDetails = null
   }
 
   fun onWardChosen(ward: String) {
     data.chosenWard = ward
     viewModelScope.launch {
       kotlin.runCatching {
-        val wardDetails = getWardDetails.execute(GetWardDetails.Params(
+        data.wardDetails = getWardDetails.execute(GetWardDetails.Params(
           stateRegion = data.chosenStateRegion!!,
           township = data.chosenTownship!!,
           ward = data.chosenWard!!
         ))
-        saveUserWard.execute(SaveUserWard.Params(wardDetails))
         viewEventLiveData.postValue(ViewEvent.EnableDoneButton)
+      }.exceptionOrNull()?.let { exception ->
+        Timber.e(exception)
+      }
+    }
+  }
+
+  fun onDoneClicked() {
+    viewModelScope.launch {
+      kotlin.runCatching {
+        data.wardDetails?.let {
+          saveUserWard.execute(SaveUserWard.Params(it))
+        }
+        viewEventLiveData.postValue(ViewEvent.NavigateToHomePage)
       }.exceptionOrNull()?.let { exception ->
         Timber.e(exception)
       }

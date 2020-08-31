@@ -10,7 +10,7 @@
     style="@style/TextTitle3.Bold"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="@string/choose_township"
+    android:text="@string/location_chooser_choose_ward"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     android:layout_marginTop="16dp"
@@ -21,7 +21,8 @@
     android:layout_width="36dp"
     android:layout_height="36dp"
     android:layout_marginEnd="16dp"
-    android:src="@drawable/ic_close_circle_24"
+    android:src="@drawable/ic_close_circle_transparent_24"
+    app:layout_constraintBottom_toBottomOf="@+id/tvTitle"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintTop_toTopOf="@+id/tvTitle" />
 
@@ -30,7 +31,7 @@
     style="@style/TextLarge.Accent.Bold"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginTop="16dp"
+    android:layout_marginTop="32dp"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/tvTitle"
     android:layout_marginStart="20dp"
@@ -39,12 +40,12 @@
 
   <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/rvWard"
-    android:layout_width="match_parent"
+    android:layout_width="0dp"
     android:layout_height="0dp"
     android:layout_marginTop="16dp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintStart_toStartOf="@+id/tvTownship"
     app:layout_constraintTop_toBottomOf="@+id/tvTownship" />
 
   <TextView

@@ -57,6 +57,8 @@ class WardChooserController(bundle: Bundle) : MvvmController<ControllerWardChoos
       layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
     }
 
+    binding.tvTownship.text = township
+
     binding.ivClose.setOnClickListener {
       if (requireActivity() is HasRouter) {
         (requireActivity() as HasRouter).router()
