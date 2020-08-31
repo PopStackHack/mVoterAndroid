@@ -16,6 +16,7 @@ data class Party(
   val headquarterLocation: String,
   val policy: String,
   val contacts: List<String>,
+  val isEstablishedDueToArticle25: Boolean, //See https://www.constitutionaltribunal.gov.mm/lawdatabase/my/law/273 article 25
   val establishmentApplicationDate: LocalDate?,
   val establishmentApprovalDate: LocalDate?,
   val registrationApplicationDate: LocalDate?,

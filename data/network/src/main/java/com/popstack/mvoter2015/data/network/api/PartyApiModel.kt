@@ -39,6 +39,7 @@ data class PartyApiModel(
       headquarterLocation = attributes.headQuarterLocation,
       policy = attributes.policy,
       contacts = attributes.contact,
+      isEstablishedDueToArticle25 = attributes.establishmentApplicationDate == "ပုဒ်မ ၂၅ အရ လျှောက်ထားခြင်း" || attributes.establishmentApplicationDate == "ပုဒ်မ ၂၅ အရ လျှောက်ထားခြင်း",
       establishmentApplicationDate = try {
         if (attributes.establishmentApplicationDate != null)
           LocalDateJsonAdapter().fromJson(attributes.establishmentApplicationDate)

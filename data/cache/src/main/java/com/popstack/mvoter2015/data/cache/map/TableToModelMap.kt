@@ -45,6 +45,7 @@ internal fun PartyTable.mapToParty(): Party {
     memberCount = memberCount,
     headquarterLocation = headquarterLocation,
     policy = policy,
+    isEstablishedDueToArticle25 = isEstablishedDueToArticle25,
     establishmentApplicationDate = establishmentApplicationDate,
     establishmentApprovalDate = establishmentApprovalDate,
     registrationApplicationDate = registrationApplicationDate,

@@ -29,6 +29,7 @@ class PartyCacheSourceImpl @Inject constructor(
       memberCount = party.memberCount,
       headquarterLocation = party.headquarterLocation,
       policy = party.policy,
+      isEstablishedDueToArticle25 = party.isEstablishedDueToArticle25,
       establishmentApplicationDate = party.establishmentApplicationDate,
       establishmentApprovalDate = party.establishmentApprovalDate,
       registrationApplicationDate = party.registrationApplicationDate,

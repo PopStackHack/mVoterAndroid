@@ -3,6 +3,7 @@ import kotlin.String;
 import java.lang.Integer;
 import java.time.LocalDate;
 import kotlin.collections.List;
+import java.lang.Boolean;
 
 CREATE TABLE PartyTable(
   id TEXT AS PartyId PRIMARY KEY NOT NULL,
@@ -18,6 +19,7 @@ CREATE TABLE PartyTable(
   contacts TEXT AS List<String> NOT NULL,
   headquarterLocation TEXT NOT NULL,
   policy TEXT NOT NULL,
+  isEstablishedDueToArticle25 INTEGER AS Boolean NOT NULL,
   establishmentApplicationDate INTEGER AS LocalDate,
   establishmentApprovalDate INTEGER AS LocalDate,
   registrationApplicationDate INTEGER AS LocalDate,
@@ -28,6 +30,7 @@ insertOrReplace:
 INSERT OR REPLACE INTO PartyTable VALUES(
 :id, :number, :burmeseName, :englishName, :abbreviation, :flagUrl, :sealUrl, :region,
 :leadersAndChairmen,:memberCount, :contacts, :headquarterLocation, :policy,
+:isEstablishedDueToArticle25,
 :establishmentApplicationDate, :establishmentApprovalDate,
 :registrationApplicationDate, :registrationApprovalDate
 );

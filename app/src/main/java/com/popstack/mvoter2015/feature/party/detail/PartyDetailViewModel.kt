@@ -8,7 +8,6 @@ import com.popstack.mvoter2015.domain.party.model.PartyId
 import com.popstack.mvoter2015.domain.party.usecase.GetParty
 import com.popstack.mvoter2015.exception.GlobalExceptionHandler
 import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewStateLiveData
-import com.popstack.mvoter2015.helper.format
 import com.popstack.mvoter2015.helper.livedata.SingleLiveEvent
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -35,7 +34,6 @@ class PartyDetailViewModel @ViewModelInject constructor(
       viewItemLiveData.postLoading()
 
       kotlin.runCatching {
-        //TODO:
         val party = getParty.execute(partyId)
 
         val timelineList = mutableListOf<PartyTimelineViewItem>()
@@ -91,7 +89,7 @@ class PartyDetailViewModel @ViewModelInject constructor(
             memberCount = memberCount?.toString() ?: "-",
             headQuarterLocation = headquarterLocation,
             contactList = contacts,
-            isPoteMa25 = establishmentApplicationDate == null || establishmentApprovalDate == null,
+            isEstablishedDueToArticle25 = isEstablishedDueToArticle25,
             timeline = timelineList.sortedBy { it.date }
           )
         }

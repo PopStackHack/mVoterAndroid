@@ -32,7 +32,6 @@ import com.popstack.mvoter2015.helper.format
 import com.popstack.mvoter2015.helper.intent.Intents
 import com.popstack.mvoter2015.logging.HasTag
 
-
 class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDetailBinding>(bundle), HasTag {
 
   override val tag: String = "PartyDetailController"
@@ -167,7 +166,7 @@ class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDeta
 
         binding.cardViewTimeline.isVisible = viewItem.timeline.isNotEmpty()
 
-        binding.tvPoteMa25.isVisible = viewItem.isPoteMa25
+        binding.tvPoteMa25.isVisible = viewItem.isEstablishedDueToArticle25
         timelineAdapter.submitList(viewItem.timeline)
       }
       is AsyncViewState.Error -> {
