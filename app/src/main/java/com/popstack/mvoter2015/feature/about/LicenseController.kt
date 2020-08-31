@@ -10,7 +10,6 @@ import com.popstack.mvoter2015.helper.conductor.setSupportActionBar
 import com.popstack.mvoter2015.helper.conductor.supportActionBar
 import java.io.IOException
 
-
 class LicenseController : BaseController<ControllerLicenseBinding>() {
 
   override val bindingInflater: (LayoutInflater) -> ControllerLicenseBinding = ControllerLicenseBinding::inflate
