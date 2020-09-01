@@ -1,6 +1,5 @@
 package com.popstack.mvoter2015.feature.faq.ballot
 
-import javax.inject.Inject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -9,6 +8,7 @@ import com.popstack.mvoter2015.domain.faq.usecase.GetBallotExampleList
 import com.popstack.mvoter2015.exception.GlobalExceptionHandler
 import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewStateLiveData
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 class BallotExampleViewModel @Inject constructor(
   private val getBallotExampleList: GetBallotExampleList,

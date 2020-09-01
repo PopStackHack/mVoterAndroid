@@ -1,7 +1,7 @@
 package com.popstack.mvoter2015.feature.votingguide
 
-import javax.inject.Inject
 import androidx.lifecycle.ViewModel
+import javax.inject.Inject
 
 class VotingGuideModel @Inject constructor() : ViewModel() {
 

@@ -5,8 +5,6 @@ import com.popstack.mvoter2015.domain.candidate.model.CandidateGender
 import com.popstack.mvoter2015.domain.candidate.model.CandidateId
 import com.popstack.mvoter2015.domain.candidate.model.CandidateParent
 import com.popstack.mvoter2015.domain.constituency.model.Constituency
-import com.popstack.mvoter2015.domain.constituency.model.ConstituencyId
-import com.popstack.mvoter2015.domain.constituency.model.HouseType
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import java.time.LocalDate
@@ -44,14 +42,14 @@ data class CandidateApiAttributes(
   data class ParentApiModel(
     @Json(name = "name") val name: String,
     @Json(name = "ethnicity") val ethnicity: String,
-    @Json(name = "religion") val religion: String,
+    @Json(name = "religion") val religion: String
   )
 }
 
 fun CandidateApiModel.toCandidateModel(): Candidate {
   val dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH)
 
-  with (attributes) {
+  with(attributes) {
     return Candidate(
       id = CandidateId(id),
       name = name,
@@ -70,4 +68,3 @@ fun CandidateApiModel.toCandidateModel(): Candidate {
     )
   }
 }
-

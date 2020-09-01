@@ -16,7 +16,6 @@ import com.popstack.mvoter2015.feature.HasRouter
 import com.popstack.mvoter2015.feature.home.HomeController
 import com.popstack.mvoter2015.helper.conductor.requireActivity
 import com.popstack.mvoter2015.helper.conductor.requireContext
-import com.popstack.mvoter2015.helper.conductor.setSupportActionBar
 import com.popstack.mvoter2015.helper.conductor.supportActionBar
 import com.popstack.mvoter2015.logging.HasTag
 import kotlinx.coroutines.delay

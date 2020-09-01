@@ -8,21 +8,15 @@ import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.bluelinelabs.conductor.RouterTransaction
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerUpperHouseCandidateListBinding
 import com.popstack.mvoter2015.di.conductor.ConductorInjection
-import com.popstack.mvoter2015.domain.candidate.model.CandidateId
 import com.popstack.mvoter2015.domain.constituency.model.ConstituencyId
 import com.popstack.mvoter2015.domain.constituency.model.HouseType
-import com.popstack.mvoter2015.feature.candidate.detail.CandidateDetailController
-import com.popstack.mvoter2015.feature.candidate.listing.CandidateListPagerParentRouter
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateListRecyclerViewAdapter
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateListViewItem
 import com.popstack.mvoter2015.feature.home.BottomNavigationHostViewModelStore
-import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
 import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewState
 import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.logging.HasTag
@@ -57,6 +51,11 @@ class UpperHouseCandidateListController(bundle: Bundle) :
 
   private val constituencyId: ConstituencyId = ConstituencyId(args.getString(CONSTITUENCY_ID)!!)
   private val houseType: HouseType = HouseType.valueOf(args.getString(HOUSE_TYPE)!!)
+
+  override fun onCreateView(inflater: LayoutInflater, container: ViewGroup, savedViewState: Bundle?): View {
+    ConductorInjection.inject(this)
+    return super.onCreateView(inflater, container, savedViewState)
+  }
 
   override fun onBindView(savedViewState: Bundle?) {
     super.onBindView(savedViewState)

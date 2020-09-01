@@ -2,6 +2,8 @@ package com.popstack.mvoter2015.feature.candidate.listing.regionalhouse
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
@@ -9,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerRegionalCandidateListBinding
+import com.popstack.mvoter2015.di.conductor.ConductorInjection
 import com.popstack.mvoter2015.domain.constituency.model.ConstituencyId
 import com.popstack.mvoter2015.domain.constituency.model.HouseType
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateListRecyclerViewAdapter
@@ -48,6 +51,11 @@ class RegionalHouseCandidateListController(bundle: Bundle) :
 
   private val constituencyId: ConstituencyId = ConstituencyId(args.getString(CONSTITUENCY_ID)!!)
   private val houseType: HouseType = HouseType.valueOf(args.getString(HOUSE_TYPE)!!)
+
+  override fun onCreateView(inflater: LayoutInflater, container: ViewGroup, savedViewState: Bundle?): View {
+    ConductorInjection.inject(this)
+    return super.onCreateView(inflater, container, savedViewState)
+  }
 
   override fun onBindView(savedViewState: Bundle?) {
     super.onBindView(savedViewState)

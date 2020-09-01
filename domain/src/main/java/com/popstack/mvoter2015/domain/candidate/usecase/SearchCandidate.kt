@@ -17,7 +17,7 @@ class SearchCandidate @Inject constructor(
   data class Params(
     val query: String,
     val pageNo: Int,
-    val resultPerPage: Int = 20,
+    val resultPerPage: Int = 20
   )
 
   override suspend fun provide(input: Params) = input.run {

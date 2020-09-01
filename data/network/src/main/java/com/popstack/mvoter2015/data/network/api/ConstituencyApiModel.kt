@@ -11,11 +11,11 @@ data class ConstituencyApiResponse(
 
 @JsonClass(generateAdapter = true)
 data class CandidateConstituencyAttributes(
-  @Json(name = "name") val name: String,
+  @Json(name = "name") val name: String
 )
 
 @JsonClass(generateAdapter = true)
 data class ConstituencyApiModel(
   @Json(name = "id") val id: Long,
-  @Json(name = "name") val name: String,
+  @Json(name = "name") val name: String
 )

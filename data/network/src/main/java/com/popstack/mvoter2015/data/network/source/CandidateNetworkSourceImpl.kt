@@ -7,7 +7,6 @@ import com.popstack.mvoter2015.data.network.helper.executeOrThrow
 import com.popstack.mvoter2015.domain.candidate.model.Candidate
 import com.popstack.mvoter2015.domain.candidate.model.CandidateId
 import com.popstack.mvoter2015.domain.constituency.model.ConstituencyId
-import com.popstack.mvoter2015.domain.constituency.model.HouseType
 import javax.inject.Inject
 
 class CandidateNetworkSourceImpl @Inject constructor(

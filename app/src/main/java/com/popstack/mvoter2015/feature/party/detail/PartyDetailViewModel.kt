@@ -1,6 +1,5 @@
 package com.popstack.mvoter2015.feature.party.detail
 
-import javax.inject.Inject
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aungkyawpaing.mmphonenumber.extract.MyanmarPhoneNumberExtractor
@@ -11,6 +10,7 @@ import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewStateLiveData
 import com.popstack.mvoter2015.helper.livedata.SingleLiveEvent
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import javax.inject.Inject
 
 class PartyDetailViewModel @Inject constructor(
   private val getParty: GetParty,

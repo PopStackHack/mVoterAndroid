@@ -15,13 +15,11 @@ import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerPartyListBinding
 import com.popstack.mvoter2015.domain.party.model.PartyId
 import com.popstack.mvoter2015.exception.GlobalExceptionHandler
-import com.popstack.mvoter2015.feature.HasRouter
 import com.popstack.mvoter2015.feature.home.BottomNavigationHostViewModelStore
 import com.popstack.mvoter2015.feature.party.detail.PartyDetailController
 import com.popstack.mvoter2015.feature.party.search.PartySearchController
 import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
 import com.popstack.mvoter2015.helper.ViewVisibilityDebounceHandler
-import com.popstack.mvoter2015.helper.conductor.requireActivity
 import com.popstack.mvoter2015.helper.conductor.requireActivityAsAppCompatActivity
 import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.logging.HasTag
@@ -98,7 +96,7 @@ class PartyListController : MvvmController<ControllerPartyListBinding>(), HasTag
   private fun handleMenuItemClick(menuItem: MenuItem): Boolean {
     return when (menuItem.itemId) {
       R.id.action_search -> {
-          router.pushController(RouterTransaction.with(PartySearchController()))
+        router.pushController(RouterTransaction.with(PartySearchController()))
         true
       }
       else -> false

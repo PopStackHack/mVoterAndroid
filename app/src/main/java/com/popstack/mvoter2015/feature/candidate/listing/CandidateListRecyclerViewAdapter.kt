@@ -9,8 +9,7 @@ import com.popstack.mvoter2015.databinding.ItemCandidateBinding
 import com.popstack.mvoter2015.helper.diff.diffCallBackWith
 import com.popstack.mvoter2015.helper.extensions.inflater
 
-class CandidateListRecyclerViewAdapter
-  : ListAdapter<CandidateListViewItem.SmallCandidateViewItem, CandidateListItemViewHolder>(
+class CandidateListRecyclerViewAdapter : ListAdapter<CandidateListViewItem.SmallCandidateViewItem, CandidateListItemViewHolder>(
   diffCallBackWith(areItemTheSame = { item1, item2 -> item1.id == item2.id },
     areContentsTheSame = { item1, item2 ->
       item1 == item2

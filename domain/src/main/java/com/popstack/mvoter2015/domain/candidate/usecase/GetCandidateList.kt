@@ -5,7 +5,6 @@ import com.popstack.mvoter2015.domain.DispatcherProvider
 import com.popstack.mvoter2015.domain.candidate.CandidateRepository
 import com.popstack.mvoter2015.domain.candidate.model.Candidate
 import com.popstack.mvoter2015.domain.constituency.model.ConstituencyId
-import com.popstack.mvoter2015.domain.constituency.model.HouseType
 import javax.inject.Inject
 
 class GetCandidateList @Inject constructor(

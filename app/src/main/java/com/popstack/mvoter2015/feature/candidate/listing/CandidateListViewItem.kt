@@ -14,8 +14,8 @@ data class CandidateListViewItem(val candidateList: List<SmallCandidateViewItem>
 
 fun Candidate.toSmallCandidateViewItem() = CandidateListViewItem.SmallCandidateViewItem(
   id = id.value,
-  name= name,
+  name = name,
   photoUrl = photoUrl,
   partyName = party.nameBurmese,
-  partyImageUrl = party.sealImage,
+  partyImageUrl = party.sealImage
 )

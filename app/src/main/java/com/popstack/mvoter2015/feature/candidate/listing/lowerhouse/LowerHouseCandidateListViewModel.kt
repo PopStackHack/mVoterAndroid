@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 import timber.log.Timber
 import javax.inject.Inject
 
-class LowerHouseCandidateListViewModel  @Inject constructor(
+class LowerHouseCandidateListViewModel @Inject constructor(
   private val getCandidate: GetCandidateList,
   private val globalExceptionHandler: GlobalExceptionHandler
 ) : ViewModel() {

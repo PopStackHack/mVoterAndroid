@@ -1,10 +1,7 @@
 package com.popstack.mvoter2015.feature.candidate.listing.upperhouse
 
-import javax.inject.Inject
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.popstack.mvoter2015.domain.candidate.model.CandidateId
 import com.popstack.mvoter2015.domain.candidate.usecase.GetCandidateList
 import com.popstack.mvoter2015.domain.constituency.model.ConstituencyId
 import com.popstack.mvoter2015.domain.constituency.model.HouseType
@@ -14,8 +11,9 @@ import com.popstack.mvoter2015.feature.candidate.listing.toSmallCandidateViewIte
 import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewStateLiveData
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import javax.inject.Inject
 
-class UpperHouseCandidateListViewModel  @Inject constructor(
+class UpperHouseCandidateListViewModel @Inject constructor(
   private val getCandidate: GetCandidateList,
   private val globalExceptionHandler: GlobalExceptionHandler
 ) : ViewModel() {

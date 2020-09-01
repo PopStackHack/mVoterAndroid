@@ -8,7 +8,6 @@ import com.popstack.mvoter2015.domain.candidate.model.CandidateId
 import com.popstack.mvoter2015.domain.candidate.model.CandidateParent
 import com.popstack.mvoter2015.domain.constituency.model.Constituency
 import com.popstack.mvoter2015.domain.constituency.model.ConstituencyId
-import com.popstack.mvoter2015.domain.constituency.model.HouseType
 import com.popstack.mvoter2015.domain.party.model.Party
 import javax.inject.Inject
 
@@ -95,7 +94,7 @@ fun CandidateWithPartyView.toCandidateModel() = Candidate(
   constituency = Constituency(
     // TODO:
     id = "",
-    name = constituencyName,
+    name = constituencyName
   ),
   ethnicity = ethnicity,
   father = CandidateParent(

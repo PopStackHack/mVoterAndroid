@@ -1,6 +1,5 @@
 package com.popstack.mvoter2015.feature.location
 
-import javax.inject.Inject
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.popstack.mvoter2015.domain.location.usecase.GetWardsForTownship
@@ -8,6 +7,7 @@ import com.popstack.mvoter2015.exception.GlobalExceptionHandler
 import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewStateLiveData
 import com.popstack.mvoter2015.helper.livedata.SingleLiveEvent
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 class WardChooserViewModel @Inject constructor(
   private val getWardList: GetWardsForTownship,

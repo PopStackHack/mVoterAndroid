@@ -1,6 +1,5 @@
 package com.popstack.mvoter2015.feature.faq.search
 
-import javax.inject.Inject
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
@@ -10,6 +9,7 @@ import com.popstack.mvoter2015.data.android.faq.FaqPagerFactory
 import com.popstack.mvoter2015.domain.faq.model.Faq
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import javax.inject.Inject
 
 class FaqSearchViewModel @Inject constructor(
   private val faqPagerFactory: FaqPagerFactory
