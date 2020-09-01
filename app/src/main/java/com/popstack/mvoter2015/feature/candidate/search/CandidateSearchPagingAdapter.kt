@@ -59,7 +59,7 @@ internal class CandidateSearchPagingAdapter constructor(
         tvCandidateName.text = itemAtIndex.name
         tvCandidatePartyName.text = itemAtIndex.partyName
 
-        ivCandidatePartyFlag.load(itemAtIndex.partyImageUrl) {
+        ivCandidatePartySeal.load(itemAtIndex.partySealImageUrl) {
           placeholder(R.drawable.placeholder_rect)
           error(R.drawable.placeholder_rect)
           crossfade(true)

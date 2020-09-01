@@ -6,7 +6,6 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import androidx.paging.map
 import com.popstack.mvoter2015.data.android.candidate.CandidatePagerFactory
-import com.popstack.mvoter2015.domain.candidate.model.Candidate
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateListViewItem
 import com.popstack.mvoter2015.feature.candidate.listing.toSmallCandidateViewItem
 import kotlinx.coroutines.flow.Flow

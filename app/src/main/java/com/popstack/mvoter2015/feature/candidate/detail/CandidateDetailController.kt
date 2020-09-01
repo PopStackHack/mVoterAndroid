@@ -17,6 +17,8 @@ import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerCandidateDetailBinding
 import com.popstack.mvoter2015.domain.candidate.model.CandidateId
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateListRecyclerViewAdapter
+import com.popstack.mvoter2015.feature.party.PartySharedElementTransitionChangeHandler
+import com.popstack.mvoter2015.feature.party.detail.PartyDetailController
 import com.popstack.mvoter2015.feature.share.ShareUrlFactory
 import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewState
 import com.popstack.mvoter2015.helper.conductor.requireActivityAsAppCompatActivity
@@ -120,6 +122,19 @@ class CandidateDetailController(
         with(viewState.value.candidateInfo) {
           binding.tvCandidateName.text = name
           binding.tvCandidatePartyName.text = partyName
+
+          binding.tvCandidatePartyName.setOnClickListener {
+            val partyDetailController = PartyDetailController.newInstance(
+              partyId = partyId,
+              partyName = partyName,
+            )
+            router.pushController(
+              RouterTransaction.with(partyDetailController)
+                .pushChangeHandler(PartySharedElementTransitionChangeHandler())
+                .popChangeHandler(PartySharedElementTransitionChangeHandler())
+            )
+          }
+
           binding.tvConstituencyType.text = houseType
           binding.tvConstituencyName.text = constituencyName
           binding.tvAge.text = age

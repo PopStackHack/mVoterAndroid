@@ -2,6 +2,7 @@ package com.popstack.mvoter2015.feature.candidate.detail
 
 import com.popstack.mvoter2015.domain.candidate.model.Candidate
 import com.popstack.mvoter2015.domain.constituency.model.HouseType
+import com.popstack.mvoter2015.domain.party.model.PartyId
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateListViewItem
 
 data class CandidateDetailsViewItem(
@@ -12,6 +13,7 @@ data class CandidateDetailsViewItem(
 data class CandidateInfoViewItem(
   val photo: String,
   val name: String,
+  val partyId: PartyId,
   val partyName: String,
   val partySealImageUrl: String,
   val houseType: String,
@@ -30,6 +32,7 @@ data class CandidateInfoViewItem(
 fun Candidate.toCandidateInfoViewItem() = CandidateInfoViewItem(
   photo = photoUrl,
   name = name,
+  partyId = party.id,
   partyName = party.nameBurmese,
   partySealImageUrl = party.sealImage,
   // TODO: Distinguish state region

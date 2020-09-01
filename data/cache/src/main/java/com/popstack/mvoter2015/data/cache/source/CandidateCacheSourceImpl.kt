@@ -15,7 +15,7 @@ import javax.inject.Inject
 class CandidateCacheSourceImpl @Inject constructor(
   private val db: MVoterDb
 ) : CandidateCacheSource {
-  
+
   override fun putCandidate(candidate: Candidate) {
     insertOrReplaceParty(candidate.party)
     insertOrReplaceCandidate(candidate)

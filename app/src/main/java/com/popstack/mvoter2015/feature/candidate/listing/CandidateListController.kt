@@ -2,7 +2,6 @@ package com.popstack.mvoter2015.feature.candidate.listing
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import androidx.lifecycle.Observer
 import com.bluelinelabs.conductor.RouterTransaction
