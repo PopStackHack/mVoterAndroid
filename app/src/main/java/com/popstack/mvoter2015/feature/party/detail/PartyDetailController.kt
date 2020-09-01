@@ -20,7 +20,6 @@ import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerPartyDetailBinding
 import com.popstack.mvoter2015.domain.party.model.PartyId
 import com.popstack.mvoter2015.domain.utils.convertToBurmeseNumber
-import com.popstack.mvoter2015.feature.home.BottomNavigationHostViewModelStore
 import com.popstack.mvoter2015.feature.share.ShareUrlFactory
 import com.popstack.mvoter2015.helper.ViewVisibilityDebounceHandler
 import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewState
@@ -57,9 +56,7 @@ class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDeta
     PartyId(args.getString(ARG_PARTY_ID)!!)
   }
 
-  private val viewModel: PartyDetailViewModel by viewModels(
-    store = BottomNavigationHostViewModelStore.viewModelStore ?: viewModelStore
-  )
+  private val viewModel: PartyDetailViewModel by viewModels()
 
   private val timelineAdapter by lazy {
     PartyTimelineRecyclerViewAdapter()
@@ -103,7 +100,7 @@ class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDeta
     viewModel.viewItemLiveData.observe(this, Observer(::observeViewItem))
     viewModel.showContactDialogEvent.observe(this, Observer(::showContactDialog))
 
-    if (savedViewState == null) {
+    if (viewModel.viewItemLiveData.value == null) {
       viewModel.loadData()
     }
   }
