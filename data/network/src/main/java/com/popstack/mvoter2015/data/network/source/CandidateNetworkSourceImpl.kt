@@ -18,7 +18,7 @@ class CandidateNetworkSourceImpl @Inject constructor(
   }
 
   override fun getCandidate(candidateId: CandidateId): Candidate {
-    return mvoterApi.candidate(candidateId.value).executeOrThrow().toCandidateModel()
+    return mvoterApi.candidate(candidateId.value).executeOrThrow().data.toCandidateModel()
   }
 
   override fun searchCandidate(query: String, pageNo: Int, resultsPerPage: Int): List<Candidate> {

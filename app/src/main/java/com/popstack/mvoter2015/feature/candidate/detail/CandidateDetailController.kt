@@ -5,9 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.bluelinelabs.conductor.RouterTransaction
 import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerCandidateDetailBinding
 import com.popstack.mvoter2015.domain.candidate.model.CandidateId
+import com.popstack.mvoter2015.feature.candidate.listing.CandidateListRecyclerViewAdapter
+import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewState
+import com.popstack.mvoter2015.helper.conductor.requireActivityAsAppCompatActivity
+import com.popstack.mvoter2015.helper.conductor.requireContext
+import com.popstack.mvoter2015.helper.conductor.supportActionBar
 import com.popstack.mvoter2015.logging.HasTag
 
 class CandidateDetailController(
@@ -39,7 +48,13 @@ class CandidateDetailController(
   override val bindingInflater: (LayoutInflater) -> ControllerCandidateDetailBinding =
     ControllerCandidateDetailBinding::inflate
 
-//  override fun getCandidateId(): CandidateId = CandidateId(args.getString(ARG_CANDIDATE_ID)!!)
+  private val candidateId by lazy {
+    CandidateId(args.getString(ARG_CANDIDATE_ID)!!)
+  }
+
+  private val candidateListAdapter by lazy {
+    CandidateListRecyclerViewAdapter(onCandidateClicked)
+  }
 
   override fun onCreateView(
     inflater: LayoutInflater,
@@ -49,9 +64,62 @@ class CandidateDetailController(
     return super.onCreateView(inflater, container, savedViewState)
   }
 
-  override fun onBindView(savedViewState: Bundle?) {
-    super.onBindView(savedViewState)
-    viewModel.loadData()
+  private val onCandidateClicked: (CandidateId) -> Unit = {
+    val candidateDetailsController = CandidateDetailController.newInstance(it)
+    router.pushController(RouterTransaction.with(candidateDetailsController))
   }
 
+  override fun onBindView(savedViewState: Bundle?) {
+    super.onBindView(savedViewState)
+
+    requireActivityAsAppCompatActivity().setSupportActionBar(binding.toolBar)
+    requireActivityAsAppCompatActivity().supportActionBar?.title = ""
+    supportActionBar()?.setDisplayHomeAsUpEnabled(true)
+
+    binding.rvRivalCandidates.apply {
+      adapter = candidateListAdapter
+      layoutManager = LinearLayoutManager(requireContext())
+    }
+
+    viewModel.viewItemLiveData.observe(this, Observer(::observeViewItem))
+
+    binding.btnRetry.setOnClickListener {
+      viewModel.loadCandidate(candidateId)
+    }
+
+    viewModel.loadCandidate(candidateId)
+
+  }
+
+  private fun observeViewItem(viewState: AsyncViewState<CandidateDetailsViewItem>) {
+    binding.progressBar.isVisible = viewState is AsyncViewState.Loading
+    binding.svCandidateInfo.isVisible = viewState is AsyncViewState.Success
+    binding.tvErrorMessage.isVisible = viewState is AsyncViewState.Error
+    binding.btnRetry.isVisible = viewState is AsyncViewState.Error
+
+    when (viewState) {
+      is AsyncViewState.Success -> {
+        with(viewState.value.candidateInfo) {
+          binding.tvCandidateName.text = name
+          binding.tvCandidatePartyName.text = partyName
+          binding.tvConstituencyType.text = houseType
+          binding.tvConstituencyName.text = constituencyName
+          binding.tvAge.text = age
+          binding.tvBirthday.text = birthday
+          binding.tvEducation.text = education
+          binding.tvWork.text = job
+          binding.tvRaceReligion.text = religion
+          binding.tvMotherName.text = motherName
+          binding.tvMotherReligion.text = motherReligion
+          binding.tvFatherName.text = fatherName
+          binding.tvFatherReligion.text = fatherReligion
+        }
+        candidateListAdapter.submitList(viewState.value.rivals)
+      }
+      is AsyncViewState.Error -> {
+        val error = viewState.errorMessage
+        binding.tvErrorMessage.text = error
+      }
+    }
+  }
 }

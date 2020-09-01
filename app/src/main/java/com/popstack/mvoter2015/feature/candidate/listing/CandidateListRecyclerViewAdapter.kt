@@ -6,10 +6,14 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
 import coil.size.Scale
 import com.popstack.mvoter2015.databinding.ItemCandidateBinding
+import com.popstack.mvoter2015.domain.candidate.model.CandidateId
 import com.popstack.mvoter2015.helper.diff.diffCallBackWith
 import com.popstack.mvoter2015.helper.extensions.inflater
+import com.popstack.mvoter2015.helper.extensions.withSafeAdapterPosition
 
-class CandidateListRecyclerViewAdapter : ListAdapter<CandidateListViewItem.SmallCandidateViewItem, CandidateListItemViewHolder>(
+class CandidateListRecyclerViewAdapter constructor(
+  private val onCandidateClicked: (CandidateId) -> Unit
+) : ListAdapter<CandidateListViewItem.SmallCandidateViewItem, CandidateListItemViewHolder>(
   diffCallBackWith(areItemTheSame = { item1, item2 -> item1.id == item2.id },
     areContentsTheSame = { item1, item2 ->
       item1 == item2
@@ -17,7 +21,15 @@ class CandidateListRecyclerViewAdapter : ListAdapter<CandidateListViewItem.Small
 ) {
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = CandidateListItemViewHolder(
     ItemCandidateBinding.inflate(parent.inflater(), parent, false)
-  )
+  ).apply {
+    itemView.setOnClickListener {
+      withSafeAdapterPosition { position ->
+        getItem(position)?.let { itemAtIndex ->
+          onCandidateClicked(CandidateId(itemAtIndex.id))
+        }
+      }
+    }
+  }
 
   override fun onBindViewHolder(holder: CandidateListItemViewHolder, position: Int) {
     holder.bind(getItem(position))

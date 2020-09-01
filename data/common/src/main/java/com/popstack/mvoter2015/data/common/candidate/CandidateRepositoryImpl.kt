@@ -31,13 +31,15 @@ class CandidateRepositoryImpl @Inject constructor(
   }
 
   override fun getCandidate(candidateId: CandidateId): Candidate {
-    return try {
-      candidateCacheSource.getCandidate(candidateId)
-    } catch (exception: Exception) {
-      val candidateFromNetwork = candidateNetworkSource.getCandidate(candidateId)
-      candidateCacheSource.putCandidate(candidateFromNetwork)
-      candidateCacheSource.getCandidate(candidateId)
-    }
+    return candidateNetworkSource.getCandidate(candidateId)
+    // TODO: Cache
+//    return try {
+//      candidateCacheSource.getCandidate(candidateId)
+//    } catch (exception: Exception) {
+//      val candidateFromNetwork = candidateNetworkSource.getCandidate(candidateId)
+//      candidateCacheSource.putCandidate(candidateFromNetwork)
+//      candidateCacheSource.getCandidate(candidateId)
+//    }
   }
 
   override fun searchCandidate(query: String, pageNo: Int, resultPerPage: Int): List<Candidate> {

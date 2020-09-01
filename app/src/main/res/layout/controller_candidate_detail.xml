@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent">
 
   <androidx.core.widget.NestedScrollView
+    android:id="@+id/svCandidateInfo"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -13,7 +14,7 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content">
 
-      <de.hdodenhof.circleimageview.CircleImageView
+      <ImageView
         android:id="@+id/ivCandidate"
         android:layout_width="106dp"
         android:layout_height="106dp"
@@ -65,7 +66,7 @@
         tools:text="@sample/candidates.csv/party" />
 
       <TextView
-        android:id="@+id/tvParliamentType"
+        android:id="@+id/tvConstituencyType"
         style="@style/TextMedium.Bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -77,17 +78,19 @@
         tools:text="ပြည့်သူလွှတ်တော်" />
 
       <TextView
-        android:id="@+id/tvRegion"
+        android:id="@+id/tvConstituencyName"
         style="@style/TextMedium.Bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
         android:background="@drawable/bg_chip_accent_transparent"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
-        app:layout_constraintEnd_toEndOf="@+id/tvParliamentType"
-        app:layout_constraintStart_toStartOf="@+id/tvParliamentType"
-        app:layout_constraintTop_toBottomOf="@+id/tvParliamentType"
+        app:layout_constraintEnd_toEndOf="@+id/tvConstituencyType"
+        app:layout_constraintStart_toStartOf="@+id/tvConstituencyType"
+        app:layout_constraintTop_toBottomOf="@+id/tvConstituencyType"
         tools:text="တာမွေ မဲဆန္ဒနယ်" />
 
       <androidx.constraintlayout.widget.Guideline
@@ -124,7 +127,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/tvAge"
         app:layout_constraintStart_toEndOf="@id/tvAge"
         app:layout_constraintTop_toTopOf="@+id/tvAge"
-        tools:text="နှစ်" />
+        android:text="နှစ်" />
 
       <TextView
         android:id="@+id/tvBirthday"
@@ -144,7 +147,7 @@
         android:layout_marginTop="20dp"
         android:text="@string/date_of_birth"
         app:layout_constraintStart_toEndOf="@id/tvAgeSuffix"
-        app:layout_constraintTop_toBottomOf="@+id/tvRegion" />
+        app:layout_constraintTop_toBottomOf="@+id/tvConstituencyName" />
 
       <TextView
         android:id="@+id/tvEducationTitle"
@@ -327,4 +330,44 @@
 
   </com.google.android.material.appbar.AppBarLayout>
 
-</FrameLayout>
+  <ProgressBar
+    android:id="@+id/progressBar"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:visibility="gone"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/appBarLayout"
+    tools:visibility="gone" />
+
+  <TextView
+    android:id="@+id/tvErrorMessage"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:gravity="center"
+    android:textColor="@color/text_error"
+    android:visibility="gone"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/appBarLayout"
+    tools:visibility="visible" />
+
+  <com.google.android.material.button.MaterialButton
+    android:id="@+id/btnRetry"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:text="@string/retry"
+    android:textColor="@color/accent"
+    android:visibility="gone"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/tvErrorMessage"
+    app:strokeColor="@color/accent"
+    tools:visibility="gone" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,6 +17,11 @@ data class CandidateListApiResponse(
 )
 
 @JsonClass(generateAdapter = true)
+data class CandidateDetailsApiResponse(
+  @Json(name = "data") val data: CandidateApiModel
+)
+
+@JsonClass(generateAdapter = true)
 data class CandidateApiModel(
   @Json(name = "id") val id: String,
   @Json(name = "attributes") val attributes: CandidateApiAttributes

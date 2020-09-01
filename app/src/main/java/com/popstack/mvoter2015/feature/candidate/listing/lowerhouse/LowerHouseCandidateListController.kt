@@ -8,16 +8,21 @@ import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bluelinelabs.conductor.RouterTransaction
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerLowerHouseCandidateListBinding
 import com.popstack.mvoter2015.di.conductor.ConductorInjection
+import com.popstack.mvoter2015.domain.candidate.model.CandidateId
 import com.popstack.mvoter2015.domain.constituency.model.ConstituencyId
 import com.popstack.mvoter2015.domain.constituency.model.HouseType
+import com.popstack.mvoter2015.feature.HasRouter
+import com.popstack.mvoter2015.feature.candidate.detail.CandidateDetailController
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateListRecyclerViewAdapter
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateListViewItem
 import com.popstack.mvoter2015.feature.home.BottomNavigationHostViewModelStore
 import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewState
+import com.popstack.mvoter2015.helper.conductor.requireActivity
 import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.logging.HasTag
 
@@ -46,7 +51,14 @@ class LowerHouseCandidateListController(bundle: Bundle) :
     ControllerLowerHouseCandidateListBinding::inflate
 
   private val candidateListAdapter by lazy {
-    CandidateListRecyclerViewAdapter()
+    CandidateListRecyclerViewAdapter(onCandidateClicked)
+  }
+
+  private val onCandidateClicked: (CandidateId) -> Unit = {
+    val candidateDetailsController = CandidateDetailController.newInstance(it)
+    if (requireActivity() is HasRouter) {
+      (requireActivity() as HasRouter).router().pushController(RouterTransaction.with(candidateDetailsController))
+    }
   }
 
   private val constituencyId: ConstituencyId = ConstituencyId(args.getString(CONSTITUENCY_ID)!!)
