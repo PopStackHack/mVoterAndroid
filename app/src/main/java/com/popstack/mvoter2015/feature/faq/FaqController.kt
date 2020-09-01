@@ -20,6 +20,7 @@ import com.popstack.mvoter2015.feature.about.AboutController
 import com.popstack.mvoter2015.feature.faq.ballot.BallotExampleController
 import com.popstack.mvoter2015.feature.faq.ballot.displayString
 import com.popstack.mvoter2015.feature.faq.search.FaqSearchController
+import com.popstack.mvoter2015.feature.home.BottomNavigationHostViewModelStore
 import com.popstack.mvoter2015.feature.settings.SettingsController
 import com.popstack.mvoter2015.feature.share.ShareUrlFactory
 import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
@@ -40,7 +41,9 @@ class FaqController : MvvmController<ControllerFaqBinding>(), HasTag {
 
   override val tag: String = "FaqController"
 
-  private val viewModel: FaqViewModel by viewModels()
+  private val viewModel: FaqViewModel by viewModels(
+    store = BottomNavigationHostViewModelStore.viewModelStore ?: viewModelStore
+  )
 
   override val bindingInflater: (LayoutInflater) -> ControllerFaqBinding =
     ControllerFaqBinding::inflate
@@ -56,10 +59,7 @@ class FaqController : MvvmController<ControllerFaqBinding>(), HasTag {
   }
 
   private fun navigateToBallotExample() {
-    if (requireActivity() is HasRouter) {
-      (requireActivity() as HasRouter).router()
-        .pushController(RouterTransaction.with(BallotExampleController()))
-    }
+    router.pushController(RouterTransaction.with(BallotExampleController()))
   }
 
   private val globalExceptionHandler by lazy {
@@ -146,10 +146,7 @@ class FaqController : MvvmController<ControllerFaqBinding>(), HasTag {
   private fun handleMenuItemClick(menuItem: MenuItem): Boolean {
     return when (menuItem.itemId) {
       R.id.action_search -> {
-        if (requireActivity() is HasRouter) {
-          (requireActivity() as HasRouter).router()
-            .pushController(RouterTransaction.with(FaqSearchController()))
-        }
+        router.pushController(RouterTransaction.with(FaqSearchController()))
         true
       }
       R.id.action_about -> {

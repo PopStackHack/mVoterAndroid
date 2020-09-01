@@ -9,6 +9,7 @@ import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerCandidateListBinding
 import com.popstack.mvoter2015.feature.HasRouter
+import com.popstack.mvoter2015.feature.home.BottomNavigationHostViewModelStore
 import com.popstack.mvoter2015.feature.location.LocationUpdateController
 import com.popstack.mvoter2015.helper.conductor.requireActivity
 import com.popstack.mvoter2015.helper.conductor.requireContext
@@ -21,7 +22,9 @@ class CandidateListController :
 
   override val tag: String = "CandidateListController"
 
-  private val viewModel: CandidateListViewModel by viewModels()
+  private val viewModel: CandidateListViewModel by viewModels(
+    store = BottomNavigationHostViewModelStore.viewModelStore ?: viewModelStore
+  )
 
   private val pagerAdapter by lazy {
     CandidateListHousePagerAdapter(this)

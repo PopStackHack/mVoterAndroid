@@ -24,7 +24,7 @@ abstract class MvvmController<VB : ViewBinding>(args: Bundle? = null) :
   @Inject
   lateinit var viewModelFactory: ViewModelProvider.Factory
 
-  private val viewModelStore: ViewModelStore = ViewModelStore()
+  protected val viewModelStore: ViewModelStore = ViewModelStore()
 
   override fun onDestroyView(view: View) {
     super.onDestroyView(view)
@@ -40,17 +40,12 @@ abstract class MvvmController<VB : ViewBinding>(args: Bundle? = null) :
   }
 
   protected inline fun <reified VM : ViewModel> viewModels(
-    factory: ViewModelProvider.Factory? = null
-  ): Lazy<VM> =
-    if (factory == null) {
-      ViewModelLazy(VM::class)
-    } else {
-      ViewModelLazy(VM::class, factory)
-    }
+    store: ViewModelStore = viewModelStore
+  ): Lazy<VM> = ViewModelLazy(VM::class, store)
 
   inner class ViewModelLazy<VM : ViewModel>(
     private val viewModelClass: KClass<VM>,
-    private val factory: ViewModelProvider.Factory? = null
+    private val store: ViewModelStore = viewModelStore
   ) : Lazy<VM> {
     private var cached: VM? = null
 
@@ -60,7 +55,7 @@ abstract class MvvmController<VB : ViewBinding>(args: Bundle? = null) :
         if (viewModel == null) {
           viewModel =
             ViewModelProvider(
-              viewModelStore,
+              store,
               viewModelFactory
             ).get(viewModelClass.java)
           cached = viewModel

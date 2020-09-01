@@ -13,6 +13,7 @@ import com.popstack.mvoter2015.domain.constituency.model.ConstituencyId
 import com.popstack.mvoter2015.domain.constituency.model.HouseType
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateListRecyclerViewAdapter
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateListViewItem
+import com.popstack.mvoter2015.feature.home.BottomNavigationHostViewModelStore
 import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewState
 import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.logging.HasTag
@@ -34,7 +35,9 @@ class LowerHouseCandidateListController(bundle: Bundle) :
 
   override val tag: String = "LowerHouseCandidateListController"
 
-  private val viewModel: LowerHouseCandidateListViewModel by viewModels()
+  private val viewModel: LowerHouseCandidateListViewModel by viewModels(
+    store = BottomNavigationHostViewModelStore.viewModelStore ?: viewModelStore
+  )
 
   override val bindingInflater: (LayoutInflater) -> ControllerLowerHouseCandidateListBinding =
     ControllerLowerHouseCandidateListBinding::inflate

@@ -21,6 +21,7 @@ import com.popstack.mvoter2015.feature.candidate.detail.CandidateDetailControlle
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateListPagerParentRouter
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateListRecyclerViewAdapter
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateListViewItem
+import com.popstack.mvoter2015.feature.home.BottomNavigationHostViewModelStore
 import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
 import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewState
 import com.popstack.mvoter2015.helper.conductor.requireContext
@@ -43,7 +44,9 @@ class UpperHouseCandidateListController(bundle: Bundle) :
 
   override val tag: String = "UpperHouseCandidateListController"
 
-  private val viewModel: UpperHouseCandidateListViewModel by viewModels()
+  private val viewModel: UpperHouseCandidateListViewModel by viewModels(
+    store = BottomNavigationHostViewModelStore.viewModelStore ?: viewModelStore
+  )
 
   override val bindingInflater: (LayoutInflater) -> ControllerUpperHouseCandidateListBinding =
     ControllerUpperHouseCandidateListBinding::inflate
