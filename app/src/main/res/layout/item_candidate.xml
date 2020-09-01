@@ -21,7 +21,7 @@
     app:layout_constraintTop_toTopOf="parent" />
 
   <ImageView
-    android:id="@+id/ivCandidatePartyFlag"
+    android:id="@+id/ivCandidatePartySeal"
     android:layout_width="26dp"
     android:layout_height="16dp"
     android:layout_marginStart="16dp"
@@ -41,7 +41,7 @@
     app:layout_constraintBottom_toTopOf="@+id/tvCandidatePartyName"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_bias="0.5"
-    app:layout_constraintStart_toEndOf="@+id/ivCandidatePartyFlag"
+    app:layout_constraintStart_toEndOf="@+id/ivCandidatePartySeal"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintVertical_chainStyle="packed"
     tools:text="@sample/candidates.csv/full_name" />
@@ -56,7 +56,7 @@
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="@+id/tvCandidateName"
     app:layout_constraintHorizontal_bias="0.5"
-    app:layout_constraintStart_toStartOf="@+id/ivCandidatePartyFlag"
+    app:layout_constraintStart_toStartOf="@+id/ivCandidatePartySeal"
     app:layout_constraintTop_toBottomOf="@+id/tvCandidateName"
     tools:text="@sample/candidates.csv/party" />
 

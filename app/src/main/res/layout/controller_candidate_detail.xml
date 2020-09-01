@@ -26,7 +26,7 @@
         tools:src="@tools:sample/avatars" />
 
       <ImageView
-        android:id="@+id/ivCandidatePartyFlag"
+        android:id="@+id/ivCandidatePartySeal"
         android:layout_width="26dp"
         android:layout_height="16dp"
         android:layout_marginStart="@dimen/candidate_details_horizontal_section_spacing"
@@ -46,7 +46,7 @@
         android:layout_marginTop="12dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/ivCandidatePartyFlag"
+        app:layout_constraintStart_toEndOf="@+id/ivCandidatePartySeal"
         app:layout_constraintTop_toBottomOf="@+id/ivCandidate"
         app:layout_constraintWidth_default="wrap"
         tools:text="@sample/candidates.csv/full_name" />

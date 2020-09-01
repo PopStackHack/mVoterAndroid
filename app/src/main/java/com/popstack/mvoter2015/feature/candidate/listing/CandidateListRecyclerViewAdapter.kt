@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
 import coil.size.Scale
+import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.databinding.ItemCandidateBinding
 import com.popstack.mvoter2015.domain.candidate.model.CandidateId
 import com.popstack.mvoter2015.helper.diff.diffCallBackWith
@@ -46,7 +47,9 @@ class CandidateListItemViewHolder(val binding: ItemCandidateBinding) : RecyclerV
 //        scale(Scale.FIT)
 //        crossfade(true)
 //      }
-      ivCandidatePartyFlag.load(smallCandidateViewItem.partySealImageUrl) {
+      ivCandidatePartySeal.load(smallCandidateViewItem.partySealImageUrl) {
+        placeholder(R.drawable.placeholder_rect)
+        error(R.drawable.placeholder_rect)
         scale(Scale.FILL)
         crossfade(true)
       }

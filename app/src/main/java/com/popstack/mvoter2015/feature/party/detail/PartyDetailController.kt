@@ -21,7 +21,6 @@ import com.popstack.mvoter2015.databinding.ControllerPartyDetailBinding
 import com.popstack.mvoter2015.domain.party.model.PartyId
 import com.popstack.mvoter2015.domain.utils.convertToBurmeseNumber
 import com.popstack.mvoter2015.feature.share.ShareUrlFactory
-import com.popstack.mvoter2015.helper.ViewVisibilityDebounceHandler
 import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewState
 import com.popstack.mvoter2015.helper.conductor.requireActivity
 import com.popstack.mvoter2015.helper.conductor.requireActivityAsAppCompatActivity
@@ -119,12 +118,7 @@ class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDeta
     }
   }
 
-  private val progresBarVisibilityHandler by lazy {
-    ViewVisibilityDebounceHandler(binding.progressBar)
-  }
-
   private fun observeViewItem(viewState: AsyncViewState<PartyDetailViewItem>) {
-//    progresBarVisibilityHandler.setVisible(viewState is AsyncViewState.Loading)
     binding.progressBar.isVisible = viewState is AsyncViewState.Loading
     binding.buttonPolicy.isVisible = viewState is AsyncViewState.Success
     binding.cardViewTimeline.isVisible = viewState is AsyncViewState.Success

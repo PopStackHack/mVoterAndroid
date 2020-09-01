@@ -131,7 +131,7 @@ class CandidateDetailController(
           binding.tvMotherReligion.text = motherReligion
           binding.tvFatherName.text = fatherName
           binding.tvFatherReligion.text = fatherReligion
-          binding.ivCandidatePartyFlag.load(partySealImageUrl) {
+          binding.ivCandidatePartySeal.load(partySealImageUrl) {
             placeholder(R.drawable.placeholder_rect)
             error(R.drawable.placeholder_rect)
             crossfade(true)
