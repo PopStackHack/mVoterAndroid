@@ -67,10 +67,7 @@ class CandidateListController :
   }
 
   override fun onDestroyView(view: View) {
-    if (requireActivity().isChangingConfigurations) {
-      binding.viewPager.adapter = null
-    }
-
+    binding.viewPager.adapter = null
     binding.tabLayout.setupWithViewPager(null)
     super.onDestroyView(view)
   }

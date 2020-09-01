@@ -79,7 +79,7 @@ class RegionalHouseCandidateListController(bundle: Bundle) :
       loadCandidates()
     }
 
-    if (savedViewState == null) {
+    if (viewModel.viewItemLiveData.value == null) {
       loadCandidates()
     }
   }

@@ -277,10 +277,10 @@
 
       <ImageView
         android:id="@+id/ivRivalCandidates"
-        style="@style/TextLarge"
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:layout_marginTop="@dimen/candidate_details_horizontal_section_spacing"
+        android:tint="@color/accent"
         android:src="@drawable/ic_candidate_filled"
         android:text="ပြိုင်ဘက် ကိုယ်စားလှယ်လောင်းများ"
         app:layout_constraintEnd_toEndOf="parent"
