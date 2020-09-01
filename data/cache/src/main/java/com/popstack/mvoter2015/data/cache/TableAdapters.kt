@@ -2,6 +2,7 @@ package com.popstack.mvoter2015.data.cache
 
 import com.popstack.mvoter2015.data.cache.columnadapter.BallotExampleIdColumnAdapter
 import com.popstack.mvoter2015.data.cache.columnadapter.CandidateIdColumnAdapter
+import com.popstack.mvoter2015.data.cache.columnadapter.ConstituencyIdColumnAdapter
 import com.popstack.mvoter2015.data.cache.columnadapter.FaqIdColumnAdapter
 import com.popstack.mvoter2015.data.cache.columnadapter.LocalDateColumnAdapter
 import com.popstack.mvoter2015.data.cache.columnadapter.NewsIdColumnAdapter
@@ -21,7 +22,8 @@ object TableAdapters {
       idAdapter = CandidateIdColumnAdapter,
       genderAdapter = EnumColumnAdapter(),
       birthDateAdapter = LocalDateColumnAdapter,
-      partyAdapter = PartyIdColumnAdapter
+      partyIdAdapter = PartyIdColumnAdapter,
+      constituencyIdAdapter = ConstituencyIdColumnAdapter
     )
   }
 

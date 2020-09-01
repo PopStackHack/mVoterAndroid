@@ -22,6 +22,8 @@ object CommonLibs {
   const val junit = "junit:junit:4.13"
   const val javaxInject = "javax.inject:javax.inject:1"
   const val javaXAnnotations = "org.glassfish:javax.annotation:10.0-b28"
+
+  const val circle_image_view = "de.hdodenhof:circleimageview:3.0.1"
 }
 
 //region AndroidX

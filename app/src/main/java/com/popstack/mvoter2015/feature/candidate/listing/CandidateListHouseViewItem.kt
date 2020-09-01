@@ -4,11 +4,13 @@ import android.content.Context
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.domain.constituency.model.HouseType
 import com.popstack.mvoter2015.domain.location.model.StateRegionType
+import com.popstack.mvoter2015.domain.location.model.Ward
 import javax.inject.Inject
 
 data class CandidateListHouseViewItem(
   val houseType: HouseType,
-  val name: String
+  val name: String,
+  val constituencyId: String
 )
 
 class CandidateListHouseViewItemMapper @Inject constructor(
@@ -17,7 +19,8 @@ class CandidateListHouseViewItemMapper @Inject constructor(
 
   internal fun mapFromHouseType(
     houseType: HouseType,
-    stateRegionType: StateRegionType
+    stateRegionType: StateRegionType,
+    userWard: Ward
   ): CandidateListHouseViewItem {
 
     val name = when (houseType) {
@@ -35,9 +38,16 @@ class CandidateListHouseViewItemMapper @Inject constructor(
       }
     }
 
+    val id = when (houseType) {
+      HouseType.UPPER_HOUSE -> userWard.upperHouseConstituency.id
+      HouseType.LOWER_HOUSE -> userWard.lowerHouseConstituency.id
+      HouseType.REGIONAL_HOUSE -> userWard.stateRegionConstituency.id
+    }
+
     return CandidateListHouseViewItem(
       houseType = houseType,
-      name = name
+      name = name,
+      constituencyId = id
     )
   }
 }
