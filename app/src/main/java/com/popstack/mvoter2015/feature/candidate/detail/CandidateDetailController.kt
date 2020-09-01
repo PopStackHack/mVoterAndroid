@@ -8,7 +8,9 @@ import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import coil.api.load
 import com.bluelinelabs.conductor.RouterTransaction
+import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerCandidateDetailBinding
 import com.popstack.mvoter2015.domain.candidate.model.CandidateId
@@ -56,16 +58,8 @@ class CandidateDetailController(
     CandidateListRecyclerViewAdapter(onCandidateClicked)
   }
 
-  override fun onCreateView(
-    inflater: LayoutInflater,
-    container: ViewGroup,
-    savedViewState: Bundle?
-  ): View {
-    return super.onCreateView(inflater, container, savedViewState)
-  }
-
   private val onCandidateClicked: (CandidateId) -> Unit = {
-    val candidateDetailsController = CandidateDetailController.newInstance(it)
+    val candidateDetailsController = newInstance(it)
     router.pushController(RouterTransaction.with(candidateDetailsController))
   }
 
@@ -113,6 +107,11 @@ class CandidateDetailController(
           binding.tvMotherReligion.text = motherReligion
           binding.tvFatherName.text = fatherName
           binding.tvFatherReligion.text = fatherReligion
+          binding.ivCandidatePartyFlag.load(partyLogo) {
+            placeholder(R.drawable.placeholder_rect)
+            error(R.drawable.placeholder_rect)
+            crossfade(true)
+          }
         }
         candidateListAdapter.submitList(viewState.value.rivals)
       }

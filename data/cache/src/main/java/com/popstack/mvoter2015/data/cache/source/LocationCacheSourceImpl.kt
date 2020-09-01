@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.core.content.edit
 import com.popstack.mvoter2015.data.common.location.LocationCacheSource
 import com.popstack.mvoter2015.domain.constituency.model.Constituency
+import com.popstack.mvoter2015.domain.constituency.model.HouseType
 import com.popstack.mvoter2015.domain.location.model.Ward
 import com.popstack.mvoter2015.domain.location.model.WardId
 import org.json.JSONObject
@@ -45,15 +46,18 @@ class LocationCacheSourceImpl @Inject constructor(
       name = getString(KEY_WARD_NAME),
       lowerHouseConstituency = Constituency(
         id = getString(KEY_LOWER_CONST_ID),
-        name = getString(KEY_LOWER_CONST_NAME)
+        name = getString(KEY_LOWER_CONST_NAME),
+        house = HouseType.LOWER_HOUSE
       ),
       upperHouseConstituency = Constituency(
         id = getString(KEY_UPPER_CONST_ID),
-        name = getString(KEY_UPPER_CONST_NAME)
+        name = getString(KEY_UPPER_CONST_NAME),
+        house = HouseType.UPPER_HOUSE
       ),
       stateRegionConstituency = Constituency(
         id = getString(KEY_STATE_CONST_ID),
-        name = getString(KEY_STATE_CONST_NAME)
+        name = getString(KEY_STATE_CONST_NAME),
+        house = HouseType.REGIONAL_HOUSE
       )
     )
   }
