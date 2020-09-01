@@ -16,8 +16,10 @@ import com.popstack.mvoter2015.helper.extensions.withSafeAdapterPosition
 class NewsRecyclerViewAdapter(
   val onNewsClick: (@ParameterName("id") NewsId, @ParameterName("url") String) -> Unit
 ) : PagingDataAdapter<NewsViewItem, NewsRecyclerViewAdapter.NewsViewHolder>(
-  diffCallBackWith(areItemTheSame = { item1, item2 -> item1.id == item2.id },
-    areContentsTheSame = { item1, item2 -> item1 == item2 })
+  diffCallBackWith(
+    areItemTheSame = { item1, item2 -> item1.id == item2.id },
+    areContentsTheSame = { item1, item2 -> item1 == item2 }
+  )
 ) {
 
   companion object {

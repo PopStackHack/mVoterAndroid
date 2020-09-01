@@ -17,8 +17,12 @@ class AppSettings @Inject constructor(context: Context) {
   private val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
 
   fun getTheme(): AppTheme {
-    return AppTheme.valueOf(sharedPreferences.getString(PREF_THEME, null)
-      ?: return AppTheme.SYSTEM_DEFAULT)
+    return AppTheme.valueOf(
+      sharedPreferences.getString(
+        PREF_THEME,
+        null
+      ) ?: return AppTheme.SYSTEM_DEFAULT
+    )
   }
 
   fun updateTheme(appTheme: AppTheme) {

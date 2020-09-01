@@ -91,7 +91,9 @@ class HostActivity : AppCompatActivity(), HasRouter, Injectable, HasAndroidInjec
           listOf(
             RouterTransaction.with(SplashController()),
             RouterTransaction.with(partyDetailController)
-          ), null)
+          ),
+          null
+        )
       }
 
       return true
@@ -108,7 +110,9 @@ class HostActivity : AppCompatActivity(), HasRouter, Injectable, HasAndroidInjec
           listOf(
             RouterTransaction.with(SplashController()),
             RouterTransaction.with(candidateDetailController)
-          ), null)
+          ),
+          null
+        )
       }
 
       return true

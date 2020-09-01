@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
-import androidx.lifecycle.Observer
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.popstack.mvoter2015.R
@@ -128,30 +127,38 @@ class BallotExampleController : MvvmController<ControllerBallotExampleBinding>()
     binding.tabLayoutValid.addOnTabSelectedListener(onTabSelectToChangePagerPosition)
 
     binding.btnRetry.setOnClickListener {
-      viewModel.selectBallotExampleCategory(viewModel.selectedBallotExampleCategory()
-        ?: BallotExampleCategory.NORMAL)
+      viewModel.selectBallotExampleCategory(
+        viewModel.selectedBallotExampleCategory() ?: BallotExampleCategory.NORMAL
+      )
     }
 
-    viewModel.ballotViewItemLiveData.observe(this, Observer { viewState ->
-      binding.viewPager.isVisible = viewState is AsyncViewState.Success
-      binding.tabLayoutValid.isVisible = viewState is AsyncViewState.Success
-      binding.progressBar.isVisible = viewState is AsyncViewState.Loading
-      binding.tvErrorMessage.isVisible = viewState is AsyncViewState.Error
-      binding.btnRetry.isVisible = viewState is AsyncViewState.Error
+    viewModel.ballotViewItemLiveData.observe(
+      this,
+      { viewState ->
+        binding.viewPager.isVisible = viewState is AsyncViewState.Success
+        binding.tabLayoutValid.isVisible = viewState is AsyncViewState.Success
+        binding.progressBar.isVisible = viewState is AsyncViewState.Loading
+        binding.tvErrorMessage.isVisible = viewState is AsyncViewState.Error
+        binding.btnRetry.isVisible = viewState is AsyncViewState.Error
 
-      if (viewState is AsyncViewState.Success) {
-        ballotAdapter.submitList(viewState.value)
-      } else if (viewState is AsyncViewState.Error) {
-        binding.tvErrorMessage.text = viewState.errorMessage
+        if (viewState is AsyncViewState.Success) {
+          ballotAdapter.submitList(viewState.value)
+        } else if (viewState is AsyncViewState.Error) {
+          binding.tvErrorMessage.text = viewState.errorMessage
+        }
       }
-    })
+    )
 
-    viewModel.ballotExampleCategoryLiveData.observe(lifecycleOwner, Observer { ballotExampleCategory ->
-      binding.tvSelectedCategory.text = ballotExampleCategory.displayString(requireContext())
-    })
+    viewModel.ballotExampleCategoryLiveData.observe(
+      lifecycleOwner,
+      { ballotExampleCategory ->
+        binding.tvSelectedCategory.text = ballotExampleCategory.displayString(requireContext())
+      }
+    )
 
-    viewModel.selectBallotExampleCategory(viewModel.selectedBallotExampleCategory()
-      ?: BallotExampleCategory.NORMAL)
+    viewModel.selectBallotExampleCategory(
+      viewModel.selectedBallotExampleCategory() ?: BallotExampleCategory.NORMAL
+    )
   }
 
   private fun setUpTabLayout() {

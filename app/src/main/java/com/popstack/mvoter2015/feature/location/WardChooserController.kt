@@ -65,13 +65,16 @@ class WardChooserController(bundle: Bundle) : MvvmController<ControllerWardChoos
       }
     }
 
-    viewModel.onWardChosenEvent.observe(this, Observer {
-      if (requireActivity() is HasRouter) {
-        (requireActivity() as HasRouter).router()
-          .popCurrentController()
-        (targetController as? OnWardChosenListener)?.onWardChosen(it)
+    viewModel.onWardChosenEvent.observe(
+      this,
+      { ward ->
+        if (requireActivity() is HasRouter) {
+          (requireActivity() as HasRouter).router()
+            .popCurrentController()
+          (targetController as? OnWardChosenListener)?.onWardChosen(ward)
+        }
       }
-    })
+    )
     viewModel.viewItemLiveData.observe(this, Observer(::observeViewItem))
 
     if (savedViewState == null) {

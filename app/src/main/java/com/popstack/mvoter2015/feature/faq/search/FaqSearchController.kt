@@ -48,9 +48,11 @@ class FaqSearchController : MvvmController<ControllerFaqSearchBinding>() {
     requireActivityAsAppCompatActivity().supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
     binding.searchView.setOnQueryTextListener(
-      DebounceSearchQueryListener(onQuery = { query ->
-        search(query)
-      }, scope = lifecycleScope))
+      DebounceSearchQueryListener(
+        onQuery = { query -> search(query) },
+        scope = lifecycleScope
+      )
+    )
 
     binding.rvFaqPlaceholder.apply {
       adapter = placeHolderAdapter
@@ -90,8 +92,10 @@ class FaqSearchController : MvvmController<ControllerFaqSearchBinding>() {
       if (viewModel.currentQueryValue != null && refreshLoadState is LoadState.NotLoading && searchPagingAdapter.itemCount == 0) {
         binding.tvInstruction.isVisible = false
         binding.tvEmpty.isVisible = true
-        binding.tvEmpty.text = requireContext().getString(R.string.empty_list_search_faq, viewModel.currentQueryValue
-          ?: "")
+        binding.tvEmpty.text = requireContext().getString(
+          R.string.empty_list_search_faq,
+          viewModel.currentQueryValue ?: ""
+        )
       } else {
         binding.tvEmpty.isVisible = false
       }

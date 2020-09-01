@@ -59,7 +59,8 @@ class NonScrollableViewPager : ViewGroup {
     setWillNotDraw(false)
     descendantFocusability = FOCUS_AFTER_DESCENDANTS
     isFocusable = true
-    ViewCompat.setOnApplyWindowInsetsListener(this,
+    ViewCompat.setOnApplyWindowInsetsListener(
+      this,
       object : androidx.core.view.OnApplyWindowInsetsListener {
         private val mTempRect = Rect()
         override fun onApplyWindowInsets(
@@ -117,7 +118,8 @@ class NonScrollableViewPager : ViewGroup {
             res.left, res.top, res.right, res.bottom
           )!!
         }
-      })
+      }
+    )
   }
 
   /**

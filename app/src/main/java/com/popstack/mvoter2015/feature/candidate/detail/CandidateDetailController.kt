@@ -26,9 +26,7 @@ import com.popstack.mvoter2015.logging.HasTag
 
 class CandidateDetailController(
   bundle: Bundle? = null
-) : MvvmController<ControllerCandidateDetailBinding>(
-  bundle
-), HasTag {
+) : MvvmController<ControllerCandidateDetailBinding>(bundle), HasTag {
 
   override val tag: String = "CandidateDetailController"
 
