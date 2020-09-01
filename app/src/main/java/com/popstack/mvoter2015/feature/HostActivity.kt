@@ -10,7 +10,9 @@ import com.bluelinelabs.conductor.RouterTransaction
 import com.popstack.mvoter2015.databinding.ActivityHostBinding
 import com.popstack.mvoter2015.di.Injectable
 import com.popstack.mvoter2015.di.conductor.ControllerInjectorChangeHandler
+import com.popstack.mvoter2015.domain.candidate.model.CandidateId
 import com.popstack.mvoter2015.domain.party.model.PartyId
+import com.popstack.mvoter2015.feature.candidate.detail.CandidateDetailController
 import com.popstack.mvoter2015.feature.party.detail.PartyDetailController
 import com.popstack.mvoter2015.feature.settings.AppSettings
 import com.popstack.mvoter2015.feature.settings.AppTheme
@@ -89,7 +91,28 @@ class HostActivity : AppCompatActivity(), HasRouter, Injectable, HasAndroidInjec
           listOf(
             RouterTransaction.with(SplashController()),
             RouterTransaction.with(partyDetailController)
-          ), null)
+          ),
+          null
+        )
+      }
+
+      return true
+    } else if (host == "candidates" || (path.matches(Regex("/candidates/\\d+")) && host == "web.mvoterapp.com")) {
+      val candidateId = CandidateId(deepLinkUri.lastPathSegment ?: return false)
+      val candidateDetailController = CandidateDetailController.newInstance(candidateId)
+
+      //Existing stack so we just push on top
+      if (router.hasRootController()) {
+        router.pushController(RouterTransaction.with(candidateDetailController))
+      } else {
+        //No existing stack, we recreate the stack
+        router.setBackstack(
+          listOf(
+            RouterTransaction.with(SplashController()),
+            RouterTransaction.with(candidateDetailController)
+          ),
+          null
+        )
       }
 
       return true

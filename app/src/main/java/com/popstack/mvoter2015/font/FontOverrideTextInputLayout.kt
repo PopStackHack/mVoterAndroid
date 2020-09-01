@@ -26,9 +26,12 @@ class FontOverrideTextInputLayout @JvmOverloads constructor(
       BurmeseFont.UNICODE -> ResourcesCompat.getFont(context, R.font.pyidaungsu)
     }
     typeface = typeFace
-    Handler().postDelayed({
-      editText?.typeface = typeFace
-    }, 500)
+    Handler().postDelayed(
+      {
+        editText?.typeface = typeFace
+      },
+      500
+    )
   }
 
   fun setAutoConvertedError(@StringRes error: Int) {

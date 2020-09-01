@@ -23,7 +23,8 @@ internal class WardRecyclerViewAdapter constructor(
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WardViewItemViewHolder {
     return WardViewItemViewHolder(
       ItemWardBinding.inflate(parent.inflater(), parent, false),
-      onWardClick)
+      onWardClick
+    )
   }
 
   class WardViewItemViewHolder(

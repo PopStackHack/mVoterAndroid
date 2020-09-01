@@ -17,10 +17,12 @@ object BreadcrumbControllerChangeHandler : ControllerChangeHandler.ControllerCha
     val fromControllerName = from?.let(::getControllerName)
     val toControllerName = to?.let(::getControllerName)
     val arguments = to?.let { to.args }
-    FirebaseCrashlytics.getInstance().log("Controller Navigation : From $fromControllerName " +
-      "To $toControllerName " +
-      "With arguments: $arguments " +
-      "And push set to $isPush")
+    FirebaseCrashlytics.getInstance().log(
+      "Controller Navigation : From $fromControllerName " +
+        "To $toControllerName " +
+        "With arguments: $arguments " +
+        "And push set to $isPush"
+    )
     super.onChangeCompleted(to, from, isPush, container, handler)
   }
 

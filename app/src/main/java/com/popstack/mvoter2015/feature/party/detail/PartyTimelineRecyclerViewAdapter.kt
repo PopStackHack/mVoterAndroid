@@ -11,10 +11,10 @@ import com.popstack.mvoter2015.helper.extensions.inflater
 
 class PartyTimelineRecyclerViewAdapter :
   ListAdapter<PartyTimelineViewItem, PartyTimelineRecyclerViewAdapter.PartyTimelineViewHolder>(
-    diffCallBackWith(areItemTheSame = { item1, item2 -> item1.event == item2.event },
-      areContentsTheSame = { item1, item2 ->
-        item1 == item2
-      })
+    diffCallBackWith(
+      areItemTheSame = { item1, item2 -> item1.event == item2.event },
+      areContentsTheSame = { item1, item2 -> item1 == item2 }
+    )
   ) {
 
   class PartyTimelineViewHolder(val binding: ItemPartyTimelineBinding) :

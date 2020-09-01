@@ -1,7 +1,9 @@
 package com.popstack.mvoter2015.feature.candidate.detail
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
@@ -15,17 +17,17 @@ import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerCandidateDetailBinding
 import com.popstack.mvoter2015.domain.candidate.model.CandidateId
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateListRecyclerViewAdapter
+import com.popstack.mvoter2015.feature.share.ShareUrlFactory
 import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewState
 import com.popstack.mvoter2015.helper.conductor.requireActivityAsAppCompatActivity
 import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.helper.conductor.supportActionBar
+import com.popstack.mvoter2015.helper.intent.Intents
 import com.popstack.mvoter2015.logging.HasTag
 
 class CandidateDetailController(
   bundle: Bundle? = null
-) : MvvmController<ControllerCandidateDetailBinding>(
-  bundle
-), HasTag {
+) : MvvmController<ControllerCandidateDetailBinding>(bundle), HasTag {
 
   override val tag: String = "CandidateDetailController"
 
@@ -58,6 +60,26 @@ class CandidateDetailController(
     CandidateListRecyclerViewAdapter(onCandidateClicked)
   }
 
+  override fun onCreateView(
+    inflater: LayoutInflater,
+    container: ViewGroup,
+    savedViewState: Bundle?
+  ): View {
+    setHasOptionsMenu(R.menu.menu_candidate_detail, this::handleMenuItemClick)
+    return super.onCreateView(inflater, container, savedViewState)
+  }
+
+  private fun handleMenuItemClick(menuItem: MenuItem): Boolean {
+    when (menuItem.itemId) {
+      R.id.action_share -> {
+        val shareCandidateIntent = Intents.shareUrl(ShareUrlFactory().candidate(candidateId))
+        startActivity(Intent.createChooser(shareCandidateIntent, "Share Candidate..."))
+        return true
+      }
+    }
+    return false
+  }
+
   private val onCandidateClicked: (CandidateId) -> Unit = {
     val candidateDetailsController = newInstance(it)
     router.pushController(RouterTransaction.with(candidateDetailsController))
@@ -81,7 +103,9 @@ class CandidateDetailController(
       viewModel.loadCandidate(candidateId)
     }
 
-    viewModel.loadCandidate(candidateId)
+    if (viewModel.viewItemLiveData.value == null) {
+      viewModel.loadCandidate(candidateId)
+    }
 
   }
 

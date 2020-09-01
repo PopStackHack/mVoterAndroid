@@ -30,8 +30,11 @@ class FaqSearchViewModel @Inject constructor(
       return lastResult
     }
     currentQueryValue = query
-    val newResult: Flow<PagingData<FaqSearchViewItem>> = faqPagerFactory.faqPager(PAGE_SIZE, query = query
-      ?: "", category = null)
+    val newResult: Flow<PagingData<FaqSearchViewItem>> = faqPagerFactory.faqPager(
+      PAGE_SIZE,
+      query = query ?: "",
+      category = null
+    )
       .flow.map { pagingData ->
         pagingData.map<Faq, FaqSearchViewItem> { faq ->
           FaqSearchViewItem(

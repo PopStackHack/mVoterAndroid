@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
 import androidx.core.view.isVisible
-import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -123,9 +122,12 @@ class FaqController : MvvmController<ControllerFaqBinding>(), HasTag {
       }
     }
 
-    viewModel.faqCategoryLiveData.observe(lifecycleOwner, Observer { faqCategory ->
-      binding.tvSelectedCategory.text = faqCategory.displayString(requireContext())
-    })
+    viewModel.faqCategoryLiveData.observe(
+      lifecycleOwner,
+      { faqCategory ->
+        binding.tvSelectedCategory.text = faqCategory.displayString(requireContext())
+      }
+    )
 
     selectFaqCategory(viewModel.selectedFaqCategory() ?: FaqCategory.VOTER_LIST)
     faqPagingAdapter.refresh()

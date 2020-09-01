@@ -35,24 +35,30 @@ class GlobalExceptionHandler @Inject constructor(
 
   private fun parseNetworkError(exception: NetworkException): String {
     when (exception.errorCode) {
-      ERROR_CODE_400 -> return exception.errorBody?.let { parseMessageFromErrorBody(it) }
-        ?: context.getString(
-          R.string.error_generic
-        )
-      ERROR_CODE_401 -> return exception.errorBody?.let { parseMessageFromErrorBody(it) }
-        ?: context.getString(
-          R.string.error_generic
-        )
-      ERROR_CODE_422 -> return exception.errorBody?.let { parseMessageFromErrorBody(it) }
-        ?: context.getString(
-          R.string.error_generic
-        )
-      ERROR_CODE_403 -> return exception.errorBody?.let { parseMessageFromErrorBody(it) }
-        ?: context.getString(
-          R.string.error_generic
-        )
-      ERROR_CODE_404 -> return context.getString(R.string.error_server_404)
-      ERROR_CODE_500 -> return context.getString(R.string.error_server_500)
+      ERROR_CODE_400 ->
+        return exception.errorBody?.let { parseMessageFromErrorBody(it) }
+          ?: context.getString(
+            R.string.error_generic
+          )
+      ERROR_CODE_401 ->
+        return exception.errorBody?.let { parseMessageFromErrorBody(it) }
+          ?: context.getString(
+            R.string.error_generic
+          )
+      ERROR_CODE_422 ->
+        return exception.errorBody?.let { parseMessageFromErrorBody(it) }
+          ?: context.getString(
+            R.string.error_generic
+          )
+      ERROR_CODE_403 ->
+        return exception.errorBody?.let { parseMessageFromErrorBody(it) }
+          ?: context.getString(
+            R.string.error_generic
+          )
+      ERROR_CODE_404 ->
+        return context.getString(R.string.error_server_404)
+      ERROR_CODE_500 ->
+        return context.getString(R.string.error_server_500)
     }
 
     return context.getString(R.string.error_generic)

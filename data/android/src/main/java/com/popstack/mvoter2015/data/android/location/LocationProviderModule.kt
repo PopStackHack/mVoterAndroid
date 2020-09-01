@@ -13,8 +13,7 @@ abstract class LocationProviderModule {
 
     @Provides
     fun locationProvider(context: Context): LocationProvider {
-      return if (GoogleApiAvailability.getInstance()
-          .isGooglePlayServicesAvailable(context) == ConnectionResult.SUCCESS
+      return if (GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(context) == ConnectionResult.SUCCESS
       ) {
         FusedLocationProvider(context)
       } else {

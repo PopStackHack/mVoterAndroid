@@ -53,9 +53,13 @@ class PartySearchController : MvvmController<ControllerPartySearchBinding>(), Ha
     requireActivityAsAppCompatActivity().supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
     binding.searchView.setOnQueryTextListener(
-      DebounceSearchQueryListener(onQuery = { query ->
-        search(query)
-      }, scope = lifecycleScope))
+      DebounceSearchQueryListener(
+        onQuery = { query ->
+          search(query)
+        },
+        scope = lifecycleScope
+      )
+    )
 
     binding.rvPlaceholder.apply {
       adapter = placeholderAdapter
@@ -95,8 +99,10 @@ class PartySearchController : MvvmController<ControllerPartySearchBinding>(), Ha
       if (viewModel.currentQueryValue != null && refreshLoadState is LoadState.NotLoading && searchPagingAdapter.itemCount == 0) {
         binding.tvInstruction.isVisible = false
         binding.tvEmpty.isVisible = true
-        binding.tvEmpty.text = requireContext().getString(R.string.empty_list_search_party, viewModel.currentQueryValue
-          ?: "")
+        binding.tvEmpty.text = requireContext().getString(
+          R.string.empty_list_search_party,
+          viewModel.currentQueryValue ?: ""
+        )
       } else {
         binding.tvEmpty.isVisible = false
       }

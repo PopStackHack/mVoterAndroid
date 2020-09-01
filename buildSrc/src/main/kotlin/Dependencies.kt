@@ -151,7 +151,7 @@ object KotlinCoroutine {
 }
 
 object KtLint {
-  const val version = "9.2.1"
+  const val version = "9.3.0"
   const val name = "org.jlleitschuh.gradle.ktlint"
 
   const val plugin = "org.jlleitschuh.gradle:ktlint-gradle:$version"

@@ -58,7 +58,8 @@ object AppInjector {
             ) {
 
             }
-          }, true
+          },
+          true
         )
     }
   }

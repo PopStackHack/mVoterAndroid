@@ -34,7 +34,8 @@ internal class StateRegionTownshipRecyclerViewAdapter constructor(
       ItemStateRegionTownshipBinding.inflate(parent.inflater(), parent, false),
       onStateRegionClick,
       onTownshipClick,
-      onRetryClick)
+      onRetryClick
+    )
   }
 
   override fun onBindViewHolder(holder: StateRegionTownshipViewItemViewHolder, position: Int) {

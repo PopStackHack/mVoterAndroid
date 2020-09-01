@@ -47,13 +47,16 @@ class TownshipChooserController : MvvmController<ControllerTownshipChooserBindin
       }
     }
 
-    viewModel.onTownshipChosenEvent.observe(this, Observer {
-      if (requireActivity() is HasRouter) {
-        (requireActivity() as HasRouter).router()
-          .popCurrentController()
-        (targetController as? OnTownshipChosenListener)?.onTownshipChosen(it.first, it.second)
+    viewModel.onTownshipChosenEvent.observe(
+      this,
+      {
+        if (requireActivity() is HasRouter) {
+          (requireActivity() as HasRouter).router()
+            .popCurrentController()
+          (targetController as? OnTownshipChosenListener)?.onTownshipChosen(it.first, it.second)
+        }
       }
-    })
+    )
     viewModel.viewItemLiveData.observe(this, Observer(::observeViewItem))
 
     if (savedViewState == null) {

@@ -23,7 +23,8 @@ internal class TownshipRecyclerViewAdapter constructor(
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TownshipViewItemViewHolder {
     return TownshipViewItemViewHolder(
       ItemTownshipBinding.inflate(parent.inflater(), parent, false),
-      onTownshipClick)
+      onTownshipClick
+    )
   }
 
   class TownshipViewItemViewHolder(

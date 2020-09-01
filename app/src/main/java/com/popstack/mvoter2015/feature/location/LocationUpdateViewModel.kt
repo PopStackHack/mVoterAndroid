@@ -54,11 +54,13 @@ class LocationUpdateViewModel @Inject constructor(
     data.chosenWard = ward
     viewModelScope.launch {
       kotlin.runCatching {
-        data.wardDetails = getWardDetails.execute(GetWardDetails.Params(
-          stateRegion = data.chosenStateRegion!!,
-          township = data.chosenTownship!!,
-          ward = data.chosenWard!!
-        ))
+        data.wardDetails = getWardDetails.execute(
+          GetWardDetails.Params(
+            stateRegion = data.chosenStateRegion!!,
+            township = data.chosenTownship!!,
+            ward = data.chosenWard!!
+          )
+        )
         viewEventLiveData.postValue(ViewEvent.EnableDoneButton)
       }.exceptionOrNull()?.let { exception ->
         Timber.e(exception)
