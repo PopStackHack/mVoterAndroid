@@ -9,12 +9,18 @@ import com.popstack.mvoter2015.BuildConfig
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.BaseController
 import com.popstack.mvoter2015.databinding.ControllerAboutBinding
+import com.popstack.mvoter2015.di.Injectable
+import com.popstack.mvoter2015.feature.browser.OpenBrowserDelegate
+import com.popstack.mvoter2015.helper.conductor.requireActivity
 import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.helper.conductor.setSupportActionBar
 import com.popstack.mvoter2015.helper.conductor.supportActionBar
-import com.popstack.mvoter2015.helper.intent.Intents
+import javax.inject.Inject
 
-class AboutController : BaseController<ControllerAboutBinding>() {
+class AboutController : BaseController<ControllerAboutBinding>(), Injectable {
+
+  @Inject
+  lateinit var openBrowserDelegate: OpenBrowserDelegate
 
   override val bindingInflater: (LayoutInflater) -> ControllerAboutBinding =
     ControllerAboutBinding::inflate
@@ -69,7 +75,7 @@ class AboutController : BaseController<ControllerAboutBinding>() {
 
   private fun openAppWebsite() {
     runCatching {
-      startActivity(Intents.viewUrl("https://mvoterapp.com/"))
+      openBrowserDelegate.browserHandler().launchNewsInBrowser(requireActivity(), "https://mvoterapp.com/")
     }
   }
 

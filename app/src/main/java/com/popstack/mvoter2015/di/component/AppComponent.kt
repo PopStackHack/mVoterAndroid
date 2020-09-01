@@ -3,6 +3,7 @@ package com.popstack.mvoter2015.di.component
 import android.app.Application
 import com.popstack.mvoter2015.MVoterApp
 import com.popstack.mvoter2015.di.module.AppModule
+import com.popstack.mvoter2015.feature.about.AboutFeatureModule
 import com.popstack.mvoter2015.feature.candidate.CandidateFeatureModule
 import com.popstack.mvoter2015.feature.faq.FaqFeatureModule
 import com.popstack.mvoter2015.feature.location.LocationUpdateFeatureModule
@@ -28,7 +29,8 @@ import javax.inject.Singleton
     FaqFeatureModule::class,
     VotingGuideFeatureModule::class,
     NewsFeatureModule::class,
-    SettingsFeatureModule::class
+    SettingsFeatureModule::class,
+    AboutFeatureModule::class
   ]
 )
 interface AppComponent {
