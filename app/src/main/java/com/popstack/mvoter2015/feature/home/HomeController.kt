@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelStore
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.BaseController
 import com.popstack.mvoter2015.databinding.ControllerHomeBinding
@@ -23,6 +24,8 @@ class HomeController : BaseController<ControllerHomeBinding>(), HasTag {
     const val TAG = "HomeController"
   }
 
+  private val viewModelStore = ViewModelStore()
+
   override val bindingInflater: (LayoutInflater) -> ControllerHomeBinding =
     ControllerHomeBinding::inflate
 
@@ -31,6 +34,7 @@ class HomeController : BaseController<ControllerHomeBinding>(), HasTag {
     container: ViewGroup,
     savedViewState: Bundle?
   ): View {
+    BottomNavigationHostViewModelStore.viewModelStore = viewModelStore
     val view = super.onCreateView(inflater, container, savedViewState)
 
     if (savedViewState == null) {
@@ -53,6 +57,12 @@ class HomeController : BaseController<ControllerHomeBinding>(), HasTag {
           R.id.navigation_news to { NewsController() }
         )
       )
+  }
+
+  override fun onDestroyView(view: View) {
+    viewModelStore.clear()
+    BottomNavigationHostViewModelStore.viewModelStore = null
+    super.onDestroyView(view)
   }
 
 }

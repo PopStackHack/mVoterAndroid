@@ -12,6 +12,7 @@ import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerBallotExampleBinding
 import com.popstack.mvoter2015.domain.faq.model.BallotExampleCategory
 import com.popstack.mvoter2015.feature.faq.displayString
+import com.popstack.mvoter2015.feature.home.BottomNavigationHostViewModelStore
 import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewState
 import com.popstack.mvoter2015.helper.conductor.requireActivityAsAppCompatActivity
 import com.popstack.mvoter2015.helper.conductor.requireContext
@@ -28,7 +29,9 @@ class BallotExampleController : MvvmController<ControllerBallotExampleBinding>()
   override val bindingInflater: (LayoutInflater) -> ControllerBallotExampleBinding =
     ControllerBallotExampleBinding::inflate
 
-  private val viewModel: BallotExampleViewModel by viewModels()
+  private val viewModel: BallotExampleViewModel by viewModels(
+    store = BottomNavigationHostViewModelStore.viewModelStore ?: viewModelStore
+  )
 
   private val ballotAdapter by lazy {
     BallotExampleRecyclerViewAdapter()

@@ -14,8 +14,8 @@ import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerNewsBinding
 import com.popstack.mvoter2015.domain.news.model.NewsId
 import com.popstack.mvoter2015.exception.GlobalExceptionHandler
-import com.popstack.mvoter2015.feature.HasRouter
 import com.popstack.mvoter2015.feature.browser.OpenBrowserDelegate
+import com.popstack.mvoter2015.feature.home.BottomNavigationHostViewModelStore
 import com.popstack.mvoter2015.feature.news.search.NewsSearchController
 import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
 import com.popstack.mvoter2015.helper.conductor.requireActivity
@@ -35,7 +35,9 @@ class NewsController : MvvmController<ControllerNewsBinding>(), HasTag {
   override val bindingInflater: (LayoutInflater) -> ControllerNewsBinding =
     ControllerNewsBinding::inflate
 
-  private val viewModel: NewsViewModel by viewModels()
+  private val viewModel: NewsViewModel by viewModels(
+    store = BottomNavigationHostViewModelStore.viewModelStore ?: viewModelStore
+  )
 
   private val newsPagingAdapter by lazy {
     NewsRecyclerViewAdapter(this::onNewsItemClick)
@@ -95,10 +97,7 @@ class NewsController : MvvmController<ControllerNewsBinding>(), HasTag {
   private fun handleMenuItemClick(menuItem: MenuItem): Boolean {
     return when (menuItem.itemId) {
       R.id.action_search -> {
-        if (requireActivity() is HasRouter) {
-          (requireActivity() as HasRouter).router()
-            .pushController(RouterTransaction.with(NewsSearchController()))
-        }
+        router.pushController(RouterTransaction.with(NewsSearchController()))
         true
       }
       else -> false

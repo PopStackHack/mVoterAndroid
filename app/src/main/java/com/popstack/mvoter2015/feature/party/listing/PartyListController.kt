@@ -16,6 +16,7 @@ import com.popstack.mvoter2015.databinding.ControllerPartyListBinding
 import com.popstack.mvoter2015.domain.party.model.PartyId
 import com.popstack.mvoter2015.exception.GlobalExceptionHandler
 import com.popstack.mvoter2015.feature.HasRouter
+import com.popstack.mvoter2015.feature.home.BottomNavigationHostViewModelStore
 import com.popstack.mvoter2015.feature.party.detail.PartyDetailController
 import com.popstack.mvoter2015.feature.party.search.PartySearchController
 import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
@@ -32,7 +33,9 @@ class PartyListController : MvvmController<ControllerPartyListBinding>(), HasTag
 
   override val tag: String = "PartyListController"
 
-  private val viewModel: PartyListViewModel by viewModels()
+  private val viewModel: PartyListViewModel by viewModels(
+    store = BottomNavigationHostViewModelStore.viewModelStore ?: viewModelStore
+  )
 
   override val bindingInflater: (LayoutInflater) -> ControllerPartyListBinding =
     ControllerPartyListBinding::inflate
@@ -95,10 +98,7 @@ class PartyListController : MvvmController<ControllerPartyListBinding>(), HasTag
   private fun handleMenuItemClick(menuItem: MenuItem): Boolean {
     return when (menuItem.itemId) {
       R.id.action_search -> {
-        if (requireActivity() is HasRouter) {
-          (requireActivity() as HasRouter).router()
-            .pushController(RouterTransaction.with(PartySearchController()))
-        }
+          router.pushController(RouterTransaction.with(PartySearchController()))
         true
       }
       else -> false
@@ -107,9 +107,10 @@ class PartyListController : MvvmController<ControllerPartyListBinding>(), HasTag
 
   private fun onItemClick(partyId: PartyId) {
     val partyDetailController = PartyDetailController.newInstance(partyId)
-    if (requireActivity() is HasRouter) {
-      (requireActivity() as HasRouter).router().pushController(RouterTransaction.with(partyDetailController))
-    }
+    router.pushController(RouterTransaction.with(partyDetailController))
+//    if (requireActivity() is HasRouter) {
+//      (requireActivity() as HasRouter).router().pushController(RouterTransaction.with(partyDetailController))
+//    }
   }
 
 }
