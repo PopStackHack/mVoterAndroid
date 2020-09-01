@@ -49,10 +49,9 @@
   <string name="empty_query_party">မိမိရှာလိုသော ပါတီနာမည်ကို အပေါ်တွင်ရိုက်ထည့်ပါ။</string>
   <string name="empty_list_search_party">နာမည်တွင် \"%1$s\" ပါသော ပါတီများကို ပါတီစာရင်းတွင် ရှာမတွေ့ပါ</string>
 
-  <!--  TimelineEvent.ESTABLISHMENT_APPLICATION -> TODO()-->
-  <!--  TimelineEvent.ESTABLISHMENT_APPROVAL -> TODO()-->
-  <!--  TimelineEvent.REGISTRATION_APPLICATION -> TODO()-->
-  <!--  TimelineEvent.REGISTRATION_APPROVAL -> TODO()-->
+  <string name="transition_name_party_name">party_name</string>
+  <string name="transition_name_party_seal">party_seal</string>
+
   <string name="party_establishment_application">ပါတီတည်ထောင်ခွင့်လျှောက်ထားသည်</string>
   <string name="party_establishment_approval">ပါတီတည်ထောင်ခွင့် ရရှိသည်</string>
   <string name="party_pote_ma_25">နိုင်ငံရေးပါတီအဖြစ် ပုဒ်မ(၂၅)အရ လျှောက်ထားခဲ့သည်</string>

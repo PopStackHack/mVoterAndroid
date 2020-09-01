@@ -6,14 +6,13 @@ import coil.api.load
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.recyclerview.ViewBindingViewHolder
 import com.popstack.mvoter2015.databinding.ItemPartyBinding
-import com.popstack.mvoter2015.domain.party.model.PartyId
 import com.popstack.mvoter2015.feature.party.listing.PartyListViewItemRecyclerViewAdapter.PartyListViewItemViewHolder
 import com.popstack.mvoter2015.helper.diff.diffCallBackWith
 import com.popstack.mvoter2015.helper.extensions.inflater
 import com.popstack.mvoter2015.helper.extensions.withSafeAdapterPosition
 
 internal class PartyListViewItemRecyclerViewAdapter constructor(
-  private val itemClick: (PartyId) -> Unit
+  private val itemClick: (PartyListViewItem) -> Unit
 ) : PagingDataAdapter<PartyListViewItem, PartyListViewItemViewHolder>(
   diffCallBackWith(
     areItemTheSame = { item1, item2 ->
@@ -33,9 +32,11 @@ internal class PartyListViewItemRecyclerViewAdapter constructor(
     val viewHolder = PartyListViewItemViewHolder(binding)
     viewHolder.apply {
       itemView.setOnClickListener {
+        this.binding.tvPartyName.transitionName = this.itemView.context.getString(R.string.transition_name_party_name)
+        this.binding.ivPartySeal.transitionName = this.itemView.context.getString(R.string.transition_name_party_seal)
         withSafeAdapterPosition { position ->
           getItem(position)?.let { itemAtIndex ->
-            itemClick.invoke(itemAtIndex.partyId)
+            itemClick.invoke(itemAtIndex)
           }
         }
       }
@@ -49,7 +50,7 @@ internal class PartyListViewItemRecyclerViewAdapter constructor(
   ) {
     getItem(position)?.let { itemAtIndex ->
       holder.binding.apply {
-        ivPartyFlag.load(itemAtIndex.sealImage) {
+        ivPartySeal.load(itemAtIndex.sealImage) {
           placeholder(R.drawable.placeholder_rect)
           error(R.drawable.placeholder_rect)
           crossfade(true)

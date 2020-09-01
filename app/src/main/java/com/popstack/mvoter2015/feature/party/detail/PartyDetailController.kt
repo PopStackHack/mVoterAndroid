@@ -42,14 +42,19 @@ class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDeta
    */
   companion object {
     private const val ARG_PARTY_ID = "party_id"
+    private const val ARG_PARTY_NAME = "party_name"
+    private const val ARG_PARTY_SEAL = "party_seal"
 
-    fun newInstance(partyId: PartyId): PartyDetailController {
+    fun newInstance(partyId: PartyId, partyName: String? = null, partySeal: String? = null): PartyDetailController {
       return PartyDetailController(
         bundleOf(
-          ARG_PARTY_ID to partyId.value
+          ARG_PARTY_ID to partyId.value,
+          ARG_PARTY_NAME to partyName,
+          ARG_PARTY_SEAL to partySeal
         )
       )
     }
+
   }
 
   private val partyId by lazy {
@@ -85,6 +90,15 @@ class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDeta
   override fun onBindView(savedViewState: Bundle?) {
     super.onBindView(savedViewState)
 
+    args.getString(ARG_PARTY_NAME).let { partyName ->
+      binding.tvPartyName.text = partyName
+    }
+
+    binding.ivPartySeal.load(args.getString(ARG_PARTY_SEAL)) {
+      placeholder(R.drawable.placeholder_rect)
+      error(R.drawable.placeholder_rect)
+    }
+
     binding.rvTimeline.apply {
       adapter = timelineAdapter
       layoutManager = LinearLayoutManager(requireContext())
@@ -110,8 +124,11 @@ class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDeta
   }
 
   private fun observeViewItem(viewState: AsyncViewState<PartyDetailViewItem>) {
-    progresBarVisibilityHandler.setVisible(viewState is AsyncViewState.Loading)
-    binding.layoutContent.isVisible = viewState is AsyncViewState.Success
+//    progresBarVisibilityHandler.setVisible(viewState is AsyncViewState.Loading)
+    binding.progressBar.isVisible = viewState is AsyncViewState.Loading
+    binding.buttonPolicy.isVisible = viewState is AsyncViewState.Success
+    binding.cardViewTimeline.isVisible = viewState is AsyncViewState.Success
+    binding.layoutContent.isVisible = !(viewState is AsyncViewState.Error)
     binding.tvErrorMessage.isVisible = viewState is AsyncViewState.Error
     binding.btnRetry.isVisible = viewState is AsyncViewState.Error
 

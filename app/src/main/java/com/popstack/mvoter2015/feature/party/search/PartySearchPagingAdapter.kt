@@ -49,7 +49,7 @@ internal class PartySearchPagingAdapter constructor(
   ) {
     getItem(position)?.let { itemAtIndex ->
       holder.binding.apply {
-        ivPartyFlag.load(itemAtIndex.flagImageUrl) {
+        ivPartySeal.load(itemAtIndex.flagImageUrl) {
           placeholder(R.drawable.placeholder_rect)
           error(R.drawable.placeholder_rect)
           crossfade(true)

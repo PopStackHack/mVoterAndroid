@@ -3,7 +3,8 @@
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
-  android:layout_height="match_parent">
+  android:layout_height="match_parent"
+  android:background="?android:colorBackground">
 
   <androidx.core.widget.NestedScrollView
     android:id="@+id/layoutContent"
@@ -25,6 +26,7 @@
         android:layout_height="128dp"
         android:layout_marginTop="16dp"
         android:scaleType="fitCenter"
+        android:transitionName="@string/transition_name_party_seal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -38,6 +40,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:gravity="center"
+        android:transitionName="@string/transition_name_party_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ivPartySeal"
@@ -91,6 +94,7 @@
         android:layout_height="48dp"
         android:text="@string/policy"
         android:textColor="@color/text_on_accent"
+        android:visibility="gone"
         app:backgroundTint="@color/accent"
         app:cornerRadius="24dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -302,16 +306,17 @@
 
   </androidx.core.widget.NestedScrollView>
 
-  <ProgressBar
+  <com.google.android.material.progressindicator.ProgressIndicator
     android:id="@+id/progressBar"
-    android:layout_width="wrap_content"
+    style="@style/Widget.MaterialComponents.ProgressIndicator.Linear.Indeterminate"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:visibility="gone"
+    app:indicatorColor="@color/accent"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/toolBar"
-    tools:visibility="gone" />
+    tools:visibility="visible" />
 
   <TextView
     android:id="@+id/tvErrorMessage"

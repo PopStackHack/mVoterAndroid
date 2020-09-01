@@ -13,9 +13,9 @@ import com.bluelinelabs.conductor.RouterTransaction
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerPartyListBinding
-import com.popstack.mvoter2015.domain.party.model.PartyId
 import com.popstack.mvoter2015.exception.GlobalExceptionHandler
 import com.popstack.mvoter2015.feature.home.BottomNavigationHostViewModelStore
+import com.popstack.mvoter2015.feature.party.PartySharedElementTransitionChangeHandler
 import com.popstack.mvoter2015.feature.party.detail.PartyDetailController
 import com.popstack.mvoter2015.feature.party.search.PartySearchController
 import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
@@ -103,9 +103,17 @@ class PartyListController : MvvmController<ControllerPartyListBinding>(), HasTag
     }
   }
 
-  private fun onItemClick(partyId: PartyId) {
-    val partyDetailController = PartyDetailController.newInstance(partyId)
-    router.pushController(RouterTransaction.with(partyDetailController))
+  private fun onItemClick(partyListViewItem: PartyListViewItem) {
+    val partyDetailController = PartyDetailController.newInstance(
+      partyId = partyListViewItem.partyId,
+      partyName = partyListViewItem.name,
+      partySeal = partyListViewItem.sealImage
+    )
+    router.pushController(
+      RouterTransaction.with(partyDetailController)
+        .pushChangeHandler(PartySharedElementTransitionChangeHandler())
+        .popChangeHandler(PartySharedElementTransitionChangeHandler())
+    )
 //    if (requireActivity() is HasRouter) {
 //      (requireActivity() as HasRouter).router().pushController(RouterTransaction.with(partyDetailController))
 //    }
