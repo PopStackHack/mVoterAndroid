@@ -8,7 +8,7 @@ data class CandidateListViewItem(val candidateList: List<SmallCandidateViewItem>
     val name: String,
     val photoUrl: String,
     val partyName: String,
-    val partyImageUrl: String
+    val partySealImageUrl: String
   )
 }
 
@@ -17,5 +17,5 @@ fun Candidate.toSmallCandidateViewItem() = CandidateListViewItem.SmallCandidateV
   name = name,
   photoUrl = photoUrl,
   partyName = party.nameBurmese,
-  partyImageUrl = party.sealImage
+  partySealImageUrl = party.sealImage
 )

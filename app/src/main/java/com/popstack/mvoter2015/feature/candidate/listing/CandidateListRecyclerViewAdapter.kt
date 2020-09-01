@@ -46,7 +46,7 @@ class CandidateListItemViewHolder(val binding: ItemCandidateBinding) : RecyclerV
 //        scale(Scale.FIT)
 //        crossfade(true)
 //      }
-      ivCandidatePartyFlag.load(smallCandidateViewItem.partyImageUrl) {
+      ivCandidatePartyFlag.load(smallCandidateViewItem.partySealImageUrl) {
         scale(Scale.FILL)
         crossfade(true)
       }

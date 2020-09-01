@@ -13,7 +13,7 @@ data class CandidateInfoViewItem(
   val photo: String,
   val name: String,
   val partyName: String,
-  val partyLogo: String,
+  val partySealImageUrl: String,
   val houseType: String,
   val constituencyName: String,
   val age: String,
@@ -31,7 +31,7 @@ fun Candidate.toCandidateInfoViewItem() = CandidateInfoViewItem(
   photo = photoUrl,
   name = name,
   partyName = party.nameBurmese,
-  partyLogo = party.flagImage,
+  partySealImageUrl = party.sealImage,
   // TODO: Distinguish state region
   houseType = when (constituency.house) {
     HouseType.UPPER_HOUSE -> "အမျိုးသားလွှတ်တော်"
