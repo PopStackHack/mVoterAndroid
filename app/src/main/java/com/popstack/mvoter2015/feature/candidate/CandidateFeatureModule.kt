@@ -12,6 +12,8 @@ import com.popstack.mvoter2015.feature.candidate.listing.regionalhouse.RegionalH
 import com.popstack.mvoter2015.feature.candidate.listing.regionalhouse.RegionalHouseCandidateListViewModel
 import com.popstack.mvoter2015.feature.candidate.listing.upperhouse.UpperHouseCandidateListController
 import com.popstack.mvoter2015.feature.candidate.listing.upperhouse.UpperHouseCandidateListViewModel
+import com.popstack.mvoter2015.feature.candidate.search.CandidateSearchController
+import com.popstack.mvoter2015.feature.candidate.search.CandidateSearchViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -59,5 +61,13 @@ abstract class CandidateFeatureModule {
   @IntoMap
   @ViewModelKey(CandidateDetailViewModel::class)
   abstract fun candidateDetailViewModel(viewModel: CandidateDetailViewModel): ViewModel
+
+  @ContributesAndroidInjector
+  abstract fun candidateSearchController(): CandidateSearchController
+
+  @Binds
+  @IntoMap
+  @ViewModelKey(CandidateSearchViewModel::class)
+  abstract fun candidateSearchViewModel(viewModel: CandidateSearchViewModel): ViewModel
 
 }

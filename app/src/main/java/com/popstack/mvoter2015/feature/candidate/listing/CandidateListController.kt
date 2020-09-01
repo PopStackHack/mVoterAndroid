@@ -2,6 +2,7 @@ package com.popstack.mvoter2015.feature.candidate.listing
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import androidx.lifecycle.Observer
 import com.bluelinelabs.conductor.RouterTransaction
@@ -9,6 +10,7 @@ import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerCandidateListBinding
 import com.popstack.mvoter2015.feature.HasRouter
+import com.popstack.mvoter2015.feature.candidate.search.CandidateSearchController
 import com.popstack.mvoter2015.feature.home.BottomNavigationHostViewModelStore
 import com.popstack.mvoter2015.feature.location.LocationUpdateController
 import com.popstack.mvoter2015.helper.conductor.requireActivity
@@ -46,6 +48,10 @@ class CandidateListController :
             (requireActivity() as HasRouter).router()
               .pushController(RouterTransaction.with(LocationUpdateController()))
           }
+          true
+        }
+        R.id.action_search -> {
+          router.pushController(RouterTransaction.with(CandidateSearchController()))
           true
         }
       }

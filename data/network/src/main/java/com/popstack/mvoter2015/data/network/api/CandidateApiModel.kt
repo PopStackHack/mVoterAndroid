@@ -31,7 +31,7 @@ data class CandidateApiModel(
 @JsonClass(generateAdapter = true)
 data class CandidateApiAttributes(
   @Json(name = "name") val name: String,
-  @Json(name = "image") val image: String,
+  @Json(name = "image") val image: String?,
   @Json(name = "birthday") val birthday: String,
   @Json(name = "age") val age: Int?,
   @Json(name = "ethnicity") val ethnicity: String,
@@ -61,7 +61,7 @@ fun CandidateApiModel.toCandidateModel(): Candidate {
       name = name,
       gender = CandidateGender.valueOf(gender),
       occupation = work,
-      photoUrl = image,
+      photoUrl = image.orEmpty(),
       education = education,
       religion = religion,
       age = age,

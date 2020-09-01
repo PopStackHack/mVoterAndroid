@@ -34,6 +34,11 @@
   <string name="tab_regional_house_region">ပြည်နယ်\nလွှတ်တော်</string>
   <string name="date_of_birth">မွေးသက္ကရာဇ်</string>
 
+  <!-- Candidate -->
+  <string name="empty_query_candidate">မိမိရှာလိုသော ကိုယ်စားလှယ်လောင်းနာမည်ကို အပေါ်တွင်ရိုက်ထည့်ပါ။</string>
+  <string name="empty_list_search_candidate">နာမည်တွင် \"%1$s\" ပါသော ကိုယ်စားလှယ်လောင်းကို ကိုယ်စားလှယ်လောင်းစာရင်းတွင် ရှာမတွေ့ပါ</string>
+  <string name="hint_search_candidate">ရှာလိုသော ကိုယ်စားလှယ်လောင်းနာမည်ကို ရိုက်ထည့်ပါ</string>
+
   <!--  Party-->
   <string name="header_total_party_count">(၂၀၂၀) ခုနှစ် အထွေထွေရွေးကောက်ပွဲတွင် ဝင်ရောက်ယှဉ်ပြိုင်မည့် နိုင်ငံရေးပါတီ (၉၃) ခု</string>
 

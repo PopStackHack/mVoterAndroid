@@ -22,7 +22,7 @@ class CandidateNetworkSourceImpl @Inject constructor(
   }
 
   override fun searchCandidate(query: String, pageNo: Int, resultsPerPage: Int): List<Candidate> {
-    return mvoterApi.searchCandidates(query, pageNo).executeOrThrow().map { it.toCandidateModel() }
+    return mvoterApi.searchCandidates(query, pageNo).executeOrThrow().data.map { it.toCandidateModel() }
   }
 
 }

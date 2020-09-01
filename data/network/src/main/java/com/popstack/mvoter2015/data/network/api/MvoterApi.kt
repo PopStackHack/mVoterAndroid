@@ -63,10 +63,10 @@ interface MvoterApi {
     @Path("candidate_id") candidateId: String
   ): Call<CandidateDetailsApiResponse>
 
-  @GET("candidate")
+  @GET("candidates")
   fun searchCandidates(
     @Query("query") query: String,
     @Query("page") page: Int
-  ): Call<List<CandidateApiModel>>
+  ): Call<CandidateListApiResponse>
 
 }
