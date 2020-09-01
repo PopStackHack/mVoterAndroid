@@ -18,6 +18,7 @@ import com.popstack.mvoter2015.domain.constituency.model.ConstituencyId
 import com.popstack.mvoter2015.domain.constituency.model.HouseType
 import com.popstack.mvoter2015.feature.HasRouter
 import com.popstack.mvoter2015.feature.candidate.detail.CandidateDetailController
+import com.popstack.mvoter2015.feature.candidate.listing.CandidateListPagerParentRouter
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateListRecyclerViewAdapter
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateListViewItem
 import com.popstack.mvoter2015.feature.home.BottomNavigationHostViewModelStore
@@ -56,9 +57,7 @@ class UpperHouseCandidateListController(bundle: Bundle) :
 
   private val onCandidateClicked: (CandidateId) -> Unit = {
     val candidateDetailsController = CandidateDetailController.newInstance(it)
-    if (requireActivity() is HasRouter) {
-      (requireActivity() as HasRouter).router().pushController(RouterTransaction.with(candidateDetailsController))
-    }
+    CandidateListPagerParentRouter.router?.pushController(RouterTransaction.with(candidateDetailsController))
   }
 
   private val constituencyId: ConstituencyId = ConstituencyId(args.getString(CONSTITUENCY_ID)!!)

@@ -13,6 +13,7 @@ import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerCandidateDetailBinding
 import com.popstack.mvoter2015.domain.candidate.model.CandidateId
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateListRecyclerViewAdapter
+import com.popstack.mvoter2015.feature.home.BottomNavigationHostViewModelStore
 import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewState
 import com.popstack.mvoter2015.helper.conductor.requireActivityAsAppCompatActivity
 import com.popstack.mvoter2015.helper.conductor.requireContext
@@ -43,7 +44,9 @@ class CandidateDetailController(
     }
   }
 
-  private val viewModel: CandidateDetailViewModel by viewModels()
+  private val viewModel: CandidateDetailViewModel by viewModels(
+    store = BottomNavigationHostViewModelStore.viewModelStore ?: viewModelStore
+  )
 
   override val bindingInflater: (LayoutInflater) -> ControllerCandidateDetailBinding =
     ControllerCandidateDetailBinding::inflate
