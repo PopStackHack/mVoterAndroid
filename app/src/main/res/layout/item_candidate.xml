@@ -4,9 +4,7 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
-  android:background="?attr/selectableItemBackground"
-  android:paddingTop="8dp"
-  android:paddingBottom="8dp">
+  android:background="?attr/selectableItemBackground">
 
   <ImageView
     android:id="@+id/ivCandidate"
@@ -14,7 +12,6 @@
     android:layout_height="86dp"
     android:layout_marginStart="16dp"
     android:importantForAccessibility="no"
-    tools:src="@tools:sample/avatars"
     android:src="@drawable/placeholder_oval"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintStart_toStartOf="parent"
@@ -22,14 +19,15 @@
 
   <ImageView
     android:id="@+id/ivCandidatePartySeal"
-    android:layout_width="26dp"
-    android:layout_height="16dp"
+    android:layout_width="36dp"
+    android:layout_height="0dp"
     android:layout_marginStart="16dp"
+    android:layout_marginTop="8dp"
     android:importantForAccessibility="no"
     android:src="@drawable/placeholder_rect"
-    app:layout_constraintBottom_toBottomOf="@+id/tvCandidateName"
+    app:layout_constraintDimensionRatio="3:2"
     app:layout_constraintStart_toEndOf="@+id/ivCandidate"
-    app:layout_constraintTop_toTopOf="@+id/tvCandidateName" />
+    app:layout_constraintTop_toTopOf="@id/ivCandidate" />
 
   <TextView
     android:id="@+id/tvCandidateName"
@@ -38,13 +36,20 @@
     android:layout_height="wrap_content"
     android:layout_marginLeft="8dp"
     android:layout_marginRight="8dp"
-    app:layout_constraintBottom_toTopOf="@+id/tvCandidatePartyName"
+    app:layout_constraintBottom_toBottomOf="@id/ivCandidatePartySeal"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_bias="0.5"
     app:layout_constraintStart_toEndOf="@+id/ivCandidatePartySeal"
-    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintTop_toTopOf="@id/ivCandidatePartySeal"
     app:layout_constraintVertical_chainStyle="packed"
     tools:text="@sample/candidates.csv/full_name" />
+
+  <androidx.constraintlayout.widget.Barrier
+    android:id="@+id/barrier"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:barrierDirection="bottom"
+    app:constraint_referenced_ids="tvCandidateName,ivCandidatePartySeal" />
 
   <TextView
     android:id="@+id/tvCandidatePartyName"
@@ -53,19 +58,20 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="4dp"
     android:maxLines="2"
-    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintBottom_toBottomOf="@id/ivCandidate"
     app:layout_constraintEnd_toEndOf="@+id/tvCandidateName"
     app:layout_constraintHorizontal_bias="0.5"
     app:layout_constraintStart_toStartOf="@+id/ivCandidatePartySeal"
-    app:layout_constraintTop_toBottomOf="@+id/tvCandidateName"
-    tools:text="@sample/candidates.csv/party" />
+    app:layout_constraintTop_toBottomOf="@+id/barrier"
+    app:layout_constraintVertical_bias="0.0"
+    tools:text="စမ်းသပ်ခံ ပါတီနာမည်တစ်ခုသာဖြစ်ပါသည်။ လိုက်မဖတ်ပါနဲ့ ဘာမှမထူးပါ" />
 
   <TextView
+    android:id="@+id/textView"
     style="@style/TextTiny.Bold"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@drawable/bg_chip_accent"
-    android:visibility="gone"
     android:drawableStart="@drawable/ic_star_12"
     android:importantForAccessibility="no"
     android:paddingStart="4dp"
@@ -74,6 +80,7 @@
     android:paddingBottom="3dp"
     android:textColor="@color/text_on_accent"
     android:textSize="8sp"
+    android:visibility="gone"
     app:drawableTint="@color/text_on_accent"
     app:layout_constraintBottom_toBottomOf="@+id/ivCandidate"
     app:layout_constraintEnd_toEndOf="@+id/ivCandidate"

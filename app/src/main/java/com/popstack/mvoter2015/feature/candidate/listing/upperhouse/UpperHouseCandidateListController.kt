@@ -21,6 +21,7 @@ import com.popstack.mvoter2015.feature.candidate.listing.CandidateListPagerParen
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateListRecyclerViewAdapter
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateListViewItem
 import com.popstack.mvoter2015.feature.home.BottomNavigationHostViewModelStore
+import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
 import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewState
 import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.logging.HasTag
@@ -71,6 +72,8 @@ class UpperHouseCandidateListController(bundle: Bundle) :
     binding.rvCandidate.apply {
       adapter = candidateListAdapter
       layoutManager = LinearLayoutManager(requireContext())
+      val dimen = context.resources.getDimensionPixelSize(R.dimen.recycler_view_item_margin)
+      addItemDecoration(RecyclerViewMarginDecoration(dimen, 1))
     }
 
     viewModel.viewItemLiveData.observe(this, Observer(::observeViewItem))

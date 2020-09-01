@@ -20,6 +20,7 @@ import com.popstack.mvoter2015.feature.candidate.listing.CandidateListRecyclerVi
 import com.popstack.mvoter2015.feature.party.PartySharedElementTransitionChangeHandler
 import com.popstack.mvoter2015.feature.party.detail.PartyDetailController
 import com.popstack.mvoter2015.feature.share.ShareUrlFactory
+import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
 import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewState
 import com.popstack.mvoter2015.helper.conductor.requireActivityAsAppCompatActivity
 import com.popstack.mvoter2015.helper.conductor.requireContext
@@ -97,6 +98,8 @@ class CandidateDetailController(
     binding.rvRivalCandidates.apply {
       adapter = candidateListAdapter
       layoutManager = LinearLayoutManager(requireContext())
+      val dimen = context.resources.getDimensionPixelSize(R.dimen.recycler_view_item_margin)
+      addItemDecoration(RecyclerViewMarginDecoration(dimen, 0))
     }
 
     viewModel.viewItemLiveData.observe(this, Observer(::observeViewItem))
