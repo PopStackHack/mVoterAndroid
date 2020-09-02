@@ -17,6 +17,7 @@ data class CandidateInfoViewItem(
   val partyName: String?,
   val partySealImageUrl: String?,
   val houseType: String,
+  val region: String,
   val constituencyName: String,
   val age: String,
   val birthday: String,
@@ -44,7 +45,8 @@ fun Candidate.toCandidateInfoViewItem() = CandidateInfoViewItem(
     HouseType.LOWER_HOUSE -> "ပြည့်သူလွှတ်တော်"
     HouseType.REGIONAL_HOUSE -> "ပြည်နယ်လွှတ်တော်"
   },
-  constituencyName = constituency.township ?: constituency.stateRegion.orEmpty() + " " + constituency.name,
+  region = constituency.township ?: constituency.stateRegion.orEmpty(),
+  constituencyName = constituency.name,
   age = age?.toString()?.toMMInt().orEmpty(),
   birthday = birthDate.toString().toMMInt(),
   education = education,

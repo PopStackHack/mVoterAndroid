@@ -63,14 +63,14 @@
         android:gravity="center_vertical"
         android:transitionName="@string/transition_name_party_name"
         app:drawableEndCompat="@drawable/ic_arrow_right_24"
-        app:drawableTint="@color/accent"
+        app:drawableTint="@color/text_primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvCandidateName"
         tools:text="@sample/candidates.csv/party" />
 
       <TextView
-        android:id="@+id/tvConstituencyName"
+        android:id="@+id/tvRegion"
         style="@style/TextMedium.Bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -80,6 +80,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvCandidatePartyName"
         tools:text="ပြည့်သူလွှတ်တော်" />
+
+      <TextView
+        android:id="@+id/tvConstituencyName"
+        style="@style/TextMedium.Bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/bg_chip_accent_transparent"
+        android:paddingLeft="12dp"
+        android:paddingTop="2dp"
+        android:paddingRight="12dp"
+        android:paddingBottom="2dp"
+        app:layout_constraintEnd_toEndOf="@+id/tvRegion"
+        app:layout_constraintStart_toStartOf="@+id/tvRegion"
+        app:layout_constraintTop_toBottomOf="@+id/tvRegion"
+        tools:text="တာမွေ မဲဆန္ဒနယ်" />
 
       <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineStart16"
@@ -239,7 +255,7 @@
         style="@style/TextMedium.Secondary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="နာမည်"
+        android:text="အမည်"
         android:layout_marginStart="@dimen/candidate_details_vertical_section_spacing"
         app:layout_constraintEnd_toStartOf="@+id/guidelineEnd16"
         app:layout_constraintStart_toEndOf="@+id/tvMotherTitle"
@@ -316,7 +332,7 @@
         style="@style/TextMedium.Secondary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="နာမည်"
+        android:text="အမည်"
         android:layout_marginStart="@dimen/candidate_details_vertical_section_spacing"
         app:layout_constraintEnd_toStartOf="@+id/guidelineEnd16"
         app:layout_constraintStart_toEndOf="@+id/tvFatherTitle"
