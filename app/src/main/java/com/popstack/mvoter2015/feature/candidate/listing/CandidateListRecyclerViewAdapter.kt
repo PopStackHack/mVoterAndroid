@@ -43,10 +43,11 @@ class CandidateListItemViewHolder(val binding: ItemCandidateBinding) : RecyclerV
     with(binding) {
       tvCandidateName.text = smallCandidateViewItem.name
       tvCandidatePartyName.text = smallCandidateViewItem.partyName
-//      ivCandidate.load(smallCandidateViewItem.photoUrl) {
-//        scale(Scale.FIT)
-//        crossfade(true)
-//      }
+      ivCandidate.load(smallCandidateViewItem.photoUrl) {
+        scale(Scale.FIT)
+        crossfade(true)
+        error(R.drawable.placeholder_oval)
+      }
       ivCandidatePartySeal.load(smallCandidateViewItem.partySealImageUrl) {
         placeholder(R.drawable.placeholder_rect)
         error(R.drawable.placeholder_rect)
