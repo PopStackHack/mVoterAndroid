@@ -70,7 +70,7 @@
         tools:text="@sample/candidates.csv/party" />
 
       <TextView
-        android:id="@+id/tvConstituencyType"
+        android:id="@+id/tvConstituencyName"
         style="@style/TextMedium.Bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -80,22 +80,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvCandidatePartyName"
         tools:text="ပြည့်သူလွှတ်တော်" />
-
-      <TextView
-        android:id="@+id/tvConstituencyName"
-        style="@style/TextMedium.Bold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/bg_chip_accent_transparent"
-        android:paddingLeft="12dp"
-        android:paddingTop="2dp"
-        android:paddingRight="12dp"
-        android:paddingBottom="2dp"
-        app:layout_constraintEnd_toEndOf="@+id/tvConstituencyType"
-        app:layout_constraintStart_toStartOf="@+id/tvConstituencyType"
-        app:layout_constraintTop_toBottomOf="@+id/tvConstituencyType"
-        tools:text="တာမွေ မဲဆန္ဒနယ်" />
 
       <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineStart16"

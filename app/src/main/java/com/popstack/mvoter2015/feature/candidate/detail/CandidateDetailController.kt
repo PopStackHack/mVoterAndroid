@@ -155,7 +155,6 @@ class CandidateDetailController(
             }
           }
 
-          binding.tvConstituencyType.text = houseType
           binding.tvConstituencyName.text = constituencyName
           binding.tvAge.text = age
           binding.tvBirthday.text = birthday

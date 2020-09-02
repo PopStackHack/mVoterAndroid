@@ -107,7 +107,9 @@ internal fun CandidateTable.toCandidateModel() = Candidate(
     // TODO: Change house accordingly
     id = "",
     name = constituencyName,
-    house = HouseType.LOWER_HOUSE
+    house = HouseType.LOWER_HOUSE,
+    null,
+    null
   ),
   ethnicity = ethnicity,
   father = CandidateParent(
@@ -138,7 +140,9 @@ internal fun CandidateWithPartyView.toCandidateModel() = Candidate(
     // TODO: Change house accordingly
     id = "",
     name = constituencyName,
-    house = HouseType.LOWER_HOUSE
+    house = HouseType.LOWER_HOUSE,
+    null,
+    null
   ),
   ethnicity = ethnicity,
   father = CandidateParent(

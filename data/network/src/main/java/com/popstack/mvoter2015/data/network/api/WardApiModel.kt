@@ -36,17 +36,20 @@ data class WardApiModel(
       lowerHouseConstituency = Constituency(
         id = lowerHouseConstituency.id.toString(),
         name = lowerHouseConstituency.name,
-        house = HouseType.LOWER_HOUSE
+        house = HouseType.LOWER_HOUSE,
+        null, null
       ),
       upperHouseConstituency = Constituency(
         id = upperHouseConstituency.id.toString(),
         name = upperHouseConstituency.name,
-        house = HouseType.UPPER_HOUSE
+        house = HouseType.UPPER_HOUSE,
+        null, null
       ),
       stateRegionConstituency = Constituency(
         id = stateRegionConstituency.id.toString(),
         name = stateRegionConstituency.name,
-        house = HouseType.REGIONAL_HOUSE
+        house = HouseType.REGIONAL_HOUSE,
+        null, null
       )
     )
   }

@@ -47,17 +47,20 @@ class LocationCacheSourceImpl @Inject constructor(
       lowerHouseConstituency = Constituency(
         id = getString(KEY_LOWER_CONST_ID),
         name = getString(KEY_LOWER_CONST_NAME),
-        house = HouseType.LOWER_HOUSE
+        house = HouseType.LOWER_HOUSE,
+        null, null
       ),
       upperHouseConstituency = Constituency(
         id = getString(KEY_UPPER_CONST_ID),
         name = getString(KEY_UPPER_CONST_NAME),
-        house = HouseType.UPPER_HOUSE
+        house = HouseType.UPPER_HOUSE,
+        null, null
       ),
       stateRegionConstituency = Constituency(
         id = getString(KEY_STATE_CONST_ID),
         name = getString(KEY_STATE_CONST_NAME),
-        house = HouseType.REGIONAL_HOUSE
+        house = HouseType.REGIONAL_HOUSE,
+        null, null
       )
     )
   }

@@ -41,7 +41,7 @@ fun Candidate.toCandidateInfoViewItem() = CandidateInfoViewItem(
     HouseType.LOWER_HOUSE -> "ပြည့်သူလွှတ်တော်"
     HouseType.REGIONAL_HOUSE -> "ပြည်နယ်လွှတ်တော်"
   },
-  constituencyName = constituency.name,
+  constituencyName = constituency.township ?: constituency.stateRegion.orEmpty() + " " + constituency.name,
   age = age?.toString()?.toMMInt().orEmpty(),
   birthday = birthDate.toString().toMMInt(),
   education = education,

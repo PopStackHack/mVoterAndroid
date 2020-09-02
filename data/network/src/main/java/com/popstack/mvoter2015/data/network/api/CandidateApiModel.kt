@@ -67,7 +67,13 @@ fun CandidateApiModel.toCandidateModel(): Candidate {
       religion = religion,
       age = age,
       birthDate = LocalDate.parse(birthday, dateTimeFormatter),
-      constituency = Constituency(constituency.id.toString(), constituency.attributes.name, mapToHouseType(constituency.attributes.house)),
+      constituency = Constituency(
+        constituency.id.toString(),
+        constituency.attributes.name,
+        mapToHouseType(constituency.attributes.house),
+        constituency.attributes.township,
+        constituency.attributes.stateRegion
+      ),
       ethnicity = ethnicity,
       father = father?.run { CandidateParent(name, religion, ethnicity) },
       mother = mother?.run { CandidateParent(name, religion, ethnicity) },
