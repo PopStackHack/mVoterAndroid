@@ -178,18 +178,18 @@
         tools:text="ဖရီးလင့် ဒတ်ပလွတ်ပါ" />
 
       <TextView
-        android:id="@+id/tvRaceReligionTitle"
+        android:id="@+id/tvRaceTitle"
         style="@style/TextMedium.Secondary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/candidate_details_horizontal_section_spacing"
-        android:text="လူမျိုး ၊ ဘာသာ"
+        android:text="လူမျိုး"
         app:layout_constraintEnd_toStartOf="@+id/guidelineEnd16"
         app:layout_constraintStart_toStartOf="@+id/guidelineStart16"
         app:layout_constraintTop_toBottomOf="@+id/tvWork" />
 
       <TextView
-        android:id="@+id/tvRaceReligion"
+        android:id="@+id/tvRace"
         style="@style/TextLarge"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -197,7 +197,30 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvRaceReligionTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvRaceTitle"
+        tools:text="ဗမာ ၊ ဗုဒ္ဓဘာသာ" />
+
+      <TextView
+        android:id="@+id/tvReligionTitle"
+        style="@style/TextMedium.Secondary"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/candidate_details_horizontal_section_spacing"
+        android:text="ဘာသာ"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineEnd16"
+        app:layout_constraintStart_toStartOf="@+id/guidelineStart16"
+        app:layout_constraintTop_toBottomOf="@+id/tvRace" />
+
+      <TextView
+        android:id="@+id/tvReligion"
+        style="@style/TextLarge"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvReligionTitle"
         tools:text="ဗမာ ၊ ဗုဒ္ဓဘာသာ" />
 
       <TextView
@@ -209,59 +232,150 @@
         android:layout_marginTop="@dimen/candidate_details_horizontal_section_spacing"
         android:text="မိခင်"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvRaceReligion" />
+        app:layout_constraintTop_toBottomOf="@+id/tvReligion" />
+
+      <TextView
+        android:id="@+id/tvMotherNameTitle"
+        style="@style/TextMedium.Secondary"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="နာမည်"
+        android:layout_marginStart="@dimen/candidate_details_vertical_section_spacing"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineEnd16"
+        app:layout_constraintStart_toEndOf="@+id/tvMotherTitle"
+        app:layout_constraintTop_toTopOf="@+id/tvMotherTitle" />
 
       <TextView
         android:id="@+id/tvMotherName"
         style="@style/TextLarge"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/candidate_details_vertical_section_spacing"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tvMotherNameTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvMotherNameTitle"
+        tools:text="ဗမာ ၊ ဗုဒ္ဓဘာသာ" />
+
+      <TextView
+        android:id="@+id/tvMotherEthnicityTitle"
+        style="@style/TextMedium.Secondary"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="လူမျိုး"
         app:layout_constraintEnd_toStartOf="@+id/guidelineEnd16"
-        app:layout_constraintStart_toEndOf="@+id/tvMotherTitle"
-        app:layout_constraintTop_toTopOf="@id/tvMotherTitle"
-        tools:text="ဒေါ်ကတ်တိ" />
+        app:layout_constraintStart_toStartOf="@+id/tvMotherName"
+        app:layout_constraintTop_toBottomOf="@+id/tvMotherName" />
+
+      <TextView
+        android:id="@+id/tvMotherEthnicity"
+        style="@style/TextLarge"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tvMotherEthnicityTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvMotherEthnicityTitle"
+        tools:text="ဗမာ ၊ ဗုဒ္ဓဘာသာ" />
+
+      <TextView
+        android:id="@+id/tvMotherReligionTitle"
+        style="@style/TextMedium.Secondary"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="ဘာသာ"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineEnd16"
+        app:layout_constraintStart_toStartOf="@+id/tvMotherEthnicity"
+        app:layout_constraintTop_toBottomOf="@+id/tvMotherEthnicity" />
 
       <TextView
         android:id="@+id/tvMotherReligion"
-        style="@style/TextMedium"
+        style="@style/TextLarge"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineEnd16"
-        app:layout_constraintStart_toStartOf="@+id/tvMotherName"
-        app:layout_constraintTop_toBottomOf="@id/tvMotherName"
-        tools:text="ဗုဒ္ဓဘာသာ" />
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tvMotherReligionTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvMotherReligionTitle"
+        tools:text="ဗမာ ၊ ဗုဒ္ဓဘာသာ" />
 
       <TextView
         android:id="@+id/tvFatherTitle"
         style="@style/TextMedium.Secondary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="@dimen/candidate_details_horizontal_section_spacing"
         android:text="ဖခင်"
-        app:layout_constraintStart_toStartOf="@+id/guidelineStart16"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvMotherReligion" />
+
+      <TextView
+        android:id="@+id/tvFatherNameTitle"
+        style="@style/TextMedium.Secondary"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="နာမည်"
+        android:layout_marginStart="@dimen/candidate_details_vertical_section_spacing"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineEnd16"
+        app:layout_constraintStart_toEndOf="@+id/tvFatherTitle"
+        app:layout_constraintTop_toTopOf="@+id/tvFatherTitle" />
 
       <TextView
         android:id="@+id/tvFatherName"
         style="@style/TextLarge"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/candidate_details_vertical_section_spacing"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tvFatherNameTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvFatherNameTitle"
+        tools:text="ဗမာ ၊ ဗုဒ္ဓဘာသာ" />
+
+      <TextView
+        android:id="@+id/tvFatherEthnicityTitle"
+        style="@style/TextMedium.Secondary"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="လူမျိုး"
         app:layout_constraintEnd_toStartOf="@+id/guidelineEnd16"
-        app:layout_constraintStart_toEndOf="@+id/tvFatherTitle"
-        app:layout_constraintTop_toTopOf="@id/tvFatherTitle"
-        tools:text="ဉီးဖျံ" />
+        app:layout_constraintStart_toStartOf="@+id/tvFatherName"
+        app:layout_constraintTop_toBottomOf="@+id/tvFatherName" />
+
+      <TextView
+        android:id="@+id/tvFatherEthnicity"
+        style="@style/TextLarge"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tvFatherEthnicityTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvFatherEthnicityTitle"
+        tools:text="ဗမာ ၊ ဗုဒ္ဓဘာသာ" />
+
+      <TextView
+        android:id="@+id/tvFatherReligionTitle"
+        style="@style/TextMedium.Secondary"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="ဘာသာ"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineEnd16"
+        app:layout_constraintStart_toStartOf="@+id/tvFatherEthnicity"
+        app:layout_constraintTop_toBottomOf="@+id/tvFatherEthnicity" />
 
       <TextView
         android:id="@+id/tvFatherReligion"
-        style="@style/TextMedium"
+        style="@style/TextLarge"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineEnd16"
-        app:layout_constraintStart_toStartOf="@+id/tvFatherName"
-        app:layout_constraintTop_toBottomOf="@id/tvFatherName"
-        tools:text="ဗုဒ္ဓဘာသာ" />
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tvFatherReligionTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvFatherReligionTitle"
+        tools:text="ဗမာ ၊ ဗုဒ္ဓဘာသာ" />
 
       <ImageView
         android:id="@+id/ivRivalCandidates"

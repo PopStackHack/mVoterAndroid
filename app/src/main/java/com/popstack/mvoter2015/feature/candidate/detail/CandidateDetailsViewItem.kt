@@ -22,10 +22,13 @@ data class CandidateInfoViewItem(
   val birthday: String,
   val education: String,
   val job: String,
+  val ethnicity: String,
   val religion: String,
   val motherName: String,
+  val motherEthnicity: String,
   val motherReligion: String,
   val fatherName: String,
+  val fatherEthnicity: String,
   val fatherReligion: String
 )
 
@@ -46,11 +49,14 @@ fun Candidate.toCandidateInfoViewItem() = CandidateInfoViewItem(
   birthday = birthDate.toString().toMMInt(),
   education = education,
   job = occupation,
-  religion = "$ethnicity $religion",
+  ethnicity = ethnicity,
+  religion = religion,
   motherName = mother?.name.orEmpty(),
-  motherReligion = mother?.ethnicity.orEmpty() + " " + mother?.religion.orEmpty(),
+  motherEthnicity = mother?.ethnicity.orEmpty(),
+  motherReligion =  mother?.religion.orEmpty(),
   fatherName = father?.name.orEmpty(),
-  fatherReligion = father?.ethnicity.orEmpty() + " " + father?.religion.orEmpty()
+  fatherEthnicity = father?.ethnicity.orEmpty(),
+  fatherReligion = father?.religion.orEmpty()
 )
 
 private fun String.toMMInt(): String {

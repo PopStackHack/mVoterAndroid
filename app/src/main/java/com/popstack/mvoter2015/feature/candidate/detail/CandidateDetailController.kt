@@ -160,10 +160,13 @@ class CandidateDetailController(
           binding.tvBirthday.text = birthday
           binding.tvEducation.text = education
           binding.tvWork.text = job
-          binding.tvRaceReligion.text = religion
+          binding.tvRace.text = ethnicity
+          binding.tvReligion.text = religion
           binding.tvMotherName.text = motherName
+          binding.tvMotherEthnicity.text = motherEthnicity
           binding.tvMotherReligion.text = motherReligion
           binding.tvFatherName.text = fatherName
+          binding.tvFatherEthnicity.text = fatherEthnicity
           binding.tvFatherReligion.text = fatherReligion
           binding.ivCandidatePartySeal.load(partySealImageUrl) {
             placeholder(R.drawable.placeholder_rect)
