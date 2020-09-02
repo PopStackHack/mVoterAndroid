@@ -8,6 +8,7 @@ import com.popstack.mvoter2015.domain.location.usecase.GetTownshipsForStateRegio
 import com.popstack.mvoter2015.exception.GlobalExceptionHandler
 import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewStateLiveData
 import com.popstack.mvoter2015.helper.livedata.SingleLiveEvent
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -21,6 +22,7 @@ class TownshipChooserViewModel @Inject constructor(
 
   // First one stage/region, Second one township
   val onTownshipChosenEvent = SingleLiveEvent<Pair<String, String>>()
+  val onStateRegionChosen = SingleLiveEvent<Int>()
 
   val data = Data()
 
@@ -30,7 +32,7 @@ class TownshipChooserViewModel @Inject constructor(
     var viewItems: ArrayList<StateRegionTownshipViewItem> = ArrayList()
   }
 
-  val onStateRegionClicked: (String) -> Unit = { clickedStateRegion ->
+  val onStateRegionClicked: (Int, String) -> Unit = { position, clickedStateRegion ->
     data.chosenStateRegion?.let {
       changeSelected(it, false)
     }
@@ -54,6 +56,7 @@ class TownshipChooserViewModel @Inject constructor(
       }
     else
       viewItemLiveData.postSuccess(data.viewItems)
+    onStateRegionChosen.postValue(position)
   }
 
   private fun setTownship(stateRegion: String, townships: List<Township>) {

@@ -5,13 +5,14 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.recyclerview.ViewBindingViewHolder
 import com.popstack.mvoter2015.databinding.ItemStateRegionTownshipBinding
 import com.popstack.mvoter2015.helper.diff.diffCallBackWith
 import com.popstack.mvoter2015.helper.extensions.inflater
 
 internal class StateRegionTownshipRecyclerViewAdapter constructor(
-  private val onStateRegionClick: (String) -> Unit,
+  private val onStateRegionClick: (Int, String) -> Unit,
   private val onTownshipClick: (String) -> Unit,
   private val onRetryClick: () -> Unit
 ) : ListAdapter<StateRegionTownshipViewItem, StateRegionTownshipRecyclerViewAdapter.StateRegionTownshipViewItemViewHolder>(
@@ -44,7 +45,7 @@ internal class StateRegionTownshipRecyclerViewAdapter constructor(
 
   class StateRegionTownshipViewItemViewHolder(
     binding: ItemStateRegionTownshipBinding,
-    onStateRegionClick: (String) -> Unit,
+    onStateRegionClick: (Int, String) -> Unit,
     onTownshipClick: (String) -> Unit,
     onRetryClick: () -> Unit
   ) : ViewBindingViewHolder<ItemStateRegionTownshipBinding>(binding) {
@@ -55,7 +56,7 @@ internal class StateRegionTownshipRecyclerViewAdapter constructor(
 
     init {
       binding.tvStateRegion.setOnClickListener {
-        onStateRegionClick(stateRegionTownshipViewItem.name)
+        onStateRegionClick(absoluteAdapterPosition, stateRegionTownshipViewItem.name)
       }
 
       binding.btnRetry.setOnClickListener {
@@ -75,6 +76,7 @@ internal class StateRegionTownshipRecyclerViewAdapter constructor(
 
       with(stateRegionTownshipViewItem) {
         binding.groupDropDown.isVisible = isSelected
+        binding.ivDropDownArrow.setImageDrawable(itemView.context.getDrawable(R.drawable.ic_baseline_keyboard_arrow_down_24))
 
         if (isSelected) {
           binding.progressBar.isVisible = isLoading && error.isEmpty()
@@ -89,6 +91,8 @@ internal class StateRegionTownshipRecyclerViewAdapter constructor(
           binding.tvErrorMessage.isVisible = shouldShowError
           binding.btnRetry.isVisible = shouldShowError
           binding.tvErrorMessage.text = error
+        } else {
+          binding.ivDropDownArrow.setImageDrawable(itemView.context.getDrawable(R.drawable.ic_arrow_right_24))
         }
       }
     }
