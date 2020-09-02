@@ -86,7 +86,7 @@ class PartyDetailViewModel @Inject constructor(
             sealImage = sealImage,
             partyNumber = registeredNumber.toString(),
             leadersAndChairmen = leadersAndChairmenList,
-            memberCount = memberCount?.toString() ?: "-",
+            memberCount = memberCount ?: 0,
             headQuarterLocation = headquarterLocation,
             contactList = contacts,
             isEstablishedDueToArticle25 = isEstablishedDueToArticle25,

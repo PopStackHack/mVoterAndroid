@@ -17,7 +17,7 @@ data class PartyDetailViewItem(
   val sealImage: String,
   val partyNumber: String,
   val leadersAndChairmen: List<String>,
-  val memberCount: String,
+  val memberCount: Int,
   val headQuarterLocation: String,
   val contactList: List<String>,
   val isEstablishedDueToArticle25: Boolean,
