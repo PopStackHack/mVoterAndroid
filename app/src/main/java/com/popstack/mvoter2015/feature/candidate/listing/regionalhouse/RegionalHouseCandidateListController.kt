@@ -72,8 +72,6 @@ class RegionalHouseCandidateListController(bundle: Bundle) :
     binding.rvCandidate.apply {
       adapter = candidateListAdapter
       layoutManager = LinearLayoutManager(requireContext())
-      val dimen = context.resources.getDimensionPixelSize(R.dimen.recycler_view_item_margin)
-      addItemDecoration(RecyclerViewMarginDecoration(dimen, 0))
     }
 
     viewModel.viewItemLiveData.observe(this, Observer(::observeViewItem))

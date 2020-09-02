@@ -4,6 +4,8 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
+  android:paddingTop="8dp"
+  android:paddingBottom="8dp"
   android:background="?attr/selectableItemBackground">
 
   <ImageView
@@ -24,7 +26,7 @@
     android:layout_marginStart="16dp"
     android:importantForAccessibility="no"
     android:src="@drawable/placeholder_rect"
-    app:layout_constraintBottom_toTopOf="@+id/tvCandidatePartyName"
+    app:layout_constraintBottom_toBottomOf="@+id/tvCandidateName"
     app:layout_constraintDimensionRatio="3:2"
     app:layout_constraintStart_toEndOf="@+id/ivCandidate"
     app:layout_constraintTop_toTopOf="@+id/tvCandidateName" />
