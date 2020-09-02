@@ -81,22 +81,6 @@
         app:layout_constraintTop_toBottomOf="@+id/tvCandidatePartyName"
         tools:text="ပြည့်သူလွှတ်တော်" />
 
-      <TextView
-        android:id="@+id/tvRegion"
-        style="@style/TextMedium.Bold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/bg_chip_accent_transparent"
-        android:paddingLeft="12dp"
-        android:paddingTop="2dp"
-        android:paddingRight="12dp"
-        android:paddingBottom="2dp"
-        app:layout_constraintEnd_toEndOf="@+id/tvConstituencyName"
-        app:layout_constraintStart_toStartOf="@+id/tvConstituencyName"
-        app:layout_constraintTop_toBottomOf="@+id/tvConstituencyName"
-        tools:text="တာမွေ မဲဆန္ဒနယ်" />
-
       <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineStart16"
         android:layout_width="1dp"
@@ -151,7 +135,7 @@
         android:layout_marginTop="20dp"
         android:text="@string/date_of_birth"
         app:layout_constraintStart_toEndOf="@id/tvAgeSuffix"
-        app:layout_constraintTop_toBottomOf="@+id/tvRegion" />
+        app:layout_constraintTop_toBottomOf="@+id/tvConstituencyName" />
 
       <TextView
         android:id="@+id/tvEducationTitle"
