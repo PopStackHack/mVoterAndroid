@@ -21,12 +21,11 @@ class CandidateListViewModel @Inject constructor(
   fun loadHouses() {
     viewModelScope.launch {
       val houseTypes = HouseType.values()
-      val stateRegion = getUserStateRegion.execute(Unit)
 
       val userWard = getUserWard.execute(Unit) ?: return@launch
 
       val viewItems = houseTypes.map { houseType ->
-        houseViewItemMapper.mapFromHouseType(houseType, stateRegion.type, userWard)
+        houseViewItemMapper.mapFromHouseType(houseType, userWard)
       }
       houseViewItemListLiveData.postValue(viewItems)
     }

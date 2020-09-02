@@ -19,7 +19,6 @@ class CandidateListHouseViewItemMapper @Inject constructor(
 
   internal fun mapFromHouseType(
     houseType: HouseType,
-    stateRegionType: StateRegionType,
     userWard: Ward
   ): CandidateListHouseViewItem {
 
@@ -27,14 +26,10 @@ class CandidateListHouseViewItemMapper @Inject constructor(
       HouseType.UPPER_HOUSE -> context.getString(R.string.tab_upper_house)
       HouseType.LOWER_HOUSE -> context.getString(R.string.tab_lower_house)
       HouseType.REGIONAL_HOUSE -> {
-        when (stateRegionType) {
-          StateRegionType.REGION -> {
+        if (userWard.stateRegionConstituency.name.contains("တိုင်းဒေသကြီး"))
+          context.getString(R.string.tab_regional_house_state)
+        else
             context.getString(R.string.tab_regional_house_region)
-          }
-          StateRegionType.STATE -> {
-            context.getString(R.string.tab_regional_house_state)
-          }
-        }
       }
     }
 
