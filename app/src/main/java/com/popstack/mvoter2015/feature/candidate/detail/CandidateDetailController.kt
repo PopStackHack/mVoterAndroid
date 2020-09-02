@@ -1,11 +1,14 @@
 package com.popstack.mvoter2015.feature.candidate.detail
 
 import android.content.Intent
+import android.graphics.PorterDuff
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.DrawableCompat
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
@@ -25,6 +28,7 @@ import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewState
 import com.popstack.mvoter2015.helper.conductor.requireActivityAsAppCompatActivity
 import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.helper.conductor.supportActionBar
+import com.popstack.mvoter2015.helper.extensions.setCompoundDrawableWithIntrinsicBoundsKt
 import com.popstack.mvoter2015.helper.intent.Intents
 import com.popstack.mvoter2015.logging.HasTag
 
@@ -126,16 +130,29 @@ class CandidateDetailController(
           binding.tvCandidateName.text = name
           binding.tvCandidatePartyName.text = partyName
 
-          binding.tvCandidatePartyName.setOnClickListener {
-            val partyDetailController = PartyDetailController.newInstance(
-              partyId = partyId,
-              partyName = partyName,
+          if (partyId == null) {
+            binding.tvCandidatePartyName.setCompoundDrawableWithIntrinsicBoundsKt(
+              end = null
             )
-            router.pushController(
-              RouterTransaction.with(partyDetailController)
-                .pushChangeHandler(PartySharedElementTransitionChangeHandler())
-                .popChangeHandler(PartySharedElementTransitionChangeHandler())
+            binding.tvCandidatePartyName.setOnClickListener(null)
+          } else {
+            val rightArrowDrawable = DrawableCompat.wrap(ContextCompat.getDrawable(requireContext(), R.drawable.ic_arrow_right_24)!!)
+            DrawableCompat.setTint(rightArrowDrawable, ContextCompat.getColor(requireContext(), R.color.accent))
+            DrawableCompat.setTintMode(rightArrowDrawable, PorterDuff.Mode.SRC_ATOP)
+            binding.tvCandidatePartyName.setCompoundDrawableWithIntrinsicBoundsKt(
+              end = rightArrowDrawable
             )
+            binding.tvCandidatePartyName.setOnClickListener {
+              val partyDetailController = PartyDetailController.newInstance(
+                partyId = partyId,
+                partyName = partyName,
+              )
+              router.pushController(
+                RouterTransaction.with(partyDetailController)
+                  .pushChangeHandler(PartySharedElementTransitionChangeHandler())
+                  .popChangeHandler(PartySharedElementTransitionChangeHandler())
+              )
+            }
           }
 
           binding.tvConstituencyType.text = houseType

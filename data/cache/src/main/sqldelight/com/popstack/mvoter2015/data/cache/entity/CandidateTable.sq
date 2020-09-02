@@ -21,7 +21,8 @@ CREATE TABLE CandidateTable(
   fatherReligion TEXT,
   motherName TEXT,
   motherReligion TEXT,
-  partyId TEXT AS PartyId NOT NULL,
+  individualLogo TEXT,
+  partyId TEXT AS PartyId,
   constituencyId TEXT AS ConstituencyId NOT NULL,
   constituencyName TEXT NOT NULL
 );
@@ -42,7 +43,11 @@ INSERT OR REPLACE INTO CandidateTable VALUES(
     :fatherReligion,
     :motherName,
     :motherReligion,
+    :individualLogo,
     :partyId,
     :constituencyId,
     :constituencyName
 );
+
+selectById:
+SELECT * FROM CandidateTable WHERE id = :id;

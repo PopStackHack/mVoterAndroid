@@ -1,6 +1,7 @@
 package com.popstack.mvoter2015.data.cache.source
 
 import com.popstack.mvoter2015.data.cache.MVoterDb
+import com.popstack.mvoter2015.data.cache.entity.CandidateTable
 import com.popstack.mvoter2015.data.cache.entity.CandidateWithPartyView
 import com.popstack.mvoter2015.data.common.candidate.CandidateCacheSource
 import com.popstack.mvoter2015.domain.candidate.model.Candidate
@@ -17,7 +18,9 @@ class CandidateCacheSourceImpl @Inject constructor(
 ) : CandidateCacheSource {
 
   override fun putCandidate(candidate: Candidate) {
-    insertOrReplaceParty(candidate.party)
+    candidate.party?.let {
+      insertOrReplaceParty(it)
+    }
     insertOrReplaceCandidate(candidate)
   }
 
@@ -34,7 +37,13 @@ class CandidateCacheSourceImpl @Inject constructor(
   }
 
   override fun getCandidate(candidateId: CandidateId): Candidate {
-    return db.candidateWithPartyViewQueries.getCandidateById(candidateId).executeAsOne().toCandidateModel()
+    val candidate = db.candidateTableQueries.selectById(candidateId).executeAsOne()
+
+    if (candidate.partyId != null) {
+      return db.candidateWithPartyViewQueries.getCandidateById(candidateId).executeAsOne().toCandidateModel()
+    } else {
+      return candidate.toCandidateModel()
+    }
   }
 
   private fun insertOrReplaceParty(party: Party) {
@@ -76,14 +85,15 @@ class CandidateCacheSourceImpl @Inject constructor(
       fatherReligion = father?.religion,
       motherName = mother?.name,
       motherReligion = mother?.religion,
-      partyId = party.id,
+      individualLogo = individualLogo,
+      partyId = party?.id,
       constituencyId = ConstituencyId(constituency.id),
       constituencyName = constituency.name
     )
   }
 }
 
-fun CandidateWithPartyView.toCandidateModel() = Candidate(
+internal fun CandidateTable.toCandidateModel() = Candidate(
   id = id,
   name = name,
   gender = gender,
@@ -110,8 +120,40 @@ fun CandidateWithPartyView.toCandidateModel() = Candidate(
     religion = motherReligion.orEmpty(),
     ""
   ),
+  individualLogo = individualLogo,
+  party = null
+)
+
+internal fun CandidateWithPartyView.toCandidateModel() = Candidate(
+  id = id,
+  name = name,
+  gender = gender,
+  occupation = occupation,
+  photoUrl = photoUrl,
+  education = education,
+  religion = religion,
+  age = age?.toInt(),
+  birthDate = birthDate,
+  constituency = Constituency(
+    // TODO: Change house accordingly
+    id = "",
+    name = constituencyName,
+    house = HouseType.LOWER_HOUSE
+  ),
+  ethnicity = ethnicity,
+  father = CandidateParent(
+    name = fatherName.orEmpty(),
+    religion = fatherReligion.orEmpty(),
+    ""
+  ),
+  mother = CandidateParent(
+    name = motherName.orEmpty(),
+    religion = motherReligion.orEmpty(),
+    ""
+  ),
+  individualLogo = individualLogo,
   party = Party(
-    id = partyId,
+    id = partyId!!,
     registeredNumber = partyNumber,
     nameBurmese = partyBurmeseName,
     nameEnglish = partyEnglishName,
