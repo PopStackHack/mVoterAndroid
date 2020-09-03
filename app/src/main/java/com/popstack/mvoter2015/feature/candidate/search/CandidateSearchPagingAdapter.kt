@@ -3,6 +3,7 @@ package com.popstack.mvoter2015.feature.candidate.search
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import coil.api.load
+import coil.transform.CircleCropTransformation
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.recyclerview.ViewBindingViewHolder
 import com.popstack.mvoter2015.databinding.ItemCandidateBinding
@@ -53,6 +54,7 @@ internal class CandidateSearchPagingAdapter constructor(
         ivCandidate.load(itemAtIndex.photoUrl) {
           placeholder(R.drawable.placeholder_oval)
           error(R.drawable.placeholder_oval)
+          transformations(CircleCropTransformation())
           crossfade(true)
         }
 
