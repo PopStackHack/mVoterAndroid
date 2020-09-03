@@ -3,7 +3,6 @@ package com.popstack.mvoter2015.feature.candidate.listing
 import android.content.Context
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.domain.constituency.model.HouseType
-import com.popstack.mvoter2015.domain.location.model.StateRegionType
 import com.popstack.mvoter2015.domain.location.model.Ward
 import javax.inject.Inject
 
@@ -29,7 +28,7 @@ class CandidateListHouseViewItemMapper @Inject constructor(
         if (userWard.stateRegionConstituency.name.contains("တိုင်းဒေသကြီး"))
           context.getString(R.string.tab_regional_house_state)
         else
-            context.getString(R.string.tab_regional_house_region)
+          context.getString(R.string.tab_regional_house_region)
       }
     }
 

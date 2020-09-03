@@ -72,6 +72,8 @@ dependencies {
   daggerJvm()
   daggerAndroid()
 
+  moshi()
+
   //Testing
   testImplementation("junit:junit:4.13")
   mockito()

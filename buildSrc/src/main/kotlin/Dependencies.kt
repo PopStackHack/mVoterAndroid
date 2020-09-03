@@ -6,7 +6,7 @@ object BuildConfig {
   private const val versionMajor = 4
   private const val versionMinor = 0
   private const val versionPatch = 0
-  private const val versionBuild = 0
+  private const val versionBuild = 1
 
   const val versionName =
     "$versionMajor.$versionMinor.$versionPatch"
@@ -29,6 +29,13 @@ object CommonLibs {
 //region AndroidX
 object AndroidXAppCompat {
   const val app_compat = "androidx.appcompat:appcompat:1.3.0-alpha02"
+}
+
+object AndroidXDataStore {
+  private const val version = "1.0.0-alpha01"
+
+  const val preferences = "androidx.datastore:datastore-preferences:$version"
+  const val proto = "androidx.datastore:datastore-core:$version"
 }
 
 object AndroidXRecyclerView {
