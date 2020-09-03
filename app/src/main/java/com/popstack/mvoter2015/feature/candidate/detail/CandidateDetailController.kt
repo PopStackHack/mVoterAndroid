@@ -15,6 +15,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import coil.api.load
 import coil.size.Scale
+import coil.transform.CircleCropTransformation
 import com.bluelinelabs.conductor.RouterTransaction
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvvmController
@@ -176,8 +177,8 @@ class CandidateDetailController(
             crossfade(true)
           }
           binding.ivCandidate.load(photo) {
-            scale(Scale.FIT)
-            crossfade(true)
+            transformations(CircleCropTransformation())
+            scale(Scale.FILL)
             error(R.drawable.placeholder_oval)
           }
         }
