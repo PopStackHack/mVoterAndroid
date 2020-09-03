@@ -96,18 +96,18 @@
         android:scaleType="centerCrop"
         android:src="@drawable/taf_logo"
         app:layout_constraintDimensionRatio="h,2:1"
-        app:layout_constraintEnd_toStartOf="@+id/ivIdeaLogo"
+        app:layout_constraintEnd_toStartOf="@+id/ivMaePaySohLogo"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_weight="2"
         app:layout_constraintStart_toEndOf="@+id/ivUecLogo"
         app:layout_constraintTop_toBottomOf="@id/tvSupportedBy" />
 
       <ImageView
-        android:id="@+id/ivIdeaLogo"
-        android:layout_width="0dp"
+        android:id="@+id/ivMaePaySohLogo"
+        android:layout_width="100dp"
         android:layout_height="0dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/idea_logo"
+        android:src="@drawable/maepaysoh_logo"
         app:layout_constraintDimensionRatio="w,1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -120,30 +120,42 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="ivUecLogo,ivTafLogo,ivIdeaLogo" />
-
-      <ImageView
-        android:id="@+id/ivEuLogo"
-        android:layout_width="100dp"
-        android:layout_height="0dp"
-        android:src="@drawable/eu_logo"
-        app:layout_constraintDimensionRatio="w,1:1"
-        app:layout_constraintEnd_toStartOf="@+id/ivStepLogo"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="spread"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/barrierLogo" />
+        app:constraint_referenced_ids="ivUecLogo,ivTafLogo,ivMaePaySohLogo" />
 
       <ImageView
         android:id="@+id/ivStepLogo"
         android:layout_width="100dp"
-        android:layout_height="0dp"
+        android:layout_height="100dp"
+        android:scaleType="fitCenter"
         android:src="@drawable/step_logo"
-        app:layout_constraintDimensionRatio="w,1:1"
+        app:layout_constraintEnd_toStartOf="@+id/ivIdeaLogo"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/barrierLogo" />
+
+      <ImageView
+        android:id="@+id/ivIdeaLogo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/idea_logo"
+        app:layout_constraintEnd_toStartOf="@+id/ivEuLogo"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ivStepLogo"
+        app:layout_constraintTop_toBottomOf="@id/barrierLogo" />
+
+
+      <ImageView
+        android:id="@+id/ivEuLogo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/eu_logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/ivEuLogo"
+        app:layout_constraintStart_toEndOf="@+id/ivIdeaLogo"
         app:layout_constraintTop_toBottomOf="@id/barrierLogo" />
+
 
       <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrierLogoTwo"
@@ -249,7 +261,7 @@
         style="@style/TextMedium.Bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:text="@string/version"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
