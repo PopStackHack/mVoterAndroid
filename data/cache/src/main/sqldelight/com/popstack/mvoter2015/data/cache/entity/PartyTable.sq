@@ -15,7 +15,7 @@ CREATE TABLE PartyTable(
   sealImage TEXT NOT NULL,
   region TEXT NOT NULL,
   leadersAndChairmen TEXT AS List<String> NOT NULL,
-  memberCount INTEGER AS Integer,
+  memberCount TEXT,
   contacts TEXT AS List<String> NOT NULL,
   headquarterLocation TEXT NOT NULL,
   policy TEXT NOT NULL,

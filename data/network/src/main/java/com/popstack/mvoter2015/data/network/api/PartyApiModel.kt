@@ -70,7 +70,7 @@ data class PartyApiAttributes(
   @Json(name = "seal_image") val sealImageUrl: String,
   @Json(name = "region") val region: String,
   @Json(name = "leaders_and_chairmen") val leadersAndChairmen: List<String>,
-  @Json(name = "member_count") val memberCount: Int,
+  @Json(name = "member_count") val memberCount: String,
   @Json(name = "headquarter_address") val headQuarterLocation: String,
   @Json(name = "contacts") val contact: List<String>,
   @Json(name = "policy") val policy: String,

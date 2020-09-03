@@ -164,9 +164,9 @@ class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDeta
         binding.tvLeader.isVisible = viewItem.leadersAndChairmen.isNotEmpty()
         binding.tvLeader.text = viewItem.leadersAndChairmen.format("၊")
 
-        binding.tvMemberCountTitle.isVisible = viewItem.memberCount != 0
-        binding.tvMemberCount.isVisible = viewItem.memberCount != 0
-        binding.tvMemberCount.text = viewItem.memberCount.toString()
+        binding.tvMemberCountTitle.isVisible = viewItem.memberCount != null
+        binding.tvMemberCount.isVisible = viewItem.memberCount != null
+        binding.tvMemberCount.text = viewItem.memberCount ?: ""
 
         binding.tvHeadquarterLocation.text = viewItem.headQuarterLocation
 
