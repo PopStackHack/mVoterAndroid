@@ -19,5 +19,8 @@ data class Candidate(
   val father: CandidateParent?,
   val mother: CandidateParent?,
   val individualLogo: String?,
-  val party: Party?
+  val party: Party?,
+  val residentialAddress: String?,
+  val isEthnicCandidate: Boolean,
+  val representingEthnicity: String?
 )

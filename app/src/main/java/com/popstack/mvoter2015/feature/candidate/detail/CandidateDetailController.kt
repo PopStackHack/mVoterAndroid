@@ -169,6 +169,7 @@ class CandidateDetailController(
           binding.tvFatherName.text = fatherName
           binding.tvFatherEthnicity.text = fatherEthnicity
           binding.tvFatherReligion.text = fatherReligion
+          binding.tvResidential.text = residentialAddress
           binding.ivCandidatePartySeal.load(partySealImageUrl) {
             placeholder(R.drawable.placeholder_rect)
             error(R.drawable.placeholder_rect)

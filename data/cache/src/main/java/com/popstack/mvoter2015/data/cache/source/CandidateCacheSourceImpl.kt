@@ -123,7 +123,10 @@ internal fun CandidateTable.toCandidateModel() = Candidate(
     ""
   ),
   individualLogo = individualLogo,
-  party = null
+  party = null,
+  residentialAddress = "",
+  isEthnicCandidate = false,
+  representingEthnicity = null
 )
 
 internal fun CandidateWithPartyView.toCandidateModel() = Candidate(
@@ -174,6 +177,9 @@ internal fun CandidateWithPartyView.toCandidateModel() = Candidate(
     establishmentApprovalDate = partyEstablishmentApprovalDate,
     registrationApplicationDate = partyRegistrationApplicationDate,
     registrationApprovalDate = partyRegistrationApprovalDate,
-    isEstablishedDueToArticle25 = partyIsEstablishedDueToArticle25
-  )
+    isEstablishedDueToArticle25 = partyIsEstablishedDueToArticle25,
+  ),
+  residentialAddress = "",
+  isEthnicCandidate = false,
+  representingEthnicity = null
 )

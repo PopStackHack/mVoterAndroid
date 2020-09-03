@@ -5,6 +5,7 @@ import androidx.core.content.edit
 import com.popstack.mvoter2015.data.common.location.LocationCacheSource
 import com.popstack.mvoter2015.domain.constituency.model.Constituency
 import com.popstack.mvoter2015.domain.constituency.model.HouseType
+import com.popstack.mvoter2015.domain.location.model.StateRegionTownship
 import com.popstack.mvoter2015.domain.location.model.Ward
 import com.popstack.mvoter2015.domain.location.model.WardId
 import org.json.JSONObject
@@ -16,6 +17,7 @@ class LocationCacheSourceImpl @Inject constructor(
 
   companion object {
     private const val KEY_USER_WARD = "saved_user_ward"
+    private const val KEY_USER_STATE_REGION_TOWNSHIP = "saved_user_state_region_township"
 
     private const val KEY_WARD_ID = "ward_id"
     private const val KEY_WARD_NAME = "ward_name"
@@ -25,6 +27,8 @@ class LocationCacheSourceImpl @Inject constructor(
     private const val KEY_UPPER_CONST_NAME = "upper_const_name"
     private const val KEY_STATE_CONST_ID = "state_const_id"
     private const val KEY_STATE_CONST_NAME = "sate_const_name"
+    private const val KEY_STATE_REGION = "state_region"
+    private const val KEY_TOWNSHIP = "township"
   }
 
   private val sharedPreferences = context.getSharedPreferences("user", Context.MODE_PRIVATE)
@@ -37,6 +41,18 @@ class LocationCacheSourceImpl @Inject constructor(
   override fun saveUserWard(ward: Ward) {
     sharedPreferences.edit {
       putString(KEY_USER_WARD, JSONObject(ward.toMap()).toString())
+    }
+  }
+
+  override fun getUserStateRegionTownship(): StateRegionTownship? {
+    val stateRegionTownship = sharedPreferences.getString(KEY_USER_STATE_REGION_TOWNSHIP, null)
+      ?: return null
+    return JSONObject(stateRegionTownship).toStateRegionTownship()
+  }
+
+  override fun saveUserStateRegionTownship(stateRegionTownship: StateRegionTownship) {
+    sharedPreferences.edit {
+      putString(KEY_USER_STATE_REGION_TOWNSHIP, JSONObject(stateRegionTownship.toMap()).toString())
     }
   }
 
@@ -65,6 +81,13 @@ class LocationCacheSourceImpl @Inject constructor(
     )
   }
 
+  private fun JSONObject.toStateRegionTownship(): StateRegionTownship {
+    return StateRegionTownship(
+      stateRegion = getString(KEY_STATE_REGION),
+      township = getString(KEY_TOWNSHIP),
+    )
+  }
+
   private fun Ward.toMap(): Map<String, String> {
     return mapOf(
       KEY_WARD_ID to id.value,
@@ -77,5 +100,13 @@ class LocationCacheSourceImpl @Inject constructor(
       KEY_STATE_CONST_NAME to stateRegionConstituency.name
     )
   }
+
+  private fun StateRegionTownship.toMap(): Map<String, String> {
+    return mapOf(
+      KEY_STATE_REGION to stateRegion,
+      KEY_TOWNSHIP to township
+    )
+  }
+
 
 }
