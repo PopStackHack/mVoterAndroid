@@ -6,8 +6,6 @@ import com.popstack.mvoter2015.data.network.BuildConfig
 import com.popstack.mvoter2015.data.network.auth.AuthTokenInterceptor
 import com.popstack.mvoter2015.data.network.auth.AuthTokenStoreImpl
 import com.popstack.mvoter2015.data.network.auth.RefreshAuthenticator
-import com.popstack.mvoter2015.data.network.cache.AutoCachingOfflineInterceptor
-import com.popstack.mvoter2015.data.network.cache.AutoCachingOnlineInterceptor
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -33,19 +31,9 @@ internal object OkHttpProvider {
         okHttpClientBuilder.addNetworkInterceptor(monexInterceptor)
       }
 
-      val cacheSize: Long = 10 * 1024 * 1024 // 10 MB
-
-      val cache = Cache(context.cacheDir, cacheSize)
-
       okHttpClientBuilder
         .addInterceptor(AuthTokenInterceptor(authTokenStore))
-        .addInterceptor(AutoCachingOfflineInterceptor())
-        .addNetworkInterceptor(AutoCachingOnlineInterceptor())
         .authenticator(RefreshAuthenticator(authTokenStore))
-        .cache(cache)
-
-
-
 
       okHttpClient = okHttpClientBuilder.build()
     }
