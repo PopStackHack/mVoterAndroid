@@ -4,6 +4,7 @@ import com.popstack.mvoter2015.data.cache.MVoterDb
 import com.popstack.mvoter2015.data.cache.entity.CandidateTable
 import com.popstack.mvoter2015.data.cache.entity.CandidateWithPartyView
 import com.popstack.mvoter2015.data.common.candidate.CandidateCacheSource
+import com.popstack.mvoter2015.data.common.party.PartyCacheSource
 import com.popstack.mvoter2015.domain.candidate.model.Candidate
 import com.popstack.mvoter2015.domain.candidate.model.CandidateId
 import com.popstack.mvoter2015.domain.candidate.model.CandidateParent
@@ -14,7 +15,8 @@ import com.popstack.mvoter2015.domain.party.model.Party
 import javax.inject.Inject
 
 class CandidateCacheSourceImpl @Inject constructor(
-  private val db: MVoterDb
+  private val db: MVoterDb,
+  private val partyCacheSource: PartyCacheSource
 ) : CandidateCacheSource {
 
   override fun putCandidate(candidate: Candidate) {
@@ -47,26 +49,7 @@ class CandidateCacheSourceImpl @Inject constructor(
   }
 
   private fun insertOrReplaceParty(party: Party) {
-    db.partyTableQueries.insertOrReplace(
-      id = party.id,
-      number = party.registeredNumber,
-      burmeseName = party.nameBurmese,
-      englishName = party.nameEnglish,
-      abbreviation = party.abbreviation,
-      flagUrl = party.flagImage,
-      sealUrl = party.sealImage,
-      region = party.region,
-      leadersAndChairmen = party.leadersAndChairmenList,
-      contacts = party.contacts,
-      memberCount = party.memberCount,
-      headquarterLocation = party.headquarterLocation,
-      policy = party.policy,
-      isEstablishedDueToArticle25 = party.isEstablishedDueToArticle25,
-      establishmentApplicationDate = party.establishmentApplicationDate,
-      establishmentApprovalDate = party.establishmentApprovalDate,
-      registrationApplicationDate = party.registrationApplicationDate,
-      registrationApprovalDate = party.registrationApprovalDate
-    )
+    partyCacheSource.putParty(party)
   }
 
   private fun insertOrReplaceCandidate(candidate: Candidate) = with(candidate) {
@@ -123,7 +106,10 @@ internal fun CandidateTable.toCandidateModel() = Candidate(
     ""
   ),
   individualLogo = individualLogo,
-  party = null
+  party = null,
+  residentialAddress = "",
+  isEthnicCandidate = false,
+  representingEthnicity = null
 )
 
 internal fun CandidateWithPartyView.toCandidateModel() = Candidate(
@@ -174,6 +160,9 @@ internal fun CandidateWithPartyView.toCandidateModel() = Candidate(
     establishmentApprovalDate = partyEstablishmentApprovalDate,
     registrationApplicationDate = partyRegistrationApplicationDate,
     registrationApprovalDate = partyRegistrationApprovalDate,
-    isEstablishedDueToArticle25 = partyIsEstablishedDueToArticle25
-  )
+    isEstablishedDueToArticle25 = partyIsEstablishedDueToArticle25,
+  ),
+  residentialAddress = "",
+  isEthnicCandidate = false,
+  representingEthnicity = null
 )

@@ -1,17 +1,18 @@
 package com.popstack.mvoter2015.data.cache.source
 
-import androidx.paging.PagingSource
 import com.popstack.mvoter2015.data.cache.MVoterDb
 import com.popstack.mvoter2015.data.cache.entity.PartyTable
-import com.popstack.mvoter2015.data.cache.extension.QueryDataSourceFactory
 import com.popstack.mvoter2015.data.cache.map.mapToParty
 import com.popstack.mvoter2015.data.common.party.PartyCacheSource
 import com.popstack.mvoter2015.domain.party.model.Party
 import com.popstack.mvoter2015.domain.party.model.PartyId
+import java.time.Clock
+import java.time.LocalDateTime
 import javax.inject.Inject
 
 class PartyCacheSourceImpl @Inject constructor(
-  private val db: MVoterDb
+  private val db: MVoterDb,
+  private val clock: Clock
 ) : PartyCacheSource {
 
   override fun putParty(party: Party) {
@@ -33,7 +34,8 @@ class PartyCacheSourceImpl @Inject constructor(
       establishmentApplicationDate = party.establishmentApplicationDate,
       establishmentApprovalDate = party.establishmentApprovalDate,
       registrationApplicationDate = party.registrationApplicationDate,
-      registrationApprovalDate = party.registrationApprovalDate
+      registrationApprovalDate = party.registrationApprovalDate,
+      lastUpdated = LocalDateTime.now(clock)
     )
   }
 
@@ -50,30 +52,30 @@ class PartyCacheSourceImpl @Inject constructor(
     val offset = (page - 1) * limit
     return db.partyTableQueries.getWithPage(
       limit = limit.toLong(),
-      offset = offset.toLong()
+      offset = offset.toLong(),
+      lastUpdated = getDecayTime()
     ).executeAsList().map(PartyTable::mapToParty)
   }
 
-  override fun getPartyPaging(itemPerPage: Int): PagingSource<Int, Party> {
-    return QueryDataSourceFactory(
-      queryProvider = db.partyTableQueries::getWithPage,
-      countQuery = db.partyTableQueries.count(),
-      transacter = db.partyTableQueries
-    ).map(PartyTable::mapToParty).asPagingSourceFactory().invoke()
-  }
-
-  override fun searchPartyPaging(itemPerPage: Int, query: String): PagingSource<Int, Party> {
-    return QueryDataSourceFactory(
-      queryProvider = { limit, offset ->
-        db.partyTableQueries.searchWithPage(query, limit, offset)
-      },
-      countQuery = db.partyTableQueries.searchTotalCount(query),
-      transacter = db.partyTableQueries
-    ).map(PartyTable::mapToParty).asPagingSourceFactory().invoke()
-  }
-
   override fun getParty(partyId: PartyId): Party? {
-    return db.partyTableQueries.getById(partyId).executeAsOneOrNull()?.mapToParty()
+    return db.partyTableQueries.getByIdAndLastUpdated(partyId, getDecayTime()).executeAsOneOrNull()?.mapToParty()
+  }
+
+  override fun flushDecayedData() {
+    return db.partyTableQueries.deleteWithLastUpdated(getDecayTime())
+  }
+
+  /**
+   * Get the last updated time of party that should be accepted
+   * For example, if decay is 1 hr and  the query time is 10:00 AM
+   * This will returns same data with 9:00 AM
+   */
+  private fun getDecayTime(): LocalDateTime {
+    return LocalDateTime.now(clock).minusHours(1)
+  }
+
+  override fun flush() {
+    return db.partyTableQueries.deleteAll()
   }
 
 }

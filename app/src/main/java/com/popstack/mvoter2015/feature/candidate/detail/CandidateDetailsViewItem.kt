@@ -29,7 +29,8 @@ data class CandidateInfoViewItem(
   val motherReligion: String,
   val fatherName: String,
   val fatherEthnicity: String,
-  val fatherReligion: String
+  val fatherReligion: String,
+  val residentialAddress: String
 )
 
 fun Candidate.toCandidateInfoViewItem() = CandidateInfoViewItem(
@@ -44,7 +45,8 @@ fun Candidate.toCandidateInfoViewItem() = CandidateInfoViewItem(
     HouseType.LOWER_HOUSE -> "ပြည့်သူလွှတ်တော်"
     HouseType.REGIONAL_HOUSE -> "ပြည်နယ်လွှတ်တော်"
   },
-  constituencyName = constituency.township ?: constituency.stateRegion.orEmpty() + " " +constituency.name,
+  constituencyName = constituency.township
+    ?: constituency.stateRegion.orEmpty() + " " + constituency.name,
   age = age?.toString()?.toMMInt().orEmpty(),
   birthday = birthDate.toString().toMMInt(),
   education = education,
@@ -53,10 +55,11 @@ fun Candidate.toCandidateInfoViewItem() = CandidateInfoViewItem(
   religion = religion,
   motherName = mother?.name.orEmpty(),
   motherEthnicity = mother?.ethnicity.orEmpty(),
-  motherReligion =  mother?.religion.orEmpty(),
+  motherReligion = mother?.religion.orEmpty(),
   fatherName = father?.name.orEmpty(),
   fatherEthnicity = father?.ethnicity.orEmpty(),
-  fatherReligion = father?.religion.orEmpty()
+  fatherReligion = father?.religion.orEmpty(),
+  residentialAddress = residentialAddress.orEmpty()
 )
 
 private fun String.toMMInt(): String {

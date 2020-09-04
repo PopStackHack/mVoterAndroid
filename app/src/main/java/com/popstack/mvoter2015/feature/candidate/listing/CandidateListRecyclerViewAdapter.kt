@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
 import coil.size.Scale
+import coil.transform.CircleCropTransformation
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.databinding.ItemCandidateBinding
 import com.popstack.mvoter2015.domain.candidate.model.CandidateId
@@ -44,9 +45,9 @@ class CandidateListItemViewHolder(val binding: ItemCandidateBinding) : RecyclerV
       tvCandidateName.text = smallCandidateViewItem.name
       tvCandidatePartyName.text = smallCandidateViewItem.partyName
       ivCandidate.load(smallCandidateViewItem.photoUrl) {
-        scale(Scale.FIT)
-        crossfade(true)
         error(R.drawable.placeholder_oval)
+        transformations(CircleCropTransformation())
+        scale(Scale.FILL)
       }
       ivCandidatePartySeal.load(smallCandidateViewItem.partySealImageUrl) {
         placeholder(R.drawable.placeholder_rect)
