@@ -74,6 +74,7 @@ dependencies {
 
   //Testing
   testImplementation("junit:junit:4.13")
+  testImplementation(SqlDelight.jvm_driver)
   mockito()
   mockitoAndroid()
   androidXTest()

@@ -9,7 +9,7 @@ class StringListColumnAdapterTest {
   fun encodeEmptyList() {
     val input = emptyList<String>()
     val expected = ""
-    val actual = StringListColumnAdapter.encode(input)
+    val actual = StringListColumnAdapter().encode(input)
 
     Assert.assertEquals(expected, actual)
   }
@@ -18,7 +18,7 @@ class StringListColumnAdapterTest {
   fun decodeEmptyString() {
     val input = ""
     val expected = emptyList<String>()
-    val actual = StringListColumnAdapter.decode(input).toList()
+    val actual = StringListColumnAdapter().decode(input).toList()
 
     Assert.assertEquals(expected, actual)
   }

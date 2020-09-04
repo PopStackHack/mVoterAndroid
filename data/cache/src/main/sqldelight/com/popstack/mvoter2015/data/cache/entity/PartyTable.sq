@@ -1,9 +1,10 @@
 import com.popstack.mvoter2015.domain.party.model.PartyId;
-import kotlin.String;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import kotlin.String;
 import kotlin.collections.List;
-import java.lang.Boolean;
 
 CREATE TABLE PartyTable(
   id TEXT AS PartyId PRIMARY KEY NOT NULL,
@@ -23,7 +24,8 @@ CREATE TABLE PartyTable(
   establishmentApplicationDate INTEGER AS LocalDate,
   establishmentApprovalDate INTEGER AS LocalDate,
   registrationApplicationDate INTEGER AS LocalDate,
-  registrationApprovalDate INTEGER AS LocalDate
+  registrationApprovalDate INTEGER AS LocalDate,
+  lastUpdated INTEGER AS LocalDateTime NOT NULL
 );
 
 insertOrReplace:
@@ -32,14 +34,18 @@ INSERT OR REPLACE INTO PartyTable VALUES(
 :leadersAndChairmen,:memberCount, :contacts, :headquarterLocation, :policy,
 :isEstablishedDueToArticle25,
 :establishmentApplicationDate, :establishmentApprovalDate,
-:registrationApplicationDate, :registrationApprovalDate
+:registrationApplicationDate, :registrationApprovalDate,
+:lastUpdated
 );
 
 getWithPage:
-SELECT * FROM PartyTable ORDER BY number ASC LIMIT :limit OFFSET :offset;
+SELECT * FROM PartyTable WHERE lastUpdated >= :lastUpdated ORDER BY number ASC LIMIT :limit OFFSET :offset;
 
 getById:
 SELECT * FROM PartyTable WHERE id = :id;
+
+getByIdAndLastUpdated:
+SELECT * FROM PartyTable WHERE id = :id AND lastUpdated >= :lastUpdated;
 
 searchWithPage:
 SELECT * FROM PartyTable
@@ -48,11 +54,5 @@ OR englishName LIKE :query
 OR abbreviation LIKE :query
 ORDER BY id ASC LIMIT :limit OFFSET :offset;
 
-searchTotalCount:
-SELECT count(*) FROM PartyTable
-WHERE burmeseName LIKE :query
-OR englishName LIKE :query
-OR abbreviation LIKE :query;
-
-count:
-SELECT count(*) FROM PartyTable;
+deleteAll:
+DELETE FROM PartyTable;

@@ -15,6 +15,7 @@ import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.android.ContributesAndroidInjector
+import java.time.Clock
 import javax.inject.Singleton
 
 @Module(includes = [ViewModelFactoryModule::class, ConductorInjectionModule::class, AndroidDataModule::class])
@@ -27,6 +28,11 @@ abstract class AppModule {
   abstract fun hostActivity(): HostActivity
 
   companion object Provider {
+
+    @Provides
+    fun clock(): Clock {
+      return Clock.systemDefaultZone()
+    }
 
     @Provides
     fun context(application: Application): Context {
