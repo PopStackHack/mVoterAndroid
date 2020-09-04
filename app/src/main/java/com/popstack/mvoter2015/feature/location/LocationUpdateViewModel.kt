@@ -77,10 +77,14 @@ class LocationUpdateViewModel @Inject constructor(
         data.wardDetails?.let {
           saveUserWard.execute(SaveUserWard.Params(it))
         }
-        saveUserStateRegionTownship.execute(SaveUserStateRegionTownship.Params(StateRegionTownship(
-          data.chosenStateRegion!!,
-          data.chosenTownship!!
-        )))
+        saveUserStateRegionTownship.execute(
+          SaveUserStateRegionTownship.Params(
+            StateRegionTownship(
+              data.chosenStateRegion!!,
+              data.chosenTownship!!
+            )
+          )
+        )
         viewEventLiveData.postValue(ViewEvent.NavigateToHomePage)
       }.exceptionOrNull()?.let { exception ->
         Timber.e(exception)

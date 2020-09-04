@@ -1,6 +1,5 @@
 package com.popstack.mvoter2015.data.common.party
 
-import androidx.paging.PagingSource
 import com.popstack.mvoter2015.domain.party.model.Party
 import com.popstack.mvoter2015.domain.party.model.PartyId
 

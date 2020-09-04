@@ -11,9 +11,6 @@ import com.popstack.mvoter2015.feature.HasRouter
 import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewState
 import com.popstack.mvoter2015.helper.conductor.requireActivity
 import com.popstack.mvoter2015.logging.HasTag
-import kotlinx.coroutines.delay
-import timber.log.Timber
-
 class TownshipChooserController : MvvmController<ControllerTownshipChooserBinding>(), HasTag {
 
   override val tag: String = "TownshipChooserController"
@@ -58,9 +55,12 @@ class TownshipChooserController : MvvmController<ControllerTownshipChooserBindin
         }
       }
     )
-    viewModel.onStateRegionChosen.observe(this, {
-      // TODO: Scroll to top
-    })
+    viewModel.onStateRegionChosen.observe(
+      this,
+      {
+        // TODO: Scroll to top
+      }
+    )
     viewModel.viewItemLiveData.observe(this, Observer(::observeViewItem))
 
     if (savedViewState == null) {
