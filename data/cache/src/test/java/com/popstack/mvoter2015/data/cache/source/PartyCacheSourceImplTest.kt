@@ -22,12 +22,7 @@ class PartyCacheSourceImplTest {
   @Test
   fun testGetListWithinDecay() {
     val party = randomParty()
-
     partyCacheSource.putParty(party)
-
-    with(database.partyTableQueries.getById(party.id).executeAsOne()) {
-      Assert.assertEquals(currentTime, this.lastUpdated)
-    }
 
     val timeWithinDecay = currentTime.plusMinutes(10)
     val clockWithinDecay = Clock.fixed(timeWithinDecay.atZone(ZoneId.systemDefault()).toInstant(), ZoneId.systemDefault())
@@ -41,12 +36,7 @@ class PartyCacheSourceImplTest {
   @Test
   fun testGetSingleGetWithinDecay() {
     val party = randomParty()
-
     partyCacheSource.putParty(party)
-
-    with(database.partyTableQueries.getById(party.id).executeAsOne()) {
-      Assert.assertEquals(currentTime, this.lastUpdated)
-    }
 
     val timeWithinDecay = currentTime.plusMinutes(10)
     val clockWithinDecay = Clock.fixed(timeWithinDecay.atZone(ZoneId.systemDefault()).toInstant(), ZoneId.systemDefault())
@@ -60,12 +50,7 @@ class PartyCacheSourceImplTest {
   @Test
   fun testGetListAfterDecay() {
     val party = randomParty()
-
     partyCacheSource.putParty(party)
-
-    with(database.partyTableQueries.getById(party.id).executeAsOne()) {
-      Assert.assertEquals(currentTime, this.lastUpdated)
-    }
 
     val timeAfterDecay = currentTime.plusHours(1).plusSeconds(1)
     val clockAfterDecay = Clock.fixed(timeAfterDecay.atZone(ZoneId.systemDefault()).toInstant(), ZoneId.systemDefault())
@@ -81,16 +66,34 @@ class PartyCacheSourceImplTest {
     val party = randomParty()
     partyCacheSource.putParty(party)
 
-    with(database.partyTableQueries.getById(party.id).executeAsOne()) {
-      Assert.assertEquals(currentTime, this.lastUpdated)
-    }
-
     val timeAfterDecay = currentTime.plusHours(1).plusSeconds(1)
     val clockAfterDecay = Clock.fixed(timeAfterDecay.atZone(ZoneId.systemDefault()).toInstant(), ZoneId.systemDefault())
     val partyCacheAfterDecay = PartyCacheSourceImpl(database, clockAfterDecay)
 
     with(partyCacheAfterDecay.getParty(party.id)) {
       Assert.assertEquals(null, this)
+    }
+  }
+
+  @Test
+  fun testFlushDecay() {
+    val party = randomParty()
+    partyCacheSource.putParty(party)
+
+    val timeAfterDecay = currentTime.plusHours(1).plusSeconds(1)
+    val clockAfterDecay = Clock.fixed(timeAfterDecay.atZone(ZoneId.systemDefault()).toInstant(), ZoneId.systemDefault())
+    val partyCacheAfterDecay = PartyCacheSourceImpl(database, clockAfterDecay)
+
+    val partyAfterDecay = randomParty()
+    partyCacheAfterDecay.putParty(partyAfterDecay)
+
+    partyCacheSource.flushDecayedData()
+    with(partyCacheAfterDecay.getParty(party.id)) {
+      Assert.assertEquals(null, this)
+    }
+
+    with(partyCacheAfterDecay.getParty(partyAfterDecay.id)) {
+      Assert.assertEquals(partyAfterDecay, this)
     }
   }
 

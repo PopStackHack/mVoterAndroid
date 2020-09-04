@@ -61,6 +61,10 @@ class PartyCacheSourceImpl @Inject constructor(
     return db.partyTableQueries.getByIdAndLastUpdated(partyId, getDecayTime()).executeAsOneOrNull()?.mapToParty()
   }
 
+  override fun flushDecayedData() {
+    return db.partyTableQueries.deleteWithLastUpdated(getDecayTime())
+  }
+
   /**
    * Get the last updated time of party that should be accepted
    * For example, if decay is 1 hr and  the query time is 10:00 AM
@@ -70,7 +74,7 @@ class PartyCacheSourceImpl @Inject constructor(
     return LocalDateTime.now(clock).minusHours(1)
   }
 
-  override fun wipe() {
+  override fun flush() {
     return db.partyTableQueries.deleteAll()
   }
 

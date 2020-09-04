@@ -11,6 +11,8 @@ import com.popstack.mvoter2015.feature.HasRouter
 import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewState
 import com.popstack.mvoter2015.helper.conductor.requireActivity
 import com.popstack.mvoter2015.logging.HasTag
+import timber.log.Timber
+
 class TownshipChooserController : MvvmController<ControllerTownshipChooserBinding>(), HasTag {
 
   override val tag: String = "TownshipChooserController"

@@ -19,6 +19,10 @@ class PartyPagingSource constructor(
 
   override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Party> {
     try {
+
+      if (params is LoadParams.Refresh) {
+        partyCacheSource.flushDecayedData()
+      }
       // Start refresh at page 1 if undefined.
       val page = params.key ?: STARTING_PAGE
       val itemPerPage = params.pageSize

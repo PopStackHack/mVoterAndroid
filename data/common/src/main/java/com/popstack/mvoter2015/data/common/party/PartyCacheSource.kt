@@ -13,5 +13,7 @@ interface PartyCacheSource {
 
   fun getParty(partyId: PartyId): Party?
 
-  fun wipe()
+  fun flushDecayedData()
+
+  fun flush()
 }
