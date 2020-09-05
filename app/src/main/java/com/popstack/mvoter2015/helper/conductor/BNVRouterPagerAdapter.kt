@@ -15,7 +15,6 @@ import com.bluelinelabs.conductor.Controller
 import com.bluelinelabs.conductor.Router
 import com.bluelinelabs.conductor.RouterTransaction
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.popstack.mvoter2015.di.conductor.ControllerInjectorChangeHandler
 import com.popstack.mvoter2015.helper.extensions.filter
 import com.popstack.mvoter2015.helper.extensions.indexOf
 import com.popstack.mvoter2015.helper.viewpager.NonScrollableViewPager
@@ -77,7 +76,6 @@ class BNVRouterPagerAdapter(
   override fun instantiateItem(container: ViewGroup, position: Int): Any {
     return host.getChildRouter(container, makeRouterName(container.id, getItemId(position))).apply {
       this.addChangeListener(BreadcrumbControllerChangeHandler)
-      this.addChangeListener(ControllerInjectorChangeHandler)
       if (!hasRootController()) {
         val savedState = savedPages.get(position)
         if (savedState != null) {
@@ -108,7 +106,6 @@ class BNVRouterPagerAdapter(
     ensurePagesSaved()
 
     router.removeChangeListener(BreadcrumbControllerChangeHandler)
-    router.removeChangeListener(ControllerInjectorChangeHandler)
     host.removeChildRouter(router)
     visibleRouters.remove(position)
   }
