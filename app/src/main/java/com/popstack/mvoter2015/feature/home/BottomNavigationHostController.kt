@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelStore
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.BaseController
-import com.popstack.mvoter2015.databinding.ControllerHomeBinding
+import com.popstack.mvoter2015.databinding.ControllerBottomNavHostBinding
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateListController
 import com.popstack.mvoter2015.feature.faq.FaqController
 import com.popstack.mvoter2015.feature.news.NewsController
@@ -16,18 +16,22 @@ import com.popstack.mvoter2015.feature.votingguide.VotingGuideController
 import com.popstack.mvoter2015.helper.conductor.BNVRouterPagerAdapter
 import com.popstack.mvoter2015.logging.HasTag
 
-class HomeController : BaseController<ControllerHomeBinding>(), HasTag {
+class BottomNavigationHostController : BaseController<ControllerBottomNavHostBinding>(), HasTag {
 
   override val tag: String = TAG
 
   companion object {
-    const val TAG = "HomeController"
+    const val TAG = "BottomNavigationHostController"
   }
 
   private val viewModelStore = ViewModelStore()
 
-  override val bindingInflater: (LayoutInflater) -> ControllerHomeBinding =
-    ControllerHomeBinding::inflate
+  override val bindingInflater: (LayoutInflater) -> ControllerBottomNavHostBinding =
+    ControllerBottomNavHostBinding::inflate
+
+  private var newsNewsNavigationItemReselectedCallback: NewsNavigationItemReselectedCallback? = null
+
+  private var partyNavigationItemReselectedCallback: PartyNavigationItemReselectedCallback? = null
 
   override fun onCreateView(
     inflater: LayoutInflater,
@@ -51,18 +55,39 @@ class HomeController : BaseController<ControllerHomeBinding>(), HasTag {
         binding.homeViewPager,
         mapOf(
           R.id.navigation_candidate to { CandidateListController() },
-          R.id.navigation_party to { PartyListController() },
+          R.id.navigation_party to {
+            PartyListController().also {
+              partyNavigationItemReselectedCallback = it
+            }
+          },
           R.id.navigation_how_to_vote to { VotingGuideController() },
           R.id.navigation_info to { FaqController() },
-          R.id.navigation_news to { NewsController() }
+          R.id.navigation_news to {
+            NewsController().also {
+              newsNewsNavigationItemReselectedCallback = it
+            }
+          }
         )
       )
+
+    binding.bottomNavigationView.setOnNavigationItemReselectedListener { menuItem ->
+      when (menuItem.itemId) {
+        R.id.navigation_party -> partyNavigationItemReselectedCallback?.onPartyNavigationItemReselected()
+        R.id.navigation_news -> newsNewsNavigationItemReselectedCallback?.onNewsNavigationItemReselected()
+      }
+    }
   }
 
   override fun onDestroyView(view: View) {
     viewModelStore.clear()
     BottomNavigationHostViewModelStore.viewModelStore = null
     super.onDestroyView(view)
+  }
+
+  override fun onDestroy() {
+    newsNewsNavigationItemReselectedCallback = null
+    partyNavigationItemReselectedCallback = null
+    super.onDestroy()
   }
 
 }

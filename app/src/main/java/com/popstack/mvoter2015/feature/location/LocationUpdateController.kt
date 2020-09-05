@@ -13,7 +13,7 @@ import com.popstack.mvoter2015.config.AppFirstTimeConfig
 import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerLocationBinding
 import com.popstack.mvoter2015.feature.HasRouter
-import com.popstack.mvoter2015.feature.home.HomeController
+import com.popstack.mvoter2015.feature.home.BottomNavigationHostController
 import com.popstack.mvoter2015.helper.conductor.requireActivity
 import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.helper.conductor.supportActionBar
@@ -129,7 +129,7 @@ class LocationUpdateController : MvvmController<ControllerLocationBinding>(), Ha
       }
       LocationUpdateViewModel.ViewEvent.NavigateToHomePage -> {
         firstTimeConfig.setFirstTimeStatus(false)
-        router.setRoot(RouterTransaction.with(HomeController()).tag(HomeController.TAG))
+        router.setRoot(RouterTransaction.with(BottomNavigationHostController()).tag(BottomNavigationHostController.TAG))
       }
     }
   }

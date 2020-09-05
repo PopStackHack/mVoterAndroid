@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import com.bluelinelabs.conductor.Controller
 import com.bluelinelabs.conductor.RouterTransaction
 import com.popstack.mvoter2015.config.AppFirstTimeConfig
-import com.popstack.mvoter2015.feature.home.HomeController
+import com.popstack.mvoter2015.feature.home.BottomNavigationHostController
 import com.popstack.mvoter2015.feature.location.LocationUpdateController
 import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.logging.HasTag
@@ -25,7 +25,7 @@ class SplashController : Controller(), HasTag {
     if (firstTimeConfig.isFirstTime()) {
       router.setRoot(RouterTransaction.with(LocationUpdateController()))
     } else {
-      router.setRoot(RouterTransaction.with(HomeController()).tag(HomeController.TAG))
+      router.setRoot(RouterTransaction.with(BottomNavigationHostController()).tag(BottomNavigationHostController.TAG))
     }
     return View(requireContext())
   }
