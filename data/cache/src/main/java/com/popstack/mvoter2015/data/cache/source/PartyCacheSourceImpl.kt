@@ -6,13 +6,10 @@ import com.popstack.mvoter2015.data.cache.map.mapToParty
 import com.popstack.mvoter2015.data.common.party.PartyCacheSource
 import com.popstack.mvoter2015.domain.party.model.Party
 import com.popstack.mvoter2015.domain.party.model.PartyId
-import java.time.Clock
-import java.time.LocalDateTime
 import javax.inject.Inject
 
 class PartyCacheSourceImpl @Inject constructor(
-  private val db: MVoterDb,
-  private val clock: Clock
+  private val db: MVoterDb
 ) : PartyCacheSource {
 
   override fun putParty(party: Party) {
@@ -34,8 +31,7 @@ class PartyCacheSourceImpl @Inject constructor(
       establishmentApplicationDate = party.establishmentApplicationDate,
       establishmentApprovalDate = party.establishmentApprovalDate,
       registrationApplicationDate = party.registrationApplicationDate,
-      registrationApprovalDate = party.registrationApprovalDate,
-      lastUpdated = LocalDateTime.now(clock)
+      registrationApprovalDate = party.registrationApprovalDate
     )
   }
 
@@ -50,28 +46,14 @@ class PartyCacheSourceImpl @Inject constructor(
   override fun getPartyList(page: Int, itemPerPage: Int): List<Party> {
     val limit = itemPerPage
     val offset = (page - 1) * limit
-    return db.partyTableQueries.getWithPage(
+    return db.partyTableQueries.getAll(
       limit = limit.toLong(),
       offset = offset.toLong(),
-      lastUpdated = getDecayTime()
     ).executeAsList().map(PartyTable::mapToParty)
   }
 
   override fun getParty(partyId: PartyId): Party? {
-    return db.partyTableQueries.getByIdAndLastUpdated(partyId, getDecayTime()).executeAsOneOrNull()?.mapToParty()
-  }
-
-  override fun flushDecayedData() {
-    return db.partyTableQueries.deleteWithLastUpdated(getDecayTime())
-  }
-
-  /**
-   * Get the last updated time of party that should be accepted
-   * For example, if decay is 1 hr and  the query time is 10:00 AM
-   * This will returns same data with 9:00 AM
-   */
-  private fun getDecayTime(): LocalDateTime {
-    return LocalDateTime.now(clock).minusHours(1)
+    return db.partyTableQueries.getById(partyId).executeAsOneOrNull()?.mapToParty()
   }
 
   override fun flush() {

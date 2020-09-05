@@ -5,7 +5,6 @@ import com.popstack.mvoter2015.data.cache.columnadapter.CandidateIdColumnAdapter
 import com.popstack.mvoter2015.data.cache.columnadapter.ConstituencyIdColumnAdapter
 import com.popstack.mvoter2015.data.cache.columnadapter.FaqIdColumnAdapter
 import com.popstack.mvoter2015.data.cache.columnadapter.LocalDateColumnAdapter
-import com.popstack.mvoter2015.data.cache.columnadapter.LocalDateTimeColumnAdapter
 import com.popstack.mvoter2015.data.cache.columnadapter.NewsIdColumnAdapter
 import com.popstack.mvoter2015.data.cache.columnadapter.PartyIdColumnAdapter
 import com.popstack.mvoter2015.data.cache.columnadapter.StringListColumnAdapter
@@ -36,8 +35,7 @@ object TableAdapters {
       establishmentApplicationDateAdapter = LocalDateColumnAdapter,
       establishmentApprovalDateAdapter = LocalDateColumnAdapter,
       registrationApplicationDateAdapter = LocalDateColumnAdapter,
-      registrationApprovalDateAdapter = LocalDateColumnAdapter,
-      lastUpdatedAdapter = LocalDateTimeColumnAdapter
+      registrationApprovalDateAdapter = LocalDateColumnAdapter
     )
   }
 

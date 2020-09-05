@@ -20,3 +20,6 @@ SELECT * FROM BallotExampleTable WHERE category = :category;
 
 selectById:
 SELECT * FROM BallotExampleTable WHERE id = :id;
+
+deleteByCategory:
+DELETE FROM BallotExampleTable WHERE category = :category;

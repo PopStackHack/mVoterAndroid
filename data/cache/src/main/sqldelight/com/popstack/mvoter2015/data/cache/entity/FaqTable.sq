@@ -44,3 +44,6 @@ SELECT count(*) FROM FaqTable;
 
 selectById:
 SELECT * FROM FaqTable WHERE id = :id;
+
+deleteByCategory:
+DELETE FROM FaqTable WHERE category = :category;

@@ -25,6 +25,7 @@
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
+    android:scrollbars="vertical"
     app:layout_constraintTop_toBottomOf="@id/toolBar"
     tools:listitem="@layout/item_news_with_preview" />
 

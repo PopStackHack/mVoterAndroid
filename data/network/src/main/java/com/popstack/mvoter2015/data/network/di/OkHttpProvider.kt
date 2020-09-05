@@ -6,10 +6,8 @@ import com.popstack.mvoter2015.data.network.BuildConfig
 import com.popstack.mvoter2015.data.network.auth.AuthTokenInterceptor
 import com.popstack.mvoter2015.data.network.auth.AuthTokenStoreImpl
 import com.popstack.mvoter2015.data.network.auth.RefreshAuthenticator
-import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-
 
 internal object OkHttpProvider {
 

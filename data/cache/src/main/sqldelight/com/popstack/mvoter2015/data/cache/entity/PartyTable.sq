@@ -24,8 +24,7 @@ CREATE TABLE PartyTable(
   establishmentApplicationDate INTEGER AS LocalDate,
   establishmentApprovalDate INTEGER AS LocalDate,
   registrationApplicationDate INTEGER AS LocalDate,
-  registrationApprovalDate INTEGER AS LocalDate,
-  lastUpdated INTEGER AS LocalDateTime NOT NULL
+  registrationApprovalDate INTEGER AS LocalDate
 );
 
 insertOrReplace:
@@ -34,18 +33,14 @@ INSERT OR REPLACE INTO PartyTable VALUES(
 :leadersAndChairmen,:memberCount, :contacts, :headquarterLocation, :policy,
 :isEstablishedDueToArticle25,
 :establishmentApplicationDate, :establishmentApprovalDate,
-:registrationApplicationDate, :registrationApprovalDate,
-:lastUpdated
+:registrationApplicationDate, :registrationApprovalDate
 );
 
-getWithPage:
-SELECT * FROM PartyTable WHERE lastUpdated >= :lastUpdated ORDER BY number ASC LIMIT :limit OFFSET :offset;
+getAll:
+SELECT * FROM PartyTable ORDER BY number ASC LIMIT :limit OFFSET :offset;
 
 getById:
 SELECT * FROM PartyTable WHERE id = :id;
-
-getByIdAndLastUpdated:
-SELECT * FROM PartyTable WHERE id = :id AND lastUpdated >= :lastUpdated;
 
 searchWithPage:
 SELECT * FROM PartyTable
@@ -56,6 +51,3 @@ ORDER BY id ASC LIMIT :limit OFFSET :offset;
 
 deleteAll:
 DELETE FROM PartyTable;
-
-deleteWithLastUpdated:
-DELETE FROM PartyTable WHERE lastUpdated <= :lastUpdated;

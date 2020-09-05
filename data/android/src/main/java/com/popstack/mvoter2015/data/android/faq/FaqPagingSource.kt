@@ -28,6 +28,10 @@ class FaqPagingSource constructor(
       val faqList = withContext(Dispatchers.IO) {
         try {
           val faqListFromNetwork = faqNetworkSource.getFaqList(page, itemPerPage, faqCategory)
+          if (params is LoadParams.Refresh) {
+            Timber.i("db flushed")
+            faqCacheSource.flushFaqUnderCategory(faqCategory)
+          }
           faqCacheSource.putFaqList(faqListFromNetwork)
           faqCacheSource.getFaqList(page, itemPerPage, faqCategory)
         } catch (exception: Exception) {

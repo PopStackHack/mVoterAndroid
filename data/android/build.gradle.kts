@@ -1,5 +1,4 @@
 plugins {
-  id("com.squareup.sqldelight")
   id("com.android.library")
   kotlin("android")
   kotlin("kapt")
@@ -42,13 +41,6 @@ android {
   }
 }
 
-sqldelight {
-  database("MVoterRemoteKeyDb") {
-    packageName = "com.popstack.mvoter2015.data.android"
-    dialect = "sqlite:3.24"
-  }
-}
-
 dependencies {
   implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
   implementation(project(":domain"))
@@ -64,10 +56,6 @@ dependencies {
   implementation(AndroidXCore.core_ktx)
 
   implementation("com.google.android.gms:play-services-location:17.0.0")
-
-  //Database
-  implementation(AndroidXSqlite.sqlite_ktx)
-  implementation(SqlDelight.android_driver)
 
   //Dagger
   daggerJvm()
