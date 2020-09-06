@@ -12,34 +12,32 @@ class CandidateRepositoryImpl @Inject constructor(
 ) : CandidateRepository {
 
   override fun getCandidateList(constituencyId: ConstituencyId): List<Candidate> {
+    try {
+      val candidateListFromNetwork = candidateNetworkSource.getCandidateList(constituencyId)
+      candidateCacheSource.flushUnderConstituency(constituencyId)
+      candidateCacheSource.putCandidateList(candidateListFromNetwork)
+    } catch (exception: Exception) {
+      //Network error, see if can recover from cache
+      val candidateListFromCache = candidateCacheSource.getCandidateList(constituencyId)
+      if (candidateListFromCache.isEmpty()) {
+        //Seems data is empty, can't recover, throw error
+        throw exception
+      }
+      return candidateListFromCache
+    }
+
+    //We use database as single source of truth
     return candidateNetworkSource.getCandidateList(constituencyId)
-//    try {
-//      val candidateListFromNetwork = candidateNetworkSource.getCandidateList(constituencyId, houseType)
-//      candidateCacheSource.putCandidateList(candidateListFromNetwork)
-//    } catch (exception: Exception) {
-//      //Network error, see if can recover from cache
-//      val candidateListFromCache = candidateCacheSource.getCandidateList(constituencyId, houseType)
-//      if (candidateListFromCache.isEmpty()) {
-//        //Seems data is empty, can't recover, throw error
-//        throw exception
-//      }
-//      return candidateListFromCache
-//    }
-//
-//    //We use database as single source of truth
-//    return candidateCacheSource.getCandidateList(constituencyId, houseType)
   }
 
   override fun getCandidate(candidateId: CandidateId): Candidate {
-    return candidateNetworkSource.getCandidate(candidateId)
-    // TODO: Cache
-//    return try {
-//      candidateCacheSource.getCandidate(candidateId)
-//    } catch (exception: Exception) {
-//      val candidateFromNetwork = candidateNetworkSource.getCandidate(candidateId)
-//      candidateCacheSource.putCandidate(candidateFromNetwork)
-//      candidateCacheSource.getCandidate(candidateId)
-//    }
+    try {
+      val candidateFromNetwork = candidateNetworkSource.getCandidate(candidateId)
+      candidateCacheSource.putCandidate(candidateFromNetwork)
+      return candidateCacheSource.getCandidate(candidateId)!!
+    } catch (exception: Exception) {
+      return candidateCacheSource.getCandidate(candidateId) ?: throw exception
+    }
   }
 
   override fun searchCandidate(query: String, pageNo: Int, resultPerPage: Int): List<Candidate> {

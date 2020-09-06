@@ -11,7 +11,8 @@ object DbProvider {
       PartyTableAdapter = TableAdapters.partyTableAdapter(),
       FaqTableAdapter = TableAdapters.faqTableAdapter(),
       NewsTableAdapter = TableAdapters.newsTableAdapter(),
-      BallotExampleTableAdapter = TableAdapters.ballotExampleTableAdapter()
+      BallotExampleTableAdapter = TableAdapters.ballotExampleTableAdapter(),
+      ConstituencyTableAdapter = TableAdapters.ConsitutencyTableAdapter()
     )
   }
 }

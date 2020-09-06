@@ -7,7 +7,7 @@ import kotlin.String;
 import kotlin.collections.List;
 
 CREATE TABLE PartyTable(
-  id TEXT AS PartyId PRIMARY KEY NOT NULL,
+  id TEXT PRIMARY KEY NOT NULL,
   number INTEGER AS Integer NOT NULL,
   burmeseName TEXT NOT NULL,
   englishName TEXT,

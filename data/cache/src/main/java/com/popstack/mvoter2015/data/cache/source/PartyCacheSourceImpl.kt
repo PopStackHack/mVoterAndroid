@@ -14,7 +14,7 @@ class PartyCacheSourceImpl @Inject constructor(
 
   override fun putParty(party: Party) {
     db.partyTableQueries.insertOrReplace(
-      id = party.id,
+      id = party.id.value,
       number = party.registeredNumber,
       burmeseName = party.nameBurmese,
       englishName = party.nameEnglish,
@@ -53,7 +53,7 @@ class PartyCacheSourceImpl @Inject constructor(
   }
 
   override fun getParty(partyId: PartyId): Party? {
-    return db.partyTableQueries.getById(partyId).executeAsOneOrNull()?.mapToParty()
+    return db.partyTableQueries.getById(partyId.value).executeAsOneOrNull()?.mapToParty()
   }
 
   override fun flush() {
