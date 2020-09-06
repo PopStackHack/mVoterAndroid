@@ -185,6 +185,7 @@ class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDeta
 
   private fun showContactDialog(contactViewItemList: List<PartyContactViewItem>) {
     MaterialAlertDialogBuilder(requireActivity())
+      .setTitle(R.string.select_phone_number)
       .setItems(contactViewItemList.map { it.text }.toTypedArray()) { dialog, which ->
         contactViewItemList.getOrNull(which)?.let { itemAtIndex ->
           try {

@@ -57,6 +57,7 @@
   <string name="transition_name_party_name">party_name</string>
   <string name="transition_name_party_seal">party_seal</string>
 
+  <string name="select_phone_number">ဆက်သွယ်ရန် ဖုန်းနံပါတ်ကိုရွေးပါ</string>
   <string name="party_establishment_application">ပါတီတည်ထောင်ခွင့်လျှောက်ထားသည်</string>
   <string name="party_establishment_approval">ပါတီတည်ထောင်ခွင့် ရရှိသည်</string>
   <string name="party_pote_ma_25">နိုင်ငံရေးပါတီအဖြစ် ပုဒ်မ(၂၅)အရ လျှောက်ထားခဲ့သည်</string>
