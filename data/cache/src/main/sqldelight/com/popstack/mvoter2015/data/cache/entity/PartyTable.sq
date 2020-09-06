@@ -24,7 +24,8 @@ CREATE TABLE PartyTable(
   establishmentApplicationDate INTEGER AS LocalDate,
   establishmentApprovalDate INTEGER AS LocalDate,
   registrationApplicationDate INTEGER AS LocalDate,
-  registrationApprovalDate INTEGER AS LocalDate
+  registrationApprovalDate INTEGER AS LocalDate,
+  is_deleted INTEGER AS Boolean DEFAULT 0
 );
 
 insertOrReplace:
@@ -33,21 +34,15 @@ INSERT OR REPLACE INTO PartyTable VALUES(
 :leadersAndChairmen,:memberCount, :contacts, :headquarterLocation, :policy,
 :isEstablishedDueToArticle25,
 :establishmentApplicationDate, :establishmentApprovalDate,
-:registrationApplicationDate, :registrationApprovalDate
+:registrationApplicationDate, :registrationApprovalDate,
+0
 );
 
 getAll:
-SELECT * FROM PartyTable ORDER BY number ASC LIMIT :limit OFFSET :offset;
+SELECT * FROM PartyTable WHERE is_deleted = 0 ORDER BY number ASC LIMIT :limit OFFSET :offset;
 
 getById:
-SELECT * FROM PartyTable WHERE id = :id;
-
-searchWithPage:
-SELECT * FROM PartyTable
-WHERE burmeseName LIKE :query
-OR englishName LIKE :query
-OR abbreviation LIKE :query
-ORDER BY id ASC LIMIT :limit OFFSET :offset;
+SELECT * FROM PartyTable WHERE id = :id AND is_deleted = 0;
 
 deleteAll:
-DELETE FROM PartyTable;
+UPDATE PartyTable SET is_deleted = 1;
