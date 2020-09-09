@@ -6,7 +6,7 @@ CREATE TABLE BallotExampleTable(
     id TEXT AS BallotExampleId PRIMARY KEY NOT NULL,
     image TEXT NOT NULL,
     isValid INTEGER AS Boolean NOT NULL,
-    reason TEXT NOT NULL,
+    reason TEXT,
     category TEXT AS BallotExampleCategory NOT NULL
 );
 

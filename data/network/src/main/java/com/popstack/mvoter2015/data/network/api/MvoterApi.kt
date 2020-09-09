@@ -25,6 +25,11 @@ interface MvoterApi {
     @Query("query") query: String?
   ): Call<GetFaqListResponse>
 
+  @GET("ballots")
+  fun ballotExampleList(
+    @Query("category") category: String
+  ): Call<GetBallotExampleListResponse>
+
   @GET("news")
   fun newsList(
     @Query("page") page: Int,
