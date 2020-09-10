@@ -18,6 +18,8 @@ internal object OkHttpProvider {
     if (okHttpClient == null) {
       val okHttpClientBuilder = OkHttpClient.Builder()
 
+      val authTokenStore = AuthTokenStoreImpl(context)
+
       if (BuildConfig.DEBUG) {
         val httpLoggingInterceptor = HttpLoggingInterceptor()
         httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
@@ -27,12 +29,11 @@ internal object OkHttpProvider {
         okHttpClientBuilder.addNetworkInterceptor(monexInterceptor)
       }
 
-      val authTokenStore = AuthTokenStoreImpl(context)
-
-      okHttpClient = okHttpClientBuilder
+      okHttpClientBuilder
         .addInterceptor(AuthTokenInterceptor(authTokenStore))
         .authenticator(RefreshAuthenticator(authTokenStore))
-        .build()
+
+      okHttpClient = okHttpClientBuilder.build()
     }
 
     return okHttpClient!!

@@ -178,6 +178,26 @@
         tools:text="ဖရီးလင့် ဒတ်ပလွတ်ပါ" />
 
       <TextView
+        android:id="@+id/tvResidentialTitle"
+        style="@style/TextMedium.Secondary"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/candidate_details_horizontal_section_spacing"
+        android:text="နေရပ်လိပ်စာ"
+        app:layout_constraintStart_toStartOf="@+id/guidelineStart16"
+        app:layout_constraintTop_toBottomOf="@+id/tvWork" />
+
+      <TextView
+        android:id="@+id/tvResidential"
+        style="@style/TextLarge"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineEnd16"
+        app:layout_constraintStart_toStartOf="@+id/guidelineStart16"
+        app:layout_constraintTop_toBottomOf="@+id/tvResidentialTitle"
+        tools:text="ဖရီးလင့် ဒတ်ပလွတ်ပါ" />
+
+      <TextView
         android:id="@+id/tvRaceTitle"
         style="@style/TextMedium.Secondary"
         android:layout_width="0dp"
@@ -186,7 +206,7 @@
         android:text="လူမျိုး"
         app:layout_constraintEnd_toStartOf="@+id/guidelineEnd16"
         app:layout_constraintStart_toStartOf="@+id/guidelineStart16"
-        app:layout_constraintTop_toBottomOf="@+id/tvWork" />
+        app:layout_constraintTop_toBottomOf="@+id/tvResidential" />
 
       <TextView
         android:id="@+id/tvRace"

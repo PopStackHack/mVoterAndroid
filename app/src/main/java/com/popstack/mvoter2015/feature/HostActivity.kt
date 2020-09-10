@@ -12,7 +12,6 @@ import com.bluelinelabs.conductor.RouterTransaction
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.databinding.ActivityHostBinding
 import com.popstack.mvoter2015.di.Injectable
-import com.popstack.mvoter2015.di.conductor.ControllerInjectorChangeHandler
 import com.popstack.mvoter2015.domain.candidate.model.CandidateId
 import com.popstack.mvoter2015.domain.infra.AppUpdateManager
 import com.popstack.mvoter2015.domain.party.model.PartyId
@@ -55,7 +54,6 @@ class HostActivity : AppCompatActivity(), HasRouter, Injectable, HasAndroidInjec
 
     router = Conductor.attachRouter(this, binding.container, savedInstanceState)
     router.addChangeListener(BreadcrumbControllerChangeHandler)
-    router.addChangeListener(ControllerInjectorChangeHandler)
 
     var handledDeepLink = false
     intent.data?.let { deepLinkUri ->
@@ -169,7 +167,6 @@ class HostActivity : AppCompatActivity(), HasRouter, Injectable, HasAndroidInjec
   override fun onDestroy() {
     super.onDestroy()
     router.removeChangeListener(BreadcrumbControllerChangeHandler)
-    router.removeChangeListener(ControllerInjectorChangeHandler)
   }
 
   override fun onBackPressed() {

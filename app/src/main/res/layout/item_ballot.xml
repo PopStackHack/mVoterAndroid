@@ -19,8 +19,8 @@
     android:layout_width="0dp"
     android:layout_height="0dp"
     android:layout_margin="16dp"
-    app:layout_constraintDimensionRatio="w,1:2"
     app:layout_constraintBottom_toTopOf="@id/guideline75PercentHorizontal"
+    app:layout_constraintDimensionRatio="w,1:2"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent" />
@@ -32,17 +32,29 @@
     android:orientation="horizontal"
     app:layout_constraintGuide_percent="0.75" />
 
-  <TextView
-    android:id="@+id/tvReason"
-    style="@style/TextLarge"
+  <androidx.core.widget.NestedScrollView
     android:layout_width="match_parent"
     android:layout_height="0dp"
     android:padding="16dp"
+    android:scrollbars="vertical"
+    android:scrollbarAlwaysDrawVerticalTrack="true"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintEnd_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/guideline75PercentHorizontal"
-    tools:text="Because you did wrong" />
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/guideline75PercentHorizontal">
+
+    <TextView
+      android:id="@+id/tvReason"
+      style="@style/TextLarge"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintEnd_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/guideline75PercentHorizontal"
+      tools:text="Because you did wrong" />
+
+  </androidx.core.widget.NestedScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

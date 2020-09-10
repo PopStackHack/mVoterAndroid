@@ -26,6 +26,9 @@ class NewsPagingSource constructor(
       val newsList = withContext(Dispatchers.IO) {
         try {
           val newsListFromNetwork = newsNetworkSource.getNewsList(page, itemPerPage)
+          if (params is LoadParams.Refresh) {
+            newsCacheSource.flush()
+          }
           newsCacheSource.putNews(newsListFromNetwork)
           newsCacheSource.getNewsList(page, itemPerPage)
         } catch (exception: Exception) {

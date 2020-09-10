@@ -20,6 +20,7 @@
     android:layout_height="wrap_content"
     app:backgroundTint="@color/primary"
     app:itemIconTint="@drawable/color_state_bottom_nav"
+    app:itemRippleColor="@color/grey"
     app:itemTextColor="@drawable/color_state_bottom_nav"
     app:labelVisibilityMode="labeled"
     app:layout_constraintBottom_toBottomOf="parent"

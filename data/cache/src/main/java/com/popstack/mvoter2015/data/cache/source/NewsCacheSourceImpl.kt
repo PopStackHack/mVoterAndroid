@@ -1,9 +1,7 @@
 package com.popstack.mvoter2015.data.cache.source
 
-import androidx.paging.PagingSource
 import com.popstack.mvoter2015.data.cache.MVoterDb
 import com.popstack.mvoter2015.data.cache.entity.NewsTable
-import com.popstack.mvoter2015.data.cache.extension.QueryDataSourceFactory
 import com.popstack.mvoter2015.data.cache.map.mapToNews
 import com.popstack.mvoter2015.data.common.news.NewsCacheSource
 import com.popstack.mvoter2015.domain.news.model.News
@@ -36,15 +34,8 @@ class NewsCacheSourceImpl @Inject constructor(
       .executeAsList().map(NewsTable::mapToNews)
   }
 
-  override fun getAllPaging(itemPerPage: Int): PagingSource<Int, News> {
-    return QueryDataSourceFactory(
-      queryProvider = db.newsTableQueries::getWithPage,
-      countQuery = db.newsTableQueries.countAll(),
-      transacter = db.newsTableQueries
-    ).map(NewsTable::mapToNews).asPagingSourceFactory().invoke()
+  override fun flush() {
+    return db.newsTableQueries.deleteAll()
   }
 
-  override fun getSearchPaging(itemPerPage: Int, query: String): PagingSource<Int, News> {
-    TODO("Not yet implemented")
-  }
 }

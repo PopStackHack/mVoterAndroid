@@ -4,7 +4,7 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
-  android:padding="8dp">
+  android:padding="16dp">
 
   <ProgressBar
     android:id="@+id/progressBar"
@@ -18,14 +18,13 @@
 
   <TextView
     android:id="@+id/tvErrorMessage"
+    style="@style/TextLarge.Error"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:textColor="@color/text_error"
-    android:textSize="16sp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    tools:text="ဒေတာရယူမှု မအောင်မြင်ပါ" />
+    tools:text="@string/error_no_internet" />
 
   <com.google.android.material.button.MaterialButton
     android:id="@+id/buttonRetry"
@@ -37,6 +36,7 @@
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/tvErrorMessage" />
+    app:layout_constraintTop_toBottomOf="@id/tvErrorMessage"
+    app:rippleColor="@color/grey" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

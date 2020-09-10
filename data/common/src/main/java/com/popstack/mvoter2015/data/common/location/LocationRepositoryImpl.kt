@@ -1,6 +1,7 @@
 package com.popstack.mvoter2015.data.common.location
 
 import com.popstack.mvoter2015.domain.location.LocationRepository
+import com.popstack.mvoter2015.domain.location.model.StateRegionTownship
 import com.popstack.mvoter2015.domain.location.model.Township
 import com.popstack.mvoter2015.domain.location.model.Ward
 import javax.inject.Inject
@@ -27,5 +28,13 @@ class LocationRepositoryImpl @Inject constructor(
 
   override fun getUserWard(): Ward? {
     return locationCacheSource.getUserWard()
+  }
+
+  override fun saveUserStateRegionTownship(stateRegionTownship: StateRegionTownship) {
+    locationCacheSource.saveUserStateRegionTownship(stateRegionTownship)
+  }
+
+  override fun getUserStateRegionTownship(): StateRegionTownship? {
+    return locationCacheSource.getUserStateRegionTownship()
   }
 }

@@ -1,0 +1,24 @@
+import com.popstack.mvoter2015.domain.candidate.model.CandidateGender;
+import com.popstack.mvoter2015.domain.candidate.model.CandidateId;
+import com.popstack.mvoter2015.domain.candidate.model.CandidateParent;
+import com.popstack.mvoter2015.domain.party.model.PartyId;
+import com.popstack.mvoter2015.domain.constituency.model.ConstituencyId;
+import com.popstack.mvoter2015.domain.constituency.model.HouseType;
+import java.time.LocalDate;
+import java.lang.Boolean;
+
+CREATE TABLE ConstituencyTable(
+  id TEXT PRIMARY KEY NOT NULL,
+  name TEXT NOT NULL,
+  house TEXT AS HouseType NOT NULL,
+  township TEXT,
+  stateRegion TEXT
+);
+
+insertOrReplace:
+INSERT OR REPLACE INTO ConstituencyTable VALUES(
+:id, :name, :house,:township,: stateRegion
+);
+
+deleteAll:
+DELETE FROM ConstituencyTable;

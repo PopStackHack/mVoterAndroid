@@ -10,7 +10,7 @@ class AppFirstTimeConfig @Inject constructor(context: Context) {
   private val sharedPref = PreferenceManager.getDefaultSharedPreferences(context)
 
   companion object {
-    private const val KEY_IS_FIRST_TIME = "is_first_time"
+    private const val KEY_IS_FIRST_TIME = "mvoter2020_is_first_time"
   }
 
   fun isFirstTime(): Boolean {

@@ -1,12 +1,13 @@
 import com.popstack.mvoter2015.domain.party.model.PartyId;
-import kotlin.String;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import kotlin.String;
 import kotlin.collections.List;
-import java.lang.Boolean;
 
 CREATE TABLE PartyTable(
-  id TEXT AS PartyId PRIMARY KEY NOT NULL,
+  id TEXT PRIMARY KEY NOT NULL,
   number INTEGER AS Integer NOT NULL,
   burmeseName TEXT NOT NULL,
   englishName TEXT,
@@ -15,7 +16,7 @@ CREATE TABLE PartyTable(
   sealImage TEXT NOT NULL,
   region TEXT NOT NULL,
   leadersAndChairmen TEXT AS List<String> NOT NULL,
-  memberCount INTEGER AS Integer,
+  memberCount TEXT,
   contacts TEXT AS List<String> NOT NULL,
   headquarterLocation TEXT NOT NULL,
   policy TEXT NOT NULL,
@@ -23,7 +24,8 @@ CREATE TABLE PartyTable(
   establishmentApplicationDate INTEGER AS LocalDate,
   establishmentApprovalDate INTEGER AS LocalDate,
   registrationApplicationDate INTEGER AS LocalDate,
-  registrationApprovalDate INTEGER AS LocalDate
+  registrationApprovalDate INTEGER AS LocalDate,
+  is_deleted INTEGER AS Boolean DEFAULT 0
 );
 
 insertOrReplace:
@@ -32,27 +34,15 @@ INSERT OR REPLACE INTO PartyTable VALUES(
 :leadersAndChairmen,:memberCount, :contacts, :headquarterLocation, :policy,
 :isEstablishedDueToArticle25,
 :establishmentApplicationDate, :establishmentApprovalDate,
-:registrationApplicationDate, :registrationApprovalDate
+:registrationApplicationDate, :registrationApprovalDate,
+0
 );
 
-getWithPage:
-SELECT * FROM PartyTable ORDER BY number ASC LIMIT :limit OFFSET :offset;
+getAll:
+SELECT * FROM PartyTable WHERE is_deleted = 0 ORDER BY number ASC LIMIT :limit OFFSET :offset;
 
 getById:
-SELECT * FROM PartyTable WHERE id = :id;
+SELECT * FROM PartyTable WHERE id = :id AND is_deleted = 0;
 
-searchWithPage:
-SELECT * FROM PartyTable
-WHERE burmeseName LIKE :query
-OR englishName LIKE :query
-OR abbreviation LIKE :query
-ORDER BY id ASC LIMIT :limit OFFSET :offset;
-
-searchTotalCount:
-SELECT count(*) FROM PartyTable
-WHERE burmeseName LIKE :query
-OR englishName LIKE :query
-OR abbreviation LIKE :query;
-
-count:
-SELECT count(*) FROM PartyTable;
+deleteAll:
+UPDATE PartyTable SET is_deleted = 1;

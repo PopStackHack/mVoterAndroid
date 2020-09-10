@@ -1,9 +1,7 @@
 package com.popstack.mvoter2015.data.cache.source
 
-import androidx.paging.PagingSource
 import com.popstack.mvoter2015.data.cache.MVoterDb
 import com.popstack.mvoter2015.data.cache.entity.PartyTable
-import com.popstack.mvoter2015.data.cache.extension.QueryDataSourceFactory
 import com.popstack.mvoter2015.data.cache.map.mapToParty
 import com.popstack.mvoter2015.data.common.party.PartyCacheSource
 import com.popstack.mvoter2015.domain.party.model.Party
@@ -16,7 +14,7 @@ class PartyCacheSourceImpl @Inject constructor(
 
   override fun putParty(party: Party) {
     db.partyTableQueries.insertOrReplace(
-      id = party.id,
+      id = party.id.value,
       number = party.registeredNumber,
       burmeseName = party.nameBurmese,
       englishName = party.nameEnglish,
@@ -48,32 +46,18 @@ class PartyCacheSourceImpl @Inject constructor(
   override fun getPartyList(page: Int, itemPerPage: Int): List<Party> {
     val limit = itemPerPage
     val offset = (page - 1) * limit
-    return db.partyTableQueries.getWithPage(
+    return db.partyTableQueries.getAll(
       limit = limit.toLong(),
-      offset = offset.toLong()
+      offset = offset.toLong(),
     ).executeAsList().map(PartyTable::mapToParty)
   }
 
-  override fun getPartyPaging(itemPerPage: Int): PagingSource<Int, Party> {
-    return QueryDataSourceFactory(
-      queryProvider = db.partyTableQueries::getWithPage,
-      countQuery = db.partyTableQueries.count(),
-      transacter = db.partyTableQueries
-    ).map(PartyTable::mapToParty).asPagingSourceFactory().invoke()
-  }
-
-  override fun searchPartyPaging(itemPerPage: Int, query: String): PagingSource<Int, Party> {
-    return QueryDataSourceFactory(
-      queryProvider = { limit, offset ->
-        db.partyTableQueries.searchWithPage(query, limit, offset)
-      },
-      countQuery = db.partyTableQueries.searchTotalCount(query),
-      transacter = db.partyTableQueries
-    ).map(PartyTable::mapToParty).asPagingSourceFactory().invoke()
-  }
-
   override fun getParty(partyId: PartyId): Party? {
-    return db.partyTableQueries.getById(partyId).executeAsOneOrNull()?.mapToParty()
+    return db.partyTableQueries.getById(partyId.value).executeAsOneOrNull()?.mapToParty()
+  }
+
+  override fun flush() {
+    return db.partyTableQueries.deleteAll()
   }
 
 }

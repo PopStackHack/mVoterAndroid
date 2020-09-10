@@ -11,5 +11,7 @@ interface CandidateCacheSource {
 
   fun getCandidateList(constituencyId: ConstituencyId): List<Candidate>
 
-  fun getCandidate(candidateId: CandidateId): Candidate
+  fun getCandidate(candidateId: CandidateId): Candidate?
+
+  fun flushUnderConstituency(constituencyId: ConstituencyId)
 }

@@ -43,10 +43,10 @@ class BallotExampleViewModel @Inject constructor(
             id = it.id,
             image = it.image,
             isValid = it.isValid,
-            reason = it.reason
+            reason = it.reason ?: ""
           )
         }.sortedBy {
-          it.isValid.not()
+          it.isValid
         }
 
         invalidBallotStartPosition = viewItem.indexOfFirst { it.isValid.not() }

@@ -1,6 +1,7 @@
 package com.popstack.mvoter2015.data.network.source
 
 import com.popstack.mvoter2015.data.common.faq.FaqNetworkSource
+import com.popstack.mvoter2015.data.network.api.BallotExampleApiModel
 import com.popstack.mvoter2015.data.network.api.FaqApiModel
 import com.popstack.mvoter2015.data.network.api.MvoterApi
 import com.popstack.mvoter2015.data.network.helper.executeOrThrow
@@ -26,7 +27,12 @@ class FaqNetworkSourceImpl @Inject constructor(
   }
 
   override fun getBallotExampleList(category: BallotExampleCategory): List<BallotExample> {
-    return emptyList()
+    return mvoterApi.ballotExampleList(
+      when (category) {
+        BallotExampleCategory.NORMAL -> "normal"
+        BallotExampleCategory.ADVANCED -> "advanced"
+      }
+    ).executeOrThrow().data.map(BallotExampleApiModel::mapToBallotExample)
   }
 
 }

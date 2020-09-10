@@ -6,6 +6,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerBallotExampleBinding
@@ -20,6 +21,7 @@ import com.popstack.mvoter2015.helper.conductor.supportActionBar
 import com.popstack.mvoter2015.helper.extensions.addOnTabSelectedListener
 import com.popstack.mvoter2015.helper.extensions.forEachTab
 import com.popstack.mvoter2015.logging.HasTag
+import timber.log.Timber
 
 class BallotExampleController : MvvmController<ControllerBallotExampleBinding>(), HasTag {
 
@@ -70,9 +72,9 @@ class BallotExampleController : MvvmController<ControllerBallotExampleBinding>()
         else -> viewModel.invalidBallotStartPosition
       }
       if (binding.viewPager.currentItem != pagerPosition) {
-        binding.viewPager.unregisterOnPageChangeCallback(onPageChangeTabSelect)
+//        binding.viewPager.unregisterOnPageChangeCallback(onPageChangeTabSelect)
         binding.viewPager.setCurrentItem(pagerPosition, true)
-        binding.viewPager.registerOnPageChangeCallback(onPageChangeTabSelect)
+//        binding.viewPager.registerOnPageChangeCallback(onPageChangeTabSelect)
       }
     }
 
@@ -87,6 +89,10 @@ class BallotExampleController : MvvmController<ControllerBallotExampleBinding>()
   }
 
   private val onPageChangeTabSelect = object : ViewPager2.OnPageChangeCallback() {
+    private var previousScrollState = 0
+    private var scrollState = 0
+    private var lastPositionOffset = 0f
+
     override fun onPageSelected(position: Int) {
       val tabToBeSelected = if (position >= viewModel.invalidBallotStartPosition && position < viewModel.validBallotStartPosition) {
         inValidBallotTab
@@ -101,6 +107,26 @@ class BallotExampleController : MvvmController<ControllerBallotExampleBinding>()
         binding.tabLayoutValid.selectTab(tabToBeSelected)
         binding.tabLayoutValid.addOnTabSelectedListener(onTabSelectToChangePagerPosition)
       }
+    }
+
+    override fun onPageScrollStateChanged(state: Int) {
+      previousScrollState = scrollState
+      scrollState = state
+    }
+
+    override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+
+      if (position == viewModel.validBallotStartPosition - 1 && positionOffset != 0.0f) {
+
+        val updateText = scrollState != ViewPager2.SCROLL_STATE_SETTLING || previousScrollState == ViewPager2.SCROLL_STATE_DRAGGING
+        val updateIndicator = !(scrollState == ViewPager2.SCROLL_STATE_SETTLING && previousScrollState == ViewPager2.SCROLL_STATE_IDLE)
+
+        Timber.i("position $position, validStartIndex : ${viewModel.validBallotStartPosition}, offset: $positionOffset")
+        binding.tabLayoutValid.setScrollPosition(0, positionOffset, updateText, updateIndicator)
+
+        lastPositionOffset = positionOffset
+      }
+      super.onPageScrolled(position, positionOffset, positionOffsetPixels)
     }
   }
 
@@ -120,6 +146,10 @@ class BallotExampleController : MvvmController<ControllerBallotExampleBinding>()
     binding.viewPager.apply {
       adapter = ballotAdapter
     }
+
+    TabLayoutMediator(binding.tabPagerIndicator, binding.viewPager) { tab, position ->
+      //Some implementation
+    }.attach()
 
     setUpTabLayout()
 

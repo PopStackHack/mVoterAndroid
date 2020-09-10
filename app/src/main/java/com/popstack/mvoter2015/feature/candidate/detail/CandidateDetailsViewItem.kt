@@ -29,7 +29,8 @@ data class CandidateInfoViewItem(
   val motherReligion: String,
   val fatherName: String,
   val fatherEthnicity: String,
-  val fatherReligion: String
+  val fatherReligion: String,
+  val residentialAddress: String
 )
 
 fun Candidate.toCandidateInfoViewItem() = CandidateInfoViewItem(
@@ -57,7 +58,8 @@ fun Candidate.toCandidateInfoViewItem() = CandidateInfoViewItem(
   motherReligion = mother?.religion.orEmpty(),
   fatherName = father?.name.orEmpty(),
   fatherEthnicity = father?.ethnicity.orEmpty(),
-  fatherReligion = father?.religion.orEmpty()
+  fatherReligion = father?.religion.orEmpty(),
+  residentialAddress = residentialAddress.orEmpty()
 )
 
 private fun String.toMMInt(): String {

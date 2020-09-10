@@ -1,9 +1,7 @@
 package com.popstack.mvoter2015.data.cache.source
 
-import androidx.paging.PagingSource
 import com.popstack.mvoter2015.data.cache.MVoterDb
 import com.popstack.mvoter2015.data.cache.entity.FaqTable
-import com.popstack.mvoter2015.data.cache.extension.QueryDataSourceFactory
 import com.popstack.mvoter2015.data.cache.map.mapToFaq
 import com.popstack.mvoter2015.data.common.faq.FaqCacheSource
 import com.popstack.mvoter2015.domain.faq.model.BallotExample
@@ -42,34 +40,6 @@ class FaqCacheSourceImpl @Inject constructor(
     ).executeAsList().map(FaqTable::mapToFaq)
   }
 
-  override fun searchPaging(itemPerPage: Int, query: String): PagingSource<Int, Faq> {
-    return QueryDataSourceFactory(
-      queryProvider = { limit, offset ->
-        db.faqTableQueries.selectAllWithQuery(query, limit, offset)
-      },
-      countQuery = db.faqTableQueries.countAllWithQuery(query),
-      transacter = db.faqTableQueries
-    ).map(FaqTable::mapToFaq).asPagingSourceFactory().invoke()
-  }
-
-  override fun getAllPaging(itemPerPage: Int, category: FaqCategory?): PagingSource<Int, Faq> {
-    return if (category == null) {
-      QueryDataSourceFactory(
-        queryProvider = db.faqTableQueries::selectAll,
-        countQuery = db.faqTableQueries.countAll(),
-        transacter = db.faqTableQueries
-      )
-    } else {
-      QueryDataSourceFactory(
-        queryProvider = { limit, offset ->
-          db.faqTableQueries.selectAllWithCategory(category, limit, offset)
-        },
-        countQuery = db.faqTableQueries.countAllWithCategory(category),
-        transacter = db.faqTableQueries
-      )
-    }.map(FaqTable::mapToFaq).asPagingSourceFactory().invoke()
-  }
-
   override fun putBallotExampleList(ballotExampleList: List<BallotExample>) {
     db.transaction {
       ballotExampleList.forEach { ballotExample ->
@@ -82,6 +52,14 @@ class FaqCacheSourceImpl @Inject constructor(
         )
       }
     }
+  }
+
+  override fun flushBallotExampleUnderCategory(category: BallotExampleCategory) {
+    db.ballotExampleTableQueries.deleteByCategory(category)
+  }
+
+  override fun flushFaqUnderCategory(category: FaqCategory) {
+    db.faqTableQueries.deleteByCategory(category)
   }
 
   override fun getBallotExampleList(ballotExampleCategory: BallotExampleCategory): List<BallotExample> {

@@ -10,6 +10,8 @@ import android.view.ViewGroup
 import androidx.annotation.MenuRes
 import androidx.viewbinding.ViewBinding
 import com.bluelinelabs.conductor.Controller
+import com.popstack.mvoter2015.di.Injectable
+import com.popstack.mvoter2015.di.conductor.ConductorInjection
 
 abstract class BaseController<VB : ViewBinding> constructor(
   bundle: Bundle? = null
@@ -28,6 +30,9 @@ abstract class BaseController<VB : ViewBinding> constructor(
     container: ViewGroup,
     savedViewState: Bundle?
   ): View {
+    if (this is Injectable) {
+      ConductorInjection.inject(this)
+    }
     _binding = bindingInflater(inflater)
     onBindView(savedViewState)
     return binding.root

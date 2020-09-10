@@ -12,7 +12,7 @@ data class Party(
   val sealImage: String,
   val region: String,
   val leadersAndChairmenList: List<String>,
-  val memberCount: Int?,
+  val memberCount: String?,
   val headquarterLocation: String,
   val policy: String,
   val contacts: List<String>,

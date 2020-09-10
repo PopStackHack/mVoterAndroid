@@ -21,3 +21,6 @@ SELECT * FROM NewsTable ORDER BY NewsTable.publishedDate DESC LIMIT :limit OFFSE
 
 countAll:
 SELECT count(*) FROM NewsTable;
+
+deleteAll:
+DELETE FROM NewsTable;

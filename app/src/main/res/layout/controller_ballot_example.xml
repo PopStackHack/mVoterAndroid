@@ -46,14 +46,40 @@
     app:tabSelectedTextColor="@color/text_primary"
     app:tabTextColor="@color/text_primary" />
 
-  <androidx.viewpager2.widget.ViewPager2
-    android:id="@+id/viewPager"
+  <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="0dp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/tabLayoutValid" />
+    app:layout_constraintTop_toBottomOf="@id/tabLayoutValid">
+
+    <androidx.viewpager2.widget.ViewPager2
+      android:id="@+id/viewPager"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+      android:id="@+id/guideline75PercentHorizontal"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      app:layout_constraintGuide_percent="0.75" />
+
+    <com.google.android.material.tabs.TabLayout
+      android:id="@+id/tabPagerIndicator"
+      android:layout_width="match_parent"
+      android:layout_height="16dp"
+      android:background="@color/transparent"
+      app:layout_constraintBottom_toBottomOf="@id/guideline75PercentHorizontal"
+      app:layout_constraintTop_toTopOf="@id/guideline75PercentHorizontal"
+      app:tabBackground="@drawable/tab_dot_indicator"
+      app:tabGravity="center"
+      app:tabIndicatorFullWidth="false"
+      app:tabIndicatorHeight="0dp" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
 
   <ProgressBar
     android:id="@+id/progressBar"
@@ -64,7 +90,7 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    tools:visibility="visible" />
+    tools:visibility="gone" />
 
   <TextView
     android:id="@+id/tvErrorMessage"
@@ -79,7 +105,7 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    tools:visibility="visible" />
+    tools:visibility="gone" />
 
   <com.google.android.material.button.MaterialButton
     android:id="@+id/btnRetry"
@@ -94,6 +120,6 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@id/tvErrorMessage"
     app:strokeColor="@color/accent"
-    tools:visibility="visible" />
+    tools:visibility="gone" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -19,6 +19,7 @@ class PartyPagingSource constructor(
 
   override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Party> {
     try {
+
       // Start refresh at page 1 if undefined.
       val page = params.key ?: STARTING_PAGE
       val itemPerPage = params.pageSize
@@ -26,6 +27,10 @@ class PartyPagingSource constructor(
       val partyList = withContext(Dispatchers.IO) {
         try {
           val partyListFromNetwork = partyNetworkSource.getPartyList(page, itemPerPage)
+          if (params is LoadParams.Refresh) {
+            Timber.i("db flushed")
+            partyCacheSource.flush()
+          }
           partyCacheSource.putParty(partyListFromNetwork)
           partyCacheSource.getPartyList(page, itemPerPage)
         } catch (exception: Exception) {

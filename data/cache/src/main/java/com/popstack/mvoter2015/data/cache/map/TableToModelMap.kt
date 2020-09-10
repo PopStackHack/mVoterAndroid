@@ -6,6 +6,7 @@ import com.popstack.mvoter2015.data.cache.entity.PartyTable
 import com.popstack.mvoter2015.domain.faq.model.Faq
 import com.popstack.mvoter2015.domain.news.model.News
 import com.popstack.mvoter2015.domain.party.model.Party
+import com.popstack.mvoter2015.domain.party.model.PartyId
 
 internal fun FaqTable.mapToFaq(): Faq {
   return Faq(
@@ -32,7 +33,7 @@ internal fun NewsTable.mapToNews(): News {
 
 internal fun PartyTable.mapToParty(): Party {
   return Party(
-    id = id,
+    id = PartyId(id),
     registeredNumber = number,
     nameBurmese = burmeseName,
     nameEnglish = englishName,

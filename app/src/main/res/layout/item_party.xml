@@ -18,28 +18,18 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent" />
 
-  <ImageView
-    android:id="@+id/ivGoDetailIndicator"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:src="@drawable/ic_arrow_right_24"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
-
   <TextView
     android:id="@+id/tvPartyName"
     style="@style/TextLarge.Bold"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginStart="8dp"
-    app:layout_constraintBottom_toBottomOf="@+id/ivPartySeal"
-    app:layout_constraintEnd_toStartOf="@+id/ivGoDetailIndicator"
+    android:layout_marginTop="4dp"
+    android:layout_marginEnd="8dp"
+    app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toEndOf="@+id/ivPartySeal"
-    app:layout_constraintTop_toTopOf="@+id/ivPartySeal"
-    app:layout_constraintVertical_bias="0.0"
+    app:layout_constraintTop_toTopOf="parent"
     tools:text="@sample/party.csv/PartyName" />
-
 
   <TextView
     android:id="@+id/tvPartyRegion"
@@ -47,9 +37,10 @@
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
     android:maxLines="2"
     app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toStartOf="@id/ivGoDetailIndicator"
+    app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toEndOf="@+id/ivPartySeal"
     app:layout_constraintTop_toBottomOf="@id/tvPartyName"
     tools:text="@sample/party.csv/Region" />

@@ -6,8 +6,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
@@ -69,12 +67,6 @@ class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDeta
   override val bindingInflater: (LayoutInflater) -> ControllerPartyDetailBinding =
     ControllerPartyDetailBinding::inflate
 
-  override fun onCreateView(inflater: LayoutInflater, container: ViewGroup, savedViewState: Bundle?): View {
-    viewModel.setPartyId(partyId)
-    setHasOptionsMenu(R.menu.menu_party_detail, this::handleMenuItemClick)
-    return super.onCreateView(inflater, container, savedViewState)
-  }
-
   private fun handleMenuItemClick(menuItem: MenuItem): Boolean {
     when (menuItem.itemId) {
       R.id.action_share -> {
@@ -88,6 +80,8 @@ class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDeta
 
   override fun onBindView(savedViewState: Bundle?) {
     super.onBindView(savedViewState)
+    viewModel.setPartyId(partyId)
+    setHasOptionsMenu(R.menu.menu_party_detail, this::handleMenuItemClick)
 
     args.getString(ARG_PARTY_NAME).let { partyName ->
       binding.tvPartyName.text = partyName
@@ -164,9 +158,9 @@ class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDeta
         binding.tvLeader.isVisible = viewItem.leadersAndChairmen.isNotEmpty()
         binding.tvLeader.text = viewItem.leadersAndChairmen.format("၊")
 
-        binding.tvMemberCountTitle.isVisible = viewItem.memberCount != 0
-        binding.tvMemberCount.isVisible = viewItem.memberCount != 0
-        binding.tvMemberCount.text = viewItem.memberCount.toString()
+        binding.tvMemberCountTitle.isVisible = viewItem.memberCount != null
+        binding.tvMemberCount.isVisible = viewItem.memberCount != null
+        binding.tvMemberCount.text = viewItem.memberCount ?: ""
 
         binding.tvHeadquarterLocation.text = viewItem.headQuarterLocation
 
@@ -191,6 +185,7 @@ class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDeta
 
   private fun showContactDialog(contactViewItemList: List<PartyContactViewItem>) {
     MaterialAlertDialogBuilder(requireActivity())
+      .setTitle(R.string.select_phone_number)
       .setItems(contactViewItemList.map { it.text }.toTypedArray()) { dialog, which ->
         contactViewItemList.getOrNull(which)?.let { itemAtIndex ->
           try {

@@ -10,8 +10,10 @@
     android:id="@+id/appBarLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:backgroundTint="@color/primary"
     android:orientation="vertical"
     app:layout_constraintEnd_toEndOf="parent"
+    app:liftOnScroll="true"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent">
 
@@ -61,31 +63,33 @@
 
   <TextView
     android:id="@+id/tvErrorMessage"
+    style="@style/TextExtraLarge.Error"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginStart="16dp"
     android:layout_marginEnd="16dp"
     android:gravity="center"
-    android:textColor="@color/text_error"
     android:visibility="gone"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/appBarLayout"
+    tools:text="@string/error_no_internet"
     tools:visibility="visible" />
 
   <com.google.android.material.button.MaterialButton
     android:id="@+id/btnRetry"
+    style="@style/TextLarge.Accent"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="8dp"
     android:text="@string/retry"
-    android:textColor="@color/accent"
     android:visibility="gone"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@id/tvErrorMessage"
+    app:rippleColor="@color/grey"
     app:strokeColor="@color/accent"
-    tools:visibility="visible" />
+    tools:visibility="gone" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

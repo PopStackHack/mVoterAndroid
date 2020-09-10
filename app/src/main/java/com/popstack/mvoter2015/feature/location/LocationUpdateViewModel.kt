@@ -3,8 +3,10 @@ package com.popstack.mvoter2015.feature.location
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.popstack.mvoter2015.data.android.location.LocationProvider
+import com.popstack.mvoter2015.domain.location.model.StateRegionTownship
 import com.popstack.mvoter2015.domain.location.model.Ward
 import com.popstack.mvoter2015.domain.location.usecase.GetWardDetails
+import com.popstack.mvoter2015.domain.location.usecase.SaveUserStateRegionTownship
 import com.popstack.mvoter2015.domain.location.usecase.SaveUserWard
 import com.popstack.mvoter2015.helper.livedata.SingleLiveEvent
 import kotlinx.coroutines.flow.collectLatest
@@ -15,7 +17,8 @@ import javax.inject.Inject
 class LocationUpdateViewModel @Inject constructor(
   private val locationProvider: LocationProvider,
   private val getWardDetails: GetWardDetails,
-  private val saveUserWard: SaveUserWard
+  private val saveUserWard: SaveUserWard,
+  private val saveUserStateRegionTownship: SaveUserStateRegionTownship
 ) : ViewModel() {
 
   sealed class ViewEvent {
@@ -74,6 +77,14 @@ class LocationUpdateViewModel @Inject constructor(
         data.wardDetails?.let {
           saveUserWard.execute(SaveUserWard.Params(it))
         }
+        saveUserStateRegionTownship.execute(
+          SaveUserStateRegionTownship.Params(
+            StateRegionTownship(
+              data.chosenStateRegion!!,
+              data.chosenTownship!!
+            )
+          )
+        )
         viewEventLiveData.postValue(ViewEvent.NavigateToHomePage)
       }.exceptionOrNull()?.let { exception ->
         Timber.e(exception)
