@@ -13,7 +13,6 @@
     android:orientation="vertical"
     app:layout_constraintGuide_percent="0.5" />
 
-
   <ImageView
     android:id="@+id/ivBallot"
     android:layout_width="0dp"
@@ -36,23 +35,44 @@
     android:layout_width="match_parent"
     android:layout_height="0dp"
     android:padding="16dp"
-    android:scrollbars="vertical"
     android:scrollbarAlwaysDrawVerticalTrack="true"
+    android:scrollbars="vertical"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@id/guideline75PercentHorizontal">
 
-    <TextView
-      android:id="@+id/tvReason"
-      style="@style/TextLarge"
+    <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintEnd_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@id/guideline75PercentHorizontal"
-      tools:text="Because you did wrong" />
+      android:orientation="vertical">
+
+      <TextView
+        android:id="@+id/tvBallotValid"
+        style="@style/TextLarge.Bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/green"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline75PercentHorizontal"
+        tools:text="@string/valid_ballot" />
+
+      <TextView
+        android:id="@+id/tvReason"
+        style="@style/TextLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline75PercentHorizontal"
+        tools:text="Because you did wrong" />
+
+    </LinearLayout>
+
 
   </androidx.core.widget.NestedScrollView>
 
