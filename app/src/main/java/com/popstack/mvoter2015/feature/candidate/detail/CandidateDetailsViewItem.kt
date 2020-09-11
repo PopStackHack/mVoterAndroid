@@ -3,11 +3,11 @@ package com.popstack.mvoter2015.feature.candidate.detail
 import com.popstack.mvoter2015.domain.candidate.model.Candidate
 import com.popstack.mvoter2015.domain.constituency.model.HouseType
 import com.popstack.mvoter2015.domain.party.model.PartyId
-import com.popstack.mvoter2015.feature.candidate.listing.CandidateListViewItem
+import com.popstack.mvoter2015.feature.candidate.listing.SmallCandidateViewItem
 
 data class CandidateDetailsViewItem(
   val candidateInfo: CandidateInfoViewItem,
-  val rivals: List<CandidateListViewItem.SmallCandidateViewItem>
+  val rivals: List<SmallCandidateViewItem>
 )
 
 data class CandidateInfoViewItem(
