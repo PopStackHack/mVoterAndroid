@@ -21,7 +21,7 @@ internal class CandidateListHousePagerAdapter(host: Controller) :
   }
 
   override fun getPageTitle(position: Int): CharSequence? {
-    return itemList[position].name
+    return itemList[position].houseName
   }
 
   override fun configureRouter(
@@ -31,9 +31,15 @@ internal class CandidateListHousePagerAdapter(host: Controller) :
     router.addChangeListener(BreadcrumbControllerChangeHandler)
     if (!router.hasRootController()) {
       val controller = when (position) {
-        0 -> UpperHouseCandidateListController.newInstance(ConstituencyId(itemList[position].constituencyId), itemList[position].houseType)
-        1 -> LowerHouseCandidateListController.newInstance(ConstituencyId(itemList[position].constituencyId), itemList[position].houseType)
-        2 -> RegionalHouseCandidateListController.newInstance(ConstituencyId(itemList[position].constituencyId), itemList[position].houseType)
+        0 -> LowerHouseCandidateListController.newInstance(
+          ConstituencyId(itemList[position].constituencyId),
+          itemList[position].constituencyName)
+        1 -> UpperHouseCandidateListController.newInstance(
+          ConstituencyId(itemList[position].constituencyId),
+          itemList[position].constituencyName)
+        2 -> RegionalHouseCandidateListController.newInstance(
+          ConstituencyId(itemList[position].constituencyId),
+          itemList[position].constituencyName)
         else -> return
       }
       val routerTransaction = RouterTransaction.with(controller)

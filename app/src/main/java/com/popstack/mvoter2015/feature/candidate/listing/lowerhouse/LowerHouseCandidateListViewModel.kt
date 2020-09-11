@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.popstack.mvoter2015.domain.candidate.usecase.GetCandidateList
 import com.popstack.mvoter2015.domain.constituency.model.ConstituencyId
-import com.popstack.mvoter2015.domain.constituency.model.HouseType
 import com.popstack.mvoter2015.exception.GlobalExceptionHandler
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateListViewItem
 import com.popstack.mvoter2015.feature.candidate.listing.toSmallCandidateViewItem
@@ -20,7 +19,7 @@ class LowerHouseCandidateListViewModel @Inject constructor(
 
   val viewItemLiveData = AsyncViewStateLiveData<CandidateListViewItem>()
 
-  fun loadCandidates(constituencyId: ConstituencyId, houseType: HouseType) {
+  fun loadCandidates(constituencyId: ConstituencyId) {
     viewModelScope.launch {
       viewItemLiveData.postLoading()
       kotlin.runCatching {

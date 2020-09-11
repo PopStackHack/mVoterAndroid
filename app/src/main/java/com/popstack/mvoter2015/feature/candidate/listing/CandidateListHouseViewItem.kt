@@ -7,9 +7,9 @@ import com.popstack.mvoter2015.domain.location.model.Ward
 import javax.inject.Inject
 
 data class CandidateListHouseViewItem(
-  val houseType: HouseType,
-  val name: String,
-  val constituencyId: String
+  val houseName: String,
+  val constituencyId: String,
+  val constituencyName: String
 )
 
 class CandidateListHouseViewItemMapper @Inject constructor(
@@ -21,14 +21,24 @@ class CandidateListHouseViewItemMapper @Inject constructor(
     userWard: Ward
   ): CandidateListHouseViewItem {
 
-    val name = when (houseType) {
-      HouseType.UPPER_HOUSE -> context.getString(R.string.tab_upper_house)
-      HouseType.LOWER_HOUSE -> context.getString(R.string.tab_lower_house)
+    lateinit var houseName: String
+    lateinit var constituencyName: String
+
+    when (houseType) {
+      HouseType.UPPER_HOUSE -> {
+        houseName = context.getString(R.string.tab_upper_house)
+        constituencyName = userWard.upperHouseConstituency.name
+      }
+      HouseType.LOWER_HOUSE -> {
+        houseName = context.getString(R.string.tab_lower_house)
+        constituencyName = userWard.lowerHouseConstituency.name
+      }
       HouseType.REGIONAL_HOUSE -> {
-        if (userWard.stateRegionConstituency.name.contains("တိုင်းဒေသကြီး"))
+        houseName = if (userWard.stateRegionConstituency.name.contains("တိုင်းဒေသကြီး"))
           context.getString(R.string.tab_regional_house_state)
         else
           context.getString(R.string.tab_regional_house_region)
+        constituencyName = userWard.stateRegionConstituency.name
       }
     }
 
@@ -39,9 +49,9 @@ class CandidateListHouseViewItemMapper @Inject constructor(
     }
 
     return CandidateListHouseViewItem(
-      houseType = houseType,
-      name = name,
-      constituencyId = id
+      houseName = houseName,
+      constituencyId = id,
+      constituencyName = constituencyName
     )
   }
 }
