@@ -25,9 +25,13 @@ class UpperHouseCandidateListViewModel @Inject constructor(
       viewItemLiveData.postLoading()
       kotlin.runCatching {
         val candidateList = getCandidate.execute(GetCandidateList.Params(constituencyId))
-        val smallCandidateList = candidateList.map {
-          it.toSmallCandidateViewItem()
-        }
+        val smallCandidateList = candidateList
+          .sortedBy {
+            it.sortingName
+          }
+          .map {
+            it.toSmallCandidateViewItem()
+          }
         val candidateListViewItem = CandidateListViewItem(smallCandidateList)
         viewItemLiveData.postSuccess(candidateListViewItem)
       }.exceptionOrNull()?.let { exception ->
