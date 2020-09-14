@@ -86,7 +86,7 @@ object AndroidXCore {
 }
 
 object AndroidXPaging {
-  private const val version = "3.0.0-alpha05"
+  private const val version = "3.0.0-alpha06"
 
   const val common = "androidx.paging:paging-common:$version"
   const val runtime = "androidx.paging:paging-runtime:$version"

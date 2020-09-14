@@ -28,6 +28,7 @@ class FaqViewModel @Inject constructor(
   var currentResult: Flow<PagingData<FaqViewItem>>? = null
 
   fun selectFaqCategory(faqCategory: FaqCategory): Flow<PagingData<FaqViewItem>> {
+
     val lastResult = currentResult
     if (faqCategory == selectedFaqCategory && lastResult != null) {
       return lastResult
@@ -55,7 +56,6 @@ class FaqViewModel @Inject constructor(
           viewItemPagingData
         }
       }
-      .cachedIn(viewModelScope)
     currentResult = newResult
     return newResult
   }
