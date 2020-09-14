@@ -1,8 +1,15 @@
+import com.google.protobuf.gradle.builtins
+import com.google.protobuf.gradle.generateProtoTasks
+import com.google.protobuf.gradle.id
+import com.google.protobuf.gradle.protobuf
+import com.google.protobuf.gradle.protoc
+
 plugins {
   id("com.squareup.sqldelight")
   id("com.android.library")
   kotlin("android")
   kotlin("kapt")
+  id("com.google.protobuf")
   id(KtLint.name)
 }
 
@@ -49,6 +56,22 @@ sqldelight {
   }
 }
 
+protobuf {
+  protoc {
+    artifact = Protobuffer.artifact
+  }
+
+  generateProtoTasks {
+    all().forEach { task ->
+      task.builtins {
+        this.id("java") {
+          option("lite")
+        }
+      }
+    }
+  }
+}
+
 dependencies {
   implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
   implementation(project(":data:common"))
@@ -63,7 +86,7 @@ dependencies {
   implementation(SqlDelight.android_driver)
 
   //Pref
-  implementation(AndroidXPreference.preference_ktx)
+  androidxProtoDataStore()
 
   //Paging
   implementation(AndroidXPaging.common)
@@ -73,6 +96,7 @@ dependencies {
   daggerAndroid()
 
   //Testing
+  testImplementation(project(":coroutinetestrule"))
   testImplementation("junit:junit:4.13")
   testImplementation(SqlDelight.jvm_driver)
   mockito()

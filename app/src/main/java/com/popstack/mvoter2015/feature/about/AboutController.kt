@@ -4,10 +4,11 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
+import androidx.lifecycle.lifecycleScope
 import com.bluelinelabs.conductor.RouterTransaction
 import com.popstack.mvoter2015.BuildConfig
 import com.popstack.mvoter2015.R
-import com.popstack.mvoter2015.core.BaseController
+import com.popstack.mvoter2015.core.LifeCycleAwareController
 import com.popstack.mvoter2015.databinding.ControllerAboutBinding
 import com.popstack.mvoter2015.di.Injectable
 import com.popstack.mvoter2015.feature.browser.OpenBrowserDelegate
@@ -15,9 +16,10 @@ import com.popstack.mvoter2015.helper.conductor.requireActivity
 import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.helper.conductor.setSupportActionBar
 import com.popstack.mvoter2015.helper.conductor.supportActionBar
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class AboutController : BaseController<ControllerAboutBinding>(), Injectable {
+class AboutController : LifeCycleAwareController<ControllerAboutBinding>(), Injectable {
 
   @Inject
   lateinit var openBrowserDelegate: OpenBrowserDelegate
@@ -68,14 +70,19 @@ class AboutController : BaseController<ControllerAboutBinding>(), Injectable {
         Intent.ACTION_SENDTO,
         Uri.fromParts("mailto", "popstackhack@gmail.com", null)
       )
-      emailIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf("popstackhack@gmail.com")) //To make it work on 4.3 in case we support older version
+      emailIntent.putExtra(
+        Intent.EXTRA_EMAIL, arrayOf("popstackhack@gmail.com")
+      ) //To make it work on 4.3 in case we support older version
       startActivity(Intent.createChooser(emailIntent, "Send email..."))
     }
   }
 
   private fun openAppWebsite() {
     runCatching {
-      openBrowserDelegate.browserHandler().launchNewsInBrowser(requireActivity(), "https://mvoterapp.com/")
+      lifecycleScope.launch {
+        openBrowserDelegate.browserHandler()
+          .launchNewsInBrowser(requireActivity(), "https://mvoterapp.com/")
+      }
     }
   }
 

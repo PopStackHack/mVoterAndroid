@@ -21,7 +21,11 @@ import com.popstack.mvoter2015.logging.HasTag
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class LocationUpdateController : MvvmController<ControllerLocationBinding>(), HasTag, OnTownshipChosenListener, OnWardChosenListener {
+class LocationUpdateController :
+  MvvmController<ControllerLocationBinding>(),
+  HasTag,
+  OnTownshipChosenListener,
+  OnWardChosenListener {
 
   override val tag: String = "LocationUpdateController"
 
@@ -44,14 +48,9 @@ class LocationUpdateController : MvvmController<ControllerLocationBinding>(), Ha
   override fun onBindView(savedViewState: Bundle?) {
     super.onBindView(savedViewState)
 
-    val isFirstTime = firstTimeConfig.isFirstTime()
-    binding.checkBoxConsent.isVisible = false
-    binding.ivClose.isVisible = !isFirstTime
-    if (isFirstTime) {
-      binding.checkBoxConsent.setOnCheckedChangeListener { _, isChecked ->
-        viewModel.handleConsentCheckChange(isChecked)
-      }
-    } else {
+    lifecycleScope.launch {
+      val isFirstTime = firstTimeConfig.isFirstTime()
+      binding.ivClose.isVisible = !isFirstTime
       supportActionBar()?.setDisplayHomeAsUpEnabled(true)
     }
 
@@ -81,7 +80,8 @@ class LocationUpdateController : MvvmController<ControllerLocationBinding>(), Ha
     binding.buttonWard.setOnClickListener {
       if (requireActivity() is HasRouter) {
         viewModel.data.chosenTownship?.let {
-          val wardChooserController = WardChooserController.newInstance(viewModel.data.chosenStateRegion!!, it)
+          val wardChooserController =
+            WardChooserController.newInstance(viewModel.data.chosenStateRegion!!, it)
           wardChooserController.targetController = this
           (requireActivity() as HasRouter).router()
             .pushController(RouterTransaction.with(wardChooserController))
@@ -128,13 +128,21 @@ class LocationUpdateController : MvvmController<ControllerLocationBinding>(), Ha
         binding.buttonDone.isEnabled = true
       }
       LocationUpdateViewModel.ViewEvent.NavigateToHomePage -> {
-        firstTimeConfig.setFirstTimeStatus(false)
-        router.setRoot(RouterTransaction.with(BottomNavigationHostController()).tag(BottomNavigationHostController.TAG))
+        lifecycleScope.launch {
+          firstTimeConfig.setFirstTimeStatus(false)
+        }
+        router.setRoot(
+          RouterTransaction.with(BottomNavigationHostController())
+            .tag(BottomNavigationHostController.TAG)
+        )
       }
     }
   }
 
-  override fun onTownshipChosen(stateRegion: String, township: String) {
+  override fun onTownshipChosen(
+    stateRegion: String,
+    township: String
+  ) {
     viewModel.onTownshipChosen(stateRegion, township)
     setupButtons()
   }
@@ -148,7 +156,10 @@ class LocationUpdateController : MvvmController<ControllerLocationBinding>(), Ha
 }
 
 interface OnTownshipChosenListener {
-  fun onTownshipChosen(stateRegion: String, township: String)
+  fun onTownshipChosen(
+    stateRegion: String,
+    township: String
+  )
 }
 
 interface OnWardChosenListener {

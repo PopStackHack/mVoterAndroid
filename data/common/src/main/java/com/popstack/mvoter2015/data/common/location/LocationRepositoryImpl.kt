@@ -16,25 +16,34 @@ class LocationRepositoryImpl @Inject constructor(
   override fun getTownshipsListForStateRegion(stateRegionIdentifier: String): List<Township> =
     locationNetworkSource.getTownshipsListForStateRegion(stateRegionIdentifier)
 
-  override fun getWardsForTownship(stateRegion: String, township: String): List<String> =
+  override fun getWardsForTownship(
+    stateRegion: String,
+    township: String
+  ): List<String> =
     locationNetworkSource.getWardsForTownship(stateRegion, township)
 
-  override fun getWardDetails(stateRegion: String, townshipIdentifier: String, wardName: String): Ward =
-    locationNetworkSource.getWardDetails(stateRegion = stateRegion, township = townshipIdentifier, wardName = wardName)
+  override fun getWardDetails(
+    stateRegion: String,
+    townshipIdentifier: String,
+    wardName: String
+  ): Ward =
+    locationNetworkSource.getWardDetails(
+      stateRegion = stateRegion, township = townshipIdentifier, wardName = wardName
+    )
 
-  override fun saveUserWard(ward: Ward) {
+  override suspend fun saveUserWard(ward: Ward) {
     locationCacheSource.saveUserWard(ward)
   }
 
-  override fun getUserWard(): Ward? {
+  override suspend fun getUserWard(): Ward? {
     return locationCacheSource.getUserWard()
   }
 
-  override fun saveUserStateRegionTownship(stateRegionTownship: StateRegionTownship) {
+  override suspend fun saveUserStateRegionTownship(stateRegionTownship: StateRegionTownship) {
     locationCacheSource.saveUserStateRegionTownship(stateRegionTownship)
   }
 
-  override fun getUserStateRegionTownship(): StateRegionTownship? {
+  override suspend fun getUserStateRegionTownship(): StateRegionTownship? {
     return locationCacheSource.getUserStateRegionTownship()
   }
 }

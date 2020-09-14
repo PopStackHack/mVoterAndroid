@@ -28,18 +28,22 @@ class CandidateListRecyclerViewAdapter constructor(
     const val VIEW_TYPE_ETHNIC_CONSTITUENCY_TITLE = 2
   }
 
-  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = when (viewType) {
-    VIEW_TYPE_CANDIDATE -> CandidateListItemViewHolder(
-      ItemCandidateBinding.inflate(parent.inflater(), parent, false)
-    ).apply {
-      itemView.setOnClickListener {
-        withSafeAdapterPosition { position ->
-          getItem(position)?.let { itemAtIndex ->
-            onCandidateClicked(CandidateId(itemAtIndex.id))
+  override fun onCreateViewHolder(
+    parent: ViewGroup,
+    viewType: Int
+  ) = when (viewType) {
+    VIEW_TYPE_CANDIDATE ->
+      CandidateListItemViewHolder(
+        ItemCandidateBinding.inflate(parent.inflater(), parent, false)
+      ).apply {
+        itemView.setOnClickListener {
+          withSafeAdapterPosition { position ->
+            getItem(position)?.let { itemAtIndex ->
+              onCandidateClicked(CandidateId(itemAtIndex.id))
+            }
           }
         }
       }
-    }
     else -> EthnicContituencyTitleViewHolder(
       ItemEthnicConstituencyBinding.inflate(parent.inflater(), parent, false)
     )
@@ -50,13 +54,17 @@ class CandidateListRecyclerViewAdapter constructor(
     is EthnicConstituencyTitleViewItem -> VIEW_TYPE_ETHNIC_CONSTITUENCY_TITLE
   }
 
-
-  override fun onBindViewHolder(holder: CandidateItemViewHolder, position: Int) {
+  override fun onBindViewHolder(
+    holder: CandidateItemViewHolder,
+    position: Int
+  ) {
     holder.bind(getItem(position))
   }
 }
 
-class CandidateListItemViewHolder(val binding: ItemCandidateBinding) : CandidateItemViewHolder(binding.root) {
+class CandidateListItemViewHolder(val binding: ItemCandidateBinding) : CandidateItemViewHolder(
+  binding.root
+) {
   override fun bind(viewItem: CandidateViewItem) {
     val smallCandidateViewItem = viewItem as? SmallCandidateViewItem ?: return
     with(binding) {
@@ -77,7 +85,8 @@ class CandidateListItemViewHolder(val binding: ItemCandidateBinding) : Candidate
   }
 }
 
-class EthnicContituencyTitleViewHolder(val binding: ItemEthnicConstituencyBinding) : CandidateItemViewHolder(binding.root) {
+class EthnicContituencyTitleViewHolder(val binding: ItemEthnicConstituencyBinding) :
+  CandidateItemViewHolder(binding.root) {
   override fun bind(viewItem: CandidateViewItem) {
     val title = viewItem as? EthnicConstituencyTitleViewItem ?: return
     binding.tvTitle.text = title.value

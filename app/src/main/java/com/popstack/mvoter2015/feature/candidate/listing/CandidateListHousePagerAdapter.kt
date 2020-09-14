@@ -33,13 +33,16 @@ internal class CandidateListHousePagerAdapter(host: Controller) :
       val controller = when (position) {
         0 -> LowerHouseCandidateListController.newInstance(
           ConstituencyId(itemList[position].constituencyId),
-          itemList[position].constituencyName)
+          itemList[position].constituencyName
+        )
         1 -> UpperHouseCandidateListController.newInstance(
           ConstituencyId(itemList[position].constituencyId),
-          itemList[position].constituencyName)
+          itemList[position].constituencyName
+        )
         2 -> RegionalHouseCandidateListController.newInstance(
           ConstituencyId(itemList[position].constituencyId),
-          itemList[position].constituencyName)
+          itemList[position].constituencyName
+        )
         else -> return
       }
       val routerTransaction = RouterTransaction.with(controller)

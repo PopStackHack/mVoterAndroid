@@ -3,8 +3,9 @@ package com.popstack.mvoter2015.feature.settings
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.lifecycle.lifecycleScope
 import com.popstack.mvoter2015.R
-import com.popstack.mvoter2015.core.BaseController
+import com.popstack.mvoter2015.core.LifeCycleAwareController
 import com.popstack.mvoter2015.databinding.ControllerSettingsBinding
 import com.popstack.mvoter2015.di.Injectable
 import com.popstack.mvoter2015.helper.conductor.requireContext
@@ -12,11 +13,13 @@ import com.popstack.mvoter2015.helper.conductor.setSupportActionBar
 import com.popstack.mvoter2015.helper.conductor.supportActionBar
 import com.popstack.mvoter2015.helper.extensions.safeSelection
 import com.popstack.mvoter2015.helper.extensions.setOnItemSelectedListener
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class SettingsController : BaseController<ControllerSettingsBinding>(), Injectable {
+class SettingsController : LifeCycleAwareController<ControllerSettingsBinding>(), Injectable {
 
-  override val bindingInflater: (LayoutInflater) -> ControllerSettingsBinding = ControllerSettingsBinding::inflate
+  override val bindingInflater: (LayoutInflater) -> ControllerSettingsBinding =
+    ControllerSettingsBinding::inflate
 
   @Inject
   lateinit var appSettings: AppSettings
@@ -40,13 +43,14 @@ class SettingsController : BaseController<ControllerSettingsBinding>(), Injectab
 
     binding.spinnerTheme.adapter = appThemeSpinnerAdapter
 
-    when (appSettings.getTheme()) {
-      AppTheme.SYSTEM_DEFAULT -> binding.spinnerTheme.safeSelection(POSITION_THEME_SYSTEM_DEFAULT)
-      AppTheme.LIGHT -> binding.spinnerTheme.safeSelection(POSITION_THEME_LIGHT)
-      AppTheme.DARK -> binding.spinnerTheme.safeSelection(POSITION_THEME_DARK)
+    lifecycleScope.launch {
+      when (appSettings.getTheme()) {
+        AppTheme.SYSTEM_DEFAULT -> binding.spinnerTheme.safeSelection(POSITION_THEME_SYSTEM_DEFAULT)
+        AppTheme.LIGHT -> binding.spinnerTheme.safeSelection(POSITION_THEME_LIGHT)
+        AppTheme.DARK -> binding.spinnerTheme.safeSelection(POSITION_THEME_DARK)
+      }
+      binding.switchOpenExternalBrowser.isChecked = appSettings.getUseExternalBrowser()
     }
-
-    binding.switchOpenExternalBrowser.isChecked = appSettings.getUseExternalBrowser()
 
     binding.spinnerTheme.setOnItemSelectedListener { parent, view, position, id ->
       val appTheme = when (position) {
@@ -55,7 +59,9 @@ class SettingsController : BaseController<ControllerSettingsBinding>(), Injectab
         POSITION_THEME_DARK -> AppTheme.DARK
         else -> throw IllegalArgumentException("$position is not valid theme array index")
       }
-      appSettings.updateTheme(appTheme)
+      lifecycleScope.launch {
+        appSettings.updateTheme(appTheme)
+      }
       when (appTheme) {
         AppTheme.SYSTEM_DEFAULT -> {
           AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
@@ -70,8 +76,9 @@ class SettingsController : BaseController<ControllerSettingsBinding>(), Injectab
     }
 
     binding.switchOpenExternalBrowser.setOnCheckedChangeListener { compoundButton, isChecked ->
-      appSettings.updateUseExternalBrowser(isChecked)
+      lifecycleScope.launch {
+        appSettings.updateUseExternalBrowser(isChecked)
+      }
     }
-
   }
 }

@@ -29,7 +29,8 @@ import javax.inject.Inject
 
 class NewsSearchController : MvvmController<ControllerNewsSearchBinding>() {
 
-  override val bindingInflater: (LayoutInflater) -> ControllerNewsSearchBinding = ControllerNewsSearchBinding::inflate
+  override val bindingInflater: (LayoutInflater) -> ControllerNewsSearchBinding =
+    ControllerNewsSearchBinding::inflate
 
   private val searchPagingAdapter = NewsSearchPagingAdapter(this::onNewsItemClick)
 
@@ -104,7 +105,8 @@ class NewsSearchController : MvvmController<ControllerNewsSearchBinding>() {
       }
 
       if (refreshLoadState is LoadState.Error) {
-        binding.tvErrorMessage.text = globalExceptionHandler.getMessageForUser(refreshLoadState.error)
+        binding.tvErrorMessage.text =
+          globalExceptionHandler.getMessageForUser(refreshLoadState.error)
       }
     }
 
@@ -117,14 +119,21 @@ class NewsSearchController : MvvmController<ControllerNewsSearchBinding>() {
     // Make sure we cancel the previous job before creating a new one
     searchJob?.cancel()
     searchJob = lifecycleScope.launch {
-      viewModel.search(query).collectLatest { pagingData ->
-        searchPagingAdapter.submitData(pagingData)
-      }
+      viewModel.search(query)
+        .collectLatest { pagingData ->
+          searchPagingAdapter.submitData(pagingData)
+        }
     }
   }
 
-  private fun onNewsItemClick(id: NewsId, url: String) {
-    browserDelegate.browserHandler().launchNewsInBrowser(requireActivity(), url)
+  private fun onNewsItemClick(
+    id: NewsId,
+    url: String
+  ) {
+    lifecycleScope.launch {
+      browserDelegate.browserHandler()
+        .launchNewsInBrowser(requireActivity(), url)
+    }
   }
 
 }

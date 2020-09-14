@@ -4,6 +4,7 @@ import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.lifecycle.lifecycleScope
 import com.bluelinelabs.conductor.Conductor
 import com.bluelinelabs.conductor.Router
 import com.bluelinelabs.conductor.RouterTransaction
@@ -20,6 +21,7 @@ import com.popstack.mvoter2015.logging.BreadcrumbControllerChangeHandler
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
+import kotlinx.coroutines.launch
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -56,15 +58,17 @@ class HostActivity : AppCompatActivity(), HasRouter, Injectable, HasAndroidInjec
       router.pushController(RouterTransaction.with(SplashController()))
     }
 
-    when (appSettings.getTheme()) {
-      AppTheme.SYSTEM_DEFAULT -> {
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-      }
-      AppTheme.LIGHT -> {
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-      }
-      AppTheme.DARK -> {
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+    lifecycleScope.launch {
+      when (appSettings.getTheme()) {
+        AppTheme.SYSTEM_DEFAULT -> {
+          AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+        }
+        AppTheme.LIGHT -> {
+          AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+        AppTheme.DARK -> {
+          AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }
       }
     }
   }
@@ -76,7 +80,9 @@ class HostActivity : AppCompatActivity(), HasRouter, Injectable, HasAndroidInjec
     Timber.i("deep link recieved. host is $host, path is $path")
 
     //Handle parties deep link
-    if (host == "parties" || (path.matches(Regex("/parties/\\d+")) && host == "web.mvoterapp.com")) {
+    if (host == "parties" ||
+      (path.matches(Regex("/parties/\\d+")) && host == "web.mvoterapp.com")
+    ) {
       val partyId = PartyId(deepLinkUri.lastPathSegment ?: return false)
       val partyDetailController = PartyDetailController.newInstance(partyId)
 
@@ -95,7 +101,9 @@ class HostActivity : AppCompatActivity(), HasRouter, Injectable, HasAndroidInjec
       }
 
       return true
-    } else if (host == "candidates" || (path.matches(Regex("/candidates/\\d+")) && host == "web.mvoterapp.com")) {
+    } else if (host == "candidates" ||
+      (path.matches(Regex("/candidates/\\d+")) && host == "web.mvoterapp.com")
+    ) {
       val candidateId = CandidateId(deepLinkUri.lastPathSegment ?: return false)
       val candidateDetailController = CandidateDetailController.newInstance(candidateId)
 

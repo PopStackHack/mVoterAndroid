@@ -29,7 +29,10 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class NewsController : MvvmController<ControllerNewsBinding>(), HasTag, NewsNavigationItemReselectedCallback {
+class NewsController :
+  MvvmController<ControllerNewsBinding>(),
+  HasTag,
+  NewsNavigationItemReselectedCallback {
 
   override val tag: String = "NewsController"
 
@@ -80,14 +83,16 @@ class NewsController : MvvmController<ControllerNewsBinding>(), HasTag, NewsNavi
       binding.btnRetry.isVisible = refreshLoadState is LoadState.Error
 
       if (refreshLoadState is LoadState.Error) {
-        binding.tvErrorMessage.text = globalExceptionHandler.getMessageForUser(refreshLoadState.error)
+        binding.tvErrorMessage.text =
+          globalExceptionHandler.getMessageForUser(refreshLoadState.error)
       }
     }
 
     lifecycleScope.launch {
-      viewModel.getNewsPagingFlow().collectLatest { pagingData ->
-        newsPagingAdapter.submitData(lifecycle, pagingData)
-      }
+      viewModel.getNewsPagingFlow()
+        .collectLatest { pagingData ->
+          newsPagingAdapter.submitData(lifecycle, pagingData)
+        }
     }
   }
 
@@ -97,8 +102,14 @@ class NewsController : MvvmController<ControllerNewsBinding>(), HasTag, NewsNavi
     }
   }
 
-  private fun onNewsItemClick(id: NewsId, url: String) {
-    openBrowserDelegate.browserHandler().launchNewsInBrowser(requireActivity(), url)
+  private fun onNewsItemClick(
+    id: NewsId,
+    url: String
+  ) {
+    lifecycleScope.launch {
+      openBrowserDelegate.browserHandler()
+        .launchNewsInBrowser(requireActivity(), url)
+    }
   }
 
   private fun handleMenuItemClick(menuItem: MenuItem): Boolean {

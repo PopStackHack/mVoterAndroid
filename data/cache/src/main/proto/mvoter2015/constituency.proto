@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package mvoter2015;
+
+option java_package = "com.popstack.mvoter2015.data.cache";
+option java_multiple_files = true;
+
+message ConstituencyProto {
+  enum HouseTypeProto {
+    TYPE_LOWER_HOUSE = 0;
+    TYPE_UPPER_HOUSE = 1;
+    TYPE_STATE_REGION_HOUSE = 2;
+  }
+
+  string id = 1;
+  string name = 2;
+  HouseTypeProto houseType = 3;
+  string township = 4;
+  string stateRegion = 5;
+}

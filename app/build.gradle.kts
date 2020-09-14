@@ -109,7 +109,7 @@ dependencies {
   implementation(AndroidXRecyclerView.recycler_view)
   implementation(AndroidXPaging.common)
   implementation(AndroidXPaging.runtime)
-  implementation(AndroidXPreference.preference_ktx)
+  implementation(AndroidXDataStore.preferences)
   implementation("androidx.browser:browser:1.3.0-alpha05")
 
   implementation(Conductor.core)
