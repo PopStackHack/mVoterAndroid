@@ -3,11 +3,14 @@ package com.popstack.mvoter2015.feature.candidate.detail
 import com.popstack.mvoter2015.domain.candidate.model.Candidate
 import com.popstack.mvoter2015.domain.constituency.model.HouseType
 import com.popstack.mvoter2015.domain.party.model.PartyId
-import com.popstack.mvoter2015.feature.candidate.listing.CandidateListViewItem
+import com.popstack.mvoter2015.domain.utils.BurmeseNumberUtils
+import com.popstack.mvoter2015.feature.candidate.listing.SmallCandidateViewItem
+import java.time.format.DateTimeFormatter
+import java.util.Locale
 
 data class CandidateDetailsViewItem(
   val candidateInfo: CandidateInfoViewItem,
-  val rivals: List<CandidateListViewItem.SmallCandidateViewItem>
+  val rivals: List<SmallCandidateViewItem>
 )
 
 data class CandidateInfoViewItem(
@@ -33,6 +36,8 @@ data class CandidateInfoViewItem(
   val residentialAddress: String
 )
 
+private val dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy", Locale.ENGLISH)
+
 fun Candidate.toCandidateInfoViewItem() = CandidateInfoViewItem(
   photo = photoUrl,
   name = name,
@@ -47,8 +52,8 @@ fun Candidate.toCandidateInfoViewItem() = CandidateInfoViewItem(
   },
   constituencyName = constituency.township
     ?: constituency.stateRegion.orEmpty() + " " + constituency.name,
-  age = age?.toString()?.toMMInt().orEmpty(),
-  birthday = birthDate.toString().toMMInt(),
+  age = BurmeseNumberUtils.convertEnglishToBurmeseNumber(age?.toString().orEmpty()).toString(),
+  birthday = BurmeseNumberUtils.convertEnglishToBurmeseNumber(birthDate.format(dateFormatter)).toString(),
   education = education,
   job = occupation,
   ethnicity = ethnicity,
@@ -61,15 +66,3 @@ fun Candidate.toCandidateInfoViewItem() = CandidateInfoViewItem(
   fatherReligion = father?.religion.orEmpty(),
   residentialAddress = residentialAddress.orEmpty()
 )
-
-private fun String.toMMInt(): String {
-  val enInt = arrayOf("0", "1", "2", "3", "4", "5", "6", "7", "8", "9")
-  val mmInt = arrayOf("၀", "၁", "၂", "၃", "၄", "၅", "၆", "၇", "၈", "၉")
-
-  var temp = this
-  enInt.forEachIndexed { index, s ->
-    temp = temp.replace(s, mmInt[index])
-    println(temp)
-  }
-  return temp
-}

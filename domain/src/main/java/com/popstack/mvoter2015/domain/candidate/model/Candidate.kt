@@ -7,6 +7,7 @@ import java.time.LocalDate
 data class Candidate(
   val id: CandidateId,
   val name: String,
+  val sortingName: String,
   val gender: CandidateGender,
   val occupation: String,
   val photoUrl: String,

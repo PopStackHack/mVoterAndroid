@@ -1,6 +1,7 @@
 package com.popstack.mvoter2015.feature.faq.ballot
 
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
@@ -30,6 +31,14 @@ class BallotExampleRecyclerViewAdapter :
     val itemAtIndex = getItem(position)
     holder.binding.apply {
       tvReason.text = itemAtIndex.reason
+
+      if (itemAtIndex.isValid) {
+        tvBallotValid.setText(R.string.valid_ballot)
+        tvBallotValid.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.green))
+      } else {
+        tvBallotValid.setText(R.string.invalid_ballot)
+        tvBallotValid.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.text_error))
+      }
       ivBallot.load(itemAtIndex.image) {
         placeholder(R.drawable.placeholder_rect)
         scale(Scale.FIT)

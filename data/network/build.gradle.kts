@@ -63,7 +63,8 @@ dependencies {
   implementation(Kotlin.stdblib_jdk)
   implementation(AndroidXCore.core_ktx)
 
-  implementation(AndroidXPreference.preference_ktx)
+  //Pref
+  implementation(AndroidXDataStore.preferences)
 
   //Networking
   implementation(OkHttp.client)

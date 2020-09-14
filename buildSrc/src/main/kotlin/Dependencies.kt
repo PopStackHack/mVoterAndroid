@@ -61,13 +61,6 @@ object AndroidXViewPager {
   const val view_pager_2 = "androidx.viewpager2:viewpager2:1.1.0-alpha01"
 }
 
-object AndroidXPreference {
-  private const val version = "1.1.1"
-
-  const val preference = "androidx.preference:preference-ktx:$version"
-  const val preference_ktx = "androidx.preference:preference-ktx:$version"
-}
-
 object AndroidXSqlite {
   private const val version = "2.1.0"
 
@@ -93,7 +86,7 @@ object AndroidXCore {
 }
 
 object AndroidXPaging {
-  private const val version = "3.0.0-alpha05"
+  private const val version = "3.0.0-alpha06"
 
   const val common = "androidx.paging:paging-common:$version"
   const val runtime = "androidx.paging:paging-runtime:$version"

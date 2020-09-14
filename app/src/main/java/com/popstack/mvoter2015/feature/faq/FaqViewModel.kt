@@ -2,9 +2,7 @@ package com.popstack.mvoter2015.feature.faq
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
-import androidx.paging.cachedIn
 import androidx.paging.map
 import com.popstack.mvoter2015.data.android.faq.FaqPagerFactory
 import com.popstack.mvoter2015.domain.faq.model.Faq
@@ -28,6 +26,7 @@ class FaqViewModel @Inject constructor(
   var currentResult: Flow<PagingData<FaqViewItem>>? = null
 
   fun selectFaqCategory(faqCategory: FaqCategory): Flow<PagingData<FaqViewItem>> {
+
     val lastResult = currentResult
     if (faqCategory == selectedFaqCategory && lastResult != null) {
       return lastResult
@@ -55,7 +54,6 @@ class FaqViewModel @Inject constructor(
           viewItemPagingData
         }
       }
-      .cachedIn(viewModelScope)
     currentResult = newResult
     return newResult
   }

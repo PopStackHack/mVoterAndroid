@@ -43,6 +43,7 @@ class CandidateCacheSourceImpl @Inject constructor(
   private val candidateMapper: (
     id: String,
     name: String,
+    sortingName: String,
     gender: CandidateGender,
     occupation: String,
     photoUrl: String,
@@ -83,7 +84,7 @@ class CandidateCacheSourceImpl @Inject constructor(
     partyRegistrationApprovalDate: LocalDate?,
     partyIsEstablishedDueToArticle25: Boolean?
   ) -> Candidate =
-    { id, name,
+    { id, name, sortingName,
       gender, occupation, photoUrl, education, religion, age, birthDate, ethnicity, father, mother,
       individualLogo, residentalAddress, isEthnicCandidate, representingEthnicity, partyId,
       constituencyId, _constituencyId, _constituencyName, _constituencyHouse, _constituencyTownship,
@@ -97,6 +98,7 @@ class CandidateCacheSourceImpl @Inject constructor(
       Candidate(
         id = CandidateId(id),
         name = name,
+        sortingName = sortingName,
         gender = gender,
         occupation = occupation,
         photoUrl = photoUrl,
@@ -161,6 +163,7 @@ class CandidateCacheSourceImpl @Inject constructor(
     db.candidateTableQueries.insertOrReplace(
       id = id.value,
       name = name,
+      sortingName = sortingName,
       gender = gender,
       occupation = occupation,
       photoUrl = photoUrl,

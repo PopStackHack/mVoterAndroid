@@ -40,13 +40,17 @@ class LocationUpdateViewModel @Inject constructor(
   fun requestLocation() {
     viewModelScope.launch {
       viewEventLiveData.postValue(ViewEvent.ShowLocationRequesting)
-      locationProvider.getLocationUpdate().collectLatest { latLng ->
-        Timber.d("Location : $latLng")
-      }
+      locationProvider.getLocationUpdate()
+        .collectLatest { latLng ->
+          Timber.d("Location : $latLng")
+        }
     }
   }
 
-  fun onTownshipChosen(chosenStateRegion: String, chosenTownship: String) {
+  fun onTownshipChosen(
+    chosenStateRegion: String,
+    chosenTownship: String
+  ) {
     data.chosenStateRegion = chosenStateRegion
     data.chosenTownship = chosenTownship
     data.chosenWard = null
@@ -65,9 +69,11 @@ class LocationUpdateViewModel @Inject constructor(
           )
         )
         viewEventLiveData.postValue(ViewEvent.EnableDoneButton)
-      }.exceptionOrNull()?.let { exception ->
-        Timber.e(exception)
       }
+        .exceptionOrNull()
+        ?.let { exception ->
+          Timber.e(exception)
+        }
     }
   }
 
@@ -86,14 +92,12 @@ class LocationUpdateViewModel @Inject constructor(
           )
         )
         viewEventLiveData.postValue(ViewEvent.NavigateToHomePage)
-      }.exceptionOrNull()?.let { exception ->
-        Timber.e(exception)
       }
+        .exceptionOrNull()
+        ?.let { exception ->
+          Timber.e(exception)
+        }
     }
-  }
-
-  fun handleConsentCheckChange(checked: Boolean) {
-    //TODO: Update Consent in preference
   }
 
 }

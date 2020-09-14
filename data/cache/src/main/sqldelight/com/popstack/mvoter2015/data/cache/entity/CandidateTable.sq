@@ -10,6 +10,7 @@ import java.lang.Boolean;
 CREATE TABLE CandidateTable(
   id TEXT PRIMARY KEY NOT NULL,
   name TEXT NOT NULL,
+  sortingName TEXT NOT NULL,
   gender TEXT AS CandidateGender NOT NULL,
   occupation TEXT NOT NULL,
   photoUrl TEXT NOT NULL,
@@ -32,7 +33,7 @@ CREATE TABLE CandidateTable(
 
 insertOrReplace:
 INSERT OR REPLACE INTO CandidateTable VALUES(
-:id, : name, :gender, :occupation, :photoUrl, :education, :religion,
+:id, : name, :sortingName, :gender, :occupation, :photoUrl, :education, :religion,
 :age, :birthDate, :ethnicity, :father, :mother, :individualLogo,
 :residentalAddress, :isEthnicCandidate, :representingEthnicity, :partyId,
 :constituencyId

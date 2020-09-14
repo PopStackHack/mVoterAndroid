@@ -7,7 +7,7 @@ class OpenBrowserDelegate @Inject constructor(
   private val appSettings: AppSettings
 ) {
 
-  fun browserHandler(): OpenBrowserHandler {
+  suspend fun browserHandler(): OpenBrowserHandler {
     return if (appSettings.getUseExternalBrowser()) {
       ExternalBrowserHandler()
     } else {

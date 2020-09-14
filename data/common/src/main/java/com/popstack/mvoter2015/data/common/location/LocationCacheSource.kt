@@ -4,8 +4,13 @@ import com.popstack.mvoter2015.domain.location.model.StateRegionTownship
 import com.popstack.mvoter2015.domain.location.model.Ward
 
 interface LocationCacheSource {
-  fun getUserWard(): Ward?
-  fun saveUserWard(ward: Ward)
-  fun getUserStateRegionTownship(): StateRegionTownship?
-  fun saveUserStateRegionTownship(stateRegionTownship: StateRegionTownship)
+
+  suspend fun getUserWard(): Ward?
+
+  suspend fun saveUserWard(ward: Ward)
+
+  suspend fun getUserStateRegionTownship(): StateRegionTownship?
+
+  suspend fun saveUserStateRegionTownship(stateRegionTownship: StateRegionTownship)
+
 }

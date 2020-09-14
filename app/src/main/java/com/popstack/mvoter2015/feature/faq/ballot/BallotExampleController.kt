@@ -6,11 +6,11 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerBallotExampleBinding
 import com.popstack.mvoter2015.domain.faq.model.BallotExampleCategory
+import com.popstack.mvoter2015.domain.utils.convertToBurmeseNumber
 import com.popstack.mvoter2015.feature.faq.displayString
 import com.popstack.mvoter2015.feature.home.BottomNavigationHostViewModelStore
 import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewState
@@ -72,9 +72,7 @@ class BallotExampleController : MvvmController<ControllerBallotExampleBinding>()
         else -> viewModel.invalidBallotStartPosition
       }
       if (binding.viewPager.currentItem != pagerPosition) {
-//        binding.viewPager.unregisterOnPageChangeCallback(onPageChangeTabSelect)
         binding.viewPager.setCurrentItem(pagerPosition, true)
-//        binding.viewPager.registerOnPageChangeCallback(onPageChangeTabSelect)
       }
     }
 
@@ -107,6 +105,11 @@ class BallotExampleController : MvvmController<ControllerBallotExampleBinding>()
         binding.tabLayoutValid.selectTab(tabToBeSelected)
         binding.tabLayoutValid.addOnTabSelectedListener(onTabSelectToChangePagerPosition)
       }
+
+      binding.ivScrollLeft.isVisible = position != 0
+      binding.ivScrollRight.isVisible = position != ballotAdapter.itemCount - 1
+
+      binding.tvPageIndicator.text = "${position + 1} / ${ballotAdapter.itemCount}".convertToBurmeseNumber()
     }
 
     override fun onPageScrollStateChanged(state: Int) {
@@ -147,12 +150,15 @@ class BallotExampleController : MvvmController<ControllerBallotExampleBinding>()
       adapter = ballotAdapter
     }
 
-    TabLayoutMediator(binding.tabPagerIndicator, binding.viewPager) { tab, position ->
-      //Some implementation
-    }.attach()
+    //TODO: Add debounce?
+    binding.ivScrollRight.setOnClickListener {
+      binding.viewPager.setCurrentItem(binding.viewPager.currentItem + 1, true)
+    }
+    binding.ivScrollLeft.setOnClickListener {
+      binding.viewPager.setCurrentItem(binding.viewPager.currentItem - 1, true)
+    }
 
     setUpTabLayout()
-
     binding.viewPager.registerOnPageChangeCallback(onPageChangeTabSelect)
     binding.tabLayoutValid.addOnTabSelectedListener(onTabSelectToChangePagerPosition)
 

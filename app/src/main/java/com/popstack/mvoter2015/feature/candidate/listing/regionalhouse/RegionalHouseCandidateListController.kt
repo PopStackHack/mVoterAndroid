@@ -15,7 +15,6 @@ import com.popstack.mvoter2015.databinding.ControllerRegionalCandidateListBindin
 import com.popstack.mvoter2015.di.conductor.ConductorInjection
 import com.popstack.mvoter2015.domain.candidate.model.CandidateId
 import com.popstack.mvoter2015.domain.constituency.model.ConstituencyId
-import com.popstack.mvoter2015.domain.constituency.model.HouseType
 import com.popstack.mvoter2015.feature.candidate.detail.CandidateDetailController
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateListPagerParentRouter
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateListRecyclerViewAdapter
@@ -29,13 +28,13 @@ class RegionalHouseCandidateListController(bundle: Bundle) :
   MvvmController<ControllerRegionalCandidateListBinding>(bundle), HasTag {
 
   companion object {
-    const val HOUSE_TYPE = "house_type"
     const val CONSTITUENCY_ID = "constituency_id"
+    const val CONSTITUENCY_NAME = "constituency_name"
 
-    fun newInstance(constituencyId: ConstituencyId, houseType: HouseType) = RegionalHouseCandidateListController(
+    fun newInstance(constituencyId: ConstituencyId, constituencyName: String) = RegionalHouseCandidateListController(
       bundleOf(
         CONSTITUENCY_ID to constituencyId.value,
-        HOUSE_TYPE to houseType.name
+        CONSTITUENCY_NAME to constituencyName
       )
     )
   }
@@ -59,7 +58,6 @@ class RegionalHouseCandidateListController(bundle: Bundle) :
   }
 
   private val constituencyId: ConstituencyId = ConstituencyId(args.getString(CONSTITUENCY_ID)!!)
-  private val houseType: HouseType = HouseType.valueOf(args.getString(HOUSE_TYPE)!!)
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup, savedViewState: Bundle?): View {
     ConductorInjection.inject(this)
@@ -68,6 +66,7 @@ class RegionalHouseCandidateListController(bundle: Bundle) :
 
   override fun onBindView(savedViewState: Bundle?) {
     super.onBindView(savedViewState)
+    binding.tvConstituencyName.text = args.getString(CONSTITUENCY_NAME)!!
     binding.rvCandidate.apply {
       adapter = candidateListAdapter
       layoutManager = LinearLayoutManager(requireContext())
@@ -85,7 +84,7 @@ class RegionalHouseCandidateListController(bundle: Bundle) :
   }
 
   private fun loadCandidates() {
-    viewModel.loadCandidates(constituencyId, houseType)
+    viewModel.loadCandidates(constituencyId)
   }
 
   private fun observeViewItem(viewState: AsyncViewState<CandidateListViewItem>) = with(binding) {

@@ -66,15 +66,17 @@ class HostActivity : AppCompatActivity(), HasRouter, Injectable, HasAndroidInjec
       router.pushController(RouterTransaction.with(SplashController()))
     }
 
-    when (appSettings.getTheme()) {
-      AppTheme.SYSTEM_DEFAULT -> {
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-      }
-      AppTheme.LIGHT -> {
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-      }
-      AppTheme.DARK -> {
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+    lifecycleScope.launch {
+      when (appSettings.getTheme()) {
+        AppTheme.SYSTEM_DEFAULT -> {
+          AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+        }
+        AppTheme.LIGHT -> {
+          AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+        AppTheme.DARK -> {
+          AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }
       }
     }
   }
@@ -86,7 +88,9 @@ class HostActivity : AppCompatActivity(), HasRouter, Injectable, HasAndroidInjec
     Timber.i("deep link recieved. host is $host, path is $path")
 
     //Handle parties deep link
-    if (host == "parties" || (path.matches(Regex("/parties/\\d+")) && host == "web.mvoterapp.com")) {
+    if (host == "parties" ||
+      (path.matches(Regex("/parties/\\d+")) && host == "web.mvoterapp.com")
+    ) {
       val partyId = PartyId(deepLinkUri.lastPathSegment ?: return false)
       val partyDetailController = PartyDetailController.newInstance(partyId)
 
@@ -105,7 +109,9 @@ class HostActivity : AppCompatActivity(), HasRouter, Injectable, HasAndroidInjec
       }
 
       return true
-    } else if (host == "candidates" || (path.matches(Regex("/candidates/\\d+")) && host == "web.mvoterapp.com")) {
+    } else if (host == "candidates" ||
+      (path.matches(Regex("/candidates/\\d+")) && host == "web.mvoterapp.com")
+    ) {
       val candidateId = CandidateId(deepLinkUri.lastPathSegment ?: return false)
       val candidateDetailController = CandidateDetailController.newInstance(candidateId)
 

@@ -8,7 +8,7 @@ import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.recyclerview.ViewBindingViewHolder
 import com.popstack.mvoter2015.databinding.ItemCandidateBinding
 import com.popstack.mvoter2015.domain.candidate.model.CandidateId
-import com.popstack.mvoter2015.feature.candidate.listing.CandidateListViewItem
+import com.popstack.mvoter2015.feature.candidate.listing.SmallCandidateViewItem
 import com.popstack.mvoter2015.helper.diff.diffCallBackWith
 import com.popstack.mvoter2015.helper.extensions.inflater
 import com.popstack.mvoter2015.helper.extensions.withSafeAdapterPosition
@@ -16,7 +16,7 @@ import com.popstack.mvoter2015.helper.extensions.withSafeAdapterPosition
 internal class CandidateSearchPagingAdapter constructor(
   private val itemClick: (CandidateId) -> Unit
 ) :
-  PagingDataAdapter<CandidateListViewItem.SmallCandidateViewItem, CandidateSearchPagingAdapter.CandidateSearchResultViewItemViewHolder>(
+  PagingDataAdapter<SmallCandidateViewItem, CandidateSearchPagingAdapter.CandidateSearchResultViewItemViewHolder>(
     diffCallBackWith(
       areItemTheSame = { item1, item2 ->
         item1.id == item2.id

@@ -1,8 +1,11 @@
 package com.popstack.mvoter2015.feature.settings
 
 import android.content.Context
-import androidx.core.content.edit
-import androidx.preference.PreferenceManager
+import androidx.datastore.preferences.createDataStore
+import androidx.datastore.preferences.edit
+import androidx.datastore.preferences.preferencesKey
+import com.popstack.mvoter2015.feature.settings.AppTheme.SYSTEM_DEFAULT
+import kotlinx.coroutines.flow.first
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -10,34 +13,29 @@ import javax.inject.Singleton
 class AppSettings @Inject constructor(context: Context) {
 
   companion object {
-    private const val PREF_THEME = "theme"
-    private const val PREF_EXTERNAL_BROWSER = "use_external_browser"
+    private val PREF_THEME = preferencesKey<String>("theme")
+    private val PREF_EXTERNAL_BROWSER = preferencesKey<Boolean>("use_external_browser")
   }
 
-  private val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+  private val sharedPreferences = context.createDataStore("app_settings")
 
-  fun getTheme(): AppTheme {
-    return AppTheme.valueOf(
-      sharedPreferences.getString(
-        PREF_THEME,
-        null
-      ) ?: return AppTheme.SYSTEM_DEFAULT
-    )
+  suspend fun getTheme(): AppTheme {
+    return AppTheme.valueOf(sharedPreferences.data.first()[PREF_THEME] ?: return SYSTEM_DEFAULT)
   }
 
-  fun updateTheme(appTheme: AppTheme) {
+  suspend fun updateTheme(appTheme: AppTheme) {
     sharedPreferences.edit {
-      putString(PREF_THEME, appTheme.toString())
+      it[PREF_THEME] = appTheme.toString()
     }
   }
 
-  fun getUseExternalBrowser(): Boolean {
-    return sharedPreferences.getBoolean(PREF_EXTERNAL_BROWSER, false)
+  suspend fun getUseExternalBrowser(): Boolean {
+    return sharedPreferences.data.first()[PREF_EXTERNAL_BROWSER] ?: false
   }
 
-  fun updateUseExternalBrowser(useExternalBrowser: Boolean) {
+  suspend fun updateUseExternalBrowser(useExternalBrowser: Boolean) {
     sharedPreferences.edit {
-      putBoolean(PREF_EXTERNAL_BROWSER, useExternalBrowser)
+      it[PREF_EXTERNAL_BROWSER] = useExternalBrowser
     }
   }
 

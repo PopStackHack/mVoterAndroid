@@ -1,25 +1,27 @@
 package com.popstack.mvoter2015.config
 
 import android.content.Context
-import androidx.core.content.edit
-import androidx.preference.PreferenceManager
+import androidx.datastore.preferences.createDataStore
+import androidx.datastore.preferences.edit
+import androidx.datastore.preferences.preferencesKey
+import kotlinx.coroutines.flow.first
 import javax.inject.Inject
 
 class AppFirstTimeConfig @Inject constructor(context: Context) {
 
-  private val sharedPref = PreferenceManager.getDefaultSharedPreferences(context)
+  private val sharedPreferences = context.createDataStore("mvoter2020_app_first_time")
 
   companion object {
-    private const val KEY_IS_FIRST_TIME = "mvoter2020_is_first_time"
+    private val KEY_IS_FIRST_TIME = preferencesKey<Boolean>("mvoter2020_is_first_time")
   }
 
-  fun isFirstTime(): Boolean {
-    return sharedPref.getBoolean(KEY_IS_FIRST_TIME, true)
+  suspend fun isFirstTime(): Boolean {
+    return sharedPreferences.data.first()[KEY_IS_FIRST_TIME] ?: true
   }
 
-  fun setFirstTimeStatus(isFirstTime: Boolean) {
-    sharedPref.edit {
-      putBoolean(KEY_IS_FIRST_TIME, isFirstTime)
+  suspend fun setFirstTimeStatus(isFirstTime: Boolean) {
+    sharedPreferences.edit {
+      it[KEY_IS_FIRST_TIME] = isFirstTime
     }
   }
 
