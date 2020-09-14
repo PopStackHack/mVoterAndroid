@@ -31,16 +31,18 @@ class AndroidAppUpdateManager @Inject constructor(
   }
 
   @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
-  internal fun getLatestAppUpdate(): AppUpdate? {
+  internal suspend fun getLatestAppUpdate(): AppUpdate? {
     val networkResult = runCatching {
-      appUpdateNetworkSource.getLatestUpdate().also { appUpdate ->
-        appUpdateCacheSource.putLatestUpdate(appUpdate)
-      }
+      appUpdateNetworkSource.getLatestUpdate()
+        .also { appUpdate ->
+          appUpdateCacheSource.putLatestUpdate(appUpdate)
+        }
     }
 
-    networkResult.exceptionOrNull()?.let {
-      Timber.e(it)
-    }
+    networkResult.exceptionOrNull()
+      ?.let {
+        Timber.e(it)
+      }
 
     return appUpdateCacheSource.getLatestUpdate()
   }
@@ -61,7 +63,9 @@ class AndroidAppUpdateManager @Inject constructor(
 
   @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
   internal fun getDownloadLink(appUpdate: AppUpdate): String {
-    return if (GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(context) == ConnectionResult.SUCCESS
+    return if (
+      GoogleApiAvailability.getInstance()
+        .isGooglePlayServicesAvailable(context) == ConnectionResult.SUCCESS
     ) {
       appUpdate.playStoreLink
     } else {

@@ -31,13 +31,6 @@ object AndroidXAppCompat {
   const val app_compat = "androidx.appcompat:appcompat:1.3.0-alpha02"
 }
 
-object AndroidXDataStore {
-  private const val version = "1.0.0-alpha01"
-
-  const val preferences = "androidx.datastore:datastore-preferences:$version"
-  const val proto = "androidx.datastore:datastore-core:$version"
-}
-
 object AndroidXRecyclerView {
   private const val version = "1.2.0-alpha05"
 

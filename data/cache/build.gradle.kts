@@ -95,8 +95,6 @@ dependencies {
   daggerJvm()
   daggerAndroid()
 
-  moshi()
-
   //Testing
   testImplementation(project(":coroutinetestrule"))
   testImplementation("junit:junit:4.13")

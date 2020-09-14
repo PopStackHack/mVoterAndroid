@@ -1,32 +1,44 @@
 package com.popstack.mvoter2015.data.cache.appupdate
 
 import android.content.Context
-import androidx.core.content.edit
-import androidx.preference.PreferenceManager
+import androidx.datastore.createDataStore
 import com.popstack.mvoter2015.data.common.appupdate.AppUpdate
 import com.popstack.mvoter2015.data.common.appupdate.AppUpdateCacheSource
-import com.squareup.moshi.Moshi
+import kotlinx.coroutines.flow.first
 import javax.inject.Inject
 
-class AppUpdateCacheSourceImpl @Inject constructor(private val context: Context) :
+class AppUpdateCacheSourceImpl @Inject constructor(context: Context) :
   AppUpdateCacheSource {
 
   companion object {
     private const val ARG_APP_UPDATE = "app_update"
   }
 
-  private val appUpdatePreference = PreferenceManager.getDefaultSharedPreferences(context)
-  private val moshi = Moshi.Builder().build()
-  private val cacheEntityJsonAdapter = moshi.adapter(AppUpdateCacheEntity::class.java)
+  private val appUpdateDataStore = context.createDataStore("app_update", AppUpdateSerializer)
 
-  override fun getLatestUpdate(): AppUpdate? {
-    val json = appUpdatePreference.getString(ARG_APP_UPDATE, null) ?: return null
-    return cacheEntityJsonAdapter.fromJson(json)?.toAppUpdate()
+  override suspend fun getLatestUpdate(): AppUpdate? {
+    try {
+      return with(appUpdateDataStore.data.first()) {
+        AppUpdate(
+          latestVersionCode = this.latestVersionCode,
+          requireForcedUpdate = this.requireForcedUpdate,
+          playStoreLink = this.playStoreLink,
+          selfHostedLink = this.downloadLink
+        )
+      }
+    } catch (exception: Exception) {
+      return null
+    }
   }
 
-  override fun putLatestUpdate(appUpdate: AppUpdate) {
-    appUpdatePreference.edit {
-      putString(ARG_APP_UPDATE, cacheEntityJsonAdapter.toJson(appUpdate.toCacheEntity()))
+  override suspend fun putLatestUpdate(appUpdate: AppUpdate) {
+    appUpdateDataStore.updateData { appUpdateProto ->
+      appUpdateProto.toBuilder()
+        .setLatestVersionCode(appUpdate.latestVersionCode)
+        .setRequireForcedUpdate(appUpdate.requireForcedUpdate)
+        .setPlayStoreLink(appUpdate.playStoreLink)
+        .setDownloadLink(appUpdate.selfHostedLink)
+        .build()
     }
   }
 
