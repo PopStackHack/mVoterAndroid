@@ -25,7 +25,7 @@ class LowerHouseCandidateListViewModel @Inject constructor(
         val candidateList = getMyLowerHouseCandidateList.execute(Unit)
         val smallCandidateList = candidateList
           .sortedBy {
-            it.sortingName
+            it.sortingBallotOrder
           }
           .map {
             it.toSmallCandidateViewItem()
