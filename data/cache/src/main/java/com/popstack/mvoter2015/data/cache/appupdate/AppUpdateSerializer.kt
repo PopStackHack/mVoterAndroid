@@ -11,7 +11,7 @@ object AppUpdateSerializer : Serializer<AppUpdateProto> {
 
   override fun readFrom(input: InputStream): AppUpdateProto {
     return try {
-      AppUpdateProto.parseFrom(input)
+      AppUpdateProto.ADAPTER.decode(input)
     } catch (exception: IOException) {
       throw CorruptionException("Cannot read proto", exception)
     }
@@ -21,7 +21,7 @@ object AppUpdateSerializer : Serializer<AppUpdateProto> {
     t: AppUpdateProto,
     output: OutputStream
   ) {
-    t.writeTo(output)
+    t.encode(output)
   }
 
 }

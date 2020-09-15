@@ -8,7 +8,6 @@ import com.popstack.mvoter2015.data.cache.ConstituencyProto
 import com.popstack.mvoter2015.data.cache.ConstituencyProto.HouseTypeProto.TYPE_LOWER_HOUSE
 import com.popstack.mvoter2015.data.cache.ConstituencyProto.HouseTypeProto.TYPE_STATE_REGION_HOUSE
 import com.popstack.mvoter2015.data.cache.ConstituencyProto.HouseTypeProto.TYPE_UPPER_HOUSE
-import com.popstack.mvoter2015.data.cache.ConstituencyProto.HouseTypeProto.UNRECOGNIZED
 import com.popstack.mvoter2015.data.cache.StateTownshipProto
 import com.popstack.mvoter2015.data.cache.WardProto
 import com.popstack.mvoter2015.data.cache.source.location.StateTownshipSerializer
@@ -55,13 +54,13 @@ class LocationCacheSourceImpl @Inject constructor(
 
   override suspend fun saveUserWard(ward: Ward) {
     wardDataStore.updateData { wardProto ->
-      wardProto.toBuilder()
-        .setId(ward.id.value)
-        .setName(ward.name)
-        .setLowerConstituency(ward.lowerHouseConstituency.toConstituencyProto())
-        .setUpperConstituency(ward.upperHouseConstituency.toConstituencyProto())
-        .setStateRegionConstituency(ward.stateRegionConstituency.toConstituencyProto())
-        .build()
+      WardProto(
+        id = ward.id.value,
+        name = ward.name,
+        lower_constituency = ward.lowerHouseConstituency.toConstituencyProto(),
+        upper_constituency = ward.upperHouseConstituency.toConstituencyProto(),
+        state_region_constituency = ward.stateRegionConstituency.toConstituencyProto()
+      )
     }
   }
 
@@ -69,7 +68,7 @@ class LocationCacheSourceImpl @Inject constructor(
     try {
       return with(stateRegionTownshipStore.data.first()) {
         StateRegionTownship(
-          stateRegion = this.stateRegion,
+          stateRegion = this.state_region,
           township = this.township
         )
       }
@@ -80,10 +79,10 @@ class LocationCacheSourceImpl @Inject constructor(
 
   override suspend fun saveUserStateRegionTownship(stateRegionTownship: StateRegionTownship) {
     stateRegionTownshipStore.updateData { stateTownshipProto ->
-      stateTownshipProto.toBuilder()
-        .setStateRegion(stateRegionTownship.stateRegion)
-        .setTownship(stateRegionTownship.township)
-        .build()
+      StateTownshipProto(
+        state_region = stateRegionTownship.stateRegion,
+        township = stateRegionTownship.township
+      )
     }
   }
 
@@ -91,9 +90,9 @@ class LocationCacheSourceImpl @Inject constructor(
     return Ward(
       id = WardId(this.id),
       name = this.name,
-      lowerHouseConstituency = this.lowerConstituency.toConstituency(),
-      upperHouseConstituency = this.upperConstituency.toConstituency(),
-      stateRegionConstituency = this.stateRegionConstituency.toConstituency()
+      lowerHouseConstituency = this.lower_constituency!!.toConstituency(),
+      upperHouseConstituency = this.upper_constituency!!.toConstituency(),
+      stateRegionConstituency = this.state_region_constituency!!.toConstituency()
     )
   }
 
@@ -105,7 +104,6 @@ class LocationCacheSourceImpl @Inject constructor(
         TYPE_LOWER_HOUSE -> LOWER_HOUSE
         TYPE_UPPER_HOUSE -> UPPER_HOUSE
         TYPE_STATE_REGION_HOUSE -> REGIONAL_HOUSE
-        UNRECOGNIZED -> throw IllegalStateException()
       },
       township = if (this.township.isEmpty()) null else this.township,
       stateRegion = if (this.stateRegion.isEmpty()) null else this.stateRegion
@@ -113,19 +111,17 @@ class LocationCacheSourceImpl @Inject constructor(
   }
 
   private fun Constituency.toConstituencyProto(): ConstituencyProto {
-    return ConstituencyProto.newBuilder()
-      .setId(this.id)
-      .setName(this.name)
-      .setHouseType(
-        when (this.house) {
-          LOWER_HOUSE -> TYPE_LOWER_HOUSE
-          UPPER_HOUSE -> TYPE_UPPER_HOUSE
-          REGIONAL_HOUSE -> TYPE_STATE_REGION_HOUSE
-        }
-      )
-      .setTownship(this.township ?: "")
-      .setStateRegion(this.stateRegion ?: "")
-      .build()
+    return ConstituencyProto(
+      id = this.id,
+      name = this.name,
+      houseType = when (this.house) {
+        LOWER_HOUSE -> TYPE_LOWER_HOUSE
+        UPPER_HOUSE -> TYPE_UPPER_HOUSE
+        REGIONAL_HOUSE -> TYPE_STATE_REGION_HOUSE
+      },
+      township = this.township ?: "",
+      stateRegion = this.stateRegion ?: ""
+    )
   }
 
   @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)

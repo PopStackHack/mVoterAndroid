@@ -2,7 +2,7 @@ import org.gradle.api.artifacts.dsl.DependencyHandler
 
 fun DependencyHandler.androidxProtoDataStore() {
   implementation(AndroidXDataStore.core)
-  implementation(Protobuffer.java_lite)
+  implementation(Wire.runtime)
 }
 
 object AndroidXDataStore {
@@ -19,4 +19,11 @@ object Protobuffer {
 
   const val java_lite = "com.google.protobuf:protobuf-javalite:$version"
   const val artifact = "com.google.protobuf:protoc:$version"
+}
+
+object Wire {
+  private const val version = "3.3.0"
+
+  const val runtime = "com.squareup.wire:wire-runtime:$version"
+  const val gradle_plugin = "com.squareup.wire:wire-gradle-plugin:$version"
 }

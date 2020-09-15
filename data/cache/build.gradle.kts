@@ -1,15 +1,9 @@
-import com.google.protobuf.gradle.builtins
-import com.google.protobuf.gradle.generateProtoTasks
-import com.google.protobuf.gradle.id
-import com.google.protobuf.gradle.protobuf
-import com.google.protobuf.gradle.protoc
-
 plugins {
   id("com.squareup.sqldelight")
   id("com.android.library")
   kotlin("android")
   kotlin("kapt")
-  id("com.google.protobuf")
+  id("com.squareup.wire")
   id(KtLint.name)
 }
 
@@ -44,6 +38,12 @@ android {
     targetCompatibility = JavaVersion.VERSION_1_8
   }
 
+//  sourceSets {
+//    getByName("main") {
+//      this.java.srcDir("$buildDir/generated/source/wire/")
+//    }
+//  }
+
   kotlinOptions {
     jvmTarget = "1.8"
   }
@@ -56,19 +56,8 @@ sqldelight {
   }
 }
 
-protobuf {
-  protoc {
-    artifact = Protobuffer.artifact
-  }
-
-  generateProtoTasks {
-    all().forEach { task ->
-      task.builtins {
-        this.id("java") {
-          option("lite")
-        }
-      }
-    }
+wire {
+  kotlin {
   }
 }
 

@@ -11,7 +11,7 @@ object WardSerializer : Serializer<WardProto> {
 
   override fun readFrom(input: InputStream): WardProto {
     return try {
-      WardProto.parseFrom(input)
+      WardProto.ADAPTER.decode(input)
     } catch (exception: IOException) {
       throw CorruptionException("Cannot read proto", exception)
     }
@@ -21,7 +21,7 @@ object WardSerializer : Serializer<WardProto> {
     t: WardProto,
     output: OutputStream
   ) {
-    t.writeTo(output)
+    t.encode(output)
   }
 
 }

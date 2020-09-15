@@ -2,6 +2,7 @@ package com.popstack.mvoter2015.data.cache.appupdate
 
 import android.content.Context
 import androidx.datastore.createDataStore
+import com.popstack.mvoter2015.data.cache.AppUpdateProto
 import com.popstack.mvoter2015.data.common.appupdate.AppUpdate
 import com.popstack.mvoter2015.data.common.appupdate.AppUpdateCacheSource
 import kotlinx.coroutines.flow.first
@@ -20,10 +21,10 @@ class AppUpdateCacheSourceImpl @Inject constructor(context: Context) :
     try {
       return with(appUpdateDataStore.data.first()) {
         AppUpdate(
-          latestVersionCode = this.latestVersionCode,
-          requireForcedUpdate = this.requireForcedUpdate,
-          playStoreLink = this.playStoreLink,
-          selfHostedLink = this.downloadLink
+          latestVersionCode = this.latest_version_code,
+          requireForcedUpdate = this.require_forced_update,
+          playStoreLink = this.play_store_link,
+          selfHostedLink = this.download_link
         )
       }
     } catch (exception: Exception) {
@@ -33,12 +34,14 @@ class AppUpdateCacheSourceImpl @Inject constructor(context: Context) :
 
   override suspend fun putLatestUpdate(appUpdate: AppUpdate) {
     appUpdateDataStore.updateData { appUpdateProto ->
-      appUpdateProto.toBuilder()
-        .setLatestVersionCode(appUpdate.latestVersionCode)
-        .setRequireForcedUpdate(appUpdate.requireForcedUpdate)
-        .setPlayStoreLink(appUpdate.playStoreLink)
-        .setDownloadLink(appUpdate.selfHostedLink)
-        .build()
+      with(appUpdate) {
+        AppUpdateProto(
+          latest_version_code = this.latestVersionCode,
+          require_forced_update = this.requireForcedUpdate,
+          play_store_link = this.playStoreLink,
+          download_link = this.selfHostedLink
+        )
+      }
     }
   }
 

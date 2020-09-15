@@ -11,7 +11,7 @@ object StateTownshipSerializer : Serializer<StateTownshipProto> {
 
   override fun readFrom(input: InputStream): StateTownshipProto {
     return try {
-      StateTownshipProto.parseFrom(input)
+      StateTownshipProto.ADAPTER.decode(input)
     } catch (exception: IOException) {
       throw CorruptionException("Cannot read proto", exception)
     }
@@ -21,7 +21,7 @@ object StateTownshipSerializer : Serializer<StateTownshipProto> {
     t: StateTownshipProto,
     output: OutputStream
   ) {
-    t.writeTo(output)
+    t.encode(output)
   }
 
 }
