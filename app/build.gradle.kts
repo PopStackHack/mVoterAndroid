@@ -155,3 +155,5 @@ dependencies {
 ktlint {
   android.set(true)
 }
+
+apply(from = "$rootDir/self_host_deploy.gradle")
