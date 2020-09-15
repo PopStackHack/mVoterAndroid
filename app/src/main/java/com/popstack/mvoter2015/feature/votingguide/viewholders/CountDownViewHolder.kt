@@ -33,7 +33,7 @@ class CountDownViewHolder(private val binding: ItemElectionCountdownBinding) :
       var remainingTime = millisUntilFinished
       val days: Long = TimeUnit.MILLISECONDS.toDays(remainingTime)
 
-      val countDown = if (days > 1) {
+      val countDown = if (days >= 1) {
         Timber.e(days.toString())
         buildSpannedString {
           color(
