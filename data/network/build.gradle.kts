@@ -39,7 +39,8 @@ android {
       isMinifyEnabled = true
       proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
       buildConfigField("String", "APP_SECRET", "\"$APP_SECRET\"")
-      buildConfigField("String", "BASE_URL", "\"https://base_url_here\"")
+      buildConfigField("String", "BASE_URL", "\"http://mvoter.kwee.online/api/v1/\"")
+//      buildConfigField("String", "BASE_URL", "\"https://base_url_here\"")
     }
   }
 
