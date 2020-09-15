@@ -2,7 +2,7 @@ package com.popstack.mvoter2015.exception
 
 import android.content.Context
 import com.popstack.mvoter2015.R
-import com.popstack.mvoter2015.data.network.exception.NetworkException
+import com.popstack.mvoter2015.domain.exception.NetworkException
 import org.json.JSONObject
 import timber.log.Timber
 import java.net.ConnectException

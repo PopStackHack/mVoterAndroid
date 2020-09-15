@@ -31,7 +31,10 @@ class LowerHouseCandidateListController(bundle: Bundle) :
     const val CONSTITUENCY_ID = "constituency_id"
     const val CONSTITUENCY_NAME = "constituency_name"
 
-    fun newInstance(constituencyId: ConstituencyId, constituencyName: String) = LowerHouseCandidateListController(
+    fun newInstance(
+      constituencyId: ConstituencyId,
+      constituencyName: String
+    ) = LowerHouseCandidateListController(
       bundleOf(
         CONSTITUENCY_ID to constituencyId.value,
         CONSTITUENCY_NAME to constituencyName
@@ -54,12 +57,20 @@ class LowerHouseCandidateListController(bundle: Bundle) :
 
   private val onCandidateClicked: (CandidateId) -> Unit = {
     val candidateDetailsController = CandidateDetailController.newInstance(it)
-    CandidateListPagerParentRouter.router?.pushController(RouterTransaction.with(candidateDetailsController))
+    CandidateListPagerParentRouter.router?.pushController(
+      RouterTransaction.with(candidateDetailsController)
+    )
   }
 
-  private val constituencyId: ConstituencyId = ConstituencyId(args.getString(CONSTITUENCY_ID)!!)
+  private val constituencyId: ConstituencyId by lazy {
+    ConstituencyId(args.getString(CONSTITUENCY_ID)!!)
+  }
 
-  override fun onCreateView(inflater: LayoutInflater, container: ViewGroup, savedViewState: Bundle?): View {
+  override fun onCreateView(
+    inflater: LayoutInflater,
+    container: ViewGroup,
+    savedViewState: Bundle?
+  ): View {
     ConductorInjection.inject(this)
     return super.onCreateView(inflater, container, savedViewState)
   }
@@ -84,7 +95,7 @@ class LowerHouseCandidateListController(bundle: Bundle) :
   }
 
   private fun loadCandidates() {
-    viewModel.loadCandidates(constituencyId)
+    viewModel.loadCandidates()
   }
 
   private fun observeViewItem(viewState: AsyncViewState<CandidateListViewItem>) = with(binding) {

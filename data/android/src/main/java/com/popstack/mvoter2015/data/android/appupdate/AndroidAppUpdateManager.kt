@@ -7,7 +7,7 @@ import com.google.android.gms.common.GoogleApiAvailability
 import com.popstack.mvoter2015.data.common.appupdate.AppUpdate
 import com.popstack.mvoter2015.data.common.appupdate.AppUpdateCacheSource
 import com.popstack.mvoter2015.data.common.appupdate.AppUpdateNetworkSource
-import com.popstack.mvoter2015.data.network.exception.NetworkException
+import com.popstack.mvoter2015.domain.exception.NetworkException
 import com.popstack.mvoter2015.domain.DispatcherProvider
 import com.popstack.mvoter2015.domain.infra.AppUpdateManager
 import com.popstack.mvoter2015.domain.infra.AppVersionProvider

@@ -6,7 +6,7 @@ import com.popstack.mvoter2015.domain.constituency.model.ConstituencyId
 
 interface CandidateRepository {
 
-  fun getCandidateList(constituencyId: ConstituencyId): List<Candidate>
+  suspend fun getCandidateList(constituencyId: ConstituencyId): List<Candidate>
 
   fun getCandidate(candidateId: CandidateId): Candidate
 

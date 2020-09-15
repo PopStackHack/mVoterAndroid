@@ -1,6 +1,6 @@
 package com.popstack.mvoter2015.data.network.helper
 
-import com.popstack.mvoter2015.data.network.exception.NetworkException
+import com.popstack.mvoter2015.domain.exception.NetworkException
 import okhttp3.Call
 import okhttp3.Response
 import okhttp3.ResponseBody

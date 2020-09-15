@@ -1,6 +1,6 @@
 package com.popstack.mvoter2015.data.network.helper
 
-import com.popstack.mvoter2015.data.network.exception.NetworkException
+import com.popstack.mvoter2015.domain.exception.NetworkException
 import retrofit2.Call
 import retrofit2.Response
 

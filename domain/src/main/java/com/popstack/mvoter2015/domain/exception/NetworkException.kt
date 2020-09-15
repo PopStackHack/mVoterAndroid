@@ -1,4 +1,4 @@
-package com.popstack.mvoter2015.data.network.exception
+package com.popstack.mvoter2015.domain.exception
 
 import java.io.IOException
 

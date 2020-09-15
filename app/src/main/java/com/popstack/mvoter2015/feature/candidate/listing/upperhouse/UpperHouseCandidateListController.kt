@@ -84,7 +84,7 @@ class UpperHouseCandidateListController(bundle: Bundle) :
   }
 
   private fun loadCandidates() {
-    viewModel.loadCandidates(constituencyId)
+    viewModel.loadCandidates()
   }
 
   private fun observeViewItem(viewState: AsyncViewState<CandidateListViewItem>) = with(binding) {

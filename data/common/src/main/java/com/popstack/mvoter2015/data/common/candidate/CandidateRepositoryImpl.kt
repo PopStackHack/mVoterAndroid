@@ -4,6 +4,7 @@ import com.popstack.mvoter2015.domain.candidate.CandidateRepository
 import com.popstack.mvoter2015.domain.candidate.model.Candidate
 import com.popstack.mvoter2015.domain.candidate.model.CandidateId
 import com.popstack.mvoter2015.domain.constituency.model.ConstituencyId
+import com.popstack.mvoter2015.domain.exception.NetworkException
 import javax.inject.Inject
 
 class CandidateRepositoryImpl @Inject constructor(
@@ -11,13 +12,17 @@ class CandidateRepositoryImpl @Inject constructor(
   private val candidateNetworkSource: CandidateNetworkSource
 ) : CandidateRepository {
 
-  override fun getCandidateList(constituencyId: ConstituencyId): List<Candidate> {
+  override suspend fun getCandidateList(constituencyId: ConstituencyId): List<Candidate> {
     try {
       val candidateListFromNetwork = candidateNetworkSource.getCandidateList(constituencyId)
       candidateCacheSource.flushUnderConstituency(constituencyId)
       candidateCacheSource.putCandidateList(candidateListFromNetwork)
-    } catch (exception: Exception) {
+    } catch (exception: NetworkException) {
       //Network error, see if can recover from cache
+      if (exception.errorCode == 404) {
+        //Don't recover from 404
+        throw exception
+      }
       val candidateListFromCache = candidateCacheSource.getCandidateList(constituencyId)
       if (candidateListFromCache.isEmpty()) {
         //Seems data is empty, can't recover, throw error
@@ -27,7 +32,7 @@ class CandidateRepositoryImpl @Inject constructor(
     }
 
     //We use database as single source of truth
-    return candidateNetworkSource.getCandidateList(constituencyId)
+    return candidateCacheSource.getCandidateList(constituencyId)
   }
 
   override fun getCandidate(candidateId: CandidateId): Candidate {
@@ -40,7 +45,11 @@ class CandidateRepositoryImpl @Inject constructor(
     }
   }
 
-  override fun searchCandidate(query: String, pageNo: Int, resultPerPage: Int): List<Candidate> {
+  override fun searchCandidate(
+    query: String,
+    pageNo: Int,
+    resultPerPage: Int
+  ): List<Candidate> {
     return candidateNetworkSource.searchCandidate(
       query = query,
       pageNo = pageNo,

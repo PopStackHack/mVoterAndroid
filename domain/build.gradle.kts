@@ -6,12 +6,15 @@ plugins {
 
 dependencies {
   implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-  testImplementation(project(":coroutinetestrule"))
 
   implementation(Kotlin.stdblib_jdk)
   api(KotlinCoroutine.core)
 
   implementation(CommonLibs.javaxInject)
+
+  testImplementation(project(":coroutinetestrule"))
+  testImplementation(CommonLibs.junit)
+  mockito()
 }
 
 ktlint {
