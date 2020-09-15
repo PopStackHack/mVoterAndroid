@@ -10,6 +10,9 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.time.Duration
 import java.time.LocalDateTime
+import java.time.Month
+import java.time.ZoneId
+import java.time.ZonedDateTime
 import javax.inject.Inject
 
 class VotingGuideViewModel @Inject constructor(
@@ -36,13 +39,20 @@ class VotingGuideViewModel @Inject constructor(
   fun startCountDown() {
     countDownJob?.cancel()
     countDownJob = viewModelScope.launch {
-//      val electionDate =
-//        ZonedDateTime.of(2020, Month.NOVEMBER.value, 8, 6, 0, 0, 0, ZoneId.of("Asia/Rangoon"))
-      val electionDate = LocalDateTime.now().plusSeconds(5)
+      val electionDate = ZonedDateTime.of(
+        2020,
+        Month.NOVEMBER.value,
+        8,
+        6,
+        0,
+        0,
+        0,
+        ZoneId.of("Asia/Rangoon")
+      )
 
       while (true) {
         val countdown =
-          countDownCalculator.calculate(LocalDateTime.now(), electionDate)
+          countDownCalculator.calculate(LocalDateTime.now(), electionDate.toLocalDateTime())
         countDownLiveData.postValue(countdown)
         if (countdown !is CountDown.ShowHourMinSec) {
           this.cancel()
