@@ -14,7 +14,7 @@ class AppUpdateCacheSourceImpl @Inject constructor(context: Context) :
     private const val ARG_APP_UPDATE = "app_update"
   }
 
-  private val appUpdateDataStore = context.createDataStore("app_update", AppUpdateSerializer)
+  private val appUpdateDataStore = context.createDataStore("app_update.pb", AppUpdateSerializer)
 
   override suspend fun getLatestUpdate(): AppUpdate? {
     try {
