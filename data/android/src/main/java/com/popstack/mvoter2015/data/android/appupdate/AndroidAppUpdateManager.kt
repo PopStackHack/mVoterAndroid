@@ -7,6 +7,7 @@ import com.google.android.gms.common.GoogleApiAvailability
 import com.popstack.mvoter2015.data.common.appupdate.AppUpdate
 import com.popstack.mvoter2015.data.common.appupdate.AppUpdateCacheSource
 import com.popstack.mvoter2015.data.common.appupdate.AppUpdateNetworkSource
+import com.popstack.mvoter2015.data.network.exception.NetworkException
 import com.popstack.mvoter2015.domain.DispatcherProvider
 import com.popstack.mvoter2015.domain.infra.AppUpdateManager
 import com.popstack.mvoter2015.domain.infra.AppVersionProvider
@@ -32,17 +33,14 @@ class AndroidAppUpdateManager @Inject constructor(
 
   @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
   internal suspend fun getLatestAppUpdate(): AppUpdate? {
-    val networkResult = runCatching {
-      appUpdateNetworkSource.getLatestUpdate()
+    try {
+      appUpdateNetworkSource.getLatestUpdate(appVersionProvider.versionCode())
         .also { appUpdate ->
           appUpdateCacheSource.putLatestUpdate(appUpdate)
         }
+    } catch (networkException: NetworkException) {
+      Timber.e(networkException)
     }
-
-    networkResult.exceptionOrNull()
-      ?.let {
-        Timber.e(it)
-      }
 
     return appUpdateCacheSource.getLatestUpdate()
   }

@@ -1,19 +1,17 @@
 package com.popstack.mvoter2015.data.android.appupdate
 
+import com.popstack.mvoter2015.data.android.BuildConfig
 import com.popstack.mvoter2015.domain.infra.AppVersionProvider
 import javax.inject.Inject
 
-class FakeAppVersionProvider @Inject constructor() : AppVersionProvider {
-
-  var versionCode = 0L
-  var versionName = "0.0.0"
+class AppVersionProviderImpl @Inject constructor() : AppVersionProvider {
 
   override fun versionCode(): Long {
-    return versionCode
+    return BuildConfig.VERSION_CODE.toLong()
   }
 
   override fun versionName(): String {
-    return versionName
+    return BuildConfig.VERSION_NAME
   }
 
 }

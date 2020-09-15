@@ -1,10 +1,12 @@
 package com.popstack.mvoter2015.feature
 
+import android.content.DialogInterface
 import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.bluelinelabs.conductor.Conductor
 import com.bluelinelabs.conductor.Router
@@ -148,8 +150,19 @@ class HostActivity : AppCompatActivity(), HasRouter, Injectable, HasAndroidInjec
               dialog.dismiss()
             }
             .setOnDismissListener {
-              startActivity(Intents.viewUrl(appUpdateResult.updateLink))
-            }.create()
+              kotlin.runCatching {
+                startActivity(Intents.viewUrl(appUpdateResult.updateLink))
+              }
+            }
+            .create()
+            .also { dialog ->
+              dialog.setOnShowListener {
+                val positiveButton = dialog.getButton(DialogInterface.BUTTON_POSITIVE)
+                positiveButton.setTextColor(
+                  ContextCompat.getColor(this@HostActivity, R.color.text_error)
+                )
+              }
+            }
             .show()
         }
         is AppUpdateManager.UpdateResult.RelaxedUpdate -> {
