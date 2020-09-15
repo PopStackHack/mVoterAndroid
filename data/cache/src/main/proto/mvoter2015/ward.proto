@@ -5,13 +5,24 @@ package mvoter2015;
 option java_package = "com.popstack.mvoter2015.data.cache";
 option java_multiple_files = true;
 
-
-import "mvoter2015/constituency.proto";
-
 message WardProto {
   string id = 1;
   string name = 2;
   ConstituencyProto lower_constituency = 3;
   ConstituencyProto upper_constituency = 4;
   ConstituencyProto state_region_constituency = 5;
+}
+
+message ConstituencyProto {
+  enum HouseTypeProto {
+    TYPE_LOWER_HOUSE = 0;
+    TYPE_UPPER_HOUSE = 1;
+    TYPE_STATE_REGION_HOUSE = 2;
+  }
+
+  string id = 1;
+  string name = 2;
+  HouseTypeProto houseType = 3;
+  string township = 4;
+  string stateRegion = 5;
 }
