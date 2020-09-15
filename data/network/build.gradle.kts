@@ -32,7 +32,7 @@ android {
     getByName("debug") {
       isMinifyEnabled = false
       buildConfigField("String", "APP_SECRET", "\"$APP_SECRET\"")
-      buildConfigField("String", "BASE_URL", "\"http://134.209.106.125/api/v1/\"")
+      buildConfigField("String", "BASE_URL", "\"https://mvoter.kwee.online/api/v1/\"")
     }
 
     getByName("release") {

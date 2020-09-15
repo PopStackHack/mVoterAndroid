@@ -62,7 +62,9 @@ dependencies {
   daggerAndroid()
 
   //Testing
-  testImplementation("junit:junit:4.13")
+  testImplementation(CommonLibs.junit)
+  testImplementation("org.robolectric:shadows-playservices:4.3.1")
+  testImplementation(project(":coroutinetestrule"))
   mockito()
   mockitoAndroid()
   androidXTest()

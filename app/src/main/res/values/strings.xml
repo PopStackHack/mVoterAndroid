@@ -3,6 +3,7 @@
   <string name="app_description">Award-winning voter education app\nfor Myanmar elections since 2015</string>
 
   <!--  General Usages-->
+  <string name="ok">ကောင်းပြီ</string>
   <string name="retry">ထပ်စမ်းကြည့်မယ်</string>
   <string name="cancel">မလုပ်တော့ပါ</string>
 
@@ -152,6 +153,13 @@
     <item>Light</item>
     <item>Dark</item>
   </string-array>
+
+  <!--  App Update-->
+  <string name="update_required">App အဆင့်မြင့်တင်ရန် လိုအပ်ပါသည်။</string>
+  <string name="update_required_message">App ဗာရှင်းအသစ်ထွက်ရှိထားပါသည်။ ဆက်လက်အသုံးပြုရန် အဆင့်မြင့်တင်ပေးပါ။</string>
+
+  <string name="update_relaxed_title">App ဗာရှင်းအသစ်</string>
+  <string name="update_relaxed_message">App ဗာရှင်းအသစ်ထွက်ရှိထားပါသည်။ သင် အဆင့်မြင့်တင်လိုပါသလား?</string>
 
   <string name="navigation_title_settings">Settings</string>
   <string name="settings_label_external_browser">Open links in external browser</string>

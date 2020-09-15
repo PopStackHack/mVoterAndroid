@@ -60,7 +60,7 @@ class TownshipChooserController : MvvmController<ControllerTownshipChooserBindin
     viewModel.onStateRegionChosen.observe(
       this,
       {
-        // TODO: Scroll to top
+        //TODO: Scroll to top
       }
     )
     viewModel.viewItemLiveData.observe(this, Observer(::observeViewItem))

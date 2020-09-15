@@ -6,6 +6,7 @@ import coil.ImageLoader
 import coil.ImageLoaderBuilder
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.data.android.AndroidDataModule
+import com.popstack.mvoter2015.data.android.appupdate.AppUpdateModule
 import com.popstack.mvoter2015.di.conductor.ConductorInjectionModule
 import com.popstack.mvoter2015.di.viewmodel.ViewModelFactoryModule
 import com.popstack.mvoter2015.domain.DispatcherProvider
@@ -18,7 +19,9 @@ import dagger.android.ContributesAndroidInjector
 import java.time.Clock
 import javax.inject.Singleton
 
-@Module(includes = [ViewModelFactoryModule::class, ConductorInjectionModule::class, AndroidDataModule::class])
+@Module(
+  includes = [ViewModelFactoryModule::class, ConductorInjectionModule::class, AndroidDataModule::class, AppUpdateModule::class]
+)
 abstract class AppModule {
 
   @Binds
