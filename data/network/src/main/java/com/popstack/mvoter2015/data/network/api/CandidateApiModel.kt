@@ -32,6 +32,7 @@ data class CandidateApiModel(
 data class CandidateApiAttributes(
   @Json(name = "name") val name: String,
   @Json(name = "sorting_name") val sortingName: String,
+  @Json(name = "ballot_order") val sortingBallotOrder: Long,
   @Json(name = "image") val image: String?,
   @Json(name = "birthday") val birthday: String,
   @Json(name = "age") val age: Int?,
@@ -65,6 +66,7 @@ fun CandidateApiModel.toCandidateModel(): Candidate {
       id = CandidateId(id),
       name = name,
       sortingName = sortingName,
+      sortingBallotOrder = sortingBallotOrder,
       gender = CandidateGender.valueOf(gender),
       occupation = work,
       photoUrl = image.orEmpty(),

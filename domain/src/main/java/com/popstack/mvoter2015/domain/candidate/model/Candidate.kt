@@ -8,6 +8,7 @@ data class Candidate(
   val id: CandidateId,
   val name: String,
   val sortingName: String,
+  val sortingBallotOrder: Long,
   val gender: CandidateGender,
   val occupation: String,
   val photoUrl: String,

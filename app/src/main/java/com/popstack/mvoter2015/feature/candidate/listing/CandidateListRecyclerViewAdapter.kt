@@ -71,6 +71,7 @@ class CandidateListItemViewHolder(val binding: ItemCandidateBinding) : Candidate
       tvCandidateName.text = smallCandidateViewItem.name
       tvCandidatePartyName.text = smallCandidateViewItem.partyName
       ivCandidate.load(smallCandidateViewItem.photoUrl) {
+        placeholder(R.drawable.placeholder_oval)
         error(R.drawable.placeholder_oval)
         transformations(CircleCropTransformation())
         scale(Scale.FILL)

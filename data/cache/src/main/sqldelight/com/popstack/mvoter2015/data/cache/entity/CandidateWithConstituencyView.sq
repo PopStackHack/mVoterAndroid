@@ -34,7 +34,7 @@ SELECT
 FROM CandidateWithConstituencyView LEFT OUTER JOIN PartyTable
 ON CandidateWithConstituencyView.partyId == PartyTable.id
 WHERE constituencyId = :constituencyId
-ORDER BY CandidateWithConstituencyView.sortingName ASC;
+ORDER BY CandidateWithConstituencyView.sortingBallotOrder ASC;
 
 getById:
 SELECT

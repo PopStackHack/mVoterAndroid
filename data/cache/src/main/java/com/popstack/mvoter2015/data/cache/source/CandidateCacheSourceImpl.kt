@@ -44,6 +44,7 @@ class CandidateCacheSourceImpl @Inject constructor(
     id: String,
     name: String,
     sortingName: String,
+    sortingBallotOrder: Long,
     gender: CandidateGender,
     occupation: String,
     photoUrl: String,
@@ -84,7 +85,7 @@ class CandidateCacheSourceImpl @Inject constructor(
     partyRegistrationApprovalDate: LocalDate?,
     partyIsEstablishedDueToArticle25: Boolean?
   ) -> Candidate =
-    { id, name, sortingName,
+    { id, name, sortingName, sortingBallotOrder,
       gender, occupation, photoUrl, education, religion, age, birthDate, ethnicity, father, mother,
       individualLogo, residentalAddress, isEthnicCandidate, representingEthnicity, partyId,
       constituencyId, _constituencyId, _constituencyName, _constituencyHouse, _constituencyTownship,
@@ -99,6 +100,7 @@ class CandidateCacheSourceImpl @Inject constructor(
         id = CandidateId(id),
         name = name,
         sortingName = sortingName,
+        sortingBallotOrder = sortingBallotOrder,
         gender = gender,
         occupation = occupation,
         photoUrl = photoUrl,
@@ -148,11 +150,15 @@ class CandidateCacheSourceImpl @Inject constructor(
     }
 
   override fun getCandidateList(constituencyId: ConstituencyId): List<Candidate> {
-    return db.candidateWithConstituencyViewQueries.getByConstituency(constituencyId.value, candidateMapper).executeAsList()
+    return db.candidateWithConstituencyViewQueries.getByConstituency(
+      constituencyId.value, candidateMapper
+    )
+      .executeAsList()
   }
 
   override fun getCandidate(candidateId: CandidateId): Candidate? {
-    return db.candidateWithConstituencyViewQueries.getById(candidateId.value, candidateMapper).executeAsOneOrNull()
+    return db.candidateWithConstituencyViewQueries.getById(candidateId.value, candidateMapper)
+      .executeAsOneOrNull()
   }
 
   override fun flushUnderConstituency(constituencyId: ConstituencyId) {
@@ -164,6 +170,7 @@ class CandidateCacheSourceImpl @Inject constructor(
       id = id.value,
       name = name,
       sortingName = sortingName,
+      sortingBallotOrder = sortingBallotOrder,
       gender = gender,
       occupation = occupation,
       photoUrl = photoUrl,

@@ -138,8 +138,12 @@ class CandidateDetailController(
             )
             binding.tvCandidatePartyName.setOnClickListener(null)
           } else {
-            val rightArrowDrawable = DrawableCompat.wrap(ContextCompat.getDrawable(requireContext(), R.drawable.ic_arrow_right_24)!!)
-            DrawableCompat.setTint(rightArrowDrawable, ContextCompat.getColor(requireContext(), R.color.accent))
+            val rightArrowDrawable = DrawableCompat.wrap(
+              ContextCompat.getDrawable(requireContext(), R.drawable.ic_arrow_right_24)!!
+            )
+            DrawableCompat.setTint(
+              rightArrowDrawable, ContextCompat.getColor(requireContext(), R.color.accent)
+            )
             DrawableCompat.setTintMode(rightArrowDrawable, PorterDuff.Mode.SRC_ATOP)
             binding.tvCandidatePartyName.setCompoundDrawableWithIntrinsicBoundsKt(
               end = rightArrowDrawable
@@ -170,7 +174,14 @@ class CandidateDetailController(
           binding.tvFatherName.text = fatherName
           binding.tvFatherEthnicity.text = fatherEthnicity
           binding.tvFatherReligion.text = fatherReligion
-          binding.tvResidential.text = residentialAddress
+
+          binding.tvResidentialTitle.isVisible = residentialAddress != null
+          binding.tvResidential.isVisible = residentialAddress != null
+
+          if (residentialAddress != null) {
+            binding.tvResidential.text = residentialAddress
+          }
+
           binding.ivCandidatePartySeal.load(partySealImageUrl) {
             placeholder(R.drawable.placeholder_rect)
             error(R.drawable.placeholder_rect)
@@ -179,6 +190,7 @@ class CandidateDetailController(
           binding.ivCandidate.load(photo) {
             transformations(CircleCropTransformation())
             scale(Scale.FILL)
+            placeholder(R.drawable.placeholder_oval)
             error(R.drawable.placeholder_oval)
           }
         }

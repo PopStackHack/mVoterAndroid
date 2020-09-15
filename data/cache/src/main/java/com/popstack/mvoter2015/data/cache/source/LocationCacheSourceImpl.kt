@@ -119,8 +119,8 @@ class LocationCacheSourceImpl @Inject constructor(
         UPPER_HOUSE -> TYPE_UPPER_HOUSE
         REGIONAL_HOUSE -> TYPE_STATE_REGION_HOUSE
       },
-      township = this.township ?: "",
-      stateRegion = this.stateRegion ?: ""
+      township = this.township.orEmpty(),
+      stateRegion = this.stateRegion.orEmpty()
     )
   }
 

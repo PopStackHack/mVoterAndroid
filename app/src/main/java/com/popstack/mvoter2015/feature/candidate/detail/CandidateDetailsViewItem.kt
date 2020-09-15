@@ -33,7 +33,7 @@ data class CandidateInfoViewItem(
   val fatherName: String,
   val fatherEthnicity: String,
   val fatherReligion: String,
-  val residentialAddress: String
+  val residentialAddress: String?
 )
 
 private val dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy", Locale.ENGLISH)
@@ -52,8 +52,13 @@ fun Candidate.toCandidateInfoViewItem() = CandidateInfoViewItem(
   },
   constituencyName = constituency.township
     ?: constituency.stateRegion.orEmpty() + " " + constituency.name,
-  age = BurmeseNumberUtils.convertEnglishToBurmeseNumber(age?.toString().orEmpty()).toString(),
-  birthday = BurmeseNumberUtils.convertEnglishToBurmeseNumber(birthDate.format(dateFormatter)).toString(),
+  age = BurmeseNumberUtils.convertEnglishToBurmeseNumber(
+    age?.toString()
+      .orEmpty()
+  )
+    .toString(),
+  birthday = BurmeseNumberUtils.convertEnglishToBurmeseNumber(birthDate.format(dateFormatter))
+    .toString(),
   education = education,
   job = occupation,
   ethnicity = ethnicity,
@@ -64,5 +69,5 @@ fun Candidate.toCandidateInfoViewItem() = CandidateInfoViewItem(
   fatherName = father?.name.orEmpty(),
   fatherEthnicity = father?.ethnicity.orEmpty(),
   fatherReligion = father?.religion.orEmpty(),
-  residentialAddress = residentialAddress.orEmpty()
+  residentialAddress = residentialAddress
 )
