@@ -9,6 +9,7 @@ class VotingGuideModel @Inject constructor() : ViewModel() {
     sectionTitles: List<String>,
     steps: List<Array<String>>
   ): List<VotingGuideViewItem> = ArrayList<VotingGuideViewItem>().apply {
+    add(CountDown)
     add(Header)
     sectionTitles.forEachIndexed { index, value ->
       add(SectionTitle(value))

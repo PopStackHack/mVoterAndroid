@@ -39,6 +39,8 @@ class VotingGuideController : MvvmController<ControllerHowToVoteBinding>(), HasT
 
       layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
       adapter = VotingGuideRecyclerViewAdapter(viewItems)
+
+      recycledViewPool.setMaxRecycledViews(VotingGuideRecyclerViewAdapter.VIEW_TYPE_COUNT_DOWN, 1)
     }
   }
 
