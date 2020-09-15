@@ -101,9 +101,9 @@ jobs:
       - run: echo $GOOGLE_SERVICE_JSON_BASE64 | base64 --decode > app/google-services.json
 
       - name: Build APK
-        run: ./gradlew assemble
+        run: ./gradlew assembleRelease
       - name: Build Bundle
-        run: ./gradlew bundle
+        run: ./gradlew bundleRelease
 
       - run: mkdir -p outputs/
       - run: find . -type f -regex ".*\/*\.apk" -exec cp {} outputs/ \;
