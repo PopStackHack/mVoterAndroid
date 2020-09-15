@@ -15,7 +15,7 @@ abstract class VotingGuideFeatureModule {
 
   @Binds
   @IntoMap
-  @ViewModelKey(VotingGuideModel::class)
-  abstract fun votingGuideViewModel(viewModel: VotingGuideModel): ViewModel
+  @ViewModelKey(VotingGuideViewModel::class)
+  abstract fun votingGuideViewModel(viewModel: VotingGuideViewModel): ViewModel
 
 }

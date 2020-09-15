@@ -2,18 +2,25 @@ package com.popstack.mvoter2015.feature.votingguide
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import androidx.core.content.ContextCompat
+import androidx.core.text.bold
+import androidx.core.text.buildSpannedString
+import androidx.core.text.color
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerHowToVoteBinding
+import com.popstack.mvoter2015.domain.utils.convertToBurmeseNumber
+import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.logging.HasTag
 
 class VotingGuideController : MvvmController<ControllerHowToVoteBinding>(), HasTag {
 
   override val tag: String = "VotingGuideController"
 
-  private val viewModel: VotingGuideModel by viewModels()
+  private val viewModel: VotingGuideViewModel by viewModels()
 
   override val bindingInflater: (LayoutInflater) -> ControllerHowToVoteBinding =
     ControllerHowToVoteBinding::inflate
@@ -39,9 +46,55 @@ class VotingGuideController : MvvmController<ControllerHowToVoteBinding>(), HasT
 
       layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
       adapter = VotingGuideRecyclerViewAdapter(viewItems)
-
-      recycledViewPool.setMaxRecycledViews(VotingGuideRecyclerViewAdapter.VIEW_TYPE_COUNT_DOWN, 1)
     }
+
+    val accentColor = ContextCompat.getColor(requireContext(), R.color.accent)
+
+    viewModel.countDownLiveData.observe(
+      this,
+      { countdown ->
+        binding.contentCountdown.isVisible = countdown !is CountDownCalculator.CountDown.ShowNone
+        when (countdown) {
+          is CountDownCalculator.CountDown.ShowDay -> {
+            binding.tvCountDown.text = buildSpannedString {
+              color(
+                accentColor
+              ) {
+                bold {
+                  append("${countdown.dayLeft}".convertToBurmeseNumber())
+                }
+              }
+              append(" ရက်")
+            }
+          }
+          is CountDownCalculator.CountDown.ShowHourMinSec -> {
+            binding.tvCountDown.text = buildSpannedString {
+              color(
+                accentColor
+              ) {
+                append("${countdown.hour}".convertToBurmeseNumber())
+              }
+              append(" နာရီ")
+              color(
+                accentColor
+              ) {
+                append(" ${countdown.minute}".convertToBurmeseNumber())
+              }
+              append(" မိနစ်")
+              color(
+                accentColor
+              ) {
+                append(" ${countdown.seconds}".convertToBurmeseNumber())
+              }
+              append(" စက္ကန့်")
+            }
+          }
+        }
+
+      }
+    )
+
+    viewModel.startCountDown()
   }
 
 }
