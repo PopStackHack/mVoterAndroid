@@ -79,6 +79,7 @@ class PartyListController : MvvmController<ControllerPartyListBinding>(), HasTag
       val refreshLoadState = loadStates.refresh
       binding.rvParty.isVisible = refreshLoadState is LoadState.NotLoading
       placeHolderVisibilityHandler.setVisible(refreshLoadState is LoadState.Loading)
+      binding.contentError.isVisible = refreshLoadState is LoadState.Error
       binding.tvErrorMessage.isVisible = refreshLoadState is LoadState.Error
       binding.btnRetry.isVisible = refreshLoadState is LoadState.Error
 
