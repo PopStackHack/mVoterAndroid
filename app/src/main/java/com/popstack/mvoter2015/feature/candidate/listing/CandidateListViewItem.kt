@@ -20,6 +20,6 @@ fun Candidate.toSmallCandidateViewItem() = SmallCandidateViewItem(
   candidateId = id.value,
   name = name,
   photoUrl = photoUrl,
-  partyName = party?.nameBurmese ?: "တစ်သီးပုက္ကလ",
+  partyName = party?.nameBurmese ?: "တစ်သီးပုဂ္ဂလ",
   partySealImageUrl = party?.sealImage ?: individualLogo
 )

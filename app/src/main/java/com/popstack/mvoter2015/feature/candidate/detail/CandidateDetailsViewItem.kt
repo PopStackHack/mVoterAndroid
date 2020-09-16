@@ -42,7 +42,7 @@ fun Candidate.toCandidateInfoViewItem() = CandidateInfoViewItem(
   photo = photoUrl,
   name = name,
   partyId = party?.id,
-  partyName = party?.nameBurmese ?: "တစ်သီးပုက္ကလ",
+  partyName = party?.nameBurmese ?: "တစ်သီးပုဂ္ဂလ",
   partySealImageUrl = party?.sealImage ?: individualLogo,
   // TODO: Distinguish state region
   houseType = when (constituency.house) {
