@@ -33,7 +33,7 @@ SELECT
  PartyTable.isEstablishedDueToArticle25 AS partyIsEstablishedDueToArticle25
 FROM CandidateWithConstituencyView LEFT OUTER JOIN PartyTable
 ON CandidateWithConstituencyView.partyId == PartyTable.id
-WHERE constituencyId = :constituencyId
+WHERE constituencyId = :constituencyId OR CandidateWithConstituencyView.queryConstituencyid = :constituencyId
 ORDER BY CandidateWithConstituencyView.sortingBallotOrder ASC;
 
 getById:

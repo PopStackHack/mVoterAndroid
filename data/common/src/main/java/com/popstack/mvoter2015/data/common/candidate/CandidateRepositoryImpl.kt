@@ -17,9 +17,7 @@ class CandidateRepositoryImpl @Inject constructor(
       val candidateListFromNetwork = candidateNetworkSource.getCandidateList(constituencyId)
       candidateCacheSource.flushUnderConstituency(constituencyId)
       //TODO: Use separate field for this, currently overriding cuz ethnic candidate has different const id than normal one in state region
-      candidateCacheSource.putCandidateList(candidateListFromNetwork.map {
-        it.copy(constituency = it.constituency.copy(id = constituencyId.value))
-      })
+      candidateCacheSource.putCandidateList(candidateListFromNetwork, constituencyId)
     } catch (exception: NetworkException) {
       //Network error, see if can recover from cache
       if (exception.errorCode == 404) {
@@ -34,7 +32,7 @@ class CandidateRepositoryImpl @Inject constructor(
       return candidateListFromCache
     }
 
-    //We use database as single source of truth
+    //We use database as single source of true
     return candidateCacheSource.getCandidateList(constituencyId)
   }
 

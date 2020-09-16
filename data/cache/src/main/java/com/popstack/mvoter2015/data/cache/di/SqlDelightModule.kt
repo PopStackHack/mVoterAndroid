@@ -17,7 +17,7 @@ abstract class SqlDelightModule {
     @Provides
     @Singleton
     fun sqlDriver(context: Context): SqlDriver {
-      return AndroidSqliteDriver(MVoterDb.Schema, context, "mvoter.db")
+      return AndroidSqliteDriver(MVoterDb.Schema, context, "mvoter2020.db")
     }
 
     @Provides

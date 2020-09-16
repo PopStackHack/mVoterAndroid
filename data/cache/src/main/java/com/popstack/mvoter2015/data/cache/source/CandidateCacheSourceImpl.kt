@@ -21,22 +21,94 @@ class CandidateCacheSourceImpl @Inject constructor(
 ) : CandidateCacheSource {
 
   override fun putCandidate(candidate: Candidate) {
-    candidate.party?.let(partyCacheSource::putParty)
-    with(candidate.constituency) {
-      db.constitutencyTableQueries.insertOrReplace(
-        id = id,
-        name = name,
-        house = house,
-        township = township,
-        stateRegion = stateRegion
-      )
+    db.candidateTableQueries.transaction {
+      candidate.party?.let(partyCacheSource::putParty)
+      with(candidate.constituency) {
+        db.constitutencyTableQueries.insertOrReplace(
+          id = id,
+          name = name,
+          house = house,
+          township = township,
+          stateRegion = stateRegion
+        )
+      }
+
+      if (db.candidateTableQueries.getById(candidate.id.value).executeAsOneOrNull() != null) {
+        //Exists update
+        with(candidate) {
+          db.candidateTableQueries.update(
+            id = id.value,
+            name = name,
+            sortingName = sortingName,
+            sortingBallotOrder = sortingBallotOrder,
+            gender = gender,
+            occupation = occupation,
+            photoUrl = photoUrl,
+            education = education,
+            religion = religion,
+            age = age?.toLong(),
+            birthDate = birthDate,
+            ethnicity = ethnicity,
+            father = father,
+            mother = mother,
+            individualLogo = individualLogo,
+            isEthnicCandidate = isEthnicCandidate,
+            representingEthnicity = representingEthnicity,
+            residentalAddress = residentialAddress,
+            partyId = party?.id,
+            constituencyId = constituency.id
+          )
+        }
+      } else {
+        //Doesn't exist, add new
+        insertOrReplaceCandidate(candidate, null)
+      }
     }
-    insertOrReplaceCandidate(candidate)
   }
 
-  override fun putCandidateList(candidateList: List<Candidate>) {
+  private fun insertOrReplaceCandidate(candidate: Candidate, queryConstituencyId: ConstituencyId?) {
+    with(candidate) {
+      db.candidateTableQueries.insertOrReplace(
+        id = id.value,
+        name = name,
+        sortingName = sortingName,
+        sortingBallotOrder = sortingBallotOrder,
+        gender = gender,
+        occupation = occupation,
+        photoUrl = photoUrl,
+        education = education,
+        religion = religion,
+        age = age?.toLong(),
+        birthDate = birthDate,
+        ethnicity = ethnicity,
+        father = father,
+        mother = mother,
+        individualLogo = individualLogo,
+        isEthnicCandidate = isEthnicCandidate,
+        representingEthnicity = representingEthnicity,
+        residentalAddress = residentialAddress,
+        partyId = party?.id,
+        constituencyId = constituency.id,
+        queryConstituencyid = queryConstituencyId?.value
+      )
+    }
+  }
+
+  override fun putCandidateList(candidateList: List<Candidate>, queryConstituencyId: ConstituencyId) {
     db.transaction {
-      candidateList.forEach { putCandidate(it) }
+      candidateList.forEach { candidate ->
+        candidate.party?.let(partyCacheSource::putParty)
+        with(candidate.constituency) {
+          db.constitutencyTableQueries.insertOrReplace(
+            id = id,
+            name = name,
+            house = house,
+            township = township,
+            stateRegion = stateRegion
+          )
+        }
+        insertOrReplaceCandidate(candidate, queryConstituencyId)
+      }
     }
   }
 
@@ -61,6 +133,7 @@ class CandidateCacheSourceImpl @Inject constructor(
     representingEthnicity: String?,
     partyId: PartyId?,
     constituencyId: String,
+    queryConstituencyId: String?,
     _constituencyId: String,
     _constituencyName: String,
     _constituencyHouse: HouseType,
@@ -88,7 +161,7 @@ class CandidateCacheSourceImpl @Inject constructor(
     { id, name, sortingName, sortingBallotOrder,
       gender, occupation, photoUrl, education, religion, age, birthDate, ethnicity, father, mother,
       individualLogo, residentalAddress, isEthnicCandidate, representingEthnicity, partyId,
-      constituencyId, _constituencyId, _constituencyName, _constituencyHouse, _constituencyTownship,
+      constituencyId, queryConstituencyId, _constituencyId, _constituencyName, _constituencyHouse, _constituencyTownship,
       _constituencyStateRegion, _partyId, partyNumber, partyBurmeseName, partyEnglishName,
       partyAbbreviation, partyFlagImage, partySealImage, partyRegion, partyLeadersAndChairmen,
       partyMemberCount, partyContacts, partyHeadquarterLocation, partyPolicy,
@@ -165,112 +238,4 @@ class CandidateCacheSourceImpl @Inject constructor(
     db.candidateTableQueries.deleteByConstituency(constituencyId.value)
   }
 
-  private fun insertOrReplaceCandidate(candidate: Candidate) = with(candidate) {
-    db.candidateTableQueries.insertOrReplace(
-      id = id.value,
-      name = name,
-      sortingName = sortingName,
-      sortingBallotOrder = sortingBallotOrder,
-      gender = gender,
-      occupation = occupation,
-      photoUrl = photoUrl,
-      education = education,
-      religion = religion,
-      age = age?.toLong(),
-      birthDate = birthDate,
-      ethnicity = ethnicity,
-      father = father,
-      mother = mother,
-      individualLogo = individualLogo,
-      isEthnicCandidate = isEthnicCandidate,
-      representingEthnicity = representingEthnicity,
-      residentalAddress = residentialAddress,
-      partyId = party?.id,
-      constituencyId = constituency.id,
-    )
-  }
-
 }
-
-//internal fun CandidateTable.toCandidateModel() = Candidate(
-//  id = id,
-//  name = name,
-//  gender = gender,
-//  occupation = occupation,
-//  photoUrl = photoUrl,
-//  education = education,
-//  religion = religion,
-//  age = age?.toInt(),
-//  birthDate = birthDate,
-//  ethnicity = ethnicity,
-//  father = CandidateParent(
-//    name = fatherName.orEmpty(),
-//    religion = fatherReligion.orEmpty(),
-//    ""
-//  ),
-//  mother = CandidateParent(
-//    name = motherName.orEmpty(),
-//    religion = motherReligion.orEmpty(),
-//    ""
-//  ),
-//  individualLogo = individualLogo,
-//  party = null,
-//  residentialAddress = "",
-//  isEthnicCandidate = false,
-//  representingEthnicity = null
-//)
-//
-//internal fun CandidateWithPartyView.toCandidateModel() = Candidate(
-//  id = id,
-//  name = name,
-//  gender = gender,
-//  occupation = occupation,
-//  photoUrl = photoUrl,
-//  education = education,
-//  religion = religion,
-//  age = age?.toInt(),
-//  birthDate = birthDate,
-//  constituency = Constituency(
-//    // TODO: Change house accordingly
-//    id = "",
-//    name = constituencyName,
-//    house = HouseType.LOWER_HOUSE,
-//    null,
-//    null
-//  ),
-//  ethnicity = ethnicity,
-//  father = CandidateParent(
-//    name = fatherName.orEmpty(),
-//    religion = fatherReligion.orEmpty(),
-//    ""
-//  ),
-//  mother = CandidateParent(
-//    name = motherName.orEmpty(),
-//    religion = motherReligion.orEmpty(),
-//    ""
-//  ),
-//  individualLogo = individualLogo,
-//  party = Party(
-//    id = partyId!!,
-//    registeredNumber = partyNumber,
-//    nameBurmese = partyBurmeseName,
-//    nameEnglish = partyEnglishName,
-//    abbreviation = partyAbbreviation,
-//    flagImage = partyFlagImage,
-//    sealImage = partySealImage,
-//    region = partyRegion,
-//    leadersAndChairmenList = partyLeadersAndChairmen,
-//    memberCount = partyMemberCount,
-//    headquarterLocation = partyHeadquarterLocation,
-//    policy = partyPolicy,
-//    contacts = partyContacts,
-//    establishmentApplicationDate = partyEstablishmentApplicationDate,
-//    establishmentApprovalDate = partyEstablishmentApprovalDate,
-//    registrationApplicationDate = partyRegistrationApplicationDate,
-//    registrationApprovalDate = partyRegistrationApprovalDate,
-//    isEstablishedDueToArticle25 = partyIsEstablishedDueToArticle25,
-//  ),
-//  residentialAddress = "",
-//  isEthnicCandidate = false,
-//  representingEthnicity = null
-//)

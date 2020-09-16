@@ -28,8 +28,10 @@ CREATE TABLE CandidateTable(
   representingEthnicity TEXT,
   partyId TEXT AS PartyId,
   constituencyId TEXT NOT NULL,
+  queryConstituencyid TEXT,
   FOREIGN KEY(partyId) REFERENCES PartyTable(id),
-  FOREIGN KEY(constituencyId) REFERENCES ConstituencyTable(id) ON DELETE CASCADE
+  FOREIGN KEY(constituencyId) REFERENCES ConstituencyTable(id) ON DELETE CASCADE,
+  FOREIGN KEY(queryConstituencyid) REFERENCES ConstituencyTable(id) ON DELETE CASCADE
 );
 
 insertOrReplace:
@@ -37,8 +39,34 @@ INSERT OR REPLACE INTO CandidateTable VALUES(
 :id, : name, :sortingName, :sortingBallotOrder, :gender, :occupation, :photoUrl, :education, :religion,
 :age, :birthDate, :ethnicity, :father, :mother, :individualLogo,
 :residentalAddress, :isEthnicCandidate, :representingEthnicity, :partyId,
-:constituencyId
+:constituencyId, :queryConstituencyid
 );
 
+update:
+UPDATE CandidateTable SET
+id = :id,
+name = :name,
+sortingName = :sortingName,
+sortingBallotOrder = :sortingBallotOrder,
+gender = :gender,
+occupation = :occupation,
+photoUrl = :photoUrl,
+education = :education,
+religion =  :religion,
+age = :age,
+birthDate = :birthDate,
+ethnicity = :ethnicity,
+father = :father,
+mother = :mother,
+individualLogo =  :individualLogo,
+residentalAddress =:residentalAddress,
+isEthnicCandidate = :isEthnicCandidate,
+representingEthnicity = :representingEthnicity,
+partyId = :partyId,
+constituencyId = :constituencyId;
+
+getById:
+SELECT * FROM CandidateTable WHERE id = :id;
+
 deleteByConstituency:
-DELETE FROM CandidateTable WHERE constituencyId = :constituencyId;
+DELETE FROM CandidateTable WHERE constituencyId = :constituencyId OR queryConstituencyid = :constituencyId;

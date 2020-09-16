@@ -7,7 +7,7 @@ import com.popstack.mvoter2015.domain.constituency.model.ConstituencyId
 interface CandidateCacheSource {
   fun putCandidate(candidate: Candidate)
 
-  fun putCandidateList(candidateList: List<Candidate>)
+  fun putCandidateList(candidateList: List<Candidate>, queryConstituencyId: ConstituencyId)
 
   fun getCandidateList(constituencyId: ConstituencyId): List<Candidate>
 
