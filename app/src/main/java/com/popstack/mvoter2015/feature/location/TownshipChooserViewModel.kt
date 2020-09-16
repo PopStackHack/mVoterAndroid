@@ -33,19 +33,19 @@ class TownshipChooserViewModel @Inject constructor(
   }
 
   val onStateRegionClicked: (Int, String) -> Unit = onStateRegionClicked@ { position, clickedStateRegion ->
-    data.chosenStateRegion?.let {
-      changeSelected(it, false)
-    }
-
     if (data.chosenStateRegion == clickedStateRegion) {
+      toggleSelected(clickedStateRegion)
       viewItemLiveData.postSuccess(data.viewItems)
       return@onStateRegionClicked
+    }
+
+    data.chosenStateRegion?.let {
+      changeSelected(it, false)
     }
 
     data.chosenStateRegion = clickedStateRegion
 
     val shouldLoadTownship = changeSelected(clickedStateRegion, true)
-
 
       viewModelScope.launch {
         if (shouldLoadTownship) {
@@ -92,6 +92,21 @@ class TownshipChooserViewModel @Inject constructor(
         return@forEachIndexed
       }
     }
+  }
+
+  private fun toggleSelected(stateRegion: String): Boolean {
+    data.viewItems.forEachIndexed { index, viewItem ->
+      if (viewItem.name == stateRegion) {
+        val isSelected = !data.viewItems[index].isSelected
+        val shouldLoadTownships = isSelected && data.viewItems[index].townshipList.isEmpty()
+        data.viewItems[index] = data.viewItems[index].copy(
+          isSelected = isSelected,
+          isLoading = shouldLoadTownships
+        )
+        return shouldLoadTownships
+      }
+    }
+    return false
   }
 
   private fun changeSelected(stateRegion: String, isSelected: Boolean): Boolean {
