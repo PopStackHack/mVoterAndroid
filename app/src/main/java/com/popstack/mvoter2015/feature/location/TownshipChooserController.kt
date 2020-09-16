@@ -60,7 +60,9 @@ class TownshipChooserController : MvvmController<ControllerTownshipChooserBindin
     viewModel.onStateRegionChosen.observe(
       this,
       {
-        //TODO: Scroll to top
+        binding.rvStatRegionTownship.postDelayed( {
+          (binding.rvStatRegionTownship.layoutManager as LinearLayoutManager).scrollToPosition(it)
+        }, 200)
       }
     )
     viewModel.viewItemLiveData.observe(this, Observer(::observeViewItem))

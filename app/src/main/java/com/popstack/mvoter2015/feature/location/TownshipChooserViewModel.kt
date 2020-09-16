@@ -8,6 +8,7 @@ import com.popstack.mvoter2015.domain.location.usecase.GetTownshipsForStateRegio
 import com.popstack.mvoter2015.exception.GlobalExceptionHandler
 import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewStateLiveData
 import com.popstack.mvoter2015.helper.livedata.SingleLiveEvent
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -31,31 +32,41 @@ class TownshipChooserViewModel @Inject constructor(
     var viewItems: ArrayList<StateRegionTownshipViewItem> = ArrayList()
   }
 
-  val onStateRegionClicked: (Int, String) -> Unit = { position, clickedStateRegion ->
+  val onStateRegionClicked: (Int, String) -> Unit = onStateRegionClicked@ { position, clickedStateRegion ->
     data.chosenStateRegion?.let {
       changeSelected(it, false)
+    }
+
+    if (data.chosenStateRegion == clickedStateRegion) {
+      viewItemLiveData.postSuccess(data.viewItems)
+      return@onStateRegionClicked
     }
 
     data.chosenStateRegion = clickedStateRegion
 
     val shouldLoadTownship = changeSelected(clickedStateRegion, true)
 
-    if (shouldLoadTownship)
+
       viewModelScope.launch {
-        val params = GetTownshipsForStateRegion.Params(clickedStateRegion)
-        kotlin.runCatching {
-          val townships = getTownshipList.execute(params)
-          setTownship(params.stateRegionIdentifier, townships)
-          viewItemLiveData.postSuccess(data.viewItems)
-        }.exceptionOrNull()?.let { exception ->
-          val errorMessage = globalExceptionHandler.getMessageForUser(exception)
-          setErrorMessage(params.stateRegionIdentifier, errorMessage)
+        if (shouldLoadTownship) {
+          val params = GetTownshipsForStateRegion.Params(clickedStateRegion)
+          kotlin.runCatching {
+            val townships = getTownshipList.execute(params)
+            setTownship(params.stateRegionIdentifier, townships)
+            viewItemLiveData.postSuccess(data.viewItems)
+            onStateRegionChosen.postValue(position)
+          }.exceptionOrNull()?.let { exception ->
+            val errorMessage = globalExceptionHandler.getMessageForUser(exception)
+            setErrorMessage(params.stateRegionIdentifier, errorMessage)
+            onStateRegionChosen.postValue(position)
+            viewItemLiveData.postSuccess(data.viewItems)
+          }
+        }
+        else {
+          onStateRegionChosen.postValue(position)
           viewItemLiveData.postSuccess(data.viewItems)
         }
       }
-    else
-      viewItemLiveData.postSuccess(data.viewItems)
-    onStateRegionChosen.postValue(position)
   }
 
   private fun setTownship(stateRegion: String, townships: List<Township>) {
