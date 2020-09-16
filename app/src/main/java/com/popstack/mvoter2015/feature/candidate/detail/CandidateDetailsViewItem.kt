@@ -6,7 +6,7 @@ import com.popstack.mvoter2015.domain.party.model.PartyId
 import com.popstack.mvoter2015.domain.utils.BurmeseNumberUtils
 import com.popstack.mvoter2015.feature.candidate.listing.SmallCandidateViewItem
 import java.time.format.DateTimeFormatter
-import java.util.*
+import java.util.Locale
 
 data class CandidateDetailsViewItem(
   val candidateInfo: CandidateInfoViewItem,

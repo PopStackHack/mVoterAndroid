@@ -60,9 +60,12 @@ class TownshipChooserController : MvvmController<ControllerTownshipChooserBindin
     viewModel.onStateRegionChosen.observe(
       this,
       {
-        binding.rvStatRegionTownship.postDelayed( {
-          (binding.rvStatRegionTownship.layoutManager as LinearLayoutManager).scrollToPosition(it)
-        }, 200)
+        binding.rvStatRegionTownship.postDelayed(
+          {
+            (binding.rvStatRegionTownship.layoutManager as LinearLayoutManager).scrollToPosition(it)
+          },
+          200
+        )
       }
     )
     viewModel.viewItemLiveData.observe(this, Observer(::observeViewItem))
