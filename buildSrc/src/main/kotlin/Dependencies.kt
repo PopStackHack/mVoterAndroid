@@ -161,7 +161,7 @@ object Lottie {
 }
 
 object Monex {
-  private const val version = "0.4.0"
+  private const val version = "0.4.3"
 
   const val monex = "com.aungkyawpaing.monex:monex:$version"
   const val no_op = "com.aungkyawpaing.monex:monex-no-op:$version"

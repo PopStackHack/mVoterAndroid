@@ -30,14 +30,16 @@ class VotingGuideController : MvvmController<ControllerHowToVoteBinding>(), HasT
     binding.rvVotingGuide.apply {
       val titles = arrayOf(
         R.string.how_to_vote_step_1_title, R.string.how_to_vote_step_2_title,
-        R.string.how_to_vote_step_3_title, R.string.how_to_vote_step_4_title
+        R.string.how_to_vote_step_3_title, R.string.how_to_vote_step_4_title,
+        R.string.how_to_vote_step_5_title, R.string.how_to_vote_step_6_title
       ).map {
         context.resources.getString(it)
       }
 
       val steps = arrayOf(
         R.array.how_to_vote_step_1, R.array.how_to_vote_step_2,
-        R.array.how_to_vote_step_3, R.array.how_to_vote_step_4
+        R.array.how_to_vote_step_3, R.array.how_to_vote_step_4,
+        R.array.how_to_vote_step_5, R.array.how_to_vote_step_6
       ).map {
         context.resources.getStringArray(it)
       }

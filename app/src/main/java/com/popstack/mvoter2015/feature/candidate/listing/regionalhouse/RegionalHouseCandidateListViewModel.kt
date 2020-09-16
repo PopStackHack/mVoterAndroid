@@ -10,13 +10,10 @@ import com.popstack.mvoter2015.feature.candidate.listing.CandidateViewItem
 import com.popstack.mvoter2015.feature.candidate.listing.EthnicConstituencyTitleViewItem
 import com.popstack.mvoter2015.feature.candidate.listing.toSmallCandidateViewItem
 import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewStateLiveData
+import javax.inject.Inject
+import kotlin.collections.set
 import kotlinx.coroutines.launch
 import timber.log.Timber
-import java.util.*
-import javax.inject.Inject
-import kotlin.collections.ArrayList
-import kotlin.collections.HashMap
-import kotlin.collections.set
 
 class RegionalHouseCandidateListViewModel @Inject constructor(
   private val getMyStateRegionHouseCandidateList: GetMyStateRegionHouseCandidateList,
@@ -49,10 +46,7 @@ class RegionalHouseCandidateListViewModel @Inject constructor(
         }
 
         // Sort by representing constituency
-        val sortedEthnicConstituency = ethnicCandidatesMap.keys.toTypedArray()
-          .apply {
-            Arrays.sort(this)
-          }
+        val sortedEthnicConstituency = ethnicCandidatesMap.keys.toTypedArray().sortedArray()
 
         sortedEthnicConstituency.forEach {
           stateRegionCandidateViewItemList.add(EthnicConstituencyTitleViewItem(it))
