@@ -6,7 +6,7 @@ import com.popstack.mvoter2015.domain.party.model.PartyId
 import com.popstack.mvoter2015.domain.utils.BurmeseNumberUtils
 import com.popstack.mvoter2015.feature.candidate.listing.SmallCandidateViewItem
 import java.time.format.DateTimeFormatter
-import java.util.Locale
+import java.util.*
 
 data class CandidateDetailsViewItem(
   val candidateInfo: CandidateInfoViewItem,
@@ -50,8 +50,7 @@ fun Candidate.toCandidateInfoViewItem() = CandidateInfoViewItem(
     HouseType.LOWER_HOUSE -> "ပြည့်သူလွှတ်တော်"
     HouseType.REGIONAL_HOUSE -> "ပြည်နယ်လွှတ်တော်"
   },
-  constituencyName = constituency.township
-    ?: constituency.stateRegion.orEmpty() + " " + constituency.name,
+  constituencyName = constituency.name,
   age = BurmeseNumberUtils.convertEnglishToBurmeseNumber(
     age?.toString()
       .orEmpty()
