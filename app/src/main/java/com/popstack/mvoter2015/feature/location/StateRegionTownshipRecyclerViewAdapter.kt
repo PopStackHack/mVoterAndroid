@@ -59,6 +59,10 @@ internal class StateRegionTownshipRecyclerViewAdapter constructor(
         onStateRegionClick(absoluteAdapterPosition, stateRegionTownshipViewItem.name)
       }
 
+      binding.ivDropDownArrow.setOnClickListener {
+        onStateRegionClick(absoluteAdapterPosition, stateRegionTownshipViewItem.name)
+      }
+
       binding.btnRetry.setOnClickListener {
         onRetryClick()
       }
