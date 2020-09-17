@@ -21,12 +21,10 @@
 
   <ImageView
     android:id="@+id/ivCandidatePartySeal"
-    android:layout_width="36dp"
-    android:layout_height="0dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:layout_marginStart="16dp"
     android:importantForAccessibility="no"
-    android:src="@drawable/placeholder_rect"
-    app:layout_constraintDimensionRatio="3:2"
     app:layout_constraintStart_toEndOf="@+id/ivCandidate"
     app:layout_constraintTop_toTopOf="@+id/tvCandidatePartyName" />
 

@@ -12,6 +12,7 @@ import com.popstack.mvoter2015.domain.candidate.model.CandidateId
 import com.popstack.mvoter2015.feature.candidate.listing.viewholders.CandidateItemViewHolder
 import com.popstack.mvoter2015.helper.diff.diffCallBackWith
 import com.popstack.mvoter2015.helper.extensions.inflater
+import com.popstack.mvoter2015.helper.extensions.toPx
 import com.popstack.mvoter2015.helper.extensions.withSafeAdapterPosition
 
 class CandidateListRecyclerViewAdapter constructor(
@@ -77,10 +78,10 @@ class CandidateListItemViewHolder(val binding: ItemCandidateBinding) : Candidate
         scale(Scale.FILL)
       }
       ivCandidatePartySeal.load(smallCandidateViewItem.partySealImageUrl) {
-        placeholder(R.drawable.placeholder_rect)
+        placeholder(R.drawable.party_seal_placeholder_rect)
         error(R.drawable.placeholder_rect)
-        scale(Scale.FILL)
-        crossfade(true)
+        size(36.toPx().toInt(), 21.toPx().toInt())
+        scale(Scale.FIT)
       }
     }
   }
