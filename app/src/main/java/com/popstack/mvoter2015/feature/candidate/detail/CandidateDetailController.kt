@@ -31,6 +31,7 @@ import com.popstack.mvoter2015.helper.conductor.requireActivityAsAppCompatActivi
 import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.helper.conductor.supportActionBar
 import com.popstack.mvoter2015.helper.extensions.setCompoundDrawableWithIntrinsicBoundsKt
+import com.popstack.mvoter2015.helper.extensions.toPx
 import com.popstack.mvoter2015.helper.intent.Intents
 import com.popstack.mvoter2015.logging.HasTag
 
@@ -183,9 +184,10 @@ class CandidateDetailController(
           }
 
           binding.ivCandidatePartySeal.load(partySealImageUrl) {
-            placeholder(R.drawable.placeholder_rect)
-            error(R.drawable.placeholder_rect)
-            crossfade(true)
+            placeholder(R.drawable.party_seal_placeholder_rect)
+            error(R.drawable.party_seal_placeholder_rect)
+            size(36.toPx().toInt(), 21.toPx().toInt())
+            scale(Scale.FIT)
           }
           binding.ivCandidate.load(photo) {
             transformations(CircleCropTransformation())
