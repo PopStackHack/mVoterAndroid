@@ -130,4 +130,25 @@
       style="@style/Widget.MaterialComponents.Button.TextButton"
       />
 
+  <ProgressBar
+    android:id="@+id/progressBar"
+    style="?android:attr/progressBarStyle"
+    android:layout_width="24dp"
+    android:layout_height="24dp"
+    android:visibility="gone"
+    app:layout_constraintBottom_toBottomOf="@+id/buttonDone"
+    app:layout_constraintEnd_toEndOf="@+id/buttonDone"
+    app:layout_constraintStart_toStartOf="@+id/buttonDone"
+    app:layout_constraintTop_toTopOf="@+id/buttonDone" />
+
+  <TextView
+    android:id="@+id/tvErrorMessage"
+    style="@style/TextSmall.Error"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:visibility="gone"
+    app:layout_constraintEnd_toEndOf="@+id/buttonDone"
+    app:layout_constraintStart_toStartOf="@+id/buttonDone"
+    app:layout_constraintTop_toBottomOf="@+id/buttonDone" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

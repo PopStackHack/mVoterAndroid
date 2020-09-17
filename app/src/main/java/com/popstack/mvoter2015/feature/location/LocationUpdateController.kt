@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
@@ -63,6 +64,9 @@ class LocationUpdateController :
 //        }
 //      }.launch(Manifest.permission.ACCESS_FINE_LOCATION)
     }
+
+    binding.buttonDone.icon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_baseline_check_white_24)
+    binding.buttonDone.isEnabled = false
 
     binding.buttonDone.setOnClickListener {
       viewModel.onDoneClicked()
@@ -125,7 +129,15 @@ class LocationUpdateController :
         binding.tvRequestLocation.animation = fadeInFadeOutAnimation
       }
       LocationUpdateViewModel.ViewEvent.EnableDoneButton -> {
+        binding.buttonDone.icon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_baseline_check_white_24)
         binding.buttonDone.isEnabled = true
+        binding.progressBar.isVisible = false
+      }
+      LocationUpdateViewModel.ViewEvent.ShowConstituencyLoading -> {
+        binding.buttonDone.isEnabled = false
+        binding.tvErrorMessage.isVisible = false
+        binding.buttonDone.icon = null
+        binding.progressBar.isVisible = true
       }
       LocationUpdateViewModel.ViewEvent.NavigateToHomePage -> {
         lifecycleScope.launch {
@@ -135,6 +147,13 @@ class LocationUpdateController :
           RouterTransaction.with(BottomNavigationHostController())
             .tag(BottomNavigationHostController.TAG)
         )
+      }
+      is LocationUpdateViewModel.ViewEvent.ShowErrorMessage -> {
+        binding.buttonDone.icon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_baseline_check_white_24)
+        binding.buttonDone.isEnabled = true
+        binding.progressBar.isVisible = false
+        binding.tvErrorMessage.isVisible = true
+        binding.tvErrorMessage.text = viewEvent.error
       }
     }
   }

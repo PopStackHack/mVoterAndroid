@@ -8,6 +8,7 @@ import com.popstack.mvoter2015.domain.location.model.Ward
 import com.popstack.mvoter2015.domain.location.usecase.GetWardDetails
 import com.popstack.mvoter2015.domain.location.usecase.SaveUserStateRegionTownship
 import com.popstack.mvoter2015.domain.location.usecase.SaveUserWard
+import com.popstack.mvoter2015.exception.GlobalExceptionHandler
 import com.popstack.mvoter2015.helper.livedata.SingleLiveEvent
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -18,13 +19,16 @@ class LocationUpdateViewModel @Inject constructor(
   private val locationProvider: LocationProvider,
   private val getWardDetails: GetWardDetails,
   private val saveUserWard: SaveUserWard,
-  private val saveUserStateRegionTownship: SaveUserStateRegionTownship
+  private val saveUserStateRegionTownship: SaveUserStateRegionTownship,
+  private val globalExceptionHandler: GlobalExceptionHandler
 ) : ViewModel() {
 
   sealed class ViewEvent {
     object ShowLocationRequesting : ViewEvent()
     object EnableDoneButton : ViewEvent()
     object NavigateToHomePage : ViewEvent()
+    object ShowConstituencyLoading : ViewEvent()
+    data class ShowErrorMessage(val error: String) : ViewEvent()
   }
 
   inner class Data {
@@ -61,28 +65,34 @@ class LocationUpdateViewModel @Inject constructor(
     data.chosenWard = ward
     viewModelScope.launch {
       kotlin.runCatching {
-        data.wardDetails = getWardDetails.execute(
-          GetWardDetails.Params(
-            stateRegion = data.chosenStateRegion!!,
-            township = data.chosenTownship!!,
-            ward = data.chosenWard!!
-          )
-        )
+        viewEventLiveData.postValue(ViewEvent.ShowConstituencyLoading)
+        data.wardDetails = fetchWardDetails()
         viewEventLiveData.postValue(ViewEvent.EnableDoneButton)
+      }.exceptionOrNull()?.let { exception ->
+        viewEventLiveData.postValue(ViewEvent.ShowErrorMessage(globalExceptionHandler.getMessageForUser(exception)))
+        Timber.e(exception)
       }
-        .exceptionOrNull()
-        ?.let { exception ->
-          Timber.e(exception)
-        }
     }
   }
+
+  private suspend fun fetchWardDetails() = getWardDetails.execute(
+    GetWardDetails.Params(
+      stateRegion = data.chosenStateRegion!!,
+      township = data.chosenTownship!!,
+      ward = data.chosenWard!!
+    )
+  )
 
   fun onDoneClicked() {
     viewModelScope.launch {
       kotlin.runCatching {
-        data.wardDetails?.let {
-          saveUserWard.execute(SaveUserWard.Params(it))
+        viewEventLiveData.postValue(ViewEvent.ShowConstituencyLoading)
+        if (data.wardDetails == null) {
+          data.wardDetails = fetchWardDetails()
         }
+
+        saveUserWard.execute(SaveUserWard.Params(data.wardDetails!!))
+
         saveUserStateRegionTownship.execute(
           SaveUserStateRegionTownship.Params(
             StateRegionTownship(
@@ -91,12 +101,12 @@ class LocationUpdateViewModel @Inject constructor(
             )
           )
         )
+
         viewEventLiveData.postValue(ViewEvent.NavigateToHomePage)
+      }.exceptionOrNull()?.let { exception ->
+        viewEventLiveData.postValue(ViewEvent.ShowErrorMessage(globalExceptionHandler.getMessageForUser(exception)))
+        Timber.e(exception)
       }
-        .exceptionOrNull()
-        ?.let { exception ->
-          Timber.e(exception)
-        }
     }
   }
 
