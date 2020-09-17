@@ -14,6 +14,7 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import coil.api.load
+import coil.size.Precision
 import coil.size.Scale
 import coil.transform.CircleCropTransformation
 import com.bluelinelabs.conductor.RouterTransaction
@@ -188,6 +189,7 @@ class CandidateDetailController(
             error(R.drawable.party_seal_placeholder_rect)
             size(36.toPx().toInt(), 21.toPx().toInt())
             scale(Scale.FIT)
+            precision(Precision.EXACT)
           }
           binding.ivCandidate.load(photo) {
             transformations(CircleCropTransformation())

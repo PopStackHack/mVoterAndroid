@@ -3,6 +3,7 @@ package com.popstack.mvoter2015.feature.candidate.listing
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import coil.api.load
+import coil.size.Precision
 import coil.size.Scale
 import coil.transform.CircleCropTransformation
 import com.popstack.mvoter2015.R
@@ -82,6 +83,7 @@ class CandidateListItemViewHolder(val binding: ItemCandidateBinding) : Candidate
         error(R.drawable.party_seal_placeholder_rect)
         size(36.toPx().toInt(), 21.toPx().toInt())
         scale(Scale.FIT)
+        precision(Precision.EXACT)
       }
     }
   }
