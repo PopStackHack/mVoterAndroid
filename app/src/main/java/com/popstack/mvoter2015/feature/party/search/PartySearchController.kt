@@ -112,9 +112,7 @@ class PartySearchController : MvvmController<ControllerPartySearchBinding>(), Ha
       }
     }
 
-    binding.searchView.post {
-      binding.searchView.showKeyboard()
-    }
+    binding.searchView.showKeyboard()
   }
 
   private fun search(query: String?) {

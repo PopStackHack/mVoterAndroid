@@ -7,6 +7,7 @@ import com.popstack.mvoter2015.data.common.faq.FaqCacheSource
 import com.popstack.mvoter2015.data.common.faq.FaqNetworkSource
 import com.popstack.mvoter2015.domain.faq.model.Faq
 import com.popstack.mvoter2015.domain.faq.model.FaqCategory
+import com.popstack.mvoter2015.domain.utils.InputSanitizer
 import javax.inject.Inject
 
 class FaqPagerFactory @OptIn(ExperimentalPagingApi::class)
@@ -24,7 +25,7 @@ class FaqPagerFactory @OptIn(ExperimentalPagingApi::class)
         if (query != null) {
           FaqSearchPagingSource(
             faqNetworkSource,
-            query
+            InputSanitizer.sanitizeInput(query)
           )
         } else {
           FaqPagingSource(

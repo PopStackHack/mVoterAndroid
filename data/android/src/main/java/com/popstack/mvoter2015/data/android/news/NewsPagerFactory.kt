@@ -5,6 +5,7 @@ import androidx.paging.PagingConfig
 import com.popstack.mvoter2015.data.common.news.NewsCacheSource
 import com.popstack.mvoter2015.data.common.news.NewsNetworkSource
 import com.popstack.mvoter2015.domain.news.model.News
+import com.popstack.mvoter2015.domain.utils.InputSanitizer
 import javax.inject.Inject
 
 class NewsPagerFactory @Inject constructor(
@@ -21,7 +22,10 @@ class NewsPagerFactory @Inject constructor(
         if (query == null) {
           NewsPagingSource(newsCacheSource, newsNetworkSource)
         } else {
-          NewsSearchPagingSource(newsNetworkSource, query)
+          NewsSearchPagingSource(
+            newsNetworkSource,
+            InputSanitizer.sanitizeInput(query)
+          )
         }
       }
     )

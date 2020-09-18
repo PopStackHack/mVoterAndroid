@@ -5,6 +5,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import com.popstack.mvoter2015.data.common.candidate.CandidateNetworkSource
 import com.popstack.mvoter2015.domain.candidate.model.Candidate
+import com.popstack.mvoter2015.domain.utils.InputSanitizer
 import javax.inject.Inject
 
 class CandidatePagerFactory @OptIn(ExperimentalPagingApi::class)
@@ -20,7 +21,7 @@ class CandidatePagerFactory @OptIn(ExperimentalPagingApi::class)
       pagingSourceFactory = {
         CandidateSearchPagingSource(
           candidateNetworkSource,
-          query
+          InputSanitizer.sanitizeInput(query)
         )
       }
     )
