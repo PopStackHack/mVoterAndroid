@@ -11,6 +11,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.popstack.mvoter2015.databinding.ItemFaqBallotExampleBinding
 import com.popstack.mvoter2015.databinding.ItemFaqBinding
+import com.popstack.mvoter2015.databinding.ItemFaqLawsAndUnfairPracticeBinding
 import com.popstack.mvoter2015.databinding.ItemFaqPollingStationProhibitionBinding
 import com.popstack.mvoter2015.domain.faq.model.FaqId
 import com.popstack.mvoter2015.helper.diff.diffCallBackWith
@@ -19,6 +20,7 @@ import com.popstack.mvoter2015.helper.extensions.withSafeAdapterPosition
 
 class FaqPagingAdapter(
   private val ballotExampleClick: () -> Unit,
+  private val lawsAndUnfairPractice: () -> Unit,
   private val share: (FaqId, @ParameterName("position") Int) -> Unit
 ) :
   PagingDataAdapter<FaqViewItem, FaqPagingAdapter.InfoViewHolder>(
@@ -44,7 +46,8 @@ class FaqPagingAdapter(
   companion object {
     private const val VIEW_TYPE_BALLOT_EXAMPLE = 1
     private const val VIEW_TYPE_PROHIBITION = 2
-    private const val VIEW_TYPE_FAQ = 3
+    private const val VIEW_TYPE_LAWS_AND_UNFAIR_PRACTICE = 3
+    private const val VIEW_TYPE_FAQ = 4
   }
 
   override fun getItemViewType(position: Int): Int {
@@ -52,6 +55,7 @@ class FaqPagingAdapter(
       return when (itemAtIndex) {
         FaqViewItem.BallotExample -> VIEW_TYPE_BALLOT_EXAMPLE
         FaqViewItem.PollingStationProhibition -> VIEW_TYPE_PROHIBITION
+        is FaqViewItem.LawAndUnfairPractices -> VIEW_TYPE_LAWS_AND_UNFAIR_PRACTICE
         is FaqViewItem.QuestionAndAnswer -> VIEW_TYPE_FAQ
       }
     }
@@ -72,6 +76,15 @@ class FaqPagingAdapter(
         val binding =
           ItemFaqPollingStationProhibitionBinding.inflate(parent.inflater(), parent, false)
         return InfoViewHolder.PollingStationProhibitionViewHolder(binding)
+      }
+      VIEW_TYPE_LAWS_AND_UNFAIR_PRACTICE -> {
+        val binding =
+          ItemFaqLawsAndUnfairPracticeBinding.inflate(parent.inflater(), parent, false)
+        return InfoViewHolder.LawsAndUnfairPractices(binding).also { holder ->
+          holder.itemView.setOnClickListener {
+            lawsAndUnfairPractice.invoke()
+          }
+        }
       }
       VIEW_TYPE_FAQ -> {
         val binding = ItemFaqBinding.inflate(parent.inflater(), parent, false)
@@ -135,6 +148,9 @@ class FaqPagingAdapter(
       InfoViewHolder(binding.root)
 
     class PollingStationProhibitionViewHolder(binding: ItemFaqPollingStationProhibitionBinding) :
+      InfoViewHolder(binding.root)
+
+    class LawsAndUnfairPractices(binding: ItemFaqLawsAndUnfairPracticeBinding) :
       InfoViewHolder(binding.root)
 
     class FaqViewHolder(val binding: ItemFaqBinding) : InfoViewHolder(binding.root)

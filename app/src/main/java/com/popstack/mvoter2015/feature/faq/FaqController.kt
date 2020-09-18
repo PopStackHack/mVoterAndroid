@@ -16,6 +16,7 @@ import com.popstack.mvoter2015.domain.faq.model.FaqCategory
 import com.popstack.mvoter2015.exception.GlobalExceptionHandler
 import com.popstack.mvoter2015.feature.HasRouter
 import com.popstack.mvoter2015.feature.about.AboutController
+import com.popstack.mvoter2015.feature.browser.OpenBrowserDelegate
 import com.popstack.mvoter2015.feature.faq.ballot.BallotExampleController
 import com.popstack.mvoter2015.feature.faq.ballot.displayString
 import com.popstack.mvoter2015.feature.faq.search.FaqSearchController
@@ -32,6 +33,7 @@ import com.popstack.mvoter2015.helper.conductor.supportActionBar
 import com.popstack.mvoter2015.helper.intent.Intents
 import com.popstack.mvoter2015.logging.HasTag
 import com.popstack.mvoter2015.paging.CommonLoadStateAdapter
+import javax.inject.Inject
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -47,9 +49,18 @@ class FaqController : MvvmController<ControllerFaqBinding>(), HasTag {
   override val bindingInflater: (LayoutInflater) -> ControllerFaqBinding =
     ControllerFaqBinding::inflate
 
+  @Inject
+  lateinit var openBrowserDelegate: OpenBrowserDelegate
+
   private val faqPagingAdapter by lazy {
     FaqPagingAdapter(
       ballotExampleClick = { navigateToBallotExample() },
+      lawsAndUnfairPractice = {
+        lifecycleScope.launch {
+          openBrowserDelegate.browserHandler()
+            .launchNewsInBrowser(requireActivity(), "https://mvoterapp.com/election-law")
+        }
+      },
       share = { faqId, _ ->
         val shareIntent = Intents.shareUrl(ShareUrlFactory().faq(faqId))
         startActivity(Intent.createChooser(shareIntent, "Share Faq To..."))

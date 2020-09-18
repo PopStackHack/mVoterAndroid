@@ -7,9 +7,9 @@ import androidx.paging.map
 import com.popstack.mvoter2015.data.android.faq.FaqPagerFactory
 import com.popstack.mvoter2015.domain.faq.model.Faq
 import com.popstack.mvoter2015.domain.faq.model.FaqCategory
+import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import javax.inject.Inject
 
 class FaqViewModel @Inject constructor(
   private val faqPagerFactory: FaqPagerFactory
@@ -50,6 +50,8 @@ class FaqViewModel @Inject constructor(
           viewItemPagingData
             .insertHeaderItem(FaqViewItem.PollingStationProhibition)
             .insertHeaderItem(FaqViewItem.BallotExample)
+        } else if (selectedFaqCategory == FaqCategory.CANDIDATE) {
+          viewItemPagingData.insertHeaderItem(FaqViewItem.LawAndUnfairPractices)
         } else {
           viewItemPagingData
         }

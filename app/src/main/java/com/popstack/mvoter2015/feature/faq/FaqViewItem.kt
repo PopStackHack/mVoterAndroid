@@ -8,6 +8,8 @@ sealed class FaqViewItem {
 
   object PollingStationProhibition : FaqViewItem()
 
+  object LawAndUnfairPractices : FaqViewItem()
+
   data class QuestionAndAnswer(
     val faqId: FaqId,
     val question: String,

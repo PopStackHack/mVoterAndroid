@@ -86,6 +86,7 @@
   <string name="ballot_category_advanced">ကြိုတင်မဲနမူနာများ</string>
 
   <string name="ballot_examples">ပယ်မယ်၊ ခိုင်လုံမဲ နမူနာများ</string>
+  <string name="laws_and_unfair_practice">ရွေးကောက်ပွဲဆိုင်ရာ ပြစ်မှု၊ ပြစ်ဒဏ်များနှင့် တရားမဲ့ပြုကျင့်မှုများ</string>
   <string name="invalid_ballot">ပယ်မဲ</string>
   <string name="valid_ballot">ခိုင်လုံမဲ</string>
 
