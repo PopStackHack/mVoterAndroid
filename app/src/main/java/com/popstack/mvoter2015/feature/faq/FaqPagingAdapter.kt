@@ -1,9 +1,11 @@
 package com.popstack.mvoter2015.feature.faq
 
 import android.text.TextUtils
+import android.text.util.Linkify
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.text.HtmlCompat
+import androidx.core.text.util.LinkifyCompat
 import androidx.core.view.isVisible
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -107,7 +109,7 @@ class FaqPagingAdapter(
         holder.binding.apply {
           tvQuestion.text = faqViewItem.question
           tvAnswer.text = HtmlCompat.fromHtml(faqViewItem.answer, HtmlCompat.FROM_HTML_MODE_COMPACT).trim()
-
+          
           tvSource.isVisible = faqViewItem.source != null
           tvSource.text = faqViewItem.source ?: ""
 
@@ -115,11 +117,13 @@ class FaqPagingAdapter(
             tvAnswer.maxLines = Int.MAX_VALUE
             tvAnswer.ellipsize = null
             ivShare.isVisible = true
+            LinkifyCompat.addLinks(tvAnswer, Linkify.WEB_URLS);
           } else {
             tvAnswer.maxLines = 2
             tvAnswer.ellipsize = TextUtils.TruncateAt.END
             tvAnswer.ellipsize
             ivShare.isVisible = false
+            tvAnswer.isClickable = false
           }
         }
       }
