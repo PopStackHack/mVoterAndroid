@@ -36,6 +36,26 @@ class CandidateRepositoryImpl @Inject constructor(
     return candidateCacheSource.getCandidateList(constituencyId)
   }
 
+  override fun getRivalCandidatesInConstituency(constituencyId: ConstituencyId): List<Candidate> {
+    try {
+      val candidateListFromNetwork = candidateNetworkSource.getCandidateList(constituencyId)
+      candidateCacheSource.flushUnderConstituency(constituencyId)
+      //TODO: Use separate field for this, currently overriding cuz ethnic candidate has different const id than normal one in state region
+      candidateCacheSource.putCandidateList(candidateListFromNetwork, constituencyId)
+    } catch (exception: NetworkException) {
+      //Network error, see if can recover from cache
+      val candidateListFromCache = candidateCacheSource.getRivalCandidateList(constituencyId)
+      if (candidateListFromCache.isEmpty()) {
+        //Seems data is empty, can't recover, throw error
+        throw exception
+      }
+      return candidateListFromCache
+    }
+
+    //We use database as single source of true
+    return candidateCacheSource.getRivalCandidateList(constituencyId)
+  }
+
   override fun getCandidate(candidateId: CandidateId): Candidate {
     try {
       val candidateFromNetwork = candidateNetworkSource.getCandidate(candidateId)

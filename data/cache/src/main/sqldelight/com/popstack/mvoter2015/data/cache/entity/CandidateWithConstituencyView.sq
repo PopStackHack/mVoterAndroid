@@ -36,6 +36,32 @@ ON CandidateWithConstituencyView.partyId == PartyTable.id
 WHERE constituencyId = :constituencyId OR CandidateWithConstituencyView.queryConstituencyid = :constituencyId
 ORDER BY CandidateWithConstituencyView.sortingBallotOrder ASC;
 
+getByActualConstituency:
+SELECT
+ CandidateWithConstituencyView.*,
+ PartyTable.id AS _partyId,
+ PartyTable.number AS partyNumber,
+ PartyTable.burmeseName AS partyBurmeseName,
+ PartyTable.englishName AS partyEnglishName,
+ PartyTable.abbreviation AS partyAbbreviation,
+ PartyTable.flagImage AS partyFlagImage,
+ PartyTable.sealImage AS partySealImage,
+ PartyTable.region AS partyRegion,
+ PartyTable.leadersAndChairmen AS partyLeadersAndChairmen,
+ PartyTable.memberCount AS partyMemberCount,
+ PartyTable.contacts AS partyContacts,
+ PartyTable.headquarterLocation AS partyHeadquarterLocation,
+ PartyTable.policy AS partyPolicy,
+ PartyTable.establishmentApplicationDate AS partyEstablishmentApplicationDate,
+ PartyTable.establishmentApprovalDate AS partyEstablishmentApprovalDate,
+ PartyTable.registrationApplicationDate AS partyRegistrationApplicationDate,
+ PartyTable.registrationApprovalDate AS partyRegistrationApprovalDate,
+ PartyTable.isEstablishedDueToArticle25 AS partyIsEstablishedDueToArticle25
+FROM CandidateWithConstituencyView LEFT OUTER JOIN PartyTable
+ON CandidateWithConstituencyView.partyId == PartyTable.id
+WHERE constituencyId = :constituencyId
+ORDER BY CandidateWithConstituencyView.sortingBallotOrder ASC;
+
 getById:
 SELECT
  CandidateWithConstituencyView.*,

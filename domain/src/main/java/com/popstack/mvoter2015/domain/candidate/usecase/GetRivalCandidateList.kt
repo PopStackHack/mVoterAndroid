@@ -7,11 +7,11 @@ import com.popstack.mvoter2015.domain.candidate.model.Candidate
 import com.popstack.mvoter2015.domain.constituency.model.ConstituencyId
 import javax.inject.Inject
 
-class GetCandidateList @Inject constructor(
+class GetRivalCandidateList @Inject constructor(
   dispatcherProvider: DispatcherProvider,
   private val candidateRepository: CandidateRepository
 ) :
-  CoroutineUseCase<GetCandidateList.Params, List<Candidate>>(
+  CoroutineUseCase<GetRivalCandidateList.Params, List<Candidate>>(
     dispatcherProvider
   ) {
 
@@ -20,6 +20,6 @@ class GetCandidateList @Inject constructor(
   )
 
   override suspend fun provide(input: Params): List<Candidate> = input.run {
-    candidateRepository.getCandidateList(constituencyId)
+    candidateRepository.getRivalCandidatesInConstituency(constituencyId)
   }
 }

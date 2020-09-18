@@ -12,4 +12,6 @@ interface CandidateRepository {
 
   fun searchCandidate(query: String, pageNo: Int, resultPerPage: Int): List<Candidate>
 
+  fun getRivalCandidatesInConstituency(constituencyId: ConstituencyId): List<Candidate>
+
 }

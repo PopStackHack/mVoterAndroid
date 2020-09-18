@@ -66,6 +66,56 @@ class CandidateCacheSourceImpl @Inject constructor(
     }
   }
 
+  override fun putRivalCandidateList(candidateList: List<Candidate>, queryConstituencyId: ConstituencyId) {
+    db.candidateTableQueries.transaction {
+      candidateList.forEach { candidate ->
+        db.candidateTableQueries.transaction {
+          candidate.party?.let(partyCacheSource::putParty)
+          with(candidate.constituency) {
+            db.constitutencyTableQueries.insertOrReplace(
+              id = id,
+              name = name,
+              house = house,
+              township = township,
+              stateRegion = stateRegion
+            )
+          }
+
+          if (db.candidateTableQueries.getById(candidate.id.value).executeAsOneOrNull() != null) {
+            //Exists update
+            with(candidate) {
+              db.candidateTableQueries.update(
+                id = id.value,
+                name = name,
+                sortingName = sortingName,
+                sortingBallotOrder = sortingBallotOrder,
+                gender = gender,
+                occupation = occupation,
+                photoUrl = photoUrl,
+                education = education,
+                religion = religion,
+                age = age?.toLong(),
+                birthDate = birthDate,
+                ethnicity = ethnicity,
+                father = father,
+                mother = mother,
+                individualLogo = individualLogo,
+                isEthnicCandidate = isEthnicCandidate,
+                representingEthnicity = representingEthnicity,
+                residentalAddress = residentialAddress,
+                partyId = party?.id,
+                constituencyId = constituency.id
+              )
+            }
+          } else {
+            //Doesn't exist, add new
+            insertOrReplaceCandidate(candidate, null)
+          }
+        }
+      }
+    }
+  }
+
   private fun insertOrReplaceCandidate(candidate: Candidate, queryConstituencyId: ConstituencyId?) {
     with(candidate) {
       db.candidateTableQueries.insertOrReplace(
@@ -224,6 +274,13 @@ class CandidateCacheSourceImpl @Inject constructor(
 
   override fun getCandidateList(constituencyId: ConstituencyId): List<Candidate> {
     return db.candidateWithConstituencyViewQueries.getByConstituency(
+      constituencyId.value, candidateMapper
+    )
+      .executeAsList()
+  }
+
+  override fun getRivalCandidateList(constituencyId: ConstituencyId): List<Candidate> {
+    return db.candidateWithConstituencyViewQueries.getByActualConstituency(
       constituencyId.value, candidateMapper
     )
       .executeAsList()
