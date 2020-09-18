@@ -14,7 +14,6 @@ import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerUpperHouseCandidateListBinding
 import com.popstack.mvoter2015.di.conductor.ConductorInjection
 import com.popstack.mvoter2015.domain.candidate.model.CandidateId
-import com.popstack.mvoter2015.domain.constituency.model.ConstituencyId
 import com.popstack.mvoter2015.feature.candidate.detail.CandidateDetailController
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateListPagerParentRouter
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateListRecyclerViewAdapter
@@ -28,12 +27,10 @@ class UpperHouseCandidateListController(bundle: Bundle) :
   MvvmController<ControllerUpperHouseCandidateListBinding>(bundle), HasTag {
 
   companion object {
-    const val CONSTITUENCY_ID = "constituency_id"
     const val CONSTITUENCY_NAME = "constituency_name"
 
-    fun newInstance(constituencyId: ConstituencyId, constituencyName: String) = UpperHouseCandidateListController(
+    fun newInstance(constituencyName: String) = UpperHouseCandidateListController(
       bundleOf(
-        CONSTITUENCY_ID to constituencyId.value,
         CONSTITUENCY_NAME to constituencyName
       )
     )
@@ -56,8 +53,6 @@ class UpperHouseCandidateListController(bundle: Bundle) :
     val candidateDetailsController = CandidateDetailController.newInstance(it)
     CandidateListPagerParentRouter.router?.pushController(RouterTransaction.with(candidateDetailsController))
   }
-
-  private val constituencyId: ConstituencyId = ConstituencyId(args.getString(CONSTITUENCY_ID)!!)
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup, savedViewState: Bundle?): View {
     ConductorInjection.inject(this)

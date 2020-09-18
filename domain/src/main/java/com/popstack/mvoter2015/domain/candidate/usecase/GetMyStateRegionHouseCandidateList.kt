@@ -4,6 +4,7 @@ import com.popstack.mvoter2015.domain.CoroutineUseCase
 import com.popstack.mvoter2015.domain.DispatcherProvider
 import com.popstack.mvoter2015.domain.candidate.CandidateRepository
 import com.popstack.mvoter2015.domain.candidate.model.Candidate
+import com.popstack.mvoter2015.domain.candidate.usecase.exception.NoStateRegionConstituencyException
 import com.popstack.mvoter2015.domain.constituency.model.ConstituencyId
 import com.popstack.mvoter2015.domain.exception.NetworkException
 import com.popstack.mvoter2015.domain.location.LocationRepository
@@ -21,9 +22,11 @@ class GetMyStateRegionHouseCandidateList @Inject constructor(
   override suspend fun provide(input: Unit): List<Candidate> {
 
     return try {
+
       candidateRepository.getCandidateList(
         ConstituencyId(
-          locationRepository.getUserWard()!!.stateRegionConstituency.id
+          locationRepository.getUserWard()!!.stateRegionConstituency?.id
+            ?: throw NoStateRegionConstituencyException()
         )
       )
     } catch (networkException: NetworkException) {
@@ -44,7 +47,8 @@ class GetMyStateRegionHouseCandidateList @Inject constructor(
 
         return candidateRepository.getCandidateList(
           ConstituencyId(
-            locationRepository.getUserWard()!!.stateRegionConstituency.id
+            locationRepository.getUserWard()!!.stateRegionConstituency?.id
+              ?: throw NoStateRegionConstituencyException()
           )
         )
       } else {

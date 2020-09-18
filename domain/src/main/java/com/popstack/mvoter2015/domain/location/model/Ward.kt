@@ -7,5 +7,5 @@ data class Ward(
   val name: String,
   val lowerHouseConstituency: Constituency,
   val upperHouseConstituency: Constituency,
-  val stateRegionConstituency: Constituency
+  val stateRegionConstituency: Constituency?
 )

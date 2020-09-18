@@ -4,7 +4,6 @@ import com.bluelinelabs.conductor.Controller
 import com.bluelinelabs.conductor.Router
 import com.bluelinelabs.conductor.RouterTransaction
 import com.bluelinelabs.conductor.viewpager.RouterPagerAdapter
-import com.popstack.mvoter2015.domain.constituency.model.ConstituencyId
 import com.popstack.mvoter2015.feature.candidate.listing.lowerhouse.LowerHouseCandidateListController
 import com.popstack.mvoter2015.feature.candidate.listing.regionalhouse.RegionalHouseCandidateListController
 import com.popstack.mvoter2015.feature.candidate.listing.upperhouse.UpperHouseCandidateListController
@@ -32,15 +31,12 @@ internal class CandidateListHousePagerAdapter(host: Controller) :
     if (!router.hasRootController()) {
       val controller = when (position) {
         0 -> LowerHouseCandidateListController.newInstance(
-          ConstituencyId(itemList[position].constituencyId),
           itemList[position].constituencyName
         )
         1 -> UpperHouseCandidateListController.newInstance(
-          ConstituencyId(itemList[position].constituencyId),
           itemList[position].constituencyName
         )
         2 -> RegionalHouseCandidateListController.newInstance(
-          ConstituencyId(itemList[position].constituencyId),
           itemList[position].constituencyName
         )
         else -> return

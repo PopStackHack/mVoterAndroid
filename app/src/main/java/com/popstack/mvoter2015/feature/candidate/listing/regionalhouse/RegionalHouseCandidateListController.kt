@@ -14,7 +14,7 @@ import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerRegionalCandidateListBinding
 import com.popstack.mvoter2015.di.conductor.ConductorInjection
 import com.popstack.mvoter2015.domain.candidate.model.CandidateId
-import com.popstack.mvoter2015.domain.constituency.model.ConstituencyId
+import com.popstack.mvoter2015.domain.candidate.usecase.exception.NoStateRegionConstituencyException
 import com.popstack.mvoter2015.feature.candidate.detail.CandidateDetailController
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateListPagerParentRouter
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateListRecyclerViewAdapter
@@ -28,15 +28,12 @@ class RegionalHouseCandidateListController(bundle: Bundle) :
   MvvmController<ControllerRegionalCandidateListBinding>(bundle), HasTag {
 
   companion object {
-    const val CONSTITUENCY_ID = "constituency_id"
     const val CONSTITUENCY_NAME = "constituency_name"
 
     fun newInstance(
-      constituencyId: ConstituencyId,
       constituencyName: String
     ) = RegionalHouseCandidateListController(
       bundleOf(
-        CONSTITUENCY_ID to constituencyId.value,
         CONSTITUENCY_NAME to constituencyName
       )
     )
@@ -62,10 +59,6 @@ class RegionalHouseCandidateListController(bundle: Bundle) :
     )
   }
 
-  private val constituencyId: ConstituencyId by lazy {
-    ConstituencyId(args.getString(CONSTITUENCY_ID)!!)
-  }
-
   override fun onCreateView(
     inflater: LayoutInflater,
     container: ViewGroup,
@@ -77,7 +70,10 @@ class RegionalHouseCandidateListController(bundle: Bundle) :
 
   override fun onBindView(savedViewState: Bundle?) {
     super.onBindView(savedViewState)
-    binding.tvConstituencyName.text = args.getString(CONSTITUENCY_NAME)!!
+    //TODO: Don't pass the constituency with arg, instead use a domain use case to pass this info
+    val constituencyName = args.getString(CONSTITUENCY_NAME)!!
+    binding.layoutConstituencyName.isVisible = constituencyName.isNotEmpty()
+    binding.tvConstituencyName.text = constituencyName
     binding.rvCandidate.apply {
       adapter = candidateListAdapter
       layoutManager = LinearLayoutManager(requireContext())
@@ -103,6 +99,7 @@ class RegionalHouseCandidateListController(bundle: Bundle) :
     rvCandidate.isVisible = viewState is AsyncViewState.Success
     tvErrorMessage.isVisible = viewState is AsyncViewState.Error
     btnRetry.isVisible = viewState is AsyncViewState.Error
+    groupNoStateRegion.isVisible = false
 
     when (viewState) {
       is AsyncViewState.Success -> {
@@ -114,7 +111,12 @@ class RegionalHouseCandidateListController(bundle: Bundle) :
         }
       }
       is AsyncViewState.Error -> {
-        tvErrorMessage.text = viewState.errorMessage
+        if (viewState.exception is NoStateRegionConstituencyException) {
+          groupNoStateRegion.isVisible = true
+          btnRetry.isVisible = false
+        } else {
+          tvErrorMessage.text = viewState.errorMessage
+        }
       }
     }
   }

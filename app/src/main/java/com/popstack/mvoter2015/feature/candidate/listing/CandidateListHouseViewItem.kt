@@ -8,7 +8,6 @@ import javax.inject.Inject
 
 data class CandidateListHouseViewItem(
   val houseName: String,
-  val constituencyId: String,
   val constituencyName: String
 )
 
@@ -34,23 +33,18 @@ class CandidateListHouseViewItemMapper @Inject constructor(
         constituencyName = userWard.lowerHouseConstituency.name
       }
       HouseType.REGIONAL_HOUSE -> {
-        houseName = if (userWard.stateRegionConstituency.name.contains("တိုင်းဒေသကြီး"))
+        houseName = if (userWard.stateRegionConstituency == null) {
+          context.getString(R.string.tab_regional_house_state_region)
+        } else if (userWard.stateRegionConstituency!!.name.contains("တိုင်းဒေသကြီး"))
           context.getString(R.string.tab_regional_house_state)
         else
           context.getString(R.string.tab_regional_house_region)
-        constituencyName = userWard.stateRegionConstituency.name
+        constituencyName = userWard.stateRegionConstituency?.name ?: ""
       }
-    }
-
-    val id = when (houseType) {
-      HouseType.UPPER_HOUSE -> userWard.upperHouseConstituency.id
-      HouseType.LOWER_HOUSE -> userWard.lowerHouseConstituency.id
-      HouseType.REGIONAL_HOUSE -> userWard.stateRegionConstituency.id
     }
 
     return CandidateListHouseViewItem(
       houseName = houseName,
-      constituencyId = id,
       constituencyName = constituencyName
     )
   }

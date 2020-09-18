@@ -28,7 +28,7 @@ data class WardApiModel(
     @Json(name = "parent_township") val parentTownship: String,
     @Json(name = "pyithu_hluttaw_constituency") val lowerHouseConstituency: ConstituencyApiModel,
     @Json(name = "amyotha_hluttaw_constituency") val upperHouseConstituency: ConstituencyApiModel,
-    @Json(name = "state_hluttaw_constituency") val stateRegionConstituency: ConstituencyApiModel
+    @Json(name = "state_hluttaw_constituency") val stateRegionConstituency: ConstituencyApiModel?
   ) {
     fun toWard(): Ward = Ward(
       id = WardId(id.toString()),
@@ -45,12 +45,14 @@ data class WardApiModel(
         house = HouseType.UPPER_HOUSE,
         null, null
       ),
-      stateRegionConstituency = Constituency(
-        id = stateRegionConstituency.id.toString(),
-        name = stateRegionConstituency.name,
-        house = HouseType.REGIONAL_HOUSE,
-        null, null
-      )
+      stateRegionConstituency = stateRegionConstituency?.let {
+        Constituency(
+          id = it.id.toString(),
+          name = it.name,
+          house = HouseType.REGIONAL_HOUSE,
+          null, null
+        )
+      }
     )
   }
 }

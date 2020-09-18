@@ -59,7 +59,7 @@ class LocationCacheSourceImpl @Inject constructor(
         name = ward.name,
         lower_constituency = ward.lowerHouseConstituency.toConstituencyProto(),
         upper_constituency = ward.upperHouseConstituency.toConstituencyProto(),
-        state_region_constituency = ward.stateRegionConstituency.toConstituencyProto()
+        state_region_constituency = ward.stateRegionConstituency?.toConstituencyProto()
       )
     }
   }
@@ -92,7 +92,7 @@ class LocationCacheSourceImpl @Inject constructor(
       name = this.name,
       lowerHouseConstituency = this.lower_constituency!!.toConstituency(),
       upperHouseConstituency = this.upper_constituency!!.toConstituency(),
-      stateRegionConstituency = this.state_region_constituency!!.toConstituency()
+      stateRegionConstituency = this.state_region_constituency?.toConstituency()
     )
   }
 

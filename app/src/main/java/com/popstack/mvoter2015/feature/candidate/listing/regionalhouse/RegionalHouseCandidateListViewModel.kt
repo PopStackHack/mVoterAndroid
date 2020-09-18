@@ -4,6 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.popstack.mvoter2015.domain.candidate.model.Candidate
 import com.popstack.mvoter2015.domain.candidate.usecase.GetMyStateRegionHouseCandidateList
+import com.popstack.mvoter2015.domain.candidate.usecase.exception.NoStateRegionConstituencyException
+import com.popstack.mvoter2015.domain.exception.NetworkException
 import com.popstack.mvoter2015.exception.GlobalExceptionHandler
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateListViewItem
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateViewItem
@@ -25,7 +27,7 @@ class RegionalHouseCandidateListViewModel @Inject constructor(
   fun loadCandidates() {
     viewModelScope.launch {
       viewItemLiveData.postLoading()
-      kotlin.runCatching {
+      try {
         val candidateList = getMyStateRegionHouseCandidateList.execute(Unit).sortedBy { it.sortingBallotOrder }
 
         val stateRegionCandidateViewItemList = ArrayList<CandidateViewItem>()
@@ -61,12 +63,12 @@ class RegionalHouseCandidateListViewModel @Inject constructor(
 
         val candidateListViewItem = CandidateListViewItem(stateRegionCandidateViewItemList)
         viewItemLiveData.postSuccess(candidateListViewItem)
+      } catch (noStateRegionConstituencyException: NoStateRegionConstituencyException) {
+        viewItemLiveData.postError(noStateRegionConstituencyException, "")
+      } catch (networkException: NetworkException) {
+        Timber.e(networkException)
+        viewItemLiveData.postError(networkException, globalExceptionHandler.getMessageForUser(networkException))
       }
-        .exceptionOrNull()
-        ?.let { exception ->
-          Timber.e(exception)
-          viewItemLiveData.postError(exception, globalExceptionHandler.getMessageForUser(exception))
-        }
     }
   }
 
