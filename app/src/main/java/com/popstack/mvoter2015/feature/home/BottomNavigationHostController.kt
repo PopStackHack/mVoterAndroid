@@ -34,6 +34,8 @@ class BottomNavigationHostController : BaseController<ControllerBottomNavHostBin
 
   private var partyNavigationItemReselectedCallback: PartyNavigationItemReselectedCallback? = null
 
+  private var faqNavigationItemReselectedCallback: FaqNavigationItemReselectedCallback? = null
+
   override fun onCreateView(
     inflater: LayoutInflater,
     container: ViewGroup,
@@ -64,7 +66,13 @@ class BottomNavigationHostController : BaseController<ControllerBottomNavHostBin
           )
         },
         R.id.navigation_how_to_vote to { RouterTransaction.with(VotingGuideController()) },
-        R.id.navigation_info to { RouterTransaction.with(FaqController()) },
+        R.id.navigation_info to {
+          RouterTransaction.with(
+            FaqController().also {
+              faqNavigationItemReselectedCallback = it
+            }
+          )
+        },
         R.id.navigation_news to {
           RouterTransaction.with(
             NewsController().also {
@@ -82,6 +90,7 @@ class BottomNavigationHostController : BaseController<ControllerBottomNavHostBin
           bottomNavRouterPagerAdapter.getRouter(0)?.popToTag(CandidateListController.CONTROLLER_TAG)
         }
         R.id.navigation_party -> partyNavigationItemReselectedCallback?.onPartyNavigationItemReselected()
+        R.id.navigation_info -> faqNavigationItemReselectedCallback?.onFaqNavigationItemReselected()
         R.id.navigation_news -> newsNewsNavigationItemReselectedCallback?.onNewsNavigationItemReselected()
       }
     }

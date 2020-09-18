@@ -21,6 +21,7 @@ import com.popstack.mvoter2015.feature.faq.ballot.BallotExampleController
 import com.popstack.mvoter2015.feature.faq.ballot.displayString
 import com.popstack.mvoter2015.feature.faq.search.FaqSearchController
 import com.popstack.mvoter2015.feature.home.BottomNavigationHostViewModelStore
+import com.popstack.mvoter2015.feature.home.FaqNavigationItemReselectedCallback
 import com.popstack.mvoter2015.feature.settings.SettingsController
 import com.popstack.mvoter2015.feature.share.ShareUrlFactory
 import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
@@ -38,7 +39,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-class FaqController : MvvmController<ControllerFaqBinding>(), HasTag {
+class FaqController : MvvmController<ControllerFaqBinding>(), HasTag, FaqNavigationItemReselectedCallback {
 
   override val tag: String = "FaqController"
 
@@ -177,6 +178,12 @@ class FaqController : MvvmController<ControllerFaqBinding>(), HasTag {
         true
       }
       else -> false
+    }
+  }
+
+  override fun onFaqNavigationItemReselected() {
+    kotlin.runCatching {
+      binding.rvFaq.smoothScrollToPosition(0)
     }
   }
 

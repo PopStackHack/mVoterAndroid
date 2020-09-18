@@ -37,7 +37,7 @@ internal object OkHttpProvider {
       )
 
       okHttpClientBuilder
-//        .cache(cache)
+        .cache(cache)
         .addInterceptor(AuthTokenInterceptor(authTokenStore))
         .authenticator(RefreshAuthenticator(authTokenStore))
 
