@@ -15,7 +15,6 @@ import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerPartyListBinding
 import com.popstack.mvoter2015.exception.GlobalExceptionHandler
 import com.popstack.mvoter2015.feature.home.BottomNavigationHostViewModelStore
-import com.popstack.mvoter2015.feature.home.PartyNavigationItemReselectedCallback
 import com.popstack.mvoter2015.feature.party.PartySharedElementTransitionChangeHandler
 import com.popstack.mvoter2015.feature.party.detail.PartyDetailController
 import com.popstack.mvoter2015.feature.party.search.PartySearchController
@@ -28,7 +27,7 @@ import com.popstack.mvoter2015.paging.CommonLoadStateAdapter
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-class PartyListController : MvvmController<ControllerPartyListBinding>(), HasTag, PartyNavigationItemReselectedCallback {
+class PartyListController : MvvmController<ControllerPartyListBinding>(), HasTag {
 
   override val tag: String = "PartyListController"
 
@@ -119,12 +118,6 @@ class PartyListController : MvvmController<ControllerPartyListBinding>(), HasTag
 //    if (requireActivity() is HasRouter) {
 //      (requireActivity() as HasRouter).router().pushController(RouterTransaction.with(partyDetailController))
 //    }
-  }
-
-  override fun onPartyNavigationItemReselected() {
-    kotlin.runCatching {
-      binding.rvParty.smoothScrollToPosition(0)
-    }
   }
 
 }

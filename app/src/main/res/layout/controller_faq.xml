@@ -75,7 +75,7 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@id/appBarLayout"
     tools:text="@string/error_no_internet"
-    tools:visibility="visible" />
+    tools:visibility="gone" />
 
   <com.google.android.material.button.MaterialButton
     android:id="@+id/btnRetry"

@@ -10,7 +10,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:backgroundTint="@color/primary"
-    app:title="" />
+    app:title="@string/menu_title_settings"
+    app:titleTextAppearance="@style/TextTitle3.Bold" />
 
   <RelativeLayout
     android:id="@+id/viewGroupTheme"

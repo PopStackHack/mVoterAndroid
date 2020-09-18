@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelStore
+import androidx.recyclerview.widget.RecyclerView
 import com.bluelinelabs.conductor.RouterTransaction
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.BaseController
@@ -30,12 +31,6 @@ class BottomNavigationHostController : BaseController<ControllerBottomNavHostBin
   override val bindingInflater: (LayoutInflater) -> ControllerBottomNavHostBinding =
     ControllerBottomNavHostBinding::inflate
 
-  private var newsNewsNavigationItemReselectedCallback: NewsNavigationItemReselectedCallback? = null
-
-  private var partyNavigationItemReselectedCallback: PartyNavigationItemReselectedCallback? = null
-
-  private var faqNavigationItemReselectedCallback: FaqNavigationItemReselectedCallback? = null
-
   override fun onCreateView(
     inflater: LayoutInflater,
     container: ViewGroup,
@@ -60,25 +55,17 @@ class BottomNavigationHostController : BaseController<ControllerBottomNavHostBin
         R.id.navigation_candidate to { RouterTransaction.with(CandidateListController()).tag(CandidateListController.CONTROLLER_TAG) },
         R.id.navigation_party to {
           RouterTransaction.with(
-            PartyListController().also {
-              partyNavigationItemReselectedCallback = it
-            }
+            PartyListController()
           )
         },
-        R.id.navigation_how_to_vote to { RouterTransaction.with(VotingGuideController()) },
+        R.id.navigation_how_to_vote to {
+          RouterTransaction.with(VotingGuideController())
+        },
         R.id.navigation_info to {
-          RouterTransaction.with(
-            FaqController().also {
-              faqNavigationItemReselectedCallback = it
-            }
-          )
+          RouterTransaction.with(FaqController())
         },
         R.id.navigation_news to {
-          RouterTransaction.with(
-            NewsController().also {
-              newsNewsNavigationItemReselectedCallback = it
-            }
-          )
+          RouterTransaction.with(NewsController())
         }
       )
     )
@@ -89,9 +76,21 @@ class BottomNavigationHostController : BaseController<ControllerBottomNavHostBin
         R.id.navigation_candidate -> {
           bottomNavRouterPagerAdapter.getRouter(0)?.popToTag(CandidateListController.CONTROLLER_TAG)
         }
-        R.id.navigation_party -> partyNavigationItemReselectedCallback?.onPartyNavigationItemReselected()
-        R.id.navigation_info -> faqNavigationItemReselectedCallback?.onFaqNavigationItemReselected()
-        R.id.navigation_news -> newsNewsNavigationItemReselectedCallback?.onNewsNavigationItemReselected()
+        R.id.navigation_party -> {
+          kotlin.runCatching {
+            view?.findViewById<RecyclerView>(R.id.rvParty)?.smoothScrollToPosition(0)
+          }
+        }
+        R.id.navigation_info -> {
+          kotlin.runCatching {
+            view?.findViewById<RecyclerView>(R.id.rvFaq)?.smoothScrollToPosition(0)
+          }
+        }
+        R.id.navigation_news -> {
+          kotlin.runCatching {
+            view?.findViewById<RecyclerView>(R.id.rvNews)?.smoothScrollToPosition(0)
+          }
+        }
       }
     }
   }
@@ -100,12 +99,6 @@ class BottomNavigationHostController : BaseController<ControllerBottomNavHostBin
     viewModelStore.clear()
     BottomNavigationHostViewModelStore.viewModelStore = null
     super.onDestroyView(view)
-  }
-
-  override fun onDestroy() {
-    newsNewsNavigationItemReselectedCallback = null
-    partyNavigationItemReselectedCallback = null
-    super.onDestroy()
   }
 
 }

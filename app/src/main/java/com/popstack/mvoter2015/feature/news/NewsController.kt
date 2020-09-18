@@ -16,7 +16,6 @@ import com.popstack.mvoter2015.domain.news.model.NewsId
 import com.popstack.mvoter2015.exception.GlobalExceptionHandler
 import com.popstack.mvoter2015.feature.browser.OpenBrowserDelegate
 import com.popstack.mvoter2015.feature.home.BottomNavigationHostViewModelStore
-import com.popstack.mvoter2015.feature.home.NewsNavigationItemReselectedCallback
 import com.popstack.mvoter2015.feature.news.search.NewsSearchController
 import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
 import com.popstack.mvoter2015.helper.conductor.requireActivity
@@ -25,14 +24,13 @@ import com.popstack.mvoter2015.helper.conductor.setSupportActionBar
 import com.popstack.mvoter2015.helper.conductor.supportActionBar
 import com.popstack.mvoter2015.logging.HasTag
 import com.popstack.mvoter2015.paging.CommonLoadStateAdapter
+import javax.inject.Inject
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 class NewsController :
   MvvmController<ControllerNewsBinding>(),
-  HasTag,
-  NewsNavigationItemReselectedCallback {
+  HasTag {
 
   override val tag: String = "NewsController"
 
@@ -93,12 +91,6 @@ class NewsController :
         .collectLatest { pagingData ->
           newsPagingAdapter.submitData(lifecycle, pagingData)
         }
-    }
-  }
-
-  override fun onNewsNavigationItemReselected() {
-    kotlin.runCatching {
-      binding.rvNews.smoothScrollToPosition(0)
     }
   }
 

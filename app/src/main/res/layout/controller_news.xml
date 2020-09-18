@@ -16,16 +16,17 @@
     app:layout_scrollFlags="scroll|enterAlways"
     app:menu="@menu/menu_party"
     app:title="@string/navigation_news"
+    app:titleTextAppearance="@style/TextTitle3.Bold"
     app:titleTextColor="@color/text_primary" />
 
   <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/rvNews"
     android:layout_width="match_parent"
     android:layout_height="0dp"
+    android:scrollbars="vertical"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    android:scrollbars="vertical"
     app:layout_constraintTop_toBottomOf="@id/toolBar"
     tools:listitem="@layout/item_news_with_preview" />
 
@@ -58,11 +59,11 @@
 
   <com.google.android.material.button.MaterialButton
     android:id="@+id/btnRetry"
+    style="@style/TextLarge.Accent"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="8dp"
     android:text="@string/retry"
-    style="@style/TextLarge.Accent"
     android:visibility="gone"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
