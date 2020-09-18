@@ -19,6 +19,7 @@ class FaqNetworkSourceImpl @Inject constructor(
   override fun getFaqList(page: Int, itemsPerPage: Int, category: FaqCategory?, query: String?): List<Faq> {
     return mvoterApi.faqList(
       page = page,
+      itemsPerPage = itemsPerPage,
       category = category?.let {
         FaqCategoryJsonAdapter().toJson(it)
       },

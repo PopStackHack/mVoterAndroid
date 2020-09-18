@@ -13,7 +13,7 @@ class PartyNetworkSourceImpl @Inject constructor(
 ) : PartyNetworkSource {
 
   override fun getPartyList(page: Int, itemPerPage: Int, query: String?): List<Party> {
-    return mvoterApi.partyList(page, query).executeOrThrow().data.map(PartyApiModel::mapToParty)
+    return mvoterApi.partyList(page, itemPerPage, query).executeOrThrow().data.map(PartyApiModel::mapToParty)
   }
 
   override fun getParty(input: PartyId): Party {

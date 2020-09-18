@@ -10,6 +10,7 @@ interface MvoterApi {
   @GET("parties")
   fun partyList(
     @Query("page") page: Int,
+    @Query("item_per_page") itemsPerPage: Int,
     @Query("query") query: String?
   ): Call<GetPartyListResponse>
 
@@ -21,6 +22,7 @@ interface MvoterApi {
   @GET("faqs")
   fun faqList(
     @Query("page") page: Int,
+    @Query("item_per_page") itemsPerPage: Int,
     @Query("category") category: String?,
     @Query("query") query: String?
   ): Call<GetFaqListResponse>
@@ -33,7 +35,7 @@ interface MvoterApi {
   @GET("news")
   fun newsList(
     @Query("page") page: Int,
-    @Query("items_per_page") itemPerPage: Int,
+    @Query("item_per_page") itemPerPage: Int,
     @Query("query") query: String?
   ): Call<GetNewsListResponse>
 

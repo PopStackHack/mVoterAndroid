@@ -21,7 +21,7 @@ class NewsPagingSource constructor(
     try {
       // Start refresh at page 1 if undefined.
       val page = params.key ?: STARTING_PAGE
-      val itemPerPage = params.loadSize
+      val itemPerPage = params.pageSize
 
       val newsList = withContext(Dispatchers.IO) {
         try {
