@@ -33,12 +33,10 @@ class CandidateListHouseViewItemMapper @Inject constructor(
         constituencyName = userWard.lowerHouseConstituency.name
       }
       HouseType.REGIONAL_HOUSE -> {
-        houseName = if (userWard.stateRegionConstituency == null) {
-          context.getString(R.string.tab_regional_house_state_region)
-        } else if (userWard.stateRegionConstituency!!.name.contains("တိုင်းဒေသကြီး"))
-          context.getString(R.string.tab_regional_house_state)
-        else
+        houseName = if (userWard.stateRegionConstituency?.name?.contains("ပြည်နယ်") == true)
           context.getString(R.string.tab_regional_house_region)
+        else
+          context.getString(R.string.tab_regional_house_state)
         constituencyName = userWard.stateRegionConstituency?.name ?: ""
       }
     }
