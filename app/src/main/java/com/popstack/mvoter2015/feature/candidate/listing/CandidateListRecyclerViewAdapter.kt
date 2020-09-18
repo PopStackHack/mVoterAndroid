@@ -1,5 +1,6 @@
 package com.popstack.mvoter2015.feature.candidate.listing
 
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import coil.api.load
@@ -8,13 +9,14 @@ import coil.size.Scale
 import coil.transform.CircleCropTransformation
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.databinding.ItemCandidateBinding
-import com.popstack.mvoter2015.databinding.ItemEthnicConstituencyBinding
+import com.popstack.mvoter2015.databinding.ItemCandidateSectionBinding
 import com.popstack.mvoter2015.domain.candidate.model.CandidateId
 import com.popstack.mvoter2015.feature.candidate.listing.viewholders.CandidateItemViewHolder
 import com.popstack.mvoter2015.helper.diff.diffCallBackWith
 import com.popstack.mvoter2015.helper.extensions.inflater
 import com.popstack.mvoter2015.helper.extensions.toPx
 import com.popstack.mvoter2015.helper.extensions.withSafeAdapterPosition
+import com.popstack.mvoter2015.helper.recyclerview.StickyHeaderDecoration
 
 class CandidateListRecyclerViewAdapter constructor(
   private val onCandidateClicked: (CandidateId) -> Unit
@@ -23,11 +25,11 @@ class CandidateListRecyclerViewAdapter constructor(
     areItemTheSame = { item1, item2 -> item1.id == item2.id },
     areContentsTheSame = { item1, item2 -> item1 == item2 }
   )
-) {
+), StickyHeaderDecoration.StickyHeaderInterface {
 
   companion object {
     const val VIEW_TYPE_CANDIDATE = 1
-    const val VIEW_TYPE_ETHNIC_CONSTITUENCY_TITLE = 2
+    const val VIEW_TYPE_CANDIDATE_SECTION_TITLE = 2
   }
 
   override fun onCreateViewHolder(
@@ -47,13 +49,13 @@ class CandidateListRecyclerViewAdapter constructor(
         }
       }
     else -> EthnicContituencyTitleViewHolder(
-      ItemEthnicConstituencyBinding.inflate(parent.inflater(), parent, false)
+      ItemCandidateSectionBinding.inflate(parent.inflater(), parent, false)
     )
   }
 
   override fun getItemViewType(position: Int): Int = when (getItem(position)) {
     is SmallCandidateViewItem -> VIEW_TYPE_CANDIDATE
-    is EthnicConstituencyTitleViewItem -> VIEW_TYPE_ETHNIC_CONSTITUENCY_TITLE
+    is CandidateSectionTitleViewItem -> VIEW_TYPE_CANDIDATE_SECTION_TITLE
   }
 
   override fun onBindViewHolder(
@@ -61,6 +63,30 @@ class CandidateListRecyclerViewAdapter constructor(
     position: Int
   ) {
     holder.bind(getItem(position))
+  }
+
+  override fun getHeaderPositionForItem(itemPosition: Int): Int {
+    if (getItemViewType(itemPosition) == VIEW_TYPE_CANDIDATE_SECTION_TITLE) return itemPosition
+    for (i in itemPosition downTo 0) {
+      if (getItemViewType(i) == VIEW_TYPE_CANDIDATE_SECTION_TITLE) return i
+    }
+    return -1
+  }
+
+  override fun getHeaderLayout(headerPosition: Int): Int {
+    return R.layout.item_candidate_section
+  }
+
+  override fun bindHeaderData(header: View?, headerPosition: Int) {
+    if (headerPosition >= 0 && headerPosition < currentList.size)
+      header?.let {
+        ItemCandidateSectionBinding.bind(header).tvTitle.text =
+          (getItem(headerPosition) as? CandidateSectionTitleViewItem)?.value.orEmpty()
+      }
+  }
+
+  override fun isHeader(itemPosition: Int): Boolean {
+    return getItemViewType(itemPosition) == VIEW_TYPE_CANDIDATE_SECTION_TITLE
   }
 }
 
@@ -89,10 +115,10 @@ class CandidateListItemViewHolder(val binding: ItemCandidateBinding) : Candidate
   }
 }
 
-class EthnicContituencyTitleViewHolder(val binding: ItemEthnicConstituencyBinding) :
+class EthnicContituencyTitleViewHolder(val binding: ItemCandidateSectionBinding) :
   CandidateItemViewHolder(binding.root) {
   override fun bind(viewItem: CandidateViewItem) {
-    val title = viewItem as? EthnicConstituencyTitleViewItem ?: return
+    val title = viewItem as? CandidateSectionTitleViewItem ?: return
     binding.tvTitle.text = title.value
   }
 }

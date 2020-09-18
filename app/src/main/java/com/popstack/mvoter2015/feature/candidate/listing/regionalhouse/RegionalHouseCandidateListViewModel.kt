@@ -9,7 +9,7 @@ import com.popstack.mvoter2015.domain.exception.NetworkException
 import com.popstack.mvoter2015.exception.GlobalExceptionHandler
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateListViewItem
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateViewItem
-import com.popstack.mvoter2015.feature.candidate.listing.EthnicConstituencyTitleViewItem
+import com.popstack.mvoter2015.feature.candidate.listing.CandidateSectionTitleViewItem
 import com.popstack.mvoter2015.feature.candidate.listing.toSmallCandidateViewItem
 import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewStateLiveData
 import javax.inject.Inject
@@ -23,6 +23,12 @@ class RegionalHouseCandidateListViewModel @Inject constructor(
 ) : ViewModel() {
 
   val viewItemLiveData = AsyncViewStateLiveData<CandidateListViewItem>()
+
+  private var title: String? = null
+
+  fun setTitle(title: String?) {
+    this.title = title
+  }
 
   fun loadCandidates() {
     viewModelScope.launch {
@@ -51,7 +57,7 @@ class RegionalHouseCandidateListViewModel @Inject constructor(
         val sortedEthnicConstituency = ethnicCandidatesMap.keys.toTypedArray().sortedArray()
 
         sortedEthnicConstituency.forEach {
-          stateRegionCandidateViewItemList.add(EthnicConstituencyTitleViewItem(it))
+          stateRegionCandidateViewItemList.add(CandidateSectionTitleViewItem(it))
           stateRegionCandidateViewItemList.addAll(
             ethnicCandidatesMap[it]!!
               .sortedBy {
@@ -61,6 +67,7 @@ class RegionalHouseCandidateListViewModel @Inject constructor(
           )
         }
 
+        title?.let { stateRegionCandidateViewItemList.add(0, CandidateSectionTitleViewItem(it)) }
         val candidateListViewItem = CandidateListViewItem(stateRegionCandidateViewItemList)
         viewItemLiveData.postSuccess(candidateListViewItem)
       } catch (noStateRegionConstituencyException: NoStateRegionConstituencyException) {

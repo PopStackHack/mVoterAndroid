@@ -61,7 +61,9 @@ class UpperHouseCandidateListController(bundle: Bundle) :
 
   override fun onBindView(savedViewState: Bundle?) {
     super.onBindView(savedViewState)
-    binding.tvConstituencyName.text = args.getString(CONSTITUENCY_NAME)!!
+    args.getString(CONSTITUENCY_NAME)?.let {
+      binding.tvConstituencyName.text = it
+    } ?: { binding.tvConstituencyName.isVisible = false }
     binding.rvCandidate.apply {
       adapter = candidateListAdapter
       layoutManager = LinearLayoutManager(requireContext())

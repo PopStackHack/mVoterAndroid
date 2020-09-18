@@ -22,6 +22,7 @@ import com.popstack.mvoter2015.feature.candidate.listing.CandidateListViewItem
 import com.popstack.mvoter2015.feature.home.BottomNavigationHostViewModelStore
 import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewState
 import com.popstack.mvoter2015.helper.conductor.requireContext
+import com.popstack.mvoter2015.helper.recyclerview.StickyHeaderDecoration
 import com.popstack.mvoter2015.logging.HasTag
 
 class RegionalHouseCandidateListController(bundle: Bundle) :
@@ -71,12 +72,11 @@ class RegionalHouseCandidateListController(bundle: Bundle) :
   override fun onBindView(savedViewState: Bundle?) {
     super.onBindView(savedViewState)
     //TODO: Don't pass the constituency with arg, instead use a domain use case to pass this info
-    val constituencyName = args.getString(CONSTITUENCY_NAME)!!
-    binding.layoutConstituencyName.isVisible = constituencyName.isNotEmpty()
-    binding.tvConstituencyName.text = constituencyName
+    viewModel.setTitle(args.getString(CONSTITUENCY_NAME))
     binding.rvCandidate.apply {
       adapter = candidateListAdapter
       layoutManager = LinearLayoutManager(requireContext())
+      addItemDecoration(StickyHeaderDecoration(candidateListAdapter))
     }
 
     viewModel.viewItemLiveData.observe(this, Observer(::observeViewItem))

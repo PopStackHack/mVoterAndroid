@@ -14,7 +14,7 @@ data class SmallCandidateViewItem(
   val partySealImageUrl: String?
 ) : CandidateViewItem(candidateId)
 
-data class EthnicConstituencyTitleViewItem(val value: String) : CandidateViewItem(value)
+data class CandidateSectionTitleViewItem(val value: String) : CandidateViewItem(value)
 
 fun Candidate.toSmallCandidateViewItem() = SmallCandidateViewItem(
   candidateId = id.value,
