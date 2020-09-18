@@ -55,28 +55,31 @@ class BottomNavigationHostController : BaseController<ControllerBottomNavHostBin
       binding.bottomNavigationView,
       binding.homeViewPager,
       mapOf(
-        R.id.navigation_candidate to { RouterTransaction.with(CandidateListController()).tag("candidate_list") },
+        R.id.navigation_candidate to { RouterTransaction.with(CandidateListController()).tag(CandidateListController.CONTROLLER_TAG) },
         R.id.navigation_party to {
-          RouterTransaction.with(PartyListController().also {
-            partyNavigationItemReselectedCallback = it
-          })
+          RouterTransaction.with(
+            PartyListController().also {
+              partyNavigationItemReselectedCallback = it
+            }
+          )
         },
         R.id.navigation_how_to_vote to { RouterTransaction.with(VotingGuideController()) },
         R.id.navigation_info to { RouterTransaction.with(FaqController()) },
         R.id.navigation_news to {
-          RouterTransaction.with(NewsController().also {
-            newsNewsNavigationItemReselectedCallback = it
-          })
+          RouterTransaction.with(
+            NewsController().also {
+              newsNewsNavigationItemReselectedCallback = it
+            }
+          )
         }
       )
     )
     binding.homeViewPager.adapter = bottomNavRouterPagerAdapter
 
-
     binding.bottomNavigationView.setOnNavigationItemReselectedListener { menuItem ->
       when (menuItem.itemId) {
         R.id.navigation_candidate -> {
-          bottomNavRouterPagerAdapter.getRouter(0)?.popToTag("candidate_list")
+          bottomNavRouterPagerAdapter.getRouter(0)?.popToTag(CandidateListController.CONTROLLER_TAG)
         }
         R.id.navigation_party -> partyNavigationItemReselectedCallback?.onPartyNavigationItemReselected()
         R.id.navigation_news -> newsNewsNavigationItemReselectedCallback?.onNewsNavigationItemReselected()

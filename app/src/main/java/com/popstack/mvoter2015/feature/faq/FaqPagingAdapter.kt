@@ -109,7 +109,6 @@ class FaqPagingAdapter(
         holder.binding.apply {
           tvQuestion.text = faqViewItem.question
           tvAnswer.text = HtmlCompat.fromHtml(faqViewItem.answer, HtmlCompat.FROM_HTML_MODE_COMPACT).trim()
-          
           tvSource.isVisible = faqViewItem.source != null
           tvSource.text = faqViewItem.source ?: ""
 
@@ -117,7 +116,7 @@ class FaqPagingAdapter(
             tvAnswer.maxLines = Int.MAX_VALUE
             tvAnswer.ellipsize = null
             ivShare.isVisible = true
-            LinkifyCompat.addLinks(tvAnswer, Linkify.WEB_URLS);
+            LinkifyCompat.addLinks(tvAnswer, Linkify.WEB_URLS)
           } else {
             tvAnswer.maxLines = 2
             tvAnswer.ellipsize = TextUtils.TruncateAt.END

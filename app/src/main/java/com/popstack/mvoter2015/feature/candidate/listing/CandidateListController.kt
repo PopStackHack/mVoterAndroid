@@ -21,7 +21,11 @@ import com.popstack.mvoter2015.logging.HasTag
 class CandidateListController :
   MvvmController<ControllerCandidateListBinding>(), HasTag {
 
-  override val tag: String = "CandidateListController"
+  override val tag: String = CONTROLLER_TAG
+
+  companion object {
+    const val CONTROLLER_TAG = "CandidateListController"
+  }
 
   private val viewModel: CandidateListViewModel by viewModels(
     store = BottomNavigationHostViewModelStore.viewModelStore ?: viewModelStore
