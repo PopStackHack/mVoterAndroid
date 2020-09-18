@@ -30,7 +30,9 @@ class NewsCacheSourceImpl @Inject constructor(
   }
 
   override fun getNewsList(page: Int, itemPerPage: Int): List<News> {
-    return db.newsTableQueries.getWithPage(itemPerPage.toLong(), page.toLong())
+    val limit = itemPerPage
+    val offset = (page - 1) * limit
+    return db.newsTableQueries.getWithPage(limit.toLong(), offset.toLong())
       .executeAsList().map(NewsTable::mapToNews)
   }
 
