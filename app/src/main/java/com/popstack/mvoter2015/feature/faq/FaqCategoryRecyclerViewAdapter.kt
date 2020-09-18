@@ -21,7 +21,9 @@ class FaqCategoryRecyclerViewAdapter(
     FaqCategory.VOTER_LIST,
     FaqCategory.DIPLOMATIC,
     FaqCategory.INTERNATIONAL_OBSERVER,
-    FaqCategory.CANDIDATE
+    FaqCategory.CANDIDATE,
+    FaqCategory.CONFLICT_RESOLUTION,
+    FaqCategory.MEDIATION_COMMITTEES
   )
 
   class FaqCategoryViewHolder(val binding: ItemFaqCategoryBinding) :

@@ -11,6 +11,9 @@ class FaqCategoryJsonAdapter {
     private const val JSON_STRING_DIPLOMATC = "diplomatic"
     private const val JSON_STRING_INTERNATIONAL_OBSERVER = "international_observer"
     private const val JSON_STRING_CANDIDATE = "candidate"
+    private const val JSON_STRING_CONFLICT_RESOLUTION = "conflict_resolution"
+    private const val JSON_STRING_MEDIATION_COMMITTEES = "mediation_committees"
+
   }
 
   @ToJson
@@ -20,6 +23,8 @@ class FaqCategoryJsonAdapter {
       FaqCategory.DIPLOMATIC -> JSON_STRING_DIPLOMATC
       FaqCategory.INTERNATIONAL_OBSERVER -> JSON_STRING_INTERNATIONAL_OBSERVER
       FaqCategory.CANDIDATE -> JSON_STRING_CANDIDATE
+      FaqCategory.CONFLICT_RESOLUTION -> JSON_STRING_CONFLICT_RESOLUTION
+      FaqCategory.MEDIATION_COMMITTEES -> JSON_STRING_MEDIATION_COMMITTEES
     }
   }
 
@@ -30,6 +35,8 @@ class FaqCategoryJsonAdapter {
       JSON_STRING_DIPLOMATC -> FaqCategory.DIPLOMATIC
       JSON_STRING_INTERNATIONAL_OBSERVER -> FaqCategory.INTERNATIONAL_OBSERVER
       JSON_STRING_CANDIDATE -> FaqCategory.CANDIDATE
+      JSON_STRING_CONFLICT_RESOLUTION -> FaqCategory.CONFLICT_RESOLUTION
+      JSON_STRING_MEDIATION_COMMITTEES -> FaqCategory.MEDIATION_COMMITTEES
       else -> throw IllegalArgumentException("$value is not part of faq category")
     }
   }

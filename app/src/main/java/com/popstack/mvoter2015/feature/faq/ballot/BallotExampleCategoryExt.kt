@@ -10,5 +10,7 @@ internal fun FaqCategory.displayString(context: Context): CharSequence {
     FaqCategory.DIPLOMATIC -> context.getString(R.string.faq_category_diplomatic)
     FaqCategory.INTERNATIONAL_OBSERVER -> context.getString(R.string.faq_category_international_observer)
     FaqCategory.CANDIDATE -> context.getString(R.string.faq_category_candidate)
+    FaqCategory.CONFLICT_RESOLUTION -> context.getString(R.string.faq_category_conflict_resolution)
+    FaqCategory.MEDIATION_COMMITTEES -> context.getString(R.string.faq_category_mediation_committees)
   }
 }
