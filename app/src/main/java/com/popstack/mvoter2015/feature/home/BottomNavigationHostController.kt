@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelStore
+import com.bluelinelabs.conductor.RouterTransaction
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.BaseController
 import com.popstack.mvoter2015.databinding.ControllerBottomNavHostBinding
@@ -48,30 +49,35 @@ class BottomNavigationHostController : BaseController<ControllerBottomNavHostBin
   }
 
   override fun onBindView(savedViewState: Bundle?) {
-    binding.homeViewPager.adapter =
-      BNVRouterPagerAdapter(
-        this,
-        binding.bottomNavigationView,
-        binding.homeViewPager,
-        mapOf(
-          R.id.navigation_candidate to { CandidateListController() },
-          R.id.navigation_party to {
-            PartyListController().also {
-              partyNavigationItemReselectedCallback = it
-            }
-          },
-          R.id.navigation_how_to_vote to { VotingGuideController() },
-          R.id.navigation_info to { FaqController() },
-          R.id.navigation_news to {
-            NewsController().also {
-              newsNewsNavigationItemReselectedCallback = it
-            }
-          }
-        )
+
+    val bottomNavRouterPagerAdapter = BNVRouterPagerAdapter(
+      this,
+      binding.bottomNavigationView,
+      binding.homeViewPager,
+      mapOf(
+        R.id.navigation_candidate to { RouterTransaction.with(CandidateListController()).tag("candidate_list") },
+        R.id.navigation_party to {
+          RouterTransaction.with(PartyListController().also {
+            partyNavigationItemReselectedCallback = it
+          })
+        },
+        R.id.navigation_how_to_vote to { RouterTransaction.with(VotingGuideController()) },
+        R.id.navigation_info to { RouterTransaction.with(FaqController()) },
+        R.id.navigation_news to {
+          RouterTransaction.with(NewsController().also {
+            newsNewsNavigationItemReselectedCallback = it
+          })
+        }
       )
+    )
+    binding.homeViewPager.adapter = bottomNavRouterPagerAdapter
+
 
     binding.bottomNavigationView.setOnNavigationItemReselectedListener { menuItem ->
       when (menuItem.itemId) {
+        R.id.navigation_candidate -> {
+          bottomNavRouterPagerAdapter.getRouter(0)?.popToTag("candidate_list")
+        }
         R.id.navigation_party -> partyNavigationItemReselectedCallback?.onPartyNavigationItemReselected()
         R.id.navigation_news -> newsNewsNavigationItemReselectedCallback?.onNewsNavigationItemReselected()
       }

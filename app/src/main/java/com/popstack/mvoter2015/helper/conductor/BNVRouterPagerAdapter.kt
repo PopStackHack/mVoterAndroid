@@ -24,7 +24,7 @@ class BNVRouterPagerAdapter(
   val host: Controller,
   val bnv: BottomNavigationView,
   val viewPager: NonScrollableViewPager,
-  val pages: Map<Int, () -> Controller>
+  val pages: Map<Int, () -> RouterTransaction>
 ) : PagerAdapter() {
 
   companion object {
@@ -65,12 +65,14 @@ class BNVRouterPagerAdapter(
     if (!router.hasRootController()) {
       val page =
         pages[bnv.menu[position].itemId] ?: throw Exception("Page not found in initializers!")
-      router.setRoot(RouterTransaction.with(page.invoke()))
+
+      router.setRoot(page.invoke())
     }
 
   }
 
   override fun getCount(): Int = bnv.menu.size()
+
   override fun getPageTitle(position: Int): CharSequence? = bnv.menu[position].title
 
   override fun instantiateItem(container: ViewGroup, position: Int): Any {
@@ -152,7 +154,7 @@ class BNVRouterPagerAdapter(
     }
   }
 
-  fun getRouter(position: Int): Router = visibleRouters[position, null]
+  fun getRouter(position: Int): Router? = visibleRouters[position, null]
 
   fun getItemId(position: Int): Long {
     return bnv.menu.getItem(position).itemId.toLong()
