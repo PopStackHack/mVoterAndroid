@@ -17,7 +17,8 @@ jobs:
       RELEASE_KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
       RELEASE_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
       GOOGLE_SERVICE_JSON_BASE64: ${{ secrets.GOOGLE_SERVICE_JSON_BASE64 }}
-      API_SECRET: ${{ secrets.API_SECRET }}
+      DEVELOPMENT_API_SECRET: ${{ secrets.DEVELOPMENT_API_SECRET }}
+      RELEASE_API_SECRET: ${{ secrets.RELEASE_API_SECRET }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/cache@v1
@@ -39,7 +40,8 @@ jobs:
       - run: echo -e "\nRELEASE_KEYSTORE_PASSWORD=$RELEASE_KEYSTORE_PASSWORD" >> local.properties
       - run: echo -e "\nRELEASE_KEY_ALIAS=$RELEASE_KEY_ALIAS" >> local.properties
       - run: echo -e "\nRELEASE_KEY_PASSWORD=$RELEASE_KEY_PASSWORD" >> local.properties
-      - run: echo -e "\nAPI_SECRET=$API_SECRET" >> local.properties
+      - run: echo -e "\nDEVELOPMENT_API_SECRET=$nDEVELOPMENT_API_SECRET" >> local.properties
+      - run: echo -e "\nRELEASE_API_SECRET=$RELEASE_API_SECRET" >> local.properties
 
       - run: touch app/google-services.json
       - run: echo $GOOGLE_SERVICE_JSON_BASE64 | base64 -di > app/google-services.json
