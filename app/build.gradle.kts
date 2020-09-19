@@ -140,9 +140,6 @@ dependencies {
   //Circular ImageView
   implementation(CommonLibs.circle_image_view)
 
-  //Phone Number
-  implementation("com.aungkyawpaing.mmphonenumber:mmphonenumber:1.1.0")
-
   //Test
   testImplementation(CommonLibs.junit)
   testImplementation(project(":coroutinetestrule"))

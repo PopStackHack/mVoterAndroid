@@ -2,15 +2,15 @@ package com.popstack.mvoter2015.feature.party.detail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.aungkyawpaing.mmphonenumber.extract.MyanmarPhoneNumberExtractor
 import com.popstack.mvoter2015.domain.party.model.PartyId
 import com.popstack.mvoter2015.domain.party.usecase.GetParty
+import com.popstack.mvoter2015.domain.utils.MyanmarPhoneNumberExtractorWithZeroOneSupport
 import com.popstack.mvoter2015.exception.GlobalExceptionHandler
 import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewStateLiveData
 import com.popstack.mvoter2015.helper.livedata.SingleLiveEvent
+import javax.inject.Inject
 import kotlinx.coroutines.launch
 import timber.log.Timber
-import javax.inject.Inject
 
 class PartyDetailViewModel @Inject constructor(
   private val getParty: GetParty,
@@ -104,7 +104,7 @@ class PartyDetailViewModel @Inject constructor(
     }
   }
 
-  private val extractor = MyanmarPhoneNumberExtractor()
+  private val extractor = MyanmarPhoneNumberExtractorWithZeroOneSupport()
 
   fun handleContactClick(contactList: List<String>) {
     val contactViewItems = contactList.map {

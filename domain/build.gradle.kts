@@ -11,6 +11,7 @@ dependencies {
   api(KotlinCoroutine.core)
 
   implementation(CommonLibs.javaxInject)
+  implementation(CommonLibs.mm_ph_number)
 
   testImplementation(project(":coroutinetestrule"))
   testImplementation(CommonLibs.junit)

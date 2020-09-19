@@ -24,6 +24,8 @@ object CommonLibs {
   const val javaXAnnotations = "org.glassfish:javax.annotation:10.0-b28"
 
   const val circle_image_view = "de.hdodenhof:circleimageview:3.0.1"
+
+  const val mm_ph_number = "com.aungkyawpaing.mmphonenumber:mmphonenumber:1.1.0"
 }
 
 //region AndroidX
