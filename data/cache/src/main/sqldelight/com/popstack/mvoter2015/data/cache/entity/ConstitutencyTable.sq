@@ -11,13 +11,12 @@ CREATE TABLE ConstituencyTable(
   id TEXT PRIMARY KEY NOT NULL,
   name TEXT NOT NULL,
   house TEXT AS HouseType NOT NULL,
-  township TEXT,
-  stateRegion TEXT
+  remark TEXT
 );
 
 insertOrReplace:
 INSERT OR REPLACE INTO ConstituencyTable VALUES(
-:id, :name, :house,:township,: stateRegion
+:id, :name, :house,:remark
 );
 
 deleteAll:

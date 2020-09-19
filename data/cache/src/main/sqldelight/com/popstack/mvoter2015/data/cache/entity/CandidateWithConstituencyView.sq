@@ -4,8 +4,7 @@ SELECT
     ConstituencyTable.id AS _constituencyId,
     ConstituencyTable.name AS _constituencyName,
     ConstituencyTable.house AS _constituencyHouse,
-    ConstituencyTable.township AS _constituencyTownship,
-    ConstituencyTable.stateRegion AS _constituencyStateRegion
+    ConstituencyTable.remark AS _constituencyRemark
 FROM CandidateTable
 JOIN ConstituencyTable ON CandidateTable.constituencyId = ConstituencyTable.id
 GROUP BY CandidateTable.id;

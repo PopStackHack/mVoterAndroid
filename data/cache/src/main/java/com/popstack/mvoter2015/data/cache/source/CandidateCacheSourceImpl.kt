@@ -25,11 +25,10 @@ class CandidateCacheSourceImpl @Inject constructor(
       candidate.party?.let(partyCacheSource::putParty)
       with(candidate.constituency) {
         db.constitutencyTableQueries.insertOrReplace(
-          id = id,
+          id = id.value,
           name = name,
           house = house,
-          township = township,
-          stateRegion = stateRegion
+          remark = remark
         )
       }
 
@@ -56,7 +55,7 @@ class CandidateCacheSourceImpl @Inject constructor(
             representingEthnicity = representingEthnicity,
             residentalAddress = residentialAddress,
             partyId = party?.id,
-            constituencyId = constituency.id
+            constituencyId = constituency.id.value
           )
         }
       } else {
@@ -73,11 +72,10 @@ class CandidateCacheSourceImpl @Inject constructor(
           candidate.party?.let(partyCacheSource::putParty)
           with(candidate.constituency) {
             db.constitutencyTableQueries.insertOrReplace(
-              id = id,
+              id = id.value,
               name = name,
               house = house,
-              township = township,
-              stateRegion = stateRegion
+              remark = remark
             )
           }
 
@@ -104,7 +102,7 @@ class CandidateCacheSourceImpl @Inject constructor(
                 representingEthnicity = representingEthnicity,
                 residentalAddress = residentialAddress,
                 partyId = party?.id,
-                constituencyId = constituency.id
+                constituencyId = constituency.id.value
               )
             }
           } else {
@@ -138,7 +136,7 @@ class CandidateCacheSourceImpl @Inject constructor(
         representingEthnicity = representingEthnicity,
         residentalAddress = residentialAddress,
         partyId = party?.id,
-        constituencyId = constituency.id,
+        constituencyId = constituency.id.value,
         queryConstituencyid = queryConstituencyId?.value
       )
     }
@@ -150,11 +148,10 @@ class CandidateCacheSourceImpl @Inject constructor(
         candidate.party?.let(partyCacheSource::putParty)
         with(candidate.constituency) {
           db.constitutencyTableQueries.insertOrReplace(
-            id = id,
+            id = id.value,
             name = name,
             house = house,
-            township = township,
-            stateRegion = stateRegion
+            remark = remark
           )
         }
         insertOrReplaceCandidate(candidate, queryConstituencyId)
@@ -187,8 +184,7 @@ class CandidateCacheSourceImpl @Inject constructor(
     _constituencyId: String,
     _constituencyName: String,
     _constituencyHouse: HouseType,
-    _constituencyTownship: String?,
-    _constituencyStateRegion: String?,
+    _constituencyRemark: String?,
     _partyId: String?,
     partyNumber: Int?,
     partyBurmeseName: String?,
@@ -211,8 +207,8 @@ class CandidateCacheSourceImpl @Inject constructor(
     { id, name, sortingName, sortingBallotOrder,
       gender, occupation, photoUrl, education, religion, age, birthDate, ethnicity, father, mother,
       individualLogo, residentalAddress, isEthnicCandidate, representingEthnicity, partyId,
-      constituencyId, queryConstituencyId, _constituencyId, _constituencyName, _constituencyHouse, _constituencyTownship,
-      _constituencyStateRegion, _partyId, partyNumber, partyBurmeseName, partyEnglishName,
+      constituencyId, queryConstituencyId, _constituencyId, _constituencyName, _constituencyHouse,
+      _constituencyRemark, _partyId, partyNumber, partyBurmeseName, partyEnglishName,
       partyAbbreviation, partyFlagImage, partySealImage, partyRegion, partyLeadersAndChairmen,
       partyMemberCount, partyContacts, partyHeadquarterLocation, partyPolicy,
       partyEstablishmentApplicationDate, partyEstablishmentApprovalDate,
@@ -232,11 +228,10 @@ class CandidateCacheSourceImpl @Inject constructor(
         age = age?.toInt(),
         birthDate = birthDate,
         constituency = Constituency(
-          id = _constituencyId,
+          id = ConstituencyId(_constituencyId),
           name = _constituencyName,
           house = _constituencyHouse,
-          township = _constituencyTownship,
-          stateRegion = _constituencyStateRegion
+          remark = _constituencyRemark
         ),
         ethnicity = ethnicity,
         father = father,

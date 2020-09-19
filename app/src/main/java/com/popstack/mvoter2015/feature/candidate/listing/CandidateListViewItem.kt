@@ -2,7 +2,12 @@ package com.popstack.mvoter2015.feature.candidate.listing
 
 import com.popstack.mvoter2015.domain.candidate.model.Candidate
 
-data class CandidateListViewItem(val candidateList: List<CandidateViewItem>)
+sealed class CandidateListResult {
+
+  data class Remark(val remarkMessage: String) : CandidateListResult()
+
+  data class CandidateListViewItem(val candidateList: List<CandidateViewItem>) : CandidateListResult()
+}
 
 sealed class CandidateViewItem(val id: String)
 

@@ -14,6 +14,7 @@ import com.popstack.mvoter2015.data.cache.source.location.StateTownshipSerialize
 import com.popstack.mvoter2015.data.cache.source.location.WardSerializer
 import com.popstack.mvoter2015.data.common.location.LocationCacheSource
 import com.popstack.mvoter2015.domain.constituency.model.Constituency
+import com.popstack.mvoter2015.domain.constituency.model.ConstituencyId
 import com.popstack.mvoter2015.domain.constituency.model.HouseType.LOWER_HOUSE
 import com.popstack.mvoter2015.domain.constituency.model.HouseType.REGIONAL_HOUSE
 import com.popstack.mvoter2015.domain.constituency.model.HouseType.UPPER_HOUSE
@@ -98,29 +99,27 @@ class LocationCacheSourceImpl @Inject constructor(
 
   private fun ConstituencyProto.toConstituency(): Constituency {
     return Constituency(
-      id = this.id,
+      id = ConstituencyId(this.id),
       name = this.name,
       house = when (this.houseType) {
         TYPE_LOWER_HOUSE -> LOWER_HOUSE
         TYPE_UPPER_HOUSE -> UPPER_HOUSE
         TYPE_STATE_REGION_HOUSE -> REGIONAL_HOUSE
       },
-      township = if (this.township.isEmpty()) null else this.township,
-      stateRegion = if (this.stateRegion.isEmpty()) null else this.stateRegion
+      remark = if (this.remark.isEmpty()) null else this.remark,
     )
   }
 
   private fun Constituency.toConstituencyProto(): ConstituencyProto {
     return ConstituencyProto(
-      id = this.id,
+      id = this.id.value,
       name = this.name,
       houseType = when (this.house) {
         LOWER_HOUSE -> TYPE_LOWER_HOUSE
         UPPER_HOUSE -> TYPE_UPPER_HOUSE
         REGIONAL_HOUSE -> TYPE_STATE_REGION_HOUSE
       },
-      township = this.township.orEmpty(),
-      stateRegion = this.stateRegion.orEmpty()
+      remark = this.remark.orEmpty()
     )
   }
 

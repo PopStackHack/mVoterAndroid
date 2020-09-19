@@ -4,7 +4,6 @@ import com.popstack.mvoter2015.domain.CoroutineUseCase
 import com.popstack.mvoter2015.domain.DispatcherProvider
 import com.popstack.mvoter2015.domain.candidate.CandidateRepository
 import com.popstack.mvoter2015.domain.candidate.model.Candidate
-import com.popstack.mvoter2015.domain.constituency.model.ConstituencyId
 import com.popstack.mvoter2015.domain.exception.NetworkException
 import com.popstack.mvoter2015.domain.location.LocationRepository
 import javax.inject.Inject
@@ -22,9 +21,7 @@ class GetMyLowerHouseCandidateList @Inject constructor(
 
     return try {
       candidateRepository.getCandidateList(
-        ConstituencyId(
-          locationRepository.getUserWard()!!.lowerHouseConstituency.id
-        )
+        locationRepository.getUserWard()!!.lowerHouseConstituency.id
       )
     } catch (networkException: NetworkException) {
       if (networkException.errorCode == 404 && hasRetriedWithWardUpdate.not()) {
@@ -43,9 +40,7 @@ class GetMyLowerHouseCandidateList @Inject constructor(
         locationRepository.saveUserWard(wardDetails)
 
         return candidateRepository.getCandidateList(
-          ConstituencyId(
-            locationRepository.getUserWard()!!.lowerHouseConstituency.id
-          )
+          locationRepository.getUserWard()!!.lowerHouseConstituency.id
         )
       } else {
         throw networkException

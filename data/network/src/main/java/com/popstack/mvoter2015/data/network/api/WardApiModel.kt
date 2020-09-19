@@ -1,6 +1,7 @@
 package com.popstack.mvoter2015.data.network.api
 
 import com.popstack.mvoter2015.domain.constituency.model.Constituency
+import com.popstack.mvoter2015.domain.constituency.model.ConstituencyId
 import com.popstack.mvoter2015.domain.constituency.model.HouseType
 import com.popstack.mvoter2015.domain.location.model.Ward
 import com.popstack.mvoter2015.domain.location.model.WardId
@@ -34,23 +35,23 @@ data class WardApiModel(
       id = WardId(id.toString()),
       name = name,
       lowerHouseConstituency = Constituency(
-        id = lowerHouseConstituency.id.toString(),
+        id = ConstituencyId(lowerHouseConstituency.id.toString()),
         name = lowerHouseConstituency.name,
+        remark = lowerHouseConstituency.remark,
         house = HouseType.LOWER_HOUSE,
-        null, null
       ),
       upperHouseConstituency = Constituency(
-        id = upperHouseConstituency.id.toString(),
+        id = ConstituencyId(upperHouseConstituency.id.toString()),
         name = upperHouseConstituency.name,
-        house = HouseType.UPPER_HOUSE,
-        null, null
+        remark = upperHouseConstituency.remark,
+        house = HouseType.UPPER_HOUSE
       ),
       stateRegionConstituency = stateRegionConstituency?.let {
         Constituency(
-          id = it.id.toString(),
+          id = ConstituencyId(it.id.toString()),
           name = it.name,
-          house = HouseType.REGIONAL_HOUSE,
-          null, null
+          remark = stateRegionConstituency.remark,
+          house = HouseType.REGIONAL_HOUSE
         )
       }
     )

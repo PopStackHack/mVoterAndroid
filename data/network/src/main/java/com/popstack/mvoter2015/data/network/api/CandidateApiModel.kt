@@ -5,6 +5,7 @@ import com.popstack.mvoter2015.domain.candidate.model.CandidateGender
 import com.popstack.mvoter2015.domain.candidate.model.CandidateId
 import com.popstack.mvoter2015.domain.candidate.model.CandidateParent
 import com.popstack.mvoter2015.domain.constituency.model.Constituency
+import com.popstack.mvoter2015.domain.constituency.model.ConstituencyId
 import com.popstack.mvoter2015.domain.constituency.model.HouseType
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -75,11 +76,10 @@ fun CandidateApiModel.toCandidateModel(): Candidate {
       age = age,
       birthDate = LocalDate.parse(birthday, dateTimeFormatter),
       constituency = Constituency(
-        constituency.id,
+        ConstituencyId(constituency.id),
         constituency.attributes.name,
         mapToHouseType(constituency.attributes.house),
-        constituency.attributes.township,
-        constituency.attributes.stateRegion
+        constituency.attributes.remark
       ),
       ethnicity = ethnicity,
       father = father?.run { CandidateParent(name, religion, ethnicity) },

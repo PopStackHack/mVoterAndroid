@@ -2,9 +2,6 @@ package com.popstack.mvoter2015.feature.candidate.listing.regionalhouse
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,33 +9,19 @@ import com.bluelinelabs.conductor.RouterTransaction
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerRegionalCandidateListBinding
-import com.popstack.mvoter2015.di.conductor.ConductorInjection
 import com.popstack.mvoter2015.domain.candidate.model.CandidateId
 import com.popstack.mvoter2015.domain.candidate.usecase.exception.NoStateRegionConstituencyException
 import com.popstack.mvoter2015.feature.candidate.detail.CandidateDetailController
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateListPagerParentRouter
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateListRecyclerViewAdapter
-import com.popstack.mvoter2015.feature.candidate.listing.CandidateListViewItem
+import com.popstack.mvoter2015.feature.candidate.listing.CandidateListResult
 import com.popstack.mvoter2015.feature.home.BottomNavigationHostViewModelStore
 import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewState
 import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.helper.recyclerview.StickyHeaderDecoration
 import com.popstack.mvoter2015.logging.HasTag
 
-class RegionalHouseCandidateListController(bundle: Bundle) :
-  MvvmController<ControllerRegionalCandidateListBinding>(bundle), HasTag {
-
-  companion object {
-    const val CONSTITUENCY_NAME = "constituency_name"
-
-    fun newInstance(
-      constituencyName: String
-    ) = RegionalHouseCandidateListController(
-      bundleOf(
-        CONSTITUENCY_NAME to constituencyName
-      )
-    )
-  }
+class RegionalHouseCandidateListController() : MvvmController<ControllerRegionalCandidateListBinding>(), HasTag {
 
   override val tag: String = "RegionalHouseCandidateListController"
 
@@ -60,19 +43,8 @@ class RegionalHouseCandidateListController(bundle: Bundle) :
     )
   }
 
-  override fun onCreateView(
-    inflater: LayoutInflater,
-    container: ViewGroup,
-    savedViewState: Bundle?
-  ): View {
-    ConductorInjection.inject(this)
-    return super.onCreateView(inflater, container, savedViewState)
-  }
-
   override fun onBindView(savedViewState: Bundle?) {
     super.onBindView(savedViewState)
-    //TODO: Don't pass the constituency with arg, instead use a domain use case to pass this info
-    viewModel.setTitle(args.getString(CONSTITUENCY_NAME))
     binding.rvCandidate.apply {
       adapter = candidateListAdapter
       layoutManager = LinearLayoutManager(requireContext())
@@ -94,25 +66,33 @@ class RegionalHouseCandidateListController(bundle: Bundle) :
     viewModel.loadCandidates()
   }
 
-  private fun observeViewItem(viewState: AsyncViewState<CandidateListViewItem>) = with(binding) {
+  private fun observeViewItem(viewState: AsyncViewState<CandidateListResult>) = with(binding) {
     progressBar.isVisible = viewState is AsyncViewState.Loading
     rvCandidate.isVisible = viewState is AsyncViewState.Success
     tvErrorMessage.isVisible = viewState is AsyncViewState.Error
     btnRetry.isVisible = viewState is AsyncViewState.Error
-    groupNoStateRegion.isVisible = false
+    groupRemark.isVisible = false
 
     when (viewState) {
       is AsyncViewState.Success -> {
-        if (viewState.value.candidateList.isNotEmpty()) {
-          candidateListAdapter.submitList(viewState.value.candidateList)
-        } else {
-          tvErrorMessage.isVisible = true
-          tvErrorMessage.setText(R.string.error_server_404)
+        val successValue = viewState.value
+        rvCandidate.isVisible = successValue is CandidateListResult.CandidateListViewItem
+        groupRemark.isVisible = successValue is CandidateListResult.Remark
+
+        if (successValue is CandidateListResult.Remark) {
+          tvRemark.text = successValue.remarkMessage
+        } else if (successValue is CandidateListResult.CandidateListViewItem) {
+          if (successValue.candidateList.isNotEmpty()) {
+            candidateListAdapter.submitList(successValue.candidateList)
+          } else {
+            tvErrorMessage.isVisible = true
+            tvErrorMessage.setText(R.string.error_server_404)
+          }
         }
       }
       is AsyncViewState.Error -> {
         if (viewState.exception is NoStateRegionConstituencyException) {
-          groupNoStateRegion.isVisible = true
+          groupRemark.isVisible = true
           btnRetry.isVisible = false
         } else {
           tvErrorMessage.text = viewState.errorMessage

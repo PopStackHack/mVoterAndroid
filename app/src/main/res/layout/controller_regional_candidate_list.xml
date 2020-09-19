@@ -22,7 +22,7 @@
     app:layout_constraintGuide_percent="0.5" />
 
   <ImageView
-    android:id="@+id/ivNoStateRegionMessage"
+    android:id="@+id/ivRemark"
     android:layout_width="100dp"
     android:layout_height="100dp"
     android:src="@drawable/mvoter_logo"
@@ -31,7 +31,7 @@
     app:layout_constraintStart_toStartOf="parent" />
 
   <TextView
-    android:id="@+id/tvNoStateRegionMessage"
+    android:id="@+id/tvRemark"
     style="@style/TextLarge"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
@@ -45,11 +45,11 @@
     app:layout_constraintTop_toBottomOf="@id/guideline50PercentHorizontal" />
 
   <androidx.constraintlayout.widget.Group
-    android:id="@+id/groupNoStateRegion"
+    android:id="@+id/groupRemark"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:visibility="gone"
-    app:constraint_referenced_ids="tvNoStateRegionMessage,ivNoStateRegionMessage"
+    app:constraint_referenced_ids="tvRemark,ivRemark"
     tools:visibility="visible" />
 
   <ProgressBar

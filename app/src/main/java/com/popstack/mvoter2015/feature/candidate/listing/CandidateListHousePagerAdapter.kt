@@ -30,16 +30,10 @@ internal class CandidateListHousePagerAdapter(host: Controller) :
     router.addChangeListener(BreadcrumbControllerChangeHandler)
     if (!router.hasRootController()) {
       val controller = when (position) {
-        0 -> LowerHouseCandidateListController.newInstance(
-          itemList[position].constituencyName
-        )
-        1 -> UpperHouseCandidateListController.newInstance(
-          itemList[position].constituencyName
-        )
-        2 -> RegionalHouseCandidateListController.newInstance(
-          itemList[position].constituencyName
-        )
-        else -> return
+        0 -> LowerHouseCandidateListController()
+        1 -> UpperHouseCandidateListController()
+        2 -> RegionalHouseCandidateListController()
+        else -> throw IllegalStateException()
       }
       val routerTransaction = RouterTransaction.with(controller)
       router.setRoot(routerTransaction)

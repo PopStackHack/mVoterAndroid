@@ -13,12 +13,12 @@ data class ConstituencyApiResponse(
 data class CandidateConstituencyAttributes(
   @Json(name = "name") val name: String,
   @Json(name = "house") val house: String,
-  @Json(name = "state_region") val stateRegion: String?,
-  @Json(name = "township") val township: String?
+  @Json(name = "remark") val remark: String?
 )
 
 @JsonClass(generateAdapter = true)
 data class ConstituencyApiModel(
   @Json(name = "id") val id: Long,
   @Json(name = "name") val name: String,
+  @Json(name = "remark") val remark: String?,
 )
