@@ -48,10 +48,10 @@ class RegionalHouseCandidateListViewModel @Inject constructor(
             it.isEthnicCandidate
           }
             ?.run {
-              if (ethnicCandidatesMap.containsKey(constituency.name)) {
-                ethnicCandidatesMap[constituency.name]!!.add(candidate)
+              if (ethnicCandidatesMap.containsKey(this.constituency.name)) {
+                ethnicCandidatesMap[this.constituency.name]!!.add(candidate)
               } else {
-                ethnicCandidatesMap[constituency.name] = arrayListOf(candidate)
+                ethnicCandidatesMap[this.constituency.name] = arrayListOf(candidate)
               }
             } ?: stateRegionCandidateViewItemList.add(candidate.toSmallCandidateViewItem())
         }
