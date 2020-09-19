@@ -25,7 +25,8 @@ class CandidateListRecyclerViewAdapter constructor(
     areItemTheSame = { item1, item2 -> item1.id == item2.id },
     areContentsTheSame = { item1, item2 -> item1 == item2 }
   )
-), StickyHeaderDecoration.StickyHeaderInterface {
+),
+  StickyHeaderDecoration.StickyHeaderInterface {
 
   companion object {
     const val VIEW_TYPE_CANDIDATE = 1

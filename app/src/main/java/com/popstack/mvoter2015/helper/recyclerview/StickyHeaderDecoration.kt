@@ -11,7 +11,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 
-
 class StickyHeaderDecoration(private val mListener: StickyHeaderInterface) : ItemDecoration() {
   private var mStickyHeaderHeight = 0
   override fun onDrawOver(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {

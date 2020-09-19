@@ -35,11 +35,21 @@ class AboutController : LifeCycleAwareController<ControllerAboutBinding>(), Inje
     supportActionBar()?.setDisplayHomeAsUpEnabled(true)
 
     binding.viewTermOfUse.setOnClickListener {
-      //TODO:
+      runCatching {
+        lifecycleScope.launch {
+          openBrowserDelegate.browserHandler()
+            .launchNewsInBrowser(requireActivity(), "https://mvoterapp.com/terms")
+        }
+      }
     }
 
     binding.viewPrivacyPolicy.setOnClickListener {
-      //TODO:
+      runCatching {
+        lifecycleScope.launch {
+          openBrowserDelegate.browserHandler()
+            .launchNewsInBrowser(requireActivity(), "https://mvoterapp.com/privacy")
+        }
+      }
     }
 
     binding.viewLicense.setOnClickListener {
@@ -97,12 +107,10 @@ class AboutController : LifeCycleAwareController<ControllerAboutBinding>(), Inje
       )
     } catch (e: Exception) {
       runCatching {
-        startActivity(
-          Intent(
-            Intent.ACTION_VIEW,
-            Uri.parse("https://www.facebook.com/mvoter2015")
-          )
-        )
+        lifecycleScope.launch {
+          openBrowserDelegate.browserHandler()
+            .launchNewsInBrowser(requireActivity(), "https://www.facebook.com/mvoter2015")
+        }
       }
     }
 
