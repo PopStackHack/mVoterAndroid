@@ -21,6 +21,7 @@ println("url : $url")
 println("forceUpdate : $forceUpdate")
 println("secret : $secret")
 println("apkFile : $apkFile")
+println("versionCode : $BuildConfig.versionCode")
 
 task uploadApk(type: Exec) {
   executable "/bin/sh"
