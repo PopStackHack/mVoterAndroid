@@ -43,25 +43,22 @@ class GetMyUpperHouseCandidateListBehaviorTest {
       id = WardId("random"),
       name = "name",
       lowerHouseConstituency = Constituency(
-        id = "",
+        id = ConstituencyId(""),
         name = "",
         house = HouseType.LOWER_HOUSE,
-        township = null,
-        stateRegion = null
+        remark = ""
       ),
       upperHouseConstituency = Constituency(
-        id = newConstituencyId.value,
+        id = newConstituencyId,
         name = "",
         house = HouseType.UPPER_HOUSE,
-        township = null,
-        stateRegion = null
+        remark = ""
       ),
       stateRegionConstituency = Constituency(
-        id = "",
+        id =ConstituencyId(""),
         name = "",
         house = HouseType.REGIONAL_HOUSE,
-        township = null,
-        stateRegion = null
+        remark = ""
       )
     )
 
@@ -76,25 +73,22 @@ class GetMyUpperHouseCandidateListBehaviorTest {
         id = WardId("random"),
         name = "name",
         lowerHouseConstituency = Constituency(
-          id = "",
+          id = ConstituencyId(""),
           name = "",
           house = HouseType.LOWER_HOUSE,
-          township = null,
-          stateRegion = null
+          remark = ""
         ),
         upperHouseConstituency = Constituency(
-          id = oldConstituencyId.value,
+          id = oldConstituencyId,
           name = "",
           house = HouseType.UPPER_HOUSE,
-          township = null,
-          stateRegion = null
+          remark = ""
         ),
         stateRegionConstituency = Constituency(
-          id = "",
+          id =ConstituencyId(""),
           name = "",
           house = HouseType.REGIONAL_HOUSE,
-          township = null,
-          stateRegion = null
+          remark = ""
         )
       ),
       newWard
@@ -126,25 +120,22 @@ class GetMyUpperHouseCandidateListBehaviorTest {
       id = WardId("random"),
       name = "name",
       lowerHouseConstituency = Constituency(
-        id = "",
+        id = ConstituencyId(""),
         name = "",
         house = HouseType.LOWER_HOUSE,
-        township = null,
-        stateRegion = null
+        remark = ""
       ),
       upperHouseConstituency = Constituency(
-        id = oldConstituencyId.value,
+        id = oldConstituencyId,
         name = "",
         house = HouseType.UPPER_HOUSE,
-        township = null,
-        stateRegion = null
+        remark = ""
       ),
       stateRegionConstituency = Constituency(
-        id = "",
+        id =ConstituencyId(""),
         name = "",
         house = HouseType.REGIONAL_HOUSE,
-        township = null,
-        stateRegion = null
+        remark = ""
       )
     )
 
