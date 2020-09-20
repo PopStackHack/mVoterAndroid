@@ -5,6 +5,7 @@ import com.popstack.mvoter2015.domain.constituency.model.HouseType
 import com.popstack.mvoter2015.domain.party.model.PartyId
 import com.popstack.mvoter2015.domain.utils.BurmeseNumberUtils
 import com.popstack.mvoter2015.feature.candidate.listing.SmallCandidateViewItem
+import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.Locale
 
@@ -36,7 +37,7 @@ data class CandidateInfoViewItem(
   val residentialAddress: String?
 )
 
-private val dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy", Locale.ENGLISH)
+private val dateFormatter = DateTimeFormatter.ofPattern("d၊ M၊ yyyy")
 
 fun Candidate.toCandidateInfoViewItem() = CandidateInfoViewItem(
   photo = photoUrl,
@@ -44,7 +45,6 @@ fun Candidate.toCandidateInfoViewItem() = CandidateInfoViewItem(
   partyId = party?.id,
   partyName = party?.nameBurmese ?: "တစ်သီးပုဂ္ဂလ",
   partySealImageUrl = party?.sealImage ?: individualLogo,
-  // TODO: Distinguish state region
   houseType = when (constituency.house) {
     HouseType.UPPER_HOUSE -> "အမျိုးသားလွှတ်တော်"
     HouseType.LOWER_HOUSE -> "ပြည့်သူလွှတ်တော်"
