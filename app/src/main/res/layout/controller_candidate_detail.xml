@@ -67,7 +67,7 @@
         style="@style/TextMedium.Bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/bg_chip_accent_transparent"
         android:gravity="center"
         android:paddingStart="12dp"

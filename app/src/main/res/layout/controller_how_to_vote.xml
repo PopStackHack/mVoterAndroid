@@ -53,7 +53,7 @@
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_gravity="center_horizontal"
-          android:layout_marginTop="8dp"
+          android:layout_marginTop="4dp"
           tools:text="၇၇" />
 
         <TextView
@@ -61,7 +61,7 @@
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_gravity="center_horizontal"
-          android:layout_marginTop="12dp"
+          android:layout_marginTop="6dp"
           android:text="သာ လိုတော့သည်" />
 
       </LinearLayout>
@@ -71,6 +71,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clipToPadding="false"
+        android:paddingTop="16dp"
         android:nestedScrollingEnabled="false"
         android:paddingBottom="16dp" />
 
