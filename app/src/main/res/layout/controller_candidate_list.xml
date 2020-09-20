@@ -18,7 +18,6 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:backgroundTint="@color/primary"
-      app:layout_scrollFlags="scroll|enterAlways"
       app:menu="@menu/menu_candidate"
       app:title="@string/title_candidates"
       app:titleTextAppearance="@style/TextTitle3.Bold"
