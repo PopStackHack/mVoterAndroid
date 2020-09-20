@@ -12,6 +12,8 @@
     android:id="@+id/ivFlagIcon"
     android:layout_width="24dp"
     android:layout_height="24dp"
+    android:layout_marginTop="1dp"
+    android:layout_marginStart="4dp"
     android:background="@drawable/background_accent_oval"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="@+id/tvPartyCount">
@@ -30,7 +32,7 @@
     style="@style/TextLarge.Bold"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
-    android:layout_marginStart="16dp"
+    android:layout_marginStart="8dp"
     android:text="@string/header_total_party_count"
     android:textColor="@color/text_primary"
     app:layout_constraintBottom_toBottomOf="parent"
