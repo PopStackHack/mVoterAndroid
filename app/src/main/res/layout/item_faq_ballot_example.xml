@@ -25,13 +25,15 @@
     app:layout_constraintTop_toTopOf="parent" />
 
   <TextView
+    style="@style/TextLarge"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:gravity="start"
+    android:text="@string/ballot_examples"
+    app:layout_constrainedWidth="true"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
-    android:gravity="center"
-    style="@style/TextLarge"
-    android:text="@string/ballot_examples"
     app:layout_constraintStart_toEndOf="@id/guideline25PercentVertical"
     app:layout_constraintTop_toTopOf="parent" />
 
