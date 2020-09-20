@@ -7,7 +7,7 @@
   <string name="retry">ထပ်စမ်းကြည့်မယ်</string>
   <string name="cancel">မလုပ်တော့ပါ</string>
 
-  <string name="navigation_candidate_list">ကိုယ်စားလှယ်လောင်း</string>
+  <string name="navigation_candidate_list">ကိုယ်စားလှယ်</string>
   <string name="navigation_party_list">ပါတီများ</string>
   <string name="navigation_how_to_vote">မဲပေးနည်း</string>
   <string name="navigation_tips">သိမှတ်ဖွယ်</string>
