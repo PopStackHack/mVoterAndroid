@@ -17,7 +17,7 @@ data class CandidateInfoViewItem(
   val photo: String,
   val name: String,
   val partyId: PartyId?,
-  val partyName: String?,
+  val partyName: String,
   val partySealImageUrl: String?,
   val houseType: String,
   val constituencyName: String,
