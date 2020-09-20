@@ -55,7 +55,7 @@ class GetMyUpperHouseCandidateListBehaviorTest {
         remark = ""
       ),
       stateRegionConstituency = Constituency(
-        id =ConstituencyId(""),
+        id = ConstituencyId(""),
         name = "",
         house = HouseType.REGIONAL_HOUSE,
         remark = ""
@@ -85,7 +85,7 @@ class GetMyUpperHouseCandidateListBehaviorTest {
           remark = ""
         ),
         stateRegionConstituency = Constituency(
-          id =ConstituencyId(""),
+          id = ConstituencyId(""),
           name = "",
           house = HouseType.REGIONAL_HOUSE,
           remark = ""
@@ -132,7 +132,7 @@ class GetMyUpperHouseCandidateListBehaviorTest {
         remark = ""
       ),
       stateRegionConstituency = Constituency(
-        id =ConstituencyId(""),
+        id = ConstituencyId(""),
         name = "",
         house = HouseType.REGIONAL_HOUSE,
         remark = ""

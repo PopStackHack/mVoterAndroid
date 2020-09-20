@@ -153,6 +153,7 @@ class HostActivity : AppCompatActivity(), HasRouter, Injectable, HasAndroidInjec
               kotlin.runCatching {
                 startActivity(Intents.viewUrl(appUpdateResult.updateLink))
               }
+              finish()
             }
             .create()
             .also { dialog ->

@@ -7,14 +7,18 @@ import com.google.android.gms.common.GoogleApiAvailability
 import com.popstack.mvoter2015.data.common.appupdate.AppUpdate
 import com.popstack.mvoter2015.data.common.appupdate.AppUpdateCacheSource
 import com.popstack.mvoter2015.data.common.appupdate.AppUpdateNetworkSource
-import com.popstack.mvoter2015.domain.exception.NetworkException
 import com.popstack.mvoter2015.domain.DispatcherProvider
+import com.popstack.mvoter2015.domain.exception.NetworkException
 import com.popstack.mvoter2015.domain.infra.AppUpdateManager
 import com.popstack.mvoter2015.domain.infra.AppVersionProvider
 import kotlinx.coroutines.withContext
 import timber.log.Timber
 import javax.inject.Inject
 
+/**
+ * App Update Manager that checks if an update is required
+ * Fallback to the cache to check if required
+ */
 class AndroidAppUpdateManager @Inject constructor(
   private val context: Context,
   private val appUpdateNetworkSource: AppUpdateNetworkSource,
