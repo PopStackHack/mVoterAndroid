@@ -71,7 +71,7 @@
     android:padding="8dp"
     android:textColor="@color/text_on_accent"
     app:backgroundTint="@color/tint_button_policy"
-    app:cornerRadius="20dp"
+    app:cornerRadius="25dp"
     app:icon="@drawable/ic_baseline_check_white_24"
     app:iconGravity="textStart"
     app:iconTint="@android:color/white"
