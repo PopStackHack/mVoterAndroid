@@ -9,6 +9,7 @@ import android.view.MenuItem
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
+import androidx.core.widget.NestedScrollView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import coil.api.load
@@ -28,6 +29,7 @@ import com.popstack.mvoter2015.helper.extensions.showShortToast
 import com.popstack.mvoter2015.helper.format
 import com.popstack.mvoter2015.helper.intent.Intents
 import com.popstack.mvoter2015.logging.HasTag
+import timber.log.Timber
 
 class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDetailBinding>(bundle), HasTag {
 
@@ -96,6 +98,7 @@ class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDeta
       adapter = timelineAdapter
       layoutManager = LinearLayoutManager(requireContext())
     }
+
     requireActivityAsAppCompatActivity().setSupportActionBar(binding.toolBar)
     requireActivityAsAppCompatActivity().supportActionBar?.title = ""
     supportActionBar()?.setDisplayHomeAsUpEnabled(true)
@@ -128,6 +131,39 @@ class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDeta
           error(R.drawable.placeholder_rect)
           crossfade(true)
         }
+        binding.layoutContent.setOnScrollChangeListener(object : NestedScrollView.OnScrollChangeListener {
+          private var isLiftedState = false
+          val primaryBackgroundColor = ContextCompat.getColor(requireContext(), R.color.primary)
+          val transparentBackgroundColor = ContextCompat.getColor(requireContext(), R.color.transparent)
+
+          override fun onScrollChange(scrollingView: NestedScrollView?, scrollX: Int, scrollY: Int, oldScrollX: Int, oldScrollY: Int) {
+
+            //This logic copied from AppBarLayout's shouldLift method
+            val newLiftedState = (
+              scrollingView != null &&
+                (scrollingView.canScrollVertically(-1) || scrollingView.scrollY > 0)
+              )
+
+            Timber.i("new : $newLiftedState, prev : $isLiftedState")
+            if (newLiftedState != isLiftedState) {
+              binding.toolBar.title = if (newLiftedState) {
+                viewItem.name
+              } else {
+                ""
+              }
+              binding.appbar.setBackgroundColor(
+                if (newLiftedState) {
+                  primaryBackgroundColor
+                } else {
+                  transparentBackgroundColor
+                }
+              )
+            }
+
+            isLiftedState = newLiftedState
+          }
+        })
+
         binding.tvPartyName.text = viewItem.name
 
         binding.tvPartyNameEnglish.isVisible = viewItem.nameEnglish != null
