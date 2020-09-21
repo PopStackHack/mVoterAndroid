@@ -14,10 +14,16 @@ import android.text.style.ImageSpan
 import java.lang.ref.WeakReference
 
 class CenteredImageSpan(context: Context, drawableRes: Int) : ImageSpan(context, drawableRes) {
+
   private var mDrawableRef: WeakReference<Drawable>? = null
-  override fun getSize(paint: Paint, text: CharSequence?,
-                       start: Int, end: Int,
-                       fm: Paint.FontMetricsInt?): Int {
+
+  override fun getSize(
+    paint: Paint,
+    text: CharSequence?,
+    start: Int,
+    end: Int,
+    fm: Paint.FontMetricsInt?
+  ): Int {
     val d: Drawable = cachedDrawable
     val rect: Rect = d.bounds
     if (fm != null) {
@@ -31,15 +37,23 @@ class CenteredImageSpan(context: Context, drawableRes: Int) : ImageSpan(context,
     return rect.right
   }
 
-  override fun draw(canvas: Canvas, text: CharSequence?,
-                    start: Int, end: Int, x: Float,
-                    top: Int, y: Int, bottom: Int, paint: Paint) {
+  override fun draw(
+    canvas: Canvas,
+    text: CharSequence?,
+    start: Int,
+    end: Int,
+    x: Float,
+    top: Int,
+    y: Int,
+    bottom: Int,
+    paint: Paint
+  ) {
     val b: Drawable = cachedDrawable
     canvas.save()
     val drawableHeight: Int = b.intrinsicHeight
     val fontAscent: Int = paint.fontMetricsInt.ascent
     val fontDescent: Int = paint.fontMetricsInt.descent
-    val transY: Int = bottom - b.bounds.bottom +  // align bottom to bottom
+    val transY: Int = bottom - b.bounds.bottom + // align bottom to bottom
       (drawableHeight - fontDescent + fontAscent) / 2 // align center to center
     canvas.translate(x, transY.toFloat())
     b.draw(canvas)

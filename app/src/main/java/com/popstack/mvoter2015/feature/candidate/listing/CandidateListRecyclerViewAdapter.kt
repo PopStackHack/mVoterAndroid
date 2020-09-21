@@ -4,7 +4,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import coil.api.load
-import coil.size.Precision
 import coil.size.Scale
 import coil.transform.CircleCropTransformation
 import com.popstack.mvoter2015.R
@@ -14,7 +13,6 @@ import com.popstack.mvoter2015.domain.candidate.model.CandidateId
 import com.popstack.mvoter2015.feature.candidate.listing.viewholders.CandidateItemViewHolder
 import com.popstack.mvoter2015.helper.diff.diffCallBackWith
 import com.popstack.mvoter2015.helper.extensions.inflater
-import com.popstack.mvoter2015.helper.extensions.toPx
 import com.popstack.mvoter2015.helper.extensions.withSafeAdapterPosition
 import com.popstack.mvoter2015.helper.recyclerview.StickyHeaderDecoration
 
