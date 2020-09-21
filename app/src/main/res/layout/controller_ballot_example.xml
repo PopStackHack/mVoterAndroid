@@ -43,7 +43,7 @@
     app:tabIndicatorFullWidth="false"
     app:tabIndicatorGravity="bottom"
     app:tabIndicatorHeight="4dp"
-    app:tabMode="auto"
+    app:tabMode="fixed"
     app:tabSelectedTextColor="@color/text_primary"
     app:tabTextColor="@color/text_primary" />
 
@@ -58,7 +58,7 @@
 
     <TextView
       android:id="@+id/tvPageIndicator"
-      style="@style/TextLarge.Bold"
+      style="@style/TextLarge"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:gravity="end"
@@ -90,7 +90,8 @@
       android:visibility="gone"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
+      app:layout_constraintTop_toTopOf="parent"
+      tools:visibility="visible" />
 
     <ImageView
       android:id="@+id/ivScrollLeft"
@@ -102,7 +103,8 @@
       android:visibility="gone"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
+      app:layout_constraintTop_toTopOf="parent"
+      tools:visibility="visible" />
 
   </androidx.constraintlayout.widget.ConstraintLayout>
 
