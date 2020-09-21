@@ -21,6 +21,7 @@ import com.popstack.mvoter2015.helper.conductor.supportActionBar
 import com.popstack.mvoter2015.logging.HasTag
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 class LocationUpdateController :
   MvvmController<ControllerLocationBinding>(),
@@ -50,8 +51,6 @@ class LocationUpdateController :
     super.onBindView(savedViewState)
 
     lifecycleScope.launch {
-      val isFirstTime = firstTimeConfig.isFirstTime()
-      binding.ivClose.isVisible = !isFirstTime
       supportActionBar()?.setDisplayHomeAsUpEnabled(true)
     }
 
@@ -94,15 +93,27 @@ class LocationUpdateController :
     }
 
     binding.ivClose.setOnClickListener {
-      if (requireActivity() is HasRouter) {
-        (requireActivity() as HasRouter).router()
-          .popCurrentController()
-      }
+      changeFirstTimeStatusAndNavigateToHome()
     }
 
     setupButtons()
 
     viewModel.viewEventLiveData.observe(this, Observer(::observeViewEvent))
+  }
+
+  private fun changeFirstTimeStatusAndNavigateToHome() {
+    lifecycleScope.launch {
+      firstTimeConfig.setFirstTimeStatus(false)
+    }
+
+    if (router.backstackSize > 1) {
+      router.popCurrentController()
+    } else {
+      router.setRoot(
+        RouterTransaction.with(BottomNavigationHostController())
+          .tag(BottomNavigationHostController.TAG)
+      )
+    }
   }
 
   private fun setupButtons() {
@@ -140,13 +151,7 @@ class LocationUpdateController :
         binding.progressBar.isVisible = true
       }
       LocationUpdateViewModel.ViewEvent.NavigateToHomePage -> {
-        lifecycleScope.launch {
-          firstTimeConfig.setFirstTimeStatus(false)
-        }
-        router.setRoot(
-          RouterTransaction.with(BottomNavigationHostController())
-            .tag(BottomNavigationHostController.TAG)
-        )
+        changeFirstTimeStatusAndNavigateToHome()
       }
       is LocationUpdateViewModel.ViewEvent.ShowErrorMessage -> {
         binding.buttonDone.icon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_baseline_check_white_24)

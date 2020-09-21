@@ -15,6 +15,12 @@ class CandidateListViewModel @Inject constructor(
   private val getUserWard: GetUserWard
 ) : ViewModel() {
 
+  sealed class ViewEvent {
+    object RequestUserLocation : ViewEvent()
+  }
+
+  val viewEventLiveData = SingleLiveEvent<ViewEvent>()
+
   val houseViewItemListLiveData =
     SingleLiveEvent<List<CandidateListHouseViewItem>>()
 
@@ -22,13 +28,14 @@ class CandidateListViewModel @Inject constructor(
     viewModelScope.launch {
       val houseTypes = HouseType.values()
 
-      val userWard = getUserWard.execute(Unit) ?: return@launch
-
+      val userWard = getUserWard.execute(Unit) ?: run {
+        viewEventLiveData.postValue(ViewEvent.RequestUserLocation)
+        return@launch
+      }
       val viewItems = houseTypes.map { houseType ->
         houseViewItemMapper.mapFromHouseType(houseType, userWard)
       }
       houseViewItemListLiveData.postValue(viewItems)
     }
   }
-
 }

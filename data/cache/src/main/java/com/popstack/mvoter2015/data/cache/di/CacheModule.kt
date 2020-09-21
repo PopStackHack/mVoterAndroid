@@ -14,6 +14,7 @@ import com.popstack.mvoter2015.data.common.news.NewsCacheSource
 import com.popstack.mvoter2015.data.common.party.PartyCacheSource
 import dagger.Binds
 import dagger.Module
+import javax.inject.Singleton
 
 @Module(includes = [SqlDelightModule::class])
 abstract class CacheModule {
@@ -33,6 +34,6 @@ abstract class CacheModule {
   @Binds
   abstract fun candidateCacheSource(candidateCacheSourceImpl: CandidateCacheSourceImpl): CandidateCacheSource
 
-  @Binds
+  @Binds @Singleton
   abstract fun locationCacheSource(locationCacheSource: LocationCacheSourceImpl): LocationCacheSource
 }
