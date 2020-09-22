@@ -152,6 +152,13 @@ class LocationUpdateController :
       LocationUpdateViewModel.ViewEvent.NavigateToHomePage -> {
         changeFirstTimeStatusAndNavigateToHome()
       }
+      LocationUpdateViewModel.ViewEvent.ShowWardField -> {
+        binding.buttonWard.isVisible = true
+      }
+      LocationUpdateViewModel.ViewEvent.HideWardField -> {
+        binding.buttonWard.setText(R.string.location_chooser_choose_ward)
+        binding.buttonWard.isVisible = false
+      }
       is LocationUpdateViewModel.ViewEvent.ShowErrorMessage -> {
         binding.buttonDone.icon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_baseline_check_white_24)
         binding.buttonDone.isEnabled = true

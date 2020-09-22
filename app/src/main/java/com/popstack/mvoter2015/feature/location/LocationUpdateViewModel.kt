@@ -9,6 +9,7 @@ import com.popstack.mvoter2015.domain.location.usecase.GetWardDetails
 import com.popstack.mvoter2015.domain.location.usecase.SaveUserStateRegionTownship
 import com.popstack.mvoter2015.domain.location.usecase.SaveUserWard
 import com.popstack.mvoter2015.exception.GlobalExceptionHandler
+import com.popstack.mvoter2015.helper.LocalityUtils
 import com.popstack.mvoter2015.helper.livedata.SingleLiveEvent
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -28,6 +29,8 @@ class LocationUpdateViewModel @Inject constructor(
     object EnableDoneButton : ViewEvent()
     object NavigateToHomePage : ViewEvent()
     object ShowConstituencyLoading : ViewEvent()
+    object HideWardField : ViewEvent()
+    object ShowWardField : ViewEvent()
     data class ShowErrorMessage(val error: String) : ViewEvent()
   }
 
@@ -57,8 +60,25 @@ class LocationUpdateViewModel @Inject constructor(
   ) {
     data.chosenStateRegion = chosenStateRegion
     data.chosenTownship = chosenTownship
-    data.chosenWard = null
+
+    if (LocalityUtils.isTownshipFromNPT(chosenTownship)) {
+      data.chosenWard = chosenTownship
+      hideWardField()
+      onWardChosen(chosenTownship)
+    } else {
+      data.chosenWard = null
+      showWardField()
+    }
+
     data.wardDetails = null
+  }
+
+  private fun hideWardField() {
+    viewEventLiveData.setValue(ViewEvent.HideWardField)
+  }
+
+  private fun showWardField() {
+    viewEventLiveData.postValue(ViewEvent.ShowWardField)
   }
 
   fun onWardChosen(ward: String) {

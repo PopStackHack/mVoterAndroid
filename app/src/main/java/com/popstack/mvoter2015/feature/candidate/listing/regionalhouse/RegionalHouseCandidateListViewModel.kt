@@ -6,11 +6,13 @@ import com.popstack.mvoter2015.domain.candidate.model.Candidate
 import com.popstack.mvoter2015.domain.candidate.usecase.GetMyStateRegionHouseCandidateList
 import com.popstack.mvoter2015.domain.candidate.usecase.exception.NoStateRegionConstituencyException
 import com.popstack.mvoter2015.domain.constituency.usecase.GetMyStateRegionConstituency
+import com.popstack.mvoter2015.domain.location.usecase.GetUserStateRegionTownship
 import com.popstack.mvoter2015.exception.GlobalExceptionHandler
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateListResult
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateSectionTitleViewItem
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateViewItem
 import com.popstack.mvoter2015.feature.candidate.listing.toSmallCandidateViewItem
+import com.popstack.mvoter2015.helper.LocalityUtils
 import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewStateLiveData
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -20,6 +22,7 @@ import kotlin.collections.set
 class RegionalHouseCandidateListViewModel @Inject constructor(
   private val getMyStateRegionHouseCandidateList: GetMyStateRegionHouseCandidateList,
   private val getMyStateRegionConstituency: GetMyStateRegionConstituency,
+  private val getUserStateRegionTownship: GetUserStateRegionTownship,
   private val globalExceptionHandler: GlobalExceptionHandler
 ) : ViewModel() {
 
@@ -30,7 +33,9 @@ class RegionalHouseCandidateListViewModel @Inject constructor(
       viewItemLiveData.postLoading()
       try {
         val constituency = getMyStateRegionConstituency.execute(Unit)
-          ?: throw NoStateRegionConstituencyException()
+          ?: if (LocalityUtils.isTownshipFromNPT(getUserStateRegionTownship.execute(Unit)?.township.orEmpty())) {
+            throw NoStateRegionConstituencyException()
+          } else return@launch
         if (constituency.remark != null) {
           viewItemLiveData.postSuccess(CandidateListResult.Remark(constituency.remark!!))
           return@launch
