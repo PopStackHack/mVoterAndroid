@@ -25,6 +25,7 @@ class CandidateListController :
 
   companion object {
     const val CONTROLLER_TAG = "CandidateListController"
+    const val VIEW_STATE_SELECTED_TAB = "view_selected_tab"
   }
 
   private val viewModel: CandidateListViewModel by viewModels(
@@ -38,8 +39,13 @@ class CandidateListController :
   override val bindingInflater: (LayoutInflater) -> ControllerCandidateListBinding =
     ControllerCandidateListBinding::inflate
 
+  private var selectedTab: Int? = null
+
   override fun onBindView(savedViewState: Bundle?) {
     super.onBindView(savedViewState)
+
+    selectedTab = savedViewState?.getInt(VIEW_STATE_SELECTED_TAB)
+
     viewModel.viewEventLiveData.observe(this, Observer(::observeViewEvent))
 
     setSupportActionBar(binding.toolBar)
@@ -62,6 +68,13 @@ class CandidateListController :
       false
     }
 
+    /**
+     * In case we need to change to user's selected tab,
+     * we need to hide the list before changing the tab
+     * to avoid glitching experience
+     */
+    hideCandidateList()
+
     binding.viewPager.offscreenPageLimit = 3
     binding.viewPager.adapter = pagerAdapter
     binding.tabLayout.setupWithViewPager(binding.viewPager)
@@ -79,6 +92,16 @@ class CandidateListController :
     viewModel.loadHouses()
   }
 
+  private fun showCandidateList() {
+    binding.tabLayout.isVisible = true
+    binding.viewPager.isVisible = true
+  }
+
+  private fun hideCandidateList() {
+    binding.tabLayout.isVisible = false
+    binding.viewPager.isVisible = false
+  }
+
   private fun observeViewEvent(viewEvent: CandidateListViewModel.ViewEvent) {
     if (viewEvent is CandidateListViewModel.ViewEvent.RequestUserLocation) {
       binding.tabLayout.isVisible = false
@@ -87,9 +110,23 @@ class CandidateListController :
   }
 
   private fun observeHouseViewItem(houseViewItemList: List<CandidateListHouseViewItem>) {
-    binding.tabLayout.isVisible = true
     binding.groupChooseCandidateComponent.isVisible = false
     pagerAdapter.setItems(houseViewItemList)
+    changeSelectedTabIfNeeded()
+  }
+
+  private fun changeSelectedTabIfNeeded() {
+    selectedTab?.let {
+      binding.viewPager.post {
+        binding.viewPager.setCurrentItem(it, false)
+        showCandidateList()
+      }
+    } ?: showCandidateList()
+  }
+
+  override fun onSaveViewState(view: View, outState: Bundle) {
+    outState.putInt(VIEW_STATE_SELECTED_TAB, binding.viewPager.currentItem)
+    super.onSaveViewState(view, outState)
   }
 
   override fun onDestroyView(view: View) {
