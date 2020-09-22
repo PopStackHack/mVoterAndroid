@@ -10,7 +10,6 @@ import com.popstack.mvoter2015.core.recyclerview.ViewBindingViewHolder
 import com.popstack.mvoter2015.databinding.ItemStateRegionTownshipBinding
 import com.popstack.mvoter2015.helper.diff.diffCallBackWith
 import com.popstack.mvoter2015.helper.extensions.inflater
-import timber.log.Timber
 
 internal class StateRegionTownshipRecyclerViewAdapter constructor(
   private val onStateRegionClick: (Int, String) -> Unit,

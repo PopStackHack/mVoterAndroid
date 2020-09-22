@@ -124,12 +124,12 @@ class TownshipChooserViewModel @Inject constructor(
     }
   }
 
-  private fun postSuccessValues() = with (data) {
+  private fun postSuccessValues() = with(data) {
     viewItemLiveData.postSuccess(viewItems)
     onStateRegionChosen.postValue(selectedPosition)
   }
 
-  val onTownshipRetryClicked: () -> Unit = onTownshipRetryClicked@ {
+  val onTownshipRetryClicked: () -> Unit = onTownshipRetryClicked@{
     loadTownships(data.chosenStateRegion ?: return@onTownshipRetryClicked, data.selectedPosition)
   }
 

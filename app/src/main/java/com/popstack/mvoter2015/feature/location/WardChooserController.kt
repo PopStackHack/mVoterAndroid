@@ -3,6 +3,7 @@ package com.popstack.mvoter2015.feature.location
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -65,6 +66,10 @@ class WardChooserController(bundle: Bundle) : MvvmController<ControllerWardChoos
       }
     }
 
+    binding.btnRetry.setOnClickListener {
+      viewModel.loadWards(stateRegion!!, township!!)
+    }
+
     viewModel.onWardChosenEvent.observe(
       this,
       { ward ->
@@ -82,14 +87,28 @@ class WardChooserController(bundle: Bundle) : MvvmController<ControllerWardChoos
     }
   }
 
+  private fun changeComponentVisibility(
+    progressBarIsVisible: Boolean = false,
+    wardListIsVisible: Boolean = false,
+    errorComponentIsVisible: Boolean = false
+  ) = with(binding) {
+    progressBar.isVisible = progressBarIsVisible
+    rvWard.isVisible = wardListIsVisible
+    groupErrorComponent.isVisible = errorComponentIsVisible
+  }
+
   private fun observeViewItem(viewState: AsyncViewState<List<String>>) {
     when (viewState) {
+      is AsyncViewState.Loading -> {
+        changeComponentVisibility(progressBarIsVisible = true)
+      }
       is AsyncViewState.Success -> {
         wardRecyclerViewAdapter.submitList(ArrayList(viewState.value))
+        changeComponentVisibility(wardListIsVisible = true)
       }
       is AsyncViewState.Error -> {
-        val error = viewState.errorMessage
-        binding.tvErrorMessage.text = error
+        binding.tvErrorMessage.text = viewState.errorMessage
+        changeComponentVisibility(errorComponentIsVisible = true)
       }
     }
   }

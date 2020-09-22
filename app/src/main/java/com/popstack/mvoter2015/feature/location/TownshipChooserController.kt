@@ -12,7 +12,6 @@ import com.popstack.mvoter2015.feature.HasRouter
 import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewState
 import com.popstack.mvoter2015.helper.conductor.requireActivity
 import com.popstack.mvoter2015.logging.HasTag
-import timber.log.Timber
 
 class TownshipChooserController : MvvmController<ControllerTownshipChooserBinding>(), HasTag {
 
@@ -83,7 +82,8 @@ class TownshipChooserController : MvvmController<ControllerTownshipChooserBindin
   private fun changeComponentVisibility(
     rvIsVisible: Boolean = false,
     errorIsVisible: Boolean = false,
-    progressIsVisible: Boolean = false) = with(binding) {
+    progressIsVisible: Boolean = false
+  ) = with(binding) {
     progressBar.isVisible = progressIsVisible
     groupErrorComponent.isVisible = errorIsVisible
     rvStatRegionTownship.isVisible = rvIsVisible

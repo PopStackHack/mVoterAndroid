@@ -69,6 +69,7 @@ class LocationUpdateViewModel @Inject constructor(
         data.wardDetails = fetchWardDetails()
         viewEventLiveData.postValue(ViewEvent.EnableDoneButton)
       }.exceptionOrNull()?.let { exception ->
+        data.wardDetails = null
         viewEventLiveData.postValue(ViewEvent.ShowErrorMessage(globalExceptionHandler.getMessageForUser(exception)))
         Timber.e(exception)
       }
