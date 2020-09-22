@@ -27,41 +27,49 @@
     app:layout_constraintBottom_toBottomOf="@+id/tvStateRegion"
     app:layout_constraintTop_toTopOf="@+id/tvStateRegion" />
 
-  <androidx.constraintlayout.widget.Group
-    android:id="@+id/groupDropDown"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    app:constraint_referenced_ids="progressBar, tvErrorMessage, btnRetry, rvTownship" />
-
   <TextView
     android:id="@+id/tvErrorMessage"
-    style="@style/TextMedium"
+    style="@style/TextMedium.Error"
     android:layout_width="0dp"
-    android:layout_height="0dp"
+    android:gravity="start"
+    android:layout_height="wrap_content"
+    android:visibility="gone"
     android:layout_marginTop="16dp"
+    android:layout_marginEnd="16dp"
+    app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="@+id/tvStateRegion"
     app:layout_constraintTop_toBottomOf="@+id/tvStateRegion"
     tools:text="Error" />
 
   <ProgressBar
     android:id="@+id/progressBar"
-    android:layout_width="0dp"
-    android:layout_height="0dp"
+    android:layout_width="24dp"
+    android:layout_height="24dp"
     android:layout_marginTop="16dp"
+    android:visibility="gone"
     app:layout_constraintStart_toStartOf="@+id/tvStateRegion"
     app:layout_constraintTop_toBottomOf="@+id/tvStateRegion" />
 
   <TextView
     android:id="@+id/btnRetry"
     style="@style/TextMedium.Accent"
-    android:layout_width="0dp"
-    android:layout_height="0dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:clickable="true"
+    android:visibility="gone"
+    android:background="?attr/selectableItemBackground"
     android:layout_marginTop="8dp"
     android:text="@string/retry"
     app:layout_constraintStart_toStartOf="@+id/tvErrorMessage"
     app:layout_constraintTop_toBottomOf="@+id/tvErrorMessage"
     android:focusable="true" />
+
+  <androidx.constraintlayout.widget.Group
+    android:id="@+id/groupErrorComponent"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:visibility="gone"
+    app:constraint_referenced_ids="tvErrorMessage, btnRetry"/>
 
   <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/rvTownship"

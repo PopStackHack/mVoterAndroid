@@ -2,6 +2,7 @@ package com.popstack.mvoter2015.feature.location
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -47,6 +48,10 @@ class TownshipChooserController : MvvmController<ControllerTownshipChooserBindin
       }
     }
 
+    binding.btnRetry.setOnClickListener {
+      viewModel.loadStateRegions()
+    }
+
     viewModel.onTownshipChosenEvent.observe(
       this,
       {
@@ -75,18 +80,28 @@ class TownshipChooserController : MvvmController<ControllerTownshipChooserBindin
     }
   }
 
+  private fun changeComponentVisibility(
+    rvIsVisible: Boolean = false,
+    errorIsVisible: Boolean = false,
+    progressIsVisible: Boolean = false) = with(binding) {
+    progressBar.isVisible = progressIsVisible
+    groupErrorComponent.isVisible = errorIsVisible
+    rvStatRegionTownship.isVisible = rvIsVisible
+  }
+
   private fun observeViewItem(viewState: AsyncViewState<List<StateRegionTownshipViewItem>>) {
     when (viewState) {
+      is AsyncViewState.Loading -> {
+        changeComponentVisibility(progressIsVisible = true)
+      }
       is AsyncViewState.Success -> {
-        Timber.e("$tag : Submitting list")
-        viewState.value.map {
-          if (it.isSelected) Timber.e("$tag : ${it.name} ${it.isSelected}")
-        }
         stateRegionTownshipAdapter.submitList(ArrayList(viewState.value))
+        changeComponentVisibility(rvIsVisible = true)
       }
       is AsyncViewState.Error -> {
         val error = viewState.errorMessage
         binding.tvErrorMessage.text = error
+        changeComponentVisibility(errorIsVisible = true)
       }
     }
   }

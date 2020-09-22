@@ -8,8 +8,8 @@ import com.popstack.mvoter2015.domain.location.usecase.GetTownshipsForStateRegio
 import com.popstack.mvoter2015.exception.GlobalExceptionHandler
 import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewStateLiveData
 import com.popstack.mvoter2015.helper.livedata.SingleLiveEvent
-import javax.inject.Inject
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 class TownshipChooserViewModel @Inject constructor(
   private val getStateRegionList: GetStateRegionList,
@@ -29,6 +29,7 @@ class TownshipChooserViewModel @Inject constructor(
     var chosenStateRegion: String? = null
     var chosenTownship: String? = null
     var viewItems: ArrayList<StateRegionTownshipViewItem> = ArrayList()
+    var selectedPosition: Int = -1
   }
 
   val onStateRegionClicked: (Int, String) -> Unit = onStateRegionClicked@{ position, clickedStateRegion ->
@@ -42,29 +43,7 @@ class TownshipChooserViewModel @Inject constructor(
       changeSelected(it, false)
     }
 
-    data.chosenStateRegion = clickedStateRegion
-
-    val shouldLoadTownship = changeSelected(clickedStateRegion, true)
-
-    viewModelScope.launch {
-      if (shouldLoadTownship) {
-        val params = GetTownshipsForStateRegion.Params(clickedStateRegion)
-        kotlin.runCatching {
-          val townships = getTownshipList.execute(params)
-          setTownship(params.stateRegionIdentifier, townships)
-          viewItemLiveData.postSuccess(data.viewItems)
-          onStateRegionChosen.postValue(position)
-        }.exceptionOrNull()?.let { exception ->
-          val errorMessage = globalExceptionHandler.getMessageForUser(exception)
-          setErrorMessage(params.stateRegionIdentifier, errorMessage)
-          onStateRegionChosen.postValue(position)
-          viewItemLiveData.postSuccess(data.viewItems)
-        }
-      } else {
-        onStateRegionChosen.postValue(position)
-        viewItemLiveData.postSuccess(data.viewItems)
-      }
-    }
+    loadTownships(clickedStateRegion, position)
   }
 
   private fun setTownship(stateRegion: String, townships: List<Township>) {
@@ -121,8 +100,37 @@ class TownshipChooserViewModel @Inject constructor(
     return false
   }
 
-  val onTownshipRetryClicked: () -> Unit = {
+  private fun loadTownships(clickedStateRegion: String, position: Int) {
+    data.chosenStateRegion = clickedStateRegion
+    data.selectedPosition = position
 
+    val shouldLoadTownship = changeSelected(clickedStateRegion, true)
+
+    viewModelScope.launch {
+      if (shouldLoadTownship) {
+        val params = GetTownshipsForStateRegion.Params(clickedStateRegion)
+        kotlin.runCatching {
+          val townships = getTownshipList.execute(params)
+          setTownship(params.stateRegionIdentifier, townships)
+          postSuccessValues()
+        }.exceptionOrNull()?.let { exception ->
+          val errorMessage = globalExceptionHandler.getMessageForUser(exception)
+          setErrorMessage(params.stateRegionIdentifier, errorMessage)
+          postSuccessValues()
+        }
+      } else {
+        postSuccessValues()
+      }
+    }
+  }
+
+  private fun postSuccessValues() = with (data) {
+    viewItemLiveData.postSuccess(viewItems)
+    onStateRegionChosen.postValue(selectedPosition)
+  }
+
+  val onTownshipRetryClicked: () -> Unit = onTownshipRetryClicked@ {
+    loadTownships(data.chosenStateRegion ?: return@onTownshipRetryClicked, data.selectedPosition)
   }
 
   val onTownshipClicked: (String) -> Unit = {

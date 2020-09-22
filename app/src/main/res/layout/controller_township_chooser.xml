@@ -64,4 +64,21 @@
     app:layout_constraintTop_toBottomOf="@id/tvErrorMessage"
     app:strokeColor="@color/accent"
     tools:visibility="gone" />
+
+  <ProgressBar
+    android:id="@+id/progressBar"
+    android:layout_width="36dp"
+    android:layout_height="36dp"
+    android:visibility="gone"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+  <androidx.constraintlayout.widget.Group
+    android:id="@+id/groupErrorComponent"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:visibility="gone"
+    app:constraint_referenced_ids="tvErrorMessage, btnRetry"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

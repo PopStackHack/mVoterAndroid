@@ -10,6 +10,7 @@ import com.popstack.mvoter2015.core.recyclerview.ViewBindingViewHolder
 import com.popstack.mvoter2015.databinding.ItemStateRegionTownshipBinding
 import com.popstack.mvoter2015.helper.diff.diffCallBackWith
 import com.popstack.mvoter2015.helper.extensions.inflater
+import timber.log.Timber
 
 internal class StateRegionTownshipRecyclerViewAdapter constructor(
   private val onStateRegionClick: (Int, String) -> Unit,
@@ -21,11 +22,7 @@ internal class StateRegionTownshipRecyclerViewAdapter constructor(
       item1.name == item2.name
     },
     areContentsTheSame = { item1, item2 ->
-      item1.name == item2.name &&
-        item1.isLoading == item2.isLoading &&
-        item1.isSelected == item2.isSelected &&
-        item1.townshipList.size == item2.townshipList.size &&
-        item1.error == item2.error
+      item1 == item2
     }
   )
 ) {
@@ -79,26 +76,41 @@ internal class StateRegionTownshipRecyclerViewAdapter constructor(
       binding.tvStateRegion.text = stateRegionTownshipViewItem.name
 
       with(stateRegionTownshipViewItem) {
-        binding.groupDropDown.isVisible = isSelected
-        binding.ivDropDownArrow.setImageDrawable(itemView.context.getDrawable(R.drawable.ic_baseline_keyboard_arrow_down_24))
-
         if (isSelected) {
-          binding.progressBar.isVisible = isLoading && error.isEmpty()
+          binding.ivDropDownArrow.setImageDrawable(itemView.context.getDrawable(R.drawable.ic_baseline_keyboard_arrow_down_24))
+
           val shouldShowTownships = townshipList.isNotEmpty()
-          binding.rvTownship.isVisible = shouldShowTownships
+          val shouldShowError = error.isNotEmpty()
+
+          changeVisibility(
+            townshipListIsVisible = shouldShowTownships,
+            errorComponentIsVisible = shouldShowError,
+            progressBarIsVisible = isLoading && error.isEmpty()
+          )
 
           if (shouldShowTownships) {
             townshipAdapter.submitList(townshipList)
+            return
           }
 
-          val shouldShowError = error.isNotEmpty()
-          binding.tvErrorMessage.isVisible = shouldShowError
-          binding.btnRetry.isVisible = shouldShowError
-          binding.tvErrorMessage.text = error
+          if (shouldShowError) {
+            binding.tvErrorMessage.text = error
+          }
         } else {
           binding.ivDropDownArrow.setImageDrawable(itemView.context.getDrawable(R.drawable.ic_arrow_right_24))
+          changeVisibility()
         }
       }
+    }
+
+    private fun changeVisibility(
+      townshipListIsVisible: Boolean = false,
+      errorComponentIsVisible: Boolean = false,
+      progressBarIsVisible: Boolean = false
+    ) = with(binding) {
+      rvTownship.isVisible = townshipListIsVisible
+      groupErrorComponent.isVisible = errorComponentIsVisible
+      progressBar.isVisible = progressBarIsVisible
     }
   }
 }
