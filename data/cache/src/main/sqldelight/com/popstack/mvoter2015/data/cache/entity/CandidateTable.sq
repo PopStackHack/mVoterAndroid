@@ -44,7 +44,6 @@ INSERT OR REPLACE INTO CandidateTable VALUES(
 
 update:
 UPDATE CandidateTable SET
-id = :id,
 name = :name,
 sortingName = :sortingName,
 sortingBallotOrder = :sortingBallotOrder,
@@ -63,7 +62,8 @@ residentalAddress =:residentalAddress,
 isEthnicCandidate = :isEthnicCandidate,
 representingEthnicity = :representingEthnicity,
 partyId = :partyId,
-constituencyId = :constituencyId;
+constituencyId = :constituencyId
+WHERE id = :id;
 
 getById:
 SELECT * FROM CandidateTable WHERE id = :id;
