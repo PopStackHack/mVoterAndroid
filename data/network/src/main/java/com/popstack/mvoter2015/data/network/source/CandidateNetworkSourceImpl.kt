@@ -14,46 +14,8 @@ class CandidateNetworkSourceImpl @Inject constructor(
 ) : CandidateNetworkSource {
 
   override fun getCandidateList(constituencyId: ConstituencyId): List<Candidate> {
-//    try {
     return mvoterApi.candidateList(constituencyId.value)
       .executeOrThrow().data.map { it.toCandidateModel() }
-//    } catch (networkException: NetworkException) {
-//      // TODO : This block should be in repo. Move to repo
-//      if (networkException.errorCode == HttpURLConnection.HTTP_NOT_FOUND) {
-//
-//        val houseType = when (constituencyId.value) {
-//          userWard?.upperHouseConstituency?.id -> {
-//            HouseType.UPPER_HOUSE
-//          }
-//          userWard?.lowerHouseConstituency?.id -> {
-//            HouseType.LOWER_HOUSE
-//          }
-//          else -> {
-//            HouseType.REGIONAL_HOUSE
-//          }
-//        }
-//
-//        val userStateRegionTownship = locationRepository.getUserStateRegionTownship()
-//
-//        val wardDetails = locationRepository.getWardDetails(
-//          stateRegion = userStateRegionTownship?.stateRegion!!,
-//          townshipIdentifier = userStateRegionTownship.township,
-//          wardName = userWard?.name!!
-//        )
-//
-//        locationRepository.saveUserWard(wardDetails)
-//
-//        val updatedConstituencyId = when (houseType) {
-//          HouseType.UPPER_HOUSE -> wardDetails.upperHouseConstituency.id
-//          HouseType.LOWER_HOUSE -> wardDetails.lowerHouseConstituency.id
-//          HouseType.REGIONAL_HOUSE -> wardDetails.stateRegionConstituency.id
-//        }
-//
-//        return mvoterApi.candidateList(updatedConstituencyId).executeOrThrow().data.map { it.toCandidateModel() }
-//      } else {
-//        throw networkException
-//      }
-//    }
   }
 
   override fun getCandidate(candidateId: CandidateId): Candidate {

@@ -28,7 +28,6 @@ class PartyListViewModel @Inject constructor(
           region = party.region
         )
       }
-    }
-      .cachedIn(viewModelScope)
+    }.cachedIn(viewModelScope)
 
 }

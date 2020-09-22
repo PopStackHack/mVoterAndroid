@@ -6,7 +6,6 @@ import com.popstack.mvoter2015.domain.candidate.model.Candidate
 import com.popstack.mvoter2015.domain.candidate.usecase.GetMyStateRegionHouseCandidateList
 import com.popstack.mvoter2015.domain.candidate.usecase.exception.NoStateRegionConstituencyException
 import com.popstack.mvoter2015.domain.constituency.usecase.GetMyStateRegionConstituency
-import com.popstack.mvoter2015.domain.exception.NetworkException
 import com.popstack.mvoter2015.exception.GlobalExceptionHandler
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateListResult
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateSectionTitleViewItem
@@ -75,9 +74,9 @@ class RegionalHouseCandidateListViewModel @Inject constructor(
         viewItemLiveData.postSuccess(candidateListViewItem)
       } catch (noStateRegionConstituencyException: NoStateRegionConstituencyException) {
         viewItemLiveData.postError(noStateRegionConstituencyException, "")
-      } catch (networkException: NetworkException) {
-        Timber.e(networkException)
-        viewItemLiveData.postError(networkException, globalExceptionHandler.getMessageForUser(networkException))
+      } catch (exception: Exception) {
+        Timber.e(exception)
+        viewItemLiveData.postError(exception, globalExceptionHandler.getMessageForUser(exception))
       }
     }
   }

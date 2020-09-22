@@ -5,6 +5,7 @@ import com.popstack.mvoter2015.domain.candidate.model.Candidate
 import com.popstack.mvoter2015.domain.candidate.model.CandidateId
 import com.popstack.mvoter2015.domain.constituency.model.ConstituencyId
 import com.popstack.mvoter2015.domain.exception.NetworkException
+import java.io.IOException
 import javax.inject.Inject
 
 class CandidateRepositoryImpl @Inject constructor(
@@ -18,12 +19,15 @@ class CandidateRepositoryImpl @Inject constructor(
       candidateCacheSource.flushUnderConstituency(constituencyId)
       //TODO: Use separate field for this, currently overriding cuz ethnic candidate has different const id than normal one in state region
       candidateCacheSource.putCandidateList(candidateListFromNetwork, constituencyId)
-    } catch (exception: NetworkException) {
+    } catch (exception: IOException) {
       //Network error, see if can recover from cache
-      if (exception.errorCode == 404) {
-        //Don't recover from 404
-        throw exception
+      if (exception is NetworkException) {
+        if (exception.errorCode == 404) {
+          //Don't recover from 404
+          throw exception
+        }
       }
+
       val candidateListFromCache = candidateCacheSource.getCandidateList(constituencyId)
       if (candidateListFromCache.isEmpty()) {
         //Seems data is empty, can't recover, throw error
@@ -42,7 +46,7 @@ class CandidateRepositoryImpl @Inject constructor(
       candidateCacheSource.flushUnderConstituency(constituencyId)
       //TODO: Use separate field for this, currently overriding cuz ethnic candidate has different const id than normal one in state region
       candidateCacheSource.putCandidateList(candidateListFromNetwork, constituencyId)
-    } catch (exception: NetworkException) {
+    } catch (exception: IOException) {
       //Network error, see if can recover from cache
       val candidateListFromCache = candidateCacheSource.getRivalCandidateList(constituencyId)
       if (candidateListFromCache.isEmpty()) {
@@ -61,7 +65,7 @@ class CandidateRepositoryImpl @Inject constructor(
       val candidateFromNetwork = candidateNetworkSource.getCandidate(candidateId)
       candidateCacheSource.putCandidate(candidateFromNetwork)
       return candidateCacheSource.getCandidate(candidateId)!!
-    } catch (exception: Exception) {
+    } catch (exception: IOException) {
       return candidateCacheSource.getCandidate(candidateId) ?: throw exception
     }
   }

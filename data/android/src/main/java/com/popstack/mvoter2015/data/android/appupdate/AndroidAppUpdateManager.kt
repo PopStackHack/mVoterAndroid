@@ -8,11 +8,11 @@ import com.popstack.mvoter2015.data.common.appupdate.AppUpdate
 import com.popstack.mvoter2015.data.common.appupdate.AppUpdateCacheSource
 import com.popstack.mvoter2015.data.common.appupdate.AppUpdateNetworkSource
 import com.popstack.mvoter2015.domain.DispatcherProvider
-import com.popstack.mvoter2015.domain.exception.NetworkException
 import com.popstack.mvoter2015.domain.infra.AppUpdateManager
 import com.popstack.mvoter2015.domain.infra.AppVersionProvider
 import kotlinx.coroutines.withContext
 import timber.log.Timber
+import java.io.IOException
 import javax.inject.Inject
 
 /**
@@ -42,8 +42,8 @@ class AndroidAppUpdateManager @Inject constructor(
         .also { appUpdate ->
           appUpdateCacheSource.putLatestUpdate(appUpdate)
         }
-    } catch (networkException: NetworkException) {
-      Timber.e(networkException)
+    } catch (exception: IOException) {
+      Timber.e(exception)
     }
 
     return appUpdateCacheSource.getLatestUpdate()
