@@ -21,7 +21,6 @@ import com.popstack.mvoter2015.helper.conductor.supportActionBar
 import com.popstack.mvoter2015.logging.HasTag
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 class LocationUpdateController :
   MvvmController<ControllerLocationBinding>(),
