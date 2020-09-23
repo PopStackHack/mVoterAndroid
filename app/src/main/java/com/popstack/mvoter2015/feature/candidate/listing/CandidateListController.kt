@@ -5,12 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
+import androidx.viewpager.widget.ViewPager
 import com.bluelinelabs.conductor.RouterTransaction
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerCandidateListBinding
 import com.popstack.mvoter2015.feature.HasRouter
-import com.popstack.mvoter2015.feature.analytics.screen.CanTrackScreen
+import com.popstack.mvoter2015.feature.analytics.screen.ScreenTrackAnalyticsProvider
 import com.popstack.mvoter2015.feature.candidate.search.CandidateSearchController
 import com.popstack.mvoter2015.feature.location.LocationUpdateController
 import com.popstack.mvoter2015.helper.conductor.requireActivity
@@ -20,13 +21,9 @@ import com.popstack.mvoter2015.helper.conductor.supportActionBar
 import com.popstack.mvoter2015.logging.HasTag
 
 class CandidateListController :
-  MvvmController<ControllerCandidateListBinding>(), HasTag, CanTrackScreen {
+  MvvmController<ControllerCandidateListBinding>(), HasTag {
 
   override val tag: String = CONTROLLER_TAG
-
-  //TODO: Write a function that returns different screen name based on view pager currentItem
-  //We might need to manually write tracking on viewpager position change as well
-  override val screenName: String = "CandidateListController"
 
   companion object {
     const val CONTROLLER_TAG = "CandidateListController"
@@ -82,6 +79,27 @@ class CandidateListController :
 
     binding.viewPager.offscreenPageLimit = 3
     binding.viewPager.adapter = pagerAdapter
+    binding.viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+      override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+        //DO NOTHING
+      }
+
+      override fun onPageSelected(position: Int) {
+        val canTrackScreen = when (position) {
+          0 -> CandidateListViewPagerTrackScreen("LowerHouseCandidateListController")
+          1 -> CandidateListViewPagerTrackScreen("UpperHouseCandidateListController")
+          2 -> CandidateListViewPagerTrackScreen("RegionalHouseCandidateListController")
+          else -> throw IllegalStateException()
+        }
+        ScreenTrackAnalyticsProvider.screenTackAnalytics(requireContext())
+          .trackScreen(canTrackScreen)
+      }
+
+      override fun onPageScrollStateChanged(state: Int) {
+        //DO NOTHING
+      }
+
+    })
     binding.tabLayout.setupWithViewPager(binding.viewPager)
 
     binding.btnChoose.setOnClickListener {
