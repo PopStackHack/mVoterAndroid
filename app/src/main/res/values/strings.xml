@@ -182,6 +182,7 @@
   <!--  App Update-->
   <string name="update_required">App အဆင့်မြင့်တင်ရန် လိုအပ်ပါသည်။</string>
   <string name="update_required_message">App ဗာရှင်းအသစ်ထွက်ရှိထားပါသည်။ ဆက်လက်အသုံးပြုရန် အဆင့်မြင့်တင်ပေးပါ။</string>
+  <string name="do_update">အဆင့်မြင့်တင်မယ်</string>
 
   <string name="update_relaxed_title">App ဗာရှင်းအသစ်</string>
   <string name="update_relaxed_message">App ဗာရှင်းအသစ်ထွက်ရှိထားပါသည်။ သင် အဆင့်မြင့်တင်လိုပါသလား?</string>
@@ -192,4 +193,6 @@
   <string name="theme_system">System Default</string>
   <string name="theme_light">Light</string>
   <string name="theme_dark">Dark</string>
+  <string name="skip_update">ဒီဗာရှင်းအတွက်\nထပ်မပြောနဲ့တော့</string>
+
 </resources>

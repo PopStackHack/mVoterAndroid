@@ -146,7 +146,7 @@ class HostActivity : AppCompatActivity(), HasRouter, Injectable, HasAndroidInjec
           AlertDialog.Builder(this@HostActivity)
             .setTitle(R.string.update_required)
             .setMessage(R.string.update_required_message)
-            .setPositiveButton(R.string.ok) { dialog, _ ->
+            .setPositiveButton(R.string.do_update) { dialog, _ ->
               dialog.dismiss()
             }
             .setOnDismissListener {
@@ -162,7 +162,7 @@ class HostActivity : AppCompatActivity(), HasRouter, Injectable, HasAndroidInjec
               dialog.setOnShowListener {
                 val positiveButton = dialog.getButton(DialogInterface.BUTTON_POSITIVE)
                 positiveButton.setTextColor(
-                  ContextCompat.getColor(this@HostActivity, R.color.text_error)
+                  ContextCompat.getColor(this@HostActivity, R.color.accent)
                 )
               }
             }
@@ -176,6 +176,12 @@ class HostActivity : AppCompatActivity(), HasRouter, Injectable, HasAndroidInjec
               relaxedUpdateSheet.dismiss()
             }
             relaxedUpdateSheet.onCancelClick = {
+              relaxedUpdateSheet.dismiss()
+            }
+            relaxedUpdateSheet.onSkipClick = {
+              lifecycleScope.launch {
+                appUpdateManager.skipCurrentUpdate()
+              }
               relaxedUpdateSheet.dismiss()
             }
             relaxedUpdateSheet.show(supportFragmentManager, "Relaxed_Update")

@@ -43,6 +43,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
+
       <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonOkay"
         style="@style/Widget.MaterialComponents.Button.TextButton"
@@ -51,8 +52,10 @@
         android:layout_marginTop="8dp"
         android:text="@string/ok"
         android:textColor="@color/accent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvMessage" />
+        app:layout_constraintTop_toBottomOf="@id/tvMessage"
+        app:layout_constraintVertical_bias="1.0" />
 
       <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonCancel"
@@ -62,9 +65,22 @@
         android:layout_marginTop="8dp"
         android:text="@string/cancel"
         android:textColor="@color/text_error"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/buttonOkay"
-        app:layout_constraintTop_toBottomOf="@id/tvMessage" />
+        app:layout_constraintTop_toBottomOf="@id/tvMessage"
+        app:layout_constraintVertical_bias="1.0" />
 
+      <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonSkip"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/skip_update"
+        android:textColor="@color/accent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/buttonCancel"
+        app:layout_constraintTop_toBottomOf="@id/tvMessage" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

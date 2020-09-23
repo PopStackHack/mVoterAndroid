@@ -23,6 +23,7 @@ class RelaxedAppUpdateBottomSheet : BottomSheetDialogFragment() {
     return view
   }
 
+  var onSkipClick: (() -> Unit)? = null
   var onOkayClick: (() -> Unit)? = null
   var onCancelClick: (() -> Unit)? = null
 
@@ -36,6 +37,10 @@ class RelaxedAppUpdateBottomSheet : BottomSheetDialogFragment() {
       onCancelClick?.invoke()
     }
 
+    binding.buttonSkip.setOnClickListener {
+      onSkipClick?.invoke()
+    }
+
   }
 
   override fun onDismiss(dialog: DialogInterface) {
@@ -46,6 +51,7 @@ class RelaxedAppUpdateBottomSheet : BottomSheetDialogFragment() {
     super.onDestroyView()
     _binding = null
     onOkayClick = null
+    onSkipClick = null
     onCancelClick = null
   }
 }
