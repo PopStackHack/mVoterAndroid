@@ -157,6 +157,8 @@ class HostActivity : AppCompatActivity(), HasRouter, Injectable, HasAndroidInjec
             }
             .create()
             .also { dialog ->
+              dialog.setCancelable(false)
+              dialog.setCanceledOnTouchOutside(false)
               dialog.setOnShowListener {
                 val positiveButton = dialog.getButton(DialogInterface.BUTTON_POSITIVE)
                 positiveButton.setTextColor(
