@@ -169,7 +169,7 @@ class HostActivity : AppCompatActivity(), HasRouter, Injectable, HasAndroidInjec
             .show()
         }
         is AppUpdateManager.UpdateResult.RelaxedUpdate -> {
-          if (!hasRelaxedUpdateShownBefore) {
+          if (!hasRelaxedUpdateShownBefore && !appUpdateResult.isSkipped) {
             val relaxedUpdateSheet = RelaxedAppUpdateBottomSheet()
             relaxedUpdateSheet.onOkayClick = {
               startActivity(Intents.viewUrl(appUpdateResult.updateLink))

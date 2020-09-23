@@ -23,6 +23,7 @@ class AndroidAppUpdateManager @Inject constructor(
   private val context: Context,
   private val appUpdateNetworkSource: AppUpdateNetworkSource,
   private val appUpdateCacheSource: AppUpdateCacheSource,
+  private val skipVersionCache: SkipVersionCache,
   private val appVersionProvider: AppVersionProvider,
   private val dispatcherProvider: DispatcherProvider
 ) : AppUpdateManager {
@@ -32,6 +33,12 @@ class AndroidAppUpdateManager @Inject constructor(
       val latestUpdate =
         getLatestAppUpdate() ?: return@withContext AppUpdateManager.UpdateResult.NotRequired
       processLatestAppUpdate(latestUpdate)
+    }
+  }
+
+  override suspend fun skipCurrentUpdate() {
+    appUpdateCacheSource.getLatestUpdate()?.latestVersionCode?.let { versionCode ->
+      skipVersionCache.saveSkipVersion(versionCode)
     }
   }
 
@@ -50,17 +57,28 @@ class AndroidAppUpdateManager @Inject constructor(
   }
 
   @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
-  internal fun processLatestAppUpdate(appUpdate: AppUpdate): AppUpdateManager.UpdateResult {
+  internal suspend fun processLatestAppUpdate(appUpdate: AppUpdate): AppUpdateManager.UpdateResult {
     if (appUpdate.latestVersionCode > appVersionProvider.versionCode()) {
 
       if (appUpdate.requireForcedUpdate) {
         return AppUpdateManager.UpdateResult.ForcedUpdate(getDownloadLink(appUpdate))
       } else {
-        return AppUpdateManager.UpdateResult.RelaxedUpdate(getDownloadLink(appUpdate))
+        return AppUpdateManager.UpdateResult.RelaxedUpdate(getDownloadLink(appUpdate), checkIfSkipped(appUpdate))
       }
     }
 
     return AppUpdateManager.UpdateResult.NotRequired
+  }
+
+  @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+  internal suspend fun checkIfSkipped(appUpdate: AppUpdate): Boolean {
+    val skippedCode = skipVersionCache.getSkipVersion() ?: return false
+    return if (appUpdate.latestVersionCode == skippedCode) {
+      true
+    } else {
+      skipVersionCache.flush()
+      false
+    }
   }
 
   @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)

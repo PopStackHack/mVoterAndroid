@@ -13,4 +13,8 @@ class NoOpAppUpdateManager @Inject constructor() : AppUpdateManager {
     return AppUpdateManager.UpdateResult.NotRequired
   }
 
+  override suspend fun skipCurrentUpdate() {
+    //DO NOTHING
+  }
+
 }
