@@ -12,6 +12,9 @@ import androidx.viewbinding.ViewBinding
 import com.bluelinelabs.conductor.Controller
 import com.popstack.mvoter2015.di.Injectable
 import com.popstack.mvoter2015.di.conductor.ConductorInjection
+import com.popstack.mvoter2015.feature.analytics.screen.CanTrackScreen
+import com.popstack.mvoter2015.feature.analytics.screen.ScreenTrackAnalyticsProvider
+import com.popstack.mvoter2015.helper.conductor.requireContext
 
 abstract class BaseController<VB : ViewBinding> constructor(
   bundle: Bundle? = null
@@ -41,6 +44,14 @@ abstract class BaseController<VB : ViewBinding> constructor(
   //Function to safely call after on create and before onViewCreated
   protected open fun onBindView(savedViewState: Bundle?) {
     //Do Nothing
+  }
+
+  override fun onAttach(view: View) {
+    super.onAttach(view)
+    if (this is CanTrackScreen) {
+      ScreenTrackAnalyticsProvider.screenTackAnalytics(requireContext())
+        .trackScreen(this)
+    }
   }
 
   override fun onDestroyView(view: View) {

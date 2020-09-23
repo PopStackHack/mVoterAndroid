@@ -14,6 +14,7 @@ import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerPartyListBinding
 import com.popstack.mvoter2015.exception.GlobalExceptionHandler
+import com.popstack.mvoter2015.feature.analytics.screen.CanTrackScreen
 import com.popstack.mvoter2015.feature.home.BottomNavigationHostViewModelStore
 import com.popstack.mvoter2015.feature.party.PartySharedElementTransitionChangeHandler
 import com.popstack.mvoter2015.feature.party.detail.PartyDetailController
@@ -27,9 +28,11 @@ import com.popstack.mvoter2015.paging.CommonLoadStateAdapter
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-class PartyListController : MvvmController<ControllerPartyListBinding>(), HasTag {
+class PartyListController : MvvmController<ControllerPartyListBinding>(), HasTag, CanTrackScreen {
 
   override val tag: String = "PartyListController"
+
+  override val screenName: String = "PartyListController"
 
   private val viewModel: PartyListViewModel by viewModels(
     store = BottomNavigationHostViewModelStore.viewModelStore ?: viewModelStore

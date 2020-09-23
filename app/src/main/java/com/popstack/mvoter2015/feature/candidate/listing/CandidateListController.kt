@@ -10,6 +10,7 @@ import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerCandidateListBinding
 import com.popstack.mvoter2015.feature.HasRouter
+import com.popstack.mvoter2015.feature.analytics.screen.CanTrackScreen
 import com.popstack.mvoter2015.feature.candidate.search.CandidateSearchController
 import com.popstack.mvoter2015.feature.location.LocationUpdateController
 import com.popstack.mvoter2015.helper.conductor.requireActivity
@@ -19,9 +20,13 @@ import com.popstack.mvoter2015.helper.conductor.supportActionBar
 import com.popstack.mvoter2015.logging.HasTag
 
 class CandidateListController :
-  MvvmController<ControllerCandidateListBinding>(), HasTag {
+  MvvmController<ControllerCandidateListBinding>(), HasTag, CanTrackScreen {
 
   override val tag: String = CONTROLLER_TAG
+
+  //TODO: Write a function that returns different screen name based on view pager currentItem
+  //We might need to manually write tracking on viewpager position change as well
+  override val screenName: String = "CandidateListController"
 
   companion object {
     const val CONTROLLER_TAG = "CandidateListController"

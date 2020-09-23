@@ -14,6 +14,7 @@ import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerFaqSearchBinding
 import com.popstack.mvoter2015.domain.faq.model.FaqId
 import com.popstack.mvoter2015.exception.GlobalExceptionHandler
+import com.popstack.mvoter2015.feature.analytics.screen.CanTrackScreen
 import com.popstack.mvoter2015.feature.share.ShareUrlFactory
 import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
 import com.popstack.mvoter2015.helper.ViewVisibilityDebounceHandler
@@ -22,12 +23,17 @@ import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.helper.extensions.showKeyboard
 import com.popstack.mvoter2015.helper.intent.Intents
 import com.popstack.mvoter2015.helper.search.DebounceSearchQueryListener
+import com.popstack.mvoter2015.logging.HasTag
 import com.popstack.mvoter2015.paging.CommonLoadStateAdapter
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-class FaqSearchController : MvvmController<ControllerFaqSearchBinding>() {
+class FaqSearchController : MvvmController<ControllerFaqSearchBinding>(), HasTag, CanTrackScreen {
+
+  override val tag: String = "FaqSearchController"
+
+  override val screenName: String = "FaqSearchController"
 
   override val bindingInflater: (LayoutInflater) -> ControllerFaqSearchBinding = ControllerFaqSearchBinding::inflate
 

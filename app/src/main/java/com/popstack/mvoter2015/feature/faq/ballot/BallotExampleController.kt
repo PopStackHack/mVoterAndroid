@@ -11,6 +11,7 @@ import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerBallotExampleBinding
 import com.popstack.mvoter2015.domain.faq.model.BallotExampleCategory
 import com.popstack.mvoter2015.domain.utils.convertToBurmeseNumber
+import com.popstack.mvoter2015.feature.analytics.screen.CanTrackScreen
 import com.popstack.mvoter2015.feature.faq.displayString
 import com.popstack.mvoter2015.feature.home.BottomNavigationHostViewModelStore
 import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewState
@@ -23,9 +24,11 @@ import com.popstack.mvoter2015.helper.extensions.forEachTab
 import com.popstack.mvoter2015.logging.HasTag
 import timber.log.Timber
 
-class BallotExampleController : MvvmController<ControllerBallotExampleBinding>(), HasTag {
+class BallotExampleController : MvvmController<ControllerBallotExampleBinding>(), HasTag, CanTrackScreen {
 
   override val tag: String = "BallotExampleController"
+
+  override val screenName: String = "BallotExampleController"
 
   override val bindingInflater: (LayoutInflater) -> ControllerBallotExampleBinding =
     ControllerBallotExampleBinding::inflate

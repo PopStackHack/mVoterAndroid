@@ -14,6 +14,7 @@ import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerNewsBinding
 import com.popstack.mvoter2015.domain.news.model.NewsId
 import com.popstack.mvoter2015.exception.GlobalExceptionHandler
+import com.popstack.mvoter2015.feature.analytics.screen.CanTrackScreen
 import com.popstack.mvoter2015.feature.browser.OpenBrowserDelegate
 import com.popstack.mvoter2015.feature.home.BottomNavigationHostViewModelStore
 import com.popstack.mvoter2015.feature.news.search.NewsSearchController
@@ -28,11 +29,11 @@ import javax.inject.Inject
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-class NewsController :
-  MvvmController<ControllerNewsBinding>(),
-  HasTag {
+class NewsController : MvvmController<ControllerNewsBinding>(), HasTag, CanTrackScreen {
 
   override val tag: String = "NewsController"
+
+  override val screenName: String = "NewsController"
 
   override val bindingInflater: (LayoutInflater) -> ControllerNewsBinding =
     ControllerNewsBinding::inflate

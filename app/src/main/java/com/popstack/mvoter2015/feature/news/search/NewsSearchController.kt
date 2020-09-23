@@ -13,6 +13,7 @@ import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerNewsSearchBinding
 import com.popstack.mvoter2015.domain.news.model.NewsId
 import com.popstack.mvoter2015.exception.GlobalExceptionHandler
+import com.popstack.mvoter2015.feature.analytics.screen.CanTrackScreen
 import com.popstack.mvoter2015.feature.browser.OpenBrowserDelegate
 import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
 import com.popstack.mvoter2015.helper.ViewVisibilityDebounceHandler
@@ -21,13 +22,18 @@ import com.popstack.mvoter2015.helper.conductor.requireActivityAsAppCompatActivi
 import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.helper.extensions.showKeyboard
 import com.popstack.mvoter2015.helper.search.DebounceSearchQueryListener
+import com.popstack.mvoter2015.logging.HasTag
 import com.popstack.mvoter2015.paging.CommonLoadStateAdapter
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class NewsSearchController : MvvmController<ControllerNewsSearchBinding>() {
+class NewsSearchController : MvvmController<ControllerNewsSearchBinding>(), HasTag, CanTrackScreen {
+
+  override val tag: String = "NewsSearchController"
+
+  override val screenName: String = "NewsSearchController"
 
   override val bindingInflater: (LayoutInflater) -> ControllerNewsSearchBinding =
     ControllerNewsSearchBinding::inflate

@@ -45,4 +45,14 @@ class MVoterApp : Application(), HasAndroidInjector {
   override fun androidInjector(): AndroidInjector<Any> {
     return dispatchingAndroidInjector
   }
+
+  //Per https://github.com/firebase/quickstart-android/issues/370#issuecomment-499521771
+  //Disable firebase auto tracking activity screen views
+  //We use Single activity view, so we don't want this
+  override fun registerActivityLifecycleCallbacks(callback: ActivityLifecycleCallbacks?) {
+    if (callback != null && !callback.javaClass.name.startsWith("com.google.android.gms.measurement.")) {
+      super.registerActivityLifecycleCallbacks(callback)
+    }
+  }
+
 }

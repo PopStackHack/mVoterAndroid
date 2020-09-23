@@ -14,6 +14,7 @@ import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerCandidateSearchBinding
 import com.popstack.mvoter2015.domain.candidate.model.CandidateId
 import com.popstack.mvoter2015.exception.GlobalExceptionHandler
+import com.popstack.mvoter2015.feature.analytics.screen.CanTrackScreen
 import com.popstack.mvoter2015.feature.candidate.detail.CandidateDetailController
 import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
 import com.popstack.mvoter2015.helper.ViewVisibilityDebounceHandler
@@ -27,9 +28,11 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-class CandidateSearchController : MvvmController<ControllerCandidateSearchBinding>(), HasTag {
+class CandidateSearchController : MvvmController<ControllerCandidateSearchBinding>(), HasTag, CanTrackScreen {
 
   override val tag: String = "CandidateSearchController"
+
+  override val screenName: String = "CandidateSearchController"
 
   private val viewModel: CandidateSearchViewModel by viewModels()
 

@@ -14,6 +14,7 @@ import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerPartySearchBinding
 import com.popstack.mvoter2015.domain.party.model.PartyId
 import com.popstack.mvoter2015.exception.GlobalExceptionHandler
+import com.popstack.mvoter2015.feature.analytics.screen.CanTrackScreen
 import com.popstack.mvoter2015.feature.party.detail.PartyDetailController
 import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
 import com.popstack.mvoter2015.helper.ViewVisibilityDebounceHandler
@@ -27,9 +28,11 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-class PartySearchController : MvvmController<ControllerPartySearchBinding>(), HasTag {
+class PartySearchController : MvvmController<ControllerPartySearchBinding>(), HasTag, CanTrackScreen {
 
   override val tag: String = "PartySearchController"
+
+  override val screenName: String = "PartySearchController"
 
   private val viewModel: PartySearchViewModel by viewModels()
 

@@ -14,6 +14,7 @@ import com.popstack.mvoter2015.config.AppFirstTimeConfig
 import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerLocationBinding
 import com.popstack.mvoter2015.feature.HasRouter
+import com.popstack.mvoter2015.feature.analytics.screen.CanTrackScreen
 import com.popstack.mvoter2015.feature.home.BottomNavigationHostController
 import com.popstack.mvoter2015.helper.conductor.requireActivity
 import com.popstack.mvoter2015.helper.conductor.requireContext
@@ -26,9 +27,12 @@ class LocationUpdateController :
   MvvmController<ControllerLocationBinding>(),
   HasTag,
   OnTownshipChosenListener,
-  OnWardChosenListener {
+  OnWardChosenListener,
+  CanTrackScreen {
 
   override val tag: String = "LocationUpdateController"
+
+  override val screenName: String = "LocationUpdateController"
 
   private val viewModel: LocationUpdateViewModel by viewModels()
 

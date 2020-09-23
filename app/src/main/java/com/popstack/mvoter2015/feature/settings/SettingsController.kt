@@ -8,15 +8,21 @@ import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.LifeCycleAwareController
 import com.popstack.mvoter2015.databinding.ControllerSettingsBinding
 import com.popstack.mvoter2015.di.Injectable
+import com.popstack.mvoter2015.feature.analytics.screen.CanTrackScreen
 import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.helper.conductor.setSupportActionBar
 import com.popstack.mvoter2015.helper.conductor.supportActionBar
 import com.popstack.mvoter2015.helper.extensions.safeSelection
 import com.popstack.mvoter2015.helper.extensions.setOnItemSelectedListener
+import com.popstack.mvoter2015.logging.HasTag
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class SettingsController : LifeCycleAwareController<ControllerSettingsBinding>(), Injectable {
+class SettingsController : LifeCycleAwareController<ControllerSettingsBinding>(), Injectable, HasTag, CanTrackScreen {
+
+  override val tag: String = "SettingsController"
+
+  override val screenName: String = "SettingsController"
 
   override val bindingInflater: (LayoutInflater) -> ControllerSettingsBinding =
     ControllerSettingsBinding::inflate

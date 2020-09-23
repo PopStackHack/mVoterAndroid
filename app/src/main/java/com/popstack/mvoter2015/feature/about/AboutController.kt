@@ -11,15 +11,21 @@ import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.LifeCycleAwareController
 import com.popstack.mvoter2015.databinding.ControllerAboutBinding
 import com.popstack.mvoter2015.di.Injectable
+import com.popstack.mvoter2015.feature.analytics.screen.CanTrackScreen
 import com.popstack.mvoter2015.feature.browser.OpenBrowserDelegate
 import com.popstack.mvoter2015.helper.conductor.requireActivity
 import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.helper.conductor.setSupportActionBar
 import com.popstack.mvoter2015.helper.conductor.supportActionBar
+import com.popstack.mvoter2015.logging.HasTag
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class AboutController : LifeCycleAwareController<ControllerAboutBinding>(), Injectable {
+class AboutController : LifeCycleAwareController<ControllerAboutBinding>(), Injectable, HasTag, CanTrackScreen {
+
+  override val tag: String = "AboutController"
+
+  override val screenName: String = "AboutController"
 
   @Inject
   lateinit var openBrowserDelegate: OpenBrowserDelegate

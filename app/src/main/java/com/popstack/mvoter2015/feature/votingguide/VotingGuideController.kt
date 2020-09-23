@@ -13,12 +13,15 @@ import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerHowToVoteBinding
 import com.popstack.mvoter2015.domain.utils.convertToBurmeseNumber
+import com.popstack.mvoter2015.feature.analytics.screen.CanTrackScreen
 import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.logging.HasTag
 
-class VotingGuideController : MvvmController<ControllerHowToVoteBinding>(), HasTag {
+class VotingGuideController : MvvmController<ControllerHowToVoteBinding>(), HasTag, CanTrackScreen {
 
   override val tag: String = "VotingGuideController"
+
+  override val screenName: String = "VotingGuideController"
 
   private val viewModel: VotingGuideViewModel by viewModels()
 

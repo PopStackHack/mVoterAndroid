@@ -21,6 +21,7 @@ import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerCandidateDetailBinding
 import com.popstack.mvoter2015.domain.candidate.model.CandidateId
+import com.popstack.mvoter2015.feature.analytics.screen.CanTrackScreen
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateListRecyclerViewAdapter
 import com.popstack.mvoter2015.feature.party.PartySharedElementTransitionChangeHandler
 import com.popstack.mvoter2015.feature.party.detail.PartyDetailController
@@ -37,9 +38,11 @@ import com.popstack.mvoter2015.logging.HasTag
 
 class CandidateDetailController(
   bundle: Bundle? = null
-) : MvvmController<ControllerCandidateDetailBinding>(bundle), HasTag {
+) : MvvmController<ControllerCandidateDetailBinding>(bundle), HasTag, CanTrackScreen {
 
   override val tag: String = "CandidateDetailController"
+
+  override val screenName: String = "CandidateDetailController"
 
   /***
    * Since we dont have factory yet

@@ -16,6 +16,7 @@ import com.popstack.mvoter2015.domain.faq.model.FaqCategory
 import com.popstack.mvoter2015.exception.GlobalExceptionHandler
 import com.popstack.mvoter2015.feature.HasRouter
 import com.popstack.mvoter2015.feature.about.AboutController
+import com.popstack.mvoter2015.feature.analytics.screen.CanTrackScreen
 import com.popstack.mvoter2015.feature.browser.OpenBrowserDelegate
 import com.popstack.mvoter2015.feature.faq.ballot.BallotExampleController
 import com.popstack.mvoter2015.feature.faq.ballot.displayString
@@ -38,9 +39,11 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-class FaqController : MvvmController<ControllerFaqBinding>(), HasTag {
+class FaqController : MvvmController<ControllerFaqBinding>(), HasTag, CanTrackScreen {
 
   override val tag: String = "FaqController"
+
+  override val screenName: String = "FaqController"
 
   private val viewModel: FaqViewModel by viewModels(
     store = BottomNavigationHostViewModelStore.viewModelStore ?: viewModelStore

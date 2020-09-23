@@ -19,6 +19,7 @@ import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerPartyDetailBinding
 import com.popstack.mvoter2015.domain.party.model.PartyId
 import com.popstack.mvoter2015.domain.utils.convertToBurmeseNumber
+import com.popstack.mvoter2015.feature.analytics.screen.CanTrackScreen
 import com.popstack.mvoter2015.feature.share.ShareUrlFactory
 import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewState
 import com.popstack.mvoter2015.helper.conductor.requireActivity
@@ -31,10 +32,11 @@ import com.popstack.mvoter2015.helper.intent.Intents
 import com.popstack.mvoter2015.logging.HasTag
 import timber.log.Timber
 
-class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDetailBinding>(bundle), HasTag {
+class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDetailBinding>(bundle), HasTag, CanTrackScreen {
 
   override val tag: String = "PartyDetailController"
 
+  override val screenName: String = "PartyDetailController"
   /***
    * Since we dont have factory yet
    * https://github.com/bluelinelabs/Conductor/pull/594
