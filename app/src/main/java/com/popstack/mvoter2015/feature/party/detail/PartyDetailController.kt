@@ -135,8 +135,8 @@ class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDeta
         }
         binding.layoutContent.setOnScrollChangeListener(object : NestedScrollView.OnScrollChangeListener {
           private var isLiftedState = false
-          val primaryBackgroundColor = ContextCompat.getColor(requireContext(), R.color.primary)
-          val transparentBackgroundColor = ContextCompat.getColor(requireContext(), R.color.transparent)
+          val primaryBackgroundColor = ContextCompat.getColor(requireActivity(), R.color.primary)
+          val transparentBackgroundColor = ContextCompat.getColor(requireActivity(), R.color.transparent)
 
           override fun onScrollChange(scrollingView: NestedScrollView?, scrollX: Int, scrollY: Int, oldScrollX: Int, oldScrollY: Int) {
 
@@ -241,7 +241,7 @@ class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDeta
       .also { dialog ->
         dialog.setOnShowListener {
           val negativeButton = dialog.getButton(DialogInterface.BUTTON_NEGATIVE)
-          negativeButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_error))
+          negativeButton.setTextColor(ContextCompat.getColor(requireActivity(), R.color.text_error))
         }
       }
       .show()

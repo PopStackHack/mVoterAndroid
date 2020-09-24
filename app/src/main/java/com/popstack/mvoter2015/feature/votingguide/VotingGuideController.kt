@@ -14,7 +14,7 @@ import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerHowToVoteBinding
 import com.popstack.mvoter2015.domain.utils.convertToBurmeseNumber
 import com.popstack.mvoter2015.feature.analytics.screen.CanTrackScreen
-import com.popstack.mvoter2015.helper.conductor.requireContext
+import com.popstack.mvoter2015.helper.conductor.requireActivity
 import com.popstack.mvoter2015.logging.HasTag
 
 class VotingGuideController : MvvmController<ControllerHowToVoteBinding>(), HasTag, CanTrackScreen {
@@ -53,7 +53,7 @@ class VotingGuideController : MvvmController<ControllerHowToVoteBinding>(), HasT
       adapter = VotingGuideRecyclerViewAdapter(viewItems)
     }
 
-    val accentColor = ContextCompat.getColor(requireContext(), R.color.accent)
+    val accentColor = ContextCompat.getColor(requireActivity(), R.color.accent)
 
     viewModel.countDownLiveData.observe(
       this,

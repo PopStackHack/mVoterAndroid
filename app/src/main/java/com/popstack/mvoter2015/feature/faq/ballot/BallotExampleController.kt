@@ -15,6 +15,7 @@ import com.popstack.mvoter2015.feature.analytics.screen.CanTrackScreen
 import com.popstack.mvoter2015.feature.faq.displayString
 import com.popstack.mvoter2015.feature.home.BottomNavigationHostViewModelStore
 import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewState
+import com.popstack.mvoter2015.helper.conductor.requireActivity
 import com.popstack.mvoter2015.helper.conductor.requireActivityAsAppCompatActivity
 import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.helper.conductor.setSupportActionBar
@@ -55,7 +56,7 @@ class BallotExampleController : MvvmController<ControllerBallotExampleBinding>()
     binding.tabLayoutValid.newTab().apply {
       setIcon(R.drawable.ic_close_circle_24)
       setText(R.string.invalid_ballot)
-      icon?.setTint(ContextCompat.getColor(requireContext(), R.color.grey))
+      icon?.setTint(ContextCompat.getColor(requireActivity(), R.color.grey))
     }
   }
 
@@ -63,7 +64,7 @@ class BallotExampleController : MvvmController<ControllerBallotExampleBinding>()
     binding.tabLayoutValid.newTab().apply {
       setIcon(R.drawable.ic_check_circle_24)
       setText(R.string.valid_ballot)
-      icon?.setTint(ContextCompat.getColor(requireContext(), R.color.grey))
+      icon?.setTint(ContextCompat.getColor(requireActivity(), R.color.grey))
     }
   }
 
@@ -206,7 +207,7 @@ class BallotExampleController : MvvmController<ControllerBallotExampleBinding>()
 
     val onTabSelect = { tab: TabLayout.Tab? ->
       if (tab == inValidBallotTab) {
-        tab.icon?.setTint(ContextCompat.getColor(requireContext(), R.color.text_error))
+        tab.icon?.setTint(ContextCompat.getColor(requireActivity(), R.color.text_error))
       } else if (tab == validBallotTab) {
         tab.icon?.setTint(ContextCompat.getColor(requireContext(), R.color.green))
       }
