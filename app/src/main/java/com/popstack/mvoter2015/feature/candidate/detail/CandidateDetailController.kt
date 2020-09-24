@@ -160,7 +160,7 @@ class CandidateDetailController(
           } else {
             val partyNameSpan = "$partyName " // empty space is to put the arrow icon
             val partyNameWithRightArrow = SpannableStringBuilder(partyNameSpan)
-            partyNameWithRightArrow.setSpan(CenteredImageSpan(requireContext(), R.drawable.ic_arrow_right_24), partyNameSpan.length - 1, partyNameSpan.length, Spannable.SPAN_INCLUSIVE_INCLUSIVE)
+            partyNameWithRightArrow.setSpan(CenteredImageSpan(requireActivity(), R.drawable.ic_arrow_right_text_primary_24), partyNameSpan.length - 1, partyNameSpan.length, Spannable.SPAN_INCLUSIVE_INCLUSIVE)
             binding.tvCandidatePartyName.text = partyNameWithRightArrow
             binding.tvCandidatePartyName.setOnClickListener {
               val partyDetailController = PartyDetailController.newInstance(
