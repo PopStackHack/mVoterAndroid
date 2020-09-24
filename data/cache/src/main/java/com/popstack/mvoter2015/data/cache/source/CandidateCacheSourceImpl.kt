@@ -137,7 +137,8 @@ class CandidateCacheSourceImpl @Inject constructor(
         residentalAddress = residentialAddress,
         partyId = party?.id,
         constituencyId = constituency.id.value,
-        queryConstituencyid = queryConstituencyId?.value
+        queryConstituencyid = queryConstituencyId?.value,
+        isElected = isElected
       )
     }
   }
@@ -181,6 +182,7 @@ class CandidateCacheSourceImpl @Inject constructor(
     partyId: PartyId?,
     constituencyId: String,
     queryConstituencyId: String?,
+    isElected: Boolean,
     _constituencyId: String,
     _constituencyName: String,
     _constituencyHouse: HouseType,
@@ -207,7 +209,7 @@ class CandidateCacheSourceImpl @Inject constructor(
     { id, name, sortingName, sortingBallotOrder,
       gender, occupation, photoUrl, education, religion, age, birthDate, ethnicity, father, mother,
       individualLogo, residentalAddress, isEthnicCandidate, representingEthnicity, partyId,
-      constituencyId, queryConstituencyId, _constituencyId, _constituencyName, _constituencyHouse,
+      constituencyId, queryConstituencyId, isElected, _constituencyId, _constituencyName, _constituencyHouse,
       _constituencyRemark, _partyId, partyNumber, partyBurmeseName, partyEnglishName,
       partyAbbreviation, partyFlagImage, partySealImage, partyRegion, partyLeadersAndChairmen,
       partyMemberCount, partyContacts, partyHeadquarterLocation, partyPolicy,
@@ -240,6 +242,7 @@ class CandidateCacheSourceImpl @Inject constructor(
         residentialAddress = residentalAddress,
         isEthnicCandidate = isEthnicCandidate,
         representingEthnicity = representingEthnicity,
+        isElected = isElected,
         party = if (partyId != null) {
           Party(
             id = partyId,

@@ -24,5 +24,6 @@ data class Candidate(
   val party: Party?,
   val residentialAddress: String?,
   val isEthnicCandidate: Boolean,
-  val representingEthnicity: String?
+  val representingEthnicity: String?,
+  val isElected: Boolean
 )
