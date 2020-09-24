@@ -39,6 +39,7 @@ class LocationUpdateViewModel @Inject constructor(
     var chosenStateRegion: String? = null
     var chosenWard: String? = null
     var wardDetails: Ward? = null
+    var isTownshipFromNPT: Boolean = false
   }
 
   val data = Data()
@@ -60,8 +61,8 @@ class LocationUpdateViewModel @Inject constructor(
   ) {
     data.chosenStateRegion = chosenStateRegion
     data.chosenTownship = chosenTownship
-
-    if (LocalityUtils.isTownshipFromNPT(chosenTownship)) {
+    data.isTownshipFromNPT = LocalityUtils.isTownshipFromNPT(chosenTownship)
+    if (data.isTownshipFromNPT) {
       data.chosenWard = chosenTownship
       hideWardField()
       onWardChosen(chosenTownship)

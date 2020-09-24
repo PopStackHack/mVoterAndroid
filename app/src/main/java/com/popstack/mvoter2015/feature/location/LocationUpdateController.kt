@@ -130,6 +130,7 @@ class LocationUpdateController :
       binding.buttonWard.setText(R.string.location_chooser_ward)
     }
     binding.buttonDone.isEnabled = viewModel.data.wardDetails != null
+    binding.buttonWard.isVisible = !viewModel.data.isTownshipFromNPT
   }
 
   private fun observeViewEvent(viewEvent: LocationUpdateViewModel.ViewEvent) {
