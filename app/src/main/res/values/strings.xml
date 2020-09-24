@@ -45,6 +45,8 @@
 
   <string name="no_state_region_constituency">နေပြည်တော် ပြည်ထောင်စုနယ်မြေတွင်\nတိုင်းဒေသကြီးလွှတ်တော် ကိုယ်စားလှယ်\nရွေးချယ်ရန် မလိုအပ်ပါ။</string>
 
+  <string name="badge_is_elected">အနိုင်ရ</string>
+
   <!--  Party-->
   <string name="header_total_party_count">(၂၀၂၀) ခုနှစ် အထွေထွေရွေးကောက်ပွဲတွင် ဝင်ရောက်ယှဉ်ပြိုင်မည့် နိုင်ငံရေးပါတီ (၉၂) ခု</string>
 

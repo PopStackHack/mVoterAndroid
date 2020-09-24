@@ -169,6 +169,7 @@ class CandidateDetailController(
           binding.tvFatherName.text = fatherName
           binding.tvFatherEthnicity.text = fatherEthnicity
           binding.tvFatherReligion.text = fatherReligion
+          binding.groupElectedBadge.isVisible = isElected
 
           binding.tvResidentialTitle.isVisible = residentialAddress != null
           binding.tvResidential.isVisible = residentialAddress != null
@@ -180,9 +181,7 @@ class CandidateDetailController(
           binding.ivCandidatePartySeal.load(partySealImageUrl) {
             placeholder(R.drawable.party_seal_placeholder_rect)
             error(R.drawable.party_seal_placeholder_rect)
-            size(36.toPx().toInt(), 21.toPx().toInt())
             scale(Scale.FIT)
-            precision(Precision.EXACT)
           }
           binding.ivCandidate.load(photo) {
             transformations(CircleCropTransformation())

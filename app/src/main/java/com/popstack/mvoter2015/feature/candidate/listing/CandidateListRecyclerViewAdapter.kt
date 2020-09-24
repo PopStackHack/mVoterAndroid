@@ -2,6 +2,7 @@ package com.popstack.mvoter2015.feature.candidate.listing
 
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.ListAdapter
 import coil.api.load
 import coil.size.Scale
@@ -108,6 +109,7 @@ class CandidateListItemViewHolder(val binding: ItemCandidateBinding) : Candidate
         error(R.drawable.party_seal_placeholder_rect)
         scale(Scale.FIT)
       }
+      groupElectedBadge.isVisible = smallCandidateViewItem.isElected
     }
   }
 }

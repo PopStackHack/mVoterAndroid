@@ -16,7 +16,8 @@ data class SmallCandidateViewItem(
   val name: String,
   val photoUrl: String,
   val partyName: String,
-  val partySealImageUrl: String?
+  val partySealImageUrl: String?,
+  val isElected: Boolean
 ) : CandidateViewItem(candidateId)
 
 data class CandidateSectionTitleViewItem(val value: String) : CandidateViewItem(value)
@@ -26,5 +27,6 @@ fun Candidate.toSmallCandidateViewItem() = SmallCandidateViewItem(
   name = name,
   photoUrl = photoUrl,
   partyName = party?.nameBurmese ?: "တစ်သီးပုဂ္ဂလ",
-  partySealImageUrl = party?.sealImage ?: individualLogo
+  partySealImageUrl = party?.sealImage ?: individualLogo,
+  isElected = isElected
 )

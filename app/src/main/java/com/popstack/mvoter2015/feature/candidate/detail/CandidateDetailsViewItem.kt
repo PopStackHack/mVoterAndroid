@@ -33,7 +33,8 @@ data class CandidateInfoViewItem(
   val fatherName: String,
   val fatherEthnicity: String,
   val fatherReligion: String,
-  val residentialAddress: String?
+  val residentialAddress: String?,
+  val isElected: Boolean
 )
 
 private val dateFormatter = DateTimeFormatter.ofPattern("d၊ M၊ yyyy", Locale.ENGLISH)
@@ -67,5 +68,6 @@ fun Candidate.toCandidateInfoViewItem() = CandidateInfoViewItem(
   fatherName = father?.name.orEmpty(),
   fatherEthnicity = father?.ethnicity.orEmpty(),
   fatherReligion = father?.religion.orEmpty(),
-  residentialAddress = residentialAddress
+  residentialAddress = residentialAddress,
+  isElected = isElected
 )
