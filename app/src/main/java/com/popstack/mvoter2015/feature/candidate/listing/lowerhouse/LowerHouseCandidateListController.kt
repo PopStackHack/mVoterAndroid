@@ -17,7 +17,6 @@ import com.popstack.mvoter2015.feature.candidate.listing.CandidateListResult
 import com.popstack.mvoter2015.feature.home.BottomNavigationHostViewModelStore
 import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewState
 import com.popstack.mvoter2015.helper.conductor.requireContext
-import com.popstack.mvoter2015.helper.recyclerview.StickyHeaderDecoration
 import com.popstack.mvoter2015.logging.HasTag
 
 class LowerHouseCandidateListController : MvvmController<ControllerLowerHouseCandidateListBinding>(), HasTag {
@@ -47,10 +46,10 @@ class LowerHouseCandidateListController : MvvmController<ControllerLowerHouseCan
     binding.rvCandidate.apply {
       adapter = candidateListAdapter
       layoutManager = LinearLayoutManager(requireContext())
-      addItemDecoration(StickyHeaderDecoration(candidateListAdapter))
     }
 
     viewModel.viewItemLiveData.observe(this, Observer(::observeViewItem))
+    viewModel.viewEventLiveData.observe(this, Observer(::observeViewEvent))
 
     binding.btnRetry.setOnClickListener {
       loadCandidates()
@@ -63,6 +62,14 @@ class LowerHouseCandidateListController : MvvmController<ControllerLowerHouseCan
 
   private fun loadCandidates() {
     viewModel.loadCandidates()
+  }
+
+  private fun observeViewEvent(viewEvent: LowerHouseCandidateListViewModel.ViewEvent) {
+    when (viewEvent) {
+      is LowerHouseCandidateListViewModel.ViewEvent.ShowConstituencyName -> {
+        binding.tvConstituencyName.text = viewEvent.consituencyName
+      }
+    }
   }
 
   private fun observeViewItem(viewState: AsyncViewState<CandidateListResult>) = with(binding) {

@@ -7,6 +7,7 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.viewpager.widget.ViewPager
 import com.bluelinelabs.conductor.RouterTransaction
+import com.google.android.material.tabs.TabLayout
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerCandidateListBinding
@@ -14,6 +15,7 @@ import com.popstack.mvoter2015.feature.HasRouter
 import com.popstack.mvoter2015.feature.analytics.screen.ScreenTrackAnalyticsProvider
 import com.popstack.mvoter2015.feature.candidate.search.CandidateSearchController
 import com.popstack.mvoter2015.feature.location.LocationUpdateController
+import com.popstack.mvoter2015.helper.ConstituencyTab
 import com.popstack.mvoter2015.helper.conductor.requireActivity
 import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.helper.conductor.setSupportActionBar
@@ -109,10 +111,26 @@ class CandidateListController :
       }
     }
 
+    setupTabLayout()
+
     CandidateListPagerParentRouter.setParentRouter(router)
 
     viewModel.houseViewItemListLiveData.observe(lifecycleOwner, Observer(::observeHouseViewItem))
     viewModel.loadHouses()
+  }
+
+  private fun setupTabLayout() {
+    binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+      override fun onTabReselected(tab: TabLayout.Tab?) {}
+
+      override fun onTabUnselected(tab: TabLayout.Tab?) {
+        (tab?.customView as? ConstituencyTab)?.setUnselected()
+      }
+
+      override fun onTabSelected(tab: TabLayout.Tab?) {
+        (tab?.customView as? ConstituencyTab)?.setSelected()
+      }
+    })
   }
 
   private fun showCandidateList() {
@@ -135,6 +153,16 @@ class CandidateListController :
   private fun observeHouseViewItem(houseViewItemList: List<CandidateListHouseViewItem>) {
     binding.groupChooseCandidateComponent.isVisible = false
     pagerAdapter.setItems(houseViewItemList)
+    binding.tabLayout.removeAllTabs()
+    houseViewItemList.forEach {
+      binding.tabLayout.addTab(
+        binding.tabLayout.newTab().setCustomView(
+          ConstituencyTab(requireActivity()).apply {
+            setText(it.houseName)
+          }
+        )
+      )
+    }
     changeSelectedTabIfNeeded()
   }
 

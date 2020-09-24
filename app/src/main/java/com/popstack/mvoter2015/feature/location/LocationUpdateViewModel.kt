@@ -79,19 +79,19 @@ class LocationUpdateViewModel @Inject constructor(
   }
 
   private fun showWardField() {
-    viewEventLiveData.postValue(ViewEvent.ShowWardField)
+    viewEventLiveData.setValue(ViewEvent.ShowWardField)
   }
 
   fun onWardChosen(ward: String) {
     data.chosenWard = ward
     viewModelScope.launch {
       kotlin.runCatching {
-        viewEventLiveData.postValue(ViewEvent.ShowConstituencyLoading)
+        viewEventLiveData.setValue(ViewEvent.ShowConstituencyLoading)
         data.wardDetails = fetchWardDetails()
-        viewEventLiveData.postValue(ViewEvent.EnableDoneButton)
+        viewEventLiveData.setValue(ViewEvent.EnableDoneButton)
       }.exceptionOrNull()?.let { exception ->
         data.wardDetails = null
-        viewEventLiveData.postValue(ViewEvent.ShowErrorMessage(globalExceptionHandler.getMessageForUser(exception)))
+        viewEventLiveData.setValue(ViewEvent.ShowErrorMessage(globalExceptionHandler.getMessageForUser(exception)))
         Timber.e(exception)
       }
     }
@@ -108,7 +108,7 @@ class LocationUpdateViewModel @Inject constructor(
   fun onDoneClicked() {
     viewModelScope.launch {
       kotlin.runCatching {
-        viewEventLiveData.postValue(ViewEvent.ShowConstituencyLoading)
+        viewEventLiveData.setValue(ViewEvent.ShowConstituencyLoading)
         if (data.wardDetails == null) {
           data.wardDetails = fetchWardDetails()
         }
@@ -124,9 +124,9 @@ class LocationUpdateViewModel @Inject constructor(
           )
         )
 
-        viewEventLiveData.postValue(ViewEvent.NavigateToHomePage)
+        viewEventLiveData.setValue(ViewEvent.NavigateToHomePage)
       }.exceptionOrNull()?.let { exception ->
-        viewEventLiveData.postValue(ViewEvent.ShowErrorMessage(globalExceptionHandler.getMessageForUser(exception)))
+        viewEventLiveData.setValue(ViewEvent.ShowErrorMessage(globalExceptionHandler.getMessageForUser(exception)))
         Timber.e(exception)
       }
     }

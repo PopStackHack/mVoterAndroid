@@ -1,7 +1,6 @@
 package com.popstack.mvoter2015.feature.candidate.detail
 
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableStringBuilder
@@ -10,7 +9,6 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.core.widget.NestedScrollView
@@ -38,7 +36,6 @@ import com.popstack.mvoter2015.helper.conductor.supportActionBar
 import com.popstack.mvoter2015.helper.intent.Intents
 import com.popstack.mvoter2015.helper.spannable.CenteredImageSpan
 import com.popstack.mvoter2015.logging.HasTag
-
 
 class CandidateDetailController(
   bundle: Bundle? = null
@@ -109,20 +106,22 @@ class CandidateDetailController(
     requireActivityAsAppCompatActivity().supportActionBar?.title = ""
     supportActionBar()?.setDisplayHomeAsUpEnabled(true)
 
-    binding.svCandidateInfo.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { _, _, scrollY, _, _ ->
-      val activity = kotlin.runCatching {
-        requireActivity()
-      }.getOrNull() ?: return@OnScrollChangeListener
-      var color: Int = ContextCompat.getColor(activity, R.color.primary)
-      var textColor: Int = ContextCompat.getColor(activity, R.color.text_primary)
-      if (scrollY < 256) {
-        val alpha = scrollY shl 24 or (-1 ushr 8)
-        color = color and alpha
-        textColor = textColor and alpha
+    binding.svCandidateInfo.setOnScrollChangeListener(
+      NestedScrollView.OnScrollChangeListener { _, _, scrollY, _, _ ->
+        val activity = kotlin.runCatching {
+          requireActivity()
+        }.getOrNull() ?: return@OnScrollChangeListener
+        var color: Int = ContextCompat.getColor(activity, R.color.primary)
+        var textColor: Int = ContextCompat.getColor(activity, R.color.text_primary)
+        if (scrollY < 256) {
+          val alpha = scrollY shl 24 or (-1 ushr 8)
+          color = color and alpha
+          textColor = textColor and alpha
+        }
+        binding.toolBar.setTitleTextColor(textColor)
+        binding.toolBar.setBackgroundColor(color)
       }
-      binding.toolBar.setTitleTextColor(textColor)
-      binding.toolBar.setBackgroundColor(color)
-    })
+    )
 
     binding.rvRivalCandidates.apply {
       adapter = candidateListAdapter

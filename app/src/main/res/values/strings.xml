@@ -29,10 +29,10 @@
 
   <string name="title_candidates">ကိုယ်စားလှယ်လောင်းများ</string>
 
-  <string name="tab_upper_house">အမျိုးသား\nလွှတ်တော်</string>
-  <string name="tab_lower_house">ပြည်သူ့\nလွှတ်တော်</string>
-  <string name="tab_regional_house_state">တိုင်းဒေသကြီး\nလွှတ်တော်</string>
-  <string name="tab_regional_house_region">ပြည်နယ်\nလွှတ်တော်</string>
+  <string name="tab_upper_house">အမျိုးသား</string>
+  <string name="tab_lower_house">ပြည်သူ့</string>
+  <string name="tab_regional_house_state">တိုင်းဒေသကြီး</string>
+  <string name="tab_regional_house_region">ပြည်နယ်</string>
   <string name="date_of_birth">မွေးသက္ကရာဇ်</string>
   <string name="tab_regional_house_state_region">ပြယ်နယ်တိုင်းဒေသကြီး\nလွှတ်တော်</string>
 

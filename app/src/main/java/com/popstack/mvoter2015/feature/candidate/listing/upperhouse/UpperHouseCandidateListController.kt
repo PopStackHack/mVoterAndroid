@@ -47,6 +47,7 @@ class UpperHouseCandidateListController : MvvmController<ControllerUpperHouseCan
     }
 
     viewModel.viewItemLiveData.observe(this, Observer(::observeViewItem))
+    viewModel.viewEventLiveData.observe(this, Observer(::observeViewEvent))
 
     binding.btnRetry.setOnClickListener {
       loadCandidates()
@@ -59,6 +60,14 @@ class UpperHouseCandidateListController : MvvmController<ControllerUpperHouseCan
 
   private fun loadCandidates() {
     viewModel.loadCandidates()
+  }
+
+  private fun observeViewEvent(viewEvent: UpperHouseCandidateListViewModel.ViewEvent) {
+    when (viewEvent) {
+      is UpperHouseCandidateListViewModel.ViewEvent.ShowConstituencyName -> {
+        binding.tvConstituencyName.text = viewEvent.constituencyName
+      }
+    }
   }
 
   private fun observeViewItem(viewState: AsyncViewState<CandidateListResult>) = with(binding) {

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/tabContainer"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:minWidth="80dp"
+  android:orientation="vertical">
+
+  <TextView
+    android:id="@+id/tvConstituencyType"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:layout_gravity="center"
+    android:includeFontPadding="false"
+    android:textSize="16sp"
+    android:textStyle="bold"
+    android:textColor="@color/text_primary"
+    app:layout_constraintBottom_toTopOf="@+id/textView4"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_chainStyle="packed"
+    tools:text="တိုင်းဒေသကြီး" />
+
+  <TextView
+    android:id="@+id/tvHouse"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:includeFontPadding="false"
+    android:layout_gravity="center"
+    android:text="လွှတ်တော်"
+    android:textColor="@color/text_primary"
+    android:textSize="14sp"
+    android:textStyle="bold"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/tvConstituencyType" />
+</LinearLayout>
