@@ -48,6 +48,8 @@ class LowerHouseCandidateListController : MvvmController<ControllerLowerHouseCan
       layoutManager = LinearLayoutManager(requireContext())
     }
 
+    binding.tvConstituencyName.text = viewModel.data.constituencyName
+
     viewModel.viewItemLiveData.observe(this, Observer(::observeViewItem))
     viewModel.viewEventLiveData.observe(this, Observer(::observeViewEvent))
 

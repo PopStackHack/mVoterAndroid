@@ -19,19 +19,25 @@ class UpperHouseCandidateListViewModel @Inject constructor(
   private val globalExceptionHandler: GlobalExceptionHandler
 ) : ViewModel() {
 
+  inner class Data {
+    var constituencyName: String = ""
+  }
+
   sealed class ViewEvent {
     data class ShowConstituencyName(val constituencyName: String) : ViewEvent()
   }
 
   val viewItemLiveData = AsyncViewStateLiveData<CandidateListResult>()
   val viewEventLiveData = SingleLiveEvent<ViewEvent>()
+  val data = Data()
 
   fun loadCandidates() {
     viewModelScope.launch {
       viewItemLiveData.postLoading()
       kotlin.runCatching {
         val constituency = getMyUpperHouseConstituency.execute(Unit)
-        viewEventLiveData.setValue(ViewEvent.ShowConstituencyName(constituency.name))
+        data.constituencyName = constituency.name
+        viewEventLiveData.setValue(ViewEvent.ShowConstituencyName(data.constituencyName))
         if (constituency.remark != null) {
           viewItemLiveData.postSuccess(CandidateListResult.Remark(constituency.remark!!))
           return@launch

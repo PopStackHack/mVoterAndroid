@@ -41,6 +41,9 @@ class UpperHouseCandidateListController : MvvmController<ControllerUpperHouseCan
 
   override fun onBindView(savedViewState: Bundle?) {
     super.onBindView(savedViewState)
+
+    binding.tvConstituencyName.text = viewModel.data.constituencyName
+
     binding.rvCandidate.apply {
       adapter = candidateListAdapter
       layoutManager = LinearLayoutManager(requireContext())
