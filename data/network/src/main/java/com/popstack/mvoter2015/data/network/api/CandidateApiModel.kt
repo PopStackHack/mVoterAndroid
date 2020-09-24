@@ -49,7 +49,8 @@ data class CandidateApiAttributes(
   @Json(name = "constituency") val constituency: ConstituencyApiResponse,
   @Json(name = "residential_address") val residentialAddress: String?,
   @Json(name = "is_ethnic_candidate") val isEthnicCandidate: Boolean,
-  @Json(name = "representing_ethnicity") val representingEthnicity: String?
+  @Json(name = "representing_ethnicity") val representingEthnicity: String?,
+  @Json(name = "is_elected") val isElected: Boolean
 ) {
   @JsonClass(generateAdapter = true)
   data class ParentApiModel(
@@ -88,7 +89,8 @@ fun CandidateApiModel.toCandidateModel(): Candidate {
       party = party?.mapToParty(),
       residentialAddress = residentialAddress,
       isEthnicCandidate = isEthnicCandidate,
-      representingEthnicity = representingEthnicity
+      representingEthnicity = representingEthnicity,
+      isElected = isElected
     )
   }
 }

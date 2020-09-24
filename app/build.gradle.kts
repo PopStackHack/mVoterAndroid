@@ -137,9 +137,6 @@ dependencies {
   implementation(Firebase.analytics)
   implementation(Firebase.crashlytics)
 
-  //Circular ImageView
-  implementation(CommonLibs.circle_image_view)
-
   //Test
   testImplementation(CommonLibs.junit)
   testImplementation(project(":coroutinetestrule"))
