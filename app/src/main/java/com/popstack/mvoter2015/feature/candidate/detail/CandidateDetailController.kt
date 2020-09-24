@@ -1,6 +1,7 @@
 package com.popstack.mvoter2015.feature.candidate.detail
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableStringBuilder
@@ -8,12 +9,14 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
+import androidx.core.widget.NestedScrollView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import coil.api.load
-import coil.size.Precision
 import coil.size.Scale
 import coil.transform.CircleCropTransformation
 import com.bluelinelabs.conductor.RouterTransaction
@@ -28,13 +31,14 @@ import com.popstack.mvoter2015.feature.party.detail.PartyDetailController
 import com.popstack.mvoter2015.feature.share.ShareUrlFactory
 import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
 import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewState
+import com.popstack.mvoter2015.helper.conductor.requireActivity
 import com.popstack.mvoter2015.helper.conductor.requireActivityAsAppCompatActivity
 import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.helper.conductor.supportActionBar
-import com.popstack.mvoter2015.helper.extensions.toPx
 import com.popstack.mvoter2015.helper.intent.Intents
 import com.popstack.mvoter2015.helper.spannable.CenteredImageSpan
 import com.popstack.mvoter2015.logging.HasTag
+
 
 class CandidateDetailController(
   bundle: Bundle? = null
@@ -105,6 +109,21 @@ class CandidateDetailController(
     requireActivityAsAppCompatActivity().supportActionBar?.title = ""
     supportActionBar()?.setDisplayHomeAsUpEnabled(true)
 
+    binding.svCandidateInfo.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { _, _, scrollY, _, _ ->
+      val activity = kotlin.runCatching {
+        requireActivity()
+      }.getOrNull() ?: return@OnScrollChangeListener
+      var color: Int = ContextCompat.getColor(activity, R.color.primary)
+      var textColor: Int = ContextCompat.getColor(activity, R.color.text_primary)
+      if (scrollY < 256) {
+        val alpha = scrollY shl 24 or (-1 ushr 8)
+        color = color and alpha
+        textColor = textColor and alpha
+      }
+      binding.toolBar.setTitleTextColor(textColor)
+      binding.toolBar.setBackgroundColor(color)
+    })
+
     binding.rvRivalCandidates.apply {
       adapter = candidateListAdapter
       layoutManager = LinearLayoutManager(requireContext())
@@ -133,6 +152,7 @@ class CandidateDetailController(
     when (viewState) {
       is AsyncViewState.Success -> {
         with(viewState.value.candidateInfo) {
+          binding.toolBar.title = name
           binding.tvCandidateName.text = name
 
           if (partyId == null) {

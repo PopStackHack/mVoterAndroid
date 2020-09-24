@@ -110,9 +110,9 @@
         android:gravity="center"
         android:includeFontPadding="false"
         android:paddingStart="12dp"
-        android:paddingTop="8dp"
+        android:paddingTop="4dp"
         android:paddingEnd="12dp"
-        android:paddingBottom="8dp"
+        android:paddingBottom="4dp"
         app:layout_constraintEnd_toEndOf="@+id/guidelineEnd16"
         app:layout_constraintStart_toStartOf="@+id/guidelineStart16"
         app:layout_constraintTop_toBottomOf="@+id/tvCandidatePartyName"
@@ -485,6 +485,7 @@
       android:id="@+id/toolBar"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      app:titleTextColor="@color/transparent"
       android:background="@color/transparent" />
 
   </com.google.android.material.appbar.AppBarLayout>
