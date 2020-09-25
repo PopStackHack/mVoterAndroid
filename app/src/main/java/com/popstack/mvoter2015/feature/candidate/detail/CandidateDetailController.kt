@@ -14,7 +14,7 @@ import androidx.core.view.isVisible
 import androidx.core.widget.NestedScrollView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import coil.api.load
+import coil.load
 import coil.size.Scale
 import coil.transform.CircleCropTransformation
 import com.bluelinelabs.conductor.RouterTransaction

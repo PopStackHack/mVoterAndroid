@@ -4,7 +4,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
-import coil.api.load
+import coil.load
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.databinding.ItemNewsNoPreviewBinding
 import com.popstack.mvoter2015.databinding.ItemNewsWithPreviewBinding

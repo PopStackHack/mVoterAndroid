@@ -12,7 +12,7 @@ import androidx.core.view.isVisible
 import androidx.core.widget.NestedScrollView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import coil.api.load
+import coil.load
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvvmController

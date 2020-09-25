@@ -2,7 +2,7 @@ package com.popstack.mvoter2015.feature.candidate.search
 
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
-import coil.api.load
+import coil.load
 import coil.transform.CircleCropTransformation
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.recyclerview.ViewBindingViewHolder

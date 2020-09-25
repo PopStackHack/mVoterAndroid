@@ -9,6 +9,7 @@ buildscript {
     maven("https://plugins.gradle.org/m2/")
     google()
     mavenCentral()
+    maven("https://jitpack.io")
     jcenter()
     maven("https://oss.sonatype.org/content/repositories/snapshots/")
   }
@@ -28,8 +29,9 @@ allprojects {
     google()
     mavenCentral()
     maven(url = "https://dl.bintray.com/vincent-paing/maven")
-    maven("https://oss.sonatype.org/content/repositories/snapshots/")
+    maven("https://jitpack.io")
     jcenter()
+    maven("https://oss.sonatype.org/content/repositories/snapshots/")
   }
 }
 
