@@ -10,6 +10,7 @@ import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.databinding.ItemBallotBinding
 import com.popstack.mvoter2015.helper.diff.diffCallBackWith
 import com.popstack.mvoter2015.helper.extensions.inflater
+import com.popstack.mvoter2015.helper.extensions.setCompoundDrawableWithIntrinsicBoundsKt
 import com.popstack.mvoter2015.helper.extensions.withSafeAdapterPosition
 
 class BallotExampleRecyclerViewAdapter(
@@ -23,7 +24,10 @@ class BallotExampleRecyclerViewAdapter(
   ) {
 
   class BallotExampleViewHolder(val binding: ItemBallotBinding) :
-    RecyclerView.ViewHolder(binding.root)
+    RecyclerView.ViewHolder(binding.root) {
+    val validColor = ContextCompat.getColor(itemView.context, R.color.green)
+    val inValidColor = ContextCompat.getColor(itemView.context, R.color.text_error)
+  }
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BallotExampleViewHolder {
     val binding = ItemBallotBinding.inflate(parent.inflater(), parent, false)
@@ -39,14 +43,20 @@ class BallotExampleRecyclerViewAdapter(
   override fun onBindViewHolder(holder: BallotExampleViewHolder, position: Int) {
     val itemAtIndex = getItem(position)
     holder.binding.apply {
-      tvReason.text = itemAtIndex.reason
-
       if (itemAtIndex.isValid) {
         tvBallotValid.setText(R.string.valid_ballot)
-        tvBallotValid.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.green))
+        tvBallotValid.setCompoundDrawableWithIntrinsicBoundsKt(
+          start = ContextCompat.getDrawable(holder.itemView.context, R.drawable.ic_check_circle_24)?.also {
+            it.setTint(holder.validColor)
+          }
+        )
       } else {
         tvBallotValid.setText(R.string.invalid_ballot)
-        tvBallotValid.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.text_error))
+        tvBallotValid.setCompoundDrawableWithIntrinsicBoundsKt(
+          start = ContextCompat.getDrawable(holder.itemView.context, R.drawable.ic_close_circle_24)?.also {
+            it.setTint(holder.inValidColor)
+          }
+        )
       }
       ivBallot.load(itemAtIndex.image) {
         placeholder(R.drawable.placeholder_rect)
