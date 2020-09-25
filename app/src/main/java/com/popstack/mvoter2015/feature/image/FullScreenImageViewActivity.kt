@@ -2,6 +2,7 @@ package com.popstack.mvoter2015.feature.image
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.provider.MediaStore
@@ -10,6 +11,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowInsetsController
+import androidx.core.content.ContextCompat
 import androidx.core.view.doOnLayout
 import androidx.lifecycle.lifecycleScope
 import coil.imageLoader
@@ -69,6 +71,7 @@ class FullScreenImageViewActivity : BaseActivity<ActivityImageFullScreenViewBind
       }
     }
 
+    window.navigationBarColor = Color.BLACK
     window.decorView.setOnSystemUiVisibilityChangeListener { visibility ->
       // Note that system bars will only be "visible" if none of the
       // LOW_PROFILE, HIDE_NAVIGATION, or FULLSCREEN flags are set.
