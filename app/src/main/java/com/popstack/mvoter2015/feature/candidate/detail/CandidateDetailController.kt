@@ -14,7 +14,7 @@ import androidx.core.view.isVisible
 import androidx.core.widget.NestedScrollView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import coil.api.load
+import coil.load
 import coil.size.Scale
 import coil.transform.CircleCropTransformation
 import com.bluelinelabs.conductor.RouterTransaction
@@ -24,6 +24,7 @@ import com.popstack.mvoter2015.databinding.ControllerCandidateDetailBinding
 import com.popstack.mvoter2015.domain.candidate.model.CandidateId
 import com.popstack.mvoter2015.feature.analytics.screen.CanTrackScreen
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateListRecyclerViewAdapter
+import com.popstack.mvoter2015.feature.image.FullScreenImageViewActivity
 import com.popstack.mvoter2015.feature.party.PartySharedElementTransitionChangeHandler
 import com.popstack.mvoter2015.feature.party.detail.PartyDetailController
 import com.popstack.mvoter2015.feature.share.ShareUrlFactory
@@ -202,11 +203,23 @@ class CandidateDetailController(
             error(R.drawable.party_seal_placeholder_rect)
             scale(Scale.FIT)
           }
+          partySealImageUrl?.let { imageUrl ->
+            binding.ivCandidatePartySeal.setOnClickListener {
+              val imageViewerIntent = FullScreenImageViewActivity.intent(requireContext(), imageUrl)
+              startActivity(imageViewerIntent)
+            }
+          }
+
           binding.ivCandidate.load(photo) {
             transformations(CircleCropTransformation())
             scale(Scale.FILL)
             placeholder(R.drawable.placeholder_oval)
             error(R.drawable.placeholder_oval)
+          }
+
+          binding.ivCandidate.setOnClickListener {
+            val imageViewerIntent = FullScreenImageViewActivity.intent(requireContext(), photo)
+            startActivity(imageViewerIntent)
           }
         }
         candidateListAdapter.submitList(viewState.value.rivals)

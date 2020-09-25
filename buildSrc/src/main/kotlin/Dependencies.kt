@@ -93,7 +93,7 @@ object Material {
 }
 
 object Coil {
-  const val coil = "io.coil-kt:coil:0.9.5"
+  const val coil = "io.coil-kt:coil:1.0.0-rc3"
 }
 
 object Conductor {

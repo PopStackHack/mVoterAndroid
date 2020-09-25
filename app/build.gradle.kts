@@ -133,6 +133,8 @@ dependencies {
   //Coil
   implementation(Coil.coil)
 
+  implementation("com.github.chrisbanes:PhotoView:2.3.0")
+
   //Firebase
   implementation(Firebase.analytics)
   implementation(Firebase.crashlytics)

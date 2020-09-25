@@ -14,6 +14,7 @@ import com.popstack.mvoter2015.domain.utils.convertToBurmeseNumber
 import com.popstack.mvoter2015.feature.analytics.screen.CanTrackScreen
 import com.popstack.mvoter2015.feature.faq.displayString
 import com.popstack.mvoter2015.feature.home.BottomNavigationHostViewModelStore
+import com.popstack.mvoter2015.feature.image.FullScreenImageViewActivity
 import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewState
 import com.popstack.mvoter2015.helper.conductor.requireActivity
 import com.popstack.mvoter2015.helper.conductor.requireActivityAsAppCompatActivity
@@ -39,7 +40,12 @@ class BallotExampleController : MvvmController<ControllerBallotExampleBinding>()
   )
 
   private val ballotAdapter by lazy {
-    BallotExampleRecyclerViewAdapter()
+    BallotExampleRecyclerViewAdapter(
+      onImageClick = { _, imageUrl ->
+        val imageViewerIntent = FullScreenImageViewActivity.intent(requireContext(), imageUrl)
+        startActivity(imageViewerIntent)
+      }
+    )
   }
 
   private val selectBallotExampleCategoryContract by lazy {
