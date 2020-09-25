@@ -18,48 +18,33 @@
     android:layout_width="0dp"
     android:layout_height="0dp"
     android:layout_margin="16dp"
-    app:layout_constraintBottom_toTopOf="@id/guideline90PercentHorizontal"
+    app:layout_constraintBottom_toTopOf="@id/tvBallotValid"
     app:layout_constraintDimensionRatio="w,1:2"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent" />
 
-  <androidx.constraintlayout.widget.Guideline
-    android:id="@+id/guideline90PercentHorizontal"
+  <ImageView
+    android:id="@+id/ivValid"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    app:layout_constraintGuide_percent="0.90" />
+    android:layout_gravity="center_horizontal"
+    app:layout_constraintBottom_toBottomOf="@id/tvBallotValid"
+    app:layout_constraintEnd_toStartOf="@id/tvBallotValid"
+    app:layout_constraintTop_toTopOf="@id/tvBallotValid"
+    tools:src="@drawable/ic_close_circle_24" />
 
-  <androidx.core.widget.NestedScrollView
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:padding="16dp"
-    android:scrollbarAlwaysDrawVerticalTrack="true"
-    android:scrollbars="vertical"
+  <TextView
+    android:id="@+id/tvBallotValid"
+    style="@style/TextLarge.Bold"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:paddingTop="2dp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/guideline90PercentHorizontal">
-
-    <LinearLayout
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:orientation="vertical">
-
-      <TextView
-        android:id="@+id/tvBallotValid"
-        style="@style/TextLarge.Bold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center"
-        tools:text="@string/valid_ballot" />
-
-    </LinearLayout>
-
-
-  </androidx.core.widget.NestedScrollView>
+    tools:text="@string/invalid_ballot" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -129,7 +129,8 @@ class FaqPagingAdapter(
             tvAnswer.maxLines = Int.MAX_VALUE
             tvAnswer.ellipsize = null
             ivShare.isVisible = true
-            LinkifyCompat.addLinks(tvAnswer, Linkify.WEB_URLS)
+            val isAdded = LinkifyCompat.addLinks(tvAnswer, Linkify.WEB_URLS)
+            tvAnswer.isClickable = isAdded
           } else {
             tvAnswer.maxLines = 2
             tvAnswer.ellipsize = TextUtils.TruncateAt.END

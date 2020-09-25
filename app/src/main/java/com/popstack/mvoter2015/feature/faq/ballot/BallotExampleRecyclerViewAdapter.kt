@@ -10,7 +10,6 @@ import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.databinding.ItemBallotBinding
 import com.popstack.mvoter2015.helper.diff.diffCallBackWith
 import com.popstack.mvoter2015.helper.extensions.inflater
-import com.popstack.mvoter2015.helper.extensions.setCompoundDrawableWithIntrinsicBoundsKt
 import com.popstack.mvoter2015.helper.extensions.withSafeAdapterPosition
 
 class BallotExampleRecyclerViewAdapter(
@@ -45,18 +44,19 @@ class BallotExampleRecyclerViewAdapter(
     holder.binding.apply {
       if (itemAtIndex.isValid) {
         tvBallotValid.setText(R.string.valid_ballot)
-        tvBallotValid.setCompoundDrawableWithIntrinsicBoundsKt(
-          start = ContextCompat.getDrawable(holder.itemView.context, R.drawable.ic_check_circle_24)?.also {
+        ivValid.setImageDrawable(
+          ContextCompat.getDrawable(holder.itemView.context, R.drawable.ic_check_circle_24)?.also {
             it.setTint(holder.validColor)
           }
         )
       } else {
         tvBallotValid.setText(R.string.invalid_ballot)
-        tvBallotValid.setCompoundDrawableWithIntrinsicBoundsKt(
-          start = ContextCompat.getDrawable(holder.itemView.context, R.drawable.ic_close_circle_24)?.also {
+        ivValid.setImageDrawable(
+          ContextCompat.getDrawable(holder.itemView.context, R.drawable.ic_close_circle_24)?.also {
             it.setTint(holder.inValidColor)
           }
         )
+
       }
       ivBallot.load(itemAtIndex.image) {
         placeholder(R.drawable.placeholder_rect)
