@@ -69,7 +69,7 @@ jobs:
       GOOGLE_SERVICE_JSON_BASE64: ${{ secrets.GOOGLE_SERVICE_JSON_BASE64 }}
       DEVELOPMENT_API_SECRET: ${{ secrets.DEVELOPMENT_API_SECRET }}
       RELEASE_API_SECRET: ${{ secrets.RELEASE_API_SECRET }}
-
+      DEPLOY_SECRET: ${{ secrets.DEPLOY_SECRET }}
     steps:
       - uses: actions/checkout@v2
       - name: set up JDK 1.8
