@@ -1,1 +1,0 @@
-CREATE VIRTUAL TABLE PartyFtsTable USING fts4(id, englishname, burmeseName);

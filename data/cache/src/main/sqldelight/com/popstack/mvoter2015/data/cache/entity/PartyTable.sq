@@ -1,0 +1,48 @@
+import com.popstack.mvoter2015.domain.party.model.PartyId;
+import java.lang.Boolean;
+import java.lang.Integer;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import kotlin.String;
+import kotlin.collections.List;
+
+CREATE TABLE PartyTable(
+  id TEXT PRIMARY KEY NOT NULL,
+  number INTEGER AS Integer NOT NULL,
+  burmeseName TEXT NOT NULL,
+  englishName TEXT,
+  abbreviation TEXT,
+  flagImage TEXT NOT NULL,
+  sealImage TEXT NOT NULL,
+  region TEXT NOT NULL,
+  leadersAndChairmen TEXT AS List<String> NOT NULL,
+  memberCount TEXT,
+  contacts TEXT AS List<String> NOT NULL,
+  headquarterLocation TEXT NOT NULL,
+  policy TEXT NOT NULL,
+  isEstablishedDueToArticle25 INTEGER AS Boolean NOT NULL,
+  establishmentApplicationDate INTEGER AS LocalDate,
+  establishmentApprovalDate INTEGER AS LocalDate,
+  registrationApplicationDate INTEGER AS LocalDate,
+  registrationApprovalDate INTEGER AS LocalDate,
+  is_deleted INTEGER AS Boolean DEFAULT 0
+);
+
+insertOrReplace:
+INSERT OR REPLACE INTO PartyTable VALUES(
+:id, :number, :burmeseName, :englishName, :abbreviation, :flagUrl, :sealUrl, :region,
+:leadersAndChairmen,:memberCount, :contacts, :headquarterLocation, :policy,
+:isEstablishedDueToArticle25,
+:establishmentApplicationDate, :establishmentApprovalDate,
+:registrationApplicationDate, :registrationApprovalDate,
+0
+);
+
+getAll:
+SELECT * FROM PartyTable WHERE is_deleted = 0 ORDER BY number ASC LIMIT :limit OFFSET :offset;
+
+getById:
+SELECT * FROM PartyTable WHERE id = :id AND is_deleted = 0;
+
+deleteAll:
+UPDATE PartyTable SET is_deleted = 1;

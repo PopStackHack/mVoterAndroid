@@ -1,5 +1,6 @@
 import org.gradle.api.artifacts.dsl.DependencyHandler
 
+
 fun DependencyHandler.daggerAndroid() {
   implementation(Dagger.core)
   implementation(Dagger.android_core)
@@ -14,9 +15,8 @@ fun DependencyHandler.daggerJvm() {
   kapt(Dagger.compiler)
 }
 
-
 object Dagger {
-  private const val version = "2.27"
+  private const val version = "2.28"
 
   const val core = "com.google.dagger:dagger:$version"
   const val compiler = "com.google.dagger:dagger-compiler:$version"

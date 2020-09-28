@@ -1,0 +1,30 @@
+def releaseProperties = new Properties()
+project.rootProject.file("release.properties").withInputStream { releaseProperties.load(it) }
+
+def url = releaseProperties.getProperty("url")
+def forceUpdate = releaseProperties.getProperty("forceUpdate")
+def secret = "$System.env.DEPLOY_SECRET"
+
+def apkFile = new String()
+def outputDir = project.rootProject.file("outputs/")
+
+if (outputDir.exists()) {
+  outputDir.eachFile {
+    println(it.name)
+    if (it.name.endsWith("release.apk")) {
+      apkFile = it.absolutePath
+    }
+  }
+}
+
+println("url : $url")
+println("forceUpdate : $forceUpdate")
+println("secret : $secret")
+println("apkFile : $apkFile")
+println("versionCode : $BuildConfig.versionCode")
+
+task uploadApk(type: Exec) {
+  executable "/bin/sh"
+  args "-c",
+      "curl --location --request POST $url --header 'secret-key: $secret' -F 'apk=@$apkFile;type=application/vnd.android.package-archive' --form 'version_code=$BuildConfig.versionCode' --form 'is_force_update=$forceUpdate'"
+}

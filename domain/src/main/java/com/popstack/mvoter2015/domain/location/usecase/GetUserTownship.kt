@@ -8,7 +8,7 @@ import javax.inject.Inject
 class GetUserTownship @Inject constructor(dispatcherProvider: DispatcherProvider) :
   CoroutineUseCase<Unit, Township>(dispatcherProvider) {
 
-  override fun provide(input: Unit): Township {
+  override suspend fun provide(input: Unit): Township {
     TODO("Not yet implemented")
   }
 }

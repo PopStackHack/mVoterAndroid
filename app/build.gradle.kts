@@ -18,13 +18,13 @@ plugins {
   id("com.android.application")
   kotlin("android")
   kotlin("kapt")
-  id("androidx.navigation.safeargs.kotlin")
   id(KtLint.name)
+  id("com.google.gms.google-services")
+  id("com.google.firebase.crashlytics")
 }
 
 android {
-  compileSdkVersion(BuildConfig.targetSdk)
-  buildToolsVersion = "29.0.3"
+  compileSdkVersion(BuildConfig.compileSdk)
 
   defaultConfig {
     applicationId = "com.popstack.mvoter2015"
@@ -39,6 +39,12 @@ android {
 
     buildFeatures {
       viewBinding = true
+    }
+
+    kapt {
+      arguments {
+        arg("dagger.hilt.disableModulesHaveInstallInCheck", "true")
+      }
     }
   }
 
@@ -62,6 +68,8 @@ android {
 
     getByName("release") {
       isMinifyEnabled = true
+      isShrinkResources = true
+      isZipAlignEnabled = true
       isDebuggable = false
       signingConfig = signingConfigs.getByName("release")
       proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
@@ -80,11 +88,12 @@ android {
 }
 
 dependencies {
-  coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.0.5")
+  coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.0.10")
 
   implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
   implementation(project(":domain"))
-  implementation(project(":data"))
+  implementation(project(":data:android"))
+  implementation(project(":simplespinneradapter"))
 
   implementation(Kotlin.stdblib_jdk)
   implementation(KotlinCoroutine.android)
@@ -92,12 +101,21 @@ dependencies {
   //AndroidX
   implementation(AndroidXAppCompat.app_compat)
   implementation(AndroidXCore.core_ktx)
-  implementation(AndroidXActivity.activity_ktx)
-  androidxFragment()
   androidXArch()
+  androidxActivity()
+  androidxFragment()
   implementation(AndroidXViewPager.view_pager_2)
   implementation(AndroidXViewPager.view_pager)
   implementation(AndroidXRecyclerView.recycler_view)
+  implementation(AndroidXPaging.common)
+  implementation(AndroidXPaging.runtime)
+  implementation(AndroidXDataStore.preferences)
+  implementation("androidx.browser:browser:1.3.0-alpha05")
+
+  implementation(Conductor.core)
+  implementation(Conductor.viewpager)
+  implementation(Conductor.androidx_transition)
+  implementation(Conductor.lifecycle)
 
   //Material
   implementation(Material.material)
@@ -106,10 +124,8 @@ dependencies {
   implementation(AndroidXConstraintLayout.constraint_layout)
 
   //Dagger
+  daggerJvm()
   daggerAndroid()
-
-  //Navigation
-  androidxNavigationKtx()
 
   //ThreeTenBp
   implementation(CommonLibs.timber)
@@ -117,12 +133,13 @@ dependencies {
   //Coil
   implementation(Coil.coil)
 
-  //Caigraphy
-  implementation(Caligraphy.viewpump)
-  implementation(Caligraphy.caligraphy)
+  //Firebase
+  implementation(Firebase.analytics)
+  implementation(Firebase.crashlytics)
 
   //Test
-  testImplementation("junit:junit:4.12")
+  testImplementation(CommonLibs.junit)
+  testImplementation(project(":coroutinetestrule"))
   mockito()
   mockitoAndroid()
   androidXTest()
@@ -132,3 +149,5 @@ dependencies {
 ktlint {
   android.set(true)
 }
+
+apply(from = "$rootDir/self_host_deploy.gradle")

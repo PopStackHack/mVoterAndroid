@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical">
+
+  <com.google.android.material.appbar.MaterialToolbar
+    android:id="@+id/toolBar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:backgroundTint="@color/primary"
+    app:title="@string/menu_title_settings"
+    app:titleTextAppearance="@style/TextTitle3.Bold" />
+
+  <RelativeLayout
+    android:id="@+id/viewGroupTheme"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="16dp"
+    android:paddingTop="8dp"
+    android:paddingEnd="16dp"
+    android:paddingBottom="8dp">
+
+    <Spinner
+      android:id="@+id/spinnerTheme"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentEnd="true"
+      android:layout_centerVertical="true" />
+
+    <TextView
+      android:id="@+id/tvTheme"
+      style="@style/TextLarge"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_centerVertical="true"
+      android:layout_marginEnd="16dp"
+      android:layout_toStartOf="@id/spinnerTheme"
+      android:text="@string/settings_label_theme" />
+
+  </RelativeLayout>
+
+  <RelativeLayout
+    android:id="@+id/viewGroupExternalBrowser"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="16dp"
+    android:paddingTop="8dp"
+    android:paddingEnd="16dp"
+    android:paddingBottom="8dp">
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+      android:id="@+id/switchOpenExternalBrowser"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentEnd="true"
+      android:layout_centerVertical="true" />
+
+    <TextView
+      android:id="@+id/tvOpenExternalBrowser"
+      style="@style/TextLarge"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_centerVertical="true"
+      android:layout_marginEnd="16dp"
+      android:layout_toStartOf="@id/switchOpenExternalBrowser"
+      android:text="@string/settings_label_external_browser" />
+
+  </RelativeLayout>
+
+
+</LinearLayout>

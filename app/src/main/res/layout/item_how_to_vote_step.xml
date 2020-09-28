@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content">
+
+  <androidx.constraintlayout.widget.Guideline
+    android:id="@+id/guidelineStart24"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:layout_constraintGuide_begin="24dp" />
+
+  <View
+    android:id="@+id/ivDot"
+    android:layout_width="12dp"
+    android:layout_height="12dp"
+    android:layout_marginTop="6dp"
+    android:background="@drawable/timeline_dot"
+    app:layout_constraintEnd_toEndOf="@id/guidelineStart24"
+    app:layout_constraintStart_toStartOf="@id/guidelineStart24"
+    app:layout_constraintTop_toTopOf="@id/tvStep" />
+
+  <View
+    android:id="@+id/lineBottom"
+    android:layout_width="1dp"
+    android:layout_height="0dp"
+    android:background="@color/accent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="@id/guidelineStart24"
+    app:layout_constraintStart_toStartOf="@id/guidelineStart24"
+    app:layout_constraintTop_toBottomOf="@id/ivDot" />
+
+  <View
+    android:id="@+id/lineTop"
+    android:layout_width="1dp"
+    android:layout_height="0dp"
+    android:background="@color/accent"
+    app:layout_constraintBottom_toTopOf="@id/ivDot"
+    app:layout_constraintEnd_toEndOf="@id/guidelineStart24"
+    app:layout_constraintStart_toStartOf="@id/guidelineStart24"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:visibility="gone" />
+
+  <TextView
+    android:id="@+id/tvStep"
+    style="@style/TextLarge"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="22dp"
+    android:layout_marginTop="18dp"
+    android:layout_marginEnd="22dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toEndOf="@id/ivDot"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:text="ရပ်ကွက်/ကျေးရွာအုပ်စု အတွင်းရှိ မိမိ မဲပေးရမည့် မဲရုံသို့ သွားပါ။" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

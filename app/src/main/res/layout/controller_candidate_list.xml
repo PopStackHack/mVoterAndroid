@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+  <com.google.android.material.appbar.AppBarLayout
+    android:id="@+id/appBarLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/primary"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    android:paddingBottom="4dp"
+    app:elevation="0dp">
+
+    <com.google.android.material.appbar.MaterialToolbar
+      android:id="@+id/toolBar"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:backgroundTint="@color/primary"
+      app:menu="@menu/menu_candidate"
+      app:title="@string/title_candidates"
+      app:titleTextAppearance="@style/TextTitle3.Bold"
+      app:titleTextColor="@color/text_primary" />
+
+    <com.google.android.material.tabs.TabLayout
+      android:id="@+id/tabLayout"
+      android:layout_width="match_parent"
+      android:layout_height="64dp"
+      android:background="@color/primary"
+      app:tabBackground="@color/primary"
+      android:layout_marginStart="16dp"
+      android:layout_marginEnd="16dp"
+      app:tabGravity="center"
+      app:tabIndicator="@drawable/tab_indicator"
+      app:tabIndicatorColor="@color/accent"
+      app:tabIndicatorFullWidth="false"
+      app:tabIndicatorHeight="4dp"
+      app:tabMode="fixed"
+      app:tabSelectedTextColor="@color/accent"
+      app:tabTextAppearance="@style/TextTitle3.Bold" />
+
+  </com.google.android.material.appbar.AppBarLayout>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+      android:id="@+id/ivCandidateIndicator"
+      android:layout_width="100dp"
+      android:layout_height="50dp"
+      android:tint="@color/accent"
+      android:src="@drawable/ic_people_fill"
+      app:layout_constraintBottom_toTopOf="@+id/tvChooseCandidateDesc"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.5"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+      android:id="@+id/tvChooseCandidateDesc"
+      style="@style/TextLarge"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/location_chooser_title"
+      android:layout_marginTop="16dp"
+      android:gravity="center"
+      app:layout_constraintBottom_toTopOf="@+id/btnChoose"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.5"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/ivCandidateIndicator" />
+
+    <com.google.android.material.button.MaterialButton
+      android:id="@+id/btnChoose"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/lets_choose"
+      app:icon="@drawable/ic_location_on_24"
+      app:iconGravity="textStart"
+      app:iconSize="18dp"
+      app:iconPadding="2dp"
+      android:textColor="@color/text_on_accent"
+      app:iconTint="@color/text_on_accent"
+      app:backgroundTint="@color/tint_button_policy"
+      app:cornerRadius="20dp"
+      android:layout_marginTop="16dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.5"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/tvChooseCandidateDesc" />
+
+    <androidx.constraintlayout.widget.Group
+      android:id="@+id/groupChooseCandidateComponent"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:visibility="gone"
+      app:constraint_referenced_ids="ivCandidateIndicator, tvChooseCandidateDesc, btnChoose"
+      />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+  <androidx.viewpager.widget.ViewPager
+    android:id="@+id/viewPager"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -2,42 +2,48 @@ package com.popstack.mvoter2015.feature.candidate.listing
 
 import android.content.Context
 import com.popstack.mvoter2015.R
-import com.popstack.mvoter2015.domain.house.HouseType
-import com.popstack.mvoter2015.domain.location.model.StateRegionType
+import com.popstack.mvoter2015.domain.constituency.model.HouseType
+import com.popstack.mvoter2015.domain.location.model.Ward
 import javax.inject.Inject
 
-internal data class CandidateListHouseViewItem(
-  val houseType: HouseType,
-  val name: String
+data class CandidateListHouseViewItem(
+  val houseName: String,
+  val constituencyName: String
 )
 
-internal class CandidateListHouseViewItemMapper @Inject constructor(
+class CandidateListHouseViewItemMapper @Inject constructor(
   private val context: Context
 ) {
 
   internal fun mapFromHouseType(
     houseType: HouseType,
-    stateRegionType: StateRegionType
+    userWard: Ward
   ): CandidateListHouseViewItem {
 
-    val name = when (houseType) {
-      HouseType.UPPER_HOUSE -> context.getString(R.string.tab_upper_house)
-      HouseType.LOWER_HOUSE -> context.getString(R.string.tab_lower_house)
+    lateinit var houseName: String
+    lateinit var constituencyName: String
+
+    when (houseType) {
+      HouseType.UPPER_HOUSE -> {
+        houseName = context.getString(R.string.tab_upper_house)
+        constituencyName = userWard.upperHouseConstituency.name
+      }
+      HouseType.LOWER_HOUSE -> {
+        houseName = context.getString(R.string.tab_lower_house)
+        constituencyName = userWard.lowerHouseConstituency.name
+      }
       HouseType.REGIONAL_HOUSE -> {
-        when (stateRegionType) {
-          StateRegionType.REGION -> {
-            context.getString(R.string.tab_regional_house_region)
-          }
-          StateRegionType.STATE -> {
-            context.getString(R.string.tab_regional_house_state)
-          }
-        }
+        houseName = if (userWard.stateRegionConstituency?.name?.contains("ပြည်နယ်") == true)
+          context.getString(R.string.tab_regional_house_region)
+        else
+          context.getString(R.string.tab_regional_house_state)
+        constituencyName = userWard.stateRegionConstituency?.name ?: ""
       }
     }
 
     return CandidateListHouseViewItem(
-      houseType = houseType,
-      name = name
+      houseName = houseName,
+      constituencyName = constituencyName
     )
   }
 }

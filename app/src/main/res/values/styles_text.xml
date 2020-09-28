@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <style name="BaseTextAppearance" parent="TextAppearance.AppCompat">
+    <item name="android:textColor">@color/text_primary</item>
+    <item name="fontFamily">@font/pyidaungsu</item>
+  </style>
+
+  <!-- Text Extra Large -->
+  <style name="TextExtraLarge" parent="BaseTextAppearance">
+    <item name="android:textSize">18sp</item>
+  </style>
+
+  <style name="TextExtraLarge.Bold">
+    <item name="android:textStyle">bold</item>
+  </style>
+
+  <style name="TextExtraLarge.Accent">
+    <item name="android:textColor">@color/accent</item>
+  </style>
+
+  <style name="TextExtraLarge.Accent.Bold">
+    <item name="android:textStyle">bold</item>
+  </style>
+
+  <style name="TextExtraLarge.Secondary">
+    <item name="android:textColor">@color/text_secondary</item>
+  </style>
+
+  <style name="TextExtraLarge.Secondary.Bold">
+    <item name="android:textStyle">bold</item>
+  </style>
+
+  <style name="TextExtraLarge.Error">
+    <item name="android:textColor">@color/text_error</item>
+  </style>
+  <!-- End of Text Large -->
+
+
+  <!-- Text Large -->
+  <style name="TextLarge" parent="BaseTextAppearance">
+    <item name="android:textSize">16sp</item>
+  </style>
+
+  <style name="TextLarge.Bold">
+    <item name="android:textStyle">bold</item>
+  </style>
+
+  <style name="TextLarge.Accent">
+    <item name="android:textColor">@color/accent</item>
+  </style>
+
+  <style name="TextLarge.Accent.Bold">
+    <item name="android:textStyle">bold</item>
+  </style>
+
+  <style name="TextLarge.Secondary">
+    <item name="android:textColor">@color/text_secondary</item>
+  </style>
+
+  <style name="TextLarge.Secondary.Bold">
+    <item name="android:textStyle">bold</item>
+  </style>
+
+  <style name="TextLarge.Error">
+    <item name="android:textColor">@color/text_error</item>
+  </style>
+  <!-- End of Text Large -->
+
+  <!-- Text Medium -->
+  <style name="TextMedium" parent="BaseTextAppearance">
+    <item name="android:textSize">14sp</item>
+  </style>
+
+  <style name="TextMedium.Bold">
+    <item name="android:textStyle">bold</item>
+  </style>
+
+  <style name="TextMedium.Accent">
+    <item name="android:textColor">@color/accent</item>
+  </style>
+
+  <style name="TextMedium.Accent.Bold">
+    <item name="android:textStyle">bold</item>
+  </style>
+
+  <style name="TextMedium.Secondary">
+    <item name="android:textColor">@color/text_secondary</item>
+  </style>
+
+  <style name="TextMedium.Secondary.Bold">
+    <item name="android:textStyle">bold</item>
+  </style>
+
+  <style name="TextMedium.Error">
+    <item name="android:textColor">@color/text_error</item>
+  </style>
+  <!-- End of Text Medium -->
+
+  <!-- Text Small -->
+  <style name="TextSmall" parent="BaseTextAppearance">
+    <item name="android:textSize">12sp</item>
+  </style>
+
+  <style name="TextSmall.Bold">
+    <item name="android:textStyle">bold</item>
+  </style>
+
+  <style name="TextSmall.Accent">
+    <item name="android:textColor">@color/accent</item>
+  </style>
+
+  <style name="TextSmall.Accent.Bold">
+    <item name="android:textStyle">bold</item>
+  </style>
+
+  <style name="TextSmall.Secondary">
+    <item name="android:textColor">@color/text_secondary</item>
+  </style>
+
+  <style name="TextSmall.Secondary.Bold">
+    <item name="android:textStyle">bold</item>
+  </style>
+
+  <style name="TextSmall.Error">
+    <item name="android:textColor">@color/text_error</item>
+  </style>
+  <!-- End of Text Small -->
+
+  <!-- Text Tiny -->
+  <style name="TextTiny" parent="BaseTextAppearance">
+    <item name="android:textSize">10sp</item>
+  </style>
+
+  <style name="TextTiny.Bold">
+    <item name="android:textStyle">bold</item>
+  </style>
+
+  <style name="TextTiny.Accent">
+    <item name="android:textColor">@color/accent</item>
+  </style>
+
+  <style name="TextTiny.Accent.Bold">
+    <item name="android:textStyle">bold</item>
+  </style>
+
+  <style name="TextTiny.Secondary">
+    <item name="android:textColor">@color/text_secondary</item>
+  </style>
+
+  <style name="TextTiny.Secondary.Bold">
+    <item name="android:textStyle">bold</item>
+  </style>
+
+  <style name="TextTiny.Error">
+    <item name="android:textColor">@color/text_error</item>
+  </style>
+  <!-- End of Text Tiny -->
+
+  <!-- Title 1 -->
+  <style name="TextTitle1" parent="BaseTextAppearance">
+    <item name="android:textSize">24sp</item>
+  </style>
+
+  <style name="TextTitle1.Bold">
+    <item name="android:textStyle">bold</item>
+  </style>
+
+  <style name="TextTitle1.Accent">
+    <item name="android:textColor">@color/accent</item>
+  </style>
+
+  <style name="TextTitle1.Accent.Bold">
+    <item name="android:textStyle">bold</item>
+  </style>
+
+  <style name="TextTitle1.Secondary">
+    <item name="android:textColor">@color/text_secondary</item>
+  </style>
+
+  <style name="TextTitle1.Secondary.Bold">
+    <item name="android:textStyle">bold</item>
+  </style>
+
+  <style name="TextTitle1.Error">
+    <item name="android:textColor">@color/text_error</item>
+  </style>
+  <!-- End of Title 1 -->
+
+  <!-- Title 2 -->
+  <style name="TextTitle2" parent="BaseTextAppearance">
+    <item name="android:textSize">22sp</item>
+  </style>
+
+  <style name="TextTitle2.Bold">
+    <item name="android:textStyle">bold</item>
+  </style>
+
+  <style name="TextTitle2.Accent">
+    <item name="android:textColor">@color/accent</item>
+  </style>
+
+  <style name="TextTitle2.Accent.Bold">
+    <item name="android:textStyle">bold</item>
+  </style>
+
+  <style name="TextTitle2.Secondary">
+    <item name="android:textColor">@color/text_secondary</item>
+  </style>
+
+  <style name="TextTitle2.Secondary.Bold">
+    <item name="android:textStyle">bold</item>
+  </style>
+
+  <style name="TextTitle2.Error">
+    <item name="android:textColor">@color/text_error</item>
+  </style>
+  <!-- End of Title 2 -->
+
+  <!-- Title 3 -->
+  <style name="TextTitle3" parent="BaseTextAppearance">
+    <item name="android:textSize">20sp</item>
+  </style>
+
+  <style name="TextTitle3.Bold">
+    <item name="android:textStyle">bold</item>
+  </style>
+
+  <style name="TextTitle3.Accent">
+    <item name="android:textColor">@color/accent</item>
+  </style>
+
+  <style name="TextTitle3.Accent.Bold">
+    <item name="android:textStyle">bold</item>
+  </style>
+
+  <style name="TextTitle3.Secondary">
+    <item name="android:textColor">@color/text_secondary</item>
+  </style>
+
+  <style name="TextTitle3.Secondary.Bold">
+    <item name="android:textStyle">bold</item>
+  </style>
+
+  <style name="TextTitle3.Error">
+    <item name="android:textColor">@color/text_error</item>
+  </style>
+  <!-- End of Title 3 -->
+</resources>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto">
+
+  <item
+    android:id="@+id/navigation_candidate"
+    android:icon="@drawable/ic_menu_candidate"
+    android:title="@string/navigation_candidate_list"
+    app:contentDescription="@string/cd_candidate" />
+
+  <item
+    android:id="@+id/navigation_party"
+    android:icon="@drawable/ic_menu_party"
+    android:title="@string/navigation_party_list"
+    app:contentDescription="@string/cd_party" />
+
+  <item
+    android:id="@+id/navigation_how_to_vote"
+    android:icon="@drawable/ic_menu_how_to_vote"
+    android:title="@string/navigation_how_to_vote"
+    app:contentDescription="@string/cd_how_to_vote" />
+
+  <item
+    android:id="@+id/navigation_info"
+    android:icon="@drawable/ic_menu_info"
+    android:title="@string/navigation_tips"
+    app:contentDescription="@string/cd_tips" />
+
+  <item
+    android:id="@+id/navigation_news"
+    android:icon="@drawable/ic_menu_news"
+    android:title="@string/navigation_news"
+    app:contentDescription="@string/cd_news" />
+
+</menu>

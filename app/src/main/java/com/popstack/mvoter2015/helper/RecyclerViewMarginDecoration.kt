@@ -35,8 +35,10 @@ class RecyclerViewMarginDecoration(
       outRect.top = margin
     }
     //add left margin only to the first column
-    if (position % columns == 0) {
-      outRect.left = margin
+    if (columns != 0) {
+      if (position % columns == 0) {
+        outRect.left = margin
+      }
     }
 
   }

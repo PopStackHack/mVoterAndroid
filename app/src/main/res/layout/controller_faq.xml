@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical">
+
+  <com.google.android.material.appbar.AppBarLayout
+    android:id="@+id/appBarLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:backgroundTint="@color/primary"
+    android:orientation="vertical"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:liftOnScroll="true"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <com.google.android.material.appbar.MaterialToolbar
+      android:id="@+id/toolBar"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:titleTextAppearance="@style/TextTitle3.Bold" />
+
+    <TextView
+      android:id="@+id/tvSelectedCategory"
+      style="@style/TextExtraLarge.Accent"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:background="?attr/selectableItemBackground"
+      android:drawableEnd="@drawable/ic_arrow_drop_down_24"
+      android:padding="16dp"
+      android:text="@string/faq_category_voter_list"
+      app:drawableTint="@color/accent" />
+
+  </com.google.android.material.appbar.AppBarLayout>
+
+  <androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/rvFaqPlaceholder"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_marginTop="112dp"
+    android:visibility="gone"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:itemCount="10"
+    tools:listitem="@layout/item_faq_placeholder" />
+
+  <androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/rvFaq"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_marginTop="112dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:itemCount="10"
+    tools:listitem="@layout/item_faq" />
+
+  <TextView
+    android:id="@+id/tvErrorMessage"
+    style="@style/TextExtraLarge.Error"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:gravity="center"
+    android:visibility="gone"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/appBarLayout"
+    tools:text="@string/error_no_internet"
+    tools:visibility="gone" />
+
+  <com.google.android.material.button.MaterialButton
+    android:id="@+id/btnRetry"
+    style="@style/TextLarge.Accent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:text="@string/retry"
+    android:visibility="gone"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/tvErrorMessage"
+    app:rippleColor="@color/grey"
+    app:strokeColor="@color/accent"
+    tools:visibility="gone" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

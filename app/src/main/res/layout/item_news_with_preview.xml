@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:background="?attr/selectableItemBackground"
+  android:paddingStart="16dp"
+  android:paddingEnd="16dp">
+
+  <com.google.android.material.card.MaterialCardView
+    android:id="@+id/cardViewPreview"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="0dp"
+    app:layout_constraintDimensionRatio="h,4:2"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <ImageView
+      android:id="@+id/ivPreview"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:src="@drawable/placeholder_rect" />
+
+  </com.google.android.material.card.MaterialCardView>
+
+  <TextView
+    android:id="@+id/tvTitle"
+    style="@style/TextLarge.Bold"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="4dp"
+    android:ellipsize="end"
+    android:maxLines="4"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/cardViewPreview"
+    tools:text="@sample/party.csv/PartyName" />
+
+  <TextView
+    android:id="@+id/tvPublishedDate"
+    style="@style/TextMedium"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="4dp"
+    android:gravity="center_vertical"
+    android:textColor="@color/text_secondary"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/tvTitle"
+    tools:text="08 July 2020" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

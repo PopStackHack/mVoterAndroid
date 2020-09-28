@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:orientation="vertical"
+  android:padding="8dp">
+
+  <TextView
+    android:id="@+id/tvQuestion"
+    style="@style/TextLarge.Accent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textColor="@color/accent"
+    android:textStyle="bold"
+    tools:text="@sample/faq.csv/question" />
+
+  <TextView
+    android:id="@+id/tvAnswer"
+    style="@style/TextLarge"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    tools:text="@sample/faq.csv/answer" />
+
+  <TextView
+    android:id="@+id/tvSource"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:textColor="@color/text_primary"
+    android:visibility="gone"
+    tools:text="@sample/faq.csv/law_or_source" />
+
+  <ImageView
+    android:id="@+id/ivShare"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="end"
+    android:layout_marginTop="8dp"
+    android:background="?attr/selectableItemBackgroundBorderless"
+    android:src="@drawable/ic_share_24"
+    app:tint="@color/accent" />
+
+</LinearLayout>

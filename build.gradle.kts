@@ -10,14 +10,16 @@ buildscript {
     google()
     mavenCentral()
     jcenter()
+    maven("https://oss.sonatype.org/content/repositories/snapshots/")
   }
 
   dependencies {
     classpath(CommonLibs.android_gradle_plugin)
     classpath(Kotlin.gradle_plugin)
     classpath(SqlDelight.gradle_plugin)
-    classpath(AndroidXNavigation.safe_args_plugin)
-    classpath(Wormhole.gradle_plugin)
+    classpath(Wire.gradle_plugin)
+    classpath(GoogleService.gms_plugin)
+    classpath(Firebase.crashlytics_plugin)
   }
 }
 
@@ -26,7 +28,14 @@ allprojects {
     google()
     mavenCentral()
     maven(url = "https://dl.bintray.com/vincent-paing/maven")
+    maven("https://oss.sonatype.org/content/repositories/snapshots/")
     jcenter()
+  }
+}
+
+configurations.all {
+  resolutionStrategy {
+    force(AndroidXRecyclerView.recycler_view)
   }
 }
 

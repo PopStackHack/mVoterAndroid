@@ -1,0 +1,13 @@
+<resources>
+  <string name="cd_candidate" translatable="false">Candidate</string>
+  <string name="cd_party" translatable="false">Party</string>
+  <string name="cd_how_to_vote" translatable="false">How to Vote</string>
+  <string name="cd_tips" translatable="false">Tips</string>
+  <string name="cd_voting_result" translatable="false">Voting Result</string>
+  <string name="cd_news" translatable="false">News</string>
+
+  <string name="cd_winner" translatable="false">Winner</string>
+
+  <string name="cd_retry" translatable="false">Retry</string>
+
+</resources>

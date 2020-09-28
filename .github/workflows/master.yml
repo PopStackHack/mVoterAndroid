@@ -10,13 +10,16 @@ on:
 jobs:
   test:
     name: Static Code Check & Test
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     env:
       RELEASE_KEYSTORE_BASE64: ${{ secrets.RELEASE_KEYSTORE_BASE64 }}
       RELEASE_KEYSTORE_PATH: ${{ secrets.RELEASE_KEYSTORE_PATH }}
       RELEASE_KEYSTORE_PASSWORD: ${{ secrets.RELEASE_KEYSTORE_PASSWORD }}
       RELEASE_KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
       RELEASE_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
+      GOOGLE_SERVICE_JSON_BASE64: ${{ secrets.GOOGLE_SERVICE_JSON_BASE64 }}
+      DEVELOPMENT_API_SECRET: ${{ secrets.DEVELOPMENT_API_SECRET }}
+      RELEASE_API_SECRET: ${{ secrets.RELEASE_API_SECRET }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/cache@v1
@@ -32,13 +35,17 @@ jobs:
           java-version: 1.8
 
       - run: touch local.properties
-      - run: touch "$RELEASE_KEYSTORE_PATH"
+      - run: touch $RELEASE_KEYSTORE_PATH
       - run: echo $RELEASE_KEYSTORE_BASE64 | base64 --decode > $RELEASE_KEYSTORE_PATH
       - run: echo -e "\nRELEASE_KEYSTORE_PATH=$RELEASE_KEYSTORE_PATH" >> local.properties
       - run: echo -e "\nRELEASE_KEYSTORE_PASSWORD=$RELEASE_KEYSTORE_PASSWORD" >> local.properties
       - run: echo -e "\nRELEASE_KEY_ALIAS=$RELEASE_KEY_ALIAS" >> local.properties
       - run: echo -e "\nRELEASE_KEY_PASSWORD=$RELEASE_KEY_PASSWORD" >> local.properties
-      - run: cat local.properties
+      - run: echo -e "\nDEVELOPMENT_API_SECRET=$nDEVELOPMENT_API_SECRET" >> local.properties
+      - run: echo -e "\nRELEASE_API_SECRET=$RELEASE_API_SECRET" >> local.properties
+
+      - run: touch app/google-services.json
+      - run: echo $GOOGLE_SERVICE_JSON_BASE64 | base64 --decode > app/google-services.json
 
       - name: Lint check
         run: ./gradlew lint
@@ -73,6 +80,9 @@ jobs:
       RELEASE_KEYSTORE_PASSWORD: ${{ secrets.RELEASE_KEYSTORE_PASSWORD }}
       RELEASE_KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
       RELEASE_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
+      GOOGLE_SERVICE_JSON_BASE64: ${{ secrets.GOOGLE_SERVICE_JSON_BASE64 }}
+      DEVELOPMENT_API_SECRET: ${{ secrets.DEVELOPMENT_API_SECRET }}
+      RELEASE_API_SECRET: ${{ secrets.RELEASE_API_SECRET }}
 
     steps:
       - uses: actions/checkout@v2
@@ -88,11 +98,16 @@ jobs:
       - run: echo -e "\nRELEASE_KEYSTORE_PASSWORD=$RELEASE_KEYSTORE_PASSWORD" >> local.properties
       - run: echo -e "\nRELEASE_KEY_ALIAS=$RELEASE_KEY_ALIAS" >> local.properties
       - run: echo -e "\nRELEASE_KEY_PASSWORD=$RELEASE_KEY_PASSWORD" >> local.properties
+      - run: echo -e "\nDEVELOPMENT_API_SECRET=$nDEVELOPMENT_API_SECRET" >> local.properties
+      - run: echo -e "\nRELEASE_API_SECRET=$RELEASE_API_SECRET" >> local.properties
+
+      - run: touch app/google-services.json
+      - run: echo $GOOGLE_SERVICE_JSON_BASE64 | base64 --decode > app/google-services.json
 
       - name: Build APK
-        run: ./gradlew assemble
+        run: ./gradlew assembleRelease
       - name: Build Bundle
-        run: ./gradlew bundle
+        run: ./gradlew bundleRelease
 
       - run: mkdir -p outputs/
       - run: find . -type f -regex ".*\/*\.apk" -exec cp {} outputs/ \;

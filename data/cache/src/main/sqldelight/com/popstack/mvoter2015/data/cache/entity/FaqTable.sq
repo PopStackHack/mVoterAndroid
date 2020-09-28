@@ -1,0 +1,49 @@
+import com.popstack.mvoter2015.domain.faq.model.FaqCategory;
+import com.popstack.mvoter2015.domain.faq.model.FaqId;
+
+CREATE TABLE FaqTable(
+    id TEXT AS FaqId PRIMARY KEY NOT NULL,
+    question TEXT NOT NULL,
+    answer TEXT NOT NULL,
+    lawSource TEXT,
+    articleSource TEXT,
+    category TEXT AS FaqCategory NOT NULL
+);
+
+insertOrReplace:
+INSERT OR REPLACE INTO FaqTable VALUES (
+    :id, :question, :answer, :lawSource, :articleSource, :category
+);
+
+selectAllWithQuery:
+SELECT * FROM FaqTable
+WHERE question LIKE :query
+OR answer LIKE :query
+OR lawSource LIKE :query
+OR articleSource LIKE :query
+LIMIT :limit OFFSET :offset;
+
+countAllWithQuery:
+SELECT count(*) FROM FaqTable
+WHERE question LIKE :query
+OR answer LIKE :query
+OR lawSource LIKE :query
+OR articleSource LIKE :query;
+
+selectAllWithCategory:
+SELECT * FROM FaqTable WHERE category = :category LIMIT :limit OFFSET :offset;
+
+selectAll:
+SELECT * FROM FaqTable LIMIT :limit OFFSET :offset;
+
+countAllWithCategory:
+SELECT count(*) FROM FaqTable WHERE category = :category ;
+
+countAll:
+SELECT count(*) FROM FaqTable;
+
+selectById:
+SELECT * FROM FaqTable WHERE id = :id;
+
+deleteByCategory:
+DELETE FROM FaqTable WHERE category = :category;

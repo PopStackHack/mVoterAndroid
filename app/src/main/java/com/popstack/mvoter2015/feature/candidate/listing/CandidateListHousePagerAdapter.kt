@@ -1,19 +1,16 @@
 package com.popstack.mvoter2015.feature.candidate.listing
 
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.Lifecycle
-import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.popstack.mvoter2015.domain.house.HouseType
-import com.popstack.mvoter2015.feature.candidate.listing.lowerhouse.LowerHouseCandidateListFragment
-import com.popstack.mvoter2015.feature.candidate.listing.regionalhouse.RegionalHouseCandidateListFragment
-import com.popstack.mvoter2015.feature.candidate.listing.upperhouse.UpperHouseCandidateListFragment
+import com.bluelinelabs.conductor.Controller
+import com.bluelinelabs.conductor.Router
+import com.bluelinelabs.conductor.RouterTransaction
+import com.bluelinelabs.conductor.viewpager.RouterPagerAdapter
+import com.popstack.mvoter2015.feature.candidate.listing.lowerhouse.LowerHouseCandidateListController
+import com.popstack.mvoter2015.feature.candidate.listing.regionalhouse.RegionalHouseCandidateListController
+import com.popstack.mvoter2015.feature.candidate.listing.upperhouse.UpperHouseCandidateListController
+import com.popstack.mvoter2015.logging.BreadcrumbControllerChangeHandler
 
-internal class CandidateListHousePagerAdapter(
-  fragmentManager: FragmentManager,
-  lifecycle: Lifecycle
-) :
-  FragmentStateAdapter(fragmentManager, lifecycle) {
+internal class CandidateListHousePagerAdapter(host: Controller) :
+  RouterPagerAdapter(host) {
 
   private var itemList = listOf<CandidateListHouseViewItem>()
 
@@ -22,27 +19,29 @@ internal class CandidateListHousePagerAdapter(
     notifyDataSetChanged()
   }
 
-  fun getTitleAtPosition(position: Int): String {
-    return itemList[position].name
+  override fun getPageTitle(position: Int): CharSequence? {
+    return itemList[position].houseName
   }
 
-  override fun getItemCount(): Int {
-    return itemList.size
-  }
-
-  override fun createFragment(position: Int): Fragment {
-    return when (itemList[position].houseType) {
-      HouseType.UPPER_HOUSE -> {
-        UpperHouseCandidateListFragment()
+  override fun configureRouter(
+    router: Router,
+    position: Int
+  ) {
+    router.addChangeListener(BreadcrumbControllerChangeHandler)
+    if (!router.hasRootController()) {
+      val controller = when (position) {
+        0 -> LowerHouseCandidateListController()
+        1 -> UpperHouseCandidateListController()
+        2 -> RegionalHouseCandidateListController()
+        else -> throw IllegalStateException()
       }
-      HouseType.LOWER_HOUSE -> {
-        LowerHouseCandidateListFragment()
-      }
-
-      HouseType.REGIONAL_HOUSE -> {
-        RegionalHouseCandidateListFragment()
-      }
+      val routerTransaction = RouterTransaction.with(controller)
+      router.setRoot(routerTransaction)
     }
+  }
+
+  override fun getCount(): Int {
+    return itemList.size
   }
 
 }

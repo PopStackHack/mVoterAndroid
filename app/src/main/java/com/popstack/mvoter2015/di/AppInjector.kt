@@ -15,25 +15,17 @@ object AppInjector {
   fun initAutoInjection(application: Application) {
 
     application.registerActivityLifecycleCallbacks(object : Application.ActivityLifecycleCallbacks {
-      override fun onActivityPaused(p0: Activity?) {
-        //Do Nothing
-      }
+      override fun onActivityPaused(p0: Activity) {}
 
-      override fun onActivityResumed(p0: Activity?) { //Do Nothing
-      }
+      override fun onActivityResumed(p0: Activity) {}
 
-      override fun onActivityStarted(p0: Activity?) { //Do Nothing
-      }
+      override fun onActivityStarted(p0: Activity) {}
 
-      override fun onActivityDestroyed(p0: Activity?) { //Do Nothing
-      }
+      override fun onActivityDestroyed(p0: Activity) {}
 
-      override fun onActivitySaveInstanceState(p0: Activity?, p1: Bundle?) {
-        //Do Nothing
-      }
+      override fun onActivitySaveInstanceState(p0: Activity, p1: Bundle) {}
 
-      override fun onActivityStopped(p0: Activity?) {
-        //Do Nothing
+      override fun onActivityStopped(p0: Activity) {
       }
 
       override fun onActivityCreated(activity: Activity, p1: Bundle?) {
@@ -52,11 +44,7 @@ object AppInjector {
         .registerFragmentLifecycleCallbacks(
           object : FragmentManager.FragmentLifecycleCallbacks() {
 
-            override fun onFragmentAttached(
-              fm: FragmentManager,
-              f: Fragment,
-              context: Context
-            ) {
+            override fun onFragmentAttached(fm: FragmentManager, f: Fragment, context: Context) {
               super.onFragmentAttached(fm, f, context)
               if (f is Injectable) {
                 AndroidSupportInjection.inject(f)
@@ -68,9 +56,10 @@ object AppInjector {
               f: Fragment,
               savedInstanceState: Bundle?
             ) {
-              //Do Nothing
+
             }
-          }, true
+          },
+          true
         )
     }
   }

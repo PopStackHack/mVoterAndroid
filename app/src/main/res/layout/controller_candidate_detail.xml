@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+  <androidx.core.widget.NestedScrollView
+    android:id="@+id/svCandidateInfo"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+
+      <ImageView
+        android:id="@+id/ivCandidate"
+        android:layout_width="106dp"
+        android:layout_height="106dp"
+        android:layout_marginTop="@dimen/candidate_details_horizontal_section_spacing"
+        android:src="@drawable/placeholder_oval"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+      <View
+        android:id="@+id/bgElectedRing"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_accent_oval_ring"
+        app:layout_constraintBottom_toBottomOf="@id/ivCandidate"
+        app:layout_constraintEnd_toEndOf="@id/ivCandidate"
+        app:layout_constraintStart_toStartOf="@+id/ivCandidate"
+        app:layout_constraintTop_toTopOf="@+id/ivCandidate" />
+
+      <TextView
+        android:id="@+id/tvElectedBadge"
+        style="@style/TextTiny.Bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_chip_accent"
+        android:drawableStart="@drawable/ic_star_white_12"
+        android:drawablePadding="2dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="8dp"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+        android:includeFontPadding="false"
+        android:text="@string/badge_is_elected"
+        android:textColor="@color/text_on_accent"
+        app:layout_constraintBottom_toBottomOf="@+id/ivCandidate"
+        app:layout_constraintEnd_toEndOf="@+id/bgElectedRing"
+        app:layout_constraintStart_toStartOf="@+id/bgElectedRing"
+        app:layout_constraintTop_toBottomOf="@+id/bgElectedRing"
+        app:layout_constraintVertical_bias="0.84" />
+
+      <androidx.constraintlayout.widget.Group
+        android:id="@+id/groupElectedBadge"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:constraint_referenced_ids="bgElectedRing, tvElectedBadge"/>
+
+      <ImageView
+        android:id="@+id/ivCandidatePartySeal"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineEnd16"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@+id/guidelineStart16"
+        app:layout_constraintTop_toBottomOf="@+id/tvCandidateName" />
+
+      <TextView
+        android:id="@+id/tvCandidateName"
+        style="@style/TextTitle3.Bold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guidelineStart16"
+        app:layout_constraintTop_toBottomOf="@+id/ivCandidate"
+        app:layout_constrainedWidth="true"
+        tools:text="@sample/candidates.csv/full_name" />
+
+      <TextView
+        android:id="@+id/tvCandidatePartyName"
+        style="@style/TextLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="?attr/selectableItemBackground"
+        android:gravity="center"
+        android:transitionName="@string/transition_name_party_name"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineEnd16"
+        app:layout_constraintStart_toStartOf="@+id/guidelineStart16"
+        app:layout_constraintTop_toBottomOf="@+id/ivCandidatePartySeal"
+        tools:text="@sample/candidates.csv/party" />
+
+      <TextView
+        android:id="@+id/tvConstituencyName"
+        style="@style/TextMedium.Bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_chip_accent_transparent"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:paddingStart="12dp"
+        android:paddingTop="4dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="4dp"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="@+id/guidelineEnd16"
+        app:layout_constraintStart_toStartOf="@+id/guidelineStart16"
+        app:layout_constraintTop_toBottomOf="@+id/tvCandidatePartyName"
+        tools:text="ပြည့်သူလွှတ်တော်" />
+
+      <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineStart16"
+        android:layout_width="1dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="16dp" />
+
+      <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineEnd16"
+        android:layout_width="1dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="16dp" />
+
+      <TextView
+        android:id="@+id/tvAge"
+        style="@style/TextTitle1.Accent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/accent"
+        app:layout_constraintBottom_toBottomOf="@+id/tvBirthday"
+        app:layout_constraintStart_toStartOf="@+id/guidelineStart16"
+        app:layout_constraintTop_toTopOf="@+id/tvBirthdayTitle"
+        tools:text="၃၄" />
+
+      <TextView
+        android:id="@+id/tvAgeSuffix"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:text="နှစ်"
+        android:textColor="@color/text_secondary"
+        app:layout_constraintBottom_toBottomOf="@+id/tvAge"
+        app:layout_constraintStart_toEndOf="@id/tvAge"
+        app:layout_constraintTop_toTopOf="@+id/tvAge" />
+
+      <TextView
+        android:id="@+id/tvBirthday"
+        style="@style/TextLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/tvBirthdayTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvBirthdayTitle"
+        tools:text="ဇန်နဝါရီ ၁၊ ၁၉၈၆" />
+
+      <TextView
+        android:id="@+id/tvBirthdayTitle"
+        style="@style/TextMedium.Secondary"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/candidate_details_vertical_section_spacing"
+        android:layout_marginTop="12dp"
+        android:text="@string/date_of_birth"
+        app:layout_constraintStart_toEndOf="@id/tvAgeSuffix"
+        app:layout_constraintTop_toBottomOf="@+id/tvConstituencyName" />
+
+      <TextView
+        android:id="@+id/tvEducationTitle"
+        style="@style/TextMedium.Secondary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/candidate_details_horizontal_section_spacing"
+        android:text="ပညာအရည်အချင်း"
+        app:layout_constraintStart_toStartOf="@+id/guidelineStart16"
+        app:layout_constraintTop_toBottomOf="@+id/tvBirthday" />
+
+      <TextView
+        android:id="@+id/tvEducation"
+        style="@style/TextLarge"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineEnd16"
+        app:layout_constraintStart_toStartOf="@+id/guidelineStart16"
+        app:layout_constraintTop_toBottomOf="@+id/tvEducationTitle"
+        tools:text="ကွန်ပျူတာတက္ကသိုလ် (မဟာဘွဲ့)" />
+
+      <TextView
+        android:id="@+id/tvWorkTitle"
+        style="@style/TextMedium.Secondary"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/candidate_details_horizontal_section_spacing"
+        android:text="အလုပ်အကိုင်"
+        app:layout_constraintStart_toStartOf="@+id/guidelineStart16"
+        app:layout_constraintTop_toBottomOf="@+id/tvEducation" />
+
+      <TextView
+        android:id="@+id/tvWork"
+        style="@style/TextLarge"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineEnd16"
+        app:layout_constraintStart_toStartOf="@+id/guidelineStart16"
+        app:layout_constraintTop_toBottomOf="@+id/tvWorkTitle"
+        tools:text="ဖရီးလင့် ဒတ်ပလွတ်ပါ" />
+
+      <TextView
+        android:id="@+id/tvResidentialTitle"
+        style="@style/TextMedium.Secondary"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/candidate_details_horizontal_section_spacing"
+        android:text="နေရပ်လိပ်စာ"
+        app:layout_constraintStart_toStartOf="@+id/guidelineStart16"
+        app:layout_constraintTop_toBottomOf="@+id/tvWork" />
+
+      <TextView
+        android:id="@+id/tvResidential"
+        style="@style/TextLarge"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineEnd16"
+        app:layout_constraintStart_toStartOf="@+id/guidelineStart16"
+        app:layout_constraintTop_toBottomOf="@+id/tvResidentialTitle"
+        tools:text="ဖရီးလင့် ဒတ်ပလွတ်ပါ" />
+
+      <TextView
+        android:id="@+id/tvRaceTitle"
+        style="@style/TextMedium.Secondary"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/candidate_details_horizontal_section_spacing"
+        android:text="လူမျိုး"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineEnd16"
+        app:layout_constraintStart_toStartOf="@+id/guidelineStart16"
+        app:layout_constraintTop_toBottomOf="@+id/tvResidential" />
+
+      <TextView
+        android:id="@+id/tvRace"
+        style="@style/TextLarge"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvRaceTitle"
+        tools:text="ဗမာ ၊ ဗုဒ္ဓဘာသာ" />
+
+      <TextView
+        android:id="@+id/tvReligionTitle"
+        style="@style/TextMedium.Secondary"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/candidate_details_horizontal_section_spacing"
+        android:text="ဘာသာ"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineEnd16"
+        app:layout_constraintStart_toStartOf="@+id/guidelineStart16"
+        app:layout_constraintTop_toBottomOf="@+id/tvRace" />
+
+      <TextView
+        android:id="@+id/tvReligion"
+        style="@style/TextLarge"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvReligionTitle"
+        tools:text="ဗမာ ၊ ဗုဒ္ဓဘာသာ" />
+
+      <TextView
+        android:id="@+id/tvMotherTitle"
+        style="@style/TextMedium.Secondary"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="@dimen/candidate_details_horizontal_section_spacing"
+        android:text="မိခင်"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvReligion" />
+
+      <TextView
+        android:id="@+id/tvMotherNameTitle"
+        style="@style/TextMedium.Secondary"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/candidate_details_vertical_section_spacing"
+        android:text="အမည်"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineEnd16"
+        app:layout_constraintStart_toEndOf="@+id/tvMotherTitle"
+        app:layout_constraintTop_toTopOf="@+id/tvMotherTitle" />
+
+      <TextView
+        android:id="@+id/tvMotherName"
+        style="@style/TextLarge"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tvMotherNameTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvMotherNameTitle"
+        tools:text="ဗမာ ၊ ဗုဒ္ဓဘာသာ" />
+
+      <TextView
+        android:id="@+id/tvMotherEthnicityTitle"
+        style="@style/TextMedium.Secondary"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="လူမျိုး"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineEnd16"
+        app:layout_constraintStart_toStartOf="@+id/tvMotherName"
+        app:layout_constraintTop_toBottomOf="@+id/tvMotherName" />
+
+      <TextView
+        android:id="@+id/tvMotherEthnicity"
+        style="@style/TextLarge"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tvMotherEthnicityTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvMotherEthnicityTitle"
+        tools:text="ဗမာ ၊ ဗုဒ္ဓဘာသာ" />
+
+      <TextView
+        android:id="@+id/tvMotherReligionTitle"
+        style="@style/TextMedium.Secondary"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="ဘာသာ"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineEnd16"
+        app:layout_constraintStart_toStartOf="@+id/tvMotherEthnicity"
+        app:layout_constraintTop_toBottomOf="@+id/tvMotherEthnicity" />
+
+      <TextView
+        android:id="@+id/tvMotherReligion"
+        style="@style/TextLarge"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tvMotherReligionTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvMotherReligionTitle"
+        tools:text="ဗမာ ၊ ဗုဒ္ဓဘာသာ" />
+
+      <TextView
+        android:id="@+id/tvFatherTitle"
+        style="@style/TextMedium.Secondary"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="@dimen/candidate_details_horizontal_section_spacing"
+        android:text="ဖခင်"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvMotherReligion" />
+
+      <TextView
+        android:id="@+id/tvFatherNameTitle"
+        style="@style/TextMedium.Secondary"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/candidate_details_vertical_section_spacing"
+        android:text="အမည်"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineEnd16"
+        app:layout_constraintStart_toEndOf="@+id/tvFatherTitle"
+        app:layout_constraintTop_toTopOf="@+id/tvFatherTitle" />
+
+      <TextView
+        android:id="@+id/tvFatherName"
+        style="@style/TextLarge"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tvFatherNameTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvFatherNameTitle"
+        tools:text="ဗမာ ၊ ဗုဒ္ဓဘာသာ" />
+
+      <TextView
+        android:id="@+id/tvFatherEthnicityTitle"
+        style="@style/TextMedium.Secondary"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="လူမျိုး"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineEnd16"
+        app:layout_constraintStart_toStartOf="@+id/tvFatherName"
+        app:layout_constraintTop_toBottomOf="@+id/tvFatherName" />
+
+      <TextView
+        android:id="@+id/tvFatherEthnicity"
+        style="@style/TextLarge"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tvFatherEthnicityTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvFatherEthnicityTitle"
+        tools:text="ဗမာ ၊ ဗုဒ္ဓဘာသာ" />
+
+      <TextView
+        android:id="@+id/tvFatherReligionTitle"
+        style="@style/TextMedium.Secondary"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="ဘာသာ"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineEnd16"
+        app:layout_constraintStart_toStartOf="@+id/tvFatherEthnicity"
+        app:layout_constraintTop_toBottomOf="@+id/tvFatherEthnicity" />
+
+      <TextView
+        android:id="@+id/tvFatherReligion"
+        style="@style/TextLarge"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tvFatherReligionTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvFatherReligionTitle"
+        tools:text="ဗမာ ၊ ဗုဒ္ဓဘာသာ" />
+
+      <ImageView
+        android:id="@+id/ivRivalCandidates"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="@dimen/candidate_details_horizontal_section_spacing"
+        android:src="@drawable/ic_candidate_filled"
+        android:text="ပြိုင်ဘက် ကိုယ်စားလှယ်လောင်းများ"
+        android:tint="@color/accent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvFatherReligion" />
+
+      <TextView
+        android:id="@+id/tvRivalTitle"
+        style="@style/TextTitle3.Bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ပြိုင်ဘက် ကိုယ်စားလှယ်လောင်းများ"
+        app:layout_constraintEnd_toEndOf="@+id/ivRivalCandidates"
+        app:layout_constraintStart_toStartOf="@+id/ivRivalCandidates"
+        app:layout_constraintTop_toBottomOf="@+id/ivRivalCandidates" />
+
+      <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvRivalCandidates"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/candidate_details_horizontal_section_spacing"
+        android:nestedScrollingEnabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvRivalTitle"
+        tools:listitem="@layout/item_candidate" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+  </androidx.core.widget.NestedScrollView>
+
+  <com.google.android.material.appbar.AppBarLayout
+    android:id="@+id/appBarLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/transparent"
+    app:elevation="0dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <com.google.android.material.appbar.MaterialToolbar
+      android:id="@+id/toolBar"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:titleTextColor="@color/transparent"
+      android:background="@color/transparent" />
+
+  </com.google.android.material.appbar.AppBarLayout>
+
+  <ProgressBar
+    android:id="@+id/progressBar"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:visibility="gone"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/appBarLayout"
+    tools:visibility="gone" />
+
+  <TextView
+    android:id="@+id/tvErrorMessage"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:gravity="center"
+    android:textColor="@color/text_error"
+    android:visibility="gone"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/appBarLayout"
+    tools:visibility="visible" />
+
+  <com.google.android.material.button.MaterialButton
+    android:id="@+id/btnRetry"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:text="@string/retry"
+    android:textColor="@color/accent"
+    android:visibility="gone"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/tvErrorMessage"
+    app:strokeColor="@color/accent"
+    tools:visibility="gone" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

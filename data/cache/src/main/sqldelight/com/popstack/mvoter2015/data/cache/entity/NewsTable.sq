@@ -1,0 +1,26 @@
+import com.popstack.mvoter2015.domain.news.model.NewsId;
+import java.time.LocalDate;
+
+CREATE TABLE NewsTable(
+    id TEXT AS NewsId PRIMARY KEY NOT NULL,
+    title TEXT NOT NULL,
+    summary TEXT NOT NULL,
+    body TEXT,
+    imageUrl TEXT,
+    publishedDate INTEGER AS LocalDate NOT NULL,
+    url TEXT NOT NULL
+);
+
+insertOrReplace:
+INSERT OR REPLACE INTO NewsTable VALUES(
+:id, :title, :summary, :body, :imageUrl, :publishedDate, :url
+);
+
+getWithPage:
+SELECT * FROM NewsTable ORDER BY NewsTable.publishedDate DESC LIMIT :limit OFFSET :offset;
+
+countAll:
+SELECT count(*) FROM NewsTable;
+
+deleteAll:
+DELETE FROM NewsTable;

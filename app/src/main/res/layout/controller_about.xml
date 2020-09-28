@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical">
+
+  <androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="16dp">
+
+      <ImageView
+        android:id="@+id/ivMVoterLogo"
+        android:layout_width="256dp"
+        android:layout_height="128dp"
+        android:src="@drawable/mvoter_logo_horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+      <TextView
+        android:id="@+id/tvAppDescription"
+        style="@style/TextLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/app_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivMVoterLogo" />
+
+      <TextView
+        android:id="@+id/tvProudlyPresented"
+        style="@style/TextLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="Proudly and voluntarily developed by"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvAppDescription" />
+
+      <ImageView
+        android:id="@+id/ivPopstack"
+        android:layout_width="128dp"
+        android:layout_height="64dp"
+        android:src="@drawable/popstack_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvProudlyPresented" />
+
+      <TextView
+        android:id="@+id/tvSupportedBy"
+        style="@style/TextLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Supported by"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivPopstack" />
+
+      <ImageView
+        android:id="@+id/ivUecLogo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/uec_logo"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@+id/ivTafLogo"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvSupportedBy" />
+
+      <ImageView
+        android:id="@+id/ivTafLogo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/taf_logo"
+        app:layout_constraintDimensionRatio="h,2:1"
+        app:layout_constraintEnd_toStartOf="@+id/ivMaePaySohLogo"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="2"
+        app:layout_constraintStart_toEndOf="@+id/ivUecLogo"
+        app:layout_constraintTop_toBottomOf="@id/tvSupportedBy" />
+
+      <ImageView
+        android:id="@+id/ivMaePaySohLogo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/maepaysoh_logo"
+        app:layout_constraintDimensionRatio="w,1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@+id/ivTafLogo"
+        app:layout_constraintTop_toBottomOf="@id/tvSupportedBy" />
+
+      <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrierLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="ivUecLogo,ivTafLogo,ivMaePaySohLogo" />
+
+      <ImageView
+        android:id="@+id/ivStepLogo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="16dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/step_logo"
+        app:layout_constraintEnd_toStartOf="@+id/ivIdeaLogo"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/barrierLogo" />
+
+      <ImageView
+        android:id="@+id/ivIdeaLogo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="16dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/idea_logo"
+        app:layout_constraintEnd_toStartOf="@+id/ivEuLogo"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ivStepLogo"
+        app:layout_constraintTop_toBottomOf="@id/barrierLogo" />
+
+
+      <ImageView
+        android:id="@+id/ivEuLogo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="16dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/eu_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ivIdeaLogo"
+        app:layout_constraintTop_toBottomOf="@id/barrierLogo" />
+
+
+      <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrierLogoTwo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="ivStepLogo,ivUecLogo" />
+
+      <com.google.android.material.button.MaterialButton
+        android:id="@+id/viewTermOfUse"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/term_of_use"
+        android:textColor="@color/accent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/barrierLogoTwo"
+        app:rippleColor="@color/grey" />
+
+      <com.google.android.material.button.MaterialButton
+        android:id="@+id/viewPrivacyPolicy"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/privacy_policy"
+        android:textColor="@color/accent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewTermOfUse"
+        app:rippleColor="@color/grey" />
+
+      <com.google.android.material.button.MaterialButton
+        android:id="@+id/viewLicense"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/licnese"
+        android:textColor="@color/accent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewPrivacyPolicy"
+        app:rippleColor="@color/grey" />
+
+      <TextView
+        android:id="@+id/tvContactUs"
+        style="@style/TextMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="မေးမြန်းအကြံပြုလိုပါက ဆက်သွယ်ရန်"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewLicense" />
+
+      <ImageView
+        android:id="@+id/ivContactFacebook"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/background_accent_oval"
+        android:padding="8dp"
+        android:src="@drawable/ic_facebook_24"
+        android:tint="@android:color/white"
+        app:layout_constraintEnd_toStartOf="@+id/ivContactMail"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvContactUs" />
+
+      <ImageView
+        android:id="@+id/ivContactMail"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/background_accent_oval"
+        android:padding="8dp"
+        android:src="@drawable/ic_email_24"
+        android:tint="@android:color/white"
+        app:layout_constraintEnd_toStartOf="@+id/ivContactWebsite"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ivContactFacebook"
+        app:layout_constraintTop_toBottomOf="@id/tvContactUs" />
+
+      <ImageView
+        android:id="@+id/ivContactWebsite"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/background_accent_oval"
+        android:padding="8dp"
+        android:src="@drawable/ic_website_24"
+        android:tint="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ivContactMail"
+        app:layout_constraintTop_toBottomOf="@id/tvContactUs" />
+
+      <TextView
+        android:id="@+id/tvVersion"
+        style="@style/TextMedium.Bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/version"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivContactWebsite" />
+
+      <TextView
+        android:id="@+id/tvCopyright"
+        style="@style/TextMedium.Secondary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/copyright"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvVersion" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+  </androidx.core.widget.NestedScrollView>
+
+  <com.google.android.material.appbar.MaterialToolbar
+    android:id="@+id/toolBar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/transparent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:title="Test" />
+
+</FrameLayout>

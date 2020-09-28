@@ -1,20 +1,200 @@
 <resources>
   <string name="app_name">mVoter</string>
+  <string name="app_description">Award-winning voter education app\nfor Myanmar elections since 2015</string>
 
-  <string name="navigation_candidate_list">ကိုယ်စားလှယ်များ</string>
-  <string name="navigation_party_list">ပါတီများ</string>
+  <!--  General Usages-->
+  <string name="ok">ကောင်းပြီ</string>
+  <string name="retry">ထပ်စမ်းကြည့်မယ်</string>
+  <string name="cancel">မလုပ်တော့ပါ</string>
+
+  <string name="navigation_candidate_list">ကိုယ်စားလှယ်</string>
+  <string name="navigation_party_list">ပါတီ</string>
   <string name="navigation_how_to_vote">မဲပေးနည်း</string>
   <string name="navigation_tips">သိမှတ်ဖွယ်</string>
   <string name="navigation_result">မဲရလဒ်</string>
+  <string name="navigation_news">သတင်း</string>
+
+  <string name="error_generic">တစ်ခုခုချို့ယွင်းသွားပါသည်။\nခေတ္တစောင့်ပြီး ပြန်စမ်းပေးပါ။</string>
+  <string name="error_no_internet">အင်တာနက်ကွန်ယက်ရှာမတွေ့ပါ။\nအင်တာနက်ဖွင့်ပြီး ပြန်စမ်းပေးပါ။</string>
+  <string name="error_socket_timeout">အင်တာနက်ချိတ်ဆက်မှု မအောင်မြင်ပါ။</string>
+  <string name="error_server_500">ဆာဗာ ချို့ယွင်းနေသည်။\nခေတ္တစောင့်ပြီး ပြန်စမ်းပေးပါ။</string>
+  <string name="error_server_404">ဒေတာ ရှာမတွေ့ပါ။</string>
+  <string name="error_http">ဆာဗာ ချို့ယွင်းနေသည်။\nခေတ္တစောင့်ပြီး ပြန်စမ်းပေးပါ။</string>
 
   <string name="menu_title_change_location">Change location</string>
   <string name="menu_title_search">Search</string>
-
+  <string name="menu_title_about">About</string>
+  <string name="menu_title_settings">Settings</string>
+  <string name="menu_title_share">Share</string>
 
   <string name="title_candidates">ကိုယ်စားလှယ်လောင်းများ</string>
 
-  <string name="tab_upper_house">အမျိုးသား\nလွှတ်တော်</string>
-  <string name="tab_lower_house">ပြည့်သူ\nလွှတ်တော်</string>
-  <string name="tab_regional_house_state">တိုင်းဒေသကြီး\nလွှတ်တော်</string>
-  <string name="tab_regional_house_region">ပြည်နယ်\nလွှတ်တော်</string>
+  <string name="tab_upper_house">အမျိုးသား</string>
+  <string name="tab_lower_house">ပြည်သူ့</string>
+  <string name="tab_regional_house_state">တိုင်းဒေသကြီး</string>
+  <string name="tab_regional_house_region">ပြည်နယ်</string>
+  <string name="date_of_birth">မွေးသက္ကရာဇ်</string>
+  <string name="tab_regional_house_state_region">ပြယ်နယ်တိုင်းဒေသကြီး\nလွှတ်တော်</string>
+
+  <string name="lets_choose">ရွေးမည်</string>
+
+  <!-- Candidate -->
+  <string name="empty_query_candidate">မိမိရှာလိုသော ကိုယ်စားလှယ်လောင်းနာမည်ကို အပေါ်တွင်ရိုက်ထည့်ပါ။</string>
+  <string name="empty_list_search_candidate">နာမည်တွင် \"%1$s\" ပါသော ကိုယ်စားလှယ်လောင်းကို ကိုယ်စားလှယ်လောင်းစာရင်းတွင် ရှာမတွေ့ပါ</string>
+  <string name="hint_search_candidate">ကိုယ်စားလှယ်လောင်း အမည်</string>
+
+  <string name="no_state_region_constituency">နေပြည်တော် ပြည်ထောင်စုနယ်မြေတွင်\nတိုင်းဒေသကြီးလွှတ်တော် ကိုယ်စားလှယ်\nရွေးချယ်ရန် မလိုအပ်ပါ။</string>
+
+  <string name="badge_is_elected">အနိုင်ရ</string>
+
+  <!--  Party-->
+  <string name="header_total_party_count">(၂၀၂၀) ခုနှစ် အထွေထွေရွေးကောက်ပွဲတွင် ဝင်ရောက်ယှဉ်ပြိုင်မည့် နိုင်ငံရေးပါတီ (၉၂) ခု</string>
+
+  <string name="policy">ပါတီ မူဝါဒ</string>
+  <string name="party_flag">ပါတီအလံ</string>
+  <string name="party_number">ပါတီအမှတ်စဉ်</string>
+  <string name="leader_and_chairmen">ပါတီဥက္ကဋ္ဌနှင့် ဗဟိုအလုပ်အမှုဆောင်များ</string>
+  <string name="member_count">လျှောက်ထားစဉ် ပါတီအင်အား</string>
+  <string name="headquarter">ပါတီရုံးချုပ်</string>
+  <string name="contact">ဆက်သွယ်ရန်</string>
+
+  <string name="hint_search_party">ရှာလိုသော ပါတီနာမည်ကို ရိုက်ထည့်ပါ</string>
+  <string name="empty_query_party">မိမိရှာလိုသော ပါတီနာမည်ကို အပေါ်တွင်ရိုက်ထည့်ပါ။</string>
+  <string name="empty_list_search_party">နာမည်တွင် \"%1$s\" ပါသော ပါတီများကို ပါတီစာရင်းတွင် ရှာမတွေ့ပါ</string>
+
+  <string name="transition_name_party_name">party_name</string>
+  <string name="transition_name_party_seal">party_seal</string>
+
+  <string name="select_phone_number">ဆက်သွယ်ရန် ဖုန်းနံပါတ်ကိုရွေးပါ</string>
+  <string name="party_establishment_application">ပါတီတည်ထောင်ခွင့်လျှောက်ထားသည်</string>
+  <string name="party_establishment_approval">ပါတီတည်ထောင်ခွင့် ရရှိသည်</string>
+  <string name="party_pote_ma_25">နိုင်ငံရေးပါတီအဖြစ် ပုဒ်မ(၂၅)အရ လျှောက်ထားခဲ့သည်</string>
+  <string name="party_registration_application">ပါတီအဖြစ် မှတ်ပုံတင်ခွင့် လျှောက်ထားသည်</string>
+  <string name="party_registration_approval">ပါတီအဖြစ်မှတ်ပုံတင်ခွင့်ရရှိသည်</string>
+
+  <!--  FAQ-->
+  <string name="title_info">သိမှတ်ဖွယ်ရာများ</string>
+
+  <string name="no_selfie">Selfie\nမရိုက်ရ</string>
+  <string name="no_photo">ဓာတ်ပုံ\nမရိုက်ရ</string>
+  <string name="no_video">ဗီဒီယို\nမရိုက်ရ</string>
+  <string name="no_record">အသံ\nမသွင်းရ</string>
+
+  <string name="faq_category_voter_list">မဲဆန္ဒရှင်စာရင်း</string>
+  <string name="faq_category_diplomatic">သံတမန်ရေးရာ</string>
+  <string name="faq_category_international_observer">စောင့်ကြည့်လေ့လာခြင်း</string>
+  <string name="faq_category_candidate">ကိုယ်စားလှယ်လောင်း</string>
+  <string name="faq_category_conflict_resolution">အငြင်းပွားမှုများဖြေရှင်းခြင်း</string>
+  <string name="faq_category_mediation_committees">စေ့စပ်ညှိနှိင်းရေးကော်မတီများ</string>
+
+  <string name="hint_search_faq">ရှာလိုသော အမေးအဖြေကို ရိုက်ထည့်ပါ</string>
+  <string name="empty_query_faq">မိမိရှာလိုသော အမေးအဖြေကို အပေါ်တွင်ရိုက်ထည့်ပါ။</string>
+  <string name="empty_list_search_faq">\"%1$s\" နှင့်ပတ်သက်သော အမေးအဖြေကို ရှာမတွေ့ပါ။</string>
+
+  <string name="ballot_category_normal">မဲနမူနာများ</string>
+  <string name="ballot_category_advanced">ကြိုတင်မဲနမူနာများ</string>
+
+  <string name="ballot_examples">ပယ်မဲ၊ ခိုင်လုံမဲ နမူနာများ</string>
+  <string name="laws_and_unfair_practice">ရွေးကောက်ပွဲဆိုင်ရာ ပြစ်မှု၊ ပြစ်ဒဏ်များနှင့် တရားမဲ့ပြုကျင့်မှုများ</string>
+  <string name="invalid_ballot">ပယ်မဲ</string>
+  <string name="valid_ballot">ခိုင်လုံမဲ</string>
+
+  <!--  News-->
+  <string name="hint_search_news">ရှာလိုသော သတင်းကို ရိုက်ထည့်ပါ</string>
+  <string name="empty_query_news">မိမိရှာလိုသော သတင်းအကြောင်းအရာကို အပေါ်တွင်ရိုက်ထည့်ပါ။</string>
+  <string name="empty_list_search_news">\"%1$s\" နှင့်သက်ဆိုင်သော သတင်းကို ရှာမတွေ့ပါ</string>
+
+  <!-- How to Vote -->
+  <string name="how_to_vote_header_title">(၂၀၂၀) ခုနှစ် အထွေထွေ ရွေးကောက်ပွဲနေ့</string>
+  <string name="election_date_nov_8">နိုဝင်ဘာလ (၈) ရက်</string>
+  <string name="election_day">တနင်္ဂနွေနေ့</string>
+  <string name="polling_station_opening_time">မဲရုံဖွင့်ချိန်</string>
+  <string name="polling_station_closing_time">မဲရုံပိတ်ချိန်</string>
+  <string name="morning_6am">နံနက် (၆) နာရီ</string>
+  <string name="evening_4pm">ညနေ (၄) နာရီ</string>
+
+  <string name="how_to_vote_step_1_title">ရွေးကောက်ပွဲနေ့တွင်</string>
+  <string name="how_to_vote_step_2_title">ပြည်သူ့လွှတ်တော် ကိုယ်စားလှယ် ရွေးချယ်ရန်</string>
+  <string name="how_to_vote_step_3_title">အမျိုးသားလွှတ်တော် ကိုယ်စားလှယ် ရွေးချယ်ရန်</string>
+  <string name="how_to_vote_step_4_title">တိုင်းဒေသကြီး/ပြည်နယ်လွှတ်တော် ကိုယ်စားလှယ် ရွေးချယ်ရန်</string>
+  <string name="how_to_vote_step_5_title">တိုင်းရင်းသားလူမျိုး ကိုယ်စားလှယ် ရွေးချယ်ရန် ရှိပါက</string>
+  <string name="how_to_vote_step_6_title">အထက်ပါ အဆင့်များ လုပ်ဆောင်ပြီးလျှင်</string>
+
+  <string-array name="how_to_vote_step_1">
+    <item>ရပ်ကွက်/ကျေးရွာအုပ်စု အတွင်းရှိ မိမိ မဲပေးရမည့် မဲရုံသို့ သွားပါ။</item>
+  </string-array>
+
+  <string-array name="how_to_vote_step_2">
+    <item>ပြည်သူ့လွှတ်တော် ကိုယ်စားလှယ် ဆန္ဒမဲ အတွက် မဲစာရင်းစစ်သူထံ သွားရောက်၍ မှတ်ပုံတင် ပြသပါ။</item>
+    <item>မဲစာရင်းတွင် မိမိအမည်ပါလျှင် မဲလက်မှတ် ထုတ်ပေးသူထံမှ မဲလက်မှတ် ရယူပါ။</item>
+    <item>လျှို့ဝှက်ဆန္ဒမဲပေးခန်း သို့ သွား၍ မိမိနှစ်သက်ရာ ကိုယ်စားလှယ်လောင်း၏ အကွက်တွင် တံဆိပ်တုံး နှိပ်ပါ။</item>
+    <item>ပြည်သူ့လွှတ်တော် ဆန္ဒမဲပုံး ရှိရာသို့သွား၍ မဲပုံးထဲသို့ မဲလက်မှတ်ကို ထည့်ပါ။</item>
+  </string-array>
+
+  <string-array name="how_to_vote_step_3">
+    <item>အမျိုးသားလွှတ်တော် ကိုယ်စားလှယ် ဆန္ဒမဲ အတွက် မဲစာရင်းစစ်သူထံ သွားရောက်၍ မှတ်ပုံတင် ပြသပါ။</item>
+    <item>မဲစာရင်းတွင် မိမိအမည်ပါလျှင် မဲလက်မှတ် ထုတ်ပေးသူထံမှ မဲလက်မှတ် ရယူပါ။</item>
+    <item>လျှို့ဝှက်ဆန္ဒမဲပေးခန်း သို့ သွား၍ မိမိနှစ်သက်ရာ ကိုယ်စားလှယ်လောင်း၏ အကွက်တွင် တံဆိပ်တုံး နှိပ်ပါ။</item>
+    <item>အမျိုးသားလွှတ်တော် ဆန္ဒမဲပုံး ရှိရာသို့သွား၍ မဲပုံးထဲသို့ မဲလက်မှတ်ကို ထည့်ပါ။</item>
+  </string-array>
+
+
+  <string-array name="how_to_vote_step_4">
+    <item>တိုင်းဒေသကြီး/ပြယ်နယ်လွှတ်တော် ကိုယ်စားလှယ် ဆန္ဒမဲ အတွက် မဲစာရင်းစစ်သူထံ သွားရောက်၍ မှတ်ပုံတင် ပြသပါ။</item>
+    <item>မဲစာရင်းတွင် မိမိအမည်ပါလျှင် မဲလက်မှတ် ထုတ်ပေးသူထံမှ မဲလက်မှတ် ရယူပါ။</item>
+    <item>လျှို့ဝှက်ဆန္ဒမဲပေးခန်း သို့ သွား၍ မိမိနှစ်သက်ရာ ကိုယ်စားလှယ်လောင်း၏ အကွက်တွင် တံဆိပ်တုံး နှိပ်ပါ။</item>
+    <item>တိုင်းဒေသကြီး/ပြယ်နယ်လွှတ်တော် ဆန္ဒမဲပုံး ရှိရာသို့သွား၍ မဲပုံးထဲသို့ မဲလက်မှတ်ကို ထည့်ပါ။</item>
+  </string-array>
+
+  <string-array name="how_to_vote_step_5">
+    <item>တိုင်းရင်းသားလူမျိုး ကိုယ်စားလှယ် ဆန္ဒမဲ အတွက် မဲစာရင်းစစ်သူထံ သွားရောက်၍ မှတ်ပုံတင် ပြသပါ။</item>
+    <item>မဲစာရင်းတွင် မိမိအမည်ပါလျှင် မဲလက်မှတ် ထုတ်ပေးသူထံမှ မဲလက်မှတ် ရယူပါ။</item>
+    <item>လျှို့ဝှက်ဆန္ဒမဲပေးခန်း သို့ သွား၍ မိမိနှစ်သက်ရာ ကိုယ်စားလှယ်လောင်း၏ အကွက်တွင် တံဆိပ်တုံး နှိပ်ပါ။</item>
+    <item>တိုင်းရင်းသားလူမျိုး ဆန္ဒမဲပုံး ရှိရာသို့သွား၍ မဲပုံးထဲသို့ မဲလက်မှတ်ကို ထည့်ပါ။</item>
+  </string-array>
+
+  <string-array name="how_to_vote_step_6">
+    <item>မဲပေးပြီးကြောင်း မင်တို့မည့် မဲရုံအဖွဲ့ဝင်ထံ သွားရောက်၍ မိမိ၏ လက်ဝဲဘက် လက်သန်းတွင် မင်တို့ပါ။</item>
+    <item>မဲရုံအတွင်းမှ ထွက်နိုင်ပါ ပြီ။ သင် နိုင်ငံသားတစ်ယောက်၏ တာဝန် ကျေပွန်ခဲ့ပြီ ဖြစ်သည်။</item>
+  </string-array>
+
+  <!--  About-->
+
+  <string name="term_of_use">အသုံးပြုမှုဆိုင်ရာ စည်းကမ်းချက်များ</string>
+  <string name="privacy_policy">ကိုယ်ရေးအချက်အလက် မူဝါဒ</string>
+  <string name="licnese">licenses</string>
+  <string name="version">Version %1$s</string>
+  <string name="copyright">©2015–2020 Team PopStack. All rights reserved.</string>
+  <string name="navigation_title_license">Open Source Licenses</string>
+
+  <!-- Chooser -->
+  <string name="location_chooser_title">မိမိ မဲပေးရွေးချယ်ရမည့်\nလွှတ်တော်ကိုယ်စားလှယ်လောင်းများကို သိရှိရန်\nနေထိုင်ရာအရပ်ကို ရွေးပါ</string>
+  <string name="location_chooser_township">မြို့နယ်</string>
+  <string name="location_chooser_ward">ရပ်ကွက်/ကျေးရွာအုပ်စု</string>
+  <string name="location_chooser_choose_township">မြို့နယ် ရွေးပါ</string>
+  <string name="location_chooser_choose_ward">ရပ်ကွက်/ကျေးရွာအုပ်စု ရွေးပါ</string>
+
+  <!--  Settings-->
+  <string-array name="settings_themes">
+    <item>System Default</item>
+    <item>Light</item>
+    <item>Dark</item>
+  </string-array>
+
+  <!--  App Update-->
+  <string name="update_required">App အဆင့်မြင့်တင်ရန် လိုအပ်ပါသည်။</string>
+  <string name="update_required_message">App ဗာရှင်းအသစ်ထွက်ရှိထားပါသည်။ ဆက်လက်အသုံးပြုရန် အဆင့်မြင့်တင်ပေးပါ။</string>
+  <string name="do_update">အဆင့်မြင့်တင်မယ်</string>
+
+  <string name="update_relaxed_title">App ဗာရှင်းအသစ်</string>
+  <string name="update_relaxed_message">App ဗာရှင်းအသစ်ထွက်ရှိထားပါသည်။ သင် အဆင့်မြင့်တင်လိုပါသလား?</string>
+
+  <string name="navigation_title_settings">Settings</string>
+  <string name="settings_label_external_browser">Open links in external browser</string>
+  <string name="settings_label_theme">Theme</string>
+  <string name="theme_system">System Default</string>
+  <string name="theme_light">Light</string>
+  <string name="theme_dark">Dark</string>
+  <string name="skip_update">ဒီဗာရှင်းအတွက်\nထပ်မပြောနဲ့တော့</string>
+
 </resources>
