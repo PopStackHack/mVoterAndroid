@@ -38,24 +38,27 @@ class CountDownCalculator @Inject constructor() {
     val toDateTimeAtUtc = toDateTime.atOffset(ZoneOffset.UTC)
       .toZonedDateTime()
 
-    val durationDifference = Duration.between(
+    //Strip time data because we want to use human-spoken time
+    //For example, difference between Oct 15 2 PM and Oct 10 6 PM should yield 5 days
+    val dayDifference = Duration.between(
       formDateTimeAtUtc.toLocalDate().atStartOfDay(),
       toDateTimeAtUtc.toLocalDate().atStartOfDay()
     )
 
-    if (durationDifference.isNegative) {
+    if (dayDifference.isNegative) {
       return ShowNone
     }
 
-    val preciseDayUntil = (fromDateTime.until(toDateTimeAtUtc, ChronoUnit.HOURS) / 24.0)
+    val preciseHourUntil = fromDateTime.until(toDateTimeAtUtc, ChronoUnit.HOURS)
 
-    //Less than a da remains, check with seconds
-    if (preciseDayUntil >= 1.0) {
+    //Check if more than 24 hours remaining
+    if (preciseHourUntil >= 24) {
       return ShowDay(
-        durationDifference.toDays()
+        dayDifference.toDays()
           .toInt()
       )
     } else {
+
       val nanoSecondsUntil = formDateTimeAtUtc.until(toDateTimeAtUtc, ChronoUnit.NANOS)
 
       //Pass the election day
