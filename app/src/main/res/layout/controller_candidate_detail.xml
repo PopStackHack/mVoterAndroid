@@ -88,7 +88,7 @@
       <TextView
         android:id="@+id/tvCandidatePartyName"
         style="@style/TextLarge"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="?attr/selectableItemBackground"

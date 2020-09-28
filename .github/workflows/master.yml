@@ -45,7 +45,7 @@ jobs:
       - run: echo -e "\nRELEASE_API_SECRET=$RELEASE_API_SECRET" >> local.properties
 
       - run: touch app/google-services.json
-      - run: echo $GOOGLE_SERVICE_JSON_BASE64 | base64 --decode > app/google-services.json
+      - run: echo $GOOGLE_SERVICE_JSON_BASE64 | base64 -di > app/google-services.json
 
       - name: Lint check
         run: ./gradlew lint
@@ -56,23 +56,9 @@ jobs:
       - name: Unit Test
         run: ./gradlew test
 
-      - run: mkdir -p test_results/lint/
-      - run: find . -type f -regex ".*/build/reports/lint-results*.xml" -exec cp --parents {} test_results/lint/ \;
-      - run: rm -rf test_results/lint/test_results/
-
-      - run: mkdir -p test_results/junit/
-      - run: find . -type f -regex ".*\/build\/test-results\/.*\.xml" -exec cp {} test_results/junit/ \;
-      - run: rm -rf test_results/junit/test_results/
-
-      - name: Upload Test Result
-        uses: actions/upload-artifact@v1
-        with:
-          name: Test Result
-          path: test_results/
-
   create_apk:
     needs: test
-    name: Generate APK
+    name: Deploy APK
     runs-on: ubuntu-18.04
     env:
       RELEASE_KEYSTORE_BASE64: ${{ secrets.RELEASE_KEYSTORE_BASE64 }}
@@ -102,18 +88,18 @@ jobs:
       - run: echo -e "\nRELEASE_API_SECRET=$RELEASE_API_SECRET" >> local.properties
 
       - run: touch app/google-services.json
-      - run: echo $GOOGLE_SERVICE_JSON_BASE64 | base64 --decode > app/google-services.json
+      - run: echo $GOOGLE_SERVICE_JSON_BASE64 | base64 -di > app/google-services.json
 
       - name: Build APK
         run: ./gradlew assembleRelease
-      - name: Build Bundle
-        run: ./gradlew bundleRelease
 
       - run: mkdir -p outputs/
       - run: find . -type f -regex ".*\/*\.apk" -exec cp {} outputs/ \;
-      - run: find . -type f -regex ".*\/*\.aab" -exec cp {} outputs/ \;
 
       - name: Upload APK
+        run: ./gradlew uploadApk
+
+      - name: Release Artifact
         uses: actions/upload-artifact@v1
         with:
           name: Builds
