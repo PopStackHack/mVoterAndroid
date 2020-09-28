@@ -86,7 +86,7 @@
   <string name="faq_category_international_observer">စောင့်ကြည့်လေ့လာခြင်း</string>
   <string name="faq_category_candidate">ကိုယ်စားလှယ်လောင်း</string>
   <string name="faq_category_conflict_resolution">အငြင်းပွားမှုများဖြေရှင်းခြင်း</string>
-  <string name="faq_category_mediation_committees">စေ့စပ်ညှိနှိင်းရေးကော်မတီများ</string>
+  <string name="faq_category_mediation_committees">စေ့စပ်ညှိနှိုင်းရေးကော်မတီများ</string>
 
   <string name="hint_search_faq">ရှာလိုသော အမေးအဖြေကို ရိုက်ထည့်ပါ</string>
   <string name="empty_query_faq">မိမိရှာလိုသော အမေးအဖြေကို အပေါ်တွင်ရိုက်ထည့်ပါ။</string>
