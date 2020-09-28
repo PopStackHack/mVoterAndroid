@@ -102,18 +102,18 @@ jobs:
       - run: echo -e "\nRELEASE_API_SECRET=$RELEASE_API_SECRET" >> local.properties
 
       - run: touch app/google-services.json
-      - run: echo $GOOGLE_SERVICE_JSON_BASE64 | base64 --decode > app/google-services.json
+      - run: echo $GOOGLE_SERVICE_JSON_BASE64 | base64 -di > app/google-services.json
 
       - name: Build APK
         run: ./gradlew assembleRelease
-      - name: Build Bundle
-        run: ./gradlew bundleRelease
 
       - run: mkdir -p outputs/
       - run: find . -type f -regex ".*\/*\.apk" -exec cp {} outputs/ \;
-      - run: find . -type f -regex ".*\/*\.aab" -exec cp {} outputs/ \;
 
       - name: Upload APK
+        run: ./gradlew uploadApk
+
+      - name: Release Artifact
         uses: actions/upload-artifact@v1
         with:
           name: Builds
