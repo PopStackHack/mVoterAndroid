@@ -25,6 +25,15 @@
 
   </com.google.android.material.appbar.AppBarLayout>
 
+  <com.google.android.material.progressindicator.ProgressIndicator
+    android:id="@+id/progressIndicator"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:visibility="gone"
+    app:indicatorColor="@color/accent"
+    tools:visibility="visible" />
+
   <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/rvParty"
     android:layout_width="match_parent"
@@ -32,15 +41,6 @@
     android:scrollbars="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:listitem="@layout/item_party"
-    tools:visibility="gone" />
-
-  <androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/rvPlaceholder"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:visibility="gone"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:listitem="@layout/item_party_placeholder"
     tools:visibility="gone" />
 
   <LinearLayout

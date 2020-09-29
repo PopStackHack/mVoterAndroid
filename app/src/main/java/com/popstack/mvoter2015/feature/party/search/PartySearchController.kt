@@ -17,7 +17,6 @@ import com.popstack.mvoter2015.exception.GlobalExceptionHandler
 import com.popstack.mvoter2015.feature.analytics.screen.CanTrackScreen
 import com.popstack.mvoter2015.feature.party.detail.PartyDetailController
 import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
-import com.popstack.mvoter2015.helper.ViewVisibilityDebounceHandler
 import com.popstack.mvoter2015.helper.conductor.requireActivityAsAppCompatActivity
 import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.helper.extensions.showKeyboard
@@ -41,8 +40,6 @@ class PartySearchController : MvvmController<ControllerPartySearchBinding>(), Ha
 
   private val searchPagingAdapter = PartySearchPagingAdapter(this::onItemClick)
 
-  private val placeholderAdapter = PartySearchPlaceholderRecyclerViewAdapter()
-
   private var searchJob: Job? = null
 
   private val globalExceptionHandler by lazy {
@@ -64,14 +61,6 @@ class PartySearchController : MvvmController<ControllerPartySearchBinding>(), Ha
       )
     )
 
-    binding.rvPlaceholder.apply {
-      adapter = placeholderAdapter
-      layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-      val dimen =
-        context.resources.getDimensionPixelSize(R.dimen.recycler_view_item_margin)
-      addItemDecoration(RecyclerViewMarginDecoration(dimen, 1))
-    }
-
     binding.rvParty.apply {
       adapter = searchPagingAdapter.withLoadStateHeaderAndFooter(
         header = CommonLoadStateAdapter(searchPagingAdapter::retry),
@@ -87,12 +76,10 @@ class PartySearchController : MvvmController<ControllerPartySearchBinding>(), Ha
       searchPagingAdapter.retry()
     }
 
-    val placeHolderVisibilityHandler = ViewVisibilityDebounceHandler(binding.rvPlaceholder)
-
     searchPagingAdapter.addLoadStateListener { loadStates ->
       val refreshLoadState = loadStates.refresh
       binding.rvParty.isVisible = refreshLoadState is LoadState.NotLoading
-      placeHolderVisibilityHandler.setVisible(refreshLoadState is LoadState.Loading)
+      binding.progressIndicator.isVisible = refreshLoadState is LoadState.Loading
       binding.tvErrorMessage.isVisible = refreshLoadState is LoadState.Error
       binding.btnRetry.isVisible = refreshLoadState is LoadState.Error
       if (viewModel.currentQueryValue != null) {

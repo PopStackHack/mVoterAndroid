@@ -31,21 +31,20 @@
 
   </com.google.android.material.appbar.MaterialToolbar>
 
+  <com.google.android.material.progressindicator.ProgressIndicator
+    android:id="@+id/progressIndicator"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:visibility="gone"
+    app:indicatorColor="@color/accent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/toolBar" />
+
   <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/rvParty"
     android:layout_width="match_parent"
     android:layout_height="0dp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/toolBar"
-    tools:listitem="@layout/item_party" />
-
-  <androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/rvPlaceholder"
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:visibility="gone"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
@@ -100,11 +99,11 @@
 
   <com.google.android.material.button.MaterialButton
     android:id="@+id/btnRetry"
+    style="@style/TextLarge.Accent"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="8dp"
     android:text="@string/retry"
-    style="@style/TextLarge.Accent"
     android:visibility="gone"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"

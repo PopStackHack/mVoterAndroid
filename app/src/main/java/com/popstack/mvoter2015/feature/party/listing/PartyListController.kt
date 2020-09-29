@@ -20,7 +20,6 @@ import com.popstack.mvoter2015.feature.party.PartySharedElementTransitionChangeH
 import com.popstack.mvoter2015.feature.party.detail.PartyDetailController
 import com.popstack.mvoter2015.feature.party.search.PartySearchController
 import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
-import com.popstack.mvoter2015.helper.ViewVisibilityDebounceHandler
 import com.popstack.mvoter2015.helper.conductor.requireActivityAsAppCompatActivity
 import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.logging.HasTag
@@ -51,12 +50,6 @@ class PartyListController : MvvmController<ControllerPartyListBinding>(), HasTag
     super.onBindView(savedViewState)
     requireActivityAsAppCompatActivity().setSupportActionBar(binding.toolBar)
     setHasOptionsMenu(R.menu.menu_party, this::handleMenuItemClick)
-    binding.rvPlaceholder.apply {
-      adapter = PartyPlaceHolderRecyclerViewAdapter()
-      layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-      val dimen = context.resources.getDimensionPixelSize(R.dimen.recycler_view_item_margin)
-      addItemDecoration(RecyclerViewMarginDecoration(dimen, 0))
-    }
 
     binding.rvParty.apply {
       adapter = ConcatAdapter(
@@ -75,12 +68,10 @@ class PartyListController : MvvmController<ControllerPartyListBinding>(), HasTag
       partyPagingAdapter.retry()
     }
 
-    val placeHolderVisibilityHandler = ViewVisibilityDebounceHandler(binding.rvPlaceholder)
-
     partyPagingAdapter.addLoadStateListener { loadStates ->
       val refreshLoadState = loadStates.refresh
       binding.rvParty.isVisible = refreshLoadState is LoadState.NotLoading
-      placeHolderVisibilityHandler.setVisible(refreshLoadState is LoadState.Loading)
+      binding.progressIndicator.isVisible = refreshLoadState is LoadState.Loading
       binding.contentError.isVisible = refreshLoadState is LoadState.Error
       binding.tvErrorMessage.isVisible = refreshLoadState is LoadState.Error
       binding.btnRetry.isVisible = refreshLoadState is LoadState.Error
