@@ -30,15 +30,16 @@
     app:layout_constraintTop_toBottomOf="@id/toolBar"
     tools:listitem="@layout/item_news_with_preview" />
 
-  <ProgressBar
-    android:id="@+id/progressBar"
-    android:layout_width="wrap_content"
+  <com.google.android.material.progressindicator.ProgressIndicator
+    android:id="@+id/progressIndicator"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
     android:visibility="gone"
+    app:indicatorColor="@color/accent"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
     tools:visibility="visible" />
 
   <TextView

@@ -25,9 +25,9 @@ import com.popstack.mvoter2015.helper.conductor.setSupportActionBar
 import com.popstack.mvoter2015.helper.conductor.supportActionBar
 import com.popstack.mvoter2015.logging.HasTag
 import com.popstack.mvoter2015.paging.CommonLoadStateAdapter
-import javax.inject.Inject
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 class NewsController : MvvmController<ControllerNewsBinding>(), HasTag, CanTrackScreen {
 
@@ -77,7 +77,7 @@ class NewsController : MvvmController<ControllerNewsBinding>(), HasTag, CanTrack
     newsPagingAdapter.addLoadStateListener { loadStates ->
       val refreshLoadState = loadStates.refresh
       binding.rvNews.isVisible = refreshLoadState is LoadState.NotLoading
-      binding.progressBar.isVisible = refreshLoadState is LoadState.Loading
+      binding.progressIndicator.isVisible = refreshLoadState is LoadState.Loading
       binding.tvErrorMessage.isVisible = refreshLoadState is LoadState.Error
       binding.btnRetry.isVisible = refreshLoadState is LoadState.Error
 
