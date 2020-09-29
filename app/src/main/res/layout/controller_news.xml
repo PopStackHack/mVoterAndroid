@@ -1,34 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent">
 
-  <com.google.android.material.appbar.MaterialToolbar
-    android:id="@+id/toolBar"
+  <com.google.android.material.appbar.AppBarLayout
+    android:id="@+id/appbar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:backgroundTint="@color/primary"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_scrollFlags="scroll|enterAlways"
-    app:menu="@menu/menu_party"
-    app:title="@string/navigation_news"
-    app:titleTextAppearance="@style/TextTitle3.Bold"
-    app:titleTextColor="@color/text_primary" />
+    app:liftOnScroll="true"
+    app:liftOnScrollTargetViewId="@id/rvNews">
 
-  <androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/rvNews"
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:scrollbars="vertical"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/toolBar"
-    tools:listitem="@layout/item_news_with_preview" />
+    <com.google.android.material.appbar.MaterialToolbar
+      android:id="@+id/toolBar"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:backgroundTint="@color/primary"
+      app:menu="@menu/menu_party"
+      app:title="@string/navigation_news"
+      app:titleTextAppearance="@style/TextTitle3.Bold"
+      app:titleTextColor="@color/text_primary" />
+
+  </com.google.android.material.appbar.AppBarLayout>
 
   <com.google.android.material.progressindicator.ProgressIndicator
     android:id="@+id/progressIndicator"
@@ -37,40 +32,49 @@
     android:layout_gravity="bottom"
     android:visibility="gone"
     app:indicatorColor="@color/accent"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
     tools:visibility="visible" />
 
-  <TextView
-    android:id="@+id/tvErrorMessage"
-    style="@style/TextExtraLarge.Error"
-    android:layout_width="0dp"
+  <androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/rvNews"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="16dp"
-    android:layout_marginEnd="16dp"
-    android:gravity="center"
-    android:visibility="gone"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/toolBar"
-    tools:text="@string/error_no_internet"
+    android:scrollbars="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:listitem="@layout/item_party"
     tools:visibility="visible" />
 
-  <com.google.android.material.button.MaterialButton
-    android:id="@+id/btnRetry"
-    style="@style/TextLarge.Accent"
-    android:layout_width="wrap_content"
+  <LinearLayout
+    android:id="@+id/contentError"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
-    android:text="@string/retry"
-    android:visibility="gone"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/tvErrorMessage"
-    app:rippleColor="@color/grey"
-    app:strokeColor="@color/accent"
-    tools:visibility="gone" />
+    android:layout_gravity="center"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+      android:id="@+id/tvErrorMessage"
+      style="@style/TextExtraLarge.Error"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="16dp"
+      android:layout_marginEnd="16dp"
+      android:gravity="center"
+      android:visibility="gone"
+      tools:text="@string/error_no_internet"
+      tools:visibility="visible" />
+
+    <com.google.android.material.button.MaterialButton
+      android:id="@+id/btnRetry"
+      style="@style/TextLarge.Accent"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center_horizontal"
+      android:layout_marginTop="8dp"
+      android:text="@string/retry"
+      android:visibility="gone"
+      app:rippleColor="@color/grey"
+      app:strokeColor="@color/accent"
+      tools:visibility="visible" />
+
+  </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
