@@ -81,7 +81,8 @@ class NewsSearchController : MvvmController<ControllerNewsSearchBinding>(), HasT
     searchPagingAdapter.addLoadStateListener { loadStates ->
       val refreshLoadState = loadStates.refresh
       binding.rvNews.isVisible = refreshLoadState is LoadState.NotLoading
-      binding.progressIndicator.isVisible = refreshLoadState is LoadState.Loading
+      if (refreshLoadState is LoadState.Loading) binding.progressIndicator.show()
+      else binding.progressIndicator.hide()
       binding.tvErrorMessage.isVisible = refreshLoadState is LoadState.Error
       binding.btnRetry.isVisible = refreshLoadState is LoadState.Error
       if (viewModel.currentQueryValue != null) {

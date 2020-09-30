@@ -120,7 +120,8 @@ class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDeta
   }
 
   private fun observeViewItem(viewState: AsyncViewState<PartyDetailViewItem>) {
-    binding.progressBar.isVisible = viewState is AsyncViewState.Loading
+    if (viewState is AsyncViewState.Loading) binding.progressIndicator.show()
+    else binding.progressIndicator.hide()
     binding.buttonPolicy.isVisible = viewState is AsyncViewState.Success
     binding.cardViewTimeline.isVisible = viewState is AsyncViewState.Success
     binding.layoutContent.isVisible = !(viewState is AsyncViewState.Error)

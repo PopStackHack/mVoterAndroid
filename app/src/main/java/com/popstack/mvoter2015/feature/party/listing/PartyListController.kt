@@ -91,7 +91,8 @@ class PartyListController : MvvmController<ControllerPartyListBinding>(), HasTag
     partyPagingAdapter.addLoadStateListener { loadStates ->
       val refreshLoadState = loadStates.refresh
       binding.rvParty.isVisible = refreshLoadState is LoadState.NotLoading
-      binding.progressIndicator.isVisible = refreshLoadState is LoadState.Loading
+      if (refreshLoadState is LoadState.Loading) binding.progressIndicator.show()
+      else binding.progressIndicator.hide()
       binding.contentError.isVisible = refreshLoadState is LoadState.Error
       binding.tvErrorMessage.isVisible = refreshLoadState is LoadState.Error
       binding.btnRetry.isVisible = refreshLoadState is LoadState.Error

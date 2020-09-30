@@ -13,9 +13,9 @@
     android:backgroundTint="@color/primary"
     android:orientation="vertical"
     app:layout_constraintEnd_toEndOf="parent"
-    app:liftOnScroll="true"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent">
+    app:layout_constraintTop_toTopOf="parent"
+    app:liftOnScroll="true">
 
     <com.google.android.material.appbar.MaterialToolbar
       android:id="@+id/toolBar"
@@ -38,11 +38,13 @@
 
   <com.google.android.material.progressindicator.ProgressIndicator
     android:id="@+id/progressIndicator"
+    style="@style/Widget.MaterialComponents.ProgressIndicator.Linear.Indeterminate"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="bottom"
     android:visibility="gone"
     app:indicatorColor="@color/accent"
+    app:minHideDelay="500"
     tools:visibility="visible" />
 
   <androidx.recyclerview.widget.RecyclerView

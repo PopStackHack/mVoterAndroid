@@ -33,13 +33,16 @@
 
   <com.google.android.material.progressindicator.ProgressIndicator
     android:id="@+id/progressIndicator"
+    style="@style/Widget.MaterialComponents.ProgressIndicator.Linear.Indeterminate"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:visibility="gone"
     app:indicatorColor="@color/accent"
+
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/toolBar" />
+    app:layout_constraintTop_toBottomOf="@id/toolBar"
+    app:minHideDelay="500" />
 
   <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/rvFaq"

@@ -169,7 +169,8 @@ class BallotExampleController : MvvmController<ControllerBallotExampleBinding>()
       { viewState ->
         binding.viewPager.isVisible = viewState is AsyncViewState.Success
         binding.tabLayoutValid.isVisible = viewState is AsyncViewState.Success
-        binding.progressIndicator.isVisible = viewState is AsyncViewState.Loading
+        if (viewState is AsyncViewState.Loading) binding.progressIndicator.show()
+        else binding.progressIndicator.hide()
         binding.tvErrorMessage.isVisible = viewState is AsyncViewState.Error
         binding.btnRetry.isVisible = viewState is AsyncViewState.Error
 
