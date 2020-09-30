@@ -81,7 +81,6 @@ class PartyListController : MvvmController<ControllerPartyListBinding>(), HasTag
       } else {
         addItemDecoration(RecyclerViewMarginDecoration(dimen, 0))
       }
-
     }
 
     binding.btnRetry.setOnClickListener {

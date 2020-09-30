@@ -6,8 +6,8 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadState
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.bluelinelabs.conductor.RouterTransaction
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvvmController
@@ -19,6 +19,8 @@ import com.popstack.mvoter2015.feature.party.detail.PartyDetailController
 import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
 import com.popstack.mvoter2015.helper.conductor.requireActivityAsAppCompatActivity
 import com.popstack.mvoter2015.helper.conductor.requireContext
+import com.popstack.mvoter2015.helper.extensions.isLandScape
+import com.popstack.mvoter2015.helper.extensions.isTablet
 import com.popstack.mvoter2015.helper.extensions.showKeyboard
 import com.popstack.mvoter2015.helper.search.DebounceSearchQueryListener
 import com.popstack.mvoter2015.logging.HasTag
@@ -66,10 +68,17 @@ class PartySearchController : MvvmController<ControllerPartySearchBinding>(), Ha
         header = CommonLoadStateAdapter(searchPagingAdapter::retry),
         footer = CommonLoadStateAdapter(searchPagingAdapter::retry)
       )
-      layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-      val dimen =
-        context.resources.getDimensionPixelSize(R.dimen.recycler_view_item_margin)
-      addItemDecoration(RecyclerViewMarginDecoration(dimen, 0))
+      layoutManager = if (requireContext().isTablet() && requireContext().isLandScape()) {
+        GridLayoutManager(requireContext(), 2)
+      } else {
+        LinearLayoutManager(requireContext())
+      }
+      val dimen = context.resources.getDimensionPixelSize(R.dimen.recycler_view_item_margin)
+      if (requireContext().isTablet() && requireContext().isLandScape()) {
+        addItemDecoration(RecyclerViewMarginDecoration(dimen, 2))
+      } else {
+        addItemDecoration(RecyclerViewMarginDecoration(dimen, 0))
+      }
     }
 
     binding.btnRetry.setOnClickListener {
