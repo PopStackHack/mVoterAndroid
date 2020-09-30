@@ -51,6 +51,10 @@ class FaqPagingAdapter(
   }
 
   override fun getItemViewType(position: Int): Int {
+    //Sometimes crashing with Index Out of Bounds
+    if (position >= itemCount) {
+      return super.getItemViewType(position)
+    }
     getItem(position)?.let { itemAtIndex ->
       return when (itemAtIndex) {
         FaqViewItem.BallotExample -> VIEW_TYPE_BALLOT_EXAMPLE
