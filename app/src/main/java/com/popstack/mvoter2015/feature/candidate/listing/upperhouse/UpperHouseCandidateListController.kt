@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bluelinelabs.conductor.RouterTransaction
 import com.popstack.mvoter2015.R
@@ -17,6 +18,8 @@ import com.popstack.mvoter2015.feature.candidate.listing.CandidateListResult
 import com.popstack.mvoter2015.feature.home.BottomNavigationHostViewModelStore
 import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewState
 import com.popstack.mvoter2015.helper.conductor.requireContext
+import com.popstack.mvoter2015.helper.extensions.isLandScape
+import com.popstack.mvoter2015.helper.extensions.isTablet
 import com.popstack.mvoter2015.logging.HasTag
 
 class UpperHouseCandidateListController : MvvmController<ControllerUpperHouseCandidateListBinding>(), HasTag {
@@ -46,7 +49,11 @@ class UpperHouseCandidateListController : MvvmController<ControllerUpperHouseCan
 
     binding.rvCandidate.apply {
       adapter = candidateListAdapter
-      layoutManager = LinearLayoutManager(requireContext())
+      layoutManager = if (requireContext().isTablet() && requireContext().isLandScape()) {
+        GridLayoutManager(requireContext(), 2)
+      } else {
+        LinearLayoutManager(requireContext())
+      }
     }
 
     viewModel.viewItemLiveData.observe(this, Observer(::observeViewItem))

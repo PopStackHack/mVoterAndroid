@@ -1,9 +1,11 @@
 package com.popstack.mvoter2015.helper.extensions
 
 import android.content.Context
+import android.content.res.Configuration
 import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.annotation.StringRes
+import com.popstack.mvoter2015.R
 
 /**
  * Created by Vincent on 2/13/20
@@ -36,4 +38,14 @@ fun Context.showLongToast(@StringRes resId: Int, vararg formatArgs: String) {
 
 fun Context.showLongToast(@StringRes resId: Int) {
   Toast.makeText(this, resId, Toast.LENGTH_LONG).show()
+}
+
+fun Context.isTablet(): Boolean {
+  return resources.getBoolean(R.bool.is_tablet)
+}
+
+fun Context.isLandScape(): Boolean {
+  val orientation = resources.configuration.orientation
+  return orientation == Configuration.ORIENTATION_LANDSCAPE
+
 }
