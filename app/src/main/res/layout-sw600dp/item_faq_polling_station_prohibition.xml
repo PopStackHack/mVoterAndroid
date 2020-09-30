@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content">
+
+
+  <ImageView
+    android:id="@+id/ivNoSelfie"
+    android:layout_width="0dp"
+    android:layout_height="100dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:src="@drawable/no_selfie"
+    app:layout_constraintDimensionRatio="1:1"
+    app:layout_constraintEnd_toStartOf="@+id/ivNoPhoto"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintHorizontal_chainStyle="spread"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+  <TextView
+    android:id="@+id/tvNoSelfie"
+    style="@style/TextMedium"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:gravity="center"
+    android:text="@string/no_selfie"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="@id/ivNoSelfie"
+    app:layout_constraintStart_toStartOf="@id/ivNoSelfie"
+    app:layout_constraintTop_toBottomOf="@id/ivNoSelfie" />
+
+  <ImageView
+    android:id="@+id/ivNoPhoto"
+    android:layout_width="0dp"
+    android:layout_height="100dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:src="@drawable/no_photo"
+    app:layout_constraintDimensionRatio="1:1"
+    app:layout_constraintEnd_toStartOf="@+id/ivNoVideo"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintStart_toEndOf="@+id/ivNoSelfie"
+    app:layout_constraintTop_toTopOf="parent" />
+
+  <TextView
+    android:id="@+id/tvNoPhoto"
+    style="@style/TextMedium"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:gravity="center"
+    android:text="@string/no_photo"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="@id/ivNoPhoto"
+    app:layout_constraintStart_toStartOf="@id/ivNoPhoto"
+    app:layout_constraintTop_toBottomOf="@id/ivNoPhoto" />
+
+  <ImageView
+    android:id="@+id/ivNoVideo"
+    android:layout_width="0dp"
+    android:layout_height="100dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:src="@drawable/no_video"
+    app:layout_constraintDimensionRatio="1:1"
+    app:layout_constraintEnd_toStartOf="@+id/ivNoRecording"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintStart_toEndOf="@+id/ivNoPhoto"
+    app:layout_constraintTop_toTopOf="parent" />
+
+  <TextView
+    android:id="@+id/tvNoVideo"
+    style="@style/TextMedium"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:gravity="center"
+    android:text="@string/no_video"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="@id/ivNoVideo"
+    app:layout_constraintStart_toStartOf="@id/ivNoVideo"
+    app:layout_constraintTop_toBottomOf="@id/ivNoVideo" />
+
+  <ImageView
+    android:id="@+id/ivNoRecording"
+    android:layout_width="0dp"
+    android:layout_height="100dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:src="@drawable/no_recording"
+    app:layout_constraintDimensionRatio="1:1"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintStart_toEndOf="@+id/ivNoVideo"
+    app:layout_constraintTop_toTopOf="parent" />
+
+  <TextView
+    android:id="@+id/tvNoRecording"
+    style="@style/TextMedium"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:gravity="center"
+    android:text="@string/no_record"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="@id/ivNoRecording"
+    app:layout_constraintStart_toStartOf="@id/ivNoRecording"
+    app:layout_constraintTop_toBottomOf="@id/ivNoRecording" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
