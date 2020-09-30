@@ -191,13 +191,6 @@ class CandidateDetailController(
           binding.tvFatherReligion.text = fatherReligion
           binding.groupElectedBadge.isVisible = isElected
 
-          binding.tvResidentialTitle.isVisible = residentialAddress != null
-          binding.tvResidential.isVisible = residentialAddress != null
-
-          if (residentialAddress != null) {
-            binding.tvResidential.text = residentialAddress
-          }
-
           binding.ivCandidatePartySeal.load(partySealImageUrl) {
             placeholder(R.drawable.party_seal_placeholder_rect)
             error(R.drawable.party_seal_placeholder_rect)

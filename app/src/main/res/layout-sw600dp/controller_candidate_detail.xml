@@ -14,6 +14,13 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content">
 
+      <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline50PercentVertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
       <ImageView
         android:id="@+id/ivCandidate"
         android:layout_width="106dp"
@@ -180,53 +187,97 @@
         style="@style/TextMedium.Secondary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="@dimen/candidate_details_horizontal_section_spacing"
+        android:layout_marginEnd="16dp"
         android:text="ပညာအရည်အချင်း"
-        app:layout_constraintEnd_toStartOf="@id/guidelineEnd16"
-        app:layout_constraintStart_toStartOf="@+id/guidelineStart16"
+        app:layout_constraintEnd_toStartOf="@id/guideline50PercentVertical"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvBirthday" />
-
-      <TextView
-        android:id="@+id/tvEducation"
-        style="@style/TextLarge"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineEnd16"
-        app:layout_constraintStart_toStartOf="@+id/guidelineStart16"
-        app:layout_constraintTop_toBottomOf="@+id/tvEducationTitle"
-        tools:text="ကွန်ပျူတာတက္ကသိုလ် (မဟာဘွဲ့)" />
 
       <TextView
         android:id="@+id/tvWorkTitle"
         style="@style/TextMedium.Secondary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="@dimen/candidate_details_horizontal_section_spacing"
+        android:layout_marginEnd="16dp"
         android:text="အလုပ်အကိုင်"
-        app:layout_constraintEnd_toStartOf="@id/guidelineEnd16"
-        app:layout_constraintStart_toStartOf="@+id/guidelineStart16"
-        app:layout_constraintTop_toBottomOf="@+id/tvEducation" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guideline50PercentVertical"
+        app:layout_constraintTop_toBottomOf="@+id/tvBirthday" />
+
+      <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrierEducationTitleAndWorkTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="tvEducationTitle,tvWorkTitle" />
+
+      <TextView
+        android:id="@+id/tvEducation"
+        style="@style/TextLarge"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toStartOf="@id/guideline50PercentVertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/barrierEducationTitleAndWorkTitle"
+        tools:text="ကွန်ပျူတာတက္ကသိုလ် (မဟာဘွဲ့)" />
 
       <TextView
         android:id="@+id/tvWork"
         style="@style/TextLarge"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineEnd16"
-        app:layout_constraintStart_toStartOf="@+id/guidelineStart16"
-        app:layout_constraintTop_toBottomOf="@+id/tvWorkTitle"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guideline50PercentVertical"
+        app:layout_constraintTop_toBottomOf="@+id/barrierEducationTitleAndWorkTitle"
         tools:text="ဖရီးလင့် ဒတ်ပလွတ်ပါ" />
+
+      <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrierEducationAndWork"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="tvEducation,tvWork" />
 
       <TextView
         android:id="@+id/tvRaceTitle"
         style="@style/TextMedium.Secondary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="@dimen/candidate_details_horizontal_section_spacing"
+        android:layout_marginEnd="16dp"
         android:text="လူမျိုး"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineEnd16"
-        app:layout_constraintStart_toStartOf="@+id/guidelineStart16"
-        app:layout_constraintTop_toBottomOf="@+id/tvWork" />
+        app:layout_constraintEnd_toStartOf="@id/guideline50PercentVertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/barrierEducationAndWork" />
+
+      <TextView
+        android:id="@+id/tvReligionTitle"
+        style="@style/TextMedium.Secondary"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="@dimen/candidate_details_horizontal_section_spacing"
+        android:layout_marginEnd="16dp"
+        android:text="ဘာသာ"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guideline50PercentVertical"
+        app:layout_constraintTop_toBottomOf="@+id/barrierEducationAndWork" />
+
+      <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrierRaceTitleAndReligionTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="tvRaceTitle,tvReligionTitle" />
 
       <TextView
         android:id="@+id/tvRace"
@@ -235,21 +286,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guideline50PercentVertical"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvRaceTitle"
+        app:layout_constraintTop_toBottomOf="@+id/barrierRaceTitleAndReligionTitle"
         tools:text="ဗမာ ၊ ဗုဒ္ဓဘာသာ" />
-
-      <TextView
-        android:id="@+id/tvReligionTitle"
-        style="@style/TextMedium.Secondary"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/candidate_details_horizontal_section_spacing"
-        android:text="ဘာသာ"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineEnd16"
-        app:layout_constraintStart_toStartOf="@+id/guidelineStart16"
-        app:layout_constraintTop_toBottomOf="@+id/tvRace" />
 
       <TextView
         android:id="@+id/tvReligion"
@@ -259,9 +299,16 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvReligionTitle"
+        app:layout_constraintStart_toEndOf="@id/guideline50PercentVertical"
+        app:layout_constraintTop_toBottomOf="@+id/barrierRaceTitleAndReligionTitle"
         tools:text="ဗမာ ၊ ဗုဒ္ဓဘာသာ" />
+
+      <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrierRaceAndReligion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="tvRace,tvReligion" />
 
       <TextView
         android:id="@+id/tvMotherTitle"
@@ -272,7 +319,7 @@
         android:layout_marginTop="@dimen/candidate_details_horizontal_section_spacing"
         android:text="မိခင်"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvReligion" />
+        app:layout_constraintTop_toBottomOf="@+id/barrierRaceAndReligion" />
 
       <TextView
         android:id="@+id/tvMotherNameTitle"
@@ -302,10 +349,31 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
         android:text="လူမျိုး"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineEnd16"
+        app:layout_constraintEnd_toStartOf="@id/guideline50PercentVertical"
         app:layout_constraintStart_toStartOf="@+id/tvMotherName"
         app:layout_constraintTop_toBottomOf="@+id/tvMotherName" />
+
+      <TextView
+        android:id="@+id/tvMotherReligionTitle"
+        style="@style/TextMedium.Secondary"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:text="ဘာသာ"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guideline50PercentVertical"
+        app:layout_constraintTop_toBottomOf="@+id/tvMotherName" />
+
+      <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrierMotherRaceTitleAndMotherReligionTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="tvMotherEthnicityTitle,tvMotherReligionTitle" />
 
       <TextView
         android:id="@+id/tvMotherEthnicity"
@@ -313,32 +381,29 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guideline50PercentVertical"
         app:layout_constraintStart_toStartOf="@+id/tvMotherEthnicityTitle"
-        app:layout_constraintTop_toBottomOf="@+id/tvMotherEthnicityTitle"
-        tools:text="ဗမာ ၊ ဗုဒ္ဓဘာသာ" />
-
-      <TextView
-        android:id="@+id/tvMotherReligionTitle"
-        style="@style/TextMedium.Secondary"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="ဘာသာ"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineEnd16"
-        app:layout_constraintStart_toStartOf="@+id/tvMotherEthnicity"
-        app:layout_constraintTop_toBottomOf="@+id/tvMotherEthnicity" />
+        app:layout_constraintTop_toBottomOf="@+id/barrierMotherRaceTitleAndMotherReligionTitle"
+        tools:text="ဗမာ" />
 
       <TextView
         android:id="@+id/tvMotherReligion"
         style="@style/TextLarge"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/tvMotherReligionTitle"
-        app:layout_constraintTop_toBottomOf="@+id/tvMotherReligionTitle"
+        app:layout_constraintStart_toEndOf="@id/guideline50PercentVertical"
+        app:layout_constraintTop_toBottomOf="@+id/barrierMotherRaceTitleAndMotherReligionTitle"
         tools:text="ဗမာ ၊ ဗုဒ္ဓဘာသာ" />
+
+      <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrierMotherRaceAndMotherReligion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="tvMotherEthnicity,tvMotherReligion" />
 
       <TextView
         android:id="@+id/tvFatherTitle"
@@ -349,7 +414,7 @@
         android:layout_marginTop="@dimen/candidate_details_horizontal_section_spacing"
         android:text="ဖခင်"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvMotherReligion" />
+        app:layout_constraintTop_toBottomOf="@+id/barrierMotherRaceAndMotherReligion" />
 
       <TextView
         android:id="@+id/tvFatherNameTitle"
@@ -379,10 +444,31 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
         android:text="လူမျိုး"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineEnd16"
+        app:layout_constraintEnd_toStartOf="@id/guideline50PercentVertical"
         app:layout_constraintStart_toStartOf="@+id/tvFatherName"
         app:layout_constraintTop_toBottomOf="@+id/tvFatherName" />
+
+      <TextView
+        android:id="@+id/tvFatherReligionTitle"
+        style="@style/TextMedium.Secondary"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:text="ဘာသာ"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guideline50PercentVertical"
+        app:layout_constraintTop_toBottomOf="@+id/tvFatherName" />
+
+      <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrierFatherRaceTitleAndFatherReligionTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="tvFatherEthnicityTitle,tvFatherReligionTitle" />
 
       <TextView
         android:id="@+id/tvFatherEthnicity"
@@ -390,32 +476,29 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guideline50PercentVertical"
         app:layout_constraintStart_toStartOf="@+id/tvFatherEthnicityTitle"
-        app:layout_constraintTop_toBottomOf="@+id/tvFatherEthnicityTitle"
-        tools:text="ဗမာ ၊ ဗုဒ္ဓဘာသာ" />
-
-      <TextView
-        android:id="@+id/tvFatherReligionTitle"
-        style="@style/TextMedium.Secondary"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="ဘာသာ"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineEnd16"
-        app:layout_constraintStart_toStartOf="@+id/tvFatherEthnicity"
-        app:layout_constraintTop_toBottomOf="@+id/tvFatherEthnicity" />
+        app:layout_constraintTop_toBottomOf="@+id/barrierFatherRaceTitleAndFatherReligionTitle"
+        tools:text="ဗမာ" />
 
       <TextView
         android:id="@+id/tvFatherReligion"
         style="@style/TextLarge"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/tvFatherReligionTitle"
-        app:layout_constraintTop_toBottomOf="@+id/tvFatherReligionTitle"
+        app:layout_constraintStart_toEndOf="@id/guideline50PercentVertical"
+        app:layout_constraintTop_toBottomOf="@+id/barrierFatherRaceTitleAndFatherReligionTitle"
         tools:text="ဗမာ ၊ ဗုဒ္ဓဘာသာ" />
+
+      <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrierFatherRaceAndFatherReligion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="tvFatherEthnicity,tvFatherReligion" />
 
       <ImageView
         android:id="@+id/ivRivalCandidates"
@@ -427,7 +510,7 @@
         android:tint="@color/accent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvFatherReligion" />
+        app:layout_constraintTop_toBottomOf="@id/barrierFatherRaceAndFatherReligion" />
 
       <TextView
         android:id="@+id/tvRivalTitle"

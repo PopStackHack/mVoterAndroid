@@ -33,7 +33,6 @@ data class CandidateInfoViewItem(
   val fatherName: String,
   val fatherEthnicity: String,
   val fatherReligion: String,
-  val residentialAddress: String?,
   val isElected: Boolean
 )
 
@@ -67,6 +66,5 @@ fun Candidate.toCandidateInfoViewItem() = CandidateInfoViewItem(
   fatherName = father?.name.orEmpty(),
   fatherEthnicity = father?.ethnicity.orEmpty(),
   fatherReligion = father?.religion.orEmpty(),
-  residentialAddress = residentialAddress,
   isElected = isElected
 )
