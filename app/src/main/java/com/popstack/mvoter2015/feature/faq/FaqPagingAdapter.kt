@@ -44,10 +44,10 @@ class FaqPagingAdapter(
   private val expandedFaqSet = mutableSetOf<FaqId>()
 
   companion object {
-    private const val VIEW_TYPE_BALLOT_EXAMPLE = 1
-    private const val VIEW_TYPE_PROHIBITION = 2
-    private const val VIEW_TYPE_LAWS_AND_UNFAIR_PRACTICE = 3
-    private const val VIEW_TYPE_FAQ = 4
+    const val VIEW_TYPE_BALLOT_EXAMPLE = 1
+    const val VIEW_TYPE_PROHIBITION = 2
+    const val VIEW_TYPE_LAWS_AND_UNFAIR_PRACTICE = 3
+    const val VIEW_TYPE_FAQ = 4
   }
 
   override fun getItemViewType(position: Int): Int {

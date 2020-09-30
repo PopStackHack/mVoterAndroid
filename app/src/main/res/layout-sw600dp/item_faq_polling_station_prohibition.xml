@@ -4,11 +4,10 @@
   android:layout_width="match_parent"
   android:layout_height="wrap_content">
 
-
   <ImageView
     android:id="@+id/ivNoSelfie"
     android:layout_width="0dp"
-    android:layout_height="100dp"
+    android:layout_height="0dp"
     android:layout_marginStart="16dp"
     android:layout_marginEnd="16dp"
     android:src="@drawable/no_selfie"
@@ -27,7 +26,6 @@
     android:layout_marginTop="8dp"
     android:gravity="center"
     android:text="@string/no_selfie"
-    app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="@id/ivNoSelfie"
     app:layout_constraintStart_toStartOf="@id/ivNoSelfie"
     app:layout_constraintTop_toBottomOf="@id/ivNoSelfie" />
@@ -35,7 +33,7 @@
   <ImageView
     android:id="@+id/ivNoPhoto"
     android:layout_width="0dp"
-    android:layout_height="100dp"
+    android:layout_height="0dp"
     android:layout_marginStart="16dp"
     android:layout_marginEnd="16dp"
     android:src="@drawable/no_photo"
@@ -53,7 +51,6 @@
     android:layout_marginTop="8dp"
     android:gravity="center"
     android:text="@string/no_photo"
-    app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="@id/ivNoPhoto"
     app:layout_constraintStart_toStartOf="@id/ivNoPhoto"
     app:layout_constraintTop_toBottomOf="@id/ivNoPhoto" />
@@ -61,7 +58,7 @@
   <ImageView
     android:id="@+id/ivNoVideo"
     android:layout_width="0dp"
-    android:layout_height="100dp"
+    android:layout_height="0dp"
     android:layout_marginStart="16dp"
     android:layout_marginEnd="16dp"
     android:src="@drawable/no_video"
@@ -79,7 +76,6 @@
     android:layout_marginTop="8dp"
     android:gravity="center"
     android:text="@string/no_video"
-    app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="@id/ivNoVideo"
     app:layout_constraintStart_toStartOf="@id/ivNoVideo"
     app:layout_constraintTop_toBottomOf="@id/ivNoVideo" />
@@ -87,7 +83,7 @@
   <ImageView
     android:id="@+id/ivNoRecording"
     android:layout_width="0dp"
-    android:layout_height="100dp"
+    android:layout_height="0dp"
     android:layout_marginStart="16dp"
     android:layout_marginEnd="16dp"
     android:src="@drawable/no_recording"
@@ -105,7 +101,6 @@
     android:layout_marginTop="8dp"
     android:gravity="center"
     android:text="@string/no_record"
-    app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="@id/ivNoRecording"
     app:layout_constraintStart_toStartOf="@id/ivNoRecording"
     app:layout_constraintTop_toBottomOf="@id/ivNoRecording" />
