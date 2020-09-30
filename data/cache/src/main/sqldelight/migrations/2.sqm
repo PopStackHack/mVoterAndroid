@@ -7,7 +7,7 @@ import com.popstack.mvoter2015.domain.constituency.model.HouseType;
 import java.time.LocalDate;
 import java.lang.Boolean;
 
-CREATE TABLE CandidateTable(
+CREATE TABLE CandidateTable2(
   id TEXT PRIMARY KEY NOT NULL,
   name TEXT NOT NULL,
   sortingName TEXT NOT NULL,
@@ -34,40 +34,6 @@ CREATE TABLE CandidateTable(
   FOREIGN KEY(constituencyId) REFERENCES ConstituencyTable(id) ON DELETE CASCADE,
   FOREIGN KEY(queryConstituencyid) REFERENCES ConstituencyTable(id) ON DELETE CASCADE
 );
-
-insertOrReplace:
-INSERT OR REPLACE INTO CandidateTable VALUES(
-:id, : name, :sortingName, :sortingBallotOrder, :gender, :occupation, :photoUrl, :education, :religion,
-:age, :birthDate, :ethnicity, :father, :mother, :individualLogo,
-:residentalAddress, :isEthnicCandidate, :representingEthnicity, :partyId,
-:constituencyId, :queryConstituencyid, :isElected
-);
-
-update:
-UPDATE CandidateTable SET
-name = :name,
-sortingName = :sortingName,
-sortingBallotOrder = :sortingBallotOrder,
-gender = :gender,
-occupation = :occupation,
-photoUrl = :photoUrl,
-education = :education,
-religion =  :religion,
-age = :age,
-birthDate = :birthDate,
-ethnicity = :ethnicity,
-father = :father,
-mother = :mother,
-individualLogo =  :individualLogo,
-residentalAddress =:residentalAddress,
-isEthnicCandidate = :isEthnicCandidate,
-representingEthnicity = :representingEthnicity,
-partyId = :partyId,
-constituencyId = :constituencyId
-WHERE id = :id;
-
-getById:
-SELECT * FROM CandidateTable WHERE id = :id;
-
-deleteByConstituency:
-DELETE FROM CandidateTable WHERE constituencyId = :constituencyId OR queryConstituencyid = :constituencyId;
+INSERT INTO CandidateTable2 SELECT * FROM CandidateTable;
+DROP TABLE CandidateTable;
+ALTER TABLE CandidateTable2 RENAME TO CandidateTable;

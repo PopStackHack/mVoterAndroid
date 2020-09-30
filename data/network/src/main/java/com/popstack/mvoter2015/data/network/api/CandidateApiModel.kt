@@ -35,7 +35,7 @@ data class CandidateApiAttributes(
   @Json(name = "sorting_name") val sortingName: String,
   @Json(name = "ballot_order") val sortingBallotOrder: Long,
   @Json(name = "image") val image: String?,
-  @Json(name = "birthday") val birthday: String,
+  @Json(name = "birthday") val birthday: String?,
   @Json(name = "age") val age: Int?,
   @Json(name = "ethnicity") val ethnicity: String,
   @Json(name = "religion") val religion: String,
@@ -75,7 +75,9 @@ fun CandidateApiModel.toCandidateModel(): Candidate {
       education = education,
       religion = religion,
       age = age,
-      birthDate = LocalDate.parse(birthday, dateTimeFormatter),
+      birthDate = if (birthday != null) {
+        LocalDate.parse(birthday, dateTimeFormatter)
+      } else birthday,
       constituency = Constituency(
         ConstituencyId(constituency.id),
         constituency.attributes.name,

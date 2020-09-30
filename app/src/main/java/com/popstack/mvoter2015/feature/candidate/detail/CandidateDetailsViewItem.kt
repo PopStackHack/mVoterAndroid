@@ -56,8 +56,7 @@ fun Candidate.toCandidateInfoViewItem() = CandidateInfoViewItem(
       .orEmpty()
   )
     .toString(),
-  birthday = BurmeseNumberUtils.convertEnglishToBurmeseNumber(birthDate.format(dateFormatter))
-    .toString(),
+  birthday = if (birthDate != null) BurmeseNumberUtils.convertEnglishToBurmeseNumber(birthDate!!.format(dateFormatter)).toString() else "-",
   education = education,
   job = occupation,
   ethnicity = ethnicity,
