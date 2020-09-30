@@ -60,7 +60,6 @@ class RegionalHouseCandidateListController() : MvvmController<ControllerRegional
                 else -> 1
               }
             }
-
           }
         }
       } else {
