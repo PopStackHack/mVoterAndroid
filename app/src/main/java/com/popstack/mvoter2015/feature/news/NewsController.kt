@@ -6,8 +6,8 @@ import android.view.MenuItem
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.bluelinelabs.conductor.RouterTransaction
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvvmController
@@ -23,6 +23,8 @@ import com.popstack.mvoter2015.helper.conductor.requireActivity
 import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.helper.conductor.setSupportActionBar
 import com.popstack.mvoter2015.helper.conductor.supportActionBar
+import com.popstack.mvoter2015.helper.extensions.isLandScape
+import com.popstack.mvoter2015.helper.extensions.isTablet
 import com.popstack.mvoter2015.logging.HasTag
 import com.popstack.mvoter2015.paging.CommonLoadStateAdapter
 import kotlinx.coroutines.flow.collectLatest
@@ -64,10 +66,18 @@ class NewsController : MvvmController<ControllerNewsBinding>(), HasTag, CanTrack
       adapter = newsPagingAdapter.withLoadStateFooter(
         footer = CommonLoadStateAdapter(newsPagingAdapter::retry)
       )
-      layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+      layoutManager = if (requireContext().isTablet() && requireContext().isLandScape()) {
+        GridLayoutManager(requireContext(), 2)
+      } else {
+        LinearLayoutManager(requireContext())
+      }
       val dimen =
         context.resources.getDimensionPixelSize(R.dimen.recycler_view_item_margin)
-      addItemDecoration(RecyclerViewMarginDecoration(dimen, 0))
+      if (requireContext().isTablet() && requireContext().isLandScape()) {
+        addItemDecoration(RecyclerViewMarginDecoration(dimen, 2))
+      } else {
+        addItemDecoration(RecyclerViewMarginDecoration(dimen, 0))
+      }
     }
 
     binding.btnRetry.setOnClickListener {
