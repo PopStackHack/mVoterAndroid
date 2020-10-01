@@ -31,6 +31,7 @@ import com.popstack.mvoter2015.helper.conductor.requireActivityAsAppCompatActivi
 import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.helper.conductor.setSupportActionBar
 import com.popstack.mvoter2015.helper.conductor.supportActionBar
+import com.popstack.mvoter2015.helper.extensions.isLandScape
 import com.popstack.mvoter2015.helper.extensions.isTablet
 import com.popstack.mvoter2015.helper.intent.Intents
 import com.popstack.mvoter2015.logging.HasTag
@@ -109,7 +110,7 @@ class FaqController : MvvmController<ControllerFaqBinding>(), HasTag, CanTrackSc
         header = CommonLoadStateAdapter(faqPagingAdapter::retry),
         footer = CommonLoadStateAdapter(faqPagingAdapter::retry)
       )
-      layoutManager = if (requireContext().isTablet()) {
+      layoutManager = if (requireContext().isTablet() && requireContext().isLandScape()) {
         GridLayoutManager(requireContext(), 2).also {
           it.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int {
