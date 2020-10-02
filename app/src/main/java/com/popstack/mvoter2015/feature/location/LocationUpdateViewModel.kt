@@ -22,7 +22,6 @@ class LocationUpdateViewModel @Inject constructor(
 ) : ViewModel() {
 
   sealed class ViewEvent {
-    object ShowLocationRequesting : ViewEvent()
     object EnableDoneButton : ViewEvent()
     object NavigateToHomePage : ViewEvent()
     object ShowConstituencyLoading : ViewEvent()

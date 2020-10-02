@@ -1,9 +1,9 @@
 package com.popstack.mvoter2015.helper.extensions
 
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.Spinner
+import timber.log.Timber
 
 /**
  * Created by Vincent on 2/13/20
@@ -11,7 +11,7 @@ import android.widget.Spinner
 fun Spinner.safeSelection(
   position: Int,
   onError: ((Exception) -> (Unit)) = { error ->
-    Log.e("SpinnerExtensions", Log.getStackTraceString(error))
+    Timber.e(error)
   },
   doAfterSelect: ((Int) -> (Unit)) = { _ ->
     //Do Nothing

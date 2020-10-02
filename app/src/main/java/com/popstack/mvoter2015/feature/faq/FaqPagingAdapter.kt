@@ -138,7 +138,6 @@ class FaqPagingAdapter(
           } else {
             tvAnswer.maxLines = 2
             tvAnswer.ellipsize = TextUtils.TruncateAt.END
-            tvAnswer.ellipsize
             ivShare.isVisible = false
             tvAnswer.isClickable = false
           }

@@ -110,7 +110,7 @@ dependencies {
   implementation(AndroidXPaging.common)
   implementation(AndroidXPaging.runtime)
   implementation(AndroidXDataStore.preferences)
-  implementation("androidx.browser:browser:1.3.0-alpha05")
+  implementation("androidx.browser:browser:1.3.0-alpha06")
 
   implementation(Conductor.core)
   implementation(Conductor.viewpager)

@@ -50,9 +50,9 @@
         android:drawableStart="@drawable/ic_star_white_12"
         android:drawablePadding="2dp"
         android:includeFontPadding="false"
-        android:paddingLeft="4dp"
+        android:paddingStart="4dp"
         android:paddingTop="2dp"
-        android:paddingRight="8dp"
+        android:paddingEnd="8dp"
         android:paddingBottom="2dp"
         android:text="@string/badge_is_elected"
         android:textColor="@color/text_on_accent"
@@ -156,7 +156,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="2dp"
-        android:text="နှစ်"
+        android:text="@string/age"
         android:textColor="@color/text_secondary"
         app:layout_constraintBottom_toBottomOf="@+id/tvAge"
         app:layout_constraintStart_toEndOf="@id/tvAge"
@@ -190,7 +190,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="@dimen/candidate_details_horizontal_section_spacing"
         android:layout_marginEnd="16dp"
-        android:text="ပညာအရည်အချင်း"
+        android:text="@string/education"
         app:layout_constraintEnd_toStartOf="@id/guideline50PercentVertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvBirthday" />
@@ -203,7 +203,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="@dimen/candidate_details_horizontal_section_spacing"
         android:layout_marginEnd="16dp"
-        android:text="အလုပ်အကိုင်"
+        android:text="@string/work"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/guideline50PercentVertical"
         app:layout_constraintTop_toBottomOf="@+id/tvBirthday" />
@@ -254,7 +254,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="@dimen/candidate_details_horizontal_section_spacing"
         android:layout_marginEnd="16dp"
-        android:text="လူမျိုး"
+        android:text="@string/ethnicity"
         app:layout_constraintEnd_toStartOf="@id/guideline50PercentVertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/barrierEducationAndWork" />
@@ -267,7 +267,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="@dimen/candidate_details_horizontal_section_spacing"
         android:layout_marginEnd="16dp"
-        android:text="ဘာသာ"
+        android:text="@string/religion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/guideline50PercentVertical"
         app:layout_constraintTop_toBottomOf="@+id/barrierEducationAndWork" />
@@ -317,7 +317,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="@dimen/candidate_details_horizontal_section_spacing"
-        android:text="မိခင်"
+        android:text="@string/mother"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/barrierRaceAndReligion" />
 
@@ -327,7 +327,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/candidate_details_vertical_section_spacing"
-        android:text="အမည်"
+        android:text="@string/name"
         app:layout_constraintEnd_toStartOf="@+id/guidelineEnd16"
         app:layout_constraintStart_toEndOf="@+id/tvMotherTitle"
         app:layout_constraintTop_toTopOf="@+id/tvMotherTitle" />
@@ -350,7 +350,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:text="လူမျိုး"
+        android:text="@string/ethnicity"
         app:layout_constraintEnd_toStartOf="@id/guideline50PercentVertical"
         app:layout_constraintStart_toStartOf="@+id/tvMotherName"
         app:layout_constraintTop_toBottomOf="@+id/tvMotherName" />
@@ -363,7 +363,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:text="ဘာသာ"
+        android:text="@string/religion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/guideline50PercentVertical"
         app:layout_constraintTop_toBottomOf="@+id/tvMotherName" />
@@ -412,7 +412,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="@dimen/candidate_details_horizontal_section_spacing"
-        android:text="ဖခင်"
+        android:text="@string/father"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/barrierMotherRaceAndMotherReligion" />
 
@@ -422,7 +422,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/candidate_details_vertical_section_spacing"
-        android:text="အမည်"
+        android:text="@string/mother"
         app:layout_constraintEnd_toStartOf="@+id/guidelineEnd16"
         app:layout_constraintStart_toEndOf="@+id/tvFatherTitle"
         app:layout_constraintTop_toTopOf="@+id/tvFatherTitle" />
@@ -445,7 +445,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:text="လူမျိုး"
+        android:text="@string/ethnicity"
         app:layout_constraintEnd_toStartOf="@id/guideline50PercentVertical"
         app:layout_constraintStart_toStartOf="@+id/tvFatherName"
         app:layout_constraintTop_toBottomOf="@+id/tvFatherName" />
@@ -458,7 +458,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:text="ဘာသာ"
+        android:text="@string/religion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/guideline50PercentVertical"
         app:layout_constraintTop_toBottomOf="@+id/tvFatherName" />
@@ -506,7 +506,6 @@
         android:layout_height="36dp"
         android:layout_marginTop="@dimen/candidate_details_horizontal_section_spacing"
         android:src="@drawable/ic_candidate_filled"
-        android:text="ပြိုင်ဘက် ကိုယ်စားလှယ်လောင်းများ"
         android:tint="@color/accent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -517,7 +516,7 @@
         style="@style/TextTitle3.Bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ပြိုင်ဘက် ကိုယ်စားလှယ်လောင်းများ"
+        android:text="@string/rival_candidates"
         app:layout_constraintEnd_toEndOf="@+id/ivRivalCandidates"
         app:layout_constraintStart_toStartOf="@+id/ivRivalCandidates"
         app:layout_constraintTop_toBottomOf="@+id/ivRivalCandidates" />
