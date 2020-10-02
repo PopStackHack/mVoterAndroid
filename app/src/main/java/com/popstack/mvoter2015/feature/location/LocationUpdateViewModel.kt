@@ -2,7 +2,6 @@ package com.popstack.mvoter2015.feature.location
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.popstack.mvoter2015.data.android.location.LocationProvider
 import com.popstack.mvoter2015.domain.location.model.StateRegionTownship
 import com.popstack.mvoter2015.domain.location.model.Ward
 import com.popstack.mvoter2015.domain.location.usecase.GetWardDetails
@@ -11,13 +10,11 @@ import com.popstack.mvoter2015.domain.location.usecase.SaveUserWard
 import com.popstack.mvoter2015.exception.GlobalExceptionHandler
 import com.popstack.mvoter2015.helper.LocalityUtils
 import com.popstack.mvoter2015.helper.livedata.SingleLiveEvent
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import javax.inject.Inject
 
 class LocationUpdateViewModel @Inject constructor(
-  private val locationProvider: LocationProvider,
   private val getWardDetails: GetWardDetails,
   private val saveUserWard: SaveUserWard,
   private val saveUserStateRegionTownship: SaveUserStateRegionTownship,
@@ -44,16 +41,6 @@ class LocationUpdateViewModel @Inject constructor(
 
   val data = Data()
   val viewEventLiveData = SingleLiveEvent<ViewEvent>()
-
-  fun requestLocation() {
-    viewModelScope.launch {
-      viewEventLiveData.postValue(ViewEvent.ShowLocationRequesting)
-      locationProvider.getLocationUpdate()
-        .collectLatest { latLng ->
-          Timber.d("Location : $latLng")
-        }
-    }
-  }
 
   fun onTownshipChosen(
     chosenStateRegion: String,
