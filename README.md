@@ -1,12 +1,13 @@
 # mVoter 2020
 
-This repo contains the code for the mVoter 2020 Android App. mVoter 2020 is a update version of previously 2017 version with addition of new features and data for 2020. The app is open sourced for educational purpose, and because we believe that softwares made with public money should be publicly available. Read more on [Public Money, Public Code](https://publiccode.asia/) here.
+This repo contains the code for the mVoter 2020 Android App. mVoter 2020 is an updated version of previously 2017 version with addition of new features and data for 2020. The app is open sourced for educational purpose, and because we believe that softwares made with public money should be publicly available. Read more on [Public Money, Public Code](https://publiccode.asia/) here.
 
 ## Table Of Content
 
 * [Specification](#specification)
   * [Technical Specification](#technical-specification)
-  * [Download](#download)
+* [Download](#download)
+* [Contributing](#contributing)
 
 ## Specification
 
@@ -23,9 +24,13 @@ The App is targeted for the following specification
 - **Minium Sdk version** : 21 (Android Lollipop)
 - **Target Sdk version** : 30 (Android 11)
 
-### Download
+## Contributing
 
-The app can be downloaded from [Play Store](https://play.google.com/store/apps/details?id=com.popstack.mvoter2015). If your phone doesn't have Play Store, you can also manually download the apk from our website.
+You're welcomed to submit issues and pull requests as long as you adhere to Github community guideline. Any form of contribution is welcomed, from typo error to submitting a new feature.
+
+## Download
+
+The app can be downloaded from [Play Store](https://play.google.com/store/apps/details?id=com.popstack.mvoter2015). If your phone doesn't have Play Store, you can also manually download the apk from [our website](https://mvoterapp.com/).
 
 ## License
 
