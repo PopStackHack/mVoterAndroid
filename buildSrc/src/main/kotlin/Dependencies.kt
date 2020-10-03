@@ -5,8 +5,8 @@ object BuildConfig {
 
   private const val versionMajor = 4
   private const val versionMinor = 0
-  private const val versionPatch = 0
-  private const val versionBuild = 9
+  private const val versionPatch = 1
+  private const val versionBuild = 0
 
   const val versionName =
     "$versionMajor.$versionMinor.$versionPatch"
