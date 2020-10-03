@@ -1,0 +1,39 @@
+import com.popstack.mvoter2015.domain.candidate.model.CandidateGender;
+import com.popstack.mvoter2015.domain.candidate.model.CandidateId;
+import com.popstack.mvoter2015.domain.candidate.model.CandidateParent;
+import com.popstack.mvoter2015.domain.party.model.PartyId;
+import com.popstack.mvoter2015.domain.constituency.model.ConstituencyId;
+import com.popstack.mvoter2015.domain.constituency.model.HouseType;
+import java.time.LocalDate;
+import java.lang.Boolean;
+
+CREATE TABLE CandidateTable2(
+  id TEXT PRIMARY KEY NOT NULL,
+  name TEXT NOT NULL,
+  sortingName TEXT NOT NULL,
+  sortingBallotOrder INTEGER NOT NULL,
+  gender TEXT AS CandidateGender NOT NULL,
+  occupation TEXT NOT NULL,
+  photoUrl TEXT NOT NULL,
+  education TEXT NOT NULL,
+  religion TEXT NOT NULL,
+  age INTEGER,
+  birthDate INTEGER AS LocalDate,
+  ethnicity TEXT NOT NULL,
+  father TEXT AS CandidateParent,
+  mother TEXT AS CandidateParent,
+  individualLogo TEXT,
+  residentalAddress TEXT,
+  isEthnicCandidate INTEGER AS Boolean NOT NULL,
+  representingEthnicity TEXT,
+  partyId TEXT AS PartyId,
+  constituencyId TEXT NOT NULL,
+  queryConstituencyid TEXT,
+  isElected INTEGER AS Boolean NOT NULL DEFAULT 0,
+  FOREIGN KEY(partyId) REFERENCES PartyTable(id),
+  FOREIGN KEY(constituencyId) REFERENCES ConstituencyTable(id) ON DELETE CASCADE,
+  FOREIGN KEY(queryConstituencyid) REFERENCES ConstituencyTable(id) ON DELETE CASCADE
+);
+INSERT INTO CandidateTable2 SELECT * FROM CandidateTable;
+DROP TABLE CandidateTable;
+ALTER TABLE CandidateTable2 RENAME TO CandidateTable;

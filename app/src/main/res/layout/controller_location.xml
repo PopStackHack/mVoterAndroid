@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
-  xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent">
 
@@ -10,7 +9,7 @@
     android:layout_width="36dp"
     android:layout_height="36dp"
     android:layout_marginTop="16dp"
-    android:layout_marginRight="16dp"
+    android:layout_marginEnd="16dp"
     android:src="@drawable/ic_close_circle_transparent_24"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintTop_toTopOf="parent" />
@@ -42,24 +41,6 @@
     app:layout_constraintHorizontal_bias="0.5"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-  <TextView
-    android:id="@+id/tvRequestLocation"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="16dp"
-    android:layout_marginTop="8dp"
-    android:layout_marginEnd="16dp"
-    android:drawableStart="@drawable/ic_location_on_24"
-    android:drawableTint="@color/accent"
-    android:gravity="center"
-    android:textColor="@color/text_primary"
-    android:visibility="gone"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    tools:text="သင့်တည်နေရာကိုရယူနေပါသည်"
-    tools:visibility="gone" />
 
   <com.google.android.material.button.MaterialButton
     android:id="@+id/buttonDone"
@@ -150,6 +131,6 @@
     android:src="@drawable/mvoter_logo_horizontal"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="@+id/tvRequestLocation" />
+    app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

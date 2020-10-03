@@ -7,6 +7,7 @@ import android.view.MenuItem
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bluelinelabs.conductor.RouterTransaction
 import com.popstack.mvoter2015.R
@@ -25,19 +26,20 @@ import com.popstack.mvoter2015.feature.home.BottomNavigationHostViewModelStore
 import com.popstack.mvoter2015.feature.settings.SettingsController
 import com.popstack.mvoter2015.feature.share.ShareUrlFactory
 import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
-import com.popstack.mvoter2015.helper.ViewVisibilityDebounceHandler
 import com.popstack.mvoter2015.helper.conductor.requireActivity
 import com.popstack.mvoter2015.helper.conductor.requireActivityAsAppCompatActivity
 import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.helper.conductor.setSupportActionBar
 import com.popstack.mvoter2015.helper.conductor.supportActionBar
+import com.popstack.mvoter2015.helper.extensions.isLandScape
+import com.popstack.mvoter2015.helper.extensions.isTablet
 import com.popstack.mvoter2015.helper.intent.Intents
 import com.popstack.mvoter2015.logging.HasTag
 import com.popstack.mvoter2015.paging.CommonLoadStateAdapter
-import javax.inject.Inject
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 class FaqController : MvvmController<ControllerFaqBinding>(), HasTag, CanTrackScreen {
 
@@ -103,31 +105,36 @@ class FaqController : MvvmController<ControllerFaqBinding>(), HasTag, CanTrackSc
       faqPagingAdapter.retry()
     }
 
-    binding.rvFaqPlaceholder.apply {
-      adapter = FaqPlaceholderRecyclerViewAdapter()
-      layoutManager = LinearLayoutManager(requireContext())
-      val dimen =
-        requireContext().resources.getDimensionPixelSize(R.dimen.recycler_view_item_margin)
-      addItemDecoration(RecyclerViewMarginDecoration(dimen, 1))
-    }
-
     binding.rvFaq.apply {
       adapter = faqPagingAdapter.withLoadStateHeaderAndFooter(
         header = CommonLoadStateAdapter(faqPagingAdapter::retry),
         footer = CommonLoadStateAdapter(faqPagingAdapter::retry)
       )
-      layoutManager = LinearLayoutManager(requireContext())
+      layoutManager = if (requireContext().isTablet() && requireContext().isLandScape()) {
+        GridLayoutManager(requireContext(), 2).also {
+          it.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+            override fun getSpanSize(position: Int): Int {
+              return when (faqPagingAdapter.getItemViewType(position)) {
+                FaqPagingAdapter.VIEW_TYPE_BALLOT_EXAMPLE -> 1
+                FaqPagingAdapter.VIEW_TYPE_PROHIBITION -> 1
+                else -> 2
+              }
+            }
+          }
+        }
+      } else {
+        LinearLayoutManager(requireContext())
+      }
       val dimen =
         requireContext().resources.getDimensionPixelSize(R.dimen.recycler_view_item_margin)
       addItemDecoration(RecyclerViewMarginDecoration(dimen, 1))
     }
 
-    val placeHolderVisibilityHandler = ViewVisibilityDebounceHandler(binding.rvFaqPlaceholder)
-
     faqPagingAdapter.addLoadStateListener { loadStates ->
       val refreshLoadState = loadStates.refresh
       binding.rvFaq.isVisible = refreshLoadState is LoadState.NotLoading
-      placeHolderVisibilityHandler.setVisible(refreshLoadState is LoadState.Loading)
+      if (refreshLoadState is LoadState.Loading) binding.progressIndicator.show()
+      else binding.progressIndicator.hide()
       binding.tvErrorMessage.isVisible = refreshLoadState is LoadState.Error
       binding.btnRetry.isVisible = refreshLoadState is LoadState.Error
 

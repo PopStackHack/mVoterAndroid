@@ -3,9 +3,7 @@
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  android:background="?android:colorBackground">
-
+  android:layout_height="match_parent">
 
   <androidx.core.widget.NestedScrollView
     android:id="@+id/layoutContent"
@@ -323,13 +321,14 @@
   </com.google.android.material.appbar.AppBarLayout>
 
   <com.google.android.material.progressindicator.ProgressIndicator
-    android:id="@+id/progressBar"
+    android:id="@+id/progressIndicator"
     style="@style/Widget.MaterialComponents.ProgressIndicator.Linear.Indeterminate"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="bottom"
     android:visibility="gone"
     app:indicatorColor="@color/accent"
+    app:minHideDelay="500"
     tools:visibility="visible" />
 
   <LinearLayout

@@ -32,8 +32,11 @@ android {
   buildTypes {
     getByName("debug") {
       isMinifyEnabled = false
-      buildConfigField("String", "APP_SECRET", "\"$DEVELOPMENT_API_SECRET\"")
-      buildConfigField("String", "BASE_URL", "\"http://mvoter.kwee.online/api/v1/\"")
+      //Dev server is shut down for cost saving, using prod
+//      buildConfigField("String", "APP_SECRET", "\"$DEVELOPMENT_API_SECRET\"")
+//      buildConfigField("String", "BASE_URL", "\"http://mvoter.kwee.online/api/v1/\"")
+      buildConfigField("String", "APP_SECRET", "\"$RELEASE_API_SECRET\"")
+      buildConfigField("String", "BASE_URL", "\"https://maepaysoh.org/api/v1/\"")
     }
 
     getByName("release") {

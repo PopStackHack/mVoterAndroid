@@ -4,7 +4,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.ListAdapter
-import coil.api.load
+import coil.load
 import coil.size.Scale
 import coil.transform.CircleCropTransformation
 import com.popstack.mvoter2015.R

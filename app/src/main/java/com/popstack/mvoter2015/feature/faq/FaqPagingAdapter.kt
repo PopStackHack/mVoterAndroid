@@ -44,13 +44,17 @@ class FaqPagingAdapter(
   private val expandedFaqSet = mutableSetOf<FaqId>()
 
   companion object {
-    private const val VIEW_TYPE_BALLOT_EXAMPLE = 1
-    private const val VIEW_TYPE_PROHIBITION = 2
-    private const val VIEW_TYPE_LAWS_AND_UNFAIR_PRACTICE = 3
-    private const val VIEW_TYPE_FAQ = 4
+    const val VIEW_TYPE_BALLOT_EXAMPLE = 1
+    const val VIEW_TYPE_PROHIBITION = 2
+    const val VIEW_TYPE_LAWS_AND_UNFAIR_PRACTICE = 3
+    const val VIEW_TYPE_FAQ = 4
   }
 
   override fun getItemViewType(position: Int): Int {
+    //Sometimes crashing with Index Out of Bounds
+    if (position >= itemCount) {
+      return super.getItemViewType(position)
+    }
     getItem(position)?.let { itemAtIndex ->
       return when (itemAtIndex) {
         FaqViewItem.BallotExample -> VIEW_TYPE_BALLOT_EXAMPLE
@@ -129,11 +133,11 @@ class FaqPagingAdapter(
             tvAnswer.maxLines = Int.MAX_VALUE
             tvAnswer.ellipsize = null
             ivShare.isVisible = true
-            LinkifyCompat.addLinks(tvAnswer, Linkify.WEB_URLS)
+            val isAdded = LinkifyCompat.addLinks(tvAnswer, Linkify.WEB_URLS)
+            tvAnswer.isClickable = isAdded
           } else {
             tvAnswer.maxLines = 2
             tvAnswer.ellipsize = TextUtils.TruncateAt.END
-            tvAnswer.ellipsize
             ivShare.isVisible = false
             tvAnswer.isClickable = false
           }

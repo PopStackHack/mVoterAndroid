@@ -15,7 +15,7 @@ data class Candidate(
   val education: String,
   val religion: String,
   val age: Int?,
-  val birthDate: LocalDate,
+  val birthDate: LocalDate?,
   val constituency: Constituency,
   val ethnicity: String,
   val father: CandidateParent?,

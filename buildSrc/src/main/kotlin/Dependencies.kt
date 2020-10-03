@@ -5,8 +5,8 @@ object BuildConfig {
 
   private const val versionMajor = 4
   private const val versionMinor = 0
-  private const val versionPatch = 0
-  private const val versionBuild = 9
+  private const val versionPatch = 1
+  private const val versionBuild = 0
 
   const val versionName =
     "$versionMajor.$versionMinor.$versionPatch"
@@ -93,7 +93,7 @@ object Material {
 }
 
 object Coil {
-  const val coil = "io.coil-kt:coil:0.9.5"
+  const val coil = "io.coil-kt:coil:1.0.0-rc3"
 }
 
 object Conductor {

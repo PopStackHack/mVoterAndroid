@@ -18,7 +18,7 @@ CREATE TABLE CandidateTable(
   education TEXT NOT NULL,
   religion TEXT NOT NULL,
   age INTEGER,
-  birthDate INTEGER AS LocalDate NOT NULL,
+  birthDate INTEGER AS LocalDate,
   ethnicity TEXT NOT NULL,
   father TEXT AS CandidateParent,
   mother TEXT AS CandidateParent,

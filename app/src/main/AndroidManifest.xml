@@ -3,20 +3,18 @@
   xmlns:tools="http://schemas.android.com/tools"
   package="com.popstack.mvoter2015">
 
-  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
   <uses-permission
     android:name="android.permission.READ_PHONE_STATE"
     tools:node="remove" />
 
   <application
     android:name=".MVoterApp"
-    android:allowBackup="true"
+    android:allowBackup="false"
     android:icon="@mipmap/ic_launcher"
     android:label="@string/app_name"
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
-    android:theme="@style/AppTheme"
-    android:usesCleartextTraffic="true">
+    android:theme="@style/AppTheme">
 
     <activity android:name=".feature.HostActivity">
       <intent-filter>
@@ -70,8 +68,6 @@
       </intent-filter>
 
 
-
-
     </activity>
 
     <activity
@@ -81,6 +77,8 @@
     <activity
       android:name=".feature.faq.ballot.BallotExampleSelectActivity"
       android:theme="@style/AppTheme.Transparent" />
+
+    <activity android:name=".feature.image.FullScreenImageViewActivity" />
 
     <meta-data
       android:name="firebase_crashlytics_collection_enabled"

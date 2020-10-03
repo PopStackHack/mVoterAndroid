@@ -57,11 +57,11 @@ dependencies {
 
   implementation(AndroidXDataStore.preferences)
 
-  implementation("com.google.android.gms:play-services-location:17.0.0")
-
   //Dagger
   daggerJvm()
   daggerAndroid()
+
+  implementation("com.google.android.gms:play-services-base:17.4.0")
 
   //Testing
   testImplementation(CommonLibs.junit)

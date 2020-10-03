@@ -2,7 +2,7 @@ package com.popstack.mvoter2015.feature.party.listing
 
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
-import coil.api.load
+import coil.load
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.recyclerview.ViewBindingViewHolder
 import com.popstack.mvoter2015.databinding.ItemPartyBinding

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
@@ -13,9 +13,9 @@
     android:backgroundTint="@color/primary"
     android:orientation="vertical"
     app:layout_constraintEnd_toEndOf="parent"
-    app:liftOnScroll="true"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent">
+    app:layout_constraintTop_toTopOf="parent"
+    app:liftOnScroll="true">
 
     <com.google.android.material.appbar.MaterialToolbar
       android:id="@+id/toolBar"
@@ -36,60 +36,58 @@
 
   </com.google.android.material.appbar.AppBarLayout>
 
-  <androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/rvFaqPlaceholder"
+  <com.google.android.material.progressindicator.ProgressIndicator
+    android:id="@+id/progressIndicator"
+    style="@style/Widget.MaterialComponents.ProgressIndicator.Linear.Indeterminate"
     android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_marginTop="112dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
     android:visibility="gone"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    tools:itemCount="10"
-    tools:listitem="@layout/item_faq_placeholder" />
+    app:indicatorColor="@color/accent"
+    app:minHideDelay="500"
+    tools:visibility="visible" />
 
   <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/rvFaq"
     android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_marginTop="112dp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    tools:itemCount="10"
-    tools:listitem="@layout/item_faq" />
-
-  <TextView
-    android:id="@+id/tvErrorMessage"
-    style="@style/TextExtraLarge.Error"
-    android:layout_width="0dp"
     android:layout_height="wrap_content"
-    android:layout_marginStart="16dp"
-    android:layout_marginEnd="16dp"
-    android:gravity="center"
-    android:visibility="gone"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/appBarLayout"
-    tools:text="@string/error_no_internet"
+    android:scrollbars="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:listitem="@layout/item_party"
     tools:visibility="gone" />
 
-  <com.google.android.material.button.MaterialButton
-    android:id="@+id/btnRetry"
-    style="@style/TextLarge.Accent"
-    android:layout_width="wrap_content"
+  <LinearLayout
+    android:id="@+id/contentError"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
-    android:text="@string/retry"
-    android:visibility="gone"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/tvErrorMessage"
-    app:rippleColor="@color/grey"
-    app:strokeColor="@color/accent"
-    tools:visibility="gone" />
+    android:layout_gravity="center"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+      android:id="@+id/tvErrorMessage"
+      style="@style/TextExtraLarge.Error"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="16dp"
+      android:layout_marginEnd="16dp"
+      android:gravity="center"
+      android:visibility="gone"
+      tools:text="@string/error_no_internet"
+      tools:visibility="visible" />
+
+    <com.google.android.material.button.MaterialButton
+      android:id="@+id/btnRetry"
+      style="@style/TextLarge.Accent"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center_horizontal"
+      android:layout_marginTop="8dp"
+      android:text="@string/retry"
+      android:visibility="gone"
+      app:rippleColor="@color/grey"
+      app:strokeColor="@color/accent"
+      tools:visibility="visible" />
+
+  </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

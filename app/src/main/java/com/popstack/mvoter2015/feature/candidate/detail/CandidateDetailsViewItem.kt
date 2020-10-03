@@ -33,7 +33,6 @@ data class CandidateInfoViewItem(
   val fatherName: String,
   val fatherEthnicity: String,
   val fatherReligion: String,
-  val residentialAddress: String?,
   val isElected: Boolean
 )
 
@@ -56,8 +55,7 @@ fun Candidate.toCandidateInfoViewItem() = CandidateInfoViewItem(
       .orEmpty()
   )
     .toString(),
-  birthday = BurmeseNumberUtils.convertEnglishToBurmeseNumber(birthDate.format(dateFormatter))
-    .toString(),
+  birthday = if (birthDate != null) BurmeseNumberUtils.convertEnglishToBurmeseNumber(birthDate!!.format(dateFormatter)).toString() else "-",
   education = education,
   job = occupation,
   ethnicity = ethnicity,
@@ -68,6 +66,5 @@ fun Candidate.toCandidateInfoViewItem() = CandidateInfoViewItem(
   fatherName = father?.name.orEmpty(),
   fatherEthnicity = father?.ethnicity.orEmpty(),
   fatherReligion = father?.religion.orEmpty(),
-  residentialAddress = residentialAddress,
   isElected = isElected
 )

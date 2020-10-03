@@ -33,7 +33,7 @@ class CountDownCalculatorTest {
   }
 
   @Test
-  fun test2DaysLeft() {
+  fun test2DaysLeftLessThanExact24Hours() {
     val fromDateTime = LocalDateTime.of(2020, Month.NOVEMBER, 6, 2, 0)
     val toDateTime = LocalDateTime.of(2020, Month.NOVEMBER, 8, 6, 0)
 
@@ -44,7 +44,7 @@ class CountDownCalculatorTest {
   }
 
   @Test
-  fun test2DaysLeftSecondCase() {
+  fun test2DaysLeftSameHour() {
     val fromDateTime = LocalDateTime.of(2020, Month.NOVEMBER, 6, 6, 0)
     val toDateTime = LocalDateTime.of(2020, Month.NOVEMBER, 8, 6, 0)
 
@@ -55,7 +55,7 @@ class CountDownCalculatorTest {
   }
 
   @Test
-  fun test2DaysLeftThirdCase() {
+  fun test2DaysLeftMoreThanExact24Hours() {
     val fromDateTime = LocalDateTime.of(2020, Month.NOVEMBER, 6, 10, 0)
     val toDateTime = LocalDateTime.of(2020, Month.NOVEMBER, 8, 6, 0)
 
@@ -143,7 +143,7 @@ class CountDownCalculatorTest {
   }
 
   @Test
-  fun testDatePassedSecond() {
+  fun testDatePassedShowNone() {
     val fromDateTime = LocalDateTime.of(2020, Month.DECEMBER, 20, 6, 0, 0)
     val toDateTime = LocalDateTime.of(2020, Month.NOVEMBER, 8, 6, 0, 0)
 

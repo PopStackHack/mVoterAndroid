@@ -171,7 +171,7 @@ class CandidateCacheSourceImpl @Inject constructor(
     education: String,
     religion: String,
     age: Long?,
-    birthDate: LocalDate,
+    birthDate: LocalDate?,
     ethnicity: String,
     father: CandidateParent?,
     mother: CandidateParent?,

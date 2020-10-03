@@ -2,8 +2,6 @@ package com.popstack.mvoter2015.feature.location
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.animation.AlphaAnimation
-import android.view.animation.Animation
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
@@ -20,7 +18,6 @@ import com.popstack.mvoter2015.helper.conductor.requireActivity
 import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.helper.conductor.supportActionBar
 import com.popstack.mvoter2015.logging.HasTag
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class LocationUpdateController :
@@ -43,28 +40,11 @@ class LocationUpdateController :
     AppFirstTimeConfig(requireContext())
   }
 
-  companion object {
-    private const val DELAY_PERMISSION_REQUEST_IN_MILLISECONDS = 500L
-    private const val ALPHA_FULL = 1.0f
-    private const val ALPHA_NONE = 0.0f
-    private const val ANIMATION_DURATION_IN_MILLISECONDS = 1000L
-  }
-
   override fun onBindView(savedViewState: Bundle?) {
     super.onBindView(savedViewState)
 
     lifecycleScope.launch {
       supportActionBar()?.setDisplayHomeAsUpEnabled(true)
-    }
-
-    lifecycleScope.launch {
-      delay(DELAY_PERMISSION_REQUEST_IN_MILLISECONDS)
-      // TODO : Integrate when the API is ready
-//      requireActivityAsAppCompatActivity().registerForActivityResult(ActivityResultContracts.RequestPermission()) { isAllowed ->
-//        if (isAllowed) {
-//          viewModel.requestLocation()
-//        }
-//      }.launch(Manifest.permission.ACCESS_FINE_LOCATION)
     }
 
     binding.buttonDone.icon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_baseline_check_white_24)
@@ -135,14 +115,6 @@ class LocationUpdateController :
 
   private fun observeViewEvent(viewEvent: LocationUpdateViewModel.ViewEvent) {
     when (viewEvent) {
-      LocationUpdateViewModel.ViewEvent.ShowLocationRequesting -> {
-        binding.tvRequestLocation.isVisible = true
-        val fadeInFadeOutAnimation = AlphaAnimation(ALPHA_FULL, ALPHA_NONE)
-        fadeInFadeOutAnimation.duration = ANIMATION_DURATION_IN_MILLISECONDS
-        fadeInFadeOutAnimation.repeatCount = Animation.INFINITE
-        fadeInFadeOutAnimation.repeatMode = Animation.REVERSE
-        binding.tvRequestLocation.animation = fadeInFadeOutAnimation
-      }
       LocationUpdateViewModel.ViewEvent.EnableDoneButton -> {
         binding.buttonDone.icon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_baseline_check_white_24)
         binding.buttonDone.isEnabled = true

@@ -12,7 +12,7 @@ import androidx.core.view.isVisible
 import androidx.core.widget.NestedScrollView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import coil.api.load
+import coil.load
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvvmController
@@ -20,6 +20,7 @@ import com.popstack.mvoter2015.databinding.ControllerPartyDetailBinding
 import com.popstack.mvoter2015.domain.party.model.PartyId
 import com.popstack.mvoter2015.domain.utils.convertToBurmeseNumber
 import com.popstack.mvoter2015.feature.analytics.screen.CanTrackScreen
+import com.popstack.mvoter2015.feature.image.FullScreenImageViewActivity
 import com.popstack.mvoter2015.feature.share.ShareUrlFactory
 import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewState
 import com.popstack.mvoter2015.helper.conductor.requireActivity
@@ -37,6 +38,7 @@ class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDeta
   override val tag: String = "PartyDetailController"
 
   override val screenName: String = "PartyDetailController"
+
   /***
    * Since we dont have factory yet
    * https://github.com/bluelinelabs/Conductor/pull/594
@@ -118,7 +120,8 @@ class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDeta
   }
 
   private fun observeViewItem(viewState: AsyncViewState<PartyDetailViewItem>) {
-    binding.progressBar.isVisible = viewState is AsyncViewState.Loading
+    if (viewState is AsyncViewState.Loading) binding.progressIndicator.show()
+    else binding.progressIndicator.hide()
     binding.buttonPolicy.isVisible = viewState is AsyncViewState.Success
     binding.cardViewTimeline.isVisible = viewState is AsyncViewState.Success
     binding.layoutContent.isVisible = !(viewState is AsyncViewState.Error)
@@ -132,6 +135,10 @@ class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDeta
           placeholder(R.drawable.placeholder_rect)
           error(R.drawable.placeholder_rect)
           crossfade(true)
+        }
+        binding.ivPartySeal.setOnClickListener {
+          val imageViewerIntent = FullScreenImageViewActivity.intent(requireContext(), viewItem.sealImage)
+          startActivity(imageViewerIntent)
         }
         binding.layoutContent.setOnScrollChangeListener(object : NestedScrollView.OnScrollChangeListener {
           private var isLiftedState = false
@@ -186,6 +193,11 @@ class PartyDetailController(bundle: Bundle) : MvvmController<ControllerPartyDeta
           placeholder(R.drawable.placeholder_rect)
           error(R.drawable.placeholder_rect)
           crossfade(true)
+        }
+
+        binding.ivPartyFlag.setOnClickListener {
+          val imageViewerIntent = FullScreenImageViewActivity.intent(requireContext(), viewItem.flagImage)
+          startActivity(imageViewerIntent)
         }
 
         binding.tvPartyNumber.text = viewItem.partyNumber.convertToBurmeseNumber()

@@ -31,21 +31,21 @@
 
   </com.google.android.material.appbar.MaterialToolbar>
 
+  <com.google.android.material.progressindicator.ProgressIndicator
+    android:id="@+id/progressIndicator"
+    style="@style/Widget.MaterialComponents.ProgressIndicator.Linear.Indeterminate"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:visibility="gone"
+    app:indicatorColor="@color/accent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/toolBar" />
+
   <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/rvCandidate"
     android:layout_width="match_parent"
     android:layout_height="0dp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/toolBar"
-    tools:listitem="@layout/item_candidate" />
-
-  <androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/rvPlaceholder"
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:visibility="gone"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
