@@ -6,8 +6,8 @@ This repo contains the code for the mVoter 2020 Android App. mVoter 2020 is an u
 
 * [Specification](#specification)
   * [Technical Specification](#technical-specification)
-* [Download](#download)
 * [Contributing](#contributing)
+* [Download](#download)
 
 ## Specification
 
