@@ -59,7 +59,7 @@
   <string name="badge_is_elected">အနိုင်ရ</string>
 
   <!--  Party-->
-  <string name="header_total_party_count">(၂၀၂၀) ခုနှစ် အထွေထွေရွေးကောက်ပွဲတွင် ဝင်ရောက်ယှဉ်ပြိုင်မည့် နိုင်ငံရေးပါတီ (၉၂) ခု</string>
+  <string name="header_total_party_count">(၂၀၂၀) ပြည့်နှစ် အထွေထွေရွေးကောက်ပွဲတွင် ဝင်ရောက်ယှဉ်ပြိုင်မည့် နိုင်ငံရေးပါတီ (၉၂) ခု</string>
 
   <string name="policy">ပါတီ မူဝါဒ</string>
   <string name="party_flag">ပါတီအလံ</string>
@@ -116,7 +116,7 @@
   <string name="empty_list_search_news">\"%1$s\" နှင့်သက်ဆိုင်သော သတင်းကို ရှာမတွေ့ပါ</string>
 
   <!-- How to Vote -->
-  <string name="how_to_vote_header_title">(၂၀၂၀) ခုနှစ် အထွေထွေ ရွေးကောက်ပွဲနေ့</string>
+  <string name="how_to_vote_header_title">(၂၀၂၀) ပြည့်နှစ် အထွေထွေ ရွေးကောက်ပွဲနေ့</string>
   <string name="election_date_nov_8">နိုဝင်ဘာလ (၈) ရက်</string>
   <string name="election_day">တနင်္ဂနွေနေ့</string>
   <string name="polling_station_opening_time">မဲရုံဖွင့်ချိန်</string>
