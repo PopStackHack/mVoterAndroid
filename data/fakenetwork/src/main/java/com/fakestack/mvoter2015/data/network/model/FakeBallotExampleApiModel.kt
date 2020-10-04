@@ -1,4 +1,4 @@
-package com.popstack.mvoter2015.data.network.api
+package com.fakestack.mvoter2015.data.network.model
 
 import com.popstack.mvoter2015.domain.faq.model.BallotExample
 import com.popstack.mvoter2015.domain.faq.model.BallotExampleCategory
@@ -7,14 +7,9 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class GetBallotExampleListResponse(
-  @Json(name = "data") val data: List<BallotExampleApiModel>
-)
-
-@JsonClass(generateAdapter = true)
-data class BallotExampleApiModel(
+data class FakeBallotExampleApiModel(
   @Json(name = "id") val ballotExampleId: String,
-  @Json(name = "attributes") val attributes: BallotExampleApiAttributes
+  @Json(name = "attributes") val attributes: FakeBallotExampleApiAttributes
 ) {
 
   fun mapToBallotExample(): BallotExample {
@@ -29,7 +24,7 @@ data class BallotExampleApiModel(
 }
 
 @JsonClass(generateAdapter = true)
-data class BallotExampleApiAttributes(
+data class FakeBallotExampleApiAttributes(
   @Json(name = "reason") val reason: String?,
   @Json(name = "is_valid") val isValid: Boolean,
   @Json(name = "category") val category: BallotExampleCategory,

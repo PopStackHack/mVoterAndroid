@@ -30,7 +30,7 @@ class LocationCacheSourceImpl @Inject constructor(
 
   companion object {
     private const val KEY_USER_STATE_REGION_TOWNSHIP = "saved_user_state_region_township"
-    private const val KEY_STATE_REGION = "state_region"
+    private const val KEY_STATE_REGION = "candidate_upper_house"
     private const val KEY_TOWNSHIP = "township"
   }
 
@@ -40,7 +40,7 @@ class LocationCacheSourceImpl @Inject constructor(
   )
 
   private val stateRegionTownshipStore: DataStore<StateTownshipProto> = context.createDataStore(
-    fileName = "state_region.pb",
+    fileName = "candidate_upper_house.pb",
     serializer = StateTownshipSerializer
   )
 

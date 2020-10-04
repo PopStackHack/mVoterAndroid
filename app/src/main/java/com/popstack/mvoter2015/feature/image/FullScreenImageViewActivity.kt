@@ -23,7 +23,6 @@ import com.popstack.mvoter2015.helper.extensions.showShortToast
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import okhttp3.HttpUrl.Companion.toHttpUrl
 import timber.log.Timber
 
 class FullScreenImageViewActivity : BaseActivity<ActivityImageFullScreenViewBinding>() {
@@ -123,8 +122,8 @@ class FullScreenImageViewActivity : BaseActivity<ActivityImageFullScreenViewBind
           (drawable as BitmapDrawable).bitmap
         } ?: return@withContext
 
-        val imagePath = imageUrl.toHttpUrl().pathSegments.last()
-        val imageName = "${imagePath.substring(0, imagePath.indexOf("."))}"
+        val imagePath = imageUrl.substring(imageUrl.lastIndexOf("/"))
+        val imageName = imagePath.substring(0, imagePath.indexOf("."))
 
         MediaStore.Images.Media.insertImage(contentResolver, bitmap, imageName, "")
         withContext(Dispatchers.Main) {

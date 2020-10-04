@@ -1,0 +1,2113 @@
+[
+  {
+    "id": "3275",
+    "type": "candidate",
+    "attributes": {
+      "name": "ဦးစောညိုသန်း",
+      "age": 56,
+      "education": "အလယ်တန်း",
+      "ethnicity": "ကရင်",
+      "gender": "Male",
+      "religion": "ခရစ်ယာန်",
+      "work": "လယ်ယာလုပ်ငန်း",
+      "is_individual": false,
+      "residential_address": null,
+      "is_ethnic_candidate": false,
+      "representing_ethnicity": null,
+      "ballot_order": 366,
+      "is_elected": false,
+      "birthday": "1964-01-13",
+      "image": "https://maepaysoh.org/candidate-profile/U Saw Nyo Than.jpg",
+      "sorting_name": "စောညိုသန်း",
+      "individual_logo": null,
+      "father": {
+        "name": "ဦးသန်း(ကွယ်လွန်)",
+        "ethnicity": "ကရင်",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "mother": {
+        "name": "ဒေါ်သက်ရှည်(ကွယ်လွန်)",
+        "ethnicity": "ကရင်",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "constituency": {
+        "id": "2892",
+        "type": "constituency",
+        "attributes": {
+          "name": "ကော့ကရိတ်မြို့နယ် ပြည်နယ်လွှတ်တော် မဲဆန္ဒနယ်အမှတ်(၂)",
+          "state_region": "ကရင်ပြည်နယ်",
+          "township": null,
+          "house": "state"
+        }
+      },
+      "party": {
+        "id": "112",
+        "type": "party",
+        "attributes": {
+          "abbreviation": "UBP",
+          "establishment_application_date": null,
+          "establishment_approval_date": "၄-၄-၂၀၁၉",
+          "flag_image": "https://maepaysoh.org/flags/80.UBPF.jpg",
+          "headquarter_address": "အိမ်အမှတ် (A-3)၊ ရာဇသင်္ဂဟလမ်း၊ ပုဗ္ဗသီရိမြို့နယ်၊ ဥတ္တရခရိုင်၊ နေပြည်တော်။",
+          "leaders_and_chairmen": [],
+          "member_count": "သူရဦးရွှေမန်း ပါ\n(၁၉) ဦး",
+          "name_burmese": "ပြည်ထောင်စုကောင်းကျိုးဆောင်ပါတီ",
+          "name_english": "Union Betterment Party",
+          "policy": "https://uec.gov.mm/show_data_content.php?name=UBP.pdf&type=page_multiple_photo&code=185&sno=9528&token=a751999fd34f1243a0085611d91039171530e17a2ab51c847405001d51ddd8a047d4a57a96db602b5065a3d4ef974887f1dc30a2af1a9bbee055f385fef19f57",
+          "region": "ပြည်ထောင်စုတစ်ဝန်းလုံး",
+          "registered_number": 112,
+          "registration_application_date": "၈-၄-၂၀၁၉",
+          "registration_approved_date": "၂၅-၄-၂၀၁၉",
+          "seal_image": "https://maepaysoh.org/seals/80.UBPS.jpg",
+          "contacts": [
+            "၀၉-၉၆၅၂၀၂၇၂၉ (ဦးကျော်စန်း)"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "3276",
+    "type": "candidate",
+    "attributes": {
+      "name": "ဦးစောသန်းကျော်ကျော်",
+      "age": 35,
+      "education": "၉တန်းအောင်",
+      "ethnicity": "ကရင်",
+      "gender": "Male",
+      "religion": "ဗုဒ္ဓ",
+      "work": "ဥယျာဉ်ခြံလုပ်ငန်း",
+      "is_individual": false,
+      "residential_address": null,
+      "is_ethnic_candidate": false,
+      "representing_ethnicity": null,
+      "ballot_order": 367,
+      "is_elected": false,
+      "birthday": "1985-04-02",
+      "image": "https://maepaysoh.org/candidate-profile/Rs- USawThanKyawKyaw.jpg",
+      "sorting_name": "စောသန်းကျော်ကျော်",
+      "individual_logo": null,
+      "father": {
+        "name": "ဦးမြတ်သောင်း(ကွယ်လွန်)",
+        "ethnicity": "ကရင်",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "mother": {
+        "name": "ဒေါ်မုဝေါ(ကွယ်လွန်)",
+        "ethnicity": "ကရင်",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "constituency": {
+        "id": "2892",
+        "type": "constituency",
+        "attributes": {
+          "name": "ကော့ကရိတ်မြို့နယ် ပြည်နယ်လွှတ်တော် မဲဆန္ဒနယ်အမှတ်(၂)",
+          "state_region": "ကရင်ပြည်နယ်",
+          "township": null,
+          "house": "state"
+        }
+      },
+      "party": {
+        "id": "16",
+        "type": "party",
+        "attributes": {
+          "abbreviation": "UDP",
+          "establishment_application_date": null,
+          "establishment_approval_date": "၆-၅-၂၀၁၀",
+          "flag_image": "https://maepaysoh.org/flags/13.UDPF.jpg",
+          "headquarter_address": "ကွင်းအမှတ်(၁၅၂၂)၊ လင်းနို့ဝင်းကွင်း၊ ဦးပိုင်အမှတ်(၂/၁၊ ယာမြေ)၊ ဇီးကုန်းကျေးရွာအုပ်စု၊ ပုဗ္ဗသီရိမြို့နယ်၊ ဥတ္တရသီရိခရိုင်၊ နေပြည်တော်။",
+          "leaders_and_chairmen": [
+            "ဦးကျော်မြင့်၊ ဒေါ်သီတာဇင်၊ (တွဲ-တွင်း/မှူး)"
+          ],
+          "member_count": "ဦးလှမြင့်၊ ဦးဘိုမောင်း ပါ \n(၁၇) ဦး",
+          "name_burmese": "ညီညွတ်သောဒီမိုကရက်တစ်ပါတီ (UDP)",
+          "name_english": "United Democratic Party",
+          "policy": "https://uec.gov.mm/show_data_content.php?name=15UnitedDemocraticPartyUDP.pdf&type=page_multiple_photo&code=53&sno=5793&token=45a324c1367831e98226cd2093c3b81e17842f846d8427e0575e33850c5186e82f6db09b99db21180d7390d040a3888b8ff64a22166628f7b238f9e3f1dd5f14",
+          "region": "ပြည်ထောင်စုတစ်ဝန်းလုံး",
+          "registered_number": 16,
+          "registration_application_date": "၁၇-၅-၂၀၁၀",
+          "registration_approved_date": "၂၆-၅-၂၀၁၀",
+          "seal_image": "https://maepaysoh.org/seals/13.UDPS.jpg",
+          "contacts": [
+            "၀၉ ၂၅၉၅၆၀၃၅၀(ဦးကြင်ဝမ်း)",
+            "၀၆၇၅၀၀၂၅၃",
+            "၀၆၇၅၀၀၂၃၆",
+            "၀၉ ၂၅၃၇၅၀၉၂၅",
+            "၀၉၂၅၀၇၉၉၄၁၂"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "3277",
+    "type": "candidate",
+    "attributes": {
+      "name": "ဦးမင်းကိုခိုင်",
+      "age": 50,
+      "education": "ဝိဇ္ဇာဘွဲ့(ပထဝီဝင်)",
+      "ethnicity": "ဗမာ+မွန်",
+      "gender": "Male",
+      "religion": "ဗုဒ္ဓ",
+      "work": "ပြည်နယ်ဝန်ကြီး၊ လူဝင်မှုကြီးကြပ်ရေးနှင့် လူ့စွမ်းအားအရင်းအမြစ်ဝန်ကြီးဌာန",
+      "is_individual": false,
+      "residential_address": null,
+      "is_ethnic_candidate": false,
+      "representing_ethnicity": null,
+      "ballot_order": 368,
+      "is_elected": false,
+      "birthday": "1970-07-27",
+      "image": "https://maepaysoh.org/candidate-profile/2020-RS-UMinKoKhaing-1.jpg",
+      "sorting_name": "မင်းကိုခိုင်",
+      "individual_logo": null,
+      "father": {
+        "name": "ဦးထွန်းသိန်း(ကွယ်လွန်)",
+        "ethnicity": "ဗမာ",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "mother": {
+        "name": "ဒေါ်ခင်မြင့်(ကွယ်လွန်)",
+        "ethnicity": "မွန်",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "constituency": {
+        "id": "2892",
+        "type": "constituency",
+        "attributes": {
+          "name": "ကော့ကရိတ်မြို့နယ် ပြည်နယ်လွှတ်တော် မဲဆန္ဒနယ်အမှတ်(၂)",
+          "state_region": "ကရင်ပြည်နယ်",
+          "township": null,
+          "house": "state"
+        }
+      },
+      "party": {
+        "id": "47",
+        "type": "party",
+        "attributes": {
+          "abbreviation": "NLD",
+          "establishment_application_date": null,
+          "establishment_approval_date": "၁၂-၁၂-၂၀၁၁",
+          "flag_image": "https://maepaysoh.org/flags/32.NLDF.jpg",
+          "headquarter_address": "အမှတ် (၉၇/ခ)၊ အနောက်ရွှေဂုံတိုင်လမ်း၊ ဗဟန်းမြို့နယ်၊ ရန်ကုန်တိုင်းဒေသကြီး။",
+          "leaders_and_chairmen": [
+            "ဒေါ်အောင်ဆန်းစုကြည်၊ ဦးဉာဏ်ဝင်း ၊"
+          ],
+          "member_count": "ဦးတင်ဦး ပါ\n(၂၁) ဦး",
+          "name_burmese": "အမျိုးသားဒီမိုကရေစီအဖွဲ့ချုပ်ပါတီ",
+          "name_english": "National League for Democracy",
+          "policy": "https://uec.gov.mm/show_data_content.php?name=41NationalLeagueforDemocracy.pdf&type=page_multiple_photo&code=83&sno=5252&token=1a4775aa27447c648e8827046609016ef94b021c8d8b35d9c1369d7bfa0cb6c7c8b261a023abe86c86e150f6b8969a6d659b86580c084606585c2422a3a15981",
+          "region": "ပြည်ထောင်စုတစ်ဝန်းလုံး",
+          "registered_number": 47,
+          "registration_application_date": "၂၃-၁၂-၂၀၁၁",
+          "registration_approved_date": "၅-၁-၂၀၁၂",
+          "seal_image": "https://maepaysoh.org/seals/32.NLDS.jpg",
+          "contacts": [
+            "၀၉-၂၆၀၆၂၅၇၃၈ (ဦးအောင်ကြည်ညွန့်)",
+            "၀၉-၅၁၇၉၂၄၇ (ဦးဉာဏ်ဝင်း)",
+            "၀၉-၅၀၈၆၃၂၄ (ဒေါ်စနိုး)",
+            "၀၁-၅၅၅၁၅၆ (ရုံးဖုန်း/ ဖက်စ်)"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "3278",
+    "type": "candidate",
+    "attributes": {
+      "name": "မင်းဇော်ဇော်လတ်",
+      "age": 42,
+      "education": "သိပ္ပံဘွဲ့ (ရူပဗေဒ)",
+      "ethnicity": "မွန်-ဗမာ",
+      "gender": "Male",
+      "religion": "ဗုဒ္ဓ",
+      "work": "စျေးရောင်း",
+      "is_individual": false,
+      "residential_address": null,
+      "is_ethnic_candidate": false,
+      "representing_ethnicity": null,
+      "ballot_order": 369,
+      "is_elected": false,
+      "birthday": "1977-10-13",
+      "image": "https://maepaysoh.org/candidate-profile/RS-MinZawZawLatt.jpg",
+      "sorting_name": "မင်းဇော်ဇော်လတ်",
+      "individual_logo": null,
+      "father": {
+        "name": "ဦးဆွေမောင်(ကွယ်လွန်)",
+        "ethnicity": "ဗမာ",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "mother": {
+        "name": "ဒေါ်စန်းရီ",
+        "ethnicity": "ပအိုဝ့်",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "constituency": {
+        "id": "2892",
+        "type": "constituency",
+        "attributes": {
+          "name": "ကော့ကရိတ်မြို့နယ် ပြည်နယ်လွှတ်တော် မဲဆန္ဒနယ်အမှတ်(၂)",
+          "state_region": "ကရင်ပြည်နယ်",
+          "township": null,
+          "house": "state"
+        }
+      },
+      "party": {
+        "id": "32",
+        "type": "party",
+        "attributes": {
+          "abbreviation": "USDP",
+          "establishment_application_date": null,
+          "establishment_approval_date": "၄-၅-၂၀၁၀",
+          "flag_image": "https://maepaysoh.org/flags/24.USDPF.jpg",
+          "headquarter_address": "အမှတ် (၅)၊ ရာဇသင်္ဂဟလမ်းနှင့် 'စီ'လမ်းထောင့်၊ ဒက္ခိဏသီရိမြို့နယ်၊ နေပြည်တော်။",
+          "leaders_and_chairmen": [
+            "ဦးသန်းဌေး၊ ဦးသက်နိုင်ဝင်း (ထွေ/မှူး)"
+          ],
+          "member_count": "ဦးသိန်းစိန် ပါ\n(၂၇) ဦး",
+          "name_burmese": "ပြည်ထောင်စုကြံ့ခိုင်ရေးနှင့်ဖွံ့ဖြိုးရေးပါတီ",
+          "name_english": "Union Solidarity and Development Party",
+          "policy": "https://uec.gov.mm/show_data_content.php?name=72_USDP.pdf&type=page_multiple_photo&code=72&sno=3013&token=43516736a663dc92558123c160dff62d42d7e1f2e476ab58a8654ee5ea30e2e13acf15172242b2dd3cdf6bb25dfcd0c620385e56a03a5eb32b7bfcd35e49fc8e",
+          "region": "ပြည်ထောင်စုတစ်ဝန်းလုံး",
+          "registered_number": 32,
+          "registration_application_date": "၁-၆-၂၀၁၀",
+          "registration_approved_date": "၈-၆-၂၀၁၀",
+          "seal_image": "https://maepaysoh.org/seals/24.USDPS.jpg",
+          "contacts": [
+            "၀၆၇-၄၁၉၂၄၄",
+            "၀၉-၅၁၆၃၂၈၅ (ဒေါက်တာနန္ဒာလှမြင့်)",
+            "၀၆၇-၄၁၉၂၅၇",
+            "၀၆၇-၄၁၉၂၇၄ (ဖက်စ်)"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "3279",
+    "type": "candidate",
+    "attributes": {
+      "name": "မင်းပါလေး",
+      "age": 67,
+      "education": "Dip (Agri)",
+      "ethnicity": "မွန်",
+      "gender": "Male",
+      "religion": "ဗုဒ္ဓ",
+      "work": "ဖုန်းအရောင်းအဝယ်",
+      "is_individual": false,
+      "residential_address": null,
+      "is_ethnic_candidate": false,
+      "representing_ethnicity": null,
+      "ballot_order": 370,
+      "is_elected": false,
+      "birthday": "1953-06-14",
+      "image": "https://maepaysoh.org/candidate-profile/RS-MinPaLay.jpg",
+      "sorting_name": "မင်းပါလေး",
+      "individual_logo": null,
+      "father": {
+        "name": "ဦးနိုင်မိ(ကွယ်လွန်)",
+        "ethnicity": "မွန်",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "mother": {
+        "name": "ဒေါ်ကွန်မာ",
+        "ethnicity": "မွန်",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "constituency": {
+        "id": "2892",
+        "type": "constituency",
+        "attributes": {
+          "name": "ကော့ကရိတ်မြို့နယ် ပြည်နယ်လွှတ်တော် မဲဆန္ဒနယ်အမှတ်(၂)",
+          "state_region": "ကရင်ပြည်နယ်",
+          "township": null,
+          "house": "state"
+        }
+      },
+      "party": {
+        "id": "117",
+        "type": "party",
+        "attributes": {
+          "abbreviation": null,
+          "establishment_application_date": null,
+          "establishment_approval_date": "၁၇-၅-၂၀၁၉",
+          "flag_image": "https://maepaysoh.org/flags/85.MonUnityPartyF.jpg",
+          "headquarter_address": "အမှတ်(၃၂၄)၊ (၂၂)လမ်း၊ မြိုင်သာယာရပ်ကွက်၊ မော်လမြိုင်မြို့၊\nမွန်ပြည်နယ်။",
+          "leaders_and_chairmen": [
+            "နိုင်တင်အောင်၊ ဒေါက်တာမင်းနွယ်စိုး၊ (ထွေ/မှူး)"
+          ],
+          "member_count": "နိုင်တင်အောင် ပါ\n(၁၈) ဦး",
+          "name_burmese": "မွန်ညီညွတ်ရေးပါတီ",
+          "name_english": "Mon Unity Party",
+          "policy": "https://uec.gov.mm/show_data_content.php?name=_4_%20MUP%20_Organization%20Set-up_.pdf&type=page_multiple_photo&code=190&sno=1851&token=8a6bcecb2200fd74b53b1d0a92cf8a6a9e59641c80ad41ee9a96d6eddddbfe2e5a62610061c7122ac2f8ae99fc463fe9fb71bf472bd0720a73f3d291749a5e31",
+          "region": "ပြည်ထောင်စုတစ်ဝန်းလုံး",
+          "registered_number": 117,
+          "registration_application_date": "၂၃-၅-၂၀၁၉",
+          "registration_approved_date": "၁၁-၇-၂၀၁၉",
+          "seal_image": "https://maepaysoh.org/seals/85.MonUnityPartyS.jpg",
+          "contacts": [
+            "၀၉-၂၅၅၉၆၄၄၄၅ (ဦးစံတင်)"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "3280",
+    "type": "candidate",
+    "attributes": {
+      "name": "ဦးလောရှည်(ခ)စောလောရှည်",
+      "age": 68,
+      "education": "(၁၀)တန်းအောင်",
+      "ethnicity": "ကရင်+ပအိုဝ်း",
+      "gender": "Male",
+      "religion": "ဗုဒ္ဓ",
+      "work": "ပညာရေး(အငြိမ်းစား)",
+      "is_individual": true,
+      "residential_address": null,
+      "is_ethnic_candidate": false,
+      "representing_ethnicity": null,
+      "ballot_order": 371,
+      "is_elected": false,
+      "birthday": "1952-04-29",
+      "image": "https://maepaysoh.org/candidate-profile/U Saw Law Shay.jpg",
+      "sorting_name": "လောရှည်(ခ)စောလောရှည်",
+      "individual_logo": "https://maepaysoh.org/candidate-party-logo/U Law Shal (Kayin)_Khorkarate_2.jpg",
+      "father": {
+        "name": "ဦးဖါကွန်(ကွယ်လွန်)",
+        "ethnicity": "ကရင်",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "mother": {
+        "name": "ဒေါ်နန်းထွန်း(ကွယ်လွန်)",
+        "ethnicity": "ပအို်ငး",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "constituency": {
+        "id": "2892",
+        "type": "constituency",
+        "attributes": {
+          "name": "ကော့ကရိတ်မြို့နယ် ပြည်နယ်လွှတ်တော် မဲဆန္ဒနယ်အမှတ်(၂)",
+          "state_region": "ကရင်ပြည်နယ်",
+          "township": null,
+          "house": "state"
+        }
+      },
+      "party": null
+    }
+  },
+  {
+    "id": "6793",
+    "type": "candidate",
+    "attributes": {
+      "name": "ဦးကျော်ဇော",
+      "age": 61,
+      "education": "စီးပွားရေး(အဝေးသင်)ပထမနှစ်",
+      "ethnicity": "ဗမာ",
+      "gender": "Male",
+      "religion": "ဗုဒ္ဓ",
+      "work": "စစ်မှုထမ်း(ဗက ငြိမ်း)",
+      "is_individual": true,
+      "residential_address": null,
+      "is_ethnic_candidate": true,
+      "representing_ethnicity": "ဗမာ",
+      "ballot_order": 38,
+      "is_elected": false,
+      "birthday": "1959-05-02",
+      "image": "https://maepaysoh.org/candidate-profile/U Kyaw Zawl.jpg",
+      "sorting_name": "ကျော်ဇော",
+      "individual_logo": "https://maepaysoh.org/candidate-party-logo/U Kyaw Zawl (Logo).jpg",
+      "father": {
+        "name": "ဦးခင်(ကွယ်လွန်)",
+        "ethnicity": "ဗမာ",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "mother": {
+        "name": "ဒေါ်မြကြင်(ကွယ်လွန်)",
+        "ethnicity": "ဗမာ",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "constituency": {
+        "id": "3490",
+        "type": "constituency",
+        "attributes": {
+          "name": "ကရင်ပြည်နယ် ဗမာတိုင်းရင်းသားလူမျိုးမဲဆန္ဒနယ်",
+          "state_region": "ကရင်ပြည်နယ်",
+          "township": null,
+          "house": "ethnic"
+        }
+      },
+      "party": null
+    }
+  },
+  {
+    "id": "6794",
+    "type": "candidate",
+    "attributes": {
+      "name": "ဦးကျော်ဇင်ဝင်း",
+      "age": 40,
+      "education": "ဒုတိယနှစ်(သင်္ချာ)",
+      "ethnicity": "ဗမာ",
+      "gender": "Male",
+      "religion": "ဗုဒ္ဓ",
+      "work": "စားသောက်ဆိုင်(မန်နေဂျာ)",
+      "is_individual": true,
+      "residential_address": null,
+      "is_ethnic_candidate": true,
+      "representing_ethnicity": "ဗမာ",
+      "ballot_order": 39,
+      "is_elected": false,
+      "birthday": "1979-10-04",
+      "image": "https://maepaysoh.org/candidate-profile/UKyawZinWin SandD Eth (Bama)-Kayin-2020.jpg",
+      "sorting_name": "ကျော်ဇင်ဝင်း",
+      "individual_logo": "https://maepaysoh.org/candidate-party-logo/U Kyaw Zin Win (Logo).jpg",
+      "father": {
+        "name": "ဦးတင်ဝင်း",
+        "ethnicity": "ဗမာ",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "mother": {
+        "name": "ဒေါ်သိန်းနု",
+        "ethnicity": "ဗမာ",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "constituency": {
+        "id": "3490",
+        "type": "constituency",
+        "attributes": {
+          "name": "ကရင်ပြည်နယ် ဗမာတိုင်းရင်းသားလူမျိုးမဲဆန္ဒနယ်",
+          "state_region": "ကရင်ပြည်နယ်",
+          "township": null,
+          "house": "ethnic"
+        }
+      },
+      "party": null
+    }
+  },
+  {
+    "id": "6795",
+    "type": "candidate",
+    "attributes": {
+      "name": "ဒေါ်ကြည်ဝင်း",
+      "age": 76,
+      "education": "ဝိဇ္ဇာဘွဲ့(ပထဝီ)",
+      "ethnicity": "ဗမာ",
+      "gender": "Male",
+      "religion": "ဗုဒ္ဓ",
+      "work": "ကျောင်းဆရာမ(ငြိမ်း)",
+      "is_individual": false,
+      "residential_address": null,
+      "is_ethnic_candidate": true,
+      "representing_ethnicity": "ဗမာ",
+      "ballot_order": 40,
+      "is_elected": false,
+      "birthday": "1944-08-12",
+      "image": "https://maepaysoh.org/candidate-profile/KayinState_Bama Ethnic_DawKyiWin.jpg",
+      "sorting_name": "ကြည်ဝင်း",
+      "individual_logo": null,
+      "father": {
+        "name": "ဦးအုံးလှိုင်(ကွယ်လွန်)",
+        "ethnicity": "ဗမာ",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "mother": {
+        "name": "ဒေါ်အေးစိန်(ကွယ်လွန်)",
+        "ethnicity": "ဗမာ",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "constituency": {
+        "id": "3490",
+        "type": "constituency",
+        "attributes": {
+          "name": "ကရင်ပြည်နယ် ဗမာတိုင်းရင်းသားလူမျိုးမဲဆန္ဒနယ်",
+          "state_region": "ကရင်ပြည်နယ်",
+          "township": null,
+          "house": "ethnic"
+        }
+      },
+      "party": {
+        "id": "2",
+        "type": "party",
+        "attributes": {
+          "abbreviation": "NUP",
+          "establishment_application_date": null,
+          "establishment_approval_date": "ပုဒ်မ ၂၅ အရ လျှောက်ထားခြင်း",
+          "flag_image": "https://maepaysoh.org/flags/2.EthnicUnityPartyF.jpg",
+          "headquarter_address": "အမှတ်(၂၄)၊ အောင်ဇေယျလမ်း၊ ရွှေတောင်ကြား (၁)ရပ်ကွက်၊ ဗဟန်းမြို့နယ်၊ ရန်ကုန်တိုင်းဒေသကြီး။",
+          "leaders_and_chairmen": [
+            "ဦးသန်းတင်၊ ဦးသိန်းထွန်း (ထွေ/မှူး)"
+          ],
+          "member_count": "ပုဒ်မ ၂၅ အရ လျှောက်ထားခြင်း",
+          "name_burmese": "တိုင်းရင်းသားစည်းလုံးညီညွတ်ရေးပါတီ",
+          "name_english": "National Unity Party",
+          "policy": "https://uec.gov.mm/show_data_content.php?name=2_TYTSNYAP.pdf&type=page_multiple_photo&code=40&sno=7212&token=24d3da66b31ddd68ba56a33f2b16c3116cbeb9fc7d030e6e8e5bb6c0c42b6449f1c61be771653b623873762bc0b8629afe9acfc6167fa643b142472090f53038",
+          "region": "ပြည်ထောင်စုတစ်ဝန်းလုံး",
+          "registered_number": 2,
+          "registration_application_date": "၂၉-၃-၂၀၁၀",
+          "registration_approved_date": "၂၉-၄-၂၀၁၀",
+          "seal_image": "https://maepaysoh.org/seals/2.EthnicUnityPartyS.jpg",
+          "contacts": [
+            "၀၁ ၅၄၁၉၆၁ (ဦးနေဝင်း)",
+            "၀၁ ၅၅၇၄၈၀",
+            "၀၁၅၅၄၂၁၉(ဖက်စ်)",
+            "၀၁ ၅၅၇၄၅၆",
+            "၀၁ ၃၈၆၉၃၆(ဦးဟန်ရွှေ)",
+            "၀၉၄၂၁၁၀၉၅၄၉",
+            "၀၉၉၇၃၁၂၀၈၇၈ (ဦးသိန်းထွန်း)",
+            "၀၉ ၄၂၁၁၀၉၅၅၀  (ဦးထွန်းရီ)"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "6796",
+    "type": "candidate",
+    "attributes": {
+      "name": "ဦးစန်းကို",
+      "age": 46,
+      "education": "သိပ္ပံဘွဲ့(သင်္ချာ)",
+      "ethnicity": "ဗမာ",
+      "gender": "Male",
+      "religion": "ဗုဒ္ဓ",
+      "work": "မန်နေးဂျင်းဒါရိုက်တာ၊ပြည့်မဏ္ဍိုင်ရောင်းဝယ်ရေးကုမ္ပဏီလီမိတက်",
+      "is_individual": false,
+      "residential_address": null,
+      "is_ethnic_candidate": true,
+      "representing_ethnicity": "ဗမာ",
+      "ballot_order": 41,
+      "is_elected": false,
+      "birthday": "1974-01-15",
+      "image": "https://maepaysoh.org/candidate-profile/TT4.U San Ko.jpg",
+      "sorting_name": "စန်းကို",
+      "individual_logo": null,
+      "father": {
+        "name": "ဦးအောင်ဆန်းနု",
+        "ethnicity": "ဗမာ",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "mother": {
+        "name": "ဒေါ်ညွန့်ရီ",
+        "ethnicity": "ဗမာ",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "constituency": {
+        "id": "3490",
+        "type": "constituency",
+        "attributes": {
+          "name": "ကရင်ပြည်နယ် ဗမာတိုင်းရင်းသားလူမျိုးမဲဆန္ဒနယ်",
+          "state_region": "ကရင်ပြည်နယ်",
+          "township": null,
+          "house": "ethnic"
+        }
+      },
+      "party": {
+        "id": "32",
+        "type": "party",
+        "attributes": {
+          "abbreviation": "USDP",
+          "establishment_application_date": null,
+          "establishment_approval_date": "၄-၅-၂၀၁၀",
+          "flag_image": "https://maepaysoh.org/flags/24.USDPF.jpg",
+          "headquarter_address": "အမှတ် (၅)၊ ရာဇသင်္ဂဟလမ်းနှင့် 'စီ'လမ်းထောင့်၊ ဒက္ခိဏသီရိမြို့နယ်၊ နေပြည်တော်။",
+          "leaders_and_chairmen": [
+            "ဦးသန်းဌေး၊ ဦးသက်နိုင်ဝင်း (ထွေ/မှူး)"
+          ],
+          "member_count": "ဦးသိန်းစိန် ပါ\n(၂၇) ဦး",
+          "name_burmese": "ပြည်ထောင်စုကြံ့ခိုင်ရေးနှင့်ဖွံ့ဖြိုးရေးပါတီ",
+          "name_english": "Union Solidarity and Development Party",
+          "policy": "https://uec.gov.mm/show_data_content.php?name=72_USDP.pdf&type=page_multiple_photo&code=72&sno=3013&token=43516736a663dc92558123c160dff62d42d7e1f2e476ab58a8654ee5ea30e2e13acf15172242b2dd3cdf6bb25dfcd0c620385e56a03a5eb32b7bfcd35e49fc8e",
+          "region": "ပြည်ထောင်စုတစ်ဝန်းလုံး",
+          "registered_number": 32,
+          "registration_application_date": "၁-၆-၂၀၁၀",
+          "registration_approved_date": "၈-၆-၂၀၁၀",
+          "seal_image": "https://maepaysoh.org/seals/24.USDPS.jpg",
+          "contacts": [
+            "၀၆၇-၄၁၉၂၄၄",
+            "၀၉-၅၁၆၃၂၈၅ (ဒေါက်တာနန္ဒာလှမြင့်)",
+            "၀၆၇-၄၁၉၂၅၇",
+            "၀၆၇-၄၁၉၂၇၄ (ဖက်စ်)"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "6797",
+    "type": "candidate",
+    "attributes": {
+      "name": "ဦးတင်ဝင်း",
+      "age": 53,
+      "education": "BA(History)Q, H.G.P",
+      "ethnicity": "ဗမာ",
+      "gender": "Male",
+      "religion": "ဗုဒ္ဓ",
+      "work": "ဓာတ်ပုံ၊ဗွီဒီယို၊မိတ္တူ၊ဖိတ်စာ လုပ်ငန်း",
+      "is_individual": false,
+      "residential_address": null,
+      "is_ethnic_candidate": true,
+      "representing_ethnicity": "ဗမာ",
+      "ballot_order": 42,
+      "is_elected": false,
+      "birthday": "1967-05-13",
+      "image": "https://maepaysoh.org/candidate-profile/TT5.U Tin Win.jpg",
+      "sorting_name": "တင်ဝင်း",
+      "individual_logo": null,
+      "father": {
+        "name": "ဦးထွန်းကြည်",
+        "ethnicity": "ဗမာ",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "mother": {
+        "name": "ဒေါ်အိမ်မြိုင်",
+        "ethnicity": "ဗမာ",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "constituency": {
+        "id": "3490",
+        "type": "constituency",
+        "attributes": {
+          "name": "ကရင်ပြည်နယ် ဗမာတိုင်းရင်းသားလူမျိုးမဲဆန္ဒနယ်",
+          "state_region": "ကရင်ပြည်နယ်",
+          "township": null,
+          "house": "ethnic"
+        }
+      },
+      "party": {
+        "id": "47",
+        "type": "party",
+        "attributes": {
+          "abbreviation": "NLD",
+          "establishment_application_date": null,
+          "establishment_approval_date": "၁၂-၁၂-၂၀၁၁",
+          "flag_image": "https://maepaysoh.org/flags/32.NLDF.jpg",
+          "headquarter_address": "အမှတ် (၉၇/ခ)၊ အနောက်ရွှေဂုံတိုင်လမ်း၊ ဗဟန်းမြို့နယ်၊ ရန်ကုန်တိုင်းဒေသကြီး။",
+          "leaders_and_chairmen": [
+            "ဒေါ်အောင်ဆန်းစုကြည်၊ ဦးဉာဏ်ဝင်း ၊"
+          ],
+          "member_count": "ဦးတင်ဦး ပါ\n(၂၁) ဦး",
+          "name_burmese": "အမျိုးသားဒီမိုကရေစီအဖွဲ့ချုပ်ပါတီ",
+          "name_english": "National League for Democracy",
+          "policy": "https://uec.gov.mm/show_data_content.php?name=41NationalLeagueforDemocracy.pdf&type=page_multiple_photo&code=83&sno=5252&token=1a4775aa27447c648e8827046609016ef94b021c8d8b35d9c1369d7bfa0cb6c7c8b261a023abe86c86e150f6b8969a6d659b86580c084606585c2422a3a15981",
+          "region": "ပြည်ထောင်စုတစ်ဝန်းလုံး",
+          "registered_number": 47,
+          "registration_application_date": "၂၃-၁၂-၂၀၁၁",
+          "registration_approved_date": "၅-၁-၂၀၁၂",
+          "seal_image": "https://maepaysoh.org/seals/32.NLDS.jpg",
+          "contacts": [
+            "၀၉-၂၆၀၆၂၅၇၃၈ (ဦးအောင်ကြည်ညွန့်)",
+            "၀၉-၅၁၇၉၂၄၇ (ဦးဉာဏ်ဝင်း)",
+            "၀၉-၅၀၈၆၃၂၄ (ဒေါ်စနိုး)",
+            "၀၁-၅၅၅၁၅၆ (ရုံးဖုန်း/ ဖက်စ်)"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "6798",
+    "type": "candidate",
+    "attributes": {
+      "name": "ဦးမျိုးဇာနည်မောင်",
+      "age": 45,
+      "education": "ပထမနှစ်(ဓာတုဗေဒ)",
+      "ethnicity": "ဗမာ",
+      "gender": "Male",
+      "religion": "ဗုဒ္ဓဘာသာ",
+      "work": "ကုန်သည်",
+      "is_individual": false,
+      "residential_address": null,
+      "is_ethnic_candidate": true,
+      "representing_ethnicity": "ဗမာ",
+      "ballot_order": 43,
+      "is_elected": false,
+      "birthday": "1974-11-15",
+      "image": "https://maepaysoh.org/candidate-profile/2020-Eth-UMyoZarniMaung.jpg",
+      "sorting_name": "မျိုးဇာနည်မောင်",
+      "individual_logo": null,
+      "father": {
+        "name": "ဦးခင်မောင်ဝင်း",
+        "ethnicity": "ဗမာ",
+        "religion": "ဗုဒ္ဓဘာသာ"
+      },
+      "mother": {
+        "name": "ဒေါ်ရင်ကြည်",
+        "ethnicity": "ဗမာ",
+        "religion": "ဗုဒ္ဓဘာသာ"
+      },
+      "constituency": {
+        "id": "3490",
+        "type": "constituency",
+        "attributes": {
+          "name": "ကရင်ပြည်နယ် ဗမာတိုင်းရင်းသားလူမျိုးမဲဆန္ဒနယ်",
+          "state_region": "ကရင်ပြည်နယ်",
+          "township": null,
+          "house": "ethnic"
+        }
+      },
+      "party": {
+        "id": "108",
+        "type": "party",
+        "attributes": {
+          "abbreviation": null,
+          "establishment_application_date": null,
+          "establishment_approval_date": "၂၁-၁၂-၂၀၁၇",
+          "flag_image": "https://maepaysoh.org/flags/76.KarenNationalDemocraticPartyF.jpg",
+          "headquarter_address": "အမှတ်(၇)ရပ်ကွက်\n၊ဦးအောင်မြတ်လမ်း၊\nဘားအံမြို့၊ကရင်\nပြည်နယ်။",
+          "leaders_and_chairmen": [
+            "မန်းအောင်ပြည်စိုး၊ စောချစ်သန်း (ထွေ/မှူး)"
+          ],
+          "member_count": "ဦးမန်းအောင်တင်မြင့် ပါ \n(၁၅) ဦး",
+          "name_burmese": "ကရင်အမျိုးသားဒီမိုကရက်တစ်ပါတီ",
+          "name_english": "Kayin National Democratic Party",
+          "policy": "https://uec.gov.mm/show_data_content.php?name=KarenNationalDemocraticParty.pdf&type=page_multiple_photo&code=176&sno=9865&token=78d057d82bda24ba82071351cd78943b5a2422536a59563fa625c1befe15e879e9ba96392735dde209418dfb8a861d61fb0e46f00efadfa9ee0d023cbbe7ad1e",
+          "region": "ပြည်ထောင်စုတစ်ဝန်းလုံး",
+          "registered_number": 108,
+          "registration_application_date": "၁၆-၁-၂၀၁၈",
+          "registration_approved_date": "၂၂-၂-၂၀၁၈",
+          "seal_image": "https://maepaysoh.org/seals/76.KarenNationalDemocraticPartyS.jpg",
+          "contacts": [
+            "၀၉-၄၅၅၁၅၅၀၉၇ (ဦးစောမြတ်ထွဋ်ဝင်း)",
+            "၀၉-၂၅၀၃၂၂၁၄၈ (ဒေါ်နော်သဇင်တုပ်)"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "6799",
+    "type": "candidate",
+    "attributes": {
+      "name": "ဦးမြင့်သိန်း",
+      "age": 63,
+      "education": "သိပ္ပံဘွဲ့(ရူပ)",
+      "ethnicity": "ဗမာ",
+      "gender": "Male",
+      "religion": "ဗုဒ္ဓ",
+      "work": "ရဲမှူး(ငြိမ်း)",
+      "is_individual": false,
+      "residential_address": null,
+      "is_ethnic_candidate": true,
+      "representing_ethnicity": "ဗမာ",
+      "ballot_order": 44,
+      "is_elected": false,
+      "birthday": "1957-08-15",
+      "image": "https://maepaysoh.org/candidate-profile/2020-Eth-UMyintThein.jpg",
+      "sorting_name": "မြင့်သိန်း",
+      "individual_logo": null,
+      "father": {
+        "name": "ဦးတင်စိန်(ကွယ်လွန်)",
+        "ethnicity": "ဗမာ",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "mother": {
+        "name": "ဒေါ်ခင်သန်း",
+        "ethnicity": "ဗမာ",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "constituency": {
+        "id": "3490",
+        "type": "constituency",
+        "attributes": {
+          "name": "ကရင်ပြည်နယ် ဗမာတိုင်းရင်းသားလူမျိုးမဲဆန္ဒနယ်",
+          "state_region": "ကရင်ပြည်နယ်",
+          "township": null,
+          "house": "ethnic"
+        }
+      },
+      "party": {
+        "id": "112",
+        "type": "party",
+        "attributes": {
+          "abbreviation": "UBP",
+          "establishment_application_date": null,
+          "establishment_approval_date": "၄-၄-၂၀၁၉",
+          "flag_image": "https://maepaysoh.org/flags/80.UBPF.jpg",
+          "headquarter_address": "အိမ်အမှတ် (A-3)၊ ရာဇသင်္ဂဟလမ်း၊ ပုဗ္ဗသီရိမြို့နယ်၊ ဥတ္တရခရိုင်၊ နေပြည်တော်။",
+          "leaders_and_chairmen": [],
+          "member_count": "သူရဦးရွှေမန်း ပါ\n(၁၉) ဦး",
+          "name_burmese": "ပြည်ထောင်စုကောင်းကျိုးဆောင်ပါတီ",
+          "name_english": "Union Betterment Party",
+          "policy": "https://uec.gov.mm/show_data_content.php?name=UBP.pdf&type=page_multiple_photo&code=185&sno=9528&token=a751999fd34f1243a0085611d91039171530e17a2ab51c847405001d51ddd8a047d4a57a96db602b5065a3d4ef974887f1dc30a2af1a9bbee055f385fef19f57",
+          "region": "ပြည်ထောင်စုတစ်ဝန်းလုံး",
+          "registered_number": 112,
+          "registration_application_date": "၈-၄-၂၀၁၉",
+          "registration_approved_date": "၂၅-၄-၂၀၁၉",
+          "seal_image": "https://maepaysoh.org/seals/80.UBPS.jpg",
+          "contacts": [
+            "၀၉-၉၆၅၂၀၂၇၂၉ (ဦးကျော်စန်း)"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "6800",
+    "type": "candidate",
+    "attributes": {
+      "name": "ဦးဝင်းမြင့်ကျော်",
+      "age": 66,
+      "education": "နဝမတန်းအောင်",
+      "ethnicity": "ဗမာ",
+      "gender": "Male",
+      "religion": "ဗုဒ္ဓ",
+      "work": "ရောင်နီပွဲရုံလုပ်ငန်း",
+      "is_individual": false,
+      "residential_address": null,
+      "is_ethnic_candidate": true,
+      "representing_ethnicity": "ဗမာ",
+      "ballot_order": 45,
+      "is_elected": false,
+      "birthday": "1954-08-21",
+      "image": "https://maepaysoh.org/candidate-profile/2020-Eth-UWinMyintKyaw.jpg",
+      "sorting_name": "ဝင်းမြင့်ကျော်",
+      "individual_logo": null,
+      "father": {
+        "name": "ဦးမောင်ကြည်(ကွယ်လွန်)",
+        "ethnicity": "ဗမာ",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "mother": {
+        "name": "ဒေါ်ငွေရီ(ကွယ်လွန်)",
+        "ethnicity": "ဗမာ",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "constituency": {
+        "id": "3490",
+        "type": "constituency",
+        "attributes": {
+          "name": "ကရင်ပြည်နယ် ဗမာတိုင်းရင်းသားလူမျိုးမဲဆန္ဒနယ်",
+          "state_region": "ကရင်ပြည်နယ်",
+          "township": null,
+          "house": "ethnic"
+        }
+      },
+      "party": {
+        "id": "16",
+        "type": "party",
+        "attributes": {
+          "abbreviation": "UDP",
+          "establishment_application_date": null,
+          "establishment_approval_date": "၆-၅-၂၀၁၀",
+          "flag_image": "https://maepaysoh.org/flags/13.UDPF.jpg",
+          "headquarter_address": "ကွင်းအမှတ်(၁၅၂၂)၊ လင်းနို့ဝင်းကွင်း၊ ဦးပိုင်အမှတ်(၂/၁၊ ယာမြေ)၊ ဇီးကုန်းကျေးရွာအုပ်စု၊ ပုဗ္ဗသီရိမြို့နယ်၊ ဥတ္တရသီရိခရိုင်၊ နေပြည်တော်။",
+          "leaders_and_chairmen": [
+            "ဦးကျော်မြင့်၊ ဒေါ်သီတာဇင်၊ (တွဲ-တွင်း/မှူး)"
+          ],
+          "member_count": "ဦးလှမြင့်၊ ဦးဘိုမောင်း ပါ \n(၁၇) ဦး",
+          "name_burmese": "ညီညွတ်သောဒီမိုကရက်တစ်ပါတီ (UDP)",
+          "name_english": "United Democratic Party",
+          "policy": "https://uec.gov.mm/show_data_content.php?name=15UnitedDemocraticPartyUDP.pdf&type=page_multiple_photo&code=53&sno=5793&token=45a324c1367831e98226cd2093c3b81e17842f846d8427e0575e33850c5186e82f6db09b99db21180d7390d040a3888b8ff64a22166628f7b238f9e3f1dd5f14",
+          "region": "ပြည်ထောင်စုတစ်ဝန်းလုံး",
+          "registered_number": 16,
+          "registration_application_date": "၁၇-၅-၂၀၁၀",
+          "registration_approved_date": "၂၆-၅-၂၀၁၀",
+          "seal_image": "https://maepaysoh.org/seals/13.UDPS.jpg",
+          "contacts": [
+            "၀၉ ၂၅၉၅၆၀၃၅၀(ဦးကြင်ဝမ်း)",
+            "၀၆၇၅၀၀၂၅၃",
+            "၀၆၇၅၀၀၂၃၆",
+            "၀၉ ၂၅၃၇၅၀၉၂၅",
+            "၀၉၂၅၀၇၉၉၄၁၂"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "6801",
+    "type": "candidate",
+    "attributes": {
+      "name": "ဒေါ်သန်းသန်းဆင့်",
+      "age": 50,
+      "education": "BA(Eco)/D.B.F.I",
+      "ethnicity": "ဗမာ",
+      "gender": "Female",
+      "religion": "ဗုဒ္ဓဘာသာ",
+      "work": "ကုန်သည်",
+      "is_individual": false,
+      "residential_address": null,
+      "is_ethnic_candidate": true,
+      "representing_ethnicity": "ဗမာ",
+      "ballot_order": 46,
+      "is_elected": false,
+      "birthday": "1969-12-19",
+      "image": "https://maepaysoh.org/candidate-profile/2020-Eth-DawThanThanSint.jpg",
+      "sorting_name": "သန်းသန်းဆင့်",
+      "individual_logo": null,
+      "father": {
+        "name": "ဦးကျော်ရှိန်(ကွယ်လွန်)",
+        "ethnicity": "ဗမာ",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "mother": {
+        "name": "ဒေါ်စိန်ရင်",
+        "ethnicity": "ဗမာ",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "constituency": {
+        "id": "3490",
+        "type": "constituency",
+        "attributes": {
+          "name": "ကရင်ပြည်နယ် ဗမာတိုင်းရင်းသားလူမျိုးမဲဆန္ဒနယ်",
+          "state_region": "ကရင်ပြည်နယ်",
+          "township": null,
+          "house": "ethnic"
+        }
+      },
+      "party": {
+        "id": "46",
+        "type": "party",
+        "attributes": {
+          "abbreviation": "BPP",
+          "establishment_application_date": null,
+          "establishment_approval_date": "၂-၉-၂၀၁၁",
+          "flag_image": "https://maepaysoh.org/flags/31.BamarPeople'sPartyF.jpg",
+          "headquarter_address": "တိုက်အမှတ် (၉)၊ အခန်း (၀၀၅)၊ ရွှေအင်ကြင်းလမ်း၊ ရွှေလင်ပန်းတန်ဖိုးနည်းအိမ်ရာ၊ လှိုင်သာယာမြို့နယ်၊ ရန်ကုန်တိုင်းဒေသကြီး။",
+          "leaders_and_chairmen": [
+            "ဦးအောင်သန်းတင့်၊ ဦးသက်ဦး (ထွေ/မှူး)"
+          ],
+          "member_count": "ဦးအုန်းလွင် ပါ\n(၁၆) ဦး",
+          "name_burmese": "ဗမာပြည်သူ့ပါတီ",
+          "name_english": "Bamar People's Party",
+          "policy": "https://uec.gov.mm/show_data_content.php?name=40PartyforUnityandPeace.pdf&type=page_multiple_photo&code=77&sno=4925&token=b5ebf652aa8e60a58ec015c20f5bb54841ff82761cf3bbaca08a2d7c9a8ae44075dea9190a2087eec457049d74879cc777843b82411c71cfeb67516c0efa910d",
+          "region": "ပြည်ထောင်စုတစ်ဝန်းလုံး",
+          "registered_number": 46,
+          "registration_application_date": "၅-၉-၂၀၁၁",
+          "registration_approved_date": "၁၄-၁၀-၂၀၁၁",
+          "seal_image": "https://maepaysoh.org/seals/31.BamarPeople'sPartyS.jpg",
+          "contacts": [
+            "၀၉-၄၅၁၅၁၀၁၇၂",
+            "၀၉-၄၉၂၂၉၂၇၁ (ဥက္ကဋ္ဌ)",
+            "၀၁-၂၉၆၆၉၃",
+            "၀၁-၅၅၃၆၄၄",
+            "၀၉-၇၉၅၉၇၅၉၄၁"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "6802",
+    "type": "candidate",
+    "attributes": {
+      "name": "ဦးသန်းအောင်",
+      "age": 40,
+      "education": "-",
+      "ethnicity": "ဗမာ",
+      "gender": "Male",
+      "religion": "ဗုဒ္ဓ",
+      "work": "ဆောက်လုပ်ရေး",
+      "is_individual": false,
+      "residential_address": null,
+      "is_ethnic_candidate": true,
+      "representing_ethnicity": "ဗမာ",
+      "ballot_order": 47,
+      "is_elected": false,
+      "birthday": "1980-06-15",
+      "image": "https://maepaysoh.org/candidate-profile/KayinState_BamaEthnic_U Than Aung.jpg",
+      "sorting_name": "သန်းအောင်",
+      "individual_logo": null,
+      "father": {
+        "name": "ဦးကျော်မြင့်",
+        "ethnicity": "ဗမာ",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "mother": {
+        "name": "ဒေါ်ရွှေရီ",
+        "ethnicity": "ဗမာ",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "constituency": {
+        "id": "3490",
+        "type": "constituency",
+        "attributes": {
+          "name": "ကရင်ပြည်နယ် ဗမာတိုင်းရင်းသားလူမျိုးမဲဆန္ဒနယ်",
+          "state_region": "ကရင်ပြည်နယ်",
+          "township": null,
+          "house": "ethnic"
+        }
+      },
+      "party": {
+        "id": "123",
+        "type": "party",
+        "attributes": {
+          "abbreviation": "UNDP",
+          "establishment_application_date": null,
+          "establishment_approval_date": "၂၅-၉-၂၀၁၉",
+          "flag_image": "https://maepaysoh.org/flags/91.UnitedNationalitiesDemocracyPartyF.jpg",
+          "headquarter_address": "အမှတ်(၈)၊ ပထမထပ်၊ မနောဟရလမ်း၊ ကျောက်မြောင်း၊\nတာမွေမြို့နယ်၊ ရန်ကုန်တိုင်းဒေသကြီး။",
+          "leaders_and_chairmen": [
+            "ဦးဒေးဗစ်လှမြင့်၊ နော်အုန်းလှ (ထွေ/မှူး)"
+          ],
+          "member_count": "ဦးဒေးဗစ်လှမြင့် ပါ\n(၁၇) ဦး",
+          "name_burmese": "ညီညွတ်သောတိုင်းရင်းသားလူမျိုးများဒီမိုကရေစီပါတီ",
+          "name_english": "United Nationalities Democracy Party",
+          "policy": "https://uec.gov.mm/show_data_content.php?name=UNDP%20_Organization%20Set-up_.pdf&type=page_multiple_photo&code=196&sno=8943&token=396a7a028fb3e1aafe7c1edafcfd73dc08bd8a7878a03519ca09d69418ee5a097cf29d7a1f94c7b54d051340547350eba3396d4825cd5d663cf3d3f46dcb5fd5",
+          "region": "ပြည်ထောင်စုတစ်ဝန်းလုံး",
+          "registered_number": 123,
+          "registration_application_date": "၁၆-၁၀-၂၀၁၉",
+          "registration_approved_date": "၁၁-၁၂-၂၀၁၉",
+          "seal_image": "https://maepaysoh.org/seals/91.UnitedNationalitiesDemocracyPartyS.jpg",
+          "contacts": [
+            "၀၉-၇၇၈၂၆၁၆၅၈",
+            "၀၉-၇၇၃၃၇၇၉၈၂",
+            "",
+            "၀၉-၂၅၃၁၀၄၀၇၁"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "6803",
+    "type": "candidate",
+    "attributes": {
+      "name": "ဦးငွေထွန်း (ခ) မင်းငွေထွန်း",
+      "age": 46,
+      "education": "(၁၀)တန်း",
+      "ethnicity": "မွန်",
+      "gender": "Male",
+      "religion": "ဗုဒ္ဓ",
+      "work": "ဈေးရောင်း",
+      "is_individual": false,
+      "residential_address": null,
+      "is_ethnic_candidate": true,
+      "representing_ethnicity": "မွန်",
+      "ballot_order": 48,
+      "is_elected": false,
+      "birthday": "1974-08-26",
+      "image": "https://maepaysoh.org/candidate-profile/U Ngwe Htun @ Min Ngwe Htun.jpg",
+      "sorting_name": "ငွေထွန်း (ခ) မင်းငွေထွန်း",
+      "individual_logo": null,
+      "father": {
+        "name": "ဦးလှမြိုင်",
+        "ethnicity": "မွန်",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "mother": {
+        "name": "ဒေါ်လှဝင်း",
+        "ethnicity": "မွန်",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "constituency": {
+        "id": "3491",
+        "type": "constituency",
+        "attributes": {
+          "name": "ကရင်ပြည်နယ် မွန်တိုင်းရင်းသားလူမျိုးမဲဆန္ဒနယ်",
+          "state_region": "ကရင်ပြည်နယ်",
+          "township": null,
+          "house": "ethnic"
+        }
+      },
+      "party": {
+        "id": "32",
+        "type": "party",
+        "attributes": {
+          "abbreviation": "USDP",
+          "establishment_application_date": null,
+          "establishment_approval_date": "၄-၅-၂၀၁၀",
+          "flag_image": "https://maepaysoh.org/flags/24.USDPF.jpg",
+          "headquarter_address": "အမှတ် (၅)၊ ရာဇသင်္ဂဟလမ်းနှင့် 'စီ'လမ်းထောင့်၊ ဒက္ခိဏသီရိမြို့နယ်၊ နေပြည်တော်။",
+          "leaders_and_chairmen": [
+            "ဦးသန်းဌေး၊ ဦးသက်နိုင်ဝင်း (ထွေ/မှူး)"
+          ],
+          "member_count": "ဦးသိန်းစိန် ပါ\n(၂၇) ဦး",
+          "name_burmese": "ပြည်ထောင်စုကြံ့ခိုင်ရေးနှင့်ဖွံ့ဖြိုးရေးပါတီ",
+          "name_english": "Union Solidarity and Development Party",
+          "policy": "https://uec.gov.mm/show_data_content.php?name=72_USDP.pdf&type=page_multiple_photo&code=72&sno=3013&token=43516736a663dc92558123c160dff62d42d7e1f2e476ab58a8654ee5ea30e2e13acf15172242b2dd3cdf6bb25dfcd0c620385e56a03a5eb32b7bfcd35e49fc8e",
+          "region": "ပြည်ထောင်စုတစ်ဝန်းလုံး",
+          "registered_number": 32,
+          "registration_application_date": "၁-၆-၂၀၁၀",
+          "registration_approved_date": "၈-၆-၂၀၁၀",
+          "seal_image": "https://maepaysoh.org/seals/24.USDPS.jpg",
+          "contacts": [
+            "၀၆၇-၄၁၉၂၄၄",
+            "၀၉-၅၁၆၃၂၈၅ (ဒေါက်တာနန္ဒာလှမြင့်)",
+            "၀၆၇-၄၁၉၂၅၇",
+            "၀၆၇-၄၁၉၂၇၄ (ဖက်စ်)"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "6804",
+    "type": "candidate",
+    "attributes": {
+      "name": "ဦးစိုးနိုင်",
+      "age": 69,
+      "education": "ဒဿမတန်း",
+      "ethnicity": "မွန်",
+      "gender": "Male",
+      "religion": "ဗုဒ္ဓ",
+      "work": "လယ်",
+      "is_individual": false,
+      "residential_address": null,
+      "is_ethnic_candidate": true,
+      "representing_ethnicity": "မွန်",
+      "ballot_order": 49,
+      "is_elected": false,
+      "birthday": "1950-11-26",
+      "image": "https://maepaysoh.org/candidate-profile/U Soe Naing.jpg",
+      "sorting_name": "စိုးနိုင်",
+      "individual_logo": null,
+      "father": {
+        "name": "ဦးထွန်းလင်း",
+        "ethnicity": "မွန်",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "mother": {
+        "name": "ဒေါ်ဒေ့နွတ်",
+        "ethnicity": "မွန်",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "constituency": {
+        "id": "3491",
+        "type": "constituency",
+        "attributes": {
+          "name": "ကရင်ပြည်နယ် မွန်တိုင်းရင်းသားလူမျိုးမဲဆန္ဒနယ်",
+          "state_region": "ကရင်ပြည်နယ်",
+          "township": null,
+          "house": "ethnic"
+        }
+      },
+      "party": {
+        "id": "2",
+        "type": "party",
+        "attributes": {
+          "abbreviation": "NUP",
+          "establishment_application_date": null,
+          "establishment_approval_date": "ပုဒ်မ ၂၅ အရ လျှောက်ထားခြင်း",
+          "flag_image": "https://maepaysoh.org/flags/2.EthnicUnityPartyF.jpg",
+          "headquarter_address": "အမှတ်(၂၄)၊ အောင်ဇေယျလမ်း၊ ရွှေတောင်ကြား (၁)ရပ်ကွက်၊ ဗဟန်းမြို့နယ်၊ ရန်ကုန်တိုင်းဒေသကြီး။",
+          "leaders_and_chairmen": [
+            "ဦးသန်းတင်၊ ဦးသိန်းထွန်း (ထွေ/မှူး)"
+          ],
+          "member_count": "ပုဒ်မ ၂၅ အရ လျှောက်ထားခြင်း",
+          "name_burmese": "တိုင်းရင်းသားစည်းလုံးညီညွတ်ရေးပါတီ",
+          "name_english": "National Unity Party",
+          "policy": "https://uec.gov.mm/show_data_content.php?name=2_TYTSNYAP.pdf&type=page_multiple_photo&code=40&sno=7212&token=24d3da66b31ddd68ba56a33f2b16c3116cbeb9fc7d030e6e8e5bb6c0c42b6449f1c61be771653b623873762bc0b8629afe9acfc6167fa643b142472090f53038",
+          "region": "ပြည်ထောင်စုတစ်ဝန်းလုံး",
+          "registered_number": 2,
+          "registration_application_date": "၂၉-၃-၂၀၁၀",
+          "registration_approved_date": "၂၉-၄-၂၀၁၀",
+          "seal_image": "https://maepaysoh.org/seals/2.EthnicUnityPartyS.jpg",
+          "contacts": [
+            "၀၁ ၅၄၁၉၆၁ (ဦးနေဝင်း)",
+            "၀၁ ၅၅၇၄၈၀",
+            "၀၁၅၅၄၂၁၉(ဖက်စ်)",
+            "၀၁ ၅၅၇၄၅၆",
+            "၀၁ ၃၈၆၉၃၆(ဦးဟန်ရွှေ)",
+            "၀၉၄၂၁၁၀၉၅၄၉",
+            "၀၉၉၇၃၁၂၀၈၇၈ (ဦးသိန်းထွန်း)",
+            "၀၉ ၄၂၁၁၀၉၅၅၀  (ဦးထွန်းရီ)"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "6805",
+    "type": "candidate",
+    "attributes": {
+      "name": "ဦးထွန်းချစ်(ခ)နိုင်ထွန်းချစ်",
+      "age": 71,
+      "education": "AGTI(MP)",
+      "ethnicity": "မွန်",
+      "gender": "Male",
+      "religion": "ဗုဒ္ဓ",
+      "work": "လယ်ယာ",
+      "is_individual": false,
+      "residential_address": null,
+      "is_ethnic_candidate": true,
+      "representing_ethnicity": "မွန်",
+      "ballot_order": 50,
+      "is_elected": false,
+      "birthday": "1948-11-10",
+      "image": "https://maepaysoh.org/candidate-profile/U Tun Chit.jpg",
+      "sorting_name": "ထွန်းချစ်(ခ)နိုင်ထွန်းချစ်",
+      "individual_logo": null,
+      "father": {
+        "name": "ဦးထွေး(ကွယ်လွန်)",
+        "ethnicity": "မွန်",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "mother": {
+        "name": "ဒေါ်ကွန်မာ(ကွယ်လွန်)",
+        "ethnicity": "မွန်",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "constituency": {
+        "id": "3491",
+        "type": "constituency",
+        "attributes": {
+          "name": "ကရင်ပြည်နယ် မွန်တိုင်းရင်းသားလူမျိုးမဲဆန္ဒနယ်",
+          "state_region": "ကရင်ပြည်နယ်",
+          "township": null,
+          "house": "ethnic"
+        }
+      },
+      "party": {
+        "id": "47",
+        "type": "party",
+        "attributes": {
+          "abbreviation": "NLD",
+          "establishment_application_date": null,
+          "establishment_approval_date": "၁၂-၁၂-၂၀၁၁",
+          "flag_image": "https://maepaysoh.org/flags/32.NLDF.jpg",
+          "headquarter_address": "အမှတ် (၉၇/ခ)၊ အနောက်ရွှေဂုံတိုင်လမ်း၊ ဗဟန်းမြို့နယ်၊ ရန်ကုန်တိုင်းဒေသကြီး။",
+          "leaders_and_chairmen": [
+            "ဒေါ်အောင်ဆန်းစုကြည်၊ ဦးဉာဏ်ဝင်း ၊"
+          ],
+          "member_count": "ဦးတင်ဦး ပါ\n(၂၁) ဦး",
+          "name_burmese": "အမျိုးသားဒီမိုကရေစီအဖွဲ့ချုပ်ပါတီ",
+          "name_english": "National League for Democracy",
+          "policy": "https://uec.gov.mm/show_data_content.php?name=41NationalLeagueforDemocracy.pdf&type=page_multiple_photo&code=83&sno=5252&token=1a4775aa27447c648e8827046609016ef94b021c8d8b35d9c1369d7bfa0cb6c7c8b261a023abe86c86e150f6b8969a6d659b86580c084606585c2422a3a15981",
+          "region": "ပြည်ထောင်စုတစ်ဝန်းလုံး",
+          "registered_number": 47,
+          "registration_application_date": "၂၃-၁၂-၂၀၁၁",
+          "registration_approved_date": "၅-၁-၂၀၁၂",
+          "seal_image": "https://maepaysoh.org/seals/32.NLDS.jpg",
+          "contacts": [
+            "၀၉-၂၆၀၆၂၅၇၃၈ (ဦးအောင်ကြည်ညွန့်)",
+            "၀၉-၅၁၇၉၂၄၇ (ဦးဉာဏ်ဝင်း)",
+            "၀၉-၅၀၈၆၃၂၄ (ဒေါ်စနိုး)",
+            "၀၁-၅၅၅၁၅၆ (ရုံးဖုန်း/ ဖက်စ်)"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "6806",
+    "type": "candidate",
+    "attributes": {
+      "name": "မင်းဇော်မင်းဦး",
+      "age": 42,
+      "education": "B.A(Myan)",
+      "ethnicity": "မွန်",
+      "gender": "Male",
+      "religion": "ဗုဒ္ဓ",
+      "work": "ရွှေဆိုင်",
+      "is_individual": true,
+      "residential_address": null,
+      "is_ethnic_candidate": true,
+      "representing_ethnicity": "မွန်",
+      "ballot_order": 51,
+      "is_elected": false,
+      "birthday": "1978-04-20",
+      "image": "https://maepaysoh.org/candidate-profile/U Min Zaw Min Oo.jpg",
+      "sorting_name": "မင်းဇော်မင်းဦး",
+      "individual_logo": "https://maepaysoh.org/candidate-party-logo/U Min Zaw Min Oo(Logo).jpg",
+      "father": {
+        "name": "နိုင်အောင်မှုတ်",
+        "ethnicity": "မွန်",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "mother": {
+        "name": "မိလှမြင့်",
+        "ethnicity": "မွန်",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "constituency": {
+        "id": "3491",
+        "type": "constituency",
+        "attributes": {
+          "name": "ကရင်ပြည်နယ် မွန်တိုင်းရင်းသားလူမျိုးမဲဆန္ဒနယ်",
+          "state_region": "ကရင်ပြည်နယ်",
+          "township": null,
+          "house": "ethnic"
+        }
+      },
+      "party": null
+    }
+  },
+  {
+    "id": "6807",
+    "type": "candidate",
+    "attributes": {
+      "name": "မင်းထွန်းလွင်",
+      "age": 48,
+      "education": "B.Sc(bot)",
+      "ethnicity": "မွန်",
+      "gender": "Male",
+      "religion": "ဗုဒ္ဓ",
+      "work": "ဥယျာဉ်ခြံ",
+      "is_individual": false,
+      "residential_address": null,
+      "is_ethnic_candidate": true,
+      "representing_ethnicity": "မွန်",
+      "ballot_order": 52,
+      "is_elected": false,
+      "birthday": "1972-02-05",
+      "image": "https://maepaysoh.org/candidate-profile/U Min Htun Lwin.jpg",
+      "sorting_name": "မင်းထွန်းလွင်",
+      "individual_logo": null,
+      "father": {
+        "name": "ဦးအောင်သန်း(ကွယ်လွန်)",
+        "ethnicity": "မွန်",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "mother": {
+        "name": "ဒေါ်ခင်ရွှေ",
+        "ethnicity": "မွန်",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "constituency": {
+        "id": "3491",
+        "type": "constituency",
+        "attributes": {
+          "name": "ကရင်ပြည်နယ် မွန်တိုင်းရင်းသားလူမျိုးမဲဆန္ဒနယ်",
+          "state_region": "ကရင်ပြည်နယ်",
+          "township": null,
+          "house": "ethnic"
+        }
+      },
+      "party": {
+        "id": "117",
+        "type": "party",
+        "attributes": {
+          "abbreviation": null,
+          "establishment_application_date": null,
+          "establishment_approval_date": "၁၇-၅-၂၀၁၉",
+          "flag_image": "https://maepaysoh.org/flags/85.MonUnityPartyF.jpg",
+          "headquarter_address": "အမှတ်(၃၂၄)၊ (၂၂)လမ်း၊ မြိုင်သာယာရပ်ကွက်၊ မော်လမြိုင်မြို့၊\nမွန်ပြည်နယ်။",
+          "leaders_and_chairmen": [
+            "နိုင်တင်အောင်၊ ဒေါက်တာမင်းနွယ်စိုး၊ (ထွေ/မှူး)"
+          ],
+          "member_count": "နိုင်တင်အောင် ပါ\n(၁၈) ဦး",
+          "name_burmese": "မွန်ညီညွတ်ရေးပါတီ",
+          "name_english": "Mon Unity Party",
+          "policy": "https://uec.gov.mm/show_data_content.php?name=_4_%20MUP%20_Organization%20Set-up_.pdf&type=page_multiple_photo&code=190&sno=1851&token=8a6bcecb2200fd74b53b1d0a92cf8a6a9e59641c80ad41ee9a96d6eddddbfe2e5a62610061c7122ac2f8ae99fc463fe9fb71bf472bd0720a73f3d291749a5e31",
+          "region": "ပြည်ထောင်စုတစ်ဝန်းလုံး",
+          "registered_number": 117,
+          "registration_application_date": "၂၃-၅-၂၀၁၉",
+          "registration_approved_date": "၁၁-၇-၂၀၁၉",
+          "seal_image": "https://maepaysoh.org/seals/85.MonUnityPartyS.jpg",
+          "contacts": [
+            "၀၉-၂၅၅၉၆၄၄၄၅ (ဦးစံတင်)"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "6808",
+    "type": "candidate",
+    "attributes": {
+      "name": "ဒေါက်တာမင်းအောင်ပန်း",
+      "age": 62,
+      "education": "BA(Geog)Q, B.A(Hons), M.A, Ph.D",
+      "ethnicity": "မွန်",
+      "gender": "Male",
+      "religion": "ဗုဒ္ဓ",
+      "work": "ပါမောက္ခ(ဋ္ဌာနမှူး)ငြိမ်း",
+      "is_individual": true,
+      "residential_address": null,
+      "is_ethnic_candidate": true,
+      "representing_ethnicity": "မွန်",
+      "ballot_order": 53,
+      "is_elected": false,
+      "birthday": "1958-04-03",
+      "image": "https://maepaysoh.org/candidate-profile/Dr Min Aung Pan_SandDEth-Kayin_2020.jpg",
+      "sorting_name": "မင်းအောင်ပန်း",
+      "individual_logo": "https://maepaysoh.org/candidate-party-logo/Dr. Min Aung Pan.jpg",
+      "father": {
+        "name": "ဦးချစ်မောင်(ကွယ်လွန်)",
+        "ethnicity": "မွန်",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "mother": {
+        "name": "မိရင်(ခ)မိကရင်",
+        "ethnicity": "မွန်",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "constituency": {
+        "id": "3491",
+        "type": "constituency",
+        "attributes": {
+          "name": "ကရင်ပြည်နယ် မွန်တိုင်းရင်းသားလူမျိုးမဲဆန္ဒနယ်",
+          "state_region": "ကရင်ပြည်နယ်",
+          "township": null,
+          "house": "ethnic"
+        }
+      },
+      "party": null
+    }
+  },
+  {
+    "id": "6809",
+    "type": "candidate",
+    "attributes": {
+      "name": "ဦးမောင်မောင်ဟန်ဇော်ဦး",
+      "age": 47,
+      "education": "L.L.B",
+      "ethnicity": "မွန်",
+      "gender": "Male",
+      "religion": "ဗုဒ္ဓ",
+      "work": "တရားလွှတ်တော်ရှေ့နေ",
+      "is_individual": false,
+      "residential_address": null,
+      "is_ethnic_candidate": true,
+      "representing_ethnicity": "မွန်",
+      "ballot_order": 54,
+      "is_elected": false,
+      "birthday": "1973-01-12",
+      "image": "https://maepaysoh.org/candidate-profile/TT7.U Maung Maung Han Zaw Oo.jpg",
+      "sorting_name": "မောင်မောင်ဟန်ဇော်ဦး",
+      "individual_logo": null,
+      "father": {
+        "name": "ဦးမောင်မောင်စိန်သန်း",
+        "ethnicity": "ဗမာ",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "mother": {
+        "name": "ဒေါ်ခင်အုန်းမြင့်",
+        "ethnicity": "မွန်",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "constituency": {
+        "id": "3491",
+        "type": "constituency",
+        "attributes": {
+          "name": "ကရင်ပြည်နယ် မွန်တိုင်းရင်းသားလူမျိုးမဲဆန္ဒနယ်",
+          "state_region": "ကရင်ပြည်နယ်",
+          "township": null,
+          "house": "ethnic"
+        }
+      },
+      "party": {
+        "id": "16",
+        "type": "party",
+        "attributes": {
+          "abbreviation": "UDP",
+          "establishment_application_date": null,
+          "establishment_approval_date": "၆-၅-၂၀၁၀",
+          "flag_image": "https://maepaysoh.org/flags/13.UDPF.jpg",
+          "headquarter_address": "ကွင်းအမှတ်(၁၅၂၂)၊ လင်းနို့ဝင်းကွင်း၊ ဦးပိုင်အမှတ်(၂/၁၊ ယာမြေ)၊ ဇီးကုန်းကျေးရွာအုပ်စု၊ ပုဗ္ဗသီရိမြို့နယ်၊ ဥတ္တရသီရိခရိုင်၊ နေပြည်တော်။",
+          "leaders_and_chairmen": [
+            "ဦးကျော်မြင့်၊ ဒေါ်သီတာဇင်၊ (တွဲ-တွင်း/မှူး)"
+          ],
+          "member_count": "ဦးလှမြင့်၊ ဦးဘိုမောင်း ပါ \n(၁၇) ဦး",
+          "name_burmese": "ညီညွတ်သောဒီမိုကရက်တစ်ပါတီ (UDP)",
+          "name_english": "United Democratic Party",
+          "policy": "https://uec.gov.mm/show_data_content.php?name=15UnitedDemocraticPartyUDP.pdf&type=page_multiple_photo&code=53&sno=5793&token=45a324c1367831e98226cd2093c3b81e17842f846d8427e0575e33850c5186e82f6db09b99db21180d7390d040a3888b8ff64a22166628f7b238f9e3f1dd5f14",
+          "region": "ပြည်ထောင်စုတစ်ဝန်းလုံး",
+          "registered_number": 16,
+          "registration_application_date": "၁၇-၅-၂၀၁၀",
+          "registration_approved_date": "၂၆-၅-၂၀၁၀",
+          "seal_image": "https://maepaysoh.org/seals/13.UDPS.jpg",
+          "contacts": [
+            "၀၉ ၂၅၉၅၆၀၃၅၀(ဦးကြင်ဝမ်း)",
+            "၀၆၇၅၀၀၂၅၃",
+            "၀၆၇၅၀၀၂၃၆",
+            "၀၉ ၂၅၃၇၅၀၉၂၅",
+            "၀၉၂၅၀၇၉၉၄၁၂"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "6810",
+    "type": "candidate",
+    "attributes": {
+      "name": "ဦးအောင်ခိုင်",
+      "age": 47,
+      "education": "တက္ကသိုလ်ဝင်တန်း(က)အဆင့်အောင်(၁၉၉၀/၁၉၉၁)",
+      "ethnicity": "မွန်",
+      "gender": "Male",
+      "religion": "ဗုဒ္ဓ",
+      "work": "ရော်ဘာခြံ",
+      "is_individual": false,
+      "residential_address": null,
+      "is_ethnic_candidate": true,
+      "representing_ethnicity": "မွန်",
+      "ballot_order": 55,
+      "is_elected": false,
+      "birthday": "1972-11-06",
+      "image": "https://maepaysoh.org/candidate-profile/TT6.U Aung Naing.jpg",
+      "sorting_name": "အောင်ခိုင်",
+      "individual_logo": null,
+      "father": {
+        "name": "ဦးဝင်းမော်(ကွယ်လွန်)",
+        "ethnicity": "မွန်",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "mother": {
+        "name": "ဒေါ်မအေး(ကွယ်လွန်)",
+        "ethnicity": "မွန်",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "constituency": {
+        "id": "3491",
+        "type": "constituency",
+        "attributes": {
+          "name": "ကရင်ပြည်နယ် မွန်တိုင်းရင်းသားလူမျိုးမဲဆန္ဒနယ်",
+          "state_region": "ကရင်ပြည်နယ်",
+          "township": null,
+          "house": "ethnic"
+        }
+      },
+      "party": {
+        "id": "112",
+        "type": "party",
+        "attributes": {
+          "abbreviation": "UBP",
+          "establishment_application_date": null,
+          "establishment_approval_date": "၄-၄-၂၀၁၉",
+          "flag_image": "https://maepaysoh.org/flags/80.UBPF.jpg",
+          "headquarter_address": "အိမ်အမှတ် (A-3)၊ ရာဇသင်္ဂဟလမ်း၊ ပုဗ္ဗသီရိမြို့နယ်၊ ဥတ္တရခရိုင်၊ နေပြည်တော်။",
+          "leaders_and_chairmen": [],
+          "member_count": "သူရဦးရွှေမန်း ပါ\n(၁၉) ဦး",
+          "name_burmese": "ပြည်ထောင်စုကောင်းကျိုးဆောင်ပါတီ",
+          "name_english": "Union Betterment Party",
+          "policy": "https://uec.gov.mm/show_data_content.php?name=UBP.pdf&type=page_multiple_photo&code=185&sno=9528&token=a751999fd34f1243a0085611d91039171530e17a2ab51c847405001d51ddd8a047d4a57a96db602b5065a3d4ef974887f1dc30a2af1a9bbee055f385fef19f57",
+          "region": "ပြည်ထောင်စုတစ်ဝန်းလုံး",
+          "registered_number": 112,
+          "registration_application_date": "၈-၄-၂၀၁၉",
+          "registration_approved_date": "၂၅-၄-၂၀၁၉",
+          "seal_image": "https://maepaysoh.org/seals/80.UBPS.jpg",
+          "contacts": [
+            "၀၉-၉၆၅၂၀၂၇၂၉ (ဦးကျော်စန်း)"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "6811",
+    "type": "candidate",
+    "attributes": {
+      "name": "ဦးခွန်ချစ်ငွေ",
+      "age": 51,
+      "education": "အဋ္ဌမတန်း",
+      "ethnicity": "ပအိုဝ်း",
+      "gender": "Male",
+      "religion": "ဗုဒ္ဓ",
+      "work": "ရော်ဘာခြံ",
+      "is_individual": true,
+      "residential_address": null,
+      "is_ethnic_candidate": true,
+      "representing_ethnicity": "ပအိုဝ်း",
+      "ballot_order": 56,
+      "is_elected": false,
+      "birthday": "1969-01-10",
+      "image": "https://maepaysoh.org/candidate-profile/2020-Eth-UKhonChitWai-1.jpg",
+      "sorting_name": "ခွန်ချစ်ငွေ",
+      "individual_logo": "https://maepaysoh.org/candidate-party-logo/2020-Eth-UKhonChitWai-8.jpg",
+      "father": {
+        "name": "ဦးခွန်ဘေးမောင်",
+        "ethnicity": "ပအိုဝ်း",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "mother": {
+        "name": "ဒေါ်ရဲမေ",
+        "ethnicity": "ပအိုဝ်း",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "constituency": {
+        "id": "3492",
+        "type": "constituency",
+        "attributes": {
+          "name": "ကရင်ပြည်နယ် ပအိုဝ်းတိုင်းရင်းသားလူမျိုးမဲဆန္ဒနယ်",
+          "state_region": "ကရင်ပြည်နယ်",
+          "township": null,
+          "house": "ethnic"
+        }
+      },
+      "party": null
+    }
+  },
+  {
+    "id": "6812",
+    "type": "candidate",
+    "attributes": {
+      "name": "ခွန်စိုးနိုင်",
+      "age": 43,
+      "education": "B.A(Psychology)",
+      "ethnicity": "ပအိုဝ်း",
+      "gender": "Male",
+      "religion": "ဗုဒ္ဓ",
+      "work": "လယ်/ဥယျာဉ်ခြံ",
+      "is_individual": false,
+      "residential_address": null,
+      "is_ethnic_candidate": true,
+      "representing_ethnicity": "ပအိုဝ်း",
+      "ballot_order": 57,
+      "is_elected": false,
+      "birthday": "1977-01-11",
+      "image": "https://maepaysoh.org/candidate-profile/Eth-KhonSoeNaing.jpg",
+      "sorting_name": "ခွန်စိုးနိုင်",
+      "individual_logo": null,
+      "father": {
+        "name": "ဦးခွန်ထွန်းရီ(ကွယ်လွန်)",
+        "ethnicity": "ပအိုဝ်း",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "mother": {
+        "name": "ဒေါ်နန်းသန်းတင်",
+        "ethnicity": "ပအိုဝ်း",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "constituency": {
+        "id": "3492",
+        "type": "constituency",
+        "attributes": {
+          "name": "ကရင်ပြည်နယ် ပအိုဝ်းတိုင်းရင်းသားလူမျိုးမဲဆန္ဒနယ်",
+          "state_region": "ကရင်ပြည်နယ်",
+          "township": null,
+          "house": "ethnic"
+        }
+      },
+      "party": {
+        "id": "5",
+        "type": "party",
+        "attributes": {
+          "abbreviation": "PNO",
+          "establishment_application_date": null,
+          "establishment_approval_date": "၂၃-၄-၂၀၁၀",
+          "flag_image": "https://maepaysoh.org/flags/5.PNOF.jpg",
+          "headquarter_address": "အမှတ်(၁၈)၊ အနောက်မြို့ပတ်လမ်း၊ စျေးပိုင်းရပ်၊ တောင်ကြီးမြို့၊ ရှမ်းပြည်နယ်။",
+          "leaders_and_chairmen": [
+            "ဦးခွန်စံလွင်၊ ဦးခွန်သိန်းဖေ(ခ)၊ ဟိုက်ဆော်ဝမ်း(ထွေ/မှူး)"
+          ],
+          "member_count": "ဦးစံလွင် ပါ \n(၁၅)ဦး",
+          "name_burmese": "ပအိုဝ်းအမျိုးသားအဖွဲ့ချုပ် (PNO)",
+          "name_english": "Pa-O National Organisation",
+          "policy": "https://uec.gov.mm/show_data_content.php?name=5_PNO.pdf&type=page_multiple_photo&code=43&sno=789&token=65640e0d848a6b5fce88d86e936a0299650ddc1dc3bb76b390589bf969cca1ada453aa50ffb3308e2abff85694955cbe56daaf74698beec823ee4a407b9188d6",
+          "region": "ပြည်ထောင်စုတစ်ဝန်းလုံး",
+          "registered_number": 5,
+          "registration_application_date": "၆-၅-၂၀၁၀",
+          "registration_approved_date": "၁၃-၅-၂၀၁၀",
+          "seal_image": "https://maepaysoh.org/seals/5.PNOS.jpg",
+          "contacts": [
+            "၀၉၄၂၈၃၁၀၀၄၀(ဦးခွန်စံလွင်)",
+            "၀၉၄၂၈၂၁၈၃၁၄ (ဦးခွန်တင်ထွဋ်)",
+            "၀၈၁ ၂၁၂၄၆၉၁(ဖက်စ်)",
+            "၀၉၃၆၃၅၂၃၅၅ (ရုံးချုပ်)",
+            "၀၉ ၂၅၀၃၄၃၁၄၅ (ဦးစောခွန်ကျော်ဝင်း)",
+            "၀၉၂၅၃၃၃၆၅၀၂ (ခွန်ကျော်အေး)"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "6813",
+    "type": "candidate",
+    "attributes": {
+      "name": "ခွန်မင်းအောင်(ခ)မောင်မောင်",
+      "age": 56,
+      "education": "LL.B",
+      "ethnicity": "ပအိုဝ်း",
+      "gender": "Male",
+      "religion": "ဗုဒ္ဓ",
+      "work": "မုန့်မျိုးစုံလုပ်ငန်း",
+      "is_individual": true,
+      "residential_address": null,
+      "is_ethnic_candidate": true,
+      "representing_ethnicity": "ပအိုဝ်း",
+      "ballot_order": 58,
+      "is_elected": false,
+      "birthday": "1964-07-18",
+      "image": "https://maepaysoh.org/candidate-profile/Khon Min Aung (K) Mg Mg.jpg",
+      "sorting_name": "ခွန်မင်းအောင်(ခ)မောင်မောင်",
+      "individual_logo": "https://maepaysoh.org/candidate-party-logo/Logo Khon Min Aung (K) Mg Mg.jpg",
+      "father": {
+        "name": "ဦးသာစိန်(ကွယ်လွန်)",
+        "ethnicity": "ပအိုဝ်း",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "mother": {
+        "name": "ဒေါ်ချစ်သိန်း(ကွယ်လွန်)",
+        "ethnicity": "ပအိုဝ်း",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "constituency": {
+        "id": "3492",
+        "type": "constituency",
+        "attributes": {
+          "name": "ကရင်ပြည်နယ် ပအိုဝ်းတိုင်းရင်းသားလူမျိုးမဲဆန္ဒနယ်",
+          "state_region": "ကရင်ပြည်နယ်",
+          "township": null,
+          "house": "ethnic"
+        }
+      },
+      "party": null
+    }
+  },
+  {
+    "id": "6814",
+    "type": "candidate",
+    "attributes": {
+      "name": "ဦးခွန်မျိုးတင့်",
+      "age": 54,
+      "education": "ဒုတိယနှစ်(သမိုင်း)",
+      "ethnicity": "ပအိုဝ်း",
+      "gender": "Male",
+      "religion": "ဗုဒ္ဓ",
+      "work": "ပအိုဝ်းတိုင်းရင်းသားလူမျိုးရေးရာဝန်ကြီး",
+      "is_individual": false,
+      "residential_address": null,
+      "is_ethnic_candidate": true,
+      "representing_ethnicity": "ပအိုဝ်း",
+      "ballot_order": 59,
+      "is_elected": false,
+      "birthday": "1965-12-09",
+      "image": "https://maepaysoh.org/candidate-profile/Eth-U KhunMyoTint.jpg",
+      "sorting_name": "ခွန်မျိုးတင့်",
+      "individual_logo": null,
+      "father": {
+        "name": "ဦးချစ်ညွန့်",
+        "ethnicity": "ဗမာ",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "mother": {
+        "name": "ဒေါ်သောင်းရင်",
+        "ethnicity": "ပအိုဝ်း",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "constituency": {
+        "id": "3492",
+        "type": "constituency",
+        "attributes": {
+          "name": "ကရင်ပြည်နယ် ပအိုဝ်းတိုင်းရင်းသားလူမျိုးမဲဆန္ဒနယ်",
+          "state_region": "ကရင်ပြည်နယ်",
+          "township": null,
+          "house": "ethnic"
+        }
+      },
+      "party": {
+        "id": "47",
+        "type": "party",
+        "attributes": {
+          "abbreviation": "NLD",
+          "establishment_application_date": null,
+          "establishment_approval_date": "၁၂-၁၂-၂၀၁၁",
+          "flag_image": "https://maepaysoh.org/flags/32.NLDF.jpg",
+          "headquarter_address": "အမှတ် (၉၇/ခ)၊ အနောက်ရွှေဂုံတိုင်လမ်း၊ ဗဟန်းမြို့နယ်၊ ရန်ကုန်တိုင်းဒေသကြီး။",
+          "leaders_and_chairmen": [
+            "ဒေါ်အောင်ဆန်းစုကြည်၊ ဦးဉာဏ်ဝင်း ၊"
+          ],
+          "member_count": "ဦးတင်ဦး ပါ\n(၂၁) ဦး",
+          "name_burmese": "အမျိုးသားဒီမိုကရေစီအဖွဲ့ချုပ်ပါတီ",
+          "name_english": "National League for Democracy",
+          "policy": "https://uec.gov.mm/show_data_content.php?name=41NationalLeagueforDemocracy.pdf&type=page_multiple_photo&code=83&sno=5252&token=1a4775aa27447c648e8827046609016ef94b021c8d8b35d9c1369d7bfa0cb6c7c8b261a023abe86c86e150f6b8969a6d659b86580c084606585c2422a3a15981",
+          "region": "ပြည်ထောင်စုတစ်ဝန်းလုံး",
+          "registered_number": 47,
+          "registration_application_date": "၂၃-၁၂-၂၀၁၁",
+          "registration_approved_date": "၅-၁-၂၀၁၂",
+          "seal_image": "https://maepaysoh.org/seals/32.NLDS.jpg",
+          "contacts": [
+            "၀၉-၂၆၀၆၂၅၇၃၈ (ဦးအောင်ကြည်ညွန့်)",
+            "၀၉-၅၁၇၉၂၄၇ (ဦးဉာဏ်ဝင်း)",
+            "၀၉-၅၀၈၆၃၂၄ (ဒေါ်စနိုး)",
+            "၀၁-၅၅၅၁၅၆ (ရုံးဖုန်း/ ဖက်စ်)"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "6815",
+    "type": "candidate",
+    "attributes": {
+      "name": "ဦးခွန်ဝင်းနောင်",
+      "age": 73,
+      "education": "B.Sc(Physics)",
+      "ethnicity": "ပအိုဝ်း",
+      "gender": "Male",
+      "religion": "ဗုဒ္ဓ",
+      "work": "သမဝါယမ မန်နေဂျာ(ငြိမ်း)",
+      "is_individual": true,
+      "residential_address": null,
+      "is_ethnic_candidate": true,
+      "representing_ethnicity": "ပအိုဝ်း",
+      "ballot_order": 60,
+      "is_elected": false,
+      "birthday": "1947-06-18",
+      "image": "https://maepaysoh.org/candidate-profile/Eth-U KhunWinNaung.jpg",
+      "sorting_name": "ခွန်ဝင်းနောင်",
+      "individual_logo": "https://maepaysoh.org/candidate-party-logo/U Khon Win Naung (Kayin)_PaOhETH.jpg",
+      "father": {
+        "name": "ဦးအေးဖေ(ကွယ်လွန်)",
+        "ethnicity": "ပအိုဝ်း",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "mother": {
+        "name": "ဒေါ်စိန်မြိုင်(ကွယ်လွန်)",
+        "ethnicity": "ပအိုဝ်း",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "constituency": {
+        "id": "3492",
+        "type": "constituency",
+        "attributes": {
+          "name": "ကရင်ပြည်နယ် ပအိုဝ်းတိုင်းရင်းသားလူမျိုးမဲဆန္ဒနယ်",
+          "state_region": "ကရင်ပြည်နယ်",
+          "township": null,
+          "house": "ethnic"
+        }
+      },
+      "party": null
+    }
+  },
+  {
+    "id": "6816",
+    "type": "candidate",
+    "attributes": {
+      "name": "ခွန်သန်းမြင့်",
+      "age": 68,
+      "education": "တက္ကသိုလ်ဝင်တန်း၊ဗုဒ္ဓဒီပလိုမာ(ရန်ကုန်သံဃာ့တက္ကသိုလ်)",
+      "ethnicity": "ပအိုဝ်း",
+      "gender": "Male",
+      "religion": "ဗုဒ္ဓ",
+      "work": "ရာဘာခြံစိုက်ပျိုးရေး",
+      "is_individual": true,
+      "residential_address": null,
+      "is_ethnic_candidate": true,
+      "representing_ethnicity": "ပအိုဝ်း",
+      "ballot_order": 61,
+      "is_elected": false,
+      "birthday": "1952-04-02",
+      "image": "https://maepaysoh.org/candidate-profile/Eth-KhonThanMyint.jpg",
+      "sorting_name": "ခွန်သန်းမြင့်",
+      "individual_logo": "https://maepaysoh.org/candidate-party-logo/Khun Than Myint.jpg",
+      "father": {
+        "name": "ဦးငွေလုံ(ကွယ်လွန်)",
+        "ethnicity": "ပအိုဝ်း",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "mother": {
+        "name": "ဒေါ်အေးမြိုင်(ကွယ်လွန်)",
+        "ethnicity": "ပအိုဝ်း",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "constituency": {
+        "id": "3492",
+        "type": "constituency",
+        "attributes": {
+          "name": "ကရင်ပြည်နယ် ပအိုဝ်းတိုင်းရင်းသားလူမျိုးမဲဆန္ဒနယ်",
+          "state_region": "ကရင်ပြည်နယ်",
+          "township": null,
+          "house": "ethnic"
+        }
+      },
+      "party": null
+    }
+  },
+  {
+    "id": "6817",
+    "type": "candidate",
+    "attributes": {
+      "name": "ဦးခွန်အောင်ကျော်မိုး",
+      "age": 44,
+      "education": "သိပ္ပံဘွဲ့(သင်္ချာ)",
+      "ethnicity": "ပအိုဝ်း",
+      "gender": "Male",
+      "religion": "ဗုဒ္ဓ",
+      "work": "ဈေးရောင်း",
+      "is_individual": false,
+      "residential_address": null,
+      "is_ethnic_candidate": true,
+      "representing_ethnicity": "ပအိုဝ်း",
+      "ballot_order": 62,
+      "is_elected": false,
+      "birthday": "1976-05-23",
+      "image": "https://maepaysoh.org/candidate-profile/2020-Eth-UKhonAungKyawMoe-1.jpg",
+      "sorting_name": "ခွန်အောင်ကျော်မိုး",
+      "individual_logo": null,
+      "father": {
+        "name": "ဦးအေးကို",
+        "ethnicity": "ဗမာ",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "mother": {
+        "name": "ဒေါ်နန်းအေးတင်",
+        "ethnicity": "ပအိုဝ်း",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "constituency": {
+        "id": "3492",
+        "type": "constituency",
+        "attributes": {
+          "name": "ကရင်ပြည်နယ် ပအိုဝ်းတိုင်းရင်းသားလူမျိုးမဲဆန္ဒနယ်",
+          "state_region": "ကရင်ပြည်နယ်",
+          "township": null,
+          "house": "ethnic"
+        }
+      },
+      "party": {
+        "id": "32",
+        "type": "party",
+        "attributes": {
+          "abbreviation": "USDP",
+          "establishment_application_date": null,
+          "establishment_approval_date": "၄-၅-၂၀၁၀",
+          "flag_image": "https://maepaysoh.org/flags/24.USDPF.jpg",
+          "headquarter_address": "အမှတ် (၅)၊ ရာဇသင်္ဂဟလမ်းနှင့် 'စီ'လမ်းထောင့်၊ ဒက္ခိဏသီရိမြို့နယ်၊ နေပြည်တော်။",
+          "leaders_and_chairmen": [
+            "ဦးသန်းဌေး၊ ဦးသက်နိုင်ဝင်း (ထွေ/မှူး)"
+          ],
+          "member_count": "ဦးသိန်းစိန် ပါ\n(၂၇) ဦး",
+          "name_burmese": "ပြည်ထောင်စုကြံ့ခိုင်ရေးနှင့်ဖွံ့ဖြိုးရေးပါတီ",
+          "name_english": "Union Solidarity and Development Party",
+          "policy": "https://uec.gov.mm/show_data_content.php?name=72_USDP.pdf&type=page_multiple_photo&code=72&sno=3013&token=43516736a663dc92558123c160dff62d42d7e1f2e476ab58a8654ee5ea30e2e13acf15172242b2dd3cdf6bb25dfcd0c620385e56a03a5eb32b7bfcd35e49fc8e",
+          "region": "ပြည်ထောင်စုတစ်ဝန်းလုံး",
+          "registered_number": 32,
+          "registration_application_date": "၁-၆-၂၀၁၀",
+          "registration_approved_date": "၈-၆-၂၀၁၀",
+          "seal_image": "https://maepaysoh.org/seals/24.USDPS.jpg",
+          "contacts": [
+            "၀၆၇-၄၁၉၂၄၄",
+            "၀၉-၅၁၆၃၂၈၅ (ဒေါက်တာနန္ဒာလှမြင့်)",
+            "၀၆၇-၄၁၉၂၅၇",
+            "၀၆၇-၄၁၉၂၇၄ (ဖက်စ်)"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "6818",
+    "type": "candidate",
+    "attributes": {
+      "name": "ဒေါ်နန်းမိမိငယ်",
+      "age": 62,
+      "education": "B.Sc(Bot)၊ B.Ed",
+      "ethnicity": "ပအိုဝ်း",
+      "gender": "Female",
+      "religion": "ဗုဒ္ဓ",
+      "work": "အငြိမ်းစားပြည်နယ် လ/ထ ညွှန်ကြားရေးမှူး၊ ပညာရေး",
+      "is_individual": false,
+      "residential_address": null,
+      "is_ethnic_candidate": true,
+      "representing_ethnicity": "ပအိုဝ်း",
+      "ballot_order": 63,
+      "is_elected": false,
+      "birthday": "1958-05-18",
+      "image": "https://maepaysoh.org/candidate-profile/Eth-Daw NanMiMiNge.jpg",
+      "sorting_name": "နန်းမိမိငယ်",
+      "individual_logo": null,
+      "father": {
+        "name": "ဦးဘဟန်(ကွယ်လွန်)",
+        "ethnicity": "ပအိုဝ့်",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "mother": {
+        "name": "ဒေါ်မဖြူ(ကွယ်လွန်)",
+        "ethnicity": "ပအိုဝ့်",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "constituency": {
+        "id": "3492",
+        "type": "constituency",
+        "attributes": {
+          "name": "ကရင်ပြည်နယ် ပအိုဝ်းတိုင်းရင်းသားလူမျိုးမဲဆန္ဒနယ်",
+          "state_region": "ကရင်ပြည်နယ်",
+          "township": null,
+          "house": "ethnic"
+        }
+      },
+      "party": {
+        "id": "112",
+        "type": "party",
+        "attributes": {
+          "abbreviation": "UBP",
+          "establishment_application_date": null,
+          "establishment_approval_date": "၄-၄-၂၀၁၉",
+          "flag_image": "https://maepaysoh.org/flags/80.UBPF.jpg",
+          "headquarter_address": "အိမ်အမှတ် (A-3)၊ ရာဇသင်္ဂဟလမ်း၊ ပုဗ္ဗသီရိမြို့နယ်၊ ဥတ္တရခရိုင်၊ နေပြည်တော်။",
+          "leaders_and_chairmen": [],
+          "member_count": "သူရဦးရွှေမန်း ပါ\n(၁၉) ဦး",
+          "name_burmese": "ပြည်ထောင်စုကောင်းကျိုးဆောင်ပါတီ",
+          "name_english": "Union Betterment Party",
+          "policy": "https://uec.gov.mm/show_data_content.php?name=UBP.pdf&type=page_multiple_photo&code=185&sno=9528&token=a751999fd34f1243a0085611d91039171530e17a2ab51c847405001d51ddd8a047d4a57a96db602b5065a3d4ef974887f1dc30a2af1a9bbee055f385fef19f57",
+          "region": "ပြည်ထောင်စုတစ်ဝန်းလုံး",
+          "registered_number": 112,
+          "registration_application_date": "၈-၄-၂၀၁၉",
+          "registration_approved_date": "၂၅-၄-၂၀၁၉",
+          "seal_image": "https://maepaysoh.org/seals/80.UBPS.jpg",
+          "contacts": [
+            "၀၉-၉၆၅၂၀၂၇၂၉ (ဦးကျော်စန်း)"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "6819",
+    "type": "candidate",
+    "attributes": {
+      "name": "ဦးအောင်မြင့်မြတ်",
+      "age": 38,
+      "education": "A.G.T.I (စက်မှု)၊B.Sc(Physics)",
+      "ethnicity": "ပအိုဝ်း",
+      "gender": "Male",
+      "religion": "ဗုဒ္ဓ",
+      "work": "ကိုယ်ပိုင်သင်တန်းကျောင်း(ပညာရေး)",
+      "is_individual": false,
+      "residential_address": null,
+      "is_ethnic_candidate": true,
+      "representing_ethnicity": "ပအိုဝ်း",
+      "ballot_order": 64,
+      "is_elected": false,
+      "birthday": "1982-01-08",
+      "image": "https://maepaysoh.org/candidate-profile/Eth-U AgMyintMyat.jpg",
+      "sorting_name": "အောင်မြင့်မြတ်",
+      "individual_logo": null,
+      "father": {
+        "name": "ဦးချစ်ဆွေ(ကွယ်လွန်)",
+        "ethnicity": "ကရင်",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "mother": {
+        "name": "ဒေါ်မပြောင်း",
+        "ethnicity": "ပအိုဝ်း",
+        "religion": "ဗုဒ္ဓ"
+      },
+      "constituency": {
+        "id": "3492",
+        "type": "constituency",
+        "attributes": {
+          "name": "ကရင်ပြည်နယ် ပအိုဝ်းတိုင်းရင်းသားလူမျိုးမဲဆန္ဒနယ်",
+          "state_region": "ကရင်ပြည်နယ်",
+          "township": null,
+          "house": "ethnic"
+        }
+      },
+      "party": {
+        "id": "16",
+        "type": "party",
+        "attributes": {
+          "abbreviation": "UDP",
+          "establishment_application_date": null,
+          "establishment_approval_date": "၆-၅-၂၀၁၀",
+          "flag_image": "https://maepaysoh.org/flags/13.UDPF.jpg",
+          "headquarter_address": "ကွင်းအမှတ်(၁၅၂၂)၊ လင်းနို့ဝင်းကွင်း၊ ဦးပိုင်အမှတ်(၂/၁၊ ယာမြေ)၊ ဇီးကုန်းကျေးရွာအုပ်စု၊ ပုဗ္ဗသီရိမြို့နယ်၊ ဥတ္တရသီရိခရိုင်၊ နေပြည်တော်။",
+          "leaders_and_chairmen": [
+            "ဦးကျော်မြင့်၊ ဒေါ်သီတာဇင်၊ (တွဲ-တွင်း/မှူး)"
+          ],
+          "member_count": "ဦးလှမြင့်၊ ဦးဘိုမောင်း ပါ \n(၁၇) ဦး",
+          "name_burmese": "ညီညွတ်သောဒီမိုကရက်တစ်ပါတီ (UDP)",
+          "name_english": "United Democratic Party",
+          "policy": "https://uec.gov.mm/show_data_content.php?name=15UnitedDemocraticPartyUDP.pdf&type=page_multiple_photo&code=53&sno=5793&token=45a324c1367831e98226cd2093c3b81e17842f846d8427e0575e33850c5186e82f6db09b99db21180d7390d040a3888b8ff64a22166628f7b238f9e3f1dd5f14",
+          "region": "ပြည်ထောင်စုတစ်ဝန်းလုံး",
+          "registered_number": 16,
+          "registration_application_date": "၁၇-၅-၂၀၁၀",
+          "registration_approved_date": "၂၆-၅-၂၀၁၀",
+          "seal_image": "https://maepaysoh.org/seals/13.UDPS.jpg",
+          "contacts": [
+            "၀၉ ၂၅၉၅၆၀၃၅၀(ဦးကြင်ဝမ်း)",
+            "၀၆၇၅၀၀၂၅၃",
+            "၀၆၇၅၀၀၂၃၆",
+            "၀၉ ၂၅၃၇၅၀၉၂၅",
+            "၀၉၂၅၀၇၉၉၄၁၂"
+          ]
+        }
+      }
+    }
+  }
+]

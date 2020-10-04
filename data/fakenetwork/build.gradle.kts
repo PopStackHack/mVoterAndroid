@@ -25,7 +25,7 @@ android {
     }
 
     getByName("release") {
-      isMinifyEnabled = false
+      isMinifyEnabled = true
       proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
     }
   }
@@ -43,34 +43,17 @@ android {
 
 dependencies {
   implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-  implementation(project(":domain"))
-  api(project(":data:common"))
-  api(project(":data:cache"))
-  debugApi(project(":data:fakenetwork"))
-  releaseApi(project(":data:network"))
+  implementation(project(":data:common"))
 
   coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.0.10")
 
-  implementation(CommonLibs.timber)
-  implementation(AndroidXPaging.common)
-  implementation(Kotlin.stdblib_jdk)
-  implementation(AndroidXCore.core_ktx)
-
-  implementation(AndroidXDataStore.preferences)
+  moshi()
 
   //Dagger
   daggerJvm()
   daggerAndroid()
 
-  implementation("com.google.android.gms:play-services-base:17.4.0")
-
-  //Testing
-  testImplementation(CommonLibs.junit)
-  testImplementation("org.robolectric:shadows-playservices:4.3.1")
-  testImplementation(project(":coroutinetestrule"))
-  mockito()
-  mockitoAndroid()
-  androidXTest()
+  implementation(Kotlin.stdblib_jdk)
 }
 
 ktlint {
