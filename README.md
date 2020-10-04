@@ -31,6 +31,7 @@ You're welcomed to submit issues and pull requests as long as you adhere to Gith
 ## Download
 
 The app can be downloaded from [Play Store](https://play.google.com/store/apps/details?id=com.popstack.mvoter2015). If your phone doesn't have Play Store, you can also manually download the apk from [our website](https://mvoterapp.com/).
+The app can also be used from the [Web](https://web.mvoterapp.com).
 
 ## License
 
