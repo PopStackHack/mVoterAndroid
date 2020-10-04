@@ -46,7 +46,10 @@ dependencies {
   implementation(project(":domain"))
   api(project(":data:common"))
   api(project(":data:cache"))
-  debugApi(project(":data:fakenetwork"))
+
+  //Uncomment fakenetwork and comment network for your development environment
+  //debugApi(project(":data:fakenetwork"))
+  debugApi(project(":data:network"))
   releaseApi(project(":data:network"))
 
   coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.0.10")
