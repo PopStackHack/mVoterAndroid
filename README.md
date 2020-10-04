@@ -26,7 +26,7 @@ The App is targeted for the following specification
 
 ## Contributing
 
-You're welcomed to submit issues and pull requests as long as you adhere to Github community guideline. Any form of contribution is welcomed, from typo error to submitting a new feature.
+You're welcomed to submit issues and pull requests as long as you adhere to Github community guideline. Read [Contributing.md](https://github.com/PopStackHack/mVoterAndroid/blob/master/Contributing.md) for more information on how to setup your development environment.
 
 ## Download
 
