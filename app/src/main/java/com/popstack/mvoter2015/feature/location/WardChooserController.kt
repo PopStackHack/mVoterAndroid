@@ -17,7 +17,7 @@ import com.popstack.mvoter2015.logging.HasTag
 class WardChooserController(bundle: Bundle) : MvvmController<ControllerWardChooserBinding>(bundle), HasTag {
 
   companion object {
-    const val ARG_STATE_REGION = "state_region"
+    const val ARG_STATE_REGION = "candidate_upper_house"
     const val ARG_TOWNSHIP = "township"
 
     fun newInstance(stateRegion: String, township: String) = WardChooserController(

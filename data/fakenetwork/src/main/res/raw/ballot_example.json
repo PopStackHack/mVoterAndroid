@@ -1,0 +1,530 @@
+[
+  {
+    "id": "1",
+    "type": "ballot",
+    "attributes": {
+      "id": 1,
+      "reason": "ကိုယ်စားလှယ်လောင်း တစ်ဦးကိုသာ ဆန္ဒပြုထားကြောင်း ထင်ရှားသည့်မဲ",
+      "is_valid": true,
+      "category": "normal",
+      "image_path": "https://maepaysoh.org/ballots/valid_pics/valid01.png"
+    }
+  },
+  {
+    "id": "2",
+    "type": "ballot",
+    "attributes": {
+      "id": 2,
+      "reason": "တံဆိပ်တုံးသည် ပြောင်းပြန် ဘေးတိုက် ဖြစ်နေသော်လည်း ကိုယ်စားလှယ်လောင်း တစ်ဦးကိုသာ ဆန္ဒပြုထားသောမဲ",
+      "is_valid": true,
+      "category": "normal",
+      "image_path": "https://maepaysoh.org/ballots/valid_pics/valid02.png"
+    }
+  },
+  {
+    "id": "3",
+    "type": "ballot",
+    "attributes": {
+      "id": 3,
+      "reason": "တံဆိပ်တုံး၏ အကွက် (၉) ကွက်တွင် အနည်းဆုံး (၅) ကွက်သည် ကိုယ်စားလှယ်လောင်းတစ်ဦး၏ အကွက်အတွင်းသာ ကျရောက်သောမဲ",
+      "is_valid": true,
+      "category": "normal",
+      "image_path": "https://maepaysoh.org/ballots/valid_pics/valid03.png"
+    }
+  },
+  {
+    "id": "4",
+    "type": "ballot",
+    "attributes": {
+      "id": 4,
+      "reason": "ကိုယ်စားလှယ်လောင်း၏ အမည်ပေါ်တွင် ရိုက်နှိပ် ဆန္ဒပြုထားသောမဲ",
+      "is_valid": true,
+      "category": "normal",
+      "image_path": "https://maepaysoh.org/ballots/valid_pics/valid04.png"
+    }
+  },
+  {
+    "id": "5",
+    "type": "ballot",
+    "attributes": {
+      "id": 5,
+      "reason": "ကိုယ်စားလှယ်လောင်း၏ ပါတီ / အမှတ်တံဆိပ် ပေါ်တွင် ရိုက်နှိပ်ထားသောမဲ",
+      "is_valid": true,
+      "category": "normal",
+      "image_path": "https://maepaysoh.org/ballots/valid_pics/valid05.png"
+    }
+  },
+  {
+    "id": "6",
+    "type": "ballot",
+    "attributes": {
+      "id": 6,
+      "reason": "ကိုယ်စားလှယ်လောင်း တစ်ဦးကိုသာ ဆန္ဒပြုထားကြောင်း ထင်ရှားသည့်မဲ",
+      "is_valid": true,
+      "category": "normal",
+      "image_path": "https://maepaysoh.org/ballots/valid_pics/valid06.png"
+    }
+  },
+  {
+    "id": "7",
+    "type": "ballot",
+    "attributes": {
+      "id": 7,
+      "reason": "ကိုယ်စားလှယ်လောင်း တစ်ဦးကိုသာ ဆန္ဒပြုထားကြောင်း ထင်ရှားသည့်မဲ",
+      "is_valid": true,
+      "category": "normal",
+      "image_path": "https://maepaysoh.org/ballots/valid_pics/valid07.png"
+    }
+  },
+  {
+    "id": "8",
+    "type": "ballot",
+    "attributes": {
+      "id": 8,
+      "reason": "ကိုယ်စားလှယ်လောင်း တစ်ဦးကိုသာ ဆန္ဒပြုထားကြောင်း ထင်ရှားသည့်မဲ",
+      "is_valid": true,
+      "category": "normal",
+      "image_path": "https://maepaysoh.org/ballots/valid_pics/valid08.png"
+    }
+  },
+  {
+    "id": "9",
+    "type": "ballot",
+    "attributes": {
+      "id": 9,
+      "reason": "တံဆိပ်တုံးတစ်ကြိမ်နှင့်အထက် ရိုက်နှိပ်ထားသောလည်း ကိုယ်စားလှယ်လောင်း တစ်ဦးကိုသာ ဆန္ဒပြုထားသောမဲ",
+      "is_valid": true,
+      "category": "normal",
+      "image_path": "https://maepaysoh.org/ballots/valid_pics/valid09.png"
+    }
+  },
+  {
+    "id": "10",
+    "type": "ballot",
+    "attributes": {
+      "id": 10,
+      "reason": "တံဆိပ်တုံးတစ်ကြိမ်နှင့်အထက် ရိုက်နှိပ်ထားသောလည်း ကိုယ်စားလှယ်လောင်း တစ်ဦးကိုသာ ဆန္ဒပြုထားသောမဲ",
+      "is_valid": true,
+      "category": "normal",
+      "image_path": "https://maepaysoh.org/ballots/valid_pics/valid10.png"
+    }
+  },
+  {
+    "id": "11",
+    "type": "ballot",
+    "attributes": {
+      "id": 11,
+      "reason": "တံဆိပ်တုံးတစ်ကြိမ်နှင့်အထက် ရိုက်နှိပ်ထားသောလည်း ကိုယ်စားလှယ်လောင်း တစ်ဦးကိုသာ ဆန္ဒပြုထားသောမဲ",
+      "is_valid": true,
+      "category": "normal",
+      "image_path": "https://maepaysoh.org/ballots/valid_pics/valid11.png"
+    }
+  },
+  {
+    "id": "12",
+    "type": "ballot",
+    "attributes": {
+      "id": 12,
+      "reason": "တံဆိပ်တုံးတစ်ကြိမ်နှင့်အထက် ရိုက်နှိပ်ထားသောလည်း ကိုယ်စားလှယ်လောင်း တစ်ဦးကိုသာ ဆန္ဒပြုထားသောမဲ",
+      "is_valid": true,
+      "category": "normal",
+      "image_path": "https://maepaysoh.org/ballots/valid_pics/valid12.png"
+    }
+  },
+  {
+    "id": "13",
+    "type": "ballot",
+    "attributes": {
+      "id": 13,
+      "reason": "တံဆိပ်တုံးတစ်ကြိမ်နှင့်အထက် ရိုက်နှိပ်ထားသောလည်း ကိုယ်စားလှယ်လောင်း တစ်ဦးကိုသာ ဆန္ဒပြုထားသောမဲ",
+      "is_valid": true,
+      "category": "normal",
+      "image_path": "https://maepaysoh.org/ballots/valid_pics/valid13.png"
+    }
+  },
+  {
+    "id": "14",
+    "type": "ballot",
+    "attributes": {
+      "id": 14,
+      "reason": "ပထမတံဆိပ်တုံး၏ အကွက်သည် ကိုယ်စားလှယ်လောင်း တစ်ဦးအတွက် ဆန္ဒပြုထားပြီး ဒုတိယတံဆိပ်တုံး၏ (၉) ကွက်တွင် အနည်းဆုံး (၅) ကွက်သည် ယင်းကိုယ်စားလှယ်လောင်း၏ အကွက်အတွင်း၌သာ ကျရောက်သောမဲ",
+      "is_valid": true,
+      "category": "normal",
+      "image_path": "https://maepaysoh.org/ballots/valid_pics/valid14.png"
+    }
+  },
+  {
+    "id": "15",
+    "type": "ballot",
+    "attributes": {
+      "id": 15,
+      "reason": "မည်သူ့အား ဆန္ဒပြုသည်ကို ဆုံးဖြတ်ရခက်သော မဲ",
+      "is_valid": false,
+      "category": "normal",
+      "image_path": "https://maepaysoh.org/ballots/invalid_pics/invalid01.png"
+    }
+  },
+  {
+    "id": "16",
+    "type": "ballot",
+    "attributes": {
+      "id": 16,
+      "reason": "မည်သူ့အား ဆန္ဒပြုသည်ကို ဆုံးဖြတ်ရခက်သော မဲ",
+      "is_valid": false,
+      "category": "normal",
+      "image_path": "https://maepaysoh.org/ballots/invalid_pics/invalid02.png"
+    }
+  },
+  {
+    "id": "17",
+    "type": "ballot",
+    "attributes": {
+      "id": 17,
+      "reason": "ဆန္ဒပြုရမည့် အကွက်ပြင်ပတွင် ဆန္ဒပြုထားသော မဲ",
+      "is_valid": false,
+      "category": "normal",
+      "image_path": "https://maepaysoh.org/ballots/invalid_pics/invalid03.png"
+    }
+  },
+  {
+    "id": "18",
+    "type": "ballot",
+    "attributes": {
+      "id": 18,
+      "reason": "စုတ်ပြဲနေသော မဲ",
+      "is_valid": false,
+      "category": "normal",
+      "image_path": "https://maepaysoh.org/ballots/invalid_pics/invalid04.png"
+    }
+  },
+  {
+    "id": "19",
+    "type": "ballot",
+    "attributes": {
+      "id": 19,
+      "reason": "မဲရုံမှူးလက်မှတ်မပါသော မဲ",
+      "is_valid": false,
+      "category": "normal",
+      "image_path": "https://maepaysoh.org/ballots/invalid_pics/invalid05.png"
+    }
+  },
+  {
+    "id": "20",
+    "type": "ballot",
+    "attributes": {
+      "id": 20,
+      "reason": "လုံးဝ ဆန္ဒပြုမထားသော မဲ",
+      "is_valid": false,
+      "category": "normal",
+      "image_path": "https://maepaysoh.org/ballots/invalid_pics/invalid06.png"
+    }
+  },
+  {
+    "id": "21",
+    "type": "ballot",
+    "attributes": {
+      "id": 21,
+      "reason": "အစွန်းအထင်းပါသော မဲ",
+      "is_valid": false,
+      "category": "normal",
+      "image_path": "https://maepaysoh.org/ballots/invalid_pics/invalid07.png"
+    }
+  },
+  {
+    "id": "22",
+    "type": "ballot",
+    "attributes": {
+      "id": 22,
+      "reason": "အမှတ်အသား ပြုထားသော မဲ",
+      "is_valid": false,
+      "category": "normal",
+      "image_path": "https://maepaysoh.org/ballots/invalid_pics/invalid08.png"
+    }
+  },
+  {
+    "id": "23",
+    "type": "ballot",
+    "attributes": {
+      "id": 23,
+      "reason": "ကိုယ်စားလှယ်လောင်း တစ်ဦးထက်ပို၍ ဆန္ဒပြုထားသော မဲ",
+      "is_valid": false,
+      "category": "normal",
+      "image_path": "https://maepaysoh.org/ballots/invalid_pics/invalid09.png"
+    }
+  },
+  {
+    "id": "24",
+    "type": "ballot",
+    "attributes": {
+      "id": 24,
+      "reason": "ကိုယ်စားလှယ်လောင်း နှစ်ဦးအား ဆန္ဒပြုထားသော မဲ",
+      "is_valid": false,
+      "category": "normal",
+      "image_path": "https://maepaysoh.org/ballots/invalid_pics/invalid10.png"
+    }
+  },
+  {
+    "id": "25",
+    "type": "ballot",
+    "attributes": {
+      "id": 25,
+      "reason": "ပထမတံဆိပ်တုံးအကွက်သည် ကိုယ်စားလှယ်လောင်း တစ်ဦးအတွက် ဆန္ဒပြုထားပြီး ဒုတိယတံဆိပ်တုံးအရာ၏ (၉) ကွက်တွင် အနည်းဆုံး (၅) ကွက်သည် အခြားကိုယ်စားလှယ်လောင်းတစ်ဦး၏ အကွက်ပေါ်သို့ ကျရောက်နေသောမဲ",
+      "is_valid": false,
+      "category": "normal",
+      "image_path": "https://maepaysoh.org/ballots/invalid_pics/invalid11.png"
+    }
+  },
+  {
+    "id": "26",
+    "type": "ballot",
+    "attributes": {
+      "id": 26,
+      "reason": null,
+      "is_valid": true,
+      "category": "advanced",
+      "image_path": "https://maepaysoh.org/ballots/advanced_valid_pics/avalid01.png"
+    }
+  },
+  {
+    "id": "27",
+    "type": "ballot",
+    "attributes": {
+      "id": 27,
+      "reason": null,
+      "is_valid": true,
+      "category": "advanced",
+      "image_path": "https://maepaysoh.org/ballots/advanced_valid_pics/avalid02.png"
+    }
+  },
+  {
+    "id": "28",
+    "type": "ballot",
+    "attributes": {
+      "id": 28,
+      "reason": null,
+      "is_valid": true,
+      "category": "advanced",
+      "image_path": "https://maepaysoh.org/ballots/advanced_valid_pics/avalid03.png"
+    }
+  },
+  {
+    "id": "29",
+    "type": "ballot",
+    "attributes": {
+      "id": 29,
+      "reason": null,
+      "is_valid": true,
+      "category": "advanced",
+      "image_path": "https://maepaysoh.org/ballots/advanced_valid_pics/avalid04.png"
+    }
+  },
+  {
+    "id": "30",
+    "type": "ballot",
+    "attributes": {
+      "id": 30,
+      "reason": null,
+      "is_valid": true,
+      "category": "advanced",
+      "image_path": "https://maepaysoh.org/ballots/advanced_valid_pics/avalid05.png"
+    }
+  },
+  {
+    "id": "31",
+    "type": "ballot",
+    "attributes": {
+      "id": 31,
+      "reason": null,
+      "is_valid": true,
+      "category": "advanced",
+      "image_path": "https://maepaysoh.org/ballots/advanced_valid_pics/avalid06.png"
+    }
+  },
+  {
+    "id": "32",
+    "type": "ballot",
+    "attributes": {
+      "id": 32,
+      "reason": "ကိုယ်စားလှယ်လောင်း အမည်အကွက်နှင့် ပါတီသင်္ကေတ အကွက်နှစ်ခုကြားတွင် ဆန္ဒပြုထားသော မဲလက်မှတ်",
+      "is_valid": true,
+      "category": "advanced",
+      "image_path": "https://maepaysoh.org/ballots/advanced_valid_pics/avalid07.png"
+    }
+  },
+  {
+    "id": "33",
+    "type": "ballot",
+    "attributes": {
+      "id": 33,
+      "reason": "ပါတီသင်္ကေတအကွက်နှင့် ကွက်လပ်နှစ်ခုကြားတွင် ဆန္ဒပြုထားသောမဲလက်မှတ်",
+      "is_valid": true,
+      "category": "advanced",
+      "image_path": "https://maepaysoh.org/ballots/advanced_valid_pics/avalid08.png"
+    }
+  },
+  {
+    "id": "34",
+    "type": "ballot",
+    "attributes": {
+      "id": 34,
+      "reason": "တစ်ကြိမ်ထက်ပို၍ ဆန္ဒပြုထားသော်လည်း ကိုယ်စားလှယ်လောင်းတစ်ဦးကိုသာ ဆန္ဒပြုထားသော မဲလက်မှတ်",
+      "is_valid": true,
+      "category": "advanced",
+      "image_path": "https://maepaysoh.org/ballots/advanced_valid_pics/avalid09.png"
+    }
+  },
+  {
+    "id": "35",
+    "type": "ballot",
+    "attributes": {
+      "id": 35,
+      "reason": "အမှန်ခြစ်ကို ဇောက်ထိုးခြစ်ထားသော မဲလက်မှတ်",
+      "is_valid": true,
+      "category": "advanced",
+      "image_path": "https://maepaysoh.org/ballots/advanced_valid_pics/avalid10.png"
+    }
+  },
+  {
+    "id": "36",
+    "type": "ballot",
+    "attributes": {
+      "id": 36,
+      "reason": "အမှန်ခြစ်ကို ပီပြင်အောင် ခြစ်မထားသောမဲလက်မှတ်",
+      "is_valid": true,
+      "category": "advanced",
+      "image_path": "https://maepaysoh.org/ballots/advanced_valid_pics/avalid11.png"
+    }
+  },
+  {
+    "id": "37",
+    "type": "ballot",
+    "attributes": {
+      "id": 37,
+      "reason": "တစ်ကြိမ်ထက်ပို၍ ဆန္ဒပြုထားသော်လည်း ကိုယ်စားလှယ်လောင်းတစ်ဦးကိုသာ ဆန္ဒပြုထားသော မဲလက်မှတ်",
+      "is_valid": true,
+      "category": "advanced",
+      "image_path": "https://maepaysoh.org/ballots/advanced_valid_pics/avalid12.png"
+    }
+  },
+  {
+    "id": "38",
+    "type": "ballot",
+    "attributes": {
+      "id": 38,
+      "reason": "ခိုင်လုံမဲ နမူနာများပါအတိုင်း ဆန္ဒပြုထားရမည့်အပြင် မဲလက်မှတ်၏ ကျောဘက်တွင် တာဝန်ခံအမည်၊လက်မှတ်နှင့် ကော်မရှင်အဖွဲ့ခွဲ၏ တံဆိပ်ပါရှိသော မဲလက်မှတ်",
+      "is_valid": true,
+      "category": "advanced",
+      "image_path": "https://maepaysoh.org/ballots/advanced_valid_pics/avalid13.png"
+    }
+  },
+  {
+    "id": "39",
+    "type": "ballot",
+    "attributes": {
+      "id": 39,
+      "reason": "ဆန္ဒပြုရမည့် အကွက်၏ပြင်ပတွင် ဆန္ဒပြုထားသော မဲလက်မှတ်",
+      "is_valid": false,
+      "category": "advanced",
+      "image_path": "https://maepaysoh.org/ballots/advanced_invalid_pics/ainvalid01.png"
+    }
+  },
+  {
+    "id": "40",
+    "type": "ballot",
+    "attributes": {
+      "id": 40,
+      "reason": "လုံးဝ ဆန္ဒပြုမထားသော မဲလက်မှတ်",
+      "is_valid": false,
+      "category": "advanced",
+      "image_path": "https://maepaysoh.org/ballots/advanced_invalid_pics/ainvalid02.png"
+    }
+  },
+  {
+    "id": "41",
+    "type": "ballot",
+    "attributes": {
+      "id": 41,
+      "reason": "အစွန်းအထင်းပါသော မဲလက်မှတ်",
+      "is_valid": false,
+      "category": "advanced",
+      "image_path": "https://maepaysoh.org/ballots/advanced_invalid_pics/ainvalid03.png"
+    }
+  },
+  {
+    "id": "42",
+    "type": "ballot",
+    "attributes": {
+      "id": 42,
+      "reason": "အမှတ်အသား ပြုထားသော မဲလက်မှတ်",
+      "is_valid": false,
+      "category": "advanced",
+      "image_path": "https://maepaysoh.org/ballots/advanced_invalid_pics/ainvalid04.png"
+    }
+  },
+  {
+    "id": "43",
+    "type": "ballot",
+    "attributes": {
+      "id": 43,
+      "reason": "ကြက်ခြေခတ်၍ ဆန္ဒပြုထားသော မဲလက်မှတ်",
+      "is_valid": false,
+      "category": "advanced",
+      "image_path": "https://maepaysoh.org/ballots/advanced_invalid_pics/ainvalid05.png"
+    }
+  },
+  {
+    "id": "44",
+    "type": "ballot",
+    "attributes": {
+      "id": 44,
+      "reason": "မည်သူ့အား ဆန္ဒပြုထားကြောင်း ဆုံးဖြတ်ရခက်သည့် မဲလက်မှတ်",
+      "is_valid": false,
+      "category": "advanced",
+      "image_path": "https://maepaysoh.org/ballots/advanced_invalid_pics/ainvalid06.png"
+    }
+  },
+  {
+    "id": "45",
+    "type": "ballot",
+    "attributes": {
+      "id": 45,
+      "reason": "မည်သူ့အား ဆန္ဒပြုထားကြောင်း ဆုံးဖြတ်ရခက်သည့် မဲလက်မှတ်",
+      "is_valid": false,
+      "category": "advanced",
+      "image_path": "https://maepaysoh.org/ballots/advanced_invalid_pics/ainvalid07.png"
+    }
+  },
+  {
+    "id": "46",
+    "type": "ballot",
+    "attributes": {
+      "id": 46,
+      "reason": "မည်သူ့အား ဆန္ဒပြုထားကြောင်း ဆုံးဖြတ်ရခက်သည့် မဲလက်မှတ်",
+      "is_valid": false,
+      "category": "advanced",
+      "image_path": "https://maepaysoh.org/ballots/advanced_invalid_pics/ainvalid08.png"
+    }
+  },
+  {
+    "id": "47",
+    "type": "ballot",
+    "attributes": {
+      "id": 47,
+      "reason": "ကိုယ်စားလှယ်လောင်း တစ်ဦးထက်ပို၍ ဆန္ဒပြုထားကြောင်း မဲလက်မှတ်",
+      "is_valid": false,
+      "category": "advanced",
+      "image_path": "https://maepaysoh.org/ballots/advanced_invalid_pics/ainvalid09.png"
+    }
+  },
+  {
+    "id": "48",
+    "type": "ballot",
+    "attributes": {
+      "id": 48,
+      "reason": "မဲလက်မှတ်များ၏ နောက်ကျောဘက်တွင် တာဝန်ခံ၏အမည်၊ လက်မှတ်နှင့် ကော်မရှင်အဖွဲ့ခွဲ၏ တံဆိပ်မပါသော မဲလက်မှတ် (မဲလက်မှတ်၏ ကျောဘက်တွင် လက်မှတ်ရေးထိုး၍ တံဆိပ်ထုရခြင်း ဖြစ်သည်)",
+      "is_valid": false,
+      "category": "advanced",
+      "image_path": "https://maepaysoh.org/ballots/advanced_invalid_pics/ainvalid10.png"
+    }
+  }
+]

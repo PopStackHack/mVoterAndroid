@@ -5,6 +5,7 @@ plugins {
 
 buildscript {
 
+  val kotlin_version by extra("1.4.10")
   repositories {
     maven("https://plugins.gradle.org/m2/")
     google()
@@ -21,6 +22,7 @@ buildscript {
     classpath(Wire.gradle_plugin)
     classpath(GoogleService.gms_plugin)
     classpath(Firebase.crashlytics_plugin)
+    "classpath"("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
   }
 }
 
