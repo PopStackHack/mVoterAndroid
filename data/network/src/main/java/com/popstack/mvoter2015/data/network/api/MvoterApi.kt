@@ -44,18 +44,18 @@ interface MvoterApi {
 
   @GET("locality/townships")
   fun getTownshipsForStateRegion(
-    @Query("candidate_upper_house") stateRegion: String
+    @Query("state_region") stateRegion: String
   ): Call<GetTownshipListResponse>
 
   @GET("locality/wards")
   fun getWardsForTownship(
-    @Query("candidate_upper_house") stateRegion: String,
+    @Query("state_region") stateRegion: String,
     @Query("township") township: String
   ): Call<GetWardListResponse>
 
   @GET("locality/details")
   fun getWardDetails(
-    @Query("candidate_upper_house") stateRegion: String,
+    @Query("state_region") stateRegion: String,
     @Query("township") township: String,
     @Query("ward") ward: String
   ): Call<WardApiModel>
