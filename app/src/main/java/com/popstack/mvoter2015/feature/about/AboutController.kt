@@ -44,7 +44,7 @@ class AboutController : LifeCycleAwareController<ControllerAboutBinding>(), Inje
       runCatching {
         lifecycleScope.launch {
           openBrowserDelegate.browserHandler()
-            .launchNewsInBrowser(requireActivity(), "https://mvoterapp.com/terms")
+            .launchInBrowser(requireActivity(), "https://mvoterapp.com/terms")
         }
       }
     }
@@ -53,7 +53,7 @@ class AboutController : LifeCycleAwareController<ControllerAboutBinding>(), Inje
       runCatching {
         lifecycleScope.launch {
           openBrowserDelegate.browserHandler()
-            .launchNewsInBrowser(requireActivity(), "https://mvoterapp.com/privacy")
+            .launchInBrowser(requireActivity(), "https://mvoterapp.com/privacy")
         }
       }
     }
@@ -97,7 +97,7 @@ class AboutController : LifeCycleAwareController<ControllerAboutBinding>(), Inje
     runCatching {
       lifecycleScope.launch {
         openBrowserDelegate.browserHandler()
-          .launchNewsInBrowser(requireActivity(), "https://mvoterapp.com/")
+          .launchInBrowser(requireActivity(), "https://mvoterapp.com/")
       }
     }
   }
@@ -115,7 +115,7 @@ class AboutController : LifeCycleAwareController<ControllerAboutBinding>(), Inje
       runCatching {
         lifecycleScope.launch {
           openBrowserDelegate.browserHandler()
-            .launchNewsInBrowser(requireActivity(), "https://www.facebook.com/mvoter2015")
+            .launchInBrowser(requireActivity(), "https://www.facebook.com/mvoter2015")
         }
       }
     }

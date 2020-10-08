@@ -63,7 +63,7 @@ class FaqController : MvvmController<ControllerFaqBinding>(), HasTag, CanTrackSc
       lawsAndUnfairPractice = {
         lifecycleScope.launch {
           openBrowserDelegate.browserHandler()
-            .launchNewsInBrowser(requireActivity(), "https://mvoterapp.com/election-law")
+            .launchInBrowser(requireActivity(), "https://mvoterapp.com/election-law")
         }
       },
       share = { faqId, _ ->

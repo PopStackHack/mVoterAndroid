@@ -9,11 +9,13 @@ import androidx.core.text.color
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bluelinelabs.conductor.RouterTransaction
 import com.popstack.mvoter2015.R
 import com.popstack.mvoter2015.core.mvp.MvvmController
 import com.popstack.mvoter2015.databinding.ControllerHowToVoteBinding
 import com.popstack.mvoter2015.domain.utils.convertToBurmeseNumber
 import com.popstack.mvoter2015.feature.analytics.screen.CanTrackScreen
+import com.popstack.mvoter2015.feature.voterlist.VoterListController
 import com.popstack.mvoter2015.helper.conductor.requireActivity
 import com.popstack.mvoter2015.logging.HasTag
 
@@ -50,7 +52,16 @@ class VotingGuideController : MvvmController<ControllerHowToVoteBinding>(), HasT
       val viewItems = viewModel.constructViewItems(titles, steps)
 
       layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-      adapter = VotingGuideRecyclerViewAdapter(viewItems)
+      adapter = VotingGuideRecyclerViewAdapter(
+        viewItems,
+        onCheckVoterListClick = {
+          router.pushController(
+            RouterTransaction.with(
+              VoterListController()
+            )
+          )
+        }
+      )
     }
 
     val accentColor = ContextCompat.getColor(requireActivity(), R.color.accent)
