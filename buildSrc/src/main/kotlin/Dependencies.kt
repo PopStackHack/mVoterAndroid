@@ -16,7 +16,7 @@ object BuildConfig {
 }
 
 object CommonLibs {
-  const val android_gradle_plugin = "com.android.tools.build:gradle:4.0.1"
+  const val android_gradle_plugin = "com.android.tools.build:gradle:4.0.2"
 
   const val timber = "com.jakewharton.timber:timber:4.7.1"
   const val junit = "junit:junit:4.13"
