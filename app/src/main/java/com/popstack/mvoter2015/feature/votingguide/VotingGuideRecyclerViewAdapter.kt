@@ -52,7 +52,7 @@ class VotingGuideRecyclerViewAdapter(
             false
           )
         ).also {
-          it.itemView.setOnClickListener {
+          it.binding.buttonCheckVoterList.setOnClickListener {
             onCheckVoterListClick.invoke()
           }
         }

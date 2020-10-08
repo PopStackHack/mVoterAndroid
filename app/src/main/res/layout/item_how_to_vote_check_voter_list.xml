@@ -4,15 +4,17 @@
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
   android:layout_marginTop="8dp"
-  android:background="?attr/selectableItemBackground"
-  android:padding="8dp">
+  android:background="?attr/selectableItemBackground">
 
-  <TextView
-    style="@style/TextLarge.Accent"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:drawableEnd="@drawable/ic_arrow_right_24"
+  <com.google.android.material.button.MaterialButton
+    android:id="@+id/buttonCheckVoterList"
+    android:layout_width="0dp"
+    android:layout_height="48dp"
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="20dp"
     android:text="@string/voter_list"
+    android:textColor="@color/text_on_accent"
+    app:backgroundTint="@color/accent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent" />
