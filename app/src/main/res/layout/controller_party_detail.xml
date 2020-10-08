@@ -15,7 +15,10 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
       android:layout_width="match_parent"
-      android:layout_height="wrap_content">
+      android:layout_height="wrap_content"
+      android:descendantFocusability="blocksDescendants"
+      android:focusable="true"
+      android:focusableInTouchMode="true">
 
       <ImageView
         android:id="@+id/ivPartySeal"
@@ -291,6 +294,7 @@
             android:id="@+id/rvTimeline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:focusable="false"
             android:nestedScrollingEnabled="false"
             tools:itemCount="3"
             tools:listitem="@layout/item_party_timeline" />
