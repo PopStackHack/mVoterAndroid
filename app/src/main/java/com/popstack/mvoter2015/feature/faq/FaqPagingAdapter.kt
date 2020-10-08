@@ -27,9 +27,10 @@ class FaqPagingAdapter(
     diffCallBackWith(
       areItemTheSame = { item1, item2 ->
         if (item1 is FaqViewItem.QuestionAndAnswer && item2 is FaqViewItem.QuestionAndAnswer) {
-          return@diffCallBackWith item1.faqId == item2.faqId
+          item1.faqId == item2.faqId
+        } else {
+          item1 == item2
         }
-        item1 == item2
       },
       areContentsTheSame = { item1, item2 ->
         item1 == item2

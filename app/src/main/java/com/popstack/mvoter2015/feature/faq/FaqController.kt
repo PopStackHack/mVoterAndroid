@@ -132,7 +132,7 @@ class FaqController : MvvmController<ControllerFaqBinding>(), HasTag, CanTrackSc
 
     faqPagingAdapter.addLoadStateListener { loadStates ->
       val refreshLoadState = loadStates.refresh
-      binding.rvFaq.isVisible = refreshLoadState is LoadState.NotLoading
+      binding.rvFaq.isVisible = refreshLoadState !is LoadState.Error
       if (refreshLoadState is LoadState.Loading) binding.progressIndicator.show()
       else binding.progressIndicator.hide()
       binding.tvErrorMessage.isVisible = refreshLoadState is LoadState.Error
