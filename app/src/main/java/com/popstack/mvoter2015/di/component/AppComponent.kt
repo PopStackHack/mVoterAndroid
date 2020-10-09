@@ -10,6 +10,7 @@ import com.popstack.mvoter2015.feature.location.LocationUpdateFeatureModule
 import com.popstack.mvoter2015.feature.news.NewsFeatureModule
 import com.popstack.mvoter2015.feature.party.PartyFeatureModule
 import com.popstack.mvoter2015.feature.settings.SettingsFeatureModule
+import com.popstack.mvoter2015.feature.voterlist.VoterListFeatureModule
 import com.popstack.mvoter2015.feature.votingguide.VotingGuideFeatureModule
 import dagger.BindsInstance
 import dagger.Component
@@ -30,7 +31,8 @@ import javax.inject.Singleton
     VotingGuideFeatureModule::class,
     NewsFeatureModule::class,
     SettingsFeatureModule::class,
-    AboutFeatureModule::class
+    AboutFeatureModule::class,
+    VoterListFeatureModule::class
   ]
 )
 interface AppComponent {

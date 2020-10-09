@@ -84,6 +84,9 @@
   <string name="party_registration_application">ပါတီအဖြစ် မှတ်ပုံတင်ခွင့် လျှောက်ထားသည်</string>
   <string name="party_registration_approval">ပါတီအဖြစ်မှတ်ပုံတင်ခွင့်ရရှိသည်</string>
 
+  <!--  Voter List -->
+  <string name="voter_list">မဲစာရင်းစစ်ရန်</string>
+
   <!--  FAQ-->
   <string name="title_info">သိမှတ်ဖွယ်ရာများ</string>
 

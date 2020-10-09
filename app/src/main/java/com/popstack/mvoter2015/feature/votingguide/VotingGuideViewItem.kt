@@ -4,6 +4,8 @@ sealed class VotingGuideViewItem
 
 object Header : VotingGuideViewItem()
 
+object CheckVoterList : VotingGuideViewItem()
+
 class SectionTitle(val text: String) : VotingGuideViewItem()
 
 class Step(
