@@ -6,7 +6,7 @@ object VoterListLinks {
     Pair("ကချင်ပြည်နယ်", "http://bit.ly/kachin-voters"),
     Pair("ကယားပြည်နယ်", "http://bit.ly/kayah-voters"),
     Pair("ကရင်ပြည်နယ်", "http://bit.ly/kayin-voters"),
-    Pair("ချင်းပြည်နယ်", " http://bit.ly/chin-voters"),
+    Pair("ချင်းပြည်နယ်", "http://bit.ly/chin-voters"),
     Pair("စစ်ကိုင်းတိုင်းဒေသကြီး", "http://bit.ly/sagaing-voters"),
     Pair("တနင်္သာရီတိုင်းဒေသကြီး", "http://bit.ly/tanintharyi-voters"),
     Pair("ပဲခူးတိုင်းဒေသကြီး", "http://bit.ly/bago-voters"),
