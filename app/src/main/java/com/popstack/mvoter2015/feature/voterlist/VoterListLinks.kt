@@ -18,6 +18,8 @@ object VoterListLinks {
     Pair("ရှမ်းပြည်နယ်", "http://bit.ly/shan-voters"),
     Pair("ဧရာဝတီတိုင်းဒေသကြီး", "http://bit.ly/ayarwaddy-voters"),
     Pair("ပြည်ထောင်စုနယ်မြေ", "http://bit.ly/naypyitaw-voters")
-  )
-
+  ).sortedBy { it.first }
+    .toMutableList().also {
+      it.add(0, Pair("ပြည်နယ်တိုင်းအားလုံး", "https://findyourpollingstation.uec.gov.mm/"))
+    }.toList()
 }

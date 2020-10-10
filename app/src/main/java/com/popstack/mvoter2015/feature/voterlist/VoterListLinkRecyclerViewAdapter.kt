@@ -10,9 +10,7 @@ class VoterListLinkRecyclerViewAdapter(
   private val itemClick: (Pair<String, String>) -> Unit
 ) : RecyclerView.Adapter<VoterListLinkRecyclerViewAdapter.VoterListLinkViewHolder>() {
 
-  private val linkList = VoterListLinks.LINKS.sortedBy {
-    it.first
-  }
+  private val linkList = VoterListLinks.LINKS
 
   class VoterListLinkViewHolder(val binding: ItemVoterListBinding) :
     RecyclerView.ViewHolder(binding.root)
