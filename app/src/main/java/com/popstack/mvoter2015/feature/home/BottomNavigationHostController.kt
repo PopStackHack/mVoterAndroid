@@ -5,11 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelStore
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import com.bluelinelabs.conductor.RouterTransaction
 import com.popstack.mvoter2015.R
-import com.popstack.mvoter2015.core.BaseController
+import com.popstack.mvoter2015.core.LifeCycleAwareController
 import com.popstack.mvoter2015.databinding.ControllerBottomNavHostBinding
+import com.popstack.mvoter2015.di.Injectable
+import com.popstack.mvoter2015.domain.location.usecase.GetUserSelectedLocation
+import com.popstack.mvoter2015.feature.analytics.location.SelectedLocationAnalytics
 import com.popstack.mvoter2015.feature.candidate.listing.CandidateListController
 import com.popstack.mvoter2015.feature.faq.FaqController
 import com.popstack.mvoter2015.feature.news.NewsController
@@ -17,8 +21,11 @@ import com.popstack.mvoter2015.feature.party.listing.PartyListController
 import com.popstack.mvoter2015.feature.votingguide.VotingGuideController
 import com.popstack.mvoter2015.helper.conductor.BNVRouterPagerAdapter
 import com.popstack.mvoter2015.logging.HasTag
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class BottomNavigationHostController : BaseController<ControllerBottomNavHostBinding>(), HasTag {
+class BottomNavigationHostController : LifeCycleAwareController<ControllerBottomNavHostBinding>(), HasTag, Injectable {
 
   override val tag: String = TAG
 
@@ -30,6 +37,12 @@ class BottomNavigationHostController : BaseController<ControllerBottomNavHostBin
 
   override val bindingInflater: (LayoutInflater) -> ControllerBottomNavHostBinding =
     ControllerBottomNavHostBinding::inflate
+
+  @Inject
+  lateinit var getUserSelectedLocation: GetUserSelectedLocation
+
+  @Inject
+  lateinit var selectedLocationAnalytics: SelectedLocationAnalytics
 
   override fun onCreateView(
     inflater: LayoutInflater,
@@ -90,6 +103,14 @@ class BottomNavigationHostController : BaseController<ControllerBottomNavHostBin
           kotlin.runCatching {
             view?.findViewById<RecyclerView>(R.id.rvNews)?.smoothScrollToPosition(0)
           }
+        }
+      }
+    }
+
+    lifecycleScope.launch {
+      getUserSelectedLocation.execute(Unit).collectLatest { combinedLocation ->
+        if (combinedLocation != null) {
+          selectedLocationAnalytics.logLocation(combinedLocation)
         }
       }
     }

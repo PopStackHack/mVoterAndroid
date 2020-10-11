@@ -1,9 +1,11 @@
 package com.popstack.mvoter2015.data.common.location
 
 import com.popstack.mvoter2015.domain.location.LocationRepository
+import com.popstack.mvoter2015.domain.location.model.CombinedLocation
 import com.popstack.mvoter2015.domain.location.model.StateRegionTownship
 import com.popstack.mvoter2015.domain.location.model.Township
 import com.popstack.mvoter2015.domain.location.model.Ward
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class LocationRepositoryImpl @Inject constructor(
@@ -45,5 +47,9 @@ class LocationRepositoryImpl @Inject constructor(
 
   override suspend fun getUserStateRegionTownship(): StateRegionTownship? {
     return locationCacheSource.getUserStateRegionTownship()
+  }
+
+  override fun selectedLocationFlow(): Flow<CombinedLocation?> {
+    return locationCacheSource.selectedLocationFlow()
   }
 }
