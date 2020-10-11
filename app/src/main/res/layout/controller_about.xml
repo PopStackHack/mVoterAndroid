@@ -114,51 +114,6 @@
         app:barrierDirection="bottom"
         app:constraint_referenced_ids="ivUecLogo,ivTafLogo,ivMaePaySohLogo" />
 
-      <ImageView
-        android:id="@+id/ivStepLogo"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="16dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/step_logo"
-        app:layout_constraintEnd_toStartOf="@+id/ivIdeaLogo"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/barrierLogo" />
-
-      <ImageView
-        android:id="@+id/ivIdeaLogo"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="16dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/idea_logo"
-        app:layout_constraintEnd_toStartOf="@+id/ivEuLogo"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/ivStepLogo"
-        app:layout_constraintTop_toBottomOf="@id/barrierLogo" />
-
-
-      <ImageView
-        android:id="@+id/ivEuLogo"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="16dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/eu_logo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/ivIdeaLogo"
-        app:layout_constraintTop_toBottomOf="@id/barrierLogo" />
-
-
-      <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/barrierLogoTwo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:barrierDirection="bottom"
-        app:constraint_referenced_ids="ivStepLogo,ivUecLogo" />
-
       <com.google.android.material.button.MaterialButton
         android:id="@+id/viewTermOfUse"
         style="@style/Widget.MaterialComponents.Button.TextButton"
@@ -169,7 +124,7 @@
         android:textColor="@color/accent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/barrierLogoTwo"
+        app:layout_constraintTop_toBottomOf="@id/barrierLogo"
         app:rippleColor="@color/grey" />
 
       <com.google.android.material.button.MaterialButton
