@@ -20,6 +20,6 @@ object VoterListLinks {
     Pair("ပြည်ထောင်စုနယ်မြေ", "http://bit.ly/naypyitaw-voters")
   ).sortedBy { it.first }
     .toMutableList().also {
-      it.add(0, Pair("ပြည်နယ်တိုင်းအားလုံး", "https://findyourpollingstation.uec.gov.mm/"))
+      it.add(0, Pair("တိုင်းဒေသကြီး/ပြည်နယ် အားလုံး*", "https://findyourpollingstation.uec.gov.mm/"))
     }.toList()
 }
