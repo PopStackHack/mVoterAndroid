@@ -32,7 +32,7 @@ class FaqViewModel @Inject constructor(
       return lastResult
     }
     selectedFaqCategory = faqCategory
-    faqCategoryLiveData.postValue(selectedFaqCategory)
+    faqCategoryLiveData.postValue(selectedFaqCategory!!)
 
     val newResult = faqPagerFactory.faqPager(PAGE_SIZE, category = faqCategory)
       .flow
