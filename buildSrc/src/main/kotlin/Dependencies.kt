@@ -21,9 +21,6 @@ object CommonLibs {
   const val timber = "com.jakewharton.timber:timber:4.7.1"
   const val junit = "junit:junit:4.13"
   const val javaxInject = "javax.inject:javax.inject:1"
-  const val javaXAnnotations = "org.glassfish:javax.annotation:10.0-b28"
-
-  const val circle_image_view = "de.hdodenhof:circleimageview:3.0.1"
 
   const val mm_ph_number = "com.aungkyawpaing.mmphonenumber:mmphonenumber:1.1.0"
 }
@@ -34,7 +31,7 @@ object AndroidXAppCompat {
 }
 
 object AndroidXRecyclerView {
-  private const val version = "1.2.0-alpha05"
+  private const val version = "1.2.0-alpha06"
 
   const val recycler_view = "androidx.recyclerview:recyclerview:$version"
   const val selection = "androidx.recyclerview:recyclerview-selection:$version"
@@ -81,7 +78,7 @@ object AndroidXCore {
 }
 
 object AndroidXPaging {
-  private const val version = "3.0.0-alpha06"
+  private const val version = "3.0.0-alpha07"
 
   const val common = "androidx.paging:paging-common:$version"
   const val runtime = "androidx.paging:paging-runtime:$version"

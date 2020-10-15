@@ -52,7 +52,7 @@
       android:id="@+id/ivCandidateIndicator"
       android:layout_width="100dp"
       android:layout_height="50dp"
-      android:tint="@color/accent"
+      app:tint="@color/accent"
       android:src="@drawable/ic_people_fill"
       app:layout_constraintBottom_toTopOf="@+id/tvChooseCandidateDesc"
       app:layout_constraintEnd_toEndOf="parent"

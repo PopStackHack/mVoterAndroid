@@ -19,7 +19,7 @@
     android:layout_width="105dp"
     android:layout_height="60dp"
     android:src="@drawable/ic_people_fill"
-    android:tint="@color/accent"
+    app:tint="@color/accent"
     android:visibility="gone"
     app:layout_constraintBottom_toTopOf="@+id/tvInstruction"
     app:layout_constraintEnd_toEndOf="parent"

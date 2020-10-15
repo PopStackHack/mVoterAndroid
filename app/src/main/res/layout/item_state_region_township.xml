@@ -22,7 +22,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:src="@drawable/ic_arrow_right_24"
-    android:tint="@color/accent"
+    app:tint="@color/accent"
     app:layout_constraintStart_toEndOf="@id/tvStateRegion"
     app:layout_constraintBottom_toBottomOf="@+id/tvStateRegion"
     app:layout_constraintTop_toTopOf="@+id/tvStateRegion" />
