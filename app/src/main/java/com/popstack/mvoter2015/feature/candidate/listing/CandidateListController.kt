@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.viewpager.widget.ViewPager
 import com.bluelinelabs.conductor.RouterTransaction
 import com.google.android.material.tabs.TabLayout
@@ -21,6 +22,9 @@ import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.helper.conductor.setSupportActionBar
 import com.popstack.mvoter2015.helper.conductor.supportActionBar
 import com.popstack.mvoter2015.logging.HasTag
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 class CandidateListController :
   MvvmController<ControllerCandidateListBinding>(), HasTag {
@@ -115,8 +119,27 @@ class CandidateListController :
 
     CandidateListPagerParentRouter.setParentRouter(router)
 
+    showCandidatePrivacyInstructionIfNeeded()
+
     viewModel.houseViewItemListLiveData.observe(lifecycleOwner, Observer(::observeHouseViewItem))
     viewModel.loadHouses()
+  }
+
+  @Inject
+  lateinit var viewCache: CandidateListViewCache
+
+  private fun showCandidatePrivacyInstructionIfNeeded() {
+    lifecycleScope.launch {
+      viewCache.shouldShowCandidatePrivacyInstruction().collectLatest {
+        binding.layoutCandidatePrivacyInstruction.isVisible = it
+      }
+    }
+
+    binding.ivCloseCandidatePrivacyInstruction.setOnClickListener {
+      lifecycleScope.launch {
+        viewCache.setShouldShowCandidatePrivacyInstruction(false)
+      }
+    }
   }
 
   private fun setupTabLayout() {

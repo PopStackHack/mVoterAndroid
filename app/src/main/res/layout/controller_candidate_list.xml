@@ -2,18 +2,19 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   android:layout_width="match_parent"
-  android:layout_height="match_parent">
+  android:layout_height="match_parent"
+  android:animateLayoutChanges="true">
 
   <com.google.android.material.appbar.AppBarLayout
     android:id="@+id/appBarLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/primary"
+    android:paddingBottom="4dp"
+    app:elevation="0dp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    android:paddingBottom="4dp"
-    app:elevation="0dp">
+    app:layout_constraintTop_toTopOf="parent">
 
     <com.google.android.material.appbar.MaterialToolbar
       android:id="@+id/toolBar"
@@ -29,10 +30,10 @@
       android:id="@+id/tabLayout"
       android:layout_width="match_parent"
       android:layout_height="64dp"
-      android:background="@color/primary"
-      app:tabBackground="@color/primary"
       android:layout_marginStart="16dp"
       android:layout_marginEnd="16dp"
+      android:background="@color/primary"
+      app:tabBackground="@color/primary"
       app:tabGravity="center"
       app:tabIndicator="@drawable/tab_indicator"
       app:tabIndicatorColor="@color/accent"
@@ -52,23 +53,23 @@
       android:id="@+id/ivCandidateIndicator"
       android:layout_width="100dp"
       android:layout_height="50dp"
-      app:tint="@color/accent"
       android:src="@drawable/ic_people_fill"
       app:layout_constraintBottom_toTopOf="@+id/tvChooseCandidateDesc"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.5"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_chainStyle="packed" />
+      app:layout_constraintVertical_chainStyle="packed"
+      app:tint="@color/accent" />
 
     <TextView
       android:id="@+id/tvChooseCandidateDesc"
       style="@style/TextLarge"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="@string/location_chooser_title"
       android:layout_marginTop="16dp"
       android:gravity="center"
+      android:text="@string/location_chooser_title"
       app:layout_constraintBottom_toTopOf="@+id/btnChoose"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.5"
@@ -79,16 +80,16 @@
       android:id="@+id/btnChoose"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
+      android:layout_marginTop="16dp"
       android:text="@string/lets_choose"
-      app:icon="@drawable/ic_location_on_24"
-      app:iconGravity="textStart"
-      app:iconSize="18dp"
-      app:iconPadding="2dp"
       android:textColor="@color/text_on_accent"
-      app:iconTint="@color/text_on_accent"
       app:backgroundTint="@color/tint_button_policy"
       app:cornerRadius="20dp"
-      android:layout_marginTop="16dp"
+      app:icon="@drawable/ic_location_on_24"
+      app:iconGravity="textStart"
+      app:iconPadding="2dp"
+      app:iconSize="18dp"
+      app:iconTint="@color/text_on_accent"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.5"
@@ -100,8 +101,7 @@
       android:layout_width="0dp"
       android:layout_height="0dp"
       android:visibility="gone"
-      app:constraint_referenced_ids="ivCandidateIndicator, tvChooseCandidateDesc, btnChoose"
-      />
+      app:constraint_referenced_ids="ivCandidateIndicator, tvChooseCandidateDesc, btnChoose" />
   </androidx.constraintlayout.widget.ConstraintLayout>
 
   <androidx.viewpager.widget.ViewPager
@@ -109,5 +109,49 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+
+  <com.google.android.material.card.MaterialCardView
+    android:id="@+id/layoutCandidatePrivacyInstruction"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:layout_marginBottom="-8dp"
+    app:cardBackgroundColor="@color/accent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:paddingStart="16dp"
+      android:paddingTop="8dp"
+      android:paddingEnd="16dp"
+      android:paddingBottom="16dp">
+
+      <TextView
+        android:id="@+id/tvCandidatePrivacyInstruction"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/candidate_privacy_instruction"
+        android:textAppearance="@style/TextSmall.OnAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/ivCloseCandidatePrivacyInstruction"
+        app:layout_constraintStart_toStartOf="parent" />
+
+      <ImageView
+        android:id="@+id/ivCloseCandidatePrivacyInstruction"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginBottom="8dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:padding="2dp"
+        android:src="@drawable/ic_close_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/text_on_accent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+  </com.google.android.material.card.MaterialCardView>
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

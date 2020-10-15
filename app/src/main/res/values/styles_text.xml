@@ -110,6 +110,10 @@
     <item name="android:textColor">@color/accent</item>
   </style>
 
+  <style name="TextSmall.OnAccent">
+    <item name="android:textColor">@color/text_on_accent</item>
+  </style>
+
   <style name="TextSmall.Accent.Bold">
     <item name="android:textStyle">bold</item>
   </style>
