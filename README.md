@@ -16,7 +16,7 @@ This repo contains the code for the mVoter 2020 Android App. mVoter 2020 is an u
 The code need to be compiled with following specification
 
 - **Sdk version** : 30 (Android 11)
-- **Android Studio** : 4.0.1
+- **Android Studio** : 4.1.0
 - **Kotlin** : 1.4.0
 
 The App is targeted for the following specification
