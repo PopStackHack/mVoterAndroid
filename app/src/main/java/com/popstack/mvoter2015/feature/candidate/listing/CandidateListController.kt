@@ -1,6 +1,9 @@
 package com.popstack.mvoter2015.feature.candidate.listing
 
+import android.annotation.SuppressLint
+import android.graphics.text.LineBreaker
 import android.os.Bundle
+import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import androidx.core.view.isVisible
@@ -128,7 +131,16 @@ class CandidateListController :
   @Inject
   lateinit var viewCache: CandidateListViewCache
 
+  @SuppressLint("WrongConstant")
   private fun showCandidatePrivacyInstructionIfNeeded() {
+    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+      if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+        binding.tvCandidatePrivacyInstruction.justificationMode = LineBreaker.JUSTIFICATION_MODE_INTER_WORD
+      } else {
+        binding.tvCandidatePrivacyInstruction.justificationMode = Layout.JUSTIFICATION_MODE_INTER_WORD
+      }
+    }
+
     lifecycleScope.launch {
       viewCache.shouldShowCandidatePrivacyInstruction().collectLatest {
         binding.layoutCandidatePrivacyInstruction.isVisible = it

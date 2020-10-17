@@ -1,8 +1,11 @@
 package com.popstack.mvoter2015.feature.about
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.text.LineBreaker
 import android.net.Uri
 import android.os.Bundle
+import android.text.Layout
 import android.view.LayoutInflater
 import androidx.lifecycle.lifecycleScope
 import com.bluelinelabs.conductor.RouterTransaction
@@ -33,6 +36,7 @@ class AboutController : LifeCycleAwareController<ControllerAboutBinding>(), Inje
   override val bindingInflater: (LayoutInflater) -> ControllerAboutBinding =
     ControllerAboutBinding::inflate
 
+  @SuppressLint("WrongConstant")
   override fun onBindView(savedViewState: Bundle?) {
     super.onBindView(savedViewState)
 
@@ -72,6 +76,14 @@ class AboutController : LifeCycleAwareController<ControllerAboutBinding>(), Inje
 
     binding.ivContactWebsite.setOnClickListener {
       openAppWebsite()
+    }
+
+    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+      if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+        binding.tvCandidatePrivacyInstruction.justificationMode = LineBreaker.JUSTIFICATION_MODE_INTER_WORD
+      } else {
+        binding.tvCandidatePrivacyInstruction.justificationMode = Layout.JUSTIFICATION_MODE_INTER_WORD
+      }
     }
 
     binding.tvVersion.text = requireContext().getString(R.string.version, BuildConfig.VERSION_NAME)
