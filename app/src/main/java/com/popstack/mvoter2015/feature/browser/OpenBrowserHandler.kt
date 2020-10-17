@@ -9,13 +9,13 @@ import com.popstack.mvoter2015.helper.intent.Intents
 
 interface OpenBrowserHandler {
 
-  fun launchNewsInBrowser(activity: Activity, url: String)
+  fun launchInBrowser(activity: Activity, url: String)
 
 }
 
 class InAppBrowserHandler() : OpenBrowserHandler {
 
-  override fun launchNewsInBrowser(activity: Activity, url: String) {
+  override fun launchInBrowser(activity: Activity, url: String) {
     CustomTabsIntent.Builder()
       .setToolbarColor(ContextCompat.getColor(activity, R.color.accent))
       .build()
@@ -26,7 +26,7 @@ class InAppBrowserHandler() : OpenBrowserHandler {
 
 class ExternalBrowserHandler() : OpenBrowserHandler {
 
-  override fun launchNewsInBrowser(activity: Activity, url: String) {
+  override fun launchInBrowser(activity: Activity, url: String) {
     val intent = Intents.viewUrl(url)
     activity.startActivity(intent)
   }

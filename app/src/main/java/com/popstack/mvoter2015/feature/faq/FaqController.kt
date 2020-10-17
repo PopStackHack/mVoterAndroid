@@ -25,6 +25,7 @@ import com.popstack.mvoter2015.feature.faq.search.FaqSearchController
 import com.popstack.mvoter2015.feature.home.BottomNavigationHostViewModelStore
 import com.popstack.mvoter2015.feature.settings.SettingsController
 import com.popstack.mvoter2015.feature.share.ShareUrlFactory
+import com.popstack.mvoter2015.feature.voterlist.VoterListController
 import com.popstack.mvoter2015.helper.RecyclerViewMarginDecoration
 import com.popstack.mvoter2015.helper.conductor.requireActivity
 import com.popstack.mvoter2015.helper.conductor.requireActivityAsAppCompatActivity
@@ -60,10 +61,17 @@ class FaqController : MvvmController<ControllerFaqBinding>(), HasTag, CanTrackSc
   private val faqPagingAdapter by lazy {
     FaqPagingAdapter(
       ballotExampleClick = { navigateToBallotExample() },
+      checkVoterListClick = {
+        router.pushController(
+          RouterTransaction.with(
+            VoterListController()
+          )
+        )
+      },
       lawsAndUnfairPractice = {
         lifecycleScope.launch {
           openBrowserDelegate.browserHandler()
-            .launchNewsInBrowser(requireActivity(), "https://mvoterapp.com/election-law")
+            .launchInBrowser(requireActivity(), "https://mvoterapp.com/election-law")
         }
       },
       share = { faqId, _ ->
@@ -132,7 +140,7 @@ class FaqController : MvvmController<ControllerFaqBinding>(), HasTag, CanTrackSc
 
     faqPagingAdapter.addLoadStateListener { loadStates ->
       val refreshLoadState = loadStates.refresh
-      binding.rvFaq.isVisible = refreshLoadState is LoadState.NotLoading
+      binding.rvFaq.isVisible = refreshLoadState !is LoadState.Error
       if (refreshLoadState is LoadState.Loading) binding.progressIndicator.show()
       else binding.progressIndicator.hide()
       binding.tvErrorMessage.isVisible = refreshLoadState is LoadState.Error

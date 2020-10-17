@@ -18,10 +18,15 @@ import com.popstack.mvoter2015.domain.constituency.model.ConstituencyId
 import com.popstack.mvoter2015.domain.constituency.model.HouseType.LOWER_HOUSE
 import com.popstack.mvoter2015.domain.constituency.model.HouseType.REGIONAL_HOUSE
 import com.popstack.mvoter2015.domain.constituency.model.HouseType.UPPER_HOUSE
+import com.popstack.mvoter2015.domain.location.model.CombinedLocation
 import com.popstack.mvoter2015.domain.location.model.StateRegionTownship
 import com.popstack.mvoter2015.domain.location.model.Ward
 import com.popstack.mvoter2015.domain.location.model.WardId
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.flowOf
+import java.io.IOException
 import javax.inject.Inject
 
 class LocationCacheSourceImpl @Inject constructor(
@@ -84,6 +89,23 @@ class LocationCacheSourceImpl @Inject constructor(
         state_region = stateRegionTownship.stateRegion,
         township = stateRegionTownship.township
       )
+    }
+  }
+
+  override fun selectedLocationFlow(): Flow<CombinedLocation?> {
+    try {
+      return stateRegionTownshipStore.data.combine(
+        wardDataStore.data,
+        transform = { stateRegion, ward ->
+          CombinedLocation(
+            stateRegion = stateRegion.state_region,
+            township = stateRegion.township,
+            ward = ward.name,
+          )
+        }
+      )
+    } catch (ioException: IOException) {
+      return flowOf(null)
     }
   }
 

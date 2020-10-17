@@ -112,7 +112,7 @@ class NewsController : MvvmController<ControllerNewsBinding>(), HasTag, CanTrack
   ) {
     lifecycleScope.launch {
       openBrowserDelegate.browserHandler()
-        .launchNewsInBrowser(requireActivity(), url)
+        .launchInBrowser(requireActivity(), url)
     }
   }
 

@@ -1,8 +1,10 @@
 package com.popstack.mvoter2015.domain.location
 
+import com.popstack.mvoter2015.domain.location.model.CombinedLocation
 import com.popstack.mvoter2015.domain.location.model.StateRegionTownship
 import com.popstack.mvoter2015.domain.location.model.Township
 import com.popstack.mvoter2015.domain.location.model.Ward
+import kotlinx.coroutines.flow.Flow
 
 interface LocationRepository {
 
@@ -28,4 +30,6 @@ interface LocationRepository {
   suspend fun saveUserStateRegionTownship(stateRegionTownship: StateRegionTownship)
 
   suspend fun getUserStateRegionTownship(): StateRegionTownship?
+
+  fun selectedLocationFlow(): Flow<CombinedLocation?>
 }

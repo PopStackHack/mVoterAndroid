@@ -5,20 +5,30 @@
   android:layout_height="wrap_content"
   android:paddingTop="8dp">
 
+  <TextView
+    android:id="@+id/tvTitle"
+    style="@style/TextTitle1.Bold"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/inside_polling_station"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
   <ImageView
     android:id="@+id/ivNoSelfie"
     android:layout_width="0dp"
     android:layout_height="100dp"
     android:layout_marginStart="16dp"
+    android:layout_marginTop="8dp"
     android:layout_marginEnd="16dp"
     android:src="@drawable/no_selfie"
-    app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintDimensionRatio="1:1"
     app:layout_constraintEnd_toStartOf="@+id/ivNoPhoto"
     app:layout_constraintHorizontal_bias="0.5"
     app:layout_constraintHorizontal_chainStyle="spread"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+    app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
   <TextView
     android:id="@+id/tvNoSelfie"
@@ -37,14 +47,14 @@
     android:layout_width="0dp"
     android:layout_height="100dp"
     android:layout_marginStart="16dp"
+    android:layout_marginTop="8dp"
     android:layout_marginEnd="16dp"
     android:src="@drawable/no_photo"
-    app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintDimensionRatio="1:1"
     app:layout_constraintEnd_toStartOf="@+id/ivNoVideo"
     app:layout_constraintHorizontal_bias="0.5"
     app:layout_constraintStart_toEndOf="@+id/ivNoSelfie"
-    app:layout_constraintTop_toTopOf="parent" />
+    app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
   <TextView
     android:id="@+id/tvNoPhoto"
@@ -63,14 +73,14 @@
     android:layout_width="0dp"
     android:layout_height="100dp"
     android:layout_marginStart="16dp"
+    android:layout_marginTop="8dp"
     android:layout_marginEnd="16dp"
     android:src="@drawable/no_video"
-    app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintDimensionRatio="1:1"
     app:layout_constraintEnd_toStartOf="@+id/ivNoRecording"
     app:layout_constraintHorizontal_bias="0.5"
     app:layout_constraintStart_toEndOf="@+id/ivNoPhoto"
-    app:layout_constraintTop_toTopOf="parent" />
+    app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
   <TextView
     android:id="@+id/tvNoVideo"
@@ -89,14 +99,14 @@
     android:layout_width="0dp"
     android:layout_height="100dp"
     android:layout_marginStart="16dp"
+    android:layout_marginTop="8dp"
     android:layout_marginEnd="16dp"
     android:src="@drawable/no_recording"
-    app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintDimensionRatio="1:1"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_bias="0.5"
     app:layout_constraintStart_toEndOf="@+id/ivNoVideo"
-    app:layout_constraintTop_toTopOf="parent" />
+    app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
   <TextView
     android:id="@+id/tvNoRecording"

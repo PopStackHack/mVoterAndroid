@@ -137,7 +137,7 @@ class NewsSearchController : MvvmController<ControllerNewsSearchBinding>(), HasT
   ) {
     lifecycleScope.launch {
       browserDelegate.browserHandler()
-        .launchNewsInBrowser(requireActivity(), url)
+        .launchInBrowser(requireActivity(), url)
     }
   }
 

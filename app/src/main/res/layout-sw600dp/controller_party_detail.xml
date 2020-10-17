@@ -17,7 +17,10 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
       android:layout_width="match_parent"
-      android:layout_height="wrap_content">
+      android:layout_height="wrap_content"
+      android:descendantFocusability="blocksDescendants"
+      android:focusable="true"
+      android:focusableInTouchMode="true">
 
       <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline50PercentVertical"
@@ -40,7 +43,7 @@
       <TextView
         android:id="@+id/tvPartyName"
         style="@style/TextTitle3.Bold"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
@@ -55,7 +58,7 @@
       <TextView
         android:id="@+id/tvPartyNameEnglish"
         style="@style/TextTitle3"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="4dp"
@@ -69,7 +72,7 @@
       <TextView
         android:id="@+id/tvPartyNameAbbreviation"
         style="@style/TextTitle1.Bold"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="4dp"
@@ -83,7 +86,7 @@
       <TextView
         android:id="@+id/tvPartyRegion"
         style="@style/TextLarge"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="4dp"
@@ -122,12 +125,12 @@
       <TextView
         android:id="@+id/tvPartyNumberTitle"
         style="@style/TextMedium.Secondary"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:gravity="center"
+        android:gravity="start"
         android:text="@string/party_number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -144,10 +147,10 @@
       <TextView
         android:id="@+id/tvPartyNumber"
         style="@style/TextLarge"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:gravity="center"
+        android:gravity="start"
         app:layout_constraintEnd_toEndOf="@id/tvPartyNumberTitle"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/tvPartyNumberTitle"

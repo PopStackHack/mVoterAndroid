@@ -4,12 +4,14 @@ import android.app.Application
 import com.popstack.mvoter2015.MVoterApp
 import com.popstack.mvoter2015.di.module.AppModule
 import com.popstack.mvoter2015.feature.about.AboutFeatureModule
+import com.popstack.mvoter2015.feature.analytics.location.SelectedLocationAnalyticsModule
 import com.popstack.mvoter2015.feature.candidate.CandidateFeatureModule
 import com.popstack.mvoter2015.feature.faq.FaqFeatureModule
 import com.popstack.mvoter2015.feature.location.LocationUpdateFeatureModule
 import com.popstack.mvoter2015.feature.news.NewsFeatureModule
 import com.popstack.mvoter2015.feature.party.PartyFeatureModule
 import com.popstack.mvoter2015.feature.settings.SettingsFeatureModule
+import com.popstack.mvoter2015.feature.voterlist.VoterListFeatureModule
 import com.popstack.mvoter2015.feature.votingguide.VotingGuideFeatureModule
 import dagger.BindsInstance
 import dagger.Component
@@ -30,7 +32,9 @@ import javax.inject.Singleton
     VotingGuideFeatureModule::class,
     NewsFeatureModule::class,
     SettingsFeatureModule::class,
-    AboutFeatureModule::class
+    AboutFeatureModule::class,
+    VoterListFeatureModule::class,
+    SelectedLocationAnalyticsModule::class
   ]
 )
 interface AppComponent {

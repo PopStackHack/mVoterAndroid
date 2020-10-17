@@ -24,6 +24,7 @@ class VotingGuideViewModel @Inject constructor(
     steps: List<Array<String>>
   ): List<VotingGuideViewItem> = ArrayList<VotingGuideViewItem>().apply {
     add(Header)
+    add(CheckVoterList)
     sectionTitles.forEachIndexed { index, value ->
       add(SectionTitle(value))
       steps[index].forEachIndexed { stepIndex, step ->
