@@ -70,49 +70,15 @@
       <ImageView
         android:id="@+id/ivUecLogo"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="100dp"
         android:scaleType="fitCenter"
         android:src="@drawable/uec_logo"
         app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toStartOf="@+id/ivTafLogo"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvSupportedBy" />
-
-      <ImageView
-        android:id="@+id/ivTafLogo"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/taf_logo"
-        app:layout_constraintDimensionRatio="h,2:1"
-        app:layout_constraintEnd_toStartOf="@+id/ivMaePaySohLogo"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_weight="2"
-        app:layout_constraintStart_toEndOf="@+id/ivUecLogo"
-        app:layout_constraintTop_toBottomOf="@id/tvSupportedBy" />
-
-      <ImageView
-        android:id="@+id/ivMaePaySohLogo"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/maepaysoh_logo"
-        app:layout_constraintDimensionRatio="w,1:1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintStart_toEndOf="@+id/ivTafLogo"
-        app:layout_constraintTop_toBottomOf="@id/tvSupportedBy" />
-
-      <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/barrierLogo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:barrierDirection="bottom"
-        app:constraint_referenced_ids="ivUecLogo,ivTafLogo,ivMaePaySohLogo" />
 
       <com.google.android.material.button.MaterialButton
         android:id="@+id/viewTermOfUse"
@@ -124,7 +90,7 @@
         android:textColor="@color/accent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/barrierLogo"
+        app:layout_constraintTop_toBottomOf="@id/ivUecLogo"
         app:rippleColor="@color/grey" />
 
       <com.google.android.material.button.MaterialButton
@@ -170,12 +136,12 @@
         android:background="@drawable/background_accent_oval"
         android:padding="8dp"
         android:src="@drawable/ic_facebook_24"
-        android:tint="@android:color/white"
         app:layout_constraintEnd_toStartOf="@+id/ivContactMail"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvContactUs" />
+        app:layout_constraintTop_toBottomOf="@id/tvContactUs"
+        app:tint="@android:color/white" />
 
       <ImageView
         android:id="@+id/ivContactMail"
@@ -186,11 +152,11 @@
         android:background="@drawable/background_accent_oval"
         android:padding="8dp"
         android:src="@drawable/ic_email_24"
-        android:tint="@android:color/white"
         app:layout_constraintEnd_toStartOf="@+id/ivContactWebsite"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/ivContactFacebook"
-        app:layout_constraintTop_toBottomOf="@id/tvContactUs" />
+        app:layout_constraintTop_toBottomOf="@id/tvContactUs"
+        app:tint="@android:color/white" />
 
       <ImageView
         android:id="@+id/ivContactWebsite"
@@ -201,11 +167,22 @@
         android:background="@drawable/background_accent_oval"
         android:padding="8dp"
         android:src="@drawable/ic_website_24"
-        android:tint="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/ivContactMail"
-        app:layout_constraintTop_toBottomOf="@id/tvContactUs" />
+        app:layout_constraintTop_toBottomOf="@id/tvContactUs"
+        app:tint="@android:color/white" />
+
+      <TextView
+        android:id="@+id/tvCandidatePrivacyInstruction"
+        style="@style/TextMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/candidate_privacy_instruction_full"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivContactWebsite" />
 
       <TextView
         android:id="@+id/tvVersion"
@@ -216,7 +193,7 @@
         android:text="@string/version"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ivContactWebsite" />
+        app:layout_constraintTop_toBottomOf="@id/tvCandidatePrivacyInstruction" />
 
       <TextView
         android:id="@+id/tvCopyright"

@@ -1,10 +1,14 @@
 package com.popstack.mvoter2015.feature.candidate.listing
 
+import android.annotation.SuppressLint
+import android.graphics.text.LineBreaker
 import android.os.Bundle
+import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.viewpager.widget.ViewPager
 import com.bluelinelabs.conductor.RouterTransaction
 import com.google.android.material.tabs.TabLayout
@@ -21,6 +25,9 @@ import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.helper.conductor.setSupportActionBar
 import com.popstack.mvoter2015.helper.conductor.supportActionBar
 import com.popstack.mvoter2015.logging.HasTag
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 class CandidateListController :
   MvvmController<ControllerCandidateListBinding>(), HasTag {
@@ -115,8 +122,36 @@ class CandidateListController :
 
     CandidateListPagerParentRouter.setParentRouter(router)
 
+    showCandidatePrivacyInstructionIfNeeded()
+
     viewModel.houseViewItemListLiveData.observe(lifecycleOwner, Observer(::observeHouseViewItem))
     viewModel.loadHouses()
+  }
+
+  @Inject
+  lateinit var viewCache: CandidateListViewCache
+
+  @SuppressLint("WrongConstant")
+  private fun showCandidatePrivacyInstructionIfNeeded() {
+    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+      if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+        binding.tvCandidatePrivacyInstruction.justificationMode = LineBreaker.JUSTIFICATION_MODE_INTER_WORD
+      } else {
+        binding.tvCandidatePrivacyInstruction.justificationMode = Layout.JUSTIFICATION_MODE_INTER_WORD
+      }
+    }
+
+    lifecycleScope.launch {
+      viewCache.shouldShowCandidatePrivacyInstruction().collectLatest {
+        binding.layoutCandidatePrivacyInstruction.isVisible = it
+      }
+    }
+
+    binding.ivCloseCandidatePrivacyInstruction.setOnClickListener {
+      lifecycleScope.launch {
+        viewCache.setShouldShowCandidatePrivacyInstruction(false)
+      }
+    }
   }
 
   private fun setupTabLayout() {

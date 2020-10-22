@@ -34,7 +34,7 @@ class BallotExampleViewModel @Inject constructor(
         return@launch
       }
       selectedBallotExampleCategory = ballotExampleCategory
-      ballotExampleCategoryLiveData.postValue(selectedBallotExampleCategory)
+      ballotExampleCategoryLiveData.postValue(selectedBallotExampleCategory!!)
       ballotViewItemLiveData.postLoading()
       try {
 

@@ -115,6 +115,7 @@
   <string name="invalid_ballot">ပယ်မဲ</string>
   <string name="valid_ballot">ခိုင်လုံမဲ</string>
 
+
   <!--  News-->
   <string name="hint_search_news">ရှာလိုသော သတင်းကို ရိုက်ထည့်ပါ</string>
   <string name="empty_query_news">မိမိရှာလိုသော သတင်းအကြောင်းအရာကို အပေါ်တွင်ရိုက်ထည့်ပါ။</string>
@@ -182,6 +183,9 @@
   <string name="version">Version %1$s</string>
   <string name="copyright">©2015–2020 Team PopStack. All rights reserved.</string>
   <string name="navigation_title_license">Open Source Licenses</string>
+
+  <string name="candidate_privacy_instruction">ကိုယ်စားလှယ်လောင်းမည်သူမဆို ၎င်း၏ ကိုယ်ရေးအချက်အလက်များကို အများပြည်သူထံ မထုတ်ပြန်စေလိုပါက ပြည်ထောင်စုရွေးကောက်ပွဲကော်မရှင်သို့ စာဖြင့် တင်ပြတောင်းဆိုနိုင်ပါသည်။</string>
+  <string name="candidate_privacy_instruction_full">ကိုယ်စားလှယ်လောင်းမည်သူမဆို ၎င်း၏ ကိုယ်ရေးအချက်အလက်များကို အများပြည်သူထံ မထုတ်ပြန်စေလိုပါက ပြည်ထောင်စုရွေးကောက်ပွဲကော်မရှင်သို့ စာဖြင့် တင်ပြတောင်းဆိုနိုင်ပါသည်။ ပြည်ထောင်စုရွေးကောက်ပွဲကော်မရှင်သည် mVoter2020 အက်ပလီကေးရှင်းမှ ၎င်း၏ ကိုယ်ရေးအချက်အလက်များကို ဖယ်ရှားရန် ဆောင်ရွက်သွားမည် ဖြစ်ပါသည်။</string>
 
   <!-- Chooser -->
   <string name="location_chooser_title">မိမိ မဲပေးရွေးချယ်ရမည့်\nလွှတ်တော်ကိုယ်စားလှယ်လောင်းများကို သိရှိရန်\nနေထိုင်ရာအရပ်ကို ရွေးပါ</string>

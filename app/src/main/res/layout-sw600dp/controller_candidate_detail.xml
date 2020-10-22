@@ -509,7 +509,7 @@
         android:layout_height="36dp"
         android:layout_marginTop="@dimen/candidate_details_horizontal_section_spacing"
         android:src="@drawable/ic_candidate_filled"
-        android:tint="@color/accent"
+        app:tint="@color/accent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/barrierFatherRaceAndFatherReligion" />

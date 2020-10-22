@@ -10,7 +10,7 @@ fun DependencyHandler.androidXArch() {
 }
 
 object AndroidXArchLifeCycle {
-  private const val version = "2.3.0-alpha05"
+  private const val version = "2.3.0-beta01"
 
   const val view_model = "androidx.lifecycle:lifecycle-viewmodel-ktx:$version"
   const val saved_state = "androidx.lifecycle:lifecycle-viewmodel-savedstate:$version"
