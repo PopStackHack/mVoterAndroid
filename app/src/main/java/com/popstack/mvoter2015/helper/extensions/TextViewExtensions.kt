@@ -1,6 +1,8 @@
 package com.popstack.mvoter2015.helper.extensions
 
+import android.annotation.SuppressLint
 import android.graphics.drawable.Drawable
+import android.text.Layout
 import android.widget.TextView
 
 fun TextView.setCompoundDrawablesKt(
@@ -19,4 +21,11 @@ fun TextView.setCompoundDrawableWithIntrinsicBoundsKt(
   bottom: Drawable? = null
 ) {
   this.setCompoundDrawablesRelativeWithIntrinsicBounds(start, top, end, bottom)
+}
+
+@SuppressLint("WrongConstant")
+fun TextView.justify() {
+  if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+    justificationMode = Layout.JUSTIFICATION_MODE_INTER_WORD
+  }
 }

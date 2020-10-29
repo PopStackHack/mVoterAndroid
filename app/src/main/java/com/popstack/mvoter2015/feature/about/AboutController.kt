@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.text.Layout
 import android.view.LayoutInflater
 import androidx.lifecycle.lifecycleScope
 import com.bluelinelabs.conductor.RouterTransaction
@@ -19,6 +18,7 @@ import com.popstack.mvoter2015.helper.conductor.requireActivity
 import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.helper.conductor.setSupportActionBar
 import com.popstack.mvoter2015.helper.conductor.supportActionBar
+import com.popstack.mvoter2015.helper.extensions.justify
 import com.popstack.mvoter2015.logging.HasTag
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -77,9 +77,7 @@ class AboutController : LifeCycleAwareController<ControllerAboutBinding>(), Inje
       openAppWebsite()
     }
 
-    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-      binding.tvCandidatePrivacyInstruction.justificationMode = Layout.JUSTIFICATION_MODE_INTER_WORD
-    }
+    binding.tvCandidatePrivacyInstruction.justify()
 
     binding.tvVersion.text = requireContext().getString(R.string.version, BuildConfig.VERSION_NAME)
   }

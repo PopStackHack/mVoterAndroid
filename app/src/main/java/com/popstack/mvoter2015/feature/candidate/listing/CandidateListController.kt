@@ -1,9 +1,7 @@
 package com.popstack.mvoter2015.feature.candidate.listing
 
 import android.annotation.SuppressLint
-import android.graphics.text.LineBreaker
 import android.os.Bundle
-import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import androidx.core.view.isVisible
@@ -25,6 +23,7 @@ import com.popstack.mvoter2015.helper.conductor.requireActivity
 import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.helper.conductor.setSupportActionBar
 import com.popstack.mvoter2015.helper.conductor.supportActionBar
+import com.popstack.mvoter2015.helper.extensions.justify
 import com.popstack.mvoter2015.logging.HasTag
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -160,13 +159,7 @@ class CandidateListController :
 
   @SuppressLint("WrongConstant")
   private fun showCandidatePrivacyInstructionIfNeeded() {
-    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-      if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
-        binding.tvCandidatePrivacyInstruction.justificationMode = LineBreaker.JUSTIFICATION_MODE_INTER_WORD
-      } else {
-        binding.tvCandidatePrivacyInstruction.justificationMode = Layout.JUSTIFICATION_MODE_INTER_WORD
-      }
-    }
+    binding.tvCandidatePrivacyInstruction.justify()
 
     lifecycleScope.launch {
       viewCache.shouldShowCandidatePrivacyInstruction().collectLatest {
