@@ -123,18 +123,14 @@ class CandidateListController :
 
     viewModel.houseViewItemListResultLiveData.observe(this, Observer(::observeHouseViewItemListResult))
 
-    binding.btnRetry.setOnClickListener {
+    if (viewModel.houseViewItemListResultLiveData.value == null) {
       viewModel.loadHouses()
     }
-
-    viewModel.loadHouses()
   }
 
   private fun observeHouseViewItemListResult(viewState: AsyncViewState<CandidateListViewModel.HouseViewItemListResult>) {
     if (viewState is AsyncViewState.Loading) binding.progressIndicator.show()
     else binding.progressIndicator.hide()
-    binding.tvErrorMessage.isVisible = viewState is AsyncViewState.Error
-    binding.btnRetry.isVisible = viewState is AsyncViewState.Error
 
     if (viewState is AsyncViewState.Success) {
       val result = viewState.value
@@ -156,8 +152,6 @@ class CandidateListController :
         }
         changeSelectedTabIfNeeded()
       }
-    } else if (viewState is AsyncViewState.Error) {
-      binding.tvErrorMessage.text = viewState.errorMessage
     }
   }
 
