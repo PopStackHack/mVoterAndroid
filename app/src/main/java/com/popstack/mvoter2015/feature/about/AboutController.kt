@@ -77,7 +77,6 @@ class AboutController : LifeCycleAwareController<ControllerAboutBinding>(), Inje
       openAppWebsite()
     }
 
-
     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
       binding.tvCandidatePrivacyInstruction.justificationMode = Layout.JUSTIFICATION_MODE_INTER_WORD
     }

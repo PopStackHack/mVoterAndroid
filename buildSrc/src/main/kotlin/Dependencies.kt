@@ -86,7 +86,7 @@ object AndroidXPaging {
 
 //endregion
 object Material {
-  const val material = "com.google.android.material:material:1.3.0-alpha02"
+  const val material = "com.google.android.material:material:1.3.0-alpha03"
 }
 
 object Coil {
