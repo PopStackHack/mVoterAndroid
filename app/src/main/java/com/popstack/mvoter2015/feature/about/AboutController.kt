@@ -2,7 +2,6 @@ package com.popstack.mvoter2015.feature.about
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.graphics.text.LineBreaker
 import android.net.Uri
 import android.os.Bundle
 import android.text.Layout
@@ -78,12 +77,9 @@ class AboutController : LifeCycleAwareController<ControllerAboutBinding>(), Inje
       openAppWebsite()
     }
 
-    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
-      if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
-        binding.tvCandidatePrivacyInstruction.justificationMode = LineBreaker.JUSTIFICATION_MODE_INTER_WORD
-      } else {
-        binding.tvCandidatePrivacyInstruction.justificationMode = Layout.JUSTIFICATION_MODE_INTER_WORD
-      }
+
+    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+      binding.tvCandidatePrivacyInstruction.justificationMode = Layout.JUSTIFICATION_MODE_INTER_WORD
     }
 
     binding.tvVersion.text = requireContext().getString(R.string.version, BuildConfig.VERSION_NAME)
