@@ -122,6 +122,11 @@ class CandidateListController :
     CandidateListPagerParentRouter.setParentRouter(router)
 
     viewModel.houseViewItemListResultLiveData.observe(this, Observer(::observeHouseViewItemListResult))
+
+    binding.btnRetry.setOnClickListener {
+      viewModel.loadHouses()
+    }
+
     viewModel.loadHouses()
   }
 
@@ -151,6 +156,8 @@ class CandidateListController :
         }
         changeSelectedTabIfNeeded()
       }
+    } else if (viewState is AsyncViewState.Error) {
+      binding.tvErrorMessage.text = viewState.errorMessage
     }
   }
 
