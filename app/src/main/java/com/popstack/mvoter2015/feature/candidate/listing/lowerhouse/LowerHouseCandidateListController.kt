@@ -68,12 +68,7 @@ class LowerHouseCandidateListController : MvvmController<ControllerLowerHouseCan
     }
 
     if (viewModel.viewItemLiveData.value == null) {
-      lifecycleScope.launch {
-        //For some reason on fast phone, the candidate list doesn't show up
-        //Adding delay somehow solves this problem
-        delay(100)
         loadCandidates()
-      }
     }
   }
 
@@ -91,7 +86,6 @@ class LowerHouseCandidateListController : MvvmController<ControllerLowerHouseCan
 
   private fun observeViewItem(viewState: AsyncViewState<CandidateListResult>) = with(binding) {
     progressBar.isVisible = viewState is AsyncViewState.Loading
-    rvCandidate.isVisible = viewState is AsyncViewState.Success
     tvErrorMessage.isVisible = viewState is AsyncViewState.Error
     btnRetry.isVisible = viewState is AsyncViewState.Error
 
