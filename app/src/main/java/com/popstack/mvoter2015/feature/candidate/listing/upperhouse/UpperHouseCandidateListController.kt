@@ -82,7 +82,6 @@ class UpperHouseCandidateListController : MvvmController<ControllerUpperHouseCan
 
   private fun observeViewItem(viewState: AsyncViewState<CandidateListResult>) = with(binding) {
     progressBar.isVisible = viewState is AsyncViewState.Loading
-    rvCandidate.isVisible = viewState is AsyncViewState.Success
     tvErrorMessage.isVisible = viewState is AsyncViewState.Error
     btnRetry.isVisible = viewState is AsyncViewState.Error
 

@@ -23,7 +23,7 @@
       android:layout_height="12dp"
       android:layout_gravity="center"
       android:src="@drawable/ic_flag_24"
-      app:tint="@color/accent_20" />
+      app:tint="@android:color/white" />
 
   </FrameLayout>
 

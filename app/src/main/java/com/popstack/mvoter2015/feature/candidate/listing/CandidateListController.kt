@@ -1,9 +1,7 @@
 package com.popstack.mvoter2015.feature.candidate.listing
 
 import android.annotation.SuppressLint
-import android.graphics.text.LineBreaker
 import android.os.Bundle
-import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import androidx.core.view.isVisible
@@ -20,10 +18,12 @@ import com.popstack.mvoter2015.feature.analytics.screen.ScreenTrackAnalyticsProv
 import com.popstack.mvoter2015.feature.candidate.search.CandidateSearchController
 import com.popstack.mvoter2015.feature.location.LocationUpdateController
 import com.popstack.mvoter2015.helper.ConstituencyTab
+import com.popstack.mvoter2015.helper.asyncviewstate.AsyncViewState
 import com.popstack.mvoter2015.helper.conductor.requireActivity
 import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.helper.conductor.setSupportActionBar
 import com.popstack.mvoter2015.helper.conductor.supportActionBar
+import com.popstack.mvoter2015.helper.extensions.justify
 import com.popstack.mvoter2015.logging.HasTag
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -56,8 +56,6 @@ class CandidateListController :
     super.onBindView(savedViewState)
 
     selectedTab = savedViewState?.getInt(VIEW_STATE_SELECTED_TAB)
-
-    viewModel.viewEventLiveData.observe(this, Observer(::observeViewEvent))
 
     setSupportActionBar(binding.toolBar)
     supportActionBar()?.title = requireContext().getString(R.string.title_candidates)
@@ -122,10 +120,38 @@ class CandidateListController :
 
     CandidateListPagerParentRouter.setParentRouter(router)
 
-    showCandidatePrivacyInstructionIfNeeded()
+    viewModel.houseViewItemListResultLiveData.observe(this, Observer(::observeHouseViewItemListResult))
 
-    viewModel.houseViewItemListLiveData.observe(lifecycleOwner, Observer(::observeHouseViewItem))
-    viewModel.loadHouses()
+    if (viewModel.houseViewItemListResultLiveData.value == null) {
+      viewModel.loadHouses()
+    }
+  }
+
+  private fun observeHouseViewItemListResult(viewState: AsyncViewState<CandidateListViewModel.HouseViewItemListResult>) {
+    if (viewState is AsyncViewState.Loading) binding.progressIndicator.show()
+    else binding.progressIndicator.hide()
+
+    if (viewState is AsyncViewState.Success) {
+      val result = viewState.value
+      binding.tabLayout.isVisible = result is CandidateListViewModel.HouseViewItemListResult.HouseViewItemList
+      binding.viewPager.isVisible = result is CandidateListViewModel.HouseViewItemListResult.HouseViewItemList
+      binding.groupChooseCandidateComponent.isVisible = result is CandidateListViewModel.HouseViewItemListResult.RequestUserLocation
+      if (result is CandidateListViewModel.HouseViewItemListResult.HouseViewItemList) {
+        showCandidatePrivacyInstructionIfNeeded()
+        pagerAdapter.setItems(result.itemList)
+        binding.tabLayout.removeAllTabs()
+        result.itemList.forEach {
+          binding.tabLayout.addTab(
+            binding.tabLayout.newTab().setCustomView(
+              ConstituencyTab(requireActivity()).apply {
+                setText(it.houseName)
+              }
+            )
+          )
+        }
+        changeSelectedTabIfNeeded()
+      }
+    }
   }
 
   @Inject
@@ -133,13 +159,7 @@ class CandidateListController :
 
   @SuppressLint("WrongConstant")
   private fun showCandidatePrivacyInstructionIfNeeded() {
-    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
-      if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
-        binding.tvCandidatePrivacyInstruction.justificationMode = LineBreaker.JUSTIFICATION_MODE_INTER_WORD
-      } else {
-        binding.tvCandidatePrivacyInstruction.justificationMode = Layout.JUSTIFICATION_MODE_INTER_WORD
-      }
-    }
+    binding.tvCandidatePrivacyInstruction.justify()
 
     lifecycleScope.launch {
       viewCache.shouldShowCandidatePrivacyInstruction().collectLatest {
@@ -176,29 +196,6 @@ class CandidateListController :
   private fun hideCandidateList() {
     binding.tabLayout.isVisible = false
     binding.viewPager.isVisible = false
-  }
-
-  private fun observeViewEvent(viewEvent: CandidateListViewModel.ViewEvent) {
-    if (viewEvent is CandidateListViewModel.ViewEvent.RequestUserLocation) {
-      binding.tabLayout.isVisible = false
-      binding.groupChooseCandidateComponent.isVisible = true
-    }
-  }
-
-  private fun observeHouseViewItem(houseViewItemList: List<CandidateListHouseViewItem>) {
-    binding.groupChooseCandidateComponent.isVisible = false
-    pagerAdapter.setItems(houseViewItemList)
-    binding.tabLayout.removeAllTabs()
-    houseViewItemList.forEach {
-      binding.tabLayout.addTab(
-        binding.tabLayout.newTab().setCustomView(
-          ConstituencyTab(requireActivity()).apply {
-            setText(it.houseName)
-          }
-        )
-      )
-    }
-    changeSelectedTabIfNeeded()
   }
 
   private fun changeSelectedTabIfNeeded() {
