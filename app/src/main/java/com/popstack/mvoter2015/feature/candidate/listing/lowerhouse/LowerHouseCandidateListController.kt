@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bluelinelabs.conductor.RouterTransaction
@@ -22,8 +21,6 @@ import com.popstack.mvoter2015.helper.conductor.requireContext
 import com.popstack.mvoter2015.helper.extensions.isLandScape
 import com.popstack.mvoter2015.helper.extensions.isTablet
 import com.popstack.mvoter2015.logging.HasTag
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 class LowerHouseCandidateListController : MvvmController<ControllerLowerHouseCandidateListBinding>(), HasTag {
 
@@ -68,7 +65,7 @@ class LowerHouseCandidateListController : MvvmController<ControllerLowerHouseCan
     }
 
     if (viewModel.viewItemLiveData.value == null) {
-        loadCandidates()
+      loadCandidates()
     }
   }
 
